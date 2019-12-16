@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-8">
+      <app-card cardTitle="Select Trade Lead Id" [options]="false">
+        <form #validationForm="ngForm" class="editForm" novalidate>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Select Tradelead Id<small class="asterik_sign">*</small></label>
+                <div class="col-sm-6">
+                    <select class="form-control" name="validation-tlId" [ngClass]="{'is-invalid': !tlId.valid && (tlId.dirty || tlId.touched || isSubmit)}" #tlId="ngModel" required [(ngModel)]="formInput.tlId">
+                        <option value>Select PC Id</option>
+                        <option value="1">PC-#9021</option>
+                      </select>
+                      <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                      <label *ngIf="!tlId.valid && (tlId.dirty || tlId.touched || isSubmit)" id="validation-tlId-error" class="error jquery-validation-error small form-text invalid-feedback">Purchase Confirmation should be required.</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" uiSref="work" (click)="save(validationForm)">Submit</button>
+        </form>
+      </app-card>
+    </div>
+  </div>
+  <app-add-product-cart></app-add-product-cart>
+  <button type="submit" class="btn btn-success active">General Offer</button>&nbsp;
+  <button type="submit" class="btn btn-danger active">Latest Offer</button>&nbsp;
+  <button type="submit" class="btn btn-warning active">Hot Offer</button>&nbsp;

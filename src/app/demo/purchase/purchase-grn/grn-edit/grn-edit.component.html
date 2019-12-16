@@ -1,0 +1,539 @@
+<div class="user-profile user-card mb-4">
+  <div class="card-header border-0 p-0 pb-0">
+    <div class="cover-img-block">
+      <div class="overlay"></div>
+      <div class="change-cover">
+      </div>
+    </div>
+  </div>
+  <div class="card-body py-0">
+    <div class="user-about-block m-0">
+      <div class="row">
+        <div class="col-md-3 mt-md-4">
+          <h3 class="f-24">Edit GRN</h3>
+          <p class="m-b-5 text-dark f-w-600">GRN Id : <span class="text-muted">GRN-782,</span> <span
+              class="f-w-600 text-success"> Approved</span></p>
+          <p class="m-b-5 text-dark f-w-600">GRN Title : <span class="text-muted">GRN-CR-MWC</span></p>
+        </div>
+        <div class="col-md-9 mt-md-4">
+          <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'home'}"
+                (click)="this.activeTab = 'home'" id="home-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="home" aria-selected="true"><i class="feather icon-home mr-2"></i>GRN Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'profile'}"
+                (click)="this.activeTab = 'profile'" id="profile-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="profile" aria-selected="false"><i class="feather icon-user mr-2"></i>Purchase Invoice
+                Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'contact'}"
+                (click)="this.activeTab = 'contact'" id="contact-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="contact" aria-selected="false"><i class="feather icon-phone mr-2"></i>Transport
+                Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'gallery'}"
+                (click)="this.activeTab = 'gallery'" id="gallery-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="gallery" aria-selected="false"><i class="feather icon-image mr-2"></i>Weigh Bridge
+                Details</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- profile body start -->
+<div class="row">
+  <div class="col-md-12 order-md-2">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
+        aria-labelledby="home-tab">
+        <div class="merge-card">
+          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">GRN Details</h5>
+            <button type="button"
+              (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
+              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+              aria-expanded="false" aria-controls="pro-det-edit-1">
+              <i class="feather" [ngClass]="editProfileIcon"></i>
+            </button>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">GRN Id</label>
+              <div class="col-sm-3">
+                GRN-902
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">LOT Id</label>
+              <div class="col-sm-3">
+                LOT-902
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
+              <div class="col-sm-9">
+                GP Global Steel
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
+              <div class="col-sm-9">
+                WAR-92, L24/L25 Taloja MIDC
+              </div>
+            </div>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
+              <div class="col-sm-9">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option value>CR</option>
+                  <option value="1">HR</option>
+                  <option value="2">CR</option>
+                  <option value="3">GL</option>
+                  <option value="4">CC</option>
+                  <option value="5">EG</option>
+                  <option value="6">TP</option>
+                  <option value="7">TFS</option>
+                  <option value="8">BP</option>
+                  <option value="9">TPL</option>
+                  <option value="10">GALVALUM</option>
+                  <option value="11">MISPRINT</option>
+                  <option value="12">PCRC</option>
+                  <option value="13">TFS/LIKER</option>
+                  <option value="14">TP/LIKER</option>
+                  <option value="15">MIX</option>
+                  <option value="16">GA</option>
+                  <option value="17">GAJ</option>
+                  <option value="18">GI</option>
+                  <option value="19">COLOR</option>
+                  <option value="20">CR/GA</option>
+                  <option value="21">GI/GA</option>
+                  <option value="22">CRJ</option>
+                  <option value="23">GIJ</option>
+                  <option value="24">ALSTER</option>
+                  <option value="25">PVC/COLOR</option>
+                  <option value="26">PVC&amp;CB</option>
+                  <option value="27">BLANK</option>
+                  <option value="28">PVC-NON-CB</option>
+                  <option value="29">CR/GI</option>
+                  <option value="30">NON-CB</option>
+                  <option value="31">COLOR-CS</option>
+                  <option value="32">MATT</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Shape</label>
+              <div class="col-sm-9">
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option value>MWC</option>
+                  <option value="1">SLC</option>
+                  <option value="2">MWC</option>
+                  <option value="3">2RC</option>
+                  <option value="4">MC</option>
+                  <option value="5">SC</option>
+                  <option value="6">FAPS</option>
+                  <option value="7">BAPS</option>
+                  <option value="8">US</option>
+                  <option value="9">FASS</option>
+                  <option value="11">BASS</option>
+                  <option value="12">SHEETS</option>
+                  <option value="13">NO</option>
+                  <option value="14">SLC / STS</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="GP Global Steel" class="form-control" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="WAR-92, L24/L25 Taloja MIDC" class="form-control" disabled>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"></label>
+              <div class="col-sm-9">
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </app-card>
+        </div>
+      </div>
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
+        aria-labelledby="profile-tab">
+        <div class="merge-card">
+          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Purchase Invoice</h5>
+            <button type="button"
+              (click)="this.editProfile2 = !this.editProfile2; this.editProfileIcon = this.editProfile2 ? 'icon-x': 'icon-edit';"
+              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+              aria-expanded="false" aria-controls="pro-det-edit-1">
+              <i class="feather" [ngClass]="editProfileIcon"></i>
+            </button>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile2">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
+              <div class="col-sm-3">
+                SU-927
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
+              <div class="col-sm-3">
+                COM-02
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice No.</label>
+              <div class="col-sm-3">
+                9378LKK927
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
+              <div class="col-sm-3">
+                WAR-02
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
+              <div class="col-sm-3">
+                PCRC-MWC
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/ Bundles</label>
+              <div class="col-sm-3">
+                2 Coils, 1 Bundle
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Gross Wt.</label>
+              <div class="col-sm-3">
+                22.87 Mt.
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Net Wt.</label>
+              <div class="col-sm-3">
+                20.87 Mt.
+              </div>
+            </div>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile2">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="exampleFormControlSelect1" disabled>
+                  <option value="1">SUP-90</option>
+                </select>
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="exampleFormControlSelect1" disabled>
+                  <option value="1">COM-02</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice No.</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="9378LKK927">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="exampleFormControlSelect1" disabled>
+                  <option value="1">COM-02</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="PCRC-MWC">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/ Bundles</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="2 Coils, 1 Bundle">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Gross Wt.</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="22.87 Mt.">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Net Wt.</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="20.87 Mt.">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"></label>
+              <div class="col-sm-1">
+                <button type="button" class="btn btn-primary">Save</button>&nbsp;
+              </div>
+            </div>
+          </app-card>
+        </div>
+      </div>
+      <!-- transport -->
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'contact'}" id="contact" role="tabpanel"
+        aria-labelledby="contact-tab">
+        <div class="merge-card">
+          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Transport Details</h5>
+            <button type="button"
+              (click)="this.editProfile3 = !this.editProfile3; this.editProfileIcon = this.editProfile3 ? 'icon-x': 'icon-edit';"
+              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+              aria-expanded="false" aria-controls="pro-det-edit-3">
+              <i class="feather" [ngClass]="editProfileIcon"></i>
+            </button>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile3">
+            <div class="form-group row">
+
+              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+              <div class="col-sm-3">
+                TP-082
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Reciept</label>
+              <div class="col-sm-3">
+                44KJD886764
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
+              <div class="col-sm-3">
+                20/12/2019
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
+              <div class="col-sm-3">
+                #98487483
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
+              <div class="col-sm-3">
+                20.84 Mt.
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight </label>
+              <div class="col-sm-3">
+                20.84 Mt.
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Container Number</label>
+              <div class="col-sm-3">
+                937KDJ89783
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
+              <div class="col-sm-3">
+                MH 2AS 9833
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name</label>
+              <div class="col-sm-3">
+                Ramesh Aggarwal
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
+              <div class="col-sm-3">
+                +91-9978262522
+              </div>
+            </div>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile3">
+            <div class="form-group row">
+
+              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+              <div class="col-sm-3">
+                <div class="row">
+                  <div class="col-md-5">
+                    <select class="form-control" id="">
+                      <option value="1">TP-022</option>
+                      <option value="2">TP-352</option>
+                      <option value="3">TP-234</option>
+                    </select>
+                  </div>
+                  <div class="col-md-7">
+                    <select class="form-control" id="">
+                      <option value="1">Shri Transport Pvt Ltd.</option>
+                      <option value="2">Vidya Transport Pvt Ltd.</option>
+                      <option value="3">Kamal Transport Pvt Ltd.</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Reciept</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="44KJD886764">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
+              <div class="col-sm-3">
+                <input type="date" class="form-control" placeholder="" value="20/12/2019">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="+91 - 9871776756">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="20.84 Mt.">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value=" 20.84 Mt.">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="CR-MWC">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="2 Coils, 3 Bundles">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Container Number
+              </label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="937KDJ89783">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="MH 2AS 9833">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name
+              </label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="Ramesh Aggarwal">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="+91-9978262522">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"></label>
+              <div class="col-sm-9">
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </app-card>
+        </div>
+      </div>
+      <!-- weigh bridge -->
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
+        aria-labelledby="gallery-tab">
+        <div class="merge-card">
+          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Destination Weightment Details</h5>
+            <button type="button"
+              (click)="this.editProfile4 = !this.editProfile4; this.editProfileIcon = this.editProfile4 ? 'icon-x': 'icon-edit';"
+              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+              aria-expanded="false" aria-controls="pro-det-edit-1">
+              <i class="feather" [ngClass]="editProfileIcon"></i>
+            </button>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile4">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Weighing Bridge Company</label>
+              <div class="col-sm-3">
+               WB-932
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Weigh Slip No.</label>
+              <div class="col-sm-3">
+                87837H783
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Loaded Weight</label>
+              <div class="col-sm-3">
+               540 Mt.
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Tare Weight</label>
+              <div class="col-sm-3">
+                200 Mt.
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Material Net Weight as per Weightment slip</label>
+              <div class="col-sm-3">
+              82 Mt.
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Location</label>
+              <div class="col-sm-3">
+               Mumbai Maharshtra
+              </div>
+            </div>
+          </app-card>
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile4">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Weighing Bridge Company</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="" disabled>
+                  <option value>WB-932</option>
+                </select>
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Weigh Slip No.</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="" value="87837H783">
+              </div>
+            </div>
+          
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Loaded Weight</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="" class="form-control" value="540 Mt.">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Tare Weight</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="" class="form-control" value="200 Mt.">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Material Net Weight as per Weightment slip</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="" class="form-control" value="82 Mt.">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Location</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="" class="form-control" value="Mumbai Maharshtra">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"></label>
+              <div class="col-sm-9">
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </app-card>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </div>
+</div>
+<!-- profile body end -->
+<div class="row">
+  <div class="col-md-12 text-center">
+    <button type="submit" class="btn btn-danger active">Export PDF</button>&nbsp;
+    <button type="submit" class="btn btn-success active">Print</button>&nbsp;
+  </div>
+</div>
