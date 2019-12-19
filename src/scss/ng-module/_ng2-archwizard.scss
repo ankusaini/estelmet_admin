@@ -4,12 +4,14 @@
       border-radius: 5px !important;
     }
   }
+
   .centered-content {
     text-align: center;
   }
-  .wizard-steps{
+
+  .wizard-steps {
     border-radius: 5px;
-    border:1px solid $theme-border;
+    border: 1px solid $theme-border;
     padding: 20px;
   }
 
@@ -38,15 +40,18 @@
     border-color: $primary-color !important;
     color: $primary-color !important;
   }
+
   .wizard-steps,
-  wizard-step{
+  wizard-step {
     font-weight: 400 !important;
   }
+
   .wizard-steps,
   wizard-step,
-  a{
+  a {
     font-family: $theme-font-family !important;
-    strong{
+
+    strong {
       font-weight: 400 !important;
     }
   }
@@ -55,5 +60,15 @@
     .wizard-steps {
       border: none;
     }
+  }
+}
+
+@media screen and (max-width:768px) {
+  .horizontal ul.steps-indicator li div a {
+    font-size: 10px !important;
+  }
+
+  .horizontal ul.steps-indicator {
+    padding: 50px 0 7px 0 !important;
   }
 }

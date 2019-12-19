@@ -1,45 +1,68 @@
-<div class="row">
-    <div class="col-md-7">
-      <app-card cardTitle="Search & Select SC Lot ID" [options]="false">
-        <form #validationForm="ngForm" class="editForm" novalidate>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Select SC LOT ID<small class="asterik_sign">*</small></label>
-                <div class="col-sm-6">
-                    <select class="form-control">
-                        <option value>Select SC Id</option>
-                        <option value="1">SC-#9021</option>
-                      </select>
-                      <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
-                </div>
+<app-card cardTitle="Create Loading Slip" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Search & Select SC Lot ID" navigationSymbol="1">
+      <form #validationForm="ngForm" class="editForm" novalidate>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-3 col-form-label mt-2">Select SC LOT ID<small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                <select class="form-control">
+                  <option value>Select SC Id</option>
+                  <option value="1">SC-#9021</option>
+                </select>
+                <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </app-card>
-    </div>
-  </div>
-  <app-add-product-cart></app-add-product-cart>
-  <div class="row">
-    <div class="col-md-7">
-        <app-card cardTitle="Search & Select SC Lot ID" [options]="false">
-            <form #validationForm="ngForm" class="editForm" novalidate>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Enter Product Id<small class="asterik_sign">*</small></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" placeholder="">
-                    </div>
-                  </div>
-                </div>
+        </div>
+      </form>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Select Product" navigationSymbol="2">
+      <app-add-product-cart></app-add-product-cart>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Search & Select SC Lot ID" navigationSymbol="3">
+      <form #validationForm="ngForm" class="editForm" novalidate>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-3 col-form-label mt-2">Enter Product Id<small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="">
               </div>
-              <button type="submit" class="btn btn-primary">Load Product</button>
-            </form>
-          </app-card>
-    </div>
-  </div>
-  <app-add-product-cart></app-add-product-cart>
-  <a type="submit" class="btn btn-success active" routerLink="../loadSlipOverview">Generate Slip</a>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Load Product</button>
+      </form>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="View Product" navigationSymbol="4">
+      <app-add-product-cart></app-add-product-cart>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success btn-sm">Submit</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

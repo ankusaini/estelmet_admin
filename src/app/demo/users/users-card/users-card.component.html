@@ -1,115 +1,117 @@
-<app-card cardTitle="Create New User" [options]="false">
-  <wizard #wizard class="arc-wizard" navBarLocation="left" navBarLayout="large-empty-symbols">
-    <wizard-step stepTitle="Personal" navigationSymbol="1">
-      <form #validationForm="ngForm" class="editForm" novalidate>
+<app-card cardTitle="Add New User" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Personal Detail" navigationSymbol="1">
       <div class="row">
-          <div class="col-sm-12">
-            <h5>Personal Details</h5>
-            <hr>
-            <div class="form-row">
-              <div class="col-md-8 mb-3">
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">User Type <small class="asterik_sign">*</small></label>
-                  <select class="form-control" name="validation-userType"
-                  [ngClass]="{'is-invalid': !userType.valid && (userType.dirty || userType.touched || isSubmit)}"
-                  #userType="ngModel" required [(ngModel)]="formInput.userType">
-                    <option value="0" disabled>Select User type</option>
-                    <option value="1">Customer</option>
-                    <option value="1">Supplier</option>
-                    <option value="1">Agent</option>
-                    <option value="1">Transporter</option>
-                    <option value="1">Contractor</option>
-                  </select>
-                  <label *ngIf="!userType.valid && (userType.dirty || userType.touched || isSubmit)"
-                  id="validation-userType-error"
-                  class="error jquery-validation-error small form-text invalid-feedback">User Type should be
-                  required.</label>
+        <div class="col-sm-12">
+          <h5>Personal Details</h5>
+          <hr>
+          <div class="row">
+            <div class="col-md-7">
+              <div class="form-row">
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">User Type <small class="asterik_sign">*</small></label>
+                    <select class="form-control" name="validation-userType"
+                      [ngClass]="{'is-invalid': !userType.valid && (userType.dirty || userType.touched || isSubmit)}"
+                      #userType="ngModel" required [(ngModel)]="formInput.userType">
+                      <option value>Select User type</option>
+                      <option value="1">Customer</option>
+                      <option value="1">Supplier</option>
+                      <option value="1">Agent</option>
+                      <option value="1">Transporter</option>
+                      <option value="1">Contractor</option>
+                    </select>
+                    <label *ngIf="!userType.valid && (userType.dirty || userType.touched || isSubmit)"
+                      id="validation-userType-error"
+                      class="error jquery-validation-error small form-text invalid-feedback">User Type should be
+                      required.</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom01">First Name <small class="asterik_sign">*</small></label>
+                  <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom02">Last Name <small class="asterik_sign">*</small></label>
+                  <input type="text" class="form-control" placeholder="Last name" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom01">Mobile <small class="asterik_sign">*</small></label>
+                  <input type="text" class="form-control" id="validationCustom01" placeholder="Mobile" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
+                  <input type="text" class="form-control" placeholder="Email" required>
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="inputPassword5">Password <small class="asterik_sign">*</small></label>
+                  <input type="password" class="form-control" aria-describedby="passwordHelpBlock"
+                    placeholder="Password">
+                  <small id="passwordHelpBlock" class="form-text text-muted">Your password must be 8-20 characters
+                    long.</small>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="inputPassword5">Confirm Password <small class="asterik_sign">*</small></label>
+                  <input type="password" class="form-control" aria-describedby="passwordHelpBlock"
+                    placeholder="Confirm Password">
                 </div>
               </div>
             </div>
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="validationCustom01">First Name <small class="asterik_sign">*</small></label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Last Name <small class="asterik_sign">*</small></label>
-                <input type="text" class="form-control" placeholder="Last name" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="validationCustom01">Mobile <small class="asterik_sign">*</small></label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Mobile" required>
-  
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
-                <input type="text" class="form-control" placeholder="Email" required>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label for="inputPassword5">Password <small class="asterik_sign">*</small></label>
-                <input type="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Password">
-                <small id="passwordHelpBlock" class="form-text text-muted">Your password must be 8-20 characters
-                  long.</small>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="inputPassword5">Confirm Password <small class="asterik_sign">*</small></label>
-                <input type="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Confirm Password">
-              </div>
-            </div>
-            <!-- <div class="form-row">
-              <div class="col-md-8 mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                  <label class="custom-file-label" for="validatedCustomFile">Upload Photo...</label>
-                  <div class="invalid-feedback">Example invalid custom file feedback</div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+              <div class="photo_upload">
+                <form>
+                  <file-upload formControlName="files"></file-upload>
+                </form>
+                <div class="text-center m-t-20 m-b-20">
+                  <button class="btn btn-success btn-sm">Upload Now</button>
                 </div>
               </div>
-  
-            </div> -->
-  
-          </div>
-          <div class="col-sm-12 centered-content">
-            <div class="btn-group mt-10"> 
-              <button type="submit" class="btn btn-primary btn-sm"  uiSref="work" (click)="save(validationForm)" nextStep>Continue</button>
             </div>
           </div>
         </div>
-      </form>
+        <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
+          </div>
+        </div>
+      </div>
     </wizard-step>
-    <wizard-step stepTitle="Business" navigationSymbol="2">
+    <wizard-step stepTitle="Company Detail" navigationSymbol="2">
       <div class="row">
         <div class="col-sm-12">
           <h5>Business Details</h5>
           <hr>
           <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Company Name <small class="asterik_sign">*</small></label>
-              <input type="text" class="form-control" placeholder="Last name" required>
-
+              <input type="text" class="form-control" placeholder="" required>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5 mb-3">
             </div>
           </div>
           <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Address Line 1 <small class="asterik_sign">*</small></label>
-              <input type="text" class="form-control" placeholder="Last name" required>
-
+              <input type="text" class="form-control" placeholder="" required>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Address Line 2</label>
-              <input type="text" class="form-control" placeholder="Last name" required>
-
+              <input type="text" class="form-control" placeholder="" required>
             </div>
           </div>
           <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-5 mb-3">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Country <small class="asterik_sign">*</small></label>
                 <select class="form-control" id="exampleFormControlSelect1">
@@ -120,11 +122,12 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 mb-3">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">State <small class="asterik_sign">*</small></label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                    <option disabled>Select State</option>
+                  <option disabled>Select State</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
@@ -134,11 +137,11 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-5 mb-3">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">City <small class="asterik_sign">*</small></label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                    <option disabled>Select City</option>
+                  <option disabled>Select City</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
@@ -146,125 +149,124 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Pincode <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Pin Code" required>
-
             </div>
           </div>
           <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">GST <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="GST" required>
-
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Mobile</label>
               <input type="text" class="form-control" placeholder="Mobile" required>
-
             </div>
           </div>
           <div class="form-row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Landline</label>
               <input type="text" class="form-control" placeholder="Landline" required>
-
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 mb-3">
               <label for="validationCustom02">Email</label>
               <input type="text" class="form-control" placeholder="Business Email" required>
-
-            </div>
-          </div>
-          <label for="validationCustom02">Annual Turnover</label>
-          <div class="form-row">
-
-            <div class="col-md-2 mb-3">
-              <input type="text" class="form-control" placeholder="" required>
-              <small id="emailHelp" class="form-text text-muted">2016 - 2017 (in Lacs)</small>
-            </div>
-            <div class="col-md-2 mb-3">
-              <input type="text" class="form-control" placeholder="" required>
-              <small id="emailHelp" class="form-text text-muted">2017 - 2018 (in Lacs)</small>
-            </div>
-            <div class="col-md-2 mb-3">
-              <input type="text" class="form-control" placeholder="" required>
-              <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
-            </div>
-            <div class="col-md-2 mb-3">
-              <input type="text" class="form-control" placeholder="" required>
-              <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
             </div>
           </div>
           <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-5">
+              <label for="validationCustom02">Annual Turnover</label>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <input type="text" class="form-control" placeholder="" required>
+                  <small id="emailHelp" class="form-text text-muted">2016 - 2017 (in Lacs)</small>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="text" class="form-control" placeholder="" required>
+                  <small id="emailHelp" class="form-text text-muted">2017 - 2018 (in Lacs)</small>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="text" class="form-control" placeholder="" required>
+                  <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
               <label for="validationCustom02">No. of Employees</label>
               <input type="text" class="form-control" placeholder="" required>
-
             </div>
-          </div>
-        </div>
-        <div class="col-sm-12 centered-content">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
           </div>
         </div>
       </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
     </wizard-step>
-    <wizard-step stepTitle="Key Person" navigationSymbol="3">
+    <wizard-step stepTitle="Key Person Detail" navigationSymbol="3">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-5">
           <h5>Key Person 1</h5>
           <hr>
           <div class="form-row">
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
               <label for="validationCustom02">Full Name <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Full Name" required>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
               <label for="validationCustom02">Designation <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Designation" required>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
               <label for="validationCustom02">Mobile <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Mobile" required>
             </div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
               <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Email" required>
             </div>
           </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
           <h5>Key Person 2</h5>
           <hr>
           <div class="form-row">
-            <div class="col-md-8 mb-3">
-              <label for="validationCustom02">Full Name</label>
+            <div class="col-md-12 mb-3">
+              <label for="validationCustom02">Full Name <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Full Name" required>
             </div>
-            <div class="col-md-8 mb-3">
-              <label for="validationCustom02">Designation</label>
+            <div class="col-md-12 mb-3">
+              <label for="validationCustom02">Designation <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Designation" required>
             </div>
-            <div class="col-md-8 mb-3">
-              <label for="validationCustom02">Mobile</label>
+            <div class="col-md-12 mb-3">
+              <label for="validationCustom02">Mobile <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Mobile" required>
             </div>
-            <div class="col-md-8 mb-3">
-              <label for="validationCustom02">Email</label>
+            <div class="col-md-12 mb-3">
+              <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
               <input type="text" class="form-control" placeholder="Email" required>
             </div>
           </div>
         </div>
-        <div class="col-sm-12 centered-content">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
-          </div>
+      </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
         </div>
       </div>
     </wizard-step>
-    <wizard-step stepTitle="Trade" navigationSymbol="4">
+    <wizard-step stepTitle="Trade Details" navigationSymbol="4">
+
       <div class="row">
         <div class="col-sm-12">
           <h5>Trade Details</h5>
@@ -448,7 +450,7 @@
                         <div class="overlay-edit">
                           <button type="button" class="btn btn-icon btn-success"><i
                               class="feather icon-check-circle"></i></button>
-                          <button type="button" class="btn btn-icon btn-danger" ><i
+                          <button type="button" class="btn btn-icon btn-danger"><i
                               class="feather icon-trash-2"></i></button>
                         </div>
                       </td>
@@ -460,7 +462,6 @@
               </div>
             </app-card>
           </div>
-
         </div>
         <div class="col-sm-12 centered-content">
           <div class="btn-group mt-10">
@@ -470,16 +471,16 @@
         </div>
       </div>
     </wizard-step>
-    <wizard-step stepTitle="Finished" navigationSymbol="5">
+    <wizard-step stepTitle="Terms & conditions" navigationSymbol="5">
       <div class="row">
         <div class="col-sm-12">
           <h5>Finished</h5>
           <hr>
           <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">I agree for the <a routerLink="#" target="_blank">Terms & Conditons</a></label>
-            </div>
-        
+            <input type="checkbox" class="custom-control-input" id="customCheck1">
+            <label class="custom-control-label" for="customCheck1">I agree for the <a routerLink="#"
+                target="_blank">Terms & Conditons</a></label>
+          </div>
         </div>
         <div class="col-sm-12 centered-content">
           <div class="btn-group mt-10">

@@ -1,9 +1,10 @@
-<div class="row">
-  <div class="col-md-8">
-    <app-card cardTitle="Create User Group" [options]="false">
-        <form #validationForm="ngForm" class="editForm" novalidate>
+<app-card cardTitle="Create User Group" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Create Group Id Id" navigationSymbol="1">
+
+      <form #validationForm="ngForm" class="editForm" novalidate>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Product Type <small class="asterik_sign">*</small></label>
               <select class="form-control" name="validation-type" [ngClass]="{'is-invalid': !type.valid && (type.dirty || type.touched || isSubmit)}" #type="ngModel" required [(ngModel)]="formInput.type">
@@ -13,7 +14,8 @@
                 <label *ngIf="!type.valid && (type.dirty || type.touched || isSubmit)" id="validation-type-error" class="error jquery-validation-error small form-text invalid-feedback">Product Type should be required.</label>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
               <select class="form-control" name="validation-category" [ngClass]="{'is-invalid': !category.valid && (category.dirty || category.touched || isSubmit)}" #category="ngModel" required [(ngModel)]="formInput.category">
@@ -56,7 +58,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-xs-6">
+          <div class="col-md-5 col-xs-6">
             <div class="form-group">
               <label for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
               <div class="row">
@@ -71,7 +73,8 @@
               </div>
             </div>
           </div>
-            <div class="col-md-6 col-xs-6">
+          <div class="col-md-1"></div>
+            <div class="col-md-5 col-xs-6">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">User Group Type <small class="asterik_sign">*</small></label>
                     <select class="form-control" name="validation-groupType" [ngClass]="{'is-invalid': !groupType.valid && (groupType.dirty || groupType.touched || isSubmit)}" #groupType="ngModel" required [(ngModel)]="formInput.groupType">
@@ -86,13 +89,16 @@
                   </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary"  uiSref="work"  (click)="save(validationForm)">Submit</button>
       </form>
-    </app-card>
-  </div>
-</div>
-<div [hidden]="showGroup">
-    <div class="row">
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Next</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Search User" navigationSymbol="2">
+      <div class="row">
         <div class="col-md-12">
                   <app-card [hidHeader]="false" cardTitle="Search & Select Customer/s " [options]="false" cardClass="user-profile-list">
                     <div class="dt-responsive table-responsive" cardClass="card-datatable"> 
@@ -249,5 +255,13 @@
                   
           </div>
         </div>
-        <button type="submit" class="btn btn-success active">Send for Approval</button>
-</div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+<button type="submit" class="btn btn-danger btn-sm">Print</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success btn-sm">Send for Approval</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

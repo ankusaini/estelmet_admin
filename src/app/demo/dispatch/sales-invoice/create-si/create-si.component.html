@@ -1,67 +1,80 @@
-<div class="row">
-    <div class="col-md-12">
-      <app-card [hidHeader]="false" cardTitle=" Select Sales Confirmation id to create sales invoice" [options]="false"
-        cardClass="user-profile-list">
-        <div class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table datatable class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                  <th>Sr. No.</th>
-                  <th>SC Id</th>
-                  <th>SC Type</th>
-                  <th>Category</th>
-                  <th>Shape</th>
-                  <th>Customer Id</th>
-                  <th>Transporter Id</th>
-                  <th>Date of Creation</th>
-                  <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                  <td>1.</td>
-                  <td>SC-892</td>
-                  <td>Sales Confirmation</td>
-                  <td>GL</td>
-                  <td>2RC</td>
-                  <td>CU-239</td>
-                  <td>TR-282</td>
-                  <td>24-10-2019</td>
-                <td>
-                  <span class="badge badge-light-success">Approved</span>
-                  <div class="overlay-edit">
-                    <button type="button" class="btn btn-icon btn-danger" ><i
-                        class="feather icon-trash-2"></i></button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </app-card>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-        <app-card cardTitle="Add Kata Weight" [options]="false">
-            <form #validationForm="ngForm" class="editForm" novalidate>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-5 col-form-label mt-2">Select Loading Slip ID<small class="asterik_sign">*</small></label>
-                    <div class="col-sm-6">
-                        <select class="form-control">
-                            <option value>Select Id</option>
-                            <option value="1">DI-#9021</option>
-                          </select>
-                          <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
-                    </div>
-                  </div>
+<app-card cardTitle="Create Loading Slip" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Create Sales Invoice" navigationSymbol="1">
+      <div class="dt-responsive table-responsive" cardClass="card-datatable">
+        <table datatable class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>SC Id</th>
+                <th>SC Type</th>
+                <th>Category</th>
+                <th>Shape</th>
+                <th>Customer Id</th>
+                <th>Transporter Id</th>
+                <th>Date of Creation</th>
+                <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>1.</td>
+                <td>SC-892</td>
+                <td>Sales Confirmation</td>
+                <td>GL</td>
+                <td>2RC</td>
+                <td>CU-239</td>
+                <td>TR-282</td>
+                <td>24-10-2019</td>
+              <td>
+                <span class="badge badge-light-success">Approved</span>
+                <div class="overlay-edit">
+                  <button type="button" class="btn btn-icon btn-danger" ><i
+                      class="feather icon-trash-2"></i></button>
                 </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Add Kata Weight" navigationSymbol="2">
+      <form #validationForm="ngForm" class="editForm" novalidate>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Select Loading Slip Id<small class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                  <select class="form-control">
+                      <option value>Select Id</option>
+                      <option value="1">DI-#9021</option>
+                    </select>
+                    <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
               </div>
-            </form>
-          </app-card>
-    </div>
-  </div>
-  <app-add-product-cart></app-add-product-cart>
-  <a type="submit" class="btn btn-success active" routerLink="../generateInvoice">Generate Invoice</a>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="View Product" navigationSymbol="3">
+      <app-add-product-cart></app-add-product-cart>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <a type="submit" class="btn btn-success active" routerLink="../generateInvoice">Generate Invoice</a>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

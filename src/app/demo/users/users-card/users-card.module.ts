@@ -7,6 +7,7 @@ import {SharedModule} from '../../../theme/shared/shared.module';
 import {NgbCarouselModule, NgbDropdownModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
 import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { SelectModule } from 'ng-select';
+import { FileUploadModule } from '@iplab/ngx-file-upload';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SelectModule } from 'ng-select';
     NgbDropdownModule,
     NgbCarouselModule,
     ArchwizardModule,
-    SelectModule
+    SelectModule,
+    FileUploadModule
   ]
 })
 export class UsersCardModule { }

@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="col-md-12">
-    <app-card cardTitle="Create Sales Invoice" [options]="false">
+<app-card cardTitle="Generate Sales Invoice" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Sales Invoice Details" navigationSymbol="1">
       <form #validationForm="ngForm" class="editForm" novalidate>
         <div class="row">
    
@@ -150,36 +150,43 @@
             </div>
           </div>
       </form>
-    </app-card>
-
-    <app-card cardTitle="Sales Invoice Details" [options]="false">
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Buyer Order Details" navigationSymbol="2">
       <form #validationForm="ngForm" class="editForm" novalidate>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-5">
             <div class="form-group">
               <label for="validationCustom02">Buyer Order No.</label>
               <input type="text" class="form-control" placeholder="Enter Order No.">
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
             <div class="form-group">
               <label for="validationCustom02">Buyer Order Date</label>
               <input type="date" class="form-control" placeholder="">
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-5">
             <div class="form-group">
               <label for="validationCustom02">E-Way Bill No.</label>
               <input type="text" class="form-control" placeholder="Enter Bill No.">
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
             <div class="form-group">
               <label for="validationCustom02">E-Way Bill Date</label>
               <input type="date" class="form-control" placeholder="">
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-5">
               <div class="form-group">
                 <label for="validationCustom02">Payment Term</label>
                 <select class="form-control">
@@ -191,109 +198,122 @@
         
         </div>
       </form>
-    </app-card>
-    <app-card cardTitle="Product Details" [options]="false">
-        <div class="table-responsive">
-            <table class="table invoice-detail-table text-center">
-              <thead>
-                <tr class="thead-default">
-                  <th>Sr. No.</th>
-                  <th>Prod. Id</th>
-                  <th>Description</th>
-                  <th>Thickness <span class="d-block">(mm)</span></th>
-                  <th>Width <span class="d-block">(mm)</span></th>
-                  <th>Length <span class="d-block">(mm)</span></th>
-                  <th>Temper</th>
-                  <th>Net Wt. <span class="d-block">(mt.)</span></th>
-                  <th>HSN /SAC<span class="d-block">(Code)</span></th>
-                  <th>Price<span class="d-block">(mt.)</span></th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1.</td>
-                  <td><a routerLink="">P-928</a></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td>1.22</td>
-                  <td>800</td>
-                  <td>Coil</td>
-                  <td>T4</td>
-                  <td>2.12</td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td class="text-danger"></td>
-                </tr>
-                <tr>
-                  <td>2.</td>
-                  <td><a routerLink="">P-928</a></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td>1.22</td>
-                  <td>800</td>
-                  <td>Coil</td>
-                  <td>T4</td>
-                  <td>2.12</td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td class="text-danger"></td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td><a routerLink="">P-928</a></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td>1.22</td>
-                  <td>800</td>
-                  <td>Coil</td>
-                  <td>T4</td>
-                  <td>2.12</td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td class="text-danger"></td>
-                </tr>
-                <tr>
-                  <td>4.</td>
-                  <td><a routerLink="">P-928</a></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td>1.22</td>
-                  <td>800</td>
-                  <td>Coil</td>
-                  <td>T4</td>
-                  <td>2.12</td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td class="text-danger"></td>
-                </tr>
-                <tr>
-                  <td>5.</td>
-                  <td><a routerLink="">P-928</a></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td>1.22</td>
-                  <td>800</td>
-                  <td>Coil</td>
-                  <td>T4</td>
-                  <td>2.12</td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td class="text-danger"></td>
-                </tr>
-                <tr>
-                  <td>6.</td>
-                  <td><a routerLink="">P-928</a></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td>1.22</td>
-                  <td>800</td>
-                  <td>Coil</td>
-                  <td>T4</td>
-                  <td>2.12</td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td><input type="text" class="form-control" placeholder=""></td>
-                  <td class="text-danger"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-    </app-card>
-    <app-card cardTitle="GST Details" [options]="false">
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Add Product Price" navigationSymbol="3">
+      <div class="table-responsive">
+        <table class="table invoice-detail-table text-center">
+          <thead>
+            <tr class="thead-default">
+              <th>Sr. No.</th>
+              <th>Prod. Id</th>
+              <th>Description</th>
+              <th>Thickness <span class="d-block">(mm)</span></th>
+              <th>Width <span class="d-block">(mm)</span></th>
+              <th>Length <span class="d-block">(mm)</span></th>
+              <th>Temper</th>
+              <th>Net Wt. <span class="d-block">(mt.)</span></th>
+              <th>HSN /SAC<span class="d-block">(Code)</span></th>
+              <th>Price<span class="d-block">(mt.)</span></th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1.</td>
+              <td><a routerLink="">P-928</a></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td>1.22</td>
+              <td>800</td>
+              <td>Coil</td>
+              <td>T4</td>
+              <td>2.12</td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td class="text-danger"></td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td><a routerLink="">P-928</a></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td>1.22</td>
+              <td>800</td>
+              <td>Coil</td>
+              <td>T4</td>
+              <td>2.12</td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td class="text-danger"></td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td><a routerLink="">P-928</a></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td>1.22</td>
+              <td>800</td>
+              <td>Coil</td>
+              <td>T4</td>
+              <td>2.12</td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td class="text-danger"></td>
+            </tr>
+            <tr>
+              <td>4.</td>
+              <td><a routerLink="">P-928</a></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td>1.22</td>
+              <td>800</td>
+              <td>Coil</td>
+              <td>T4</td>
+              <td>2.12</td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td class="text-danger"></td>
+            </tr>
+            <tr>
+              <td>5.</td>
+              <td><a routerLink="">P-928</a></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td>1.22</td>
+              <td>800</td>
+              <td>Coil</td>
+              <td>T4</td>
+              <td>2.12</td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td class="text-danger"></td>
+            </tr>
+            <tr>
+              <td>6.</td>
+              <td><a routerLink="">P-928</a></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td>1.22</td>
+              <td>800</td>
+              <td>Coil</td>
+              <td>T4</td>
+              <td>2.12</td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td><input type="text" class="form-control" placeholder=""></td>
+              <td class="text-danger"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="View Product" navigationSymbol="4">
+      <app-card cardTitle="GST Details" [options]="false">
         <form #validationForm="ngForm" class="editForm" novalidate>
           <div class="row">
             <div class="col-md-2">
@@ -470,6 +490,12 @@
             </div>
           </form>
         </app-card>
-    </div>
-    </div>
-    <button type="submit" class="btn btn-success active">Send for Approval</button>&nbsp;
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success btn-sm">Submit</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>
