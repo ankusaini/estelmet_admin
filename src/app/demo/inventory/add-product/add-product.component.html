@@ -1,7 +1,34 @@
-<div class="row"> 
-  <div class="col-md-12">
-    <app-card [hidHeader]="false" cardTitle="Add Product" [options]="false"
-      cardClass="user-profile-list">
+<app-card cardTitle="Add Product" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Select GRN Id" navigationSymbol="1">
+      <form #validationForm="ngForm" class="editForm" novalidate>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-3 col-form-label mt-2">Select GRN Id <small class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                  <select class="form-control">
+                      <option value>Select GRN Id</option>
+                      <option value="1">GRN-#9021</option>
+                      <option value="2">GRN-#0899</option>
+                      <option value="3">GRN-#0382</option>
+                      <option value="4">GRN-#9173</option>
+                    </select>
+                    <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary" uiSref="work" (click)="save(validationForm)">Submit</button> -->
+      </form>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Add Product" navigationSymbol="1">
       <form #validationForm2="ngForm" class="editForm" novalidate>
         <h5>Material Classification</h5>
         <hr>
@@ -309,7 +336,15 @@
         </div>
         <button type="submit" class="btn btn-primary" uiSref="work">Add More</button>
       </form>
-    </app-card>
-<app-add-product-cart></app-add-product-cart>
-  </div>
-</div>
+      <div class="m-t-20">
+        <app-add-product-cart></app-add-product-cart>
+      </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success btn-sm">Send for Approval</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

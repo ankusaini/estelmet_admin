@@ -1,15 +1,18 @@
-<div class="row">
-    <div class="col-md-8">
-      <app-card cardTitle="Generate Sales Offer Id" [options]="false">
-        <form #validationForm="ngForm" class="editForm" novalidate>
+<app-card cardTitle="Generate Sales Offer Id" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Create SO Id" navigationSymbol="1">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Create Sales Offer Id</h5>
+          <hr>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Company Name <small class="asterik_sign">*</small></label>
                 <select class="form-control" name="validation-companyName"
                   [ngClass]="{'is-invalid': !companyName.valid && (companyName.dirty || companyName.touched || isSubmit)}"
                   #companyName="ngModel" required [(ngModel)]="formInput.companyName">
-                  <option value>Select Company</option>
+                  <option value="0" disabled>Select Company</option>
                   <option value="1">GP Global Energy Pvt Ltd</option>
                   <option value="2">GP Global Asphalt Pvt Ltd</option>
                   <option value="3">GP Global Kimitsu Pvt Ltd</option>
@@ -20,13 +23,14 @@
                   required.</label>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Warehouse Name <small class="asterik_sign">*</small></label>
                 <select class="form-control" name="validation-warehouse"
                   [ngClass]="{'is-invalid': !warehouse.valid && (warehouse.dirty || warehouse.touched || isSubmit)}"
                   #warehouse="ngModel" required [(ngModel)]="formInput.warehouse">
-                  <option value>Select Warehouse</option>
+                  <option value="0" disabled>Select Warehouse</option>
                   <option value="1">A-88</option>
                   <option value="2">L-24/25</option>
                   <option value="3">J-18</option>
@@ -40,15 +44,16 @@
                   required.</label>
               </div>
             </div>
+           
           </div>
           <div class="row">
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-5 col-xs-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
                 <select class="form-control" name="validation-category"
                   [ngClass]="{'is-invalid': !category.valid && (category.dirty || category.touched || isSubmit)}"
                   #category="ngModel" required [(ngModel)]="formInput.category">
-                  <option value>Select Category</option>
+                  <option value="0" disabled>Select Category</option>
                   <option value="1">HR</option>
                   <option value="2">CR</option>
                   <option value="3">GL</option>
@@ -88,13 +93,14 @@
                   required.</label>
               </div>
             </div>
-            <div class="col-md-6 col-xs-6">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 col-xs-6">
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
                 <select class="form-control" name="validation-shape"
                   [ngClass]="{'is-invalid': !shape.valid && (shape.dirty || shape.touched || isSubmit)}" #shape="ngModel"
                   required [(ngModel)]="formInput.shape">
-                  <option value>Select User</option>
+                  <option value="0" disabled>Select User</option>
                   <option value="1">SLC</option>
                   <option value="2">MWC</option>
                   <option value="3">2RC</option>
@@ -114,11 +120,27 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" uiSref="work" (click)="save(validationForm)">Submit</button>
-        </form>
-      </app-card>
-    </div>
-  </div>
-  <app-add-product-cart></app-add-product-cart>
-<app-add-product-cart></app-add-product-cart>
-<button type="submit" class="btn btn-success active">Send for Approval</button>
+        </div>
+        <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
+          </div>
+        </div> 
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Select Product" navigationSymbol="2">
+      <div class="m-t-20">
+        <app-add-product-cart></app-add-product-cart>
+       </div>
+     <div class="m-t-20">
+      <app-add-product-cart></app-add-product-cart>
+     </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm">Submit</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>
