@@ -80,7 +80,7 @@ const NavigationItems = [
             id: 'CreateUser',
             title: 'Create User',
             type: 'item',
-            url: '/users/card',
+            url: '/users/',
             target: false,
           },
           {
