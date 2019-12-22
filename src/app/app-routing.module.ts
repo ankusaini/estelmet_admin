@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        loadChildren: () => import('./demo/users/users.module').then(module => module.UsersModule)
+        loadChildren: () => import('./modules/user/user.module').then(module => module.UserModule)
       },
       {
         path: 'purchase',
