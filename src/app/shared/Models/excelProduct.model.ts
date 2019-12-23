@@ -1,0 +1,39 @@
+export class ExcelProduct {
+    productId: string;
+    productType: string;
+    productCategory: string;
+    productShape: string;
+    productClass: string;
+    productAnnealing: string;
+    productOiling: string;
+    productCoating: string;
+    productDefect: string;
+    productFinish: string;
+    productPackaging: string;
+    productOrigin: string;
+    productSurfaceCoating: string;
+    thicknessMin: string;
+    thicknessMax: string;
+    widthMin: string;
+    widthMax: string;
+    lengthMin: string;
+    lengthMax: string;
+    hardnessMin: string;
+    hardnessMax: string;
+    temperMin: string;
+    temperMax: string;
+    heigth: string;
+    gwt: string;
+    nwt: string;
+    lotId: string;
+    salesId: string;
+    productStage: string;
+    status: string;
+    warehouse: string;
+    remarks: String;
+    createdBy: string;
+    createdDate: string;
+    lastModifiedBy: string;
+    lastModifiedDate: string;
+   
+}
