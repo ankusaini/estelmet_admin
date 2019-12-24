@@ -1,0 +1,29 @@
+<app-card cardTitle="Update Processing Id" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Select Processing Id" navigationSymbol="1">
+      
+      <app-select-processing></app-select-processing>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Add Product" navigationSymbol="1">
+      <div class="m-b-20">
+        <app-add-product-cart></app-add-product-cart>
+      </div>
+     <app-material-classification-specification></app-material-classification-specification>
+      <div class="m-t-20">
+        <app-add-product-cart></app-add-product-cart>
+      </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success btn-sm">Send for Approval</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

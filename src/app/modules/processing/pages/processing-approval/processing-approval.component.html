@@ -1,0 +1,137 @@
+<div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="true" cardClass="tab-card">
+        <h5 class="mb-3">Processing Approval System</h5>
+        <ngb-tabset type="pills">
+          <ngb-tab title="Pending" class="mb-3">
+            <ng-template ngbTabContent>
+              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>Processing Id</th>
+                      <th>Processing Type</th>
+                      <th>Category</th>
+                      <th>Company Id</th>
+                      <th>Warehouse Id</th>
+                      <th>Machine Id</th>
+                      <th>Date of Creation</th>
+                      <th>Last Modified Date</th>
+                      <th>Created By</th>
+                      <th>Last Modified By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><label class="badge badge-warning">Pending</label></td>
+                      <td>1.</td>
+                      <td>MSP-289</td>
+                      <td>Shearing</td>
+                      <td>CR</td>
+                      <td>GP Global Pvt Ltd.</td>
+                      <td>L-24/25</td>
+                      <td>M-21</td>
+                      <td>24-10-2019</td>
+                      <td>24-10-2019</td>
+                      <td>Aehmad</td>
+                      <td>Kamlesh</td>
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Approved">
+            <ng-template ngbTabContent>
+              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>Processing Id</th>
+                      <th>Processing Type</th>
+                      <th>Category</th>
+                      <th>Company Id</th>
+                      <th>Warehouse Id</th>
+                      <th>Machine Id</th>
+                      <th>Date of Creation</th>
+                      <th>Last Modified Date</th>
+                      <th>Created By</th>
+                      <th>Last Modified By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><label class="badge badge-success">Approved</label></td>
+                      <td>1.</td>
+                      <td>MSP-289</td>
+                      <td>Shearing</td>
+                      <td>CR</td>
+                      <td>GP Global Pvt Ltd.</td>
+                      <td>L-24/25</td>
+                      <td>M-21</td>
+                      <td>24-10-2019</td>
+                      <td>24-10-2019</td>
+                      <td>Aehmad</td>
+                      <td>Kamlesh</td>
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Rejected">
+            <ng-template ngbTabContent>
+              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>Processing Id</th>
+                      <th>Processing Type</th>
+                      <th>Category</th>
+                      <th>Company Id</th>
+                      <th>Warehouse Id</th>
+                      <th>Machine Id</th>
+                      <th>Date of Creation</th>
+                      <th>Last Modified Date</th>
+                      <th>Created By</th>
+                      <th>Last Modified By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><label class="badge badge-danger">Rejected</label></td>
+                      <td>1.</td>
+                      <td>MSP-289</td>
+                      <td>Shearing</td>
+                      <td>CR</td>
+                      <td>GP Global Pvt Ltd.</td>
+                      <td>L-24/25</td>
+                      <td>M-21</td>
+                      <td>24-10-2019</td>
+                      <td>24-10-2019</td>
+                      <td>Aehmad</td>
+                      <td>Kamlesh</td>
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+  
+        </ngb-tabset>
+  
+      </app-card>
+      <app-add-product-cart></app-add-product-cart>
+      <button type="submit" class="btn btn-success active">Approve</button>&nbsp;
+      <button type="submit" class="btn btn-danger active">Reject</button>&nbsp;
+    </div>
+  </div>

@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormInput } from './create-user-model';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormArray
+} from "@angular/forms";
 
 @Component({
   selector: 'app-create-user',
@@ -17,6 +23,77 @@ export class CreateUserComponent implements OnInit {
     this.isSubmit = false;
    }
 
+     public userDetailFormGroup = new FormGroup({
+    userDetailId: new FormControl("", [Validators.required]),
+    companyName: new FormControl("", [Validators.required]),
+    address1: new FormControl("", [Validators.required]),
+    address2: new FormControl("", [Validators.required]),
+    gst: new FormControl("", [Validators.required]),
+    otp: new FormControl("", [Validators.required]),
+    numberOfEmployees: new FormControl("", [Validators.required]),
+    country: new FormControl("", [Validators.required]),
+    state: new FormControl("", [Validators.required]),
+    city: new FormControl("", [Validators.required]),
+    pinCode: new FormControl("", [Validators.required]),
+    mobile1: new FormControl("", [Validators.required]),
+    mobile2: new FormControl("", [Validators.required]),
+    emailBusiness: new FormControl("", [Validators.required]),
+    annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
+    keyPerson: new FormArray([this.initializeKeyPerson()]),
+    userProductPreference:new FormArray([this.initializeUserProductPreferences()])
+
+  });
+   public initializeAnnualTurnOver(): FormGroup {
+    return new FormGroup({
+      annualTurnoverId: new FormControl("", [Validators.required]),
+      year: new FormControl("", [Validators.required]),
+      turnover: new FormControl("", [Validators.required])
+    });
+  }
+
+    public initializeKeyPerson(): FormGroup {
+    return new FormGroup({
+      keyPersonId: new FormControl("", [Validators.required]),
+      name: new FormControl("", [Validators.required]),
+      designation: new FormControl("", [Validators.required]),
+       mobile1: new FormControl("", [Validators.required]),
+      mobile2: new FormControl("", [Validators.required]),
+      email1: new FormControl("", [Validators.required]),
+      email2: new FormControl("", [Validators.required])
+    });
+  }
+
+  public initializeUserProductPreferences(): FormGroup {
+    return new FormGroup({
+      userProductPreferenceId: new FormControl("", [Validators.required]),
+      productType: new FormControl("", [Validators.required]),
+      productCategory: new FormControl("", [Validators.required]),
+       productShape: new FormControl("", [Validators.required]),
+      productClass: new FormControl("", [Validators.required]),
+      thicknessRange: new FormControl("", [Validators.required]),
+      temperRange: new FormControl("", [Validators.required]),
+        lengthRange: new FormControl("", [Validators.required]),
+      widthRange: new FormControl("", [Validators.required]),
+      monthlyRequirement: new FormControl("", [Validators.required])
+    });
+  }
+   /*-------- apply validations on device form --------------- */
+  userDTO = new FormGroup({
+    // this.utils.noWhitespaceValidator,CustomValidator.emailValidate
+    userDetail: this.userDetailFormGroup,
+    id: new FormControl(""),
+    firstName: new FormControl("",[Validators.required]),
+    lastName: new FormControl("",[Validators.required]),
+    mobile: new FormControl("",[Validators.required]),
+    email: new FormControl("",[Validators.required]),
+    password: new FormControl("",[Validators.required]),
+    userRole: new FormControl("",[Validators.required]),
+    status: new FormControl("",[Validators.required]),
+    
+    
+  });
+
+   
   ngOnInit() {
     this.formInput = {
       email: '',
