@@ -10,7 +10,7 @@ export interface User {
     status: Status;
     privileges: string[];
     userDetail: UserDetail;
-    employeeDetail: EmployeeDetail;
+    // employeeDetail: EmployeeDetail;
     userGroup: UserGroup[];
  
 }

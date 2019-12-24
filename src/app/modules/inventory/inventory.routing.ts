@@ -1,52 +1,43 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddProductComponent } from "src/app/modules/inventory/pages/add-product/add-product.component";
+import { EditProductComponent } from "src/app/modules/inventory/pages/edit-product/edit-product.component";
+import { ProductOverviewComponent } from "src/app/modules/inventory/pages/product-overview/product-overview.component";
+import { ProductApprovalComponent } from "src/app/modules/inventory/pages/product-approval/product-approval.component";
+import { SearchViewProductComponent } from "src/app/modules/inventory/pages/search-view-product/search-view-product.component";
 
 
 const routes: Routes = [
   {
     path: 'addProduct',
     component : AddProductComponent,
-    children: [
+  },
+ 
       {
-        path: 'profile',
-        // loadChildren: () => import('./user-profile/user-profile.module').then(module => module.UserProfileModule)
-      },
-    //   {
-    //     path: 'card',
-    //     loadChildren: () => import('./users-card/users-card.module').then(module => module.UsersCardModule)
-    //   },
-    //   {
-    //     path: 'list',
-    //     loadChildren: () => import('./users-list/users-list.module').then(module => module.UsersListModule)
-    //   },
-    //   {
-    //     path: 'createGroup',
-    //     component: CreateGroupComponent
-    //   },
-    //   {
-    //     path: 'searchGroup',
-    //     component: SearchViewGroupComponent
-    //   },
-    //   {
-    //     path: 'groupOverview',
-    //     component: GroupOverviewComponent
-    //   },
-    //   {
-    //     path: 'userApproval',
-    //     component: UserApprovalComponent
-    //   },
-    //   {
-    //     path: 'groupApproval',
-    //     component: GroupApprovalComponent
-    //   },
-    //   {
-    //     path: 'editGroup',
-    //     component: GroupEditComponent
-    //   },
+        path: 'editProduct',
+        component: EditProductComponent
+      }
+   ,
+      {
+        path: 'productOverview',
+        component: ProductOverviewComponent
+      }
+   
+      ,
+         {
+        path: 'productApproval',
+        component: ProductApprovalComponent
+      }
+   ,
+      {
+        path: 'searchProduct',
+        component: SearchViewProductComponent
+      }
+   
     ]
-  }
-];
+  
+
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
