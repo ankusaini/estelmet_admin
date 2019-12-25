@@ -28,7 +28,7 @@ export class KeypersonDetailsComponent implements OnInit {
   });
 
   keyPersonDetailSubmit() {
-    if(this.keyPersonDetails.status == 'VALID') {
+    if(this.keyPersonDetails.valid) {
       this.key_person.emit(this.keyPersonDetails.value);
     } else {
       console.log("keyPersonDetailSubmit", this.keyPersonDetails);

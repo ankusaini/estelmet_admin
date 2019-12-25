@@ -28,7 +28,7 @@ export class PersonalDetailsComponent implements OnInit {
   ngOnInit() {}
 
   personalDetailSubmit() {
-    if(this.userDTO.status == 'VALID') {
+    if(this.userDTO.valid) {
       this.prsonalData.emit(this.userDTO.value);
     } else {
       console.log("disable");

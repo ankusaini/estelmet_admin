@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/Models/user.model";
+import { Observable } from "rxjs/internal/Observable";
 
 @Component({
   selector: 'app-users-list',
@@ -16,23 +17,23 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   datatableElement: DataTableDirective;
   public limit=15;
   public offset=0;
-  public userList:User[];
+  public userList:any;
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    this.basicSwal();
-    
+    this.basicSwal().subscribe(data=>{
+      this.userList=data;
     this.dtExportButtonOptions = {
-      ajax: 'fake-data/datatable-data2.json',
+      data: JSON.stringify(data),
       columns: [{
         title: 'User Id',
-        data: 'userId'
+        data: 'id'
       }, {
         title: 'User Type',
-        data: 'userType'
+        data: 'userRole'
       }, {
         title: 'User Name',
-        data: 'userName'
+        data: 'firstName'
       }, {
         title: 'Mobile',
         data: 'mobile'
@@ -41,7 +42,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         data: 'email'
       }, {
         title: 'Company Name',
-        data: 'companyName'
+        data: 'email'
       }, {
         title: 'Action',
         render(data: any, type: any, full: any) {
@@ -57,21 +58,14 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         'csv'
       ]
     };
-  }
-   getAllUserByUserRoleAndStatus(role,status)
-  {
-    console.log("get all rle")
-    let url="http://13.233.151.89:8020/estelmet/users/getAllUsersByUserRoleAndStatus/"+role+"/"+status;
-      
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(data=>{
-      console.log("userlist",data);
-      this.userList=data;
-    },error=>{
+    });
 
-    })
+
   }
 
-  basicSwal() {
+
+  basicSwal(): Observable<any> {
+    return new Observable<any>(obs=>{
     Swal.fire({
       title: 'Filter Search!',
       input: 'select',
@@ -90,16 +84,35 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         // tslint:disable-next-line: only-arrow-functions
         return new Promise(function (resolve, reject) {
           if (value !== '') {
-           
-         //  console.log("this",this);
             resolve();
-             this.getAllUserByUserRoleAndStatus(value,'APPROVED');
           } else {
             resolve('You need to select user type');
           }
         });
       }
+    }).then((selectedRole)=>{
+     
+     if(selectedRole!='')
+      {
+        console.log("selected role",selectedRole);
+      let url="/users/getAllUsersByUserRoleAndStatus/"+selectedRole.value+"/APPROVED";
+      
+    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(data=>{
+      let obj={
+        data:data
+      };
+      obs.next(obj);
+      obs.complete();
+    },error=>{
+
+    })
+    
+
+      }
     });
+      
+
+    })
   }
 
  

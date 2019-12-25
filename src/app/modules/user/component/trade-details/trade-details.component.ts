@@ -60,7 +60,7 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   addMore() {
-    if(this.tradeDetails.status == 'VALID') {
+    if(this.tradeDetails.valid) {
       this.tradeArr.push(this.tradeDetails.value);
       this.tradeDetails.reset();
     } else {
