@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-
+import { environment } from '../../../environments/environment'
 import { catchError } from 'rxjs/internal/operators/catchError';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 export class ApiService {
 
   
-  baseUrl=' http://13.233.151.89:8020';
+ 
 
   constructor(private http: HttpClient,) { }
 
@@ -19,13 +19,15 @@ export class ApiService {
     }
   
     get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-      return this.http.get(path, { params })
+      return this.http.get(
+        `${environment.base_url}${path}`, 
+        { params })
         .pipe(catchError(this.formatErrors));
     }
   
     put(path: string, body: Object = {}): Observable<any> {
       return this.http.put(
-        this.baseUrl+`${path}`,
+        `${environment.base_url}${path}`,
         JSON.stringify(body)
       ).pipe(catchError(this.formatErrors));
     }
@@ -33,14 +35,14 @@ export class ApiService {
     post(path: string, body: Object = {}): Observable<any> {
       
       return this.http.post(
-        this.baseUrl+ `${path}`,
+        `${environment.base_url}${path}`,
         JSON.stringify(body),{observe: 'response'}
       ).pipe(catchError(this.formatErrors));
     }
   
     delete(path): Observable<any> {
       return this.http.delete(
-        this.baseUrl+`${path}`
+        `${environment.base_url}${path}`
       ).pipe(catchError(this.formatErrors));
     }
 }

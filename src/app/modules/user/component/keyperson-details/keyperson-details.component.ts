@@ -1,32 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-keyperson-details',
-  templateUrl: './keyperson-details.component.html',
-  styleUrls: ['./keyperson-details.component.scss']
+  selector: "app-keyperson-details",
+  templateUrl: "./keyperson-details.component.html",
+  styleUrls: ["./keyperson-details.component.scss"]
 })
 export class KeypersonDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Output() key_person : EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit() {
-  }
+  constructor() {}
+
+  ngOnInit() {}
+
   keyPersonDetails = new FormGroup({
-      keyPersonId1: new FormControl("", [Validators.required]),
-      keyPersonId2: new FormControl("", [Validators.required]),
-      fullName1: new FormControl("", [Validators.required]),
-      fullName2: new FormControl("", [Validators.required]),
-      designation1: new FormControl("", [Validators.required]),
-      designation2: new FormControl("", [Validators.required]),
-      mobile1: new FormControl("", [Validators.required]),
-      mobile2: new FormControl("", [Validators.required]),
-      email1: new FormControl("", [Validators.required]),
-      email2: new FormControl("", [Validators.required])
-        });
+    keyPersonId1: new FormControl("", [Validators.required]),
+    keyPersonId2: new FormControl("", [Validators.required]),
+    fullName1: new FormControl("", [Validators.required]),
+    fullName2: new FormControl("", [Validators.required]),
+    designation1: new FormControl("", [Validators.required]),
+    designation2: new FormControl("", [Validators.required]),
+    mobile1: new FormControl("", [Validators.required]),
+    mobile2: new FormControl("", [Validators.required]),
+    email1: new FormControl("", [Validators.required]),
+    email2: new FormControl("", [Validators.required])
+  });
 
-        keyPersonDetailSubmit()
-        {
-          console.log("keyPersonDetailSubmit",this.keyPersonDetails)
-        }
+  keyPersonDetailSubmit() {
+    if(this.keyPersonDetails.status == 'VALID') {
+      this.key_person.emit(this.keyPersonDetails.value);
+    } else {
+      console.log("keyPersonDetailSubmit", this.keyPersonDetails);
+    }
+  }
 }
