@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'purchase',
-        loadChildren: () => import('./demo/purchase/purchase.module').then(module => module.PurchaseModule)
+        loadChildren: () => import('./modules/purchase/purchase.module').then(module => module.PurchaseModule)
       },
       {
         path: 'inventory',
