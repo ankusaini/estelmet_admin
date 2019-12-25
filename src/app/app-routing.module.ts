@@ -41,7 +41,11 @@ const routes: Routes = [
         path: 'dispatch',
         loadChildren: () => import('./demo/dispatch/dispatch.module').then(module => module.DispatchModule)
       },
-      {
+      // {
+      //   path: 'setup',
+      //   loadChildren: () => import('./modules/setup/setup.module').then(module => module.SetupModule)
+      // },
+       {
         path: 'setup',
         loadChildren: () => import('./demo/setup/setup.module').then(module => module.SetupModule)
       },
