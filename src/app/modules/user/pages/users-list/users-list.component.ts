@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
+import { UserService } from "src/app/shared/services/user.service";
+import { User } from "src/app/shared/Models/user.model";
 
 @Component({
   selector: 'app-users-list',
@@ -12,10 +14,14 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   dtRouterLinkOptions: any = {};
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
-  constructor() { }
+  public limit=15;
+  public offset=0;
+  public userList:User[];
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
     this.basicSwal();
+    
     this.dtExportButtonOptions = {
       ajax: 'fake-data/datatable-data2.json',
       columns: [{
@@ -52,25 +58,42 @@ export class UsersListComponent implements OnInit, AfterViewInit {
       ]
     };
   }
+   getAllUserByUserRoleAndStatus(role,status)
+  {
+    console.log("get all rle")
+    let url="http://13.233.151.89:8020/estelmet/users/getAllUsersByUserRoleAndStatus/"+role+"/"+status;
+      
+    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(data=>{
+      console.log("userlist",data);
+      this.userList=data;
+    },error=>{
+
+    })
+  }
+
   basicSwal() {
     Swal.fire({
       title: 'Filter Search!',
       input: 'select',
       inputOptions: {
-        Customer: 'Customer',
-        Supplier: 'Supplier',
-        Agent: 'Agent',
-        Contractor: 'Contractor',
-        Transporter: 'Transporter'
+        CUSTOMER: 'CUSTOMER',
+        SUPPLIER: 'SUPPLIER',
+        AGENT: 'AGENT',
+        CONTRACTOR: 'CONTRACTOR',
+        TRANSPORTER: 'TRANSPORTER'
       },
+      
       inputPlaceholder: 'Select User Type',
       allowOutsideClick: false,
       confirmButtonText: 'Search',
-      inputValidator(value) {
+      inputValidator:(value) => {
         // tslint:disable-next-line: only-arrow-functions
         return new Promise(function (resolve, reject) {
           if (value !== '') {
+           
+         //  console.log("this",this);
             resolve();
+             this.getAllUserByUserRoleAndStatus(value,'APPROVED');
           } else {
             resolve('You need to select user type');
           }
@@ -78,6 +101,8 @@ export class UsersListComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+ 
   confirmAlert() {
     Swal.fire({
       title: 'Are you sure?',

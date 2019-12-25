@@ -13,10 +13,12 @@ import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { SelectModule } from 'ng-select';
 import { FileUploadModule } from '@iplab/ngx-file-upload'
+import { UsersListComponent } from "src/app/modules/user/pages/users-list/users-list.component";
+import { DataTablesModule } from "angular-datatables";
 
 
 @NgModule({
-  declarations: [CreateUserComponent, PersonalDetailsComponent, CompanyDetailsComponent, KeypersonDetailsComponent, TradeDetailsComponent, TermsConditionsComponent],
+  declarations: [CreateUserComponent, PersonalDetailsComponent, CompanyDetailsComponent, KeypersonDetailsComponent, TradeDetailsComponent, TermsConditionsComponent,UsersListComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -25,6 +27,7 @@ import { FileUploadModule } from '@iplab/ngx-file-upload'
     TextMaskModule,
     ArchwizardModule,
     SharedModule,
+        DataTablesModule,
     FileUploadModule,
     SelectModule
   ]
