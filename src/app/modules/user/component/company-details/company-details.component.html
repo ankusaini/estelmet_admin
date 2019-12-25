@@ -1,8 +1,8 @@
-
+<form [formGroup]="companyDetailsForm" (submit)="companyDetailsSubmit()">
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Company Name <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="" required>
+          <input formControlName="companyName" type="text" class="form-control" placeholder="" required>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
@@ -11,19 +11,19 @@
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Address Line 1 <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="" required>
+          <input formControlName="address1" type="text" class="form-control" placeholder="" required>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Address Line 2</label>
-          <input type="text" class="form-control" placeholder="" required>
+          <input formControlName="address2" type="text" class="form-control" placeholder="" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Country <small class="asterik_sign">*</small></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select formControlName="country" class="form-control" id="exampleFormControlSelect1">
               <option disabled>Select Country</option>
               <option>India</option>
               <option>UAE</option>
@@ -35,7 +35,7 @@
         <div class="col-md-5 mb-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">State <small class="asterik_sign">*</small></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select  formControlName="state" class="form-control" id="exampleFormControlSelect1">
               <option disabled>Select State</option>
               <option>2</option>
               <option>3</option>
@@ -49,7 +49,7 @@
         <div class="col-md-5 mb-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">City <small class="asterik_sign">*</small></label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select formControlName="city" class="form-control" id="exampleFormControlSelect1">
               <option disabled>Select City</option>
               <option>2</option>
               <option>3</option>
@@ -61,33 +61,33 @@
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Pincode <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Pin Code" required>
+          <input formControlName="pinCode" type="text" class="form-control" placeholder="Pin Code" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">GST <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="GST" required>
+          <input formControlName="gst" type="text" class="form-control" placeholder="GST" required>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Mobile</label>
-          <input type="text" class="form-control" placeholder="Mobile" required>
+          <input formControlName="mobile1" type="text" class="form-control" placeholder="Mobile" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Landline</label>
-          <input type="text" class="form-control" placeholder="Landline" required>
+          <input  formControlName="mobile2" type="text" class="form-control" placeholder="Landline" required>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Email</label>
-          <input type="text" class="form-control" placeholder="Business Email" required>
+          <input  formControlName="emailBusiness" type="text" class="form-control" placeholder="Business Email" required>
         </div>
       </div>
       <div class="form-row">
-        <div class="col-md-5">
+        <!-- <div class="col-md-5">
           <label for="validationCustom02">Annual Turnover</label>
           <div class="row">
             <div class="col-md-4 mb-3">
@@ -103,10 +103,17 @@
               <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="col-md-1"></div>
         <div class="col-md-5">
           <label for="validationCustom02">No. of Employees</label>
-          <input type="text" class="form-control" placeholder="" required>
+          <input formControlName="numberOfEmployees" type="text" class="form-control" placeholder="" required>
         </div>
       </div>
+      <div class="col-sm-12 centered-content m-t-20">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary btn-sm" nextStep>Continue</button>
+          </div>
+        </div>
+</form>

@@ -40,8 +40,6 @@ export class CreateTypeComponent implements OnInit {
 
   productTypeOnSubmit()
   {
-    // console.log("function called",this.productTypeForm.value)
-    //  console.log("function called",this.productTypeForm.controls.productCode.value)
 
     if(this.productTypeForm.invalid)
       {
