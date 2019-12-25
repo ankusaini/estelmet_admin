@@ -1,3 +1,4 @@
+<form [formGroup]="keyPersonDetails" (submit)="keyPersonDetailSubmit()">
 <div class="row">
     <div class="col-md-5">
       <h5>Key Person 1</h5>
@@ -5,19 +6,19 @@
       <div class="form-row">
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Full Name <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Full Name" required>
+          <input formControlName="fullName1" type="text" class="form-control" placeholder="Full Name" required>
         </div>
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Designation <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Designation" required>
+          <input formControlName="designation1"  type="text" class="form-control" placeholder="Designation" required>
         </div>
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Mobile <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Mobile" required>
+          <input formControlName="mobile1"  type="text" class="form-control" placeholder="Mobile" required>
         </div>
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Email" required>
+          <input formControlName="email1"  type="text" class="form-control" placeholder="Email" required>
         </div>
       </div>
     </div>
@@ -28,20 +29,27 @@
       <div class="form-row">
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Full Name <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Full Name" required>
+          <input formControlName="fullName2"  type="text" class="form-control" placeholder="Full Name" required>
         </div>
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Designation <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Designation" required>
+          <input formControlName="designation2" type="text" class="form-control" placeholder="Designation" required>
         </div>
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Mobile <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Mobile" required>
+          <input formControlName="mobile2" type="text" class="form-control" placeholder="Mobile" required>
         </div>
         <div class="col-md-12 mb-3">
           <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
-          <input type="text" class="form-control" placeholder="Email" required>
+          <input formControlName="email2" type="text" class="form-control" placeholder="Email" required>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary btn-sm" nextStep>Continue</button>
+          </div>
+        </div>
+</form>
