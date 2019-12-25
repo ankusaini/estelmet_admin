@@ -15,11 +15,11 @@ export class ApiService {
   constructor(private http: HttpClient,) { }
 
     private formatErrors(error: any) {
-      return  throwError(error.error);
+      return   (error.error);
     }
   
     get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-      return this.http.get(this.baseUrl+`${path}`, { params })
+      return this.http.get(path, { params })
         .pipe(catchError(this.formatErrors));
     }
   
