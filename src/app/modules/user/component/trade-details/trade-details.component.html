@@ -1,8 +1,9 @@
+<form [formGroup]="tradeDetails" (submit)="tradeDetailsFormOnSubmit()">
 <div class="form-row">
     <div class="col-md-3 mb-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Type <small class="asterik_sign">*</small></label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select formControlName="productType" class="form-control" id="exampleFormControlSelect1">
           <option value="1">CFRS</option>
         </select>
       </div>
@@ -10,7 +11,7 @@
     <div class="col-md-3 mb-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Category <small class="asterik_sign">*</small></label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select formControlName="productCategory"  class="form-control" id="exampleFormControlSelect1">
           <option value="1">HR</option>
           <option value="2">CR</option>
           <option value="3">GL</option>
@@ -49,7 +50,7 @@
     <div class="col-md-3 mb-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Shape <small class="asterik_sign">*</small></label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select formControlName="productShape"  class="form-control" id="exampleFormControlSelect1">
           <option value="1">SLC</option>
           <option value="2">MWC</option>
           <option value="3">2RC</option>
@@ -69,7 +70,7 @@
     <div class="col-md-3 mb-3">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Class <small class="asterik_sign">*</small></label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <select formControlName="productClass"  class="form-control" id="exampleFormControlSelect1">
           <option value="1">1A</option>
           <option value="2">1B</option>
           <option value="3">2A</option>
@@ -91,10 +92,10 @@
       <label for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Min" required>
+          <input formControlName="thicknessMin"  type="text" class="form-control" placeholder="Min" required>
         </div>
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Max" required>
+          <input formControlName="thicknessMax"  type="text" class="form-control" placeholder="Max" required>
         </div>
       </div>
     </div>
@@ -102,10 +103,10 @@
       <label for="validationCustom02">Width Range (mm)</label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Min" required>
+          <input formControlName="widthMin"  type="text" class="form-control" placeholder="Min" required>
         </div>
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Max" required>
+          <input formControlName="widthMax"  type="text" class="form-control" placeholder="Max" required>
         </div>
       </div>
     </div>
@@ -113,10 +114,10 @@
       <label for="validationCustom02">Length Range (mm)</label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Min" required>
+          <input formControlName="lengthMin"  type="text" class="form-control" placeholder="Min" required>
         </div>
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Max" required>
+          <input formControlName="lengthMax"  type="text" class="form-control" placeholder="Max" required>
         </div>
       </div>
     </div>
@@ -124,16 +125,16 @@
       <label for="validationCustom02">Temper Range <small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Min" required>
+          <input formControlName="temperMin"  type="text" class="form-control" placeholder="Min" required>
         </div>
         <div class="col-md-6 mb-3">
-          <input type="text" class="form-control" placeholder="Max" required>
+          <input formControlName="temperMax"  type="text" class="form-control" placeholder="Max" required>
         </div>
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom02">Monthly Requirement (mt.) <small class="asterik_sign">*</small></label>
-      <input type="text" class="form-control" placeholder="" required>
+      <input formControlName="monthlyRequirement" type="text" class="form-control" placeholder="" required>
     </div>
     <div class="col-md-offset-6 col-md-3 mb-3">
       <div class="mt-4">
@@ -141,6 +142,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="form-row">
     <app-card [hidHeader]="true" cardClass="user-profile-list" style="width:100%">
       <div class="dt-responsive table-responsive" cardClass="card-datatable">
@@ -189,3 +192,12 @@
       </div>
     </app-card>
   </div>
+
+  <div class="col-sm-12 centered-content">
+            <div class="btn-group mt-10">
+              <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+              <button type="submit" class="btn btn-primary btn-sm" nextStep>Continue</button>
+            </div>
+          </div>
+
+          </form>
