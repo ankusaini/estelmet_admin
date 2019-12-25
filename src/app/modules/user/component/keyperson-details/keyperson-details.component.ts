@@ -15,8 +15,8 @@ export class KeypersonDetailsComponent implements OnInit {
   ngOnInit() {}
 
   keyPersonDetails = new FormGroup({
-    keyPersonId1: new FormControl("", [Validators.required]),
-    keyPersonId2: new FormControl("", [Validators.required]),
+    keyPersonId1: new FormControl("", ),
+    keyPersonId2: new FormControl("", ),
     fullName1: new FormControl("", [Validators.required]),
     fullName2: new FormControl("", [Validators.required]),
     designation1: new FormControl("", [Validators.required]),

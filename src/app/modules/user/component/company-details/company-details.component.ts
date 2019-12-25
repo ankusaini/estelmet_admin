@@ -15,12 +15,12 @@ export class CompanyDetailsComponent implements OnInit {
   ngOnInit() {}
 
   public companyDetailsForm = new FormGroup({
-    userDetailId: new FormControl("", [Validators.required]),
+    userDetailId: new FormControl("", ),
     companyName: new FormControl("", [Validators.required]),
     address1: new FormControl("", [Validators.required]),
     address2: new FormControl("", [Validators.required]),
     gst: new FormControl("", [Validators.required]),
-    otp: new FormControl("", [Validators.required]),
+    otp: new FormControl("", []),
     numberOfEmployees: new FormControl("", [Validators.required]),
     country: new FormControl("", [Validators.required]),
     state: new FormControl("", [Validators.required]),
