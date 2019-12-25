@@ -33,10 +33,13 @@ export class CompanyDetailsComponent implements OnInit {
     mobile1: new FormControl("", [Validators.required]),
     mobile2: new FormControl("", [Validators.required]),
     emailBusiness: new FormControl("", [Validators.required]),
-    annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
+    annualTurnover1: new FormControl("", [Validators.required]),
+    annualTurnover2: new FormControl("", [Validators.required]),
+    annualTurnover3: new FormControl("", [Validators.required]),
+   
 
   });
-
+//  annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
     public initializeAnnualTurnOver(): FormGroup {
     return new FormGroup({
       annualTurnoverId: new FormControl("", [Validators.required]),
