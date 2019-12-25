@@ -7,7 +7,7 @@ import { CompanyDetailsComponent } from './component/company-details/company-det
 import { KeypersonDetailsComponent } from './component/keyperson-details/keyperson-details.component';
 import { TradeDetailsComponent } from './component/trade-details/trade-details.component';
 import { TermsConditionsComponent } from './component/terms-conditions/terms-conditions.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TextMaskModule } from 'angular2-text-mask';
 import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
@@ -21,6 +21,7 @@ import { FileUploadModule } from '@iplab/ngx-file-upload'
     CommonModule,
     UserRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     TextMaskModule,
     ArchwizardModule,
     SharedModule,

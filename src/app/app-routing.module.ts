@@ -43,8 +43,12 @@ const routes: Routes = [
       },
       {
         path: 'setup',
-        loadChildren: () => import('./demo/setup/setup.module').then(module => module.SetupModule)
+        loadChildren: () => import('./modules/setup/setup.module').then(module => module.SetupModule)
       },
+      //  {
+      //   path: 'setup',
+      //   loadChildren: () => import('./demo/setup/setup.module').then(module => module.SetupModule)
+      // },
       {
         path: 'super',
         loadChildren: () => import('./demo/super/super.module').then(module => module.SuperModule)

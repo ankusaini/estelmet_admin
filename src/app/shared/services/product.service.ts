@@ -9,7 +9,6 @@ import { Router } from "@angular/router";
 import {
   ProductCategory,
   ProductShape,
-  ProductType,
   ProductClass,
   ProductCoating,
   ProductDefect,
@@ -20,7 +19,8 @@ import {
   ProductFinish,
   ProductTemper,
   ProductHardness,
-  ProductPackaging
+  ProductPackaging,
+  ProductType
 } from "src/app/shared/Models/product.model.";
 import { Company } from "src/app/shared/Models/company.model.";
 import { Warehouse } from "src/app/shared/Models/warehouse";
@@ -44,6 +44,22 @@ export class ProductService {
       });
     });
   }
+
+//component=>service=>glocalService(apiservice=>httpclient)
+  setProductType(productType:ProductType):Observable<ProductType[]>
+  {
+    let path="http://13.233.151.89:8020/estelmet/inventory/productClassification/setProductType";
+    console.log("url is",path)
+    return new Observable<ProductType[]>(obs=>{
+      this._apiService.post(path,productType).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+  //  setProductType(productType: ProductType): Observable<ProductType> {
+  //   return this._apiService.post<ProductType>(AppConstants.baseURL + 'estelmet/inventory/productClassification/setProductType', productType)
+  //     .pipe(catchError(this.errorHandler));
+  // }
 
 
    /**

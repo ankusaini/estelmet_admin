@@ -6,12 +6,13 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 const routes: Routes = [
   {
     path: '',
-    component : CreateUserComponent,
-    children: [
-      {
-        path: 'profile',
-        // loadChildren: () => import('./user-profile/user-profile.module').then(module => module.UserProfileModule)
-      },
+    component : CreateUserComponent
+    // children: [
+    //   {
+    //     path: 'list',
+    //     component:
+    //     // loadChildren: () => import('./user-profile/user-profile.module').then(module => module.UserProfileModule)
+    //   },
     //   {
     //     path: 'card',
     //     loadChildren: () => import('./users-card/users-card.module').then(module => module.UsersCardModule)
@@ -44,7 +45,7 @@ const routes: Routes = [
     //     path: 'editGroup',
     //     component: GroupEditComponent
     //   },
-    ]
+    
   }
 ];
 @NgModule({

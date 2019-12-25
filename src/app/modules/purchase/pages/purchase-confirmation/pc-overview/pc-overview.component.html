@@ -1,0 +1,162 @@
+<div class="row btn-page">
+  <!-- [ Invoice ] start -->
+  <div class="container" id="printTable">
+    <div>
+      <div class="card">
+        <div class="row invoice-contact">
+          <div class="col-md-8">
+            <div class="invoice-box row">
+              <div class="col-sm-9">
+                <table class="table table-responsive invoice-table table-borderless p-l-20">
+                  <tbody>
+                    <tr>
+                      <td><a href="index.html" class="b-brand">
+                          <img class="img-fluid" src="assets/images/GP-Global-Logo.png" alt="GP Global Logo"
+                            class="gp_logo">
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>GP Global Asphalt Pvt. Ltd. </td>
+                    </tr>
+                    <tr>
+                      <td>A-88 MIDC Taloja, District Raigad,<br />
+                        Navi Mumbai - 410208, Maharashtra</td>
+                    </tr>
+                    <tr>
+                      <td><a class="text-secondary" href="mailto:info@gpglobal.com" target="_top">info@gpglobal.com</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>011- 29028901</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h1 class="f-22 f-w-700">PURCHASE CONFIRMATION</h1>
+            <p class="f-16 f-w-600 m-b-5 text-muted">PC Id : <span class="text-primary">PC-#0282</span></p>
+            <p class="f-16 f-w-600 m-b-5 text-muted">Material Description : <span class="text-dark">Cold Rolled</span>
+            </p>
+            <div class="barcode">
+              <img src="../../../../../assets/images/barcode.svg">
+              <img src="../../../../../assets/images/barcode.svg">
+              <small class="text-muted">PC-#0282</small>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row invoive-info">
+            <div class="col-md-5 col-xs-12 invoice-client-info">
+              <h6>Client Information :</h6>
+              <table class="table table-responsive invoice-table invoice-order table-borderless">
+                  <tbody>
+                    <tr>
+                      <th>Supplier Id :</th>
+                      <td><a routerLink="">SU-01</a>, OPTIMUM STEELS MUMBAI</td>
+                    </tr>
+                    <tr>
+                      <th>Transporter Id :</th>
+                      <td>
+                          <a routerLink="">TP-86</a>, SHRI YADAV TRANSPORT
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Vehicle No :</th>
+                      <td>DL 01 AS 9289</td>
+                    </tr>
+                    <tr>
+                      <th>Container No. :</th>
+                      <td>F45D00L9289</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h6>OTHER Information :</h6>
+              <table class="table table-responsive invoice-table invoice-order table-borderless">
+                <tbody>
+                  <tr>
+                    <th>Date :</th>
+                    <td>November 14 2019</td>
+                  </tr>
+                  <tr>
+                    <th>Status :</th>
+                    <td>
+                      <span class="badge badge-warning">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Company Id :</th>
+                    <td>COM-0</td>
+                  </tr>
+                  <tr>
+                    <th>Warhouse Id :</th>
+                    <td>WAR-01</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <h6>Product Details :</h6>
+              <table class="table table-responsive invoice-table invoice-order table-borderless">
+                <tbody>
+                    <tr>
+                        <th>Category :</th>
+                        <td>CR</td>
+                      </tr>
+                      <tr>
+                          <th>Shape :</th>
+                          <td>MWC</td>
+                        </tr>
+                        <tr>
+                            <th>Coils/Bundles :</th>
+                            <td>12</td>
+                          </tr>
+                  <tr>
+                    <th>Total Net Wt.</th>
+                    <td>231 Mt.</td>
+                  </tr>
+                  <tr>
+                    <th>Total Product :</th>
+                    <td>
+                      <span class="badge badge-danger">6</span>
+                    </td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+          <div class="row">
+            <app-prod-list-with-prod-id></app-prod-list-with-prod-id>
+          <div class="row">
+            <div class="col-sm-6">
+              <h6>Created By :</h6>
+              <p>Vineet, <a routerLink="">Emp-001</a></p>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-right">
+                <h6>Apporved By :</h6>
+                <p>Mukesh, <a routerLink="">Emp-341</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-sm-12 invoice-btn-group text-center">
+          <button type="submit" class="btn btn-success active">Export</button>&nbsp;
+          <button type="submit" class="btn btn-danger active">Copy</button>&nbsp;
+          <button type="button" class="btn waves-effect waves-light btn-primary btn-print-invoice m-b-10">Print</button>
+          <button type="button" class="btn waves-effect waves-light btn-secondary m-b-10 ">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- [ Invoice ] end -->
+</div>

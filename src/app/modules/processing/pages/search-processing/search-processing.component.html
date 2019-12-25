@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="false" cardTitle="Search & Select Processing Id " [options]="false"
+        cardClass="user-profile-list">
+        <app-processing-list></app-processing-list>
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="false" cardTitle="View Above Selected Processing Id" [options]="false"
+        cardClass="user-profile-list">
+                <app-processing-list></app-processing-list>
+
+      </app-card>
+  
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary active">CSV</button>&nbsp;
+  <button type="submit" class="btn btn-success active">Export</button>&nbsp;
+  <button type="submit" class="btn btn-danger active">Print</button>&nbsp;
+  <button type="submit" class="btn btn-warning active">Copy</button>&nbsp;
