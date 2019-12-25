@@ -18,7 +18,7 @@ export class HttpTokenInterceptorService  implements HttpInterceptor {
       'Accept': 'application/json',
     };
 
-    console.log(token);
+   
 
     if (token) {
       headersConfig['authorization'] = `${token}`;

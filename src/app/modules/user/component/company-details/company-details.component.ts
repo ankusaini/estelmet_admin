@@ -43,7 +43,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   companyDetailsSubmit() {
-    if(this.companyDetailsForm.status == 'VALID') {
+    if(this.companyDetailsForm.valid) {
       this.company_details.emit(this.companyDetailsForm.value);
     } else console.log("company details", this.companyDetailsForm);
   }

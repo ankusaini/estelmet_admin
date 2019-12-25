@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DataTableDirective } from 'angular-datatables';
+import { UserService } from "src/app/shared/services/user.service";
+import { User } from "src/app/shared/Models/user.model";
+import { Observable } from "rxjs/internal/Observable";
 
 @Component({
   selector: 'app-users-list',
@@ -12,21 +15,25 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   dtRouterLinkOptions: any = {};
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
-  constructor() { }
+  public limit=15;
+  public offset=0;
+  public userList:any;
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
-    this.basicSwal();
+    this.basicSwal().subscribe(data=>{
+      this.userList=data;
     this.dtExportButtonOptions = {
-      ajax: 'fake-data/datatable-data2.json',
+      data: JSON.stringify(data),
       columns: [{
         title: 'User Id',
-        data: 'userId'
+        data: 'id'
       }, {
         title: 'User Type',
-        data: 'userType'
+        data: 'userRole'
       }, {
         title: 'User Name',
-        data: 'userName'
+        data: 'firstName'
       }, {
         title: 'Mobile',
         data: 'mobile'
@@ -35,7 +42,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         data: 'email'
       }, {
         title: 'Company Name',
-        data: 'companyName'
+        data: 'email'
       }, {
         title: 'Action',
         render(data: any, type: any, full: any) {
@@ -51,22 +58,29 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         'csv'
       ]
     };
+    });
+
+
   }
-  basicSwal() {
+
+
+  basicSwal(): Observable<any> {
+    return new Observable<any>(obs=>{
     Swal.fire({
       title: 'Filter Search!',
       input: 'select',
       inputOptions: {
-        Customer: 'Customer',
-        Supplier: 'Supplier',
-        Agent: 'Agent',
-        Contractor: 'Contractor',
-        Transporter: 'Transporter'
+        CUSTOMER: 'CUSTOMER',
+        SUPPLIER: 'SUPPLIER',
+        AGENT: 'AGENT',
+        CONTRACTOR: 'CONTRACTOR',
+        TRANSPORTER: 'TRANSPORTER'
       },
+      
       inputPlaceholder: 'Select User Type',
       allowOutsideClick: false,
       confirmButtonText: 'Search',
-      inputValidator(value) {
+      inputValidator:(value) => {
         // tslint:disable-next-line: only-arrow-functions
         return new Promise(function (resolve, reject) {
           if (value !== '') {
@@ -76,8 +90,32 @@ export class UsersListComponent implements OnInit, AfterViewInit {
           }
         });
       }
+    }).then((selectedRole)=>{
+     
+     if(selectedRole!='')
+      {
+        console.log("selected role",selectedRole);
+      let url="/users/getAllUsersByUserRoleAndStatus/"+selectedRole.value+"/APPROVED";
+      
+    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(data=>{
+      let obj={
+        data:data
+      };
+      obs.next(obj);
+      obs.complete();
+    },error=>{
+
+    })
+    
+
+      }
     });
+      
+
+    })
   }
+
+ 
   confirmAlert() {
     Swal.fire({
       title: 'Are you sure?',

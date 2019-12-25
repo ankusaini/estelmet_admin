@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
+import { UsersListComponent } from "src/app/modules/user/pages/users-list/users-list.component";
 
 
 const routes: Routes = [
   {
     path: '',
     component : CreateUserComponent
+  },
+  {
+      path: 'list',
+    component : UsersListComponent
+  }
     // children: [
     //   {
     //     path: 'list',
@@ -46,7 +52,7 @@ const routes: Routes = [
     //     component: GroupEditComponent
     //   },
     
-  }
+  
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
