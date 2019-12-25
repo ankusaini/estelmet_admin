@@ -55,4 +55,5 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
   providers: [NavigationItem],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
