@@ -5,17 +5,21 @@ import { PurchaseRoutingModule } from './purchaserouting';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { TextMaskModule } from 'angular2-text-mask';
 import { ArchwizardModule } from 'ng2-archwizard/dist';
-
+import { ShareModule } from 'src/app/shared/shared.module';
+import { ViewMRComponent } from './pages/view-mr/view-mr.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
-  declarations: [CreateMRComponent],
+  declarations: [CreateMRComponent, ViewMRComponent],
   imports: [
     CommonModule,
     PurchaseRoutingModule,
     SharedModule,
     ArchwizardModule,
-    TextMaskModule
+    TextMaskModule,
+    ShareModule,
+    DataTablesModule
   ]
 })
 export class PurchaseModule { }

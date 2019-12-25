@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateMRComponent } from './pages/create-mr/create-mr.component';
+import { ViewMRComponent } from './pages/view-mr/view-mr.component';
 
 
 const routes: Routes = [
@@ -8,10 +9,10 @@ const routes: Routes = [
     path: 'createMr',
     component: CreateMRComponent
   },
-//   {
-//     path: 'searchViewMr',
-//     component: SearchViewMrComponent
-//   },
+  {
+    path: 'searchViewMr',
+    component: ViewMRComponent
+  },
 //   {
 //     path: 'mrOverview',
 //     component: MrOverviewComponent

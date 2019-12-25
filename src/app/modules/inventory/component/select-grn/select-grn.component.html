@@ -1,0 +1,20 @@
+<form #validationForm="ngForm" class="editForm" novalidate>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-3 col-form-label mt-2">Select GRN Id <small class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                  <select class="form-control">
+                      <option value>Select GRN Id</option>
+                      <option value="1">GRN-#91</option>
+                      <option value="2">GRN-#0899</option>
+                      <option value="3">GRN-#0382</option>
+                      <option value="4">GRN-#9173</option>
+                    </select>
+                    <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <button type="submit" class="btn btn-primary" uiSref="work" (click)="save(validationForm)">Submit</button> -->
+      </form>

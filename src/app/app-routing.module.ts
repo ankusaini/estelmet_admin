@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'inventory',
-        loadChildren: () => import('./demo/inventory/inventory.module').then(module => module.InventoryModule)
+        loadChildren: () => import('./modules/inventory/inventory.module').then(module => module.InventoryModule)
       },
       {
         path: 'processing',
