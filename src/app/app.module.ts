@@ -25,6 +25,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from "@angular/common/http";
+import { HttpTokenInterceptorService } from './shared/services/http/http-token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,14 @@ import { HttpClientModule } from "@angular/common/http";
     NgbButtonsModule,
     NgbTabsetModule
   ],
-  providers: [NavigationItem],
+  providers: [
+    NavigationItem,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

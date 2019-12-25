@@ -123,4 +123,24 @@ export class CreateUserComponent implements OnInit {
     }
     this.showGroup = false;
   }
+
+  getPersonData(data : any) {
+    console.log(data);
+  }
+
+  companyDetailData(data : any) {
+    console.log(data);
+  }
+
+  tradeData(data : any) {
+    console.log(data);
+  }
+
+  keyPersonData(data : any) {
+    console.log(data);
+  }
+
+  final_submit(data : boolean) {
+    console.log(data);
+  }
 }

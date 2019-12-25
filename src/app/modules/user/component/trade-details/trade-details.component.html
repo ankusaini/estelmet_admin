@@ -1,101 +1,101 @@
 <form [formGroup]="tradeDetails" (submit)="tradeDetailsFormOnSubmit()">
-<div class="form-row">
+  <div class="form-row">
     <div class="col-md-3 mb-3">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Type <small class="asterik_sign">*</small></label>
-        <select formControlName="productType" class="form-control" id="exampleFormControlSelect1">
-          <option value="1">CFRS</option>
+        <label for="exampleFormControlSelect1"
+          >Type <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productType"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productTypeList"
+            [value]="item?.productType"
+            >{{ item?.productType }}</option
+          >
         </select>
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Category <small class="asterik_sign">*</small></label>
-        <select formControlName="productCategory"  class="form-control" id="exampleFormControlSelect1">
-          <option value="1">HR</option>
-          <option value="2">CR</option>
-          <option value="3">GL</option>
-          <option value="4">CC</option>
-          <option value="5">EG</option>
-          <option value="6">TP</option>
-          <option value="7">TFS</option>
-          <option value="8">BP</option>
-          <option value="9">TPL</option>
-          <option value="10">GALVALUM</option>
-          <option value="11">MISPRINT</option>
-          <option value="12">PCRC</option>
-          <option value="13">TFS/LIKER</option>
-          <option value="14">TP/LIKER</option>
-          <option value="15">MIX</option>
-          <option value="16">GA</option>
-          <option value="17">GAJ</option>
-          <option value="18">GI</option>
-          <option value="19">COLOR</option>
-          <option value="20">CR/GA</option>
-          <option value="21">GI/GA</option>
-          <option value="22">CRJ</option>
-          <option value="23">GIJ</option>
-          <option value="24">ALSTER</option>
-          <option value="25">PVC/COLOR</option>
-          <option value="26">PVC&amp;CB</option>
-          <option value="27">BLANK</option>
-          <option value="28">PVC-NON-CB</option>
-          <option value="29">CR/GI</option>
-          <option value="30">NON-CB</option>
-          <option value="31">COLOR-CS</option>
-          <option value="32">MATT</option>
+        <label for="exampleFormControlSelect1"
+          >Category <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productCategory"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productCategoryList"
+            [value]="item?.productCategory"
+            >{{ item?.productCategory }}</option
+          >
         </select>
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Shape <small class="asterik_sign">*</small></label>
-        <select formControlName="productShape"  class="form-control" id="exampleFormControlSelect1">
-          <option value="1">SLC</option>
-          <option value="2">MWC</option>
-          <option value="3">2RC</option>
-          <option value="4">MC</option>
-          <option value="5">SC</option>
-          <option value="6">FAPS</option>
-          <option value="7">BAPS</option>
-          <option value="8">US</option>
-          <option value="9">FASS</option>
-          <option value="11">BASS</option>
-          <option value="12">SHEETS</option>
-          <option value="13">NO</option>
-          <option value="14">SLC / STS</option>
+        <label for="exampleFormControlSelect1"
+          >Shape <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productShape"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productShapeList"
+            [value]="item?.productShape"
+            >{{ item?.productShape }}</option
+          >
         </select>
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Class <small class="asterik_sign">*</small></label>
-        <select formControlName="productClass"  class="form-control" id="exampleFormControlSelect1">
-          <option value="1">1A</option>
-          <option value="2">1B</option>
-          <option value="3">2A</option>
-          <option value="4">2B</option>
-          <option value="5">2C</option>
-          <option value="6">2D</option>
-          <option value="7">3A</option>
-          <option value="8">3B</option>
-          <option value="9">3C</option>
-          <option value="10">3D</option>
-          <option value="11">DEFFECTIVE</option>
-          <option value="12">SCRAPE</option>
+        <label for="exampleFormControlSelect1"
+          >Class <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productClass"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productClassList"
+            [value]="item?.productClass"
+            >{{ item?.productClass }}</option
+          >
         </select>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-3 mb-3">
-      <label for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
+      <label for="validationCustom02"
+        >Thickness Range (mm) <small class="asterik_sign">*</small></label
+      >
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input formControlName="thicknessMin"  type="text" class="form-control" placeholder="Min" required>
+          <input
+            formControlName="thicknessMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
         </div>
         <div class="col-md-6 mb-3">
-          <input formControlName="thicknessMax"  type="text" class="form-control" placeholder="Max" required>
+          <input
+            formControlName="thicknessMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
         </div>
       </div>
     </div>
@@ -103,10 +103,22 @@
       <label for="validationCustom02">Width Range (mm)</label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input formControlName="widthMin"  type="text" class="form-control" placeholder="Min" required>
+          <input
+            formControlName="widthMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
         </div>
         <div class="col-md-6 mb-3">
-          <input formControlName="widthMax"  type="text" class="form-control" placeholder="Max" required>
+          <input
+            formControlName="widthMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
         </div>
       </div>
     </div>
@@ -114,38 +126,81 @@
       <label for="validationCustom02">Length Range (mm)</label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input formControlName="lengthMin"  type="text" class="form-control" placeholder="Min" required>
+          <input
+            formControlName="lengthMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
         </div>
         <div class="col-md-6 mb-3">
-          <input formControlName="lengthMax"  type="text" class="form-control" placeholder="Max" required>
+          <input
+            formControlName="lengthMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
         </div>
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom02">Temper Range <small class="asterik_sign">*</small></label>
+      <label for="validationCustom02"
+        >Temper Range <small class="asterik_sign">*</small></label
+      >
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input formControlName="temperMin"  type="text" class="form-control" placeholder="Min" required>
+          <input
+            formControlName="temperMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
         </div>
         <div class="col-md-6 mb-3">
-          <input formControlName="temperMax"  type="text" class="form-control" placeholder="Max" required>
+          <input
+            formControlName="temperMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
         </div>
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom02">Monthly Requirement (mt.) <small class="asterik_sign">*</small></label>
-      <input formControlName="monthlyRequirement" type="text" class="form-control" placeholder="" required>
+      <label for="validationCustom02"
+        >Monthly Requirement (mt.) <small class="asterik_sign">*</small></label
+      >
+      <input
+        formControlName="monthlyRequirement"
+        type="text"
+        class="form-control"
+        placeholder=""
+        required
+      />
     </div>
     <div class="col-md-offset-6 col-md-3 mb-3">
       <div class="mt-4">
-        <button type="button" class="btn btn-primary btn-sm">Add More</button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="addMore()"
+        >
+          Add More
+        </button>
       </div>
     </div>
   </div>
 
-
   <div class="form-row">
-    <app-card [hidHeader]="true" cardClass="user-profile-list" style="width:100%">
+    <app-card
+      [hidHeader]="true"
+      cardClass="user-profile-list"
+      style="width:100%"
+    >
       <div class="dt-responsive table-responsive" cardClass="card-datatable">
         <table datatable class="table table-striped table-bordered table-hover">
           <thead>
@@ -164,40 +219,43 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>CFRS</td>
-              <td>CR</td>
-              <td>2MC</td>
-              <td>1A</td>
-              <td>1.22 - 2.11</td>
-              <td>800 - 900</td>
-              <td>Coil</td>
-              <td>T2 - T4</td>
-              <td>200 mt.</td>
+            <tr *ngFor="let item of tradeArr; let i = index">
+              <td>{{ i + 1 + "." }}</td>
+              <td>{{ item?.productType }}</td>
+              <td>{{ item?.productCategory }}</td>
+              <td>{{ item?.productShape }}</td>
+              <td>{{ item?.productClass }}</td>
+              <td>{{ item?.thicknessMin + " - " + item?.thicknessMax }}</td>
+              <td>{{ item?.widthMin + " - " + item?.widthMax }}</td>
+              <td>{{ item?.lengthMin + " - " + item?.lengthMax }}</td>
+              <td>{{ item?.temperMin + " - " + item?.temperMax }}</td>
+              <td>{{ item?.monthlyRequirement }}</td>
               <td>
                 <span class="badge badge-light-success">Active</span>
                 <div class="overlay-edit">
-                  <button type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
-                  <button type="button" class="btn btn-icon btn-danger"><i
-                      class="feather icon-trash-2"></i></button>
+                  <button type="button" class="btn btn-icon btn-success">
+                    <i class="feather icon-check-circle"></i>
+                  </button>
+                  <button type="button" class="btn btn-icon btn-danger">
+                    <i class="feather icon-trash-2"></i>
+                  </button>
                 </div>
               </td>
             </tr>
-
           </tbody>
-
         </table>
       </div>
     </app-card>
   </div>
 
   <div class="col-sm-12 centered-content">
-            <div class="btn-group mt-10">
-              <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-              <button type="submit" class="btn btn-primary btn-sm" nextStep>Continue</button>
-            </div>
-          </div>
-
-          </form>
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>
+        Back</button
+      >&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary btn-sm" nextStep>
+        Continue
+      </button>
+    </div>
+  </div>
+</form>

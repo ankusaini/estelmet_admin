@@ -1,24 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormArray
-} from "@angular/forms";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 
 @Component({
-  selector: 'app-company-details',
-  templateUrl: './company-details.component.html',
-  styleUrls: ['./company-details.component.scss']
+  selector: "app-company-details",
+  templateUrl: "./company-details.component.html",
+  styleUrls: ["./company-details.component.scss"]
 })
 export class CompanyDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Output() company_details : EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit() {
-  }
+  constructor() {}
 
-       public companyDetailsForm = new FormGroup({
+  ngOnInit() {}
+
+  public companyDetailsForm = new FormGroup({
     userDetailId: new FormControl("", [Validators.required]),
     companyName: new FormControl("", [Validators.required]),
     address1: new FormControl("", [Validators.required]),
@@ -35,12 +31,10 @@ export class CompanyDetailsComponent implements OnInit {
     emailBusiness: new FormControl("", [Validators.required]),
     annualTurnover1: new FormControl("", [Validators.required]),
     annualTurnover2: new FormControl("", [Validators.required]),
-    annualTurnover3: new FormControl("", [Validators.required]),
-   
-
+    annualTurnover3: new FormControl("", [Validators.required])
   });
-//  annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
-    public initializeAnnualTurnOver(): FormGroup {
+  //  annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
+  public initializeAnnualTurnOver(): FormGroup {
     return new FormGroup({
       annualTurnoverId: new FormControl("", [Validators.required]),
       year: new FormControl("", [Validators.required]),
@@ -48,10 +42,9 @@ export class CompanyDetailsComponent implements OnInit {
     });
   }
 
-  companyDetailsSubmit()
-  {
-    console.log("company details",this.companyDetailsForm)
+  companyDetailsSubmit() {
+    if(this.companyDetailsForm.status == 'VALID') {
+      this.company_details.emit(this.companyDetailsForm.value);
+    } else console.log("company details", this.companyDetailsForm);
   }
 }
-
- 

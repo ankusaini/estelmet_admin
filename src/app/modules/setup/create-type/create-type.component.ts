@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProductService } from "src/app/shared/services/product.service";
 import { ProductType } from "src/app/shared/Models/product.model.";
+import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
 
 @Component({
   selector: 'app-create-type',
@@ -11,7 +12,10 @@ import { ProductType } from "src/app/shared/Models/product.model.";
 export class CreateTypeComponent implements OnInit {
 
   public productTypeList:ProductType[];
-  constructor(private productService:ProductService) { }
+  constructor(
+    private _staticData : StaticDataService,
+    private productService : ProductService
+  ) { }
 
     productTypeForm = new FormGroup({
     id: new FormControl(""),
@@ -26,8 +30,7 @@ export class CreateTypeComponent implements OnInit {
 
   getProductTypeList()
   {
-    let url="http://13.233.151.89:8020/estelmet/inventory/productClassification/getProductType";
-    this.productService.getProductType(url).subscribe(data=>{
+    this._staticData.getProductType().subscribe(data=>{
       console.log("data is",data);
       //list
       this.productTypeList=data;
