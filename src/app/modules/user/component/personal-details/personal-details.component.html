@@ -133,7 +133,8 @@
         type="submit"
         class="btn btn-primary btn-sm"
         uiSref="work"
-        nextStep = "userDTO.status == 'VALID'"
+        [disabled]="userDTO.status != 'VALID'"
+        nextStep
       >
         Continue
       </button>

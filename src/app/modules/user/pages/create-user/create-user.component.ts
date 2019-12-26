@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { FormInput } from "./create-user-model";
-import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
+import { UserService } from 'src/app/shared/services/user.service';
+import { User, Status } from 'src/app/shared/Models/user.model';
 
 @Component({
   selector: "app-create-user",
@@ -11,9 +11,11 @@ import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 export class CreateUserComponent implements OnInit {
   showGroup = true;
   public isSubmit: boolean;
-  public userDto : userDto = {};
+  public userDto : User = {};
 
-  constructor() {
+  constructor(
+    private _userService : UserService
+  ) {
     this.isSubmit = false;
   }
 
@@ -32,11 +34,11 @@ export class CreateUserComponent implements OnInit {
     this.userDto.id = "";
     this.userDto.firstName = data.firstName;
     this.userDto.lastName = data.lastName;
-    this.userDto.mobile = data.lastName;
+    this.userDto.mobile = data.mobile;
     this.userDto.email = data.email;
     this.userDto.password = data.password;
     this.userDto.userRole = data.userRole;
-    this.userDto.status = "PENDING";
+    this.userDto.status = Status.PENDING;
   }
 
   companyDetailData(data: any) {
@@ -52,27 +54,27 @@ export class CreateUserComponent implements OnInit {
     this.userDto.userDetail.country = data.country;
     this.userDto.userDetail.state = data.state;
     this.userDto.userDetail.city = data.city;
-    this.userDto.userDetail.pinCode = data.pincode;
+    this.userDto.userDetail.pinCode = data.pinCode;
     this.userDto.userDetail.mobile1 = data.mobile1;
     this.userDto.userDetail.mobile2 = data.mobile2
     this.userDto.userDetail.emailBusiness = data.emailBusiness;
-    this.userDto.userDetail.annualTurnOver = [];
+    this.userDto.userDetail.annualTurnover = [];
 
-    this.userDto.userDetail.annualTurnOver.push({
+    this.userDto.userDetail.annualTurnover.push({
       annualTurnoverId : "",
-      year : '2019-2020',
+      year : '2016-2017',
       turnover : data.annualTurnover1
     });
 
-    this.userDto.userDetail.annualTurnOver.push({
+    this.userDto.userDetail.annualTurnover.push({
       annualTurnoverId : "",
-      year : '2018-2019',
+      year : '2017-2018',
       turnover : data.annualTurnover2
     });
 
-    this.userDto.userDetail.annualTurnOver.push({
+    this.userDto.userDetail.annualTurnover.push({
       annualTurnoverId : "",
-      year : '2017-2018',
+      year : '2018-2019',
       turnover : data.annualTurnover3
     });
     
@@ -125,65 +127,6 @@ export class CreateUserComponent implements OnInit {
 
   final_submit(data: boolean) {
     console.log(this.userDto);
+    this._userService.saveUser(this.userDto);
   }
-}
-
-interface userDto {
-  userDetail ?: userDetail
-  id ?: string,
-  firstName ?: string,
-  lastName ?: string,
-  mobile ?: string,
-  email ?: string,
-  password ?: string,
-  userRole ?: string,
-  status ?: string,
-}
-
-interface userDetail {
-  userDetailId ?: string;
-  companyName ?: string;
-  address1 ?: string;
-  address2 ?: string;
-  gst ?: string;
-  otp ?: string;
-  numberOfEmployees ?: string; 
-  country ?: string;
-  state ?: string;
-  city ?: string;
-  pinCode ?: string;
-  mobile1 ?:   string;
-  mobile2 ?: string;
-  emailBusiness ?: string;
-  annualTurnOver ?: annualTurnover[];
-  keyPerson ?: keyPerson[];
-  userProductPreference ?: userProductPreference[];
-}
-
-interface userProductPreference {
-  productType ?: string;
-  productCategory ?: string;
-  productShape ?: string;
-  productClass ?: string;
-  thicknessRange ?: string;
-  widthRange ?: string;
-  temperRange ?: string;
-  lengthRange ?: string;
-  monthlyRequirement ?: string;
-}
-
-interface keyPerson {
-  keyPersonId: string;
-  name?: string;
-  designation?: string;
-  email1?: string;
-  email2?: string;
-  mobile1?: string;
-  mobile2?: string;
-}
-
-interface annualTurnover {
-  annualTurnoverId ?: string,
-  year ?: string,
-  turnover ?: string
 }

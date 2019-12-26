@@ -49,7 +49,7 @@
   <div class="col-sm-12 centered-content">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary btn-sm" nextStep>Continue</button>
+            <button type="submit" class="btn btn-primary btn-sm" nextStep [disabled]="keyPersonDetails.status != 'VALID'">Continue</button>
           </div>
         </div>
 </form>

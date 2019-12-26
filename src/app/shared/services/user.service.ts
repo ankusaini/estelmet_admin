@@ -19,4 +19,10 @@ export class UserService {
     });
   }
 
+  saveUser(data) {
+    this._apiService.post('/users/createUser',data).subscribe(res=>{
+      console.log(res);
+    })
+  }
+
 }
