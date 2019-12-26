@@ -57,11 +57,11 @@ import { HttpTokenInterceptorService } from './shared/services/http/http-token-i
   ],
   providers: [
     NavigationItem,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpTokenInterceptorService,
-      multi: true
-    }
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: HttpTokenInterceptorService,
+        multi: true
+      }
   ],
   bootstrap: [AppComponent]
 })
