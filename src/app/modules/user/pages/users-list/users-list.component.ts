@@ -4,6 +4,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
+import { Subject } from "rxjs";
 
 @Component({
   selector: 'app-users-list',
@@ -11,61 +12,66 @@ import { Observable } from "rxjs/internal/Observable";
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit, AfterViewInit {
-  dtExportButtonOptions: any = {};
+  public userList:any;
+  dtExportButtonOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   dtRouterLinkOptions: any = {};
+
+
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
   public limit=15;
   public offset=0;
-  public userList:any;
+  
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    this.basicSwal().subscribe(data=>{
-      this.userList=data;
-    this.dtExportButtonOptions = {
-      data: JSON.stringify(data),
-      columns: [{
-        title: 'User Id',
-        data: 'id'
-      }, {
-        title: 'User Type',
-        data: 'userRole'
-      }, {
-        title: 'User Name',
-        data: 'firstName'
-      }, {
-        title: 'Mobile',
-        data: 'mobile'
-      }, {
-        title: 'Email',
-        data: 'email'
-      }, {
-        title: 'Company Name',
-        data: 'email'
-      }, {
-        title: 'Action',
-        render(data: any, type: any, full: any) {
-          return '<button class="btn btn-outline-primary btn-sm">View</button>';
-        }
-      }],
-      responsive: true,
-      dom: 'Bfrtip',
-      buttons: [
-        'copy',
-        'print',
-        'excel',
-        'csv'
-      ]
-    };
-    });
-
+    this.basicSwal();
+    // .subscribe(data=>{
+    //   this.userList=data;
+    // this.dtExportButtonOptions = {
+    //   data: JSON.stringify(data),
+    //   columns: [{
+    //     title: 'User Id',
+    //     data: 'id'
+    //   }, {
+    //     title: 'User Type',
+    //     data: 'userRole'
+    //   }, {
+    //     title: 'User Name',
+    //     data: 'firstName'
+    //   }, {
+    //     title: 'Mobile',
+    //     data: 'mobile'
+    //   }, {
+    //     title: 'Email',
+    //     data: 'email'
+    //   }, {
+    //     title: 'Company Name',
+    //     data: 'email'
+    //   }, {
+    //     title: 'Action',
+    //     render(data: any, type: any, full: any) {
+    //       return '<button class="btn btn-outline-primary btn-sm">View</button>';
+    //     }
+    //   }],
+    //   responsive: true,
+    //   dom: 'Bfrtip',
+    //   buttons: [
+    //     'copy',
+    //     'print',
+    //     'excel',
+    //     'csv'
+    //   ]
+    // };
+    // });
+    // this.dtTrigger.next();
 
   }
-
-
-  basicSwal(): Observable<any> {
-    return new Observable<any>(obs=>{
+// : Observable<any> 
+// return new Observable<any>(obs=>{
+  basicSwal(){
+    
     Swal.fire({
       title: 'Filter Search!',
       input: 'select',
@@ -98,11 +104,12 @@ export class UsersListComponent implements OnInit, AfterViewInit {
       let url="/users/getAllUsersByUserRoleAndStatus/"+selectedRole.value+"/APPROVED";
       
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(data=>{
-      let obj={
-        data:data
-      };
-      obs.next(obj);
-      obs.complete();
+      this.userList=data;
+      // let obj={
+      //   data:data 
+      // };
+      // obs.next(obj);
+      // obs.complete();
     },error=>{
 
     })
@@ -112,7 +119,6 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     });
       
 
-    })
   }
 
  
