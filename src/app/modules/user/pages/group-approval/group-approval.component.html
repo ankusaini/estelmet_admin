@@ -1,0 +1,137 @@
+<div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="true" cardClass="tab-card">
+        <h5 class="mb-3">User Group Approval System</h5>
+        <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
+          <ngb-tab title="Pending" class="mb-3">
+            <ng-template ngbTabContent>
+              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>Group Id</th>
+                      <th>Group Title</th>
+                      <th>Type</th>
+                      <th>Category</th>
+                      <th>Min Thickness</th>
+                      <th>Max Thickness</th>
+                      <th>Date of Creation</th>
+                      <th>Last Modified Date</th>
+                      <th>Created By</th>
+                      <th>Last Modified By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr href="kdkd" *ngFor="let userGroup of pendingUserGroupList;let i = index">
+            <td>{{userGroup.status}}</td>
+              <td>{{i+1}}</td>
+              <td>{{userGroup.userGroupId}}</td>
+              <td>{{userGroup.userGroupName}}</td>
+              <td>{{userGroup.productType}}</td>
+              <td>{{userGroup.productCategory}}</td>
+              <td>{{userGroup.minThickness}}</td>
+               <td>{{userGroup.maxThickness}}</td>
+              <td>{{userGroup.createdDate}}</td>
+                <td>{{userGroup.createdBy}}</td>
+               <td>{{userGroup.lastModifiedDate}}</td>
+                <td>{{userGroup.lastModifiedBy}}</td>
+
+            </tr> 
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab  title="Approved">
+            <ng-template ngbTabContent>
+              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>Group Id</th>
+                      <th>Group Title</th>
+                      <th>Type</th>
+                      <th>Category</th>
+                      <th>Min Thickness</th>
+                      <th>Max Thickness</th>
+                      <th>Date of Creation</th>
+                      <th>Last Modified Date</th>
+                      <th>Created By</th>
+                      <th>Last Modified By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr href="kdkd" *ngFor="let userGroup of approvedUserGroupList;let i = index">
+            <td>{{userGroup.status}}</td>
+              <td>{{i+1}}</td>
+              <td>{{userGroup.userGroupId}}</td>
+              <td>{{userGroup.userGroupName}}</td>
+              <td>{{userGroup.productType}}</td>
+              <td>{{userGroup.productCategory}}</td>
+              <td>{{userGroup.minThickness}}</td>
+               <td>{{userGroup.maxThickness}}</td>
+              <td>{{userGroup.createdDate}}</td>
+                <td>{{userGroup.createdBy}}</td>
+               <td>{{userGroup.lastModifiedDate}}</td>
+                <td>{{userGroup.lastModifiedBy}}</td>
+
+            </tr> 
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Rejected">
+            <ng-template ngbTabContent>
+              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>Group Id</th>
+                      <th>Group Title</th>
+                      <th>Type</th>
+                      <th>Category</th>
+                      <th>Min Thickness</th>
+                      <th>Max Thickness</th>
+                      <th>Date of Creation</th>
+                      <th>Last Modified Date</th>
+                      <th>Created By</th>
+                      <th>Last Modified By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr href="kdkd" *ngFor="let userGroup of rejectedUserGroupList;let i = index">
+            <td>{{userGroup.status}}</td>
+              <td>{{i+1}}</td>
+              <td>{{userGroup.userGroupId}}</td>
+              <td>{{userGroup.userGroupName}}</td>
+              <td>{{userGroup.productType}}</td>
+              <td>{{userGroup.productCategory}}</td>
+              <td>{{userGroup.minThickness}}</td>
+               <td>{{userGroup.maxThickness}}</td>
+              <td>{{userGroup.createdDate}}</td>
+                <td>{{userGroup.createdBy}}</td>
+               <td>{{userGroup.lastModifiedDate}}</td>
+                <td>{{userGroup.lastModifiedBy}}</td>
+
+            </tr> 
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </ngb-tab>
+  
+        </ngb-tabset>
+        <!-- (click)="rejectSelected" -->
+  
+      </app-card>
+      <button *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'" type="button" class="btn btn-success active">Approve</button>&nbsp;
+      <button *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" type="button"  class="btn btn-danger active">Reject</button>&nbsp;
+    </div>
+  </div>

@@ -15,10 +15,17 @@ import { SelectModule } from 'ng-select';
 import { FileUploadModule } from '@iplab/ngx-file-upload'
 import { UsersListComponent } from "src/app/modules/user/pages/users-list/users-list.component";
 import { DataTablesModule } from "angular-datatables";
+import { CreateUserGroupComponent } from './pages/create-user-group/create-user-group.component';
+import { CreateGroupIdComponent } from './component/create-group-id/create-group-id.component';
+import { UserSelectionComponent } from './component/user-selection/user-selection.component';
+import { UserGroupListComponent } from './pages/user-group-list/user-group-list.component';
+import { GroupApprovalComponent } from './pages/group-approval/group-approval.component';
+import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserGroupEditviewComponent } from './pages/user-group-editview/user-group-editview.component';
 
 
 @NgModule({
-  declarations: [CreateUserComponent, PersonalDetailsComponent, CompanyDetailsComponent, KeypersonDetailsComponent, TradeDetailsComponent, TermsConditionsComponent,UsersListComponent],
+  declarations: [CreateUserComponent, PersonalDetailsComponent, CompanyDetailsComponent, KeypersonDetailsComponent, TradeDetailsComponent, TermsConditionsComponent,UsersListComponent, CreateUserGroupComponent, CreateGroupIdComponent, UserSelectionComponent, UserGroupListComponent, GroupApprovalComponent, UserGroupEditviewComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -29,7 +36,8 @@ import { DataTablesModule } from "angular-datatables";
     SharedModule,
         DataTablesModule,
     FileUploadModule,
-    SelectModule
+    SelectModule,
+    NgbTabsetModule
   ]
 })
 export class UserModule { }
