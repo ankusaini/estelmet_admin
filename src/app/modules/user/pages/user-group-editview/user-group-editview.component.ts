@@ -12,6 +12,7 @@ import { UserService } from "src/app/shared/services/user.service";
 export class UserGroupEditviewComponent implements OnInit {
   groupId: any;
   public selectedUserGroup: UserGroup;
+  public doNotShowBack:any='doNotShowBack';
 
   public activeTab: string;
   public editProfile1: boolean;
