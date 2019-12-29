@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StaticDataService } from 'src/app/shared/services/Data/static-data.service';
 import { ProductClass } from 'src/app/shared/Models/product.model.';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
   selector: 'app-create-class',
@@ -14,11 +15,14 @@ export class CreateClassComponent implements OnInit {
 
     productClassFormGroup : FormGroup;
 
-  constructor(private productClass : StaticDataService) {
+  constructor(
+    private productClass : StaticDataService,
+    private _commonService : CommonService
+  ) {
 
     this.productClassFormGroup = new FormGroup({
-      id : new FormControl("",Validators.required),
-      productClass : new FormControl(Validators.required),
+      id : new FormControl("",),
+      productClass : new FormControl("",Validators.required),
       description :  new FormControl("",Validators.required)
     });
 
@@ -34,4 +38,17 @@ export class CreateClassComponent implements OnInit {
     });
   }
 
+  addClass() {
+    console.log(this.productClassFormGroup.value);
+    if(this.productClassFormGroup.status == 'VALID') {
+      this.productClassFormGroup.reset();
+      this._commonService.saveProductClass(this.productClassFormGroup.value).subscribe(res=>{
+        console.log(res);
+        this.producClassList.push(res);
+        this.productClass.saveProductClass(this.producClassList);
+      })
+    } else {
+      console.log('all fields are nessessary');
+    }
+  }
 }
