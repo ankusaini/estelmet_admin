@@ -6,6 +6,6 @@
 <div class="col-sm-12 centered-content">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-success btn-sm" resetWizard (click)="submit()">Finished</button>
+      <button type="button" class="btn btn-success btn-sm" [disabled]="!agree" resetWizard (click)="submit()">Finished</button>
     </div>
   </div>
