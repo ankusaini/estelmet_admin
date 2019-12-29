@@ -13,14 +13,19 @@ const routes: Routes = [
         redirectTo: 'dashboard/default',
         pathMatch: 'full'
       },
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./demo/dashboard/dashboard.module').then(module => module.DashboardModule)
-      },
+      // {
+      //   path: 'dashboard',
+      //   loadChildren: () => import('./demo/dashboard/dashboard.module').then(module => module.DashboardModule)
+      // },
       {
         path: 'users',
         loadChildren: () => import('./modules/user/user.module').then(module => module.UserModule)
       },
+      //   {
+      //   path: 'users',
+      //   loadChildren: () => import('./demo/users/users.module').then(module => module.UsersModule)
+      // },
+
       {
         path: 'purchase',
         loadChildren: () => import('./modules/purchase/purchase.module').then(module => module.PurchaseModule)

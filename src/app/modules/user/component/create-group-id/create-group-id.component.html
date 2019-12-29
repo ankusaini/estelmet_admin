@@ -1,0 +1,69 @@
+<form [formGroup]="createGroupForm" #validationForm="ngForm" class="editForm" (submit)="createGroupSubmit()">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Product Type <small class="asterik_sign">*</small></label>
+              <select formControlName="productType" class="form-control" name="validation-type" required >
+                  <option
+            *ngFor="let item of productTypeList"
+            [value]="item?.productType"
+            >{{ item?.productType }}</option>
+                </select>
+                <!-- <label *ngIf="!type.valid && (type.dirty || type.touched || isSubmit)" id="validation-type-error" class="error jquery-validation-error small form-text invalid-feedback">Product Type should be required.</label> -->
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
+              <select formControlName="productCategory"  class="form-control" name="validation-category"   required >
+                  <option
+            *ngFor="let item of productCategoryList"
+            [value]="item?.productCategory"
+            >{{ item?.productCategory }}</option
+          >
+              </select>
+              <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)" id="validation-category-error" class="error jquery-validation-error small form-text invalid-feedback">Product Category should be required.</label> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 col-xs-6">
+            <div class="form-group">
+              <label for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
+              <div class="row">
+                <div class="col-md-6 col-xs-6 mb-3">
+                    <input formControlName="minThickness"  type="text"  class="form-control"  placeholder="0.00"  required >
+                    <!-- <label *ngIf="!thickMin.valid && (thickMin.dirty || thickMin.touched || isSubmit)" id="validation-thickMin-error" class="error jquery-validation-error small form-text invalid-feedback">This field should be required</label> -->
+                </div>
+                <div class="col-md-6 col-xs-6 mb-3">
+                    <input  formControlName="maxThickness"  type="text" class="form-control"  placeholder="0.00"  required >
+                    <!-- <label *ngIf="!thickMax.valid && (thickMax.dirty || thickMax.touched || isSubmit)" id="validation-thickMax-error" class="error jquery-validation-error small form-text invalid-feedback">This field should be required</label> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+            <div class="col-md-5 col-xs-6">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">User Group Type <small class="asterik_sign">*</small></label>
+                    <select formControlName="userRole"  class="form-control" name="validation-groupType" >
+                        <option value="0" disabled>Select User</option>
+                        <option value="CUSTOMER">Customer Group</option>
+                        <option value="SUPPLIER">Supplier Group</option>
+                        <option value="AGENT">Agent Group</option>
+                        <option value="TRANSPORTER">Transporter Group</option>
+                        <option value="CONTRACTOR">Contractor Group</option>
+                    </select>
+                    <!-- <label *ngIf="!groupType.valid && (groupType.dirty || groupType.touched || isSubmit)" id="validation-groupType-error" class="error jquery-validation-error small form-text invalid-feedback">Group Type should be required.</label> -->
+                  </div>
+            </div>
+        </div>
+          <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <!-- <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp; -->
+          <button type="submit"  class="btn btn-primary btn-sm" nextStep>Next</button>
+        </div>
+      </div>
+      </form>
+      
