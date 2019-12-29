@@ -93,7 +93,7 @@
 </div>
 <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
-        <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+        <button *ngIf="!doNotShowBack" type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
         <button type="submit" class="btn btn-danger btn-sm">Print</button>&nbsp;&nbsp;
         <button type="button" (click)="userSelectionSubmit()" class="btn btn-success btn-sm">Send for Approval</button>
     </div>

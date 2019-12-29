@@ -3,7 +3,7 @@
       <app-card [hidHeader]="true" cardClass="tab-card">
         <h5 class="mb-3">User Group Approval System</h5>
         <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
-          <ngb-tab title="Pending" class="mb-3">
+          <ngb-tab title="Pending"  id="pendingTab" class="mb-3">
             <ng-template ngbTabContent>
               <div class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
@@ -44,7 +44,7 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab  title="Approved">
+          <ngb-tab  title="Approved" id="approvedTab">
             <ng-template ngbTabContent>
               <div class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
@@ -85,7 +85,7 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Rejected">
+          <ngb-tab title="Rejected" id="rejectedTab">
             <ng-template ngbTabContent>
               <div class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">

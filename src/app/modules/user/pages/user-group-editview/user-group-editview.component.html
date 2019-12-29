@@ -53,12 +53,12 @@
         <div class="merge-card">
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
             <h5 class="mb-0">UG Details</h5>
-            <button type="button"
+            <!-- <button type="button"
               (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
               class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
               aria-expanded="false" aria-controls="pro-det-edit-1">
               <i class="feather" [ngClass]="editProfileIcon"></i>
-            </button>
+            </button> -->
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
             <div class="form-group row">
@@ -92,7 +92,7 @@
               </div>
             </div> -->
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
+          <!-- <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">CUG Id</label>
               <div class="col-sm-3">
@@ -133,7 +133,7 @@
                 <button type="button" class="btn btn-primary">Save</button>
               </div>
             </div>
-          </app-card>
+          </app-card> -->
         </div>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
@@ -187,153 +187,10 @@
             </div>
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
+    <wizard-step stepTitle="Search User" navigationSymbol="2">
 
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Type</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">CFRS</option>
-                </select>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">CR</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Shape</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">MWC</option>
-                </select>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Class</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">2A</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range</label>
-              <div class="col-sm-3">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-                </div>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Width Range</label>
-              <div class="col-sm-3">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Length Range</label>
-              <div class="col-sm-3">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-                </div>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
-              <div class="col-sm-3">
-                <div class="row">
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-                  <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">CFRS</option>
-                </select>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">CR</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Defect</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">MWC</option>
-                </select>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Origin</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">2A</option>
-                </select>
-              </div>
-            </div>
-            <!--  -->
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Oiling</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">CFRS</option>
-                </select>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Surface</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">CR</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Annealing</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">MWC</option>
-                </select>
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Finish</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option value="1">2A</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Gross Wt.</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="Mt.">
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Net Wt.</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="Mt.">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Remarks</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label"></label>
-              <div class="col-sm-1">
-                <button type="button" class="btn btn-primary">Save</button>&nbsp;
-              </div>
-              <div class="col-sm-2">
-                <span style="float: left;"> <button type="button"
-                    (click)="this.editProfile = !this.editProfile; this.editProfileIcon = this.editProfile ? 'icon-x': 'icon-x';"
-                    class="btn btn-primary rounded m-0 float-right">
-                    Cancel
-                  </button></span>
-              </div>
-            </div>
+          <app-user-selection [doNotShowBack]="doNotShowBack"></app-user-selection>         
+    </wizard-step>   
           </app-card>
         </div>
       </div>

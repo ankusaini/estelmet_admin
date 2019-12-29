@@ -14,10 +14,13 @@ export class UserSelectionComponent implements OnInit {
 
   @Input() 
   selectedUserType:any='CUSTOMER';
+  @Input()
+  doNotShowBack:any;
   public selectedType:any='CUSTOMER';
   constructor(private userService:UserService) { }
 
   ngOnInit() {
+    console.log("doNotShowBack",this.doNotShowBack)
     console.log("in user slect",this.selectedType)
     this.getAllUserByUserRoleAndStatus(this.selectedType);
   }
