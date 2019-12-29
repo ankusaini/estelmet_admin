@@ -99,14 +99,13 @@ export class GroupApprovalComponent implements OnInit {
     );
   }
   onTabChange(tab) {
-    console.log(tab);
-    if (tab && tab.activeId == "ngb-tab-2") {
+    if (tab && tab.activeId == "rejectedTab") {
       this.selectedTab = "PENDING";
     }
-    if (tab && tab.activeId == "ngb-tab-0") {
+    if (tab && tab.activeId == "pendingTab") {
       this.selectedTab = "APPROVED";
     }
-     if (tab && tab.activeId == "ngb-tab-1") {
+     if (tab && tab.activeId == "approvedTab") {
       this.selectedTab = "REJECTED";
     }
   }

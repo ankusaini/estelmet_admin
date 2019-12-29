@@ -41,6 +41,7 @@ export class UserService {
         obs.next(res);
       });
     });
+  }
   saveUser(data) {
     this._apiService.post('/users/createUser',data).subscribe(res=>{
       console.log(res);
