@@ -17,6 +17,8 @@ export class GroupApprovalComponent implements OnInit {
   public approvedUserGroupList: UserGroup[] = [];
   public rejectedUserGroupList: UserGroup[] = [];
 
+  public selectedUserGroupList:UserGroup[]=[];
+
   constructor(private userService: UserService) {
     this.basicSwal();
   }
@@ -108,6 +110,30 @@ export class GroupApprovalComponent implements OnInit {
      if (tab && tab.activeId == "approvedTab") {
       this.selectedTab = "REJECTED";
     }
+  }
+
+    selectUser(userGroup:UserGroup)
+  {
+     const index: number = this.selectedUserGroupList.indexOf(userGroup);
+    if (index == -1) {
+    this.selectedUserGroupList.push(userGroup);
+    }
+  else{
+    alert("already added");
+  }
+
+  }
+
+  changeStatusOfSelectedGroup(status)
+  {
+    if(this.selectedUserGroupList.length==0)
+      {
+        alert("select at least one");
+      }
+      else
+        {
+          
+        }
   }
 }
  
