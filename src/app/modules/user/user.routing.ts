@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UsersListComponent } from "src/app/modules/user/pages/users-list/users-list.component";
+// import { UserApprovalComponent } from 'src/app/demo/users/user-approval/user-approval.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,20 @@ const routes: Routes = [
   {
       path: 'list',
     component : UsersListComponent
-  }
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('../../demo/users/user-profile/user-profile.module').then(module => module.UserProfileModule)
+  },
+  {
+    path: 'card',
+    loadChildren: () => import('../../demo/users/users-card/users-card.module').then(module => module.UsersCardModule)
+  },
+  // {
+  //   path: 'list',
+  //   loadChildren: () => import('./users-list/users-list.module').then(module => module.UsersListModule)
+  // },
+ 
     // children: [
     //   {
     //     path: 'list',
@@ -39,7 +53,7 @@ const routes: Routes = [
     //     path: 'groupOverview',
     //     component: GroupOverviewComponent
     //   },
-    //   {
+    // ,  {
     //     path: 'userApproval',
     //     component: UserApprovalComponent
     //   },
