@@ -7,6 +7,7 @@ import { UserGroupListComponent } from "src/app/modules/user/pages/user-group-li
 import { GroupApprovalComponent } from "src/app/modules/user/pages/group-approval/group-approval.component";
 import { UserGroupEditviewComponent } from "src/app/modules/user/pages/user-group-editview/user-group-editview.component";
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserApprovalComponent } from "src/app/modules/user/pages/user-approval/user-approval.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
       path: 'list',
     component : UsersListComponent
+  },
+   {
+      path: 'userApproval',
+    component : UserApprovalComponent
   },
    {
       path: 'createGroup',
