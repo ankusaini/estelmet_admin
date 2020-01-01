@@ -13,6 +13,7 @@ import { Subject } from "rxjs";
 export class GroupApprovalComponent implements OnInit {
   selectedTab: string='PENDING';
 
+
   public pendingUserGroupList: UserGroup[] = [];
   public approvedUserGroupList: UserGroup[] = [];
   public rejectedUserGroupList: UserGroup[] = [];
@@ -110,6 +111,7 @@ export class GroupApprovalComponent implements OnInit {
      if (tab && tab.activeId == "approvedTab") {
       this.selectedTab = "REJECTED";
     }
+    this.selectedUserGroupList=[];
   }
 
     selectUser(userGroup:UserGroup)
@@ -132,7 +134,20 @@ export class GroupApprovalComponent implements OnInit {
       }
       else
         {
-          
+           let path="/users/group/updateUserGroup";
+        console.log("path",path)
+          for(let i=0;i<this.selectedUserGroupList.length;i++)
+            {
+              this.selectedUserGroupList[i].status=status;
+              
+              console.log("selected group",this.selectedUserGroupList[i]);
+               this.userService.createUserGroup(path,this.selectedUserGroupList[i]).subscribe(data=>{
+            console.log("user group created",data)
+        },error=>{
+
+        });
+        
+            }
         }
   }
 }

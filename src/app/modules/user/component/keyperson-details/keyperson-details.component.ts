@@ -34,4 +34,9 @@ export class KeypersonDetailsComponent implements OnInit {
       console.log("keyPersonDetailSubmit", this.keyPersonDetails);
     }
   }
+
+  get f()
+  {
+   return this.keyPersonDetails.controls;
+  }
 }
