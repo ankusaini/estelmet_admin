@@ -80,7 +80,7 @@ const NavigationItems = [
             id: 'CreateUser',
             title: 'Create User',
             type: 'item',
-            url: '/users/',
+            url: '/users/createUser',
             target: false,
           },
           {
@@ -90,13 +90,13 @@ const NavigationItems = [
             url: '/users/list',
             target: false,
           },
-          {
-            id: 'userOverview',
-            title: 'User Overview',
-            type: 'item',
-            url: '/users/profile',
-            target: false,
-          },
+          // {
+          //   id: 'userOverview',
+          //   title: 'User Overview',
+          //   type: 'item',
+          //   url: '/users/profile',
+          //   target: false,
+          // },
           {
             id: 'approvalUser',
             title: 'User Approval',
@@ -141,13 +141,13 @@ const NavigationItems = [
             url: '/users/groupApproval',
             target: false,
           },
-          {
-            id: 'EditGroup',
-            title: 'Edit Group',
-            type: 'item',
-            url: '/users/editGroup',
-            target: false,
-          }
+          // {
+          //   id: 'EditGroup',
+          //   title: 'Edit Group',
+          //   type: 'item',
+          //   url: '/users/editGroup',
+          //   target: false,
+          // }
         ]
       },
     ]

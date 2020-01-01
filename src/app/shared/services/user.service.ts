@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from "src/app/shared/services/api.service";
 import { HttpParams } from "@angular/common/http";
-import { User } from "src/app/shared/Models/user.model";
+import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
 
 @Injectable({
@@ -19,6 +19,29 @@ export class UserService {
     });
   }
 
+  getAllUserByUserGroupRoleAndStatus(url): Observable<UserGroup[]> {
+    return new Observable<UserGroup[]>(obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  findUserGroupById(url): Observable<UserGroup> {
+    return new Observable<UserGroup>(obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  createUserGroup(url,data): Observable<UserGroup> {
+    return new Observable<UserGroup>(obs => {
+      this._apiService.post(url,data).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
   saveUser(data) {
     this._apiService.post('/users/createUser',data).subscribe(res=>{
       console.log(res);

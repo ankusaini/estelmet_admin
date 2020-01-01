@@ -2,31 +2,49 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UsersListComponent } from "src/app/modules/user/pages/users-list/users-list.component";
-// import { UserApprovalComponent } from 'src/app/demo/users/user-approval/user-approval.component';
+import { CreateUserGroupComponent } from "src/app/modules/user/pages/create-user-group/create-user-group.component";
+import { UserGroupListComponent } from "src/app/modules/user/pages/user-group-list/user-group-list.component";
+import { GroupApprovalComponent } from "src/app/modules/user/pages/group-approval/group-approval.component";
+import { UserGroupEditviewComponent } from "src/app/modules/user/pages/user-group-editview/user-group-editview.component";
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'createUser',
     component : CreateUserComponent
+  },
+  {
+    path: 'profile',
+    component : UserProfileComponent
+    // loadChildren: () => import('./pages/user-profile/user-profile.module').then(module => module.UserProfileModule)
   },
   {
       path: 'list',
     component : UsersListComponent
   },
-  {
-    path: 'profile',
-    loadChildren: () => import('../../demo/users/user-profile/user-profile.module').then(module => module.UserProfileModule)
+   {
+      path: 'createGroup',
+    component : CreateUserGroupComponent
   },
   {
-    path: 'card',
-    loadChildren: () => import('../../demo/users/users-card/users-card.module').then(module => module.UsersCardModule)
+      path: 'searchGroup',
+    component : UserGroupListComponent
   },
-  // {
-  //   path: 'list',
-  //   loadChildren: () => import('./users-list/users-list.module').then(module => module.UsersListModule)
-  // },
- 
+    {
+      path: 'groupApproval',
+    component : GroupApprovalComponent
+  },
+   {
+      path: 'editGroup',
+    component : UserGroupEditviewComponent
+  },
+  {
+      path: 'editGroup/:groupId',
+    component : UserGroupEditviewComponent
+  },
+  
+  
     // children: [
     //   {
     //     path: 'list',
