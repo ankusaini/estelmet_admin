@@ -6,7 +6,7 @@
     </wizard-step>
     <wizard-step *ngIf="showSecondWizard" stepTitle="Search User" navigationSymbol="2">
       <!-- (userData)="getSelectedUser($event)" -->
-     <app-user-selection [selectedUserType]="selectedUserType" (userData)="getSelectedUser($event)"></app-user-selection>
+     <app-user-selection  (userData)="getSelectedUser($event)"></app-user-selection>
     </wizard-step>
   </wizard>
 </app-card>

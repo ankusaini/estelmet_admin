@@ -6,12 +6,18 @@ import { CreateUserGroupComponent } from "src/app/modules/user/pages/create-user
 import { UserGroupListComponent } from "src/app/modules/user/pages/user-group-list/user-group-list.component";
 import { GroupApprovalComponent } from "src/app/modules/user/pages/group-approval/group-approval.component";
 import { UserGroupEditviewComponent } from "src/app/modules/user/pages/user-group-editview/user-group-editview.component";
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'createUser',
     component : CreateUserComponent
+  },
+  {
+    path: 'profile',
+    component : UserProfileComponent
+    // loadChildren: () => import('./pages/user-profile/user-profile.module').then(module => module.UserProfileModule)
   },
   {
       path: 'list',
@@ -65,7 +71,7 @@ const routes: Routes = [
     //     path: 'groupOverview',
     //     component: GroupOverviewComponent
     //   },
-    //   {
+    // ,  {
     //     path: 'userApproval',
     //     component: UserApprovalComponent
     //   },
