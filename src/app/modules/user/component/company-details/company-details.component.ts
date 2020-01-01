@@ -17,7 +17,7 @@ export class CompanyDetailsComponent implements OnInit {
   public companyDetailsForm = new FormGroup({
     userDetailId: new FormControl("", ),
     companyName: new FormControl("", [Validators.required]),
-    address1: new FormControl("", [Validators.required]),
+    address1: new FormControl("", ),
     address2: new FormControl("", [Validators.required]),
     gst: new FormControl("", [Validators.required]),
     otp: new FormControl("", []),
@@ -25,13 +25,13 @@ export class CompanyDetailsComponent implements OnInit {
     country: new FormControl("", [Validators.required]),
     state: new FormControl("", [Validators.required]),
     city: new FormControl("", [Validators.required]),
-    pinCode: new FormControl("", [Validators.required]),
+    pinCode: new FormControl("", [Validators.required,Validators.minLength(6),Validators.maxLength(6)]),
     mobile1: new FormControl("", [Validators.required]),
     mobile2: new FormControl("", [Validators.required]),
     emailBusiness: new FormControl("", [Validators.required]),
-    annualTurnover1: new FormControl("", [Validators.required]),
-    annualTurnover2: new FormControl("", [Validators.required]),
-    annualTurnover3: new FormControl("", [Validators.required])
+    annualTurnover1: new FormControl("", ),
+    annualTurnover2: new FormControl("",),
+    annualTurnover3: new FormControl("", )
   });
   //  annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
   public initializeAnnualTurnOver(): FormGroup {
@@ -46,5 +46,9 @@ export class CompanyDetailsComponent implements OnInit {
     if(this.companyDetailsForm.valid) {
       this.company_details.emit(this.companyDetailsForm.value);
     } else console.log("company details", this.companyDetailsForm);
+  }
+   get f()
+  {
+    return this.companyDetailsForm.controls;
   }
 }

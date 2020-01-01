@@ -13,6 +13,7 @@ export class UserGroupEditviewComponent implements OnInit {
   groupId: any;
   public selectedUserGroup: UserGroup;
   public doNotShowBack:any='doNotShowBack';
+  public selectedUserType:any;
 
   public activeTab: string;
   public editProfile1: boolean;
@@ -81,5 +82,15 @@ export class UserGroupEditviewComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  getUserType()
+  {
+   
+    if(this.selectedUserGroup)
+      {
+        this.selectedUserType=this.selectedUserGroup.userRole
+      }
+ this.editProfile = !this.editProfile;
   }
 }

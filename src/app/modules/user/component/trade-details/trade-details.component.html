@@ -16,6 +16,8 @@
             >{{ item?.productType }}</option
           >
         </select>
+        <!-- <small *ngIf="f.productType.value.length==0 && (f.productType.dirty || f.productType.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -34,6 +36,8 @@
             >{{ item?.productCategory }}</option
           >
         </select>
+        <!-- <small *ngIf="f.productCategory.value.length==0 && (f.productCategory.dirty || f.productCategory.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -52,6 +56,8 @@
             >{{ item?.productShape }}</option
           >
         </select>
+        <!-- <small *ngIf="f.productShape.value.length==0 && (f.productShape.dirty || f.productShape.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -70,6 +76,8 @@
             >{{ item?.productClass }}</option
           >
         </select>
+        <!-- <small *ngIf="f.productClass.value.length==0 && (f.productClass.dirty || f.productClass.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
       </div>
     </div>
   </div>
@@ -87,6 +95,8 @@
             placeholder="Min"
             required
           />
+          <small *ngIf="f.thicknessMin.value.length==0 && (f.thicknessMin.dirty || f.thicknessMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
         <div class="col-md-6 mb-3">
           <input
@@ -96,6 +106,8 @@
             placeholder="Max"
             required
           />
+          <small *ngIf="f.thicknessMax.value.length==0 && (f.thicknessMax.dirty || f.thicknessMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
       </div>
     </div>
@@ -110,6 +122,8 @@
             placeholder="Min"
             required
           />
+          <small *ngIf="f.widthMin.value.length==0 && (f.widthMin.dirty || f.widthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
         <div class="col-md-6 mb-3">
           <input
@@ -119,6 +133,8 @@
             placeholder="Max"
             required
           />
+          <small *ngIf="f.widthMax.value.length==0 && (f.widthMax.dirty || f.widthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
       </div>
     </div>
@@ -133,6 +149,8 @@
             placeholder="Min"
             required
           />
+          <small *ngIf="f.lengthMin.value.length==0 && (f.lengthMin.dirty || f.lengthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
         <div class="col-md-6 mb-3">
           <input
@@ -142,6 +160,8 @@
             placeholder="Max"
             required
           />
+          <small *ngIf="f.lengthMax.value.length==0 && (f.lengthMax.dirty || f.lengthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
       </div>
     </div>
@@ -158,6 +178,8 @@
             placeholder="Min"
             required
           />
+          <small *ngIf="f.temperMin.value.length==0 && (f.temperMin.dirty || f.temperMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
         <div class="col-md-6 mb-3">
           <input
@@ -167,6 +189,8 @@
             placeholder="Max"
             required
           />
+          <small *ngIf="f.temperMax.value.length==0 && (f.temperMax.dirty || f.temperMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
       </div>
     </div>
@@ -181,11 +205,13 @@
         placeholder=""
         required
       />
+      <small *ngIf="f.monthlyRequirement.value.length==0 && (f.monthlyRequirement.dirty || f.monthlyRequirement.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
     </div>
     <div class="col-md-offset-6 col-md-3 mb-3">
       <div class="mt-4">
         <button
-          type="button"
+          type="button" [disabled]="tradeDetails.status != 'VALID'"
           class="btn btn-primary btn-sm"
           (click)="addMore()"
         >

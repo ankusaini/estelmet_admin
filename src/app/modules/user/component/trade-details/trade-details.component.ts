@@ -92,6 +92,10 @@ export class TradeDetailsComponent implements OnInit {
     })
   }
 
+  get f()
+  {
+    return this.tradeDetails.controls;
+  }
   getProductTempor() {
     this._staticData.getProductTempor().subscribe(data=>{
       this.productTemporList = data;

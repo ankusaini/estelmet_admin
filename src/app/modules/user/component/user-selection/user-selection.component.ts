@@ -16,6 +16,7 @@ export class UserSelectionComponent implements OnInit {
   
   public selectedType : string;
 
+
   constructor(
     private userService: UserService,
     private userDataService : UserDataService

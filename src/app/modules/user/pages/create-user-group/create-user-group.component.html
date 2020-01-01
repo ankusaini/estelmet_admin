@@ -1,10 +1,10 @@
 <app-card cardTitle="Create User Group" [options]="false">
-  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+  <wizard  #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
     <wizard-step stepTitle="Create Group Id " navigationSymbol="1">
 
       <app-create-group-id (groupData)="getGroupIdData($event)" ></app-create-group-id>
     </wizard-step>
-    <wizard-step stepTitle="Search User" navigationSymbol="2">
+    <wizard-step *ngIf="showSecondWizard" stepTitle="Search User" navigationSymbol="2">
       <!-- (userData)="getSelectedUser($event)" -->
      <app-user-selection  (userData)="getSelectedUser($event)"></app-user-selection>
     </wizard-step>
