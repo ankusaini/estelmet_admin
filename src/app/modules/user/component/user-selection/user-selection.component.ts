@@ -13,16 +13,16 @@ export class UserSelectionComponent implements OnInit {
     @Output() userData : EventEmitter<any> = new EventEmitter<any>();
 
   @Input() 
-  selectedUserType:any='CUSTOMER';
+  selectedUserType:any;
   @Input()
   doNotShowBack:any;
-  public selectedType:any='CUSTOMER';
   constructor(private userService:UserService) { }
 
   ngOnInit() {
     console.log("doNotShowBack",this.doNotShowBack)
-    console.log("in user slect",this.selectedType)
-    this.getAllUserByUserRoleAndStatus(this.selectedType);
+    console.log("selectedUserType",this.selectedUserType)
+    this.getAllUserByUserRoleAndStatus(this.selectedUserType);
+    this.selectedUserList=[];
   }
 
   getAllUserByUserRoleAndStatus(selectedUserType)

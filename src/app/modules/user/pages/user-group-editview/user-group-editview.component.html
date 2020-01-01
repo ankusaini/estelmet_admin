@@ -140,8 +140,8 @@
         aria-labelledby="profile-tab">
         <div class="merge-card">
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Product Details</h5>
-            <button type="button" (click)="this.editProfile = !this.editProfile;"
+            <h5 class="mb-0">User Details</h5>
+            <button type="button" (click)="getUserType()"
               class="btn btn-primary btn-sm rounded m-0 float-right">Add More</button>
 
           </app-card>
@@ -173,8 +173,8 @@
                             <td>
                                 <span class="badge badge-light-success">{{user.status}}</span>
                                 <div class="overlay-edit">
-                                    <button (click)="selectUser(user)" type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
+                                    <!-- <button (click)="selectUser(user)" type="button" class="btn btn-icon btn-success"><i
+                      class="feather icon-check-circle"></i></button> -->
 
                                 </div>
                             </td>
@@ -189,7 +189,7 @@
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
     <wizard-step stepTitle="Search User" navigationSymbol="2">
 
-          <app-user-selection [doNotShowBack]="doNotShowBack"></app-user-selection>         
+          <app-user-selection [selectedUserType]="selectedUserType" [doNotShowBack]="doNotShowBack"></app-user-selection>         
     </wizard-step>   
           </app-card>
         </div>

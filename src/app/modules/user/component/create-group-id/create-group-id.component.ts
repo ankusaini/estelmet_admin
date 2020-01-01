@@ -44,10 +44,8 @@ export class CreateGroupIdComponent implements OnInit {
   }
 
     createGroupSubmit() {
-      console.log("form",this.createGroupForm)
       let userGroupName=this.createGroupForm.controls.productType.value+"-"+this.createGroupForm.controls.productCategory.value+"-"+this.createGroupForm.controls.minThickness.value+"-"+this.createGroupForm.controls.maxThickness.value;
       this.createGroupForm.controls.userGroupName.patchValue(userGroupName);
-            console.log("form",this.createGroupForm)
 
     if(this.createGroupForm.valid) {
       this.groupData.emit(this.createGroupForm.value);

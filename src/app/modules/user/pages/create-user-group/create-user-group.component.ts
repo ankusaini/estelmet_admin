@@ -14,7 +14,7 @@ export class CreateUserGroupComponent implements OnInit {
   public firstFormData:any;
   public secondFormData:any;
   public userArray: FormArray;
-
+  public showSecondWizard:boolean=false;
  public userGroupForm = new FormGroup({
     userGroupId: new FormControl("" ),
     userRole: new FormControl(""),
@@ -46,9 +46,11 @@ export class CreateUserGroupComponent implements OnInit {
 
   getGroupIdData(data)
   {
+    this.showSecondWizard=true;
     this.firstFormData=data;
     this.selectedUserType=data.userRole;
     this.userGroupForm.patchValue(data);
+    
   }
       getSelectedUser(selectedUser)
       {
@@ -67,5 +69,10 @@ export class CreateUserGroupComponent implements OnInit {
         },error=>{
 
         })
+      }
+
+      onStep1Next(event)
+      {
+        console.log("event is ",event);
       }
 }
