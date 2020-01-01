@@ -127,6 +127,10 @@ export class CreateUserComponent implements OnInit {
 
   final_submit(data: boolean) {
     console.log(this.userDto);
-    this._userService.saveUser(this.userDto);
+    this._userService.saveUser(this.userDto).subscribe(data=>{
+    
+    },error=>{
+      
+    });
   }
 }

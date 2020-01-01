@@ -42,10 +42,13 @@ export class UserService {
       });
     });
   }
-  saveUser(data) {
+  
+  saveUser(data): Observable<User> {
+     return new Observable<User>(obs => {
     this._apiService.post('/users/createUser',data).subscribe(res=>{
       console.log(res);
-    })
+    });
+     });
   }
 
 }
