@@ -43,12 +43,11 @@ export class UserKeyPersonComponent implements OnInit {
   ngAfterContentChecked(): void {
     if(this.selectedUser && this.keyPersonDetails){
       let tempArray = this.keyPersonDetails.get('details') as FormArray;
-      console.log(tempArray.controls[0].value.name);
       for (let index = 0; index < tempArray.length; index++) {
-        this.selectedUser.userDetail.keyPerson[index].name = tempArray.controls[0].value.name;
-        this.selectedUser.userDetail.keyPerson[index].designation = tempArray.controls[0].value.designation;
-        this.selectedUser.userDetail.keyPerson[index].mobile1 = tempArray.controls[0].value.mobile1;
-        this.selectedUser.userDetail.keyPerson[index].email1 = tempArray.controls[0].value.email1;
+        this.selectedUser.userDetail.keyPerson[index].name = tempArray.controls[index].value.name;
+        this.selectedUser.userDetail.keyPerson[index].designation = tempArray.controls[index].value.designation;
+        this.selectedUser.userDetail.keyPerson[index].mobile1 = tempArray.controls[index].value.mobile1;
+        this.selectedUser.userDetail.keyPerson[index].email1 = tempArray.controls[index].value.email1;
       }
     }
    }

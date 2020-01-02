@@ -10,6 +10,7 @@ import {
 import { Subscription } from "rxjs";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { User } from 'src/app/shared/Models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: "app-user-profile",
@@ -35,7 +36,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private lightbox: Lightbox,
-    private _userService : UserDataService,
+    private _userDataService : UserDataService,
+    private _userService : UserService,
     private lightboxEvent: LightboxEvent,
     private lighboxConfig: LightboxConfig
   ) {
@@ -62,7 +64,7 @@ export class UserProfileComponent implements OnInit {
     }
     lighboxConfig.fadeDuration = 1;
 
-    this._userService.items$.subscribe(data=>{
+    this._userDataService.items$.subscribe(data=>{
       this.selectedUser = data;
       console.log(this.selectedUser);
     })
@@ -86,8 +88,8 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  print(events) {
-    console.log(events);
+  updateUser() {
     console.log(this.selectedUser);
+    this._userService.updateUser(this.selectedUser);
   }
 }

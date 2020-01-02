@@ -48,4 +48,10 @@ export class UserService {
     })
   }
 
+  updateUser(data) {
+    this._apiService.put('/users/updateUser',data).subscribe(res=>{
+      console.log(res);
+    })
+  }
+
 }

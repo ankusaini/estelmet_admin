@@ -50,14 +50,14 @@
               <td>-</td>
               <td>-</td>
               <td>-</td>
-              <td></td>
               <td>-</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>{{ item.monthlyRequirement + 'mt' }}</td>
-              <td>{{ item.monthlyRequirement + 'mt' }}</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>{{ item.monthlyRequirement ? item.monthlyRequirement + 'mt' : '-' }}</td>
+              <td>{{ item.monthlyRequirement ? item.monthlyRequirement + 'mt' : '-' }}</td>
               <td>No remarks</td>
               <td>
                 <button type="button" class="btn btn-icon btn-success"><i
@@ -71,141 +71,167 @@
       </div>
     </app-card>
     <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
+      <form [formGroup]="tradeDetails">
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Type</label>
+          <div class="col-sm-3">
+            <select formControlName="productType" class="form-control" id="exampleFormControlSelect1">
+              <option
+                *ngFor="let item of productTypeList"
+                [value]="item?.productType"
+              >{{ item?.productType }}</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
+          <div class="col-sm-3">
+            <select formControlName="productCategory" class="form-control" id="exampleFormControlSelect1">
+              <option
+              *ngFor="let item of productCategoryList"
+              [value]="item?.productCategory"
+              >{{ item?.productCategory }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Shape</label>
+          <div class="col-sm-3">
+            <select formControlName="productShape" class="form-control" id="exampleFormControlSelect1">
+              <option
+              *ngFor="let item of productShapeList"
+              [value]="item?.productShape"
+              >{{ item?.productShape }}</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Class</label>
+          <div class="col-sm-3">
+            <select formControlName="productClass"  class="form-control" id="exampleFormControlSelect1">
+              <option
+                *ngFor="let item of productClassList"
+                [value]="item?.productClass"
+              >{{ item?.productClass }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range</label>
+          <div class="col-sm-3">
+            <div class="row">
+              <div class="col-md-6"> <input formControlName="thicknessMin" type="text" class="form-control" placeholder="Min"></div>
+              <div class="col-md-6"> <input formControlName="thicknessMax" type="text" class="form-control" placeholder="Max"></div>
+            </div>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Width Range</label>
+          <div class="col-sm-3">
+            <div class="row">
+              <div class="col-md-6"> <input formControlName="widthMin" type="text" class="form-control" placeholder="Min"></div>
+              <div class="col-md-6"> <input formControlName="widthMax" type="text" class="form-control" placeholder="Max"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Length Range</label>
+          <div class="col-sm-3">
+            <div class="row">
+              <div class="col-md-6"> <input formControlName="lengthMin" type="text" class="form-control" placeholder="Min"></div>
+              <div class="col-md-6"> <input formControlName="lengthMax" type="text" class="form-control" placeholder="Max"></div>
+            </div>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
+          <div class="col-sm-3">
+            <div class="row">
+              <div class="col-md-6"> <input formControlName="temporMin" type="text" class="form-control" placeholder="Min"></div>
+              <div class="col-md-6"> <input formControlName="temporMax" type="text" class="form-control" placeholder="Max"></div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">CFRS</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">CR</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Defect</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">MWC</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Origin</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">2A</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Oiling</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">CFRS</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Surface</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">CR</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Annealing</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">MWC</option>
+            </select>
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Finish</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="1">2A</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Gross Wt.</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Mt.">
+          </div>
+          <label class="col-sm-3 col-form-label font-weight-bolder">Net Wt.</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Mt.">
+          </div>
+        </div> -->
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label font-weight-bolder">Monthly Requirment</label>
+          <div class="col-sm-9">
+            <input formControlName="monthlyRequirement" type="text" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-12">
+            <button style="text-align: right;" type="button" [disabled] = "tradeDetails.status != 'VALID'" class="btn btn-primary" (click)="addMore()">Add More</button>&nbsp;
+          </div>
+        </div>
+      </form>
 
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Type</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">CFRS</option>
-          </select>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">CR</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Shape</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">MWC</option>
-          </select>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Class</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">2A</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range</label>
-        <div class="col-sm-3">
-          <div class="row">
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-          </div>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Width Range</label>
-        <div class="col-sm-3">
-          <div class="row">
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Length Range</label>
-        <div class="col-sm-3">
-          <div class="row">
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-          </div>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
-        <div class="col-sm-3">
-          <div class="row">
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"></div>
-            <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max"></div>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">CFRS</option>
-          </select>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">CR</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Defect</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">MWC</option>
-          </select>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Origin</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">2A</option>
-          </select>
-        </div>
-      </div>
-      <!--  -->
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Oiling</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">CFRS</option>
-          </select>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Surface</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">CR</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Annealing</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">MWC</option>
-          </select>
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Finish</label>
-        <div class="col-sm-3">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1">2A</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-3 col-form-label font-weight-bolder">Gross Wt.</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="Mt.">
-        </div>
-        <label class="col-sm-3 col-form-label font-weight-bolder">Net Wt.</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="Mt.">
-        </div>
-      </div>
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label class="col-sm-3 col-form-label font-weight-bolder">Remarks</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" placeholder="">
         </div>
-      </div>
-      <div class="form-group row">
+      </div> -->
+     
+      <!-- <div class="form-group row">
         <label class="col-sm-3 col-form-label"></label>
         <div class="col-sm-2">
           <button type="button" class="btn btn-primary">Save</button>&nbsp;
@@ -217,6 +243,6 @@
               Cancel
             </button></span>
         </div>
-      </div>
+      </div> -->
     </app-card>
   </div>

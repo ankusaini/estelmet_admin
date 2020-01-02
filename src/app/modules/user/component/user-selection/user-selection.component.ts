@@ -13,6 +13,7 @@ export class UserSelectionComponent implements OnInit {
   public selectedUserList: User[] = [];
   @Output() userData: EventEmitter<any> = new EventEmitter<any>();
   @Input() doNotShowBack: any;
+  @Input() selectedUserType :string;
   
   public selectedType : string;
 
