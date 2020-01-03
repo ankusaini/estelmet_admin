@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-7">
       <app-card cardTitle="Add Product Finish" [options]="false">
-        <form [formGroup]="productFinishFormGroup" #validationForm="ngForm" class="editForm" novalidate>
+        <form [formGroup]="productFinishFormGroup" (submit)="saveFinish()" #validationForm="ngForm" class="editForm" novalidate>
           <div class="row">
             <div class="col-md-12">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Code <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
-                    <input formControlName="id" type="text" class="form-control">
+                    <input formControlName="parentId" type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -28,8 +28,8 @@
                 </div>
               </div>
             </div>
+            <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Finish</button>
           </form>
-          <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Finish</button>
         </app-card>
     </div>
   </div>
@@ -59,7 +59,7 @@
                       class="feather icon-check-circle"></i></button>&nbsp;
                
                     <button type="button" class="btn btn-icon btn-danger" ><i
-                        class="feather icon-trash-2"></i></button>
+                        class="feather icon-trash-2" (click)="deleteFinish(Finish)"></i></button>
                 
                 </td>
               </tr>

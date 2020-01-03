@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-7">
       <app-card cardTitle="Add Product Defect" [options]="false">
-        <form [formGroup]="producDefectFormGroup" #validationForm="ngForm" class="editForm" novalidate>
+        <form [formGroup]="producDefectFormGroup" (submit)="saveProductDefect()" #validationForm="ngForm" class="editForm" novalidate>
           <div class="row">
             <div class="col-md-12">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Code <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
-                    <input formControlName="id" type="text" class="form-control">
+                    <input formControlName="parentId" type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -28,8 +28,8 @@
                 </div>
               </div>
             </div>
+            <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Defect</button>
           </form>
-          <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Defect</button>
         </app-card>
     </div>
   </div>

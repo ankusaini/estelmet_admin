@@ -1,0 +1,15 @@
+<div class="container">
+    <div [formGroup]="loginForm" class="row">
+        <div class="col-lg-12">
+            <label for="username">Username</label>
+            <input formControlName="username" type="text" name="username" id="">
+        </div>
+        <div class="col-lg-12">
+            <label for="password">Password</label>
+            <input formControlName="password" type="password" name="" id="">
+        </div>
+        <div class="col-lg-12">
+            <input type="submit" value="submit" (click)="login()">
+        </div>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { UserService } from 'src/app/shared/services/user.service';
 import { User, Status } from 'src/app/shared/Models/user.model';
+import { UserDataService } from 'src/app/shared/services/data/userData.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-create-user",
@@ -14,7 +16,9 @@ export class CreateUserComponent implements OnInit {
   public userDto : User = {};
 
   constructor(
-    private _userService : UserService
+    private _userService : UserService,
+    private _userDataService : UserDataService,
+    private _router : Router
   ) {
     this.isSubmit = false;
   }
@@ -127,6 +131,12 @@ export class CreateUserComponent implements OnInit {
 
   final_submit(data: boolean) {
     console.log(this.userDto);
-    this._userService.saveUser(this.userDto);
+    this._userService.saveUser(this.userDto).subscribe(data=>{
+      console.log(data);
+      this._userDataService.add(data);
+      this._router.navigate(['/users/profile',data.id]);
+    },error=>{
+      
+    });
   }
 }

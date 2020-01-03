@@ -11,6 +11,7 @@ import { Subscription } from "rxjs";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { User } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-user-profile",
@@ -19,9 +20,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class UserProfileComponent implements OnInit {
   public activeTab: string;
-
-  public editProfile: boolean;
-  public editProfileIcon: string;
 
   public editContact: boolean;
   public editContactIcon: string;
@@ -33,9 +31,12 @@ export class UserProfileComponent implements OnInit {
   private subscription: Subscription;
 
   selectedUser : User;
+  status : boolean = false;
+  id: any;
 
   constructor(
     private lightbox: Lightbox,
+    private _route : ActivatedRoute,
     private _userDataService : UserDataService,
     private _userService : UserService,
     private lightboxEvent: LightboxEvent,
@@ -43,8 +44,6 @@ export class UserProfileComponent implements OnInit {
   ) {
     this.activeTab = "home";
 
-    this.editProfile = false;
-    this.editProfileIcon = "icon-edit";
 
     this.editContact = false;
     this.editContactIcon = "icon-edit";
@@ -63,9 +62,16 @@ export class UserProfileComponent implements OnInit {
       this.albums.push(album);
     }
     lighboxConfig.fadeDuration = 1;
-
+    this._route.params.subscribe(param=>{
+      this.id = param['id'];
+    })
     this._userDataService.items$.subscribe(data=>{
       this.selectedUser = data;
+      if(!Object.keys(this.selectedUser).length){
+        this.getUserById(this.id);
+      } else{
+        this.status = true;
+      }
       console.log(this.selectedUser);
     })
   }
@@ -91,5 +97,12 @@ export class UserProfileComponent implements OnInit {
   updateUser() {
     console.log(this.selectedUser);
     this._userService.updateUser(this.selectedUser);
+  }
+
+  getUserById(id:any) {
+    this._userService.getUserById(id).subscribe(res=>{
+      this.selectedUser = res;
+      this.status = true;
+    })
   }
 }

@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserLoginService {
 
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
@@ -82,7 +82,7 @@ export class UserService {
 
   attemptAuth(credentials): Observable<User> {
     const route = '/login';
-    return this.apiService.post(route, credentials).pipe(
+    return this.apiService.post2(route, credentials).pipe(
       map(data => {
         console.log("login res",data.headers.get('authorization'));
         this.setAuth(data.headers.get('authorization'));

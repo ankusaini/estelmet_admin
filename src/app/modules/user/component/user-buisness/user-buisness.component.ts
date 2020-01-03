@@ -10,11 +10,16 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class UserBuisnessComponent implements OnInit {
 
   @Input() selectedUser : User;
-  private buisnessDetailForm : FormGroup
+  private buisnessDetailForm : FormGroup;
+  public editProfile: boolean;
+  public editProfileIcon: string;
 
   constructor(
     private _fb : FormBuilder,
-  ) { }
+  ) { 
+    this.editProfile = false;
+    this.editProfileIcon = "icon-edit";
+  }
 
   ngOnInit() {
     if(this.selectedUser) {

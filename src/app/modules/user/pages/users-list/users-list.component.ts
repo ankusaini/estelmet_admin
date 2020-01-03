@@ -124,7 +124,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
   goToView(user : User) {
     this._dataService.add(user).subscribe(()=>{
-      this.router.navigateByUrl('/users/profile');
+      this.router.navigate(['/users/profile',user.id]);
     });
   }
 

@@ -33,7 +33,7 @@ export class StaticDataService {
             let store_Class : string = window.sessionStorage['productClass'];
             if(store_Class) {
                 this.productClass = JSON.parse(store_Class);
-                console.log("product Class",this.productClass);
+                // console.log("product Class",this.productClass);
                 data.next(this.productClass);
                 data.complete();
             } else {
@@ -42,9 +42,9 @@ export class StaticDataService {
                     this.saveProductClass(item);
                     data.next(this.productClass);
                     data.complete();
-                    console.log("cat543",this.productClass);
+                    // console.log("cat543",this.productClass);
                 },error=>{
-                console.log('error');
+                // console.log('error');
                 });
             }
         });
@@ -55,7 +55,7 @@ export class StaticDataService {
             let store_Type : string = window.sessionStorage['productType'];
             if(store_Type) {
                 this.productType = JSON.parse(store_Type);
-                console.log("product Type",this.productType);
+                // console.log("product Type",this.productType);
                 data.next(this.productType);
                 data.complete();
             } else {
@@ -64,9 +64,9 @@ export class StaticDataService {
                     this.saveProductType(item);
                     data.next(this.productType);
                     data.complete();
-                    console.log("cat543",this.productType);
+                    // console.log("cat543",this.productType);
                 },error=>{
-                console.log('error');
+                // console.log('error');
                 });
             }
         });
@@ -77,7 +77,7 @@ export class StaticDataService {
             let store_Shape : string = window.sessionStorage['productShape'];
             if(store_Shape) {
                 this.productShape = JSON.parse(store_Shape);
-                console.log("product Shape",this.productShape);
+                // console.log("product Shape",this.productShape);
                 data.next(this.productShape);
                 data.complete();
             } else {
@@ -86,9 +86,9 @@ export class StaticDataService {
                     this.saveProductShape(item);
                     data.next(this.productShape);
                     data.complete();
-                    console.log("cat543",this.productShape);
+                    // console.log("cat543",this.productShape);
                 },error=>{
-                console.log('error');
+                // console.log('error');
                 });
             }
         });
@@ -99,7 +99,7 @@ export class StaticDataService {
             let store_Tempor : string = window.sessionStorage['productTempor'];
             if(store_Tempor) {
                 this.productTemper = JSON.parse(store_Tempor);
-                console.log("product Class",this.productTemper);
+                // console.log("product Class",this.productTemper);
                 data.next(this.productTemper);
                 data.complete();
             } else {
@@ -108,9 +108,9 @@ export class StaticDataService {
                     this.saveProductTempor(item);
                     data.next(this.productTemper);
                     data.complete();
-                    console.log("cat543",this.productTemper);
+                    // console.log("cat543",this.productTemper);
                 },error=>{
-                console.log('error');
+                // console.log('error');
                 });
             }
         });
@@ -121,7 +121,7 @@ export class StaticDataService {
             let store_Category : string = window.sessionStorage['productCategory'];
             if(store_Category) {
                 this.productCategory = JSON.parse(store_Category);
-                console.log("product Category",this.productCategory);
+                // console.log("product Category",this.productCategory);
                 data.next(this.productCategory);
                 data.complete();
             } else {
@@ -130,9 +130,9 @@ export class StaticDataService {
                     this.saveProductCategory(item);
                     data.next(this.productCategory);
                     data.complete();
-                    console.log("cat543",this.productCategory);
+                    // console.log("cat543",this.productCategory);
                 },error=>{
-                console.log('error');
+                // console.log('error');
                 });
             }
         });
@@ -143,7 +143,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productCoating"];
             if(store_coating){
                 this.productCoating =  JSON.parse(store_coating);
-                console.log("product Category",this.productCategory);
+                // console.log("product Category",this.productCategory);
                 data.next(this.productCoating);
                 data.complete();
             }else{
@@ -153,7 +153,7 @@ export class StaticDataService {
                     data.next(this.productCoating);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -165,7 +165,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productOiling"];
             if(store_coating){
                 this.productOiling =  JSON.parse(store_coating);
-                console.log("productOiling",this.productOiling);
+                // console.log("productOiling",this.productOiling);
                 data.next(this.productOiling);
                 data.complete();
             }else{
@@ -175,7 +175,7 @@ export class StaticDataService {
                     data.next(this.productOiling);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -187,7 +187,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productSurface"];
             if(store_coating){
                 this.productSurface =  JSON.parse(store_coating);
-                console.log("productSurface",this.productSurface);
+                // console.log("productSurface",this.productSurface);
                 data.next(this.productSurface);
                 data.complete();
             }else{
@@ -197,7 +197,7 @@ export class StaticDataService {
                     data.next(this.productSurface);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -209,7 +209,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productOrigin"];
             if(store_coating){
                 this.productOrigin =  JSON.parse(store_coating);
-                console.log("productOrigin",this.productOrigin);
+                // console.log("productOrigin",this.productOrigin);
                 data.next(this.productOrigin);
                 data.complete();
             }else{
@@ -219,7 +219,7 @@ export class StaticDataService {
                     data.next(this.productOrigin);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -231,7 +231,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productAnnealing"];
             if(store_coating){
                 this.productAnnealing =  JSON.parse(store_coating);
-                console.log("productAnnealing",this.productAnnealing);
+                // console.log("productAnnealing",this.productAnnealing);
                 data.next(this.productAnnealing);
                 data.complete();
             }else{
@@ -241,7 +241,7 @@ export class StaticDataService {
                     data.next(this.productAnnealing);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -254,7 +254,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productDefect"];
             if(store_coating){
                 this.productDefect =  JSON.parse(store_coating);
-                console.log("productDefect",this.productDefect);
+                // console.log("productDefect",this.productDefect);
                 data.next(this.productDefect);
                 data.complete();
             }else{
@@ -264,7 +264,7 @@ export class StaticDataService {
                     data.next(this.productDefect);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -277,7 +277,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productFinish"];
             if(store_coating){
                 this.productFinish =  JSON.parse(store_coating);
-                console.log("productFinish",this.productFinish);
+                // console.log("productFinish",this.productFinish);
                 data.next(this.productFinish);
                 data.complete();
             }else{
@@ -287,7 +287,7 @@ export class StaticDataService {
                     data.next(this.productFinish);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -299,7 +299,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productPackaging"];
             if(store_coating){
                 this.productPackaging =  JSON.parse(store_coating);
-                console.log("productPackaging",this.productPackaging);
+                // console.log("productPackaging",this.productPackaging);
                 data.next(this.productPackaging);
                 data.complete();
             }else{
@@ -309,7 +309,7 @@ export class StaticDataService {
                     data.next(this.productPackaging);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
 
             }
@@ -321,7 +321,7 @@ export class StaticDataService {
             let store_coating = window.sessionStorage["productHardness"];
             if(store_coating){
                 this.productHardness =  JSON.parse(store_coating);
-                console.log("productHardness",this.productHardness);
+                // console.log("productHardness",this.productHardness);
                 data.next(this.productHardness);
                 data.complete();
             }else{
@@ -331,7 +331,7 @@ export class StaticDataService {
                     data.next(this.productHardness);
                     data.complete();
                 },error=>{
-                    console.log('error');
+                    // console.log('error');
                 });
             }
         });
@@ -342,7 +342,7 @@ export class StaticDataService {
     //         let store_Filter : string = window.sessionStorage['productFilter'];
     //         if(store_Filter) {
     //             this.searchFilter = JSON.parse(store_Filter);
-    //             console.log("product Category",this.searchFilter);
+                // console.log("product Category",this.searchFilter);
     //             data.next(this.searchFilter);
     //             data.complete();
     //         } else {
@@ -351,9 +351,9 @@ export class StaticDataService {
     //                 this.saveProductFilter(item);
     //                 data.next(this.searchFilter);
     //                 data.complete();
-    //                 console.log("cat543",this.searchFilter);
+                    // console.log("cat543",this.searchFilter);
     //             },error=>{
-    //             console.log('error');
+                // console.log('error');
     //             });
     //         }
     //     });

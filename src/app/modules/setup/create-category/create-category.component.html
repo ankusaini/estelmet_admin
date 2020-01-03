@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-md-7">
       <app-card cardTitle="Add Product Category" [options]="false">
-        <form [formGroup] = "productCategoryForm" class="editForm" novalidate>
+        <form [formGroup] = "productCategoryForm" (submit)="saveCategory()" class="editForm" novalidate>
           <div class="row">
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Code <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
                     <input formControlName = "parentId" type="text" class="form-control">
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-md-12">
                 <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Category <small class="asterik_sign">*</small></label>
@@ -28,8 +28,9 @@
                 </div>
               </div>
             </div>
+            <button type="submit" class="btn btn-primary btn-sm">Add Product Category</button>
           </form>
-          <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Category</button>
+     
         </app-card>
     </div>
   </div>
@@ -59,7 +60,7 @@
                       class="feather icon-check-circle"></i></button>&nbsp;
                
                     <button type="button" class="btn btn-icon btn-danger" ><i
-                        class="feather icon-trash-2"></i></button>
+                        class="feather icon-trash-2" (click)="deleteCategory(category)"></i></button>
                 
                 </td>
               </tr>

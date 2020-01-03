@@ -27,6 +27,7 @@ import { UserKeyPersonComponent } from "./component/user-key-person/user-key-per
 import { UserTradeDetailsComponent } from "./component/user-trade-details/user-trade-details.component";
 import { UserBuisnessComponent } from "./component/user-buisness/user-buisness.component";
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserApprovalComponent } from "src/app/modules/user/pages/user-approval/user-approval.component";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     UserKeyPersonComponent,
     UserProfileComponent,
     UserTradeDetailsComponent,
-    UserBuisnessComponent
+    UserBuisnessComponent,
+    UserApprovalComponent
   ],
   imports: [
     CommonModule,

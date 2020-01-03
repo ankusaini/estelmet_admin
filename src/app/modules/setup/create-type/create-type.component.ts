@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProductService } from "src/app/shared/services/product.service";
 import { ProductType } from "src/app/shared/Models/product.model.";
 import { StaticDataService } from 'src/app/shared/services/Data/static-data.service';
+import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
   selector: 'app-create-type',
@@ -12,11 +13,12 @@ import { StaticDataService } from 'src/app/shared/services/Data/static-data.serv
 export class CreateTypeComponent implements OnInit {
 
   public productTypeList:ProductType[];
-  constructor(private productService:StaticDataService) { }
+ 
+  constructor(private productService:StaticDataService, private _commonService : CommonService) { }
 
     productTypeForm = new FormGroup({
     id: new FormControl(""),
-    productCode: new FormControl('',[Validators.required,Validators.minLength(2)]),
+    // productCode: new FormControl('',[Validators.required,Validators.minLength(2)]),
     productType: new FormControl("",[Validators.required]),
     description: new FormControl("",[Validators.required]),
   });
@@ -34,18 +36,26 @@ export class CreateTypeComponent implements OnInit {
 
   productTypeOnSubmit()
   {
-
-    if(this.productTypeForm.invalid)
-      {
-        console.log("form invalid")
-        alert("invalid form")
-      }
-    else
-      {
-        console.log("inside fun");
-        this.productTypeList.push(this.productTypeForm.value);
-        this.productService.saveProductType(this.productTypeForm.value);
-
-      }
+    console.log(this.productTypeForm);
+    if(this.productTypeForm.valid) {
+     // this.productTypeForm.reset();
+      this._commonService.saveProductType(this.productTypeForm.value).subscribe(res=>{
+        console.log(res);
+        this.productTypeList.push(res);
+        this.productService.saveProductType(this.productTypeList);
+      })
+    } else {
+      console.log('all fields are nessessary');
+    }
   }
+
+  deleteType(productType : ProductType){
+    this._commonService.deleteProductType(productType.id.toString()).subscribe(res=>{
+      this.productTypeList = this.productTypeList.filter(element => {
+        return element!=productType
+      });
+      this.productService.saveProductType(this.productTypeList);
+    });
+  }
+
 }

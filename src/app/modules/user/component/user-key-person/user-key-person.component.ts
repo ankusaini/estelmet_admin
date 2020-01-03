@@ -11,6 +11,16 @@ export class UserKeyPersonComponent implements OnInit {
 
   @Input() selectedUser : User;
   private keyPersonDetails : FormGroup;
+  data = [
+    {
+      editProfile : false,
+      editProfileIcon : "icon-edit",
+    },
+    {
+      editProfile : false,
+      editProfileIcon : "icon-edit"
+    }
+  ]
 
   constructor(
     private _fb : FormBuilder

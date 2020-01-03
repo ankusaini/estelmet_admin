@@ -42,16 +42,28 @@ export class UserService {
       });
     });
   }
-  saveUser(data) {
+  
+  saveUser(data): Observable<User> {
+     return new Observable<User>(obs => {
     this._apiService.post('/users/createUser',data).subscribe(res=>{
       console.log(res);
-    })
+      obs.next(res.body);
+    });
+     });
   }
 
   updateUser(data) {
     this._apiService.put('/users/updateUser',data).subscribe(res=>{
       console.log(res);
     })
+  }
+
+  getUserById(userId) {
+    return new Observable<User>(obs=>{
+      this._apiService.get(`/users/find/${userId}`).subscribe(res=>{
+          obs.next(res);
+      });
+    });   
   }
 
 }

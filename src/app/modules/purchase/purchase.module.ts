@@ -8,10 +8,12 @@ import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { ShareModule } from 'src/app/shared/shared.module';
 import { ViewMRComponent } from './pages/view-mr/view-mr.component';
 import { DataTablesModule } from 'angular-datatables';
+import { PcApprovalComponent } from './pages/purchase-confirmation/pc-approval/pc-approval.component';
+import { PcEditComponent } from 'src/app/demo/purchase/purchase-confirmation/pc-edit/pc-edit.component';
 
 
 @NgModule({
-  declarations: [CreateMRComponent, ViewMRComponent],
+  declarations: [CreateMRComponent, ViewMRComponent,PcApprovalComponent,PcEditComponent],
   imports: [
     CommonModule,
     PurchaseRoutingModule,

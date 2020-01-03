@@ -103,7 +103,7 @@
 <!-- profile body start -->
 <div class="row">
   <div class="col-md-8 order-md-2">
-    <div class="tab-content" id="myTabContent">
+    <div *ngIf="status" class="tab-content" id="myTabContent">
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
         aria-labelledby="home-tab">
         <app-user-personal-detail [selectedUser]="selectedUser" (check)="print($event)"></app-user-personal-detail>
@@ -130,7 +130,7 @@
     </div>
   </div>
   <div class="col-md-4 order-md-1">
-    <div class="merge-card">
+    <div *ngIf="status" class="merge-card">
      <app-card [customHeader]="true" headerClass="border-0 p-2 pb-0" [options]="false" cardClass="user-card user-card-1" blockClass="pt-0 users-contact">
                 <div class="app-card-header">
                   <div class="cover-img-block">
@@ -159,8 +159,8 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <h6 class="mb-1 mt-3">UDAY PINGAT</h6>
-                  <p class="mb-3 text-c-green">Approved</p>
+                  <h6 class="mb-1 mt-3">{{ selectedUser.firstName }}</h6>
+                  <p class="mb-3 text-c-green">{{ selectedUser.userRole }}</p>
                 </div>
                 <hr class="wid-80 b-wid-3 my-4">
                 <div class="row text-center">

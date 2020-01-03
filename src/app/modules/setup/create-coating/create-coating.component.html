@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-7">
       <app-card cardTitle="Add Product Coating" [options]="false">
-        <form [formGroup]="productCoatingFormGroup" #validationForm="ngForm" class="editForm" novalidate>
+        <form [formGroup]="productCoatingFormGroup" (submit)="saveCoating()" #validationForm="ngForm" class="editForm" novalidate>
           <div class="row">
             <div class="col-md-12">
               <div class="form-group row">
@@ -28,8 +28,8 @@
                 </div>
               </div>
             </div>
+            <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Coating</button>
           </form>
-          <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Coating</button>
         </app-card>
     </div>
   </div>
@@ -50,7 +50,7 @@
             </thead>
             <tbody>
               <tr *ngFor = "let Coating of productCoatingList">
-                  <td>{{Coating.id}}</td>
+                  <td></td>
                   <td>{{Coating.id}}</td>
                   <td>{{Coating.productCoating}}</td>
                   <td>{{Coating.description}}</td>
@@ -59,7 +59,7 @@
                       class="feather icon-check-circle"></i></button>&nbsp;
                
                     <button type="button" class="btn btn-icon btn-danger" ><i
-                        class="feather icon-trash-2"></i></button>
+                        class="feather icon-trash-2" (click)="deleteCoating(Coating)"></i></button>
                 
                 </td>
               </tr>

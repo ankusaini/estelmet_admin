@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import {AuthComponent} from './theme/layout/auth/auth.component';
+import { AuthGuardService } from './shared/services/authgaurd/authGuard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
+    canActivate : [AuthGuardService],
     children: [
       {
         path: '',
@@ -32,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'inventory',
-        loadChildren: () => import('./modules/inventory/inventory.module').then(module => module.InventoryModule)
+        loadChildren: () => import('./demo/inventory/inventory.module').then(module => module.InventoryModule)
       },
       {
         path: 'processing',
@@ -63,6 +65,10 @@ const routes: Routes = [
         loadChildren: () => import('./demo/salesLead/salesLead.module').then(module => module.SalesLeadModule)
       }
     ]
+  },
+  {
+    path : 'account',
+    loadChildren : () => import('./modules/account/account.module').then(module => module.AccountModule)
   },
   {
     path: '',

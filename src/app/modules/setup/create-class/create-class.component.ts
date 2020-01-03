@@ -51,4 +51,14 @@ export class CreateClassComponent implements OnInit {
       console.log('all fields are nessessary');
     }
   }
+
+  deleteClass(productShape : ProductClass){
+    this._commonService.deleteProductClass(productShape.id.toString()).subscribe(res=>{
+      this.producClassList = this.producClassList.filter(element => {
+        return element!=productShape
+      });
+      this.productClass.saveProductClass(this.producClassList);
+    });
+  }
+
 }

@@ -13,11 +13,14 @@ export class UserPersonalDetailComponent implements OnInit {
   @Output() check : EventEmitter<string> = new EventEmitter<string>();
 
   private prsnlDetailForm : FormGroup;
+  public editProfile: boolean;
+  public editProfileIcon: string;
 
   constructor(
     private _fb : FormBuilder
   ) {
-
+    this.editProfile = false;
+    this.editProfileIcon = "icon-edit";
    }
 
   ngOnInit() {

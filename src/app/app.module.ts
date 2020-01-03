@@ -26,6 +26,7 @@ import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpTokenInterceptorService } from './shared/services/http/http-token-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { HttpTokenInterceptorService } from './shared/services/http/http-token-i
     NavSearchComponent,
     NavRightComponent,
     ConfigurationComponent,
-    ToggleFullScreenDirective
+    ToggleFullScreenDirective,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +57,7 @@ import { HttpTokenInterceptorService } from './shared/services/http/http-token-i
     NgbTabsetModule
   ],
   providers: [
+    CookieService,
     NavigationItem,
       {
         provide: HTTP_INTERCEPTORS,

@@ -10,7 +10,7 @@ import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { SelectModule } from 'ng-select';
 import { FileUploadModule } from '@iplab/ngx-file-upload'
 import { InventoryRoutingModule } from "src/app/modules/inventory/inventory.routing";
-import { MaterialClassificationSpecificationComponent } from "src/app/shared/components/material-classification-specification/material-classification-specification.component";
+// import { MaterialClassificationSpecificationComponent } from "src/app/shared/components/material-classification-specification/material-classification-specification.component";
 import { AddProductCartComponent } from "src/app/shared/components/add-product-cart/add-product-cart.component";
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { ProductApprovalComponent } from './pages/product-approval/product-approval.component';
@@ -28,7 +28,10 @@ import {
 
 
 @NgModule({
-  declarations: [AddProductComponent, SelectGrnComponent,MaterialClassificationSpecificationComponent,AddProductCartComponent, EditProductComponent, ProductApprovalComponent, ProductOverviewComponent, SearchViewProductComponent],
+  declarations: [AddProductComponent, SelectGrnComponent,
+    // MaterialClassificationSpecificationComponent,
+    // AddProductCartComponent,
+     EditProductComponent, ProductApprovalComponent, ProductOverviewComponent, SearchViewProductComponent],
   imports: [
   CommonModule,
     InventoryRoutingModule,

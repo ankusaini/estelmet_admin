@@ -7,6 +7,7 @@ import { UserGroupListComponent } from "src/app/modules/user/pages/user-group-li
 import { GroupApprovalComponent } from "src/app/modules/user/pages/group-approval/group-approval.component";
 import { UserGroupEditviewComponent } from "src/app/modules/user/pages/user-group-editview/user-group-editview.component";
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserApprovalComponent } from "src/app/modules/user/pages/user-approval/user-approval.component";
 
 
 const routes: Routes = [
@@ -15,13 +16,17 @@ const routes: Routes = [
     component : CreateUserComponent
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
     component : UserProfileComponent
     // loadChildren: () => import('./pages/user-profile/user-profile.module').then(module => module.UserProfileModule)
   },
   {
       path: 'list',
     component : UsersListComponent
+  },
+   {
+      path: 'userApproval',
+    component : UserApprovalComponent
   },
    {
       path: 'createGroup',
