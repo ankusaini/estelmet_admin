@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateMRComponent } from './pages/create-mr/create-mr.component';
-import { ViewMRComponent } from './pages/view-mr/view-mr.component';
+import { CreateMRComponent } from "src/app/modules/purchase/pages/mr/create-mr/create-mr.component";
+import { ViewMRComponent } from "src/app/modules/purchase/pages/mr/view-mr/view-mr.component";
 
 
 const routes: Routes = [
+
   {
     path: 'createMr',
     component: CreateMRComponent

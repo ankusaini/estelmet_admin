@@ -1,7 +1,4 @@
-<app-card cardTitle="Add New User" [options]="false">
-    <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-      <wizard-step stepTitle="Create MR" navigationSymbol="1">
-        <div class="row">
+<div class="row">
           <div class="col-sm-12">
             <h5>Create Material Requirement Id</h5>
             <hr>
@@ -119,19 +116,3 @@
             </div>
           </div>
         </div>
-      </wizard-step>
-      <wizard-step stepTitle="Add Product" navigationSymbol="2">
-            <app-material-classification-specification></app-material-classification-specification>
-       <div class="m-t-20">
-        <!-- <app-add-product-cart></app-add-product-cart> -->
-        <app-add-product-cart></app-add-product-cart>
-       </div>
-        <div class="col-sm-12 centered-content m-t-20">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm">Submit</button>
-          </div>
-        </div>
-      </wizard-step>
-    </wizard>
-  </app-card>
