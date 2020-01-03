@@ -430,7 +430,7 @@ export class StaticDataService {
                 data.next(this.companyClass);
                 data.complete();
             } else {
-                this._commonService.getProductClass('/inventory/productClassification/getAllCompany').subscribe(item=>{
+                this._commonService.getAllCompany('/inventory/productClassification/getAllCompany').subscribe(item=>{
                     this.companyClass = item;
                     this.saveCompanyClass(item);
                     data.next(this.companyClass);

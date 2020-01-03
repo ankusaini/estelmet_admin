@@ -47,7 +47,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <app-card *ngIf="selectedUserList && selectedUserList.length >0" [hidHeader]="false" cardTitle="View Above Selected Customer/s" [options]="false" cardClass="user-profile-list">
+        <!-- *ngIf="selectedUserList && selectedUserList.length >0" -->
+        <app-card  [hidHeader]="false" cardTitle="View Above Selected Customer/s" [options]="false" cardClass="user-profile-list">
             <div class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover">
                     <thead>
