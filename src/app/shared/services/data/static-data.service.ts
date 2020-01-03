@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape, ProductCoating, ProductOiling, ProductSurfaceCoating, ProductOrigin, ProductAnnealing, ProductDefect, ProductFinish, ProductPackaging, ProductHardness } from '../../Models/product.model.';
 import { Observable } from 'rxjs';
+import { Company } from "src/app/shared/Models/company.model.";
 // import { ProductFilter } from '../interfaces/product-filter';
 
 @Injectable({providedIn: 'root'})
 
 export class StaticDataService {
 
+    companyClass : Company[];
     productClass : ProductClass[];
     productCategory : ProductCategory[];
     productTemper : ProductTemper[];
@@ -409,8 +411,35 @@ export class StaticDataService {
         window.sessionStorage['productOrigin'] = JSON.stringify(data);
     }
     
+    saveCompanyClass(data:Company[])
+    {
+                window.sessionStorage['storeCompany'] = JSON.stringify(data);
+
+    }
     // saveProductFilter( data : ProductFilter[] ) {
     //     window.sessionStorage['productFilter'] = JSON.stringify(data);
     // }
     
+
+        getAllCompany() : Observable<Company[]> {
+        return new Observable(data=>{
+            let store_Company : string = window.sessionStorage['storeCompany'];
+            if(store_Company) {
+                this.companyClass = JSON.parse(store_Company);
+                console.log("product Class",this.companyClass);
+                data.next(this.companyClass);
+                data.complete();
+            } else {
+                this._commonService.getAllCompany('/inventory/productClassification/getAllCompany').subscribe(item=>{
+                    this.companyClass = item;
+                    this.saveCompanyClass(item);
+                    data.next(this.companyClass);
+                    data.complete();
+                    console.log("cat543",this.companyClass);
+                },error=>{
+                console.log('error');
+                });
+            }
+        });
+    }
 }
