@@ -1,9 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import {IAlbum, IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
-import {Subscription} from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import {
+  IAlbum,
+  IEvent,
+  Lightbox,
+  LIGHTBOX_EVENT,
+  LightboxConfig,
+  LightboxEvent
+} from "ngx-lightbox";
+import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { UserGroup } from "src/app/shared/Models/user.model";
 import { UserService } from "src/app/shared/services/user.service";
+import { UserDataService } from 'src/app/shared/services/data/userData.service';
 @Component({
   selector: "app-user-group-editview",
   templateUrl: "./user-group-editview.component.html",
@@ -12,8 +20,8 @@ import { UserService } from "src/app/shared/services/user.service";
 export class UserGroupEditviewComponent implements OnInit {
   groupId: any;
   public selectedUserGroup: UserGroup;
-  public doNotShowBack:any='doNotShowBack';
-  public selectedUserType:any;
+  public doNotShowBack: any = "doNotShowBack";
+  public selectedUserType: any;
 
   public activeTab: string;
   public editProfile1: boolean;
@@ -36,18 +44,22 @@ export class UserGroupEditviewComponent implements OnInit {
     private lightboxEvent: LightboxEvent,
     private lighboxConfig: LightboxConfig,
     private route: ActivatedRoute,
+    private _userDataService : UserDataService,
     private userService: UserService
   ) {
     this.routerSubscription = this.route.url.subscribe(params => {
       this.groupId = this.route.snapshot.params.groupId;
       if (this.groupId) {
-        let url="/users/group/find/"+this.groupId;
-          this.userService.findUserGroupById(url).subscribe(data=>{
-            this.selectedUserGroup=data;
-            console.log("selected user",this.selectedUserGroup);
-        },error=>{
-          console.log("error")
-        });
+        let url = "/users/group/find/" + this.groupId;
+        this.userService.findUserGroupById(url).subscribe(
+          data => {
+            this.selectedUserGroup = data;
+            console.log("selected user", this.selectedUserGroup);
+          },
+          error => {
+            console.log("error");
+          }
+        );
       }
     });
     // /users/group/find/12
@@ -84,13 +96,12 @@ export class UserGroupEditviewComponent implements OnInit {
     }
   }
 
-  getUserType()
-  {
-   
-    if(this.selectedUserGroup)
-      {
-        this.selectedUserType=this.selectedUserGroup.userRole
-      }
- this.editProfile = !this.editProfile;
+  getUserType() {
+    if (this.selectedUserGroup) {
+      this.selectedUserType = this.selectedUserGroup.userRole;
+      this._userDataService.addGroup(this.selectedUserGroup).subscribe(()=>{
+        this.editProfile = !this.editProfile;
+      });
+    }
   }
 }

@@ -38,7 +38,7 @@ export class UserService {
   createUserGroup(url,data): Observable<UserGroup> {
     return new Observable<UserGroup>(obs => {
       this._apiService.post(url,data).subscribe(res => {
-        obs.next(res);
+        obs.next(res.body);
       });
     });
   }

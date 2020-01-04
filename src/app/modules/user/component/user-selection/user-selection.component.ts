@@ -1,26 +1,29 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { UserService } from "src/app/shared/services/user.service";
-import { User } from "src/app/shared/Models/user.model";
+import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 
 @Component({
   selector: "app-user-selection",
   templateUrl: "./user-selection.component.html",
-  styleUrls: ["./user-selection.component.scss"]
+  styleUrls: ["./user-selection.component.scss"],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class UserSelectionComponent implements OnInit {
-  public userList: User[];
+  public userList2: User[];
   public selectedUserList: User[] = [];
   @Output() userData: EventEmitter<any> = new EventEmitter<any>();
   @Input() doNotShowBack: any;
   @Input() selectedUserType :string;
+  // @Input() selectedUserGroup : UserGroup;
   
   public selectedType : string;
 
 
   constructor(
     private userService: UserService,
-    private userDataService : UserDataService
+    private userDataService : UserDataService,
+    private _cd : ChangeDetectorRef
   ) {
     this.userDataService.userRoleData$.subscribe(data=>{
       this.selectedType = data;
@@ -30,6 +33,11 @@ export class UserSelectionComponent implements OnInit {
         this.selectedUserList = [];
       }
     });
+    this.userDataService.group$.subscribe(data=>{
+      console.log(data);
+      this.selectedUserList = data.user;
+      this.getAllUserByUserRoleAndStatus(data.userRole);
+    })
   }
 
   ngOnInit() {
@@ -43,8 +51,8 @@ export class UserSelectionComponent implements OnInit {
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
-        this.userList = data;
-        console.log("userlist", this.userList);
+        this.userList2 = data;
+        console.log("userlist", this.userList2);
       },
       error => {}
     );

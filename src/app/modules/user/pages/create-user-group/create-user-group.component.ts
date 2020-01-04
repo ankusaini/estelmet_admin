@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { UserService } from "src/app/shared/services/user.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user-group',
@@ -10,7 +11,7 @@ import { UserService } from "src/app/shared/services/user.service";
 export class CreateUserGroupComponent implements OnInit {
 
   public selectedUserType:any;
-  constructor(public userService:UserService) { }
+  constructor(public userService:UserService,public router:Router) { }
   public firstFormData:any;
   public secondFormData:any;
   public userArray: FormArray;
@@ -66,6 +67,7 @@ export class CreateUserGroupComponent implements OnInit {
         console.log("path",path)
         this.userService.createUserGroup(path,this.userGroupForm.value).subscribe(data=>{
             console.log("user group created",data)
+            this.router.navigate(['/users/editGroup',data.userGroupId]);
         },error=>{
 
         })

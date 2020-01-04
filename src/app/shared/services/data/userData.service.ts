@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, timer } from 'rxjs';
-import { User } from '../../Models/user.model';
+import { User, UserGroup } from '../../Models/user.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -13,9 +13,19 @@ export class UserDataService {
     private userRole$ : BehaviorSubject<string> = new BehaviorSubject("");
     readonly userRoleData$  :Observable<string> = this.userRole$.asObservable();
 
+    private userGroup$: BehaviorSubject<UserGroup> = new BehaviorSubject({} as UserGroup);
+    readonly group$: Observable<UserGroup> = this.userGroup$.asObservable();
+
+
     add(data : User) :Observable<void>{
         return timer(200).pipe(map(() => {
             this.userSubject$.next(data);
+        }));
+    }
+
+    addGroup(data:UserGroup) : Observable<void> {
+        return timer(200).pipe(map(()=>{
+            this.userGroup$.next(data);
         }));
     }
 
