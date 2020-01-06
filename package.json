@@ -38,6 +38,7 @@
     "angular2-tinymce": "^3.3.0",
     "apexcharts": "^3.8.0",
     "bootstrap": "^4.3.1",
+    "country-state-city": "^1.0.0",
     "css-animator": "^2.3.1",
     "datatables.net": "^1.10.19",
     "datatables.net-buttons": "^1.5.6",

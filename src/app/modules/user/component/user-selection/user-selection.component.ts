@@ -53,6 +53,7 @@ export class UserSelectionComponent implements OnInit {
       data => {
         this.userList2 = data;
         console.log("userlist", this.userList2);
+        this._cd.detectChanges();
       },
       error => {}
     );

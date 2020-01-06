@@ -14,26 +14,24 @@
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Address Line 1 <small class="asterik_sign">*</small></label>
           <input formControlName="address1" type="text" class="form-control" placeholder="" required>
-         <!-- <small *ngIf="f.address1.value.length==0 && (f.address1.dirty || f.address1.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small> -->
+         <small *ngIf="f.address1.value.length==0 && (f.address1.dirty || f.address1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Address Line 2</label>
           <input formControlName="address2" type="text" class="form-control" placeholder="" required>
-        <small *ngIf="f.address2.value.length==0 && (f.address2.dirty || f.address2.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
+        <!-- <small *ngIf="f.address2.value.length==0 && (f.address2.dirty || f.address2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Country <small class="asterik_sign">*</small></label>
-            <select formControlName="country" class="form-control" id="exampleFormControlSelect1">
-              <option value="" disabled>Select Country</option>
-              <option value="India">India</option>
-              <option value="UAE">UAE</option>
-              <option value="USA">USA</option>
+            <select formControlName="country" class="form-control" id="exampleFormControlSelect1" #country (change)="getAllState(country.value)">
+              <option value="India" disabled>Select Country</option>
+              <option *ngFor="let item of countryList" [value]="item.id" > {{ item?.name }}</option>
             </select>
            <small *ngIf="f.country.value.length==0 && (f.country.dirty || f.country.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>
@@ -43,12 +41,9 @@
         <div class="col-md-5 mb-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">State <small class="asterik_sign">*</small></label>
-            <select  formControlName="state" class="form-control" id="exampleFormControlSelect1">
+            <select  formControlName="state" class="form-control" id="exampleFormControlSelect1" #state (change)="getAllCity(state.value)">
               <option value="" disabled>Select State</option>
-              <option value="Delhi">Delhi</option>
-              <option value="Haryana">Haryana</option>
-              <option value="Goa">Goa</option>
-              <option value="UP">UP</option>
+              <option *ngFor="let item of state_list" [value]="item.id" > {{ item?.name }}</option>
             </select>
            <small *ngIf="f.state.value.length==0 && (f.state.dirty || f.state.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>
@@ -61,10 +56,7 @@
             <label for="exampleFormControlSelect1">City <small class="asterik_sign">*</small></label>
             <select formControlName="city" class="form-control" id="exampleFormControlSelect1">
               <option value="" disabled>Select City</option>
-              <option>Panipat</option>
-              <option>Model Town</option>
-              <option>Uttam Nagar</option>
-              <option>Samalkha</option>
+              <option *ngFor="let item of city_list" [value]="item.id" > {{ item?.name }}</option>
             </select>
           <small *ngIf="f.city.value.length==0 && (f.city.dirty || f.city.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>
@@ -91,24 +83,24 @@
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Mobile</label>
           <input formControlName="mobile1" type="text" class="form-control" placeholder="Mobile" required>
-      <small *ngIf="f.mobile1.value.length==0 && (f.mobile1.dirty || f.mobile1.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
+      <!-- <small *ngIf="f.mobile1.value.length==0 && (f.mobile1.dirty || f.mobile1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Landline</label>
           <input  formControlName="mobile2" type="text" class="form-control" placeholder="Landline" required>
-      <small *ngIf="f.mobile2.value.length==0 && (f.mobile2.dirty || f.mobile2.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
+      <!-- <small *ngIf="f.mobile2.value.length==0 && (f.mobile2.dirty || f.mobile2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5 mb-3">
           <label for="validationCustom02">Email</label>
           <input  formControlName="emailBusiness" type="text" class="form-control" placeholder="Business Email" required>
-        <small *ngIf="f.emailBusiness.value.length==0 && (f.emailBusiness.dirty || f.emailBusiness.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-        </div>
+        <!-- <small *ngIf="f.emailBusiness.value.length==0 && (f.emailBusiness.dirty || f.emailBusiness.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>-->
+        </div> 
       </div>
       <div class="form-row">
          <div class="col-md-5">
@@ -145,7 +137,7 @@
       <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary btn-sm" nextStep [disabled]="companyDetailsForm.status != 'VALID'">Continue</button>
+            <button type="submit" class="btn btn-primary btn-sm" nextStep >Continue</button>
           </div>
         </div>
 </form>
