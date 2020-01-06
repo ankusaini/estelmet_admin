@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import Swal from 'sweetalert2';
-import { DataTableDirective } from 'angular-datatables';
+import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
+import Swal from "sweetalert2";
+import { DataTableDirective } from "angular-datatables";
 import { UserService } from "src/app/shared/services/user.service";
 import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
@@ -11,14 +11,13 @@ import { Subject } from "rxjs";
   styleUrls: ["./group-approval.component.scss"]
 })
 export class GroupApprovalComponent implements OnInit {
-  selectedTab: string='PENDING';
-
+  selectedTab: string = "PENDING";
 
   public pendingUserGroupList: UserGroup[] = [];
   public approvedUserGroupList: UserGroup[] = [];
   public rejectedUserGroupList: UserGroup[] = [];
 
-  public selectedUserGroupList:UserGroup[]=[];
+  public selectedUserGroupList: UserGroup[] = [];
 
   constructor(private userService: UserService) {
     this.basicSwal();
@@ -108,47 +107,42 @@ export class GroupApprovalComponent implements OnInit {
     if (tab && tab.activeId == "pendingTab") {
       this.selectedTab = "APPROVED";
     }
-     if (tab && tab.activeId == "approvedTab") {
+    if (tab && tab.activeId == "approvedTab") {
       this.selectedTab = "REJECTED";
     }
-    this.selectedUserGroupList=[];
+    this.selectedUserGroupList = [];
   }
 
-    selectUser(userGroup:UserGroup)
-  {
-     const index: number = this.selectedUserGroupList.indexOf(userGroup);
+  selectUser(userGroup: UserGroup) {
+    const index: number = this.selectedUserGroupList.indexOf(userGroup);
     if (index == -1) {
-    this.selectedUserGroupList.push(userGroup);
+      this.selectedUserGroupList.push(userGroup);
+    } else {
+      alert("already added");
     }
-  else{
-    alert("already added");
   }
 
-  }
 
-  changeStatusOfSelectedGroup(status)
-  {
-    if(this.selectedUserGroupList.length==0)
-      {
-        alert("select at least one");
+
+  changeStatusOfSelectedGroup(status) {
+    if (this.selectedUserGroupList.length == 0) {
+      alert("select at least one");
+    } else {
+      let path = "/users/group/updateuseringroup";
+      console.log("path", path);
+      for (let i = 0; i < this.selectedUserGroupList.length; i++) {
+        this.selectedUserGroupList[i].status = status;
+
+        console.log("selected group", this.selectedUserGroupList[i]);
+        this.userService
+          .createUserGroup(path, this.selectedUserGroupList[i])
+          .subscribe(
+            data => {
+              console.log("user group created", data);
+            },
+            error => {}
+          );
       }
-      else
-        {
-           let path="/users/group/updateUserGroup";
-        console.log("path",path)
-          for(let i=0;i<this.selectedUserGroupList.length;i++)
-            {
-              this.selectedUserGroupList[i].status=status;
-              
-              console.log("selected group",this.selectedUserGroupList[i]);
-               this.userService.createUserGroup(path,this.selectedUserGroupList[i]).subscribe(data=>{
-            console.log("user group created",data)
-        },error=>{
-
-        });
-        
-            }
-        }
+    }
   }
 }
- 

@@ -3,6 +3,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { User, Status } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { Router } from '@angular/router';
+import csc from 'country-state-city';
 
 @Component({
   selector: "app-create-user",
@@ -55,9 +56,9 @@ export class CreateUserComponent implements OnInit {
     this.userDto.userDetail.gst = data.gst;
     this.userDto.userDetail.otp = data.otp;
     this.userDto.userDetail.numberOfEmployees = data.numberOfEmployees;
-    this.userDto.userDetail.country = data.country;
-    this.userDto.userDetail.state = data.state;
-    this.userDto.userDetail.city = data.city;
+    this.userDto.userDetail.country = csc.getCountryById(data.country).name;
+    this.userDto.userDetail.state = csc.getStateById(data.state).name;
+    this.userDto.userDetail.city = csc.getCityById(data.city).name;
     this.userDto.userDetail.pinCode = data.pinCode;
     this.userDto.userDetail.mobile1 = data.mobile1;
     this.userDto.userDetail.mobile2 = data.mobile2
@@ -81,7 +82,7 @@ export class CreateUserComponent implements OnInit {
       year : '2018-2019',
       turnover : data.annualTurnover3
     });
-    
+    console.log(this.userDto);
   }
 
   tradeData(data: any[]) {

@@ -19,6 +19,7 @@ export class TradeDetailsComponent implements OnInit {
   productTypeList : ProductType[];
   productShapeList : ProductShape[];
   productTemporList : ProductTemper[];
+  countryList: any;
 
   constructor(
     private _staticData : StaticDataService,
@@ -42,14 +43,12 @@ export class TradeDetailsComponent implements OnInit {
     thicknessMax: new FormControl("", [Validators.required]),
     temperMin: new FormControl("", [Validators.required]),
     temperMax: new FormControl("", [Validators.required]),
-    lengthMin: new FormControl("", [Validators.required]),
-    lengthMax: new FormControl("", [Validators.required]),
-    widthMin: new FormControl("", [Validators.required]),
-    widthMax: new FormControl("", [Validators.required]),
+    lengthMin: new FormControl("", []),
+    lengthMax: new FormControl("", []),
+    widthMin: new FormControl("", []),
+    widthMax: new FormControl("", []),
     monthlyRequirement: new FormControl("", [Validators.required])
   });
-
-
 
   tradeDetailsFormOnSubmit() {
     if(this.tradeArr.length > 0) {
