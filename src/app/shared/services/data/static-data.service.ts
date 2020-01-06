@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ProductService } from '../product.service';
 import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape, ProductCoating, ProductOiling, ProductSurfaceCoating, ProductOrigin, ProductAnnealing, ProductDefect, ProductFinish, ProductPackaging, ProductHardness } from '../../Models/product.model.';
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 import { Company } from "src/app/shared/Models/company.model.";
+import { Warehouse } from "src/app/shared/Models/warehouse";
 // import { ProductFilter } from '../interfaces/product-filter';
 
 @Injectable({providedIn: 'root'})
@@ -10,6 +11,7 @@ import { Company } from "src/app/shared/Models/company.model.";
 export class StaticDataService {
 
     companyClass : Company[];
+    warehouseClass : Warehouse[];
     productClass : ProductClass[];
     productCategory : ProductCategory[];
     productTemper : ProductTemper[];
@@ -413,8 +415,12 @@ export class StaticDataService {
     
     saveCompanyClass(data:Company[])
     {
-                window.sessionStorage['storeCompany'] = JSON.stringify(data);
-
+        window.sessionStorage['storeCompany'] = JSON.stringify(data);
+    }
+     
+    saveWarehouse(data:Warehouse[])
+    {
+        window.sessionStorage['storeWarehouse'] = JSON.stringify(data);
     }
     // saveProductFilter( data : ProductFilter[] ) {
     //     window.sessionStorage['productFilter'] = JSON.stringify(data);
@@ -430,12 +436,34 @@ export class StaticDataService {
                 data.next(this.companyClass);
                 data.complete();
             } else {
-                this._commonService.getAllCompany('/inventory/productClassification/getAllCompany').subscribe(item=>{
+                this._commonService.getAllCompany('/inventory/getAllCompany').subscribe(item=>{
                     this.companyClass = item;
                     this.saveCompanyClass(item);
                     data.next(this.companyClass);
                     data.complete();
-                    console.log("cat543",this.companyClass);
+                    console.log("cat543",this.companyClass);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                },error=>{
+                console.log('error');
+                });
+            }
+        });
+    }
+
+
+    getAllwarehouse():Observable<Warehouse[]>
+    {
+ return new Observable(data=>{
+            let store_Warehouse : string = window.sessionStorage['storeWarehouse'];
+            if(store_Warehouse) {
+                this.warehouseClass = JSON.parse(store_Warehouse);
+                data.next(this.warehouseClass);
+                data.complete();
+            } else {
+                this._commonService.getAllWarehouse('/inventory/getAllWarehouse').subscribe(item=>{
+                    this.warehouseClass = item;
+                    this.saveWarehouse(item);
+                    data.next(this.warehouseClass);
+                    data.complete();
                 },error=>{
                 console.log('error');
                 });
