@@ -1,0 +1,71 @@
+<form [formGroup]="keyPersonDetails" (submit)="keyPersonDetailSubmit()">
+<div class="row">
+    <div class="col-md-5">
+      <h5>Key Person 1</h5>
+      <hr>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Full Name <small class="asterik_sign">*</small></label>
+          <input formControlName="fullName1" type="text" class="form-control" placeholder="Full Name" required>
+          <small *ngIf="f.fullName1.value.length==0 && (f.fullName1.dirty || f.fullName1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Designation <small class="asterik_sign">*</small></label>
+          <input formControlName="designation1"  type="text" class="form-control" placeholder="Designation" required>
+          <small *ngIf="f.designation1.value.length==0 && (f.designation1.dirty || f.designation1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Mobile <small class="asterik_sign">*</small></label>
+          <input formControlName="mobile1"  type="text" class="form-control" placeholder="Mobile" required>
+          <small *ngIf="f.mobile1.value.length==0 && (f.mobile1.dirty || f.mobile1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
+          <input formControlName="email1"  type="text" class="form-control" placeholder="Email" required>
+          <small *ngIf="f.email1.value.length==0 && (f.email1.dirty || f.email1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <h5>Key Person 2</h5>
+      <hr>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Full Name <small class="asterik_sign">*</small></label>
+          <input formControlName="fullName2"  type="text" class="form-control" placeholder="Full Name" required>
+          <small *ngIf="f.fullName2.value.length==0 && (f.fullName2.dirty || f.fullName2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Designation <small class="asterik_sign">*</small></label>
+          <input formControlName="designation2" type="text" class="form-control" placeholder="Designation" required>
+          <small *ngIf="f.designation2.value.length==0 && (f.designation2.dirty || f.designation2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Mobile <small class="asterik_sign">*</small></label>
+          <input formControlName="mobile2" type="text" class="form-control" placeholder="Mobile" required>
+          <small *ngIf="f.mobile2.value.length==0 && (f.mobile2.dirty || f.mobile2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
+          <input formControlName="email2" type="text" class="form-control" placeholder="Email" required>
+          <small *ngIf="f.email2.value.length==0 && (f.email2.dirty || f.email2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 centered-content">
+          <div class="btn-group mt-10">
+            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary btn-sm" nextStep [disabled]="keyPersonDetails.status != 'VALID'">Continue</button>
+          </div>
+        </div>
+</form>

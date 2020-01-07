@@ -1,0 +1,269 @@
+<div class="user-profile user-card mb-4">
+  <div class="card-header border-0 p-0 pb-0">
+    <div class="cover-img-block">
+      <div class="overlay"></div>
+      <div class="change-cover">
+        <div class="dropdown" ngbDropdown placement="bottom-left">
+          <a class="drp-icon dropdown-toggle" ngbDropdownToggle data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false"><i class="icon feather icon-camera"></i></a>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <a class="dropdown-item" href="javascript:"><i class="feather icon-upload-cloud mr-2"></i>upload new</a>
+            <a class="dropdown-item" href="javascript:"><i class="feather icon-image mr-2"></i>from photos</a>
+            <a class="dropdown-item" href="javascript:"><i class="feather icon-film mr-2"></i> upload video</a>
+            <a class="dropdown-item" href="javascript:"><i class="feather icon-trash-2 mr-2"></i>remove</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body py-0">
+    <div class="user-about-block m-0">
+      <div class="row">
+        <div class="col-md-4 text-center mt-md-4">
+          <h2>User Overview</h2>
+          <!-- <div class="change-profile text-center">
+            <div class="dropdown w-auto d-inline-block" ngbDropdown>
+              <a class="dropdown-toggle" data-toggle="dropdown" ngbDropdownToggle aria-haspopup="true"
+                aria-expanded="false">
+                <div class="profile-dp">
+                  <div class="position-relative d-inline-block">
+                    <img class="img-radius img-fluid wid-100" src="assets/images/user/avatar-5.jpg" alt="User image">
+                  </div>
+                  <div class="overlay">
+                    <span>change</span>
+                  </div>
+                </div>
+                <div class="certificated-badge">
+                  <i class="fas fa-certificate text-c-blue bg-icon"></i>
+                  <i class="fas fa-check front-icon text-white"></i>
+                </div>
+              </a>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:"><i class="feather icon-upload-cloud mr-2"></i>upload new</a>
+                <a class="dropdown-item" href="javascript:"><i class="feather icon-image mr-2"></i>from photos</a>
+                <a class="dropdown-item" href="javascript:"><i class="feather icon-shield mr-2"></i>Protact</a>
+                <a class="dropdown-item" href="javascript:"><i class="feather icon-trash-2 mr-2"></i>remove</a>
+              </div>
+            </div>
+          </div> -->
+          <!-- <h5 class="mb-1">Lary Doe</h5>
+          <p class="mb-2 text-muted">UI/UX Designer</p> -->
+        </div>
+        <div class="col-md-8 mt-md-4">
+          <!-- <div class="row">
+            <div class="col-md-6">
+              <a href="javascript:" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i
+                  class="feather icon-globe mr-2 f-18"></i>www.codedthemes.com</a>
+              <div class="clearfix"></div>
+              <a href="mailto:demo@domain.com" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i
+                  class="feather icon-mail mr-2 f-18"></i>demo@domain.com</a>
+              <div class="clearfix"></div>
+              <a href="javascript:" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i
+                  class="feather icon-phone mr-2 f-18"></i>+1 9999-999-999</a>
+            </div>
+            <div class="col-md-6">
+              <div class="media">
+                <i class="feather icon-map-pin mr-2 mt-1 f-18"></i>
+                <div class="media-body">
+                  <p class="mb-0 text-muted">4289 Calvin Street</p>
+                  <p class="mb-0 text-muted">Baltimore, near MD Tower Maryland,</p>
+                  <p class="mb-0 text-muted">Maryland (21201)</p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'home'}"
+                (click)="this.activeTab = 'home'" id="home-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="home" aria-selected="true"><i class="feather icon-home mr-2"></i>Personal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'profile'}"
+                (click)="this.activeTab = 'profile'" id="profile-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="profile" aria-selected="false"><i class="feather icon-user mr-2"></i>Business</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'contact'}"
+                (click)="this.activeTab = 'contact'" id="contact-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="contact" aria-selected="false"><i class="feather icon-phone mr-2"></i>Key Person</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'gallery'}"
+                (click)="this.activeTab = 'gallery'" id="gallery-tab" data-toggle="tab" href="javascript:" role="tab"
+                aria-controls="gallery" aria-selected="false"><i class="feather icon-image mr-2"></i>Trade</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- profile body start -->
+<div class="row">
+  <div class="col-md-8 order-md-2">
+    <div *ngIf="status" class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
+        aria-labelledby="home-tab">
+        <app-user-personal-detail [selectedUser]="selectedUser" (check)="print($event)"></app-user-personal-detail>
+      </div>
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
+        aria-labelledby="profile-tab">
+        <app-user-buisness [selectedUser]="selectedUser"></app-user-buisness>
+      </div>
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'contact'}" id="contact" role="tabpanel"
+        aria-labelledby="contact-tab">
+        
+        <app-user-key-person [selectedUser]="selectedUser"></app-user-key-person>
+      
+      </div>
+      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
+        aria-labelledby="gallery-tab">
+        <app-user-trade-details [selectedUser]="selectedUser"></app-user-trade-details>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div style="text-align: right;" class="col-sm-12">
+        <button type="button" class="btn btn-primary" (click)="updateUser()">Update</button>&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 order-md-1">
+    <div *ngIf="status" class="merge-card">
+     <app-card [customHeader]="true" headerClass="border-0 p-2 pb-0" [options]="false" cardClass="user-card user-card-1" blockClass="pt-0 users-contact">
+                <div class="app-card-header">
+                  <div class="cover-img-block">
+                    <img src="assets/images/widget/slider7.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="user-about-block text-center">
+                  <div class="row align-items-end">
+                    <!-- <div class="col text-left pb-3"><a href="javascript:"><i class="icon feather icon-star text-c-green f-20"></i></a></div> -->
+                    <div class="col"></div>
+                    <div class="col">
+                      <div class="position-relative d-inline-block">
+                        <img class="img-radius img-fluid wid-80" src="assets/images/user/avatar-5.jpg" alt="User image">
+                      </div>
+                    </div>
+                    <div class="col text-right pb-3">
+                      <div class="dropdown" ngbDropdown>
+                        <a class="drp-icon dropdown-toggle" ngbDropdownToggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-horizontal"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                          <a class="dropdown-item" href="javascript:">Action</a>
+                          <a class="dropdown-item" href="javascript:">Another action</a>
+                          <a class="dropdown-item" href="javascript:">Something else here</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <h6 class="mb-1 mt-3">{{ selectedUser.firstName }}</h6>
+                  <p class="mb-3 text-c-green">{{ selectedUser.userRole }}</p>
+                </div>
+                <hr class="wid-80 b-wid-3 my-4">
+                <div class="row text-center">
+                  <div class="col">
+                    <h6 class="mb-1">12</h6>
+                    <p class="mb-0">Total Orders</p>
+                  </div>
+                  <div class="col">
+                    <h6 class="mb-1 text-c-green">4</h6>
+                    <p class="mb-0">Active Orders</p>
+                  </div>
+                  <div class="col">
+                    <h6 class="mb-1 text-c-yellow">2</h6>
+                    <p class="mb-0">Pending Orders</p>
+                  </div>
+                </div>
+              </app-card>
+    </div>
+
+    <!-- <app-card cardTitle="Message" cardClass="new-cust-card" blockClass="p-0 scrollable-body">
+      <perfect-scrollbar [style.max-height]="'415px'" [style.padding-top]="0">
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-1.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>Alex Thompson</h6>
+            </a>
+            <p class="m-b-0">Cheers!</p>
+            <span class="status active"></span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>John Doue</h6>
+            </a>
+            <p class="m-b-0">stay hungry!</p>
+            <span class="status active"></span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-3.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>Alex Thompson</h6>
+            </a>
+            <p class="m-b-0">Cheers!</p>
+            <span class="status deactive">30 min ago</span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>John Doue</h6>
+            </a>
+            <p class="m-b-0">Cheers!</p>
+            <span class="status deactive">10 min ago</span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-5.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>Shirley Hoe</h6>
+            </a>
+            <p class="m-b-0">stay hungry!</p>
+            <span class="status active"></span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-1.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>John Doue</h6>
+            </a>
+            <p class="m-b-0">Cheers!</p>
+            <span class="status active"></span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-2.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>Jon Alex</h6>
+            </a>
+            <p class="m-b-0">stay hungry!</p>
+            <span class="status active"></span>
+          </div>
+        </div>
+        <div class="align-middle m-b-25">
+          <img src="assets/images/user/avatar-3.jpg" alt="user image" class="img-radius align-top m-r-15">
+          <div class="d-inline-block">
+            <a href="javascript:">
+              <h6>John Doue</h6>
+            </a>
+            <p class="m-b-0">Cheers!</p>
+            <span class="status deactive">10 min ago</span>
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </app-card> -->
+  </div>
+</div>
+<!-- profile body end -->

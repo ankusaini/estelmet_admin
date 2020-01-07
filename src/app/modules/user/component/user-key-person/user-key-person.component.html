@@ -1,0 +1,76 @@
+<div class="merge-card" *ngFor="let key of selectedUser?.userDetail?.keyPerson; let i = index">
+    <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
+      <h5 class="mb-0">{{ 'Key Person ' + (i+1) }}</h5>
+      <button type="button"
+        (click)="this.data[i].editProfile = !this.data[i].editProfile; this.data[i].editProfileIcon = this.data[i].editProfile ? 'icon-x': 'icon-edit';"
+        class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+        aria-expanded="false" aria-controls="pro-det-edit-1 pro-det-edit-2">
+        <i class="feather" [ngClass]="data[i].editProfileIcon"></i>
+      </button>
+    </app-card>
+    <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!data[i].editProfile">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label font-weight-bolder">Full Name</label>
+        <div class="col-sm-9">
+          {{ key?.name }}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label font-weight-bolder">Designation</label>
+        <div class="col-sm-9">
+            {{ key?.designation }}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label font-weight-bolder">Mobile</label>
+        <div class="col-sm-9">
+            {{ key?.mobile1 }}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
+        <div class="col-sm-9">
+            {{ key?.email1 }}
+        </div>
+      </div>
+    </app-card>
+    <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="data[i].editProfile">
+      <form [formGroup]="keyPersonDetails">
+        <div formArrayName="details">
+          <div [formGroupName]="i">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Full Name</label>
+              <div class="col-sm-9">
+                <input formControlName="name" type="text" class="form-control" placeholder="Full Name" value="Ramesh Aggarwal">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Designation</label>
+              <div class="col-sm-9">
+                <input formControlName="designation" type="text" class="form-control" placeholder="Designation" value="Senior Manager">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Mobile</label>
+              <div class="col-sm-9">
+                <input formControlName="email1" type="text" class="form-control" placeholder="Mobile" value="+91 - 9871776756">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
+              <div class="col-sm-9">
+                <input formControlName="mobile1" type="text" class="form-control" placeholder="Email" value="rameshAgr@gmail.com">
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </form>
+      <!-- <div class="form-group row">
+        <label class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+          <button type="button" class="btn btn-primary">Save</button>
+        </div>
+      </div> -->
+    </app-card>
+  </div>

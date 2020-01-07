@@ -1,0 +1,288 @@
+<form [formGroup]="tradeDetails" (submit)="tradeDetailsFormOnSubmit()">
+  <div class="form-row">
+    <div class="col-md-3 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1"
+          >Type <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productType"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productTypeList"
+            [value]="item?.productType"
+            >{{ item?.productType }}</option
+          >
+        </select>
+        <!-- <small *ngIf="f.productType.value.length==0 && (f.productType.dirty || f.productType.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1"
+          >Category <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productCategory"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productCategoryList"
+            [value]="item?.productCategory"
+            >{{ item?.productCategory }}</option
+          >
+        </select>
+        <!-- <small *ngIf="f.productCategory.value.length==0 && (f.productCategory.dirty || f.productCategory.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1"
+          >Shape <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productShape"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productShapeList"
+            [value]="item?.productShape"
+            >{{ item?.productShape }}</option
+          >
+        </select>
+        <!-- <small *ngIf="f.productShape.value.length==0 && (f.productShape.dirty || f.productShape.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1"
+          >Class <small class="asterik_sign">*</small></label
+        >
+        <select
+          formControlName="productClass"
+          class="form-control"
+          id="exampleFormControlSelect1"
+        >
+          <option
+            *ngFor="let item of productClassList"
+            [value]="item?.productClass"
+            >{{ item?.productClass }}</option
+          >
+        </select>
+        <!-- <small *ngIf="f.productClass.value.length==0 && (f.productClass.dirty || f.productClass.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02"
+        >Thickness Range (mm) <small class="asterik_sign">*</small></label
+      >
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="thicknessMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
+          <!-- <small *ngIf="f.thicknessMin.value.length==0 && (f.thicknessMin.dirty || f.thicknessMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="thicknessMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
+          <!-- <small *ngIf="f.thicknessMax.value.length==0 && (f.thicknessMax.dirty || f.thicknessMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02">Width Range (mm)</label>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="widthMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
+          <!-- <small *ngIf="f.widthMin.value.length==0 && (f.widthMin.dirty || f.widthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="widthMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
+          <!-- <small *ngIf="f.widthMax.value.length==0 && (f.widthMax.dirty || f.widthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02">Length Range (mm)</label>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="lengthMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
+          <!-- <small *ngIf="f.lengthMin.value.length==0 && (f.lengthMin.dirty || f.lengthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="lengthMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
+          <!-- <small *ngIf="f.lengthMax.value.length==0 && (f.lengthMax.dirty || f.lengthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02"
+        >Temper Range <small class="asterik_sign">*</small></label
+      >
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="temperMin"
+            type="text"
+            class="form-control"
+            placeholder="Min"
+            required
+          />
+          <!-- <small *ngIf="f.temperMin.value.length==0 && (f.temperMin.dirty || f.temperMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+        <div class="col-md-6 mb-3">
+          <input
+            formControlName="temperMax"
+            type="text"
+            class="form-control"
+            placeholder="Max"
+            required
+          />
+          <!-- <small *ngIf="f.temperMax.value.length==0 && (f.temperMax.dirty || f.temperMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom02"
+        >Monthly Requirement (mt.) <small class="asterik_sign">*</small></label
+      >
+      <input
+        formControlName="monthlyRequirement"
+        type="text"
+        class="form-control"
+        placeholder=""
+        required
+      />
+      <!-- <small *ngIf="f.monthlyRequirement.value.length==0 && (f.monthlyRequirement.dirty || f.monthlyRequirement.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+    </div>
+    <div class="col-md-offset-6 col-md-3 mb-3">
+      <div class="mt-4">
+        <button
+          type="button" [disabled]="tradeDetails.status != 'VALID'"
+          class="btn btn-primary btn-sm"
+          (click)="addMore()"
+        >
+          Add More
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <app-card
+      [hidHeader]="true"
+      cardClass="user-profile-list"
+      style="width:100%"
+    >
+      <div class="dt-responsive table-responsive" cardClass="card-datatable">
+        <table datatable class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Shape</th>
+              <th>Class</th>
+              <th>Thick.</th>
+              <th>Width</th>
+              <th>Length</th>
+              <th>Temper</th>
+              <th>Monthly Req.</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tradeArr; let i = index">
+              <td>{{ i + 1 + "." }}</td>
+              <td>{{ item?.productType }}</td>
+              <td>{{ item?.productCategory }}</td>
+              <td>{{ item?.productShape }}</td>
+              <td>{{ item?.productClass }}</td>
+              <td>{{ item?.thicknessMin + " - " + item?.thicknessMax }}</td>
+              <td>{{ item?.widthMin + " - " + item?.widthMax }}</td>
+              <td>{{ item?.lengthMin + " - " + item?.lengthMax }}</td>
+              <td>{{ item?.temperMin + " - " + item?.temperMax }}</td>
+              <td>{{ item?.monthlyRequirement }}</td>
+              <td>
+                <span class="badge badge-light-success">Active</span>
+                <div class="overlay-edit">
+                  <button type="button" class="btn btn-icon btn-success">
+                    <i class="feather icon-check-circle"></i>
+                  </button>
+                  <button type="button" class="btn btn-icon btn-danger">
+                    <i class="feather icon-trash-2"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+
+  <div class="col-sm-12 centered-content">
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>
+        Back</button
+      >&nbsp;&nbsp;
+
+      <button type="submit" class="btn btn-primary btn-sm" nextStep [disabled]="tradeArr.length == 0">
+        Continue
+      </button>
+    </div>
+  </div>
+</form>

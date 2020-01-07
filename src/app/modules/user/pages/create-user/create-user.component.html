@@ -1,0 +1,53 @@
+<app-card cardTitle="Add New User" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Personal Detail" navigationSymbol="1">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Personal Details</h5>
+          <hr />
+          <app-personal-details
+            (prsonalData)="getPersonData($event)"
+          ></app-personal-details>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Company Detail" navigationSymbol="2">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Business Details</h5>
+          <hr />
+          <app-company-details
+            (company_details)="companyDetailData($event)"
+          ></app-company-details>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Key Person Detail" navigationSymbol="3">
+      <app-keyperson-details
+        (key_person)="keyPersonData($event)"
+      ></app-keyperson-details>
+    </wizard-step>
+    <wizard-step stepTitle="Trade Details" navigationSymbol="4">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Trade Details</h5>
+          <hr />
+          <app-trade-details
+            (trade_detail)="tradeData($event)"
+          ></app-trade-details>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Terms & conditions" navigationSymbol="5">
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Finished</h5>
+          <hr />
+          <app-terms-conditions
+            (readyToUpdate)="final_submit($event)"
+          ></app-terms-conditions>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

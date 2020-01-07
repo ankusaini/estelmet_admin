@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-card [hidHeader]="true" cardClass="tab-card">
+      <h5 class="mb-3">Product Approval System</h5>
+      <ngb-tabset type="pills">
+        <ngb-tab title="Pending" class="mb-3">
+          <ng-template ngbTabContent>
+            <app-add-product-cart></app-add-product-cart>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Approved">
+          <ng-template ngbTabContent>
+            <app-add-product-cart></app-add-product-cart>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Rejected">
+          <ng-template ngbTabContent>
+            <app-add-product-cart></app-add-product-cart>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </app-card>
+    <app-add-product-cart></app-add-product-cart>
+    <button type="submit" class="btn btn-success active">Approve</button>&nbsp;
+    <button type="submit" class="btn btn-danger active">Reject</button>&nbsp;
+  </div>
+</div>

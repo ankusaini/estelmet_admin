@@ -1,0 +1,29 @@
+{
+    "data": [
+      {
+        "userId": "CU-1927",
+        "userType": "Customer",
+        "userName": "Samad Khan",
+        "mobile": "9982727272",
+        "email": "samadkhan9871@gmail.com",
+        "companyName": "Steel Trade"
+      },
+      {
+        "userId": "CU-1527",
+        "userType": "Supplier",
+        "userName": "Ajay Soni",
+        "mobile": "999727222",
+        "email": "soniAjay@gmail.com",
+        "companyName": "TCS Consultancy"
+      },
+      {
+        "userId": "AG-3342",
+        "userType": "Agent",
+        "userName": "Neeraj Prakash",
+        "mobile": "8860978777",
+        "email": "thegreat@gmail.com",
+        "companyName": "InheritCode"
+      }
+    ]
+  }
+  
