@@ -20,4 +20,15 @@ export class PurchaseService {
       });
     });
   }
+
+  public getAllPurchaseByTypeAndStatus(url)
+  {
+
+    return new Observable<ResponseP>(obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+
+  }
 }
