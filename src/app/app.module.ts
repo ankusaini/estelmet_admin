@@ -43,7 +43,7 @@ import { CookieService } from 'ngx-cookie-service';
     NavSearchComponent,
     NavRightComponent,
     ConfigurationComponent,
-    ToggleFullScreenDirective,
+    ToggleFullScreenDirective
   ],
   imports: [
     BrowserModule,

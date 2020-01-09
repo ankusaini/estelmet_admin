@@ -2,7 +2,7 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & View Sales Offer" [options]="false"
         cardClass="user-profile-list">
-        <div class="dt-responsive table-responsive" cardClass="card-datatable">
+        <div *ngIf="salesList" class="dt-responsive table-responsive" cardClass="card-datatable">
           <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -18,62 +18,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>SO-892</td>
-                <td>Sales Offer Lot</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
+              <tr *ngFor="let data of salesList; let i=index">
+                <td>{{i+1}}</td>
+                <td>SOL-{{data.id}}</td>
+                <td>{{data.type}}</td>
+                <td>{{data.productCategory}}</td>
+                <td>{{data.productShape}}</td>
+                <td>{{data.sourceCompanyId}}</td>
+                <td>{{data.sourceWarehouseId}}</td>
+                <td>{{data.salesHistory[0].createdDate | date:'medium'}}</td>
                 <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>SO-892</td>
-                <td>Sales Offer Lot</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>SO-892</td>
-                <td>Sales Offer Lot</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>SO-892</td>
-                <td>Sales Offer Lot</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>5.</td>
-                <td>SO-892</td>
-                <td>Sales Offer Lot</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-  
+              </tr>  
             </tbody>
           </table>
         </div>
@@ -129,4 +84,4 @@
   <button type="submit" class="btn btn-danger active">Print</button>&nbsp;
   <button type="submit" class="btn btn-warning active">Copy</button>&nbsp;
 
-  {{dataList.salesList | json}}
+  <!-- {{dataList.salesList | json}} -->

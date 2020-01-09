@@ -13,7 +13,7 @@ export class SearchTradeleadComponent implements OnInit {
   constructor(private salesService: SalesService) { }
 
   ngOnInit() {
-    let url= "/sales/getAllSalesByTypeAndStatus/TRADE_LEAD_LOT/APPROVED"
+    let url= "/sales/getAllSalesByTypeAndStatus/TRADE_LEAD_LOT/APPROVED";
     this.salesService.getAllSalesByTypeAndStatus(url)
       .subscribe(data => {
         this.salesData = data;

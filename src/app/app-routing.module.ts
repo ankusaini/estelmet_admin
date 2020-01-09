@@ -46,7 +46,8 @@ const routes: Routes = [
       },
       {
         path: 'sales',
-        loadChildren: () => import('./demo/sales/sales.module').then(module => module.SalesModule)
+        loadChildren: () => import('./modules/sale/sale.module').then(module => module.SaleModule)
+        // loadChildren: () => import('./demo/sales/sales.module').then(module => module.SalesModule)
       },
       {
         path: 'dispatch',
