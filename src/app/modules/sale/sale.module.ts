@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
 import { NgbDatepickerModule, NgbTabsetModule, NgbDropdownModule, NgbTooltipModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
@@ -15,10 +16,13 @@ import { SearchViewScComponent } from './pages/salesConfirmation/search-view-sc/
 import { ScApprovalComponent } from './pages/salesConfirmation/sc-approval/sc-approval.component';
 import { SoApprovalComponent } from './pages/directSales/so-approval/so-approval.component';
 
+=======
+>>>>>>> b287ef4732261c07494a94a01edc5a8ad408a4c9
 
 
 
 @NgModule({
+<<<<<<< HEAD
   imports: [
     CommonModule,
     DataTablesModule,
@@ -40,6 +44,11 @@ import { SoApprovalComponent } from './pages/directSales/so-approval/so-approval
     SearchViewScComponent,
     ScApprovalComponent,
     SoApprovalComponent
+=======
+  declarations: [],
+  imports: [
+    CommonModule
+>>>>>>> b287ef4732261c07494a94a01edc5a8ad408a4c9
   ]
 })
 export class SaleModule { }

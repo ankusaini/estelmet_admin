@@ -110,7 +110,10 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
           data => {
             this.userList = data;
+<<<<<<< HEAD
             console.log("your data is: "+data);
+=======
+>>>>>>> b287ef4732261c07494a94a01edc5a8ad408a4c9
             // let obj={
             //   data:data
             // };
