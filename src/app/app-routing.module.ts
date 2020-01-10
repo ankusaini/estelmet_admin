@@ -46,12 +46,12 @@ const routes: Routes = [
       },
       {
         path: 'sales',
-<<<<<<< HEAD
+
         loadChildren: () => import('./modules/sale/sale.module').then(module => module.SaleModule)
         // loadChildren: () => import('./demo/sales/sales.module').then(module => module.SalesModule)
-=======
-        loadChildren: () => import('./demo/sales/sales.module').then(module => module.SalesModule)
->>>>>>> b287ef4732261c07494a94a01edc5a8ad408a4c9
+
+        // loadChildren: () => import('./demo/sales/sales.module').then(module => module.SalesModule)
+
       },
       {
         path: 'dispatch',
