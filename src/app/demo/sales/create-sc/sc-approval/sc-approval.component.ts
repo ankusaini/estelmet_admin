@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sc-approval.component.css']
 })
 export class ScApprovalComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
