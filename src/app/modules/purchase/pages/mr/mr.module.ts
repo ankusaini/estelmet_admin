@@ -6,16 +6,19 @@ import { ArchwizardModule } from "ng2-archwizard/dist";
 import { ShareModule } from "src/app/shared/shared.module";
 import { SharedModule } from "src/app/theme/shared/shared.module";
 import { PurchaseModule } from "src/app/modules/purchase/purchase.module";
+import { MrApporvalComponent } from './mr-apporval/mr-apporval.component';
+import { NgbTabsetModule } from "@ng-bootstrap/ng-bootstrap";
 
 
 
 @NgModule({
-  declarations: [CreateMRComponent,ViewMRComponent],
+  declarations: [CreateMRComponent,ViewMRComponent, MrApporvalComponent],
   imports: [
     CommonModule,
     ArchwizardModule,
     ShareModule,
     SharedModule,
+    NgbTabsetModule
 
   ]
 })

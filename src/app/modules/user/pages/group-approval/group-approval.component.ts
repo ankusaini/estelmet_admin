@@ -101,14 +101,14 @@ export class GroupApprovalComponent implements OnInit {
     );
   }
   onTabChange(tab) {
-    if (tab && tab.activeId == "rejectedTab") {
+    if (tab && tab.nextId == "rejectedTab") {
+      this.selectedTab = "REJECTED";
+    }
+    if (tab && tab.nextId == "pendingTab") {
       this.selectedTab = "PENDING";
     }
-    if (tab && tab.activeId == "pendingTab") {
+    if (tab && tab.nextId == "approvedTab") {
       this.selectedTab = "APPROVED";
-    }
-    if (tab && tab.activeId == "approvedTab") {
-      this.selectedTab = "REJECTED";
     }
     this.selectedUserGroupList = [];
   }

@@ -2,7 +2,7 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & Select MR Id " [options]="false"
         cardClass="user-profile-list">
-        <div class="dt-responsive table-responsive" cardClass="card-datatable">
+        <div *ngIf="mrList" class="dt-responsive table-responsive" cardClass="card-datatable">
           <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -18,61 +18,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>MR-892</td>
-                <td>MR-GL-2RC</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>2.</td>
-                <td>MR-892</td>
-                <td>MR-GL-2RC</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>MR-892</td>
-                <td>MR-GL-2RC</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>MR-892</td>
-                <td>MR-GL-2RC</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>5.</td>
-                <td>MR-892</td>
-                <td>MR-GL-2RC</td>
-                <td>GL</td>
-                <td>2RC</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
+               <tr  *ngFor="let mr of mrList;let i = index">
+              <td>{{i+1}}</td>
+              <td >MR-{{mr.id}}</td>
+              <td>{{mr.title}}</td>
+              <td>{{mr.productCategory}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>
+                  <span class="badge badge-light-success">{{mr.status}}</span>
+                  <div class="overlay-edit">
+                    <button (click)="addMrToList(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                  </div>
+                </td>
+            </tr> 
+             
+
   
             </tbody>
           </table>
@@ -100,23 +63,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                  <td>1.</td>
-                  <td>MR-892</td>
-                  <td>MR-GL-2RC</td>
-                  <td>GL</td>
-                  <td>2RC</td>
-                  <td>GP Global Pvt Ltd.</td>
-                  <td>L-24/25</td>
-                  <td>24-10-2019</td>
-                <td>
-                  <span class="badge badge-light-success">Approved</span>
+              <tr  *ngFor="let mr of selectedMrList;let i = index">
+              <td>{{i+1}}</td>
+              <td >{{mr.id}}</td>
+              <td>{{mr.title}}</td>
+              <td>{{mr.productCategory}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>{{mr.productShape}}</td>
+              <td>
+                  <span class="badge badge-light-success">{{mr.status}}</span>
                   <div class="overlay-edit">
-                    <button type="button" class="btn btn-icon btn-danger" ><i
+                    <button  (click)="removeMr(mr)" type="button" class="btn btn-icon btn-danger" ><i
                         class="feather icon-trash-2"></i></button>
                   </div>
                 </td>
-              </tr>
+            </tr> 
+             
             </tbody>
           </table>
         </div>

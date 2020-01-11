@@ -22,6 +22,7 @@ import { CreateMrIdComponent } from './component/create-mr-id/create-mr-id.compo
     SharedModule,
     DataTablesModule,
     MrModule,
+    
   ]
 })
 export class PurchaseModule { }
