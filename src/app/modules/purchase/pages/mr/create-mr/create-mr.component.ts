@@ -97,7 +97,9 @@ export class CreateMRComponent implements OnInit {
       else
         {
           this.request.productList=this.productList;
+
           this.request.purchase=this.mrPurchase.value;
+          
           console.log("request object is ",this.request)
           let path="/purchase/createPurchase";
           this.purchaseService.saveRequestObject(path,this.request).subscribe(data=>{

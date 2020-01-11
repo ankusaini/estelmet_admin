@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateMRComponent } from "src/app/modules/purchase/pages/mr/create-mr/create-mr.component";
 import { ViewMRComponent } from "src/app/modules/purchase/pages/mr/view-mr/view-mr.component";
+import { MrApporvalComponent } from "src/app/modules/purchase/pages/mr/mr-apporval/mr-apporval.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'searchViewMr',
     component: ViewMRComponent
+  },
+   {
+    path: 'mrApproval',
+    component: MrApporvalComponent
   },
 //   {
 //     path: 'mrOverview',
