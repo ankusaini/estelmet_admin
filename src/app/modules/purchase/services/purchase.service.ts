@@ -21,6 +21,31 @@ export class PurchaseService {
     });
   }
 
+  public updateRequestObject(path,requestObj:RequestP):Observable<ResponseP>
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.put(path,requestObj).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+
+  public updateProduct(path,productList):Observable<any>
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.put(path,productList).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+  public findRequstObjectById(path)
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.get(path).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
   public getAllPurchaseByTypeAndStatus(url)
   {
 

@@ -24,7 +24,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Warehouse Name <small class="asterik_sign">*</small></label>
-                  <select formControlName="sourceWarehouseId" class="form-control" name="validation-category"   required >
+                  <select (change)="getSelectedWarehouse($event)" formControlName="sourceWarehouseId" class="form-control" name="validation-category"   required >
                   <option  *ngFor="let warehouse of warehouseList"    [value]="warehouse?.id"    >{{ warehouse?.name }}</option>
                   </select>
                   <!-- <label *ngIf="!warehouse.valid && (warehouse.dirty || warehouse.touched || isSubmit)"
