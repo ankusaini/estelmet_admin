@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CreateMRComponent } from "src/app/modules/purchase/pages/mr/create-mr/create-mr.component";
 import { ViewMRComponent } from "src/app/modules/purchase/pages/mr/view-mr/view-mr.component";
 import { MrApporvalComponent } from "src/app/modules/purchase/pages/mr/mr-apporval/mr-apporval.component";
+import { MrEditComponent } from "src/app/modules/purchase/pages/mr/mr-edit/mr-edit.component";
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
    {
     path: 'mrApproval',
     component: MrApporvalComponent
+  },
+   {
+    path: 'mrEdit/:id',
+    component: MrEditComponent
   },
 //   {
 //     path: 'mrOverview',

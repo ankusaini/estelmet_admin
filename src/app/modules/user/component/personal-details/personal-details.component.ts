@@ -6,6 +6,7 @@ import {
   AbstractControl
 } from "@angular/forms";
 import { CustomValidator } from "src/app/Validators/custom-validator";
+
 import { UserService } from 'src/app/shared/services/user.service';
 function passwordConfirming(c: AbstractControl): any {
   if (!c.parent || !c) return;
@@ -22,6 +23,7 @@ function passwordConfirming(c: AbstractControl): any {
   styleUrls: ["./personal-details.component.scss"]
 })
 export class PersonalDetailsComponent implements OnInit {
+
   
   @Output() prsonalData : EventEmitter<any> = new EventEmitter<any>();
   bodyText : string;
@@ -32,10 +34,20 @@ export class PersonalDetailsComponent implements OnInit {
   userDTO = new FormGroup({
     // this.utils.noWhitespaceValidator,CustomValidator.emailValidate
     id: new FormControl(""),
-    firstName: new FormControl("", [Validators.required,Validators.minLength(2)]),
-    lastName: new FormControl("", [Validators.required,Validators.minLength(2)]),
-    mobile: new FormControl("", [Validators.required,   CustomValidator.contactNumberValidation]),
+    firstName: new FormControl("", [
+      Validators.required,
+      Validators.minLength(2)
+    ]),
+    lastName: new FormControl("", [
+      Validators.required,
+      Validators.minLength(2)
+    ]),
+    mobile: new FormControl("", [
+      Validators.required,
+      CustomValidator.contactNumberValidation
+    ]),
     email: new FormControl("", [Validators.required]),
+
     password: new FormControl("", [Validators.required,Validators.minLength(8), Validators.maxLength(20)]),
     cpassword: new FormControl("", [Validators.required,passwordConfirming]),
     userRole: new FormControl("", [Validators.required]),
@@ -52,7 +64,7 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   personalDetailSubmit() {
-    if(this.userDTO.valid) {
+    if (this.userDTO.valid) {
       this.prsonalData.emit(this.userDTO.value);
     } else {
       console.log("disable");

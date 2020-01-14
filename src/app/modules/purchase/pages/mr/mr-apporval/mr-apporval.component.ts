@@ -83,4 +83,25 @@ export class MrApporvalComponent implements OnInit {
     }
   }
 
+
+  // changeStatusOfSelectedUser(status) {
+  //   if (this.selectedMrList.length == 0) {
+  //     alert("select at least one");
+  //   } else {
+  //     let path = "/users/group/updateUserGroup";
+
+  //     for (let i = 0; i < this.selectedMrList.length; i++) {
+  //       this.selectedMrList[i].status = status;
+
+  //       console.log("selected group", this.selectedMrList[i]);
+  //       this.purchaseService.(this.selectedMrList[i]).subscribe(
+  //         data => {
+  //           console.log("user  created", data);
+  //         },
+  //         error => {}
+  //       );
+  //     }
+  //   }
+  // }
+
 }

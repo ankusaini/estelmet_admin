@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from "src/app/shared/Models/company.model.";
-import { Warehouse } from "src/app/shared/Models/warehouse";
+import { Warehouse } from   "src/app/shared/Models/warehouse";
 import {
   ProductCategory,
   ProductShape,
@@ -10,6 +10,7 @@ import { StaticDataService } from "src/app/shared/services/data/static-data.serv
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-create-mr',
@@ -23,13 +24,13 @@ export class CreateMRComponent implements OnInit {
    public warehouseList:Warehouse[] = [];
    public productShapeList:ProductShape[] = [];
    public productCategoryList:ProductCategory[] = [];   
-
+  public selectedWarehouse:Warehouse;
    public productList:Product[] = [];
 
-  constructor(private productService:StaticDataService,public purchaseService: PurchaseService) { }
+  constructor(private productService:StaticDataService,public purchaseService: PurchaseService,public router:Router) { }
 
 
-   public mrPurchase = new FormGroup({
+   public mrPurchase = new FormGroup({ 
     id: new FormControl("" ),
     type: new FormControl("MATERIAL_REQURIMENT"),
     sourceCompanyId: new FormControl("",[Validators.required]),
@@ -83,6 +84,13 @@ export class CreateMRComponent implements OnInit {
     this.productList.push(data);
   }
 
+  getSelectedWarehouse(event)
+  {
+    console.log("warehouse",event.target.value);
+    this.selectedWarehouse=this.warehouseList.filter(obj=>obj.id==event.target.value)[0];
+    console.log("selectedWarehouse",this.selectedWarehouse);
+  }
+
   saveMrRecord()
   {
     console.log("here list",this.productList)
@@ -96,14 +104,22 @@ export class CreateMRComponent implements OnInit {
         }
       else
         {
+          for(let index in this.productList)
+            {
+              console.log("in",this.productList[index].warehouse);
+              this.productList[index].warehouse=this.selectedWarehouse;
+            }
+        
           this.request.productList=this.productList;
 
           this.request.purchase=this.mrPurchase.value;
           
-          console.log("request object is ",this.request)
+          
           let path="/purchase/createPurchase";
           this.purchaseService.saveRequestObject(path,this.request).subscribe(data=>{
-            console.log("data is ",data);
+         
+            this.router.navigateByUrl("/purchase/mrApproval");
+
           },error=>{
             console.log("error is",error);
           })

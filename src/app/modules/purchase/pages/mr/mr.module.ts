@@ -8,11 +8,12 @@ import { SharedModule } from "src/app/theme/shared/shared.module";
 import { PurchaseModule } from "src/app/modules/purchase/purchase.module";
 import { MrApporvalComponent } from './mr-apporval/mr-apporval.component';
 import { NgbTabsetModule } from "@ng-bootstrap/ng-bootstrap";
+import { MrEditComponent } from './mr-edit/mr-edit.component';
 
 
 
 @NgModule({
-  declarations: [CreateMRComponent,ViewMRComponent, MrApporvalComponent],
+  declarations: [CreateMRComponent,ViewMRComponent, MrApporvalComponent, MrEditComponent],
   imports: [
     CommonModule,
     ArchwizardModule,
