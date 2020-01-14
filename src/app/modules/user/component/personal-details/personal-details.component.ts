@@ -6,7 +6,8 @@ import {
   AbstractControl
 } from "@angular/forms";
 import { CustomValidator } from "src/app/Validators/custom-validator";
-import { UserService } from "src/app/shared/services/user.service";
+
+import { UserService } from 'src/app/shared/services/user.service';
 function passwordConfirming(c: AbstractControl): any {
   if (!c.parent || !c) return;
   const pwd = c.parent.get("password");
@@ -22,9 +23,13 @@ function passwordConfirming(c: AbstractControl): any {
   styleUrls: ["./personal-details.component.scss"]
 })
 export class PersonalDetailsComponent implements OnInit {
-  showEnterCode: boolean;
-  enteredOTP:any;
-  @Output() prsonalData: EventEmitter<any> = new EventEmitter<any>();
+
+  
+  @Output() prsonalData : EventEmitter<any> = new EventEmitter<any>();
+  bodyText : string;
+  otp : number = null;
+  enterOTP : boolean = false;
+  markAsComplete : boolean = false;
 
   userDTO = new FormGroup({
     // this.utils.noWhitespaceValidator,CustomValidator.emailValidate
@@ -42,22 +47,21 @@ export class PersonalDetailsComponent implements OnInit {
       CustomValidator.contactNumberValidation
     ]),
     email: new FormControl("", [Validators.required]),
-    password: new FormControl("", [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(20)
-    ]),
-    cpassword: new FormControl("", [Validators.required, passwordConfirming]),
-    userRole: new FormControl("", [Validators.required])
+
+    password: new FormControl("", [Validators.required,Validators.minLength(8), Validators.maxLength(20)]),
+    cpassword: new FormControl("", [Validators.required,passwordConfirming]),
+    userRole: new FormControl("", [Validators.required]),
+    otp: new FormControl("", [Validators.required]),
     // status: new FormControl("", [Validators.required])
   });
-
-  constructor(private _userService: UserService) {}
+  
+  constructor(
+    private _userService : UserService
+  ) {}
 
   get f() {
     return this.userDTO.controls;
   }
-  ngOnInit() {}
 
   personalDetailSubmit() {
     if (this.userDTO.valid) {
@@ -67,40 +71,50 @@ export class PersonalDetailsComponent implements OnInit {
     }
   }
 
-  // sendOTP() {
-  //   if (
-  //     this.userDTO.controls.mobile.value != "" &&
-  //     this.userDTO.controls.email.value != ""
-  //   ) {
-  //     let url =
-  //       "/users/sendOtp/" +
-  //       this.userDTO.controls.mobile.value +
-  //       "/" +
-  //       this.userDTO.controls.email.value;
-  //     this._userService.sendOTP(url).subscribe(
-  //       data => {
-  //         this.showEnterCode = true;
-  //       },
-  //       error => {}
-  //     );
-  //   }
+  ngOnInit() {
+    this.bodyText = 'This text can be updated in modal 1';
+  }
+
+  // openModal(id: string) {
+  //   this.modalService.open(id);
   // }
 
-
-
-  //  verifyOTP() {
-    
-  //     let url =
-  //       "/users/sendOtp/" +
-  //       this.userDTO.controls.mobile.value +
-  //       "/" +
-  //       this.userDTO.controls.email.value;
-  //     this._userService.sendOTP(url).subscribe(
-  //       data => {
-  //         this.showEnterCode = true;
-  //       },
-  //       error => {}
-  //     );
-    
+  // closeModal(id: string) {
+  //   this.nextStep = true;
+  //   this.modalService.close(id);
   // }
+  SendOTP() {
+    this.enterOTP = true;
+    if (
+      this.userDTO.controls.mobile.value != "" &&
+      this.userDTO.controls.email.value != ""
+    ) {
+      let url =
+        "/users/sendOtp/" +
+        this.userDTO.controls.mobile.value +
+        "/" +
+        this.userDTO.controls.email.value;
+      this._userService.sendOTP(url).subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {}
+      );
+    }
+  }
+
+  verifyOTP() {
+    let url =
+    "/users/verifyOtp/" +
+    this.userDTO.controls.mobile.value + 
+    "/" +
+    this.userDTO.controls.otp.value;
+  this._userService.sendOTP(url).subscribe(
+    data => {
+     console.log(data);
+     this.markAsComplete = true;
+    },
+    error => {}
+  );
+  }
 }

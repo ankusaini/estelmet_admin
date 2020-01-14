@@ -136,6 +136,18 @@
             >Password does not match</small
           >
         </div>
+        <div class="col-md-6 mb-3" *ngIf="enterOTP">
+          <label for="inputPassword5"
+            >Enter OTP<small class="asterik_sign">*</small></label
+          >
+          <input
+            formControlName="otp"
+            type="number"
+            class="form-control"
+            aria-describedby="passwordHelpBlock"
+            placeholder="Enter OTP"
+          />
+        </div>
       </div>
     </div>
     <div class="col-md-1"></div>
@@ -151,12 +163,30 @@
     </div>
   </div>
   <div class="col-sm-12 centered-content">
+    <div class="btn-group mt-10" *ngIf="!f.mobile.errors && !f.email.errors && !enterOTP">
+      <button 
+        class="btn  btn-sm"
+        [disabled]="f.mobile.errors && f.email.errors"
+        (click)="SendOTP()"
+      >
+        Send OTP
+      </button>
+    </div>
+    <div class="btn-group mt-10" *ngIf="enterOTP">
+      <button 
+        class="btn  btn-sm"
+        [disabled]="f.otp.errors"
+        (click)="verifyOTP()"
+      >
+        Verify OTP
+      </button>
+    </div>
     <div class="btn-group mt-10">
       <button
         type="submit"
         class="btn btn-primary btn-sm"
         uiSref="work"
-        [disabled]="userDTO.status != 'VALID'"
+        [disabled]="!(userDTO.status == 'VALID' && markAsComplete)"
         nextStep
       >
         Continue
@@ -164,3 +194,9 @@
     </div>
   </div>
 </form>
+
+<!-- <otp-modal id="modal-otp">
+  <label for="">Enter Otp</label>
+  <input type="number" [(ngModel)]="otp">
+  <button (click)="closeModal('modal-otp');">Submit</button>
+</otp-modal> -->
