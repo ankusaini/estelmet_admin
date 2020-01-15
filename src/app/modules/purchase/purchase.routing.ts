@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateMRComponent } from "src/app/modules/purchase/pages/mr/create-mr/create-mr.component";
 import { ViewMRComponent } from "src/app/modules/purchase/pages/mr/view-mr/view-mr.component";
+import { SearchViewPcComponent } from './pages/purchase-confirmation/search-view-pc/search-view-pc.component';
+import { PcApprovalComponent } from './pages/purchase-confirmation/pc-approval/pc-approval.component';
 
 
 const routes: Routes = [
@@ -26,10 +28,10 @@ const routes: Routes = [
 //     path: 'createPc',
 //     component: CreatePcComponent
 //   },
-//   {
-//     path: 'searchPc',
-//     component: SearchViewPcComponent
-//   },
+  {
+    path: 'searchPc',
+    component: SearchViewPcComponent
+  },
 //   {
 //     path: 'pcOverview',
 //     component: PcOverviewComponent
@@ -74,10 +76,10 @@ const routes: Routes = [
 //     path: 'mrApproval',
 //     component: MrApprovalComponent
 //   },
-//   {
-//     path: 'pcApproval',
-//     component: PcApprovalComponent
-//   },
+  {
+    path: 'pcApproval',
+    component: PcApprovalComponent
+  },
 //   {
 //     path: 'lotOverview',
 //     component: LotOverviewComponent

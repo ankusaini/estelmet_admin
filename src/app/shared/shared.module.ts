@@ -20,7 +20,9 @@ import { PurchasrListFullDetailsComponent } from './components/purchasr-list-ful
     ArchwizardModule
   ],
   exports:[
-    MaterialClassificationSpecificationComponent, AddProductCartComponent
+    MaterialClassificationSpecificationComponent, 
+    AddProductCartComponent,
+    PurchasrListFullDetailsComponent
   ]
 })
 export class ShareModule { }

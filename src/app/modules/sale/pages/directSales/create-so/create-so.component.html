@@ -1,0 +1,18 @@
+<app-card cardTitle="Generate Sales Offer Id" [options]="false">
+    <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+      <wizard-step stepTitle="Create SO Id" navigationSymbol="1">
+        <div class="row">
+          <div class="col-sm-12">
+            <h5>Create Sales Offer Id</h5>
+            <hr>
+            <app-create-so-id
+                (createSoId)= "getCreateSoId($event)">
+            </app-create-so-id>
+          </div> 
+        </div>
+      </wizard-step>
+      <wizard-step stepTitle="Select Product" navigationSymbol="2">
+        <app-select-product></app-select-product>
+      </wizard-step>
+    </wizard>
+  </app-card>

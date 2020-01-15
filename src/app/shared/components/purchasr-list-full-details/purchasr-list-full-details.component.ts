@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-purchasr-list-full-details',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./purchasr-list-full-details.component.scss']
 })
 export class PurchasrListFullDetailsComponent implements OnInit {
-
+  @Input('tabSelected') selectedTab: string;
   constructor() { }
 
   ngOnInit() {
+    console.log("in purchaseList" +this.selectedTab);
   }
 
 }

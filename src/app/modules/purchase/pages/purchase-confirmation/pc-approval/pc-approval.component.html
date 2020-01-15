@@ -2,27 +2,27 @@
   <div class="col-md-12">
     <app-card [hidHeader]="true" cardClass="tab-card">
       <h5 class="mb-3">Purchase Confirmation Approval System</h5>
-      <ngb-tabset type="pills">
-        <ngb-tab title="Pending" class="mb-3">
+      <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
+        <ngb-tab title="Pending" id="pendingTab" class="mb-3">
           <ng-template ngbTabContent>
-            <app-purchasr-list-full-details></app-purchasr-list-full-details>
+            <app-purchasr-list-full-details [tabSelected]="selectedTab"></app-purchasr-list-full-details>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Approved">
+        <ngb-tab title="Approved" id="approvedTab" >
           <ng-template ngbTabContent>
-           <app-purchasr-list-full-details></app-purchasr-list-full-details>
+           <app-purchasr-list-full-details [tabSelected]="selectedTab"></app-purchasr-list-full-details>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Rejected">
+        <ngb-tab title="Rejected" id="rejectedTab">
           <ng-template ngbTabContent>
-          <app-purchasr-list-full-details></app-purchasr-list-full-details>
+          <app-purchasr-list-full-details [tabSelected]="selectedTab"></app-purchasr-list-full-details>
           </ng-template>
         </ngb-tab>
 
       </ngb-tabset>
 
     </app-card>
-    <app-add-product-cart></app-add-product-cart>
+    <!-- <app-add-product-cart></app-add-product-cart> -->
     <button type="submit" class="btn btn-success active">Approve</button>&nbsp;
     <button type="submit" class="btn btn-danger active">Reject</button>&nbsp;
   </div>
