@@ -9,6 +9,7 @@ import { PurchaseModule } from "src/app/modules/purchase/purchase.module";
 import { MrApporvalComponent } from './mr-apporval/mr-apporval.component';
 import { NgbTabsetModule } from "@ng-bootstrap/ng-bootstrap";
 import { MrEditComponent } from './mr-edit/mr-edit.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -19,7 +20,8 @@ import { MrEditComponent } from './mr-edit/mr-edit.component';
     ArchwizardModule,
     ShareModule,
     SharedModule,
-    NgbTabsetModule
+    NgbTabsetModule,
+        ToastrModule.forRoot()
 
   ]
 })
