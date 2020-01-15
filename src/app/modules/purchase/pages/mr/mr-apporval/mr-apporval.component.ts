@@ -84,11 +84,11 @@ export class MrApporvalComponent implements OnInit {
   }
 
 
-  // changeStatusOfSelectedUser(status) {
+  // changeStatusOfSelectedMR(status) {
   //   if (this.selectedMrList.length == 0) {
   //     alert("select at least one");
   //   } else {
-  //     let path = "/users/group/updateUserGroup";
+  //     let path = "/purchase/updatePurchase";
 
   //     for (let i = 0; i < this.selectedMrList.length; i++) {
   //       this.selectedMrList[i].status = status;
