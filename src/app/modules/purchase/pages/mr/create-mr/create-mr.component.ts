@@ -28,7 +28,8 @@ export class CreateMRComponent implements OnInit {
    public productList:Product[] = [];
 
   constructor(private productService:StaticDataService,
-    private toastr: ToastrService,public purchaseService: PurchaseService,public router:Router) { }
+    private toastr: ToastrService,
+    public purchaseService: PurchaseService,public router:Router) { }
 
 
    public mrPurchase = new FormGroup({ 

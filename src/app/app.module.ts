@@ -45,7 +45,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavSearchComponent,
     NavRightComponent,
     ConfigurationComponent,
-    ToggleFullScreenDirective,
+    ToggleFullScreenDirective
   ],
   imports: [
     BrowserModule,

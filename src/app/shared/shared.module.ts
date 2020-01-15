@@ -22,11 +22,19 @@ import { OtpComponent } from './components/otp/otp.component';
     ProdListWithProdIdComponent,
     PurchasrListFullDetailsComponent,
   ],
-  imports: [CommonModule, SharedModule, TextMaskModule, ArchwizardModule],
-  exports: [
-    MaterialClassificationSpecificationComponent,
+  imports: [
+    CommonModule,
+    SharedModule, 
+    TextMaskModule,
+    ArchwizardModule
+  ],
+  exports:[
+    MaterialClassificationSpecificationComponent, 
     AddProductCartComponent,
-    OtpComponent
-  ]
+    PurchasrListFullDetailsComponent
+  ] 
+
+  
+  
 })
 export class ShareModule {}
