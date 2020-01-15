@@ -11,7 +11,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-mr',
   templateUrl: './create-mr.component.html',
@@ -27,7 +27,8 @@ export class CreateMRComponent implements OnInit {
   public selectedWarehouse:Warehouse;
    public productList:Product[] = [];
 
-  constructor(private productService:StaticDataService,public purchaseService: PurchaseService,public router:Router) { }
+  constructor(private productService:StaticDataService,
+    private toastr: ToastrService,public purchaseService: PurchaseService,public router:Router) { }
 
 
    public mrPurchase = new FormGroup({ 
@@ -97,13 +98,15 @@ export class CreateMRComponent implements OnInit {
     if(this.productList && this.productList.length==0)
       {
         alert("please save at least one record")
+        this.toastr.warning("Please enter at least one product")
       }
       else if(this.mrPurchase.invalid)
         {
-          alert("form is invalid")
+          this.toastr.warning("Please fill all the details.")
         }
       else
         {
+          console.log("else")
           for(let index in this.productList)
             {
               console.log("in",this.productList[index].warehouse);
@@ -117,7 +120,7 @@ export class CreateMRComponent implements OnInit {
           
           let path="/purchase/createPurchase";
           this.purchaseService.saveRequestObject(path,this.request).subscribe(data=>{
-         
+            this.toastr.success("Record saved successfully")
             this.router.navigateByUrl("/purchase/mrApproval");
 
           },error=>{

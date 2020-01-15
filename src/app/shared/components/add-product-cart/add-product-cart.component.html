@@ -35,26 +35,26 @@
             <tbody>
               <tr href="kdkd" *ngFor="let product of productList;let i = index">
               <td>{{i+1}}</td>
-              <td>{{product.productType.productType}}</td>
-              <td>{{product.productCategory.productCategory}}</td>
-              <td>{{product.productShape.productShape}}</td>
-              <td>{{product.productClass.productClass}}</td>
+              <td>{{product.productType?.productType}}</td>
+              <td>{{product.productCategory?.productCategory}}</td>
+              <td>{{product.productShape?.productShape}}</td>
+              <td>{{product.productClass?.productClass}}</td>
               <td>{{product.thicknessMin}}-{{product.thicknessMax}}</td>
               <td>{{product.widthMin}}-{{product.widthMax}}</td>
               <td>{{product.lengthMin}}-{{product.lengthMax}}</td>
-              <td>{{product.temperMin.productTemper}}-{{product.temperMax.productTemper}}</td>
-              <td>{{product.hardnessMin.productHardness}}-{{product.hardnessMax.productHardness}}</td>
+              <td>{{product.temperMin?.productTemper}}-{{product.temperMax?.productTemper}}</td>
+              <td>{{product.hardnessMin?.productHardness}}-{{product.hardnessMax?.productHardness}}</td>
               <td>{{product.height}}</td>
-              <td>{{product.productCoating.productCoating}}</td>
-               <td>{{product.productDefect.productDefect}}</td>
-               <td>{{product.productOrigin.productOrigin}}</td>
+              <td>{{product.productCoating?.productCoating}}</td>
+               <td>{{product.productDefect?.productDefect}}</td>
+               <td>{{product.productOrigin?.productOrigin}}</td>
 
-               <td>{{product.productOiling.productOiling}}</td>
+               <td>{{product.productOiling?.productOiling}}</td>
 
-               <td>{{product.productSurfaceCoating.productSurfaceCoating}}</td>
-               <td>{{product.productAnnealing.productAnnealing}}</td>
-               <td>{{product.productFinish.productFinish}}</td>
-               <td>{{product.productPackaging.productPackaging}}</td>
+               <td>{{product.productSurfaceCoating?.productSurfaceCoating}}</td>
+               <td>{{product.productAnnealing?.productAnnealing}}</td>
+               <td>{{product.productFinish?.productFinish}}</td>
+               <td>{{product.productPackaging?.productPackaging}}</td>
                <td>{{product.gwt}}</td>
                <td>{{product.nwt}}</td>
                <td>{{product.remarks}}</td>

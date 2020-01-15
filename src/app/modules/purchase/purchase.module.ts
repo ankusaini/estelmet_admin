@@ -8,6 +8,7 @@ import { ShareModule } from 'src/app/shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 import { MrModule } from "src/app/modules/purchase/pages/mr/mr.module";
 import { CreateMrIdComponent } from './component/create-mr-id/create-mr-id.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { CreateMrIdComponent } from './component/create-mr-id/create-mr-id.compo
     SharedModule,
     DataTablesModule,
     MrModule,
-    
+   ToastrModule.forRoot()
   ]
 })
 export class PurchaseModule { }

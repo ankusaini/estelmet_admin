@@ -11,6 +11,7 @@ import { Product } from "src/app/shared/Models/product.model.";
   styleUrls: ["./mr-edit.component.scss"]
 })
 export class MrEditComponent implements OnInit {
+  showData: boolean;
   mrId: any;
   public activeTab: string;
   public editProfile1: boolean;
@@ -28,7 +29,7 @@ export class MrEditComponent implements OnInit {
   private subscription: Subscription;
   routerSubscription: any;
   public mrResponse: ResponseP;
-  public request : RequestP={};
+  public request: RequestP = {};
   public productList: Product[] = [];
 
   constructor(
@@ -40,13 +41,14 @@ export class MrEditComponent implements OnInit {
   ) {
     this.routerSubscription = this.route.url.subscribe(params => {
       this.mrId = this.route.snapshot.params.id;
-      console.log("mr id", this.mrId);
+
       if (this.mrId) {
         let url = "/purchase/find/" + this.mrId;
         this.purchaseService.findRequstObjectById(url).subscribe(
           data => {
             this.mrResponse = data;
-            this.productList=data.productList;
+            this.productList = data.productList;
+            this.showData = true;
             console.log("response", this.mrResponse);
           },
           error => {
@@ -92,44 +94,41 @@ export class MrEditComponent implements OnInit {
     });
   }
 
-  getProductData(data)
-  {
+  getProductData(data) {
     this.productList.push(data);
-    this.editProfile=!this.editProfile;
-    console.log("productList",this.productList);
+    this.editProfile = !this.editProfile;
+    console.log("productList", this.productList);
   }
 
-  updateMr()
-  {
-
- if(this.productList && this.productList.length==0)
-      {
-        alert("please save at least one record")
+  updateMr() {
+    console.log("productlist",this.productList)
+    if (this.productList && this.productList.length == 0) {
+      alert("please save at least one record");
+    } else {
+      for (let index in this.productList) {
+        console.log("in", this.productList[index].warehouse);
+        this.productList[index].warehouse = this.mrResponse.warehouse;
       }
-      
-      else
-        {
-          for(let index in this.productList)
-            {
-              console.log("in",this.productList[index].warehouse);
-              this.productList[index].warehouse=this.mrResponse.warehouse;
-            }
-          //   console.log("final",this.productList)
-          // this.request.productList=this.productList;
+      //   console.log("final",this.productList)
+      this.request.productList = this.productList;
 
-          this.request.purchase=this.mrResponse.purchase;
-          
-          console.log("request object is ",this.request)
-          let path="/purchase/updatePurchase";
-          this.purchaseService.updateRequestObject(path,this.request).subscribe(data=>{
-            let path1="/inventory/updateProduct/";
-            this.purchaseService.updateProduct(path1,this.productList)
-          },error=>{
-            console.log("error is",error);
-          })
+      this.request.purchase = this.mrResponse.purchase;
+
+      console.log("request object is ", this.request);
+      let path = "/purchase/updatePurchase";
+      this.purchaseService.updateRequestObject(path, this.request).subscribe(
+        data => {
+          alert("Mr Updated");
+          // let path1="/inventory/updateProduct/";
+          // this.purchaseService.updateProduct(path1,this.productList)
+        },
+        error => {
+          console.log("error is", error);
         }
+      );
+    }
   }
-  
+
   private _onReceivedEvent(event: IEvent): void {
     if (event.id === LIGHTBOX_EVENT.CLOSE) {
       this.subscription.unsubscribe();

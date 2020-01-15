@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { ResponseP } from "src/app/shared/Models/RequestResponse";
 import { Purchase } from "src/app/shared/Models/purchase.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-view-mr",
@@ -11,7 +12,7 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 export class ViewMRComponent implements OnInit {
  public mrList: Purchase[]=[];
 public selectedMrList: Purchase[]=[];
-  constructor(private purchaseService: PurchaseService) {
+  constructor(private purchaseService: PurchaseService,private router:Router) {
     this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
   }
 
@@ -47,4 +48,9 @@ public selectedMrList: Purchase[]=[];
     }
   }
   
+
+  routeToEditMr(id)
+  {
+    this.router.navigateByUrl("/purchase/mrEdit/"+id);
+  }
 }
