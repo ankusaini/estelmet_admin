@@ -1,4 +1,4 @@
-<div class="dt-responsive table-responsive" cardClass="card-datatable">
+<div *ngIf="purchaseList" class="dt-responsive table-responsive" cardClass="card-datatable">
               <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
                 <thead>
                   <tr>
@@ -20,24 +20,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>1.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
+                  <tr *ngFor="let purchase of purchaseList; let i=index">
+                    <td><label class="badge badge-warning">{{purchase.status}}</label></td>
+                    <td>{{i+1}}</td>
+                    <td>PC-{{purchase.id}}</td>
+                    <td>{{purchase.title}}</td>
+                    <td>{{purchase.productCategory}}</td>
+                    <td>{{purchase.productShape}}</td>
+                    <td>COM-{{purchase.sourceCompanyId}}</td>
+                    <td>WAR-{{purchase.sourceWarehouseId}}</td>
+                    <td>SU-{{purchase.supplierId}}</td>
+                    <td>{{purchase.grossWt}}</td>
+                    <td>{{purchase.v}}</td>
+                    <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+                    <td>{{purchase.purchaseHistory[0].lastModifiedDate | date: 'medium'}}</td>
+                    <td>{{purchase.purchaseHistory[0].createdBy}}</td>
+                    <td>{{purchase.purchaseHistory[0].lastModifiedBy}}</td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td><label class="badge badge-warning">Pending</label></td>
                     <td>2.</td>
                     <td>PC-892</td>
@@ -155,7 +155,7 @@
                     <td>24-10-2019</td>
                     <td>Aehmad</td>
                     <td>Kamlesh</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
