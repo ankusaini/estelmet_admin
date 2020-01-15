@@ -8,24 +8,33 @@ import {
   DeliveryOrder
 } from "src/app/shared/Models/sales.model";
 
-export class Request {
-  purchase: Purchase;
-  grn: Grn;
-  sales: Sales;
-  deliveryOrder: DeliveryOrder;
-  invoice: Invoice;
-  productList: Product[];
-  constructor() {
-    this.purchase = null;
-    this.grn = null;
-    this.sales = null;
-    this.deliveryOrder = null;
-    this.invoice = null;
-    this.productList = [];
-  }
+// export class Request {
+//   purchase: Purchase;
+//   grn: Grn;
+//   sales: Sales;
+//   deliveryOrder: DeliveryOrder;
+//   invoice: Invoice;
+//   productList: Product[];
+//   constructor() {
+//     this.purchase = null;
+//     this.grn = null;
+//     this.sales = null;
+//     this.deliveryOrder = null;
+//     this.invoice = null;
+//     this.productList = [];
+//   }
+// }
+export interface RequestP {
+  purchase?: Purchase;
+  grn?: Grn;
+  sales?: Sales;
+  deliveryOrder?: DeliveryOrder;
+  invoice?: Invoice;
+  productList?: Product[];
+
 }
 
-export class Response {
+export interface ResponseP {
     purchase: Purchase;
     grn: Grn;
     sales: Sales;

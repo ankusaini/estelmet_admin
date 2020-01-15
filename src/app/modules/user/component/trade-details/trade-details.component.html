@@ -66,14 +66,14 @@
           >Class <small class="asterik_sign">*</small></label
         >
         <select
-          formControlName="productClass"
+          formControlName="productShape"
           class="form-control"
           id="exampleFormControlSelect1"
         >
           <option
-            *ngFor="let item of productClassList"
-            [value]="item?.productClass"
-            >{{ item?.productClass }}</option
+            *ngFor="let item of productShapeList"
+            [value]="item?.productShape"
+            >{{ item?.productShape }}</option
           >
         </select>
         <!-- <small *ngIf="f.productClass.value.length==0 && (f.productClass.dirty || f.productClass.touched )" id="passwordHelpBlock" class="form-text text-muted"

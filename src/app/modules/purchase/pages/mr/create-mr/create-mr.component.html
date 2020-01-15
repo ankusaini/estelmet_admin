@@ -2,6 +2,7 @@
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Create MR" navigationSymbol="1">
         <!-- <app-create-mr-id></app-create-mr-id> -->
+        <form [formGroup]="mrPurchase" (ngSubmit)="createMrSubmit()">
         <div class="row">
           <div class="col-sm-12">
             <h5>Create Material Requirement Id</h5>
@@ -10,11 +11,8 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Company Name <small class="asterik_sign">*</small></label>
-                  <select class="form-control" name="validation-companyName">
-                    <option value="0" disabled>Select Company</option>
-                    <option value="1">GP Global Energy Pvt Ltd</option>
-                    <option value="2">GP Global Asphalt Pvt Ltd</option>
-                    <option value="3">GP Global Kimitsu Pvt Ltd</option>
+                  <select formControlName="sourceCompanyId"  class="form-control" name="validation-category"   required >
+                  <option  *ngFor="let item of companyList"    [value]="item?.id"    >{{ item?.name }}</option>
                   </select>
                   <!-- <label *ngIf="!companyName.valid && (companyName.dirty || companyName.touched || isSubmit)"
                     id="validation-companyName-error"
@@ -26,14 +24,8 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Warehouse Name <small class="asterik_sign">*</small></label>
-                  <select class="form-control" name="validation-warehouse">
-                    <option value="0" disabled>Select Warehouse</option>
-                    <option value="1">A-88</option>
-                    <option value="2">L-24/25</option>
-                    <option value="3">J-18</option>
-                    <option value="4">M-67</option>
-                    <option value="5">GROWELL</option>
-                    <option value="6">PARAMSHAKTI</option>
+                  <select (change)="getSelectedWarehouse($event)" formControlName="sourceWarehouseId" class="form-control" name="validation-category"   required >
+                  <option  *ngFor="let warehouse of warehouseList"    [value]="warehouse?.id"    >{{ warehouse?.name }}</option>
                   </select>
                   <!-- <label *ngIf="!warehouse.valid && (warehouse.dirty || warehouse.touched || isSubmit)"
                     id="validation-warehouse-error"
@@ -47,40 +39,8 @@
               <div class="col-md-5 col-xs-6">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
-                  <select class="form-control" name="validation-category">
-                    <option value="0" disabled>Select Category</option>
-                    <option value="1">HR</option>
-                    <option value="2">CR</option>
-                    <option value="3">GL</option>
-                    <option value="4">CC</option>
-                    <option value="5">EG</option>
-                    <option value="6">TP</option>
-                    <option value="7">TFS</option>
-                    <option value="8">BP</option>
-                    <option value="9">TPL</option>
-                    <option value="10">GALVALUM</option>
-                    <option value="11">MISPRINT</option>
-                    <option value="12">PCRC</option>
-                    <option value="13">TFS/LIKER</option>
-                    <option value="14">TP/LIKER</option>
-                    <option value="15">MIX</option>
-                    <option value="16">GA</option>
-                    <option value="17">GAJ</option>
-                    <option value="18">GI</option>
-                    <option value="19">COLOR</option>
-                    <option value="20">CR/GA</option>
-                    <option value="21">GI/GA</option>
-                    <option value="22">CRJ</option>
-                    <option value="23">GIJ</option>
-                    <option value="24">ALSTER</option>
-                    <option value="25">PVC/COLOR</option>
-                    <option value="26">PVC&amp;CB</option>
-                    <option value="27">BLANK</option>
-                    <option value="28">PVC-NON-CB</option>
-                    <option value="29">CR/GI</option>
-                    <option value="30">NON-CB</option>
-                    <option value="31">COLOR-CS</option>
-                    <option value="32">MATT</option>
+                  <select formControlName="productCategory"  class="form-control" name="validation-category"   required >
+                  <option  *ngFor="let item of productCategoryList"    [value]="item?.productCategory"    >{{ item?.productCategory }}</option>
                   </select>
                   <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)"
                     id="validation-category-error"
@@ -92,21 +52,8 @@
               <div class="col-md-5 col-xs-6">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
-                  <select class="form-control" name="validation-shape">
-                    <option value="0" disabled>Select User</option>
-                    <option value="1">SLC</option>
-                    <option value="2">MWC</option>
-                    <option value="3">2RC</option>
-                    <option value="4">MC</option>
-                    <option value="5">SC</option>
-                    <option value="6">FAPS</option>
-                    <option value="7">BAPS</option>
-                    <option value="8">US</option>
-                    <option value="9">FASS</option>
-                    <option value="11">BASS</option>
-                    <option value="12">SHEETS</option>
-                    <option value="13">NO</option>
-                    <option value="14">SLC / STS</option>
+                   <select formControlName="productShape" class="form-control" name="validation-category"   required >
+                  <option  *ngFor="let productShape of productShapeList"    [value]="productShape?.productShape"    >{{ productShape?.productShape }}</option>
                   </select>
                   <!-- <label *ngIf="!shape.valid && (shape.dirty || shape.touched || isSubmit)" id="validation-shape-error"
                     class="error jquery-validation-error small form-text invalid-feedback">Shape should be required.</label> -->
@@ -116,21 +63,23 @@
           </div>
           <div class="col-sm-12 centered-content">
             <div class="btn-group mt-10">
-              <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
+              <!--  -->
+              <button [disabled]="mrPurchase.status != 'VALID'" type="submit"  class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
             </div>
-          </div>
+          </div>`
         </div>
+        </form>
       </wizard-step>
       <wizard-step stepTitle="Add Product" navigationSymbol="2">
-            <app-material-classification-specification></app-material-classification-specification>
+            <app-material-classification-specification  (productData)="getProductData($event)"></app-material-classification-specification>
        <div class="m-t-20">
         <!-- <app-add-product-cart></app-add-product-cart> -->
-        <app-add-product-cart></app-add-product-cart>
+        <app-add-product-cart [productList]="productList"></app-add-product-cart>
        </div>
         <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm">Submit</button>
+            <button type="button" (click)='saveMrRecord()' class="btn btn-primary  btn-sm">Submit</button>
           </div>
         </div>
       </wizard-step>

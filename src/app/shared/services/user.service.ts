@@ -66,4 +66,12 @@ export class UserService {
     });   
   }
 
+  sendOTP(url) {
+    return new Observable<User>(obs=>{
+      this._apiService.get(url).subscribe(res=>{
+          obs.next(res);
+      });
+    });   
+  }
+
 }

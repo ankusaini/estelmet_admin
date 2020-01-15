@@ -40,10 +40,10 @@ const routes: Routes = [
       path: 'groupApproval',
     component : GroupApprovalComponent
   },
-   {
-      path: 'editGroup',
-    component : UserGroupEditviewComponent
-  },
+  //  {
+  //     path: 'editGroup',
+  //   component : UserGroupEditviewComponent
+  // },
   {
       path: 'editGroup/:groupId',
     component : UserGroupEditviewComponent

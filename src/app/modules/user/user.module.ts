@@ -28,6 +28,7 @@ import { UserTradeDetailsComponent } from "./component/user-trade-details/user-t
 import { UserBuisnessComponent } from "./component/user-buisness/user-buisness.component";
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserApprovalComponent } from "src/app/modules/user/pages/user-approval/user-approval.component";
+import { ShareModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { UserApprovalComponent } from "src/app/modules/user/pages/user-approval/
     TextMaskModule,
     ArchwizardModule,
     SharedModule,
+    ShareModule,
     DataTablesModule,
     FileUploadModule,
     SelectModule,

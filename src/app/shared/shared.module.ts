@@ -1,21 +1,30 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialClassificationSpecificationComponent } from './components/material-classification-specification/material-classification-specification.component';
-import { AddProductCartComponent } from './components/add-product-cart/add-product-cart.component';
-import { SharedModule } from 'src/app/theme/shared/shared.module';
-import { TextMaskModule } from 'angular2-text-mask';
-import { ArchwizardModule } from 'ng2-archwizard/dist';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MaterialClassificationSpecificationComponent } from "./components/material-classification-specification/material-classification-specification.component";
+import { AddProductCartComponent } from "./components/add-product-cart/add-product-cart.component";
+import { SharedModule } from "src/app/theme/shared/shared.module";
+import { TextMaskModule } from "angular2-text-mask";
+import { ArchwizardModule } from "ng2-archwizard/dist";
 
-import { MrListComponent } from './components/mr-list/mr-list.component';
-import { TransportDetailsComponent } from './components/transport-details/transport-details.component';
-import { ProdListWithProdIdComponent } from './components/prod-list-with-prod-id/prod-list-with-prod-id.component';
-import { PurchasrListFullDetailsComponent } from './components/purchasr-list-full-details/purchasr-list-full-details.component';
+import { MrListComponent } from "./components/mr-list/mr-list.component";
+import { TransportDetailsComponent } from "./components/transport-details/transport-details.component";
+import { ProdListWithProdIdComponent } from "./components/prod-list-with-prod-id/prod-list-with-prod-id.component";
+import { PurchasrListFullDetailsComponent } from "./components/purchasr-list-full-details/purchasr-list-full-details.component";
+import { OtpComponent } from './components/otp/otp.component';
 
 @NgModule({
-  declarations: [MaterialClassificationSpecificationComponent, AddProductCartComponent, MrListComponent, TransportDetailsComponent, ProdListWithProdIdComponent, PurchasrListFullDetailsComponent],
+  declarations: [
+    MaterialClassificationSpecificationComponent,
+    AddProductCartComponent,
+    MrListComponent,
+    OtpComponent,
+    TransportDetailsComponent,
+    ProdListWithProdIdComponent,
+    PurchasrListFullDetailsComponent,
+  ],
   imports: [
     CommonModule,
-    SharedModule,
+    SharedModule, 
     TextMaskModule,
     ArchwizardModule
   ],
@@ -23,6 +32,9 @@ import { PurchasrListFullDetailsComponent } from './components/purchasr-list-ful
     MaterialClassificationSpecificationComponent, 
     AddProductCartComponent,
     PurchasrListFullDetailsComponent
-  ]
+  ] 
+
+  
+  
 })
-export class ShareModule { }
+export class ShareModule {}

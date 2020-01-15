@@ -180,13 +180,13 @@ const NavigationItems = [
             url: '/purchase/searchViewMr',
             target: false,
           },
-          {
-            id: 'mrOverview',
-            title: 'MR Overview',
-            type: 'item',
-            url: '/purchase/mrOverview',
-            target: false,
-          },
+          // {
+          //   id: 'mrOverview',
+          //   title: 'MR Overview',
+          //   type: 'item',
+          //   url: '/purchase/mrOverview',
+          //   target: false,
+          // },
           {
             id: 'mrApproval',
             title: 'MR Approval',
@@ -194,13 +194,13 @@ const NavigationItems = [
             url: '/purchase/mrApproval',
             target: false,
           },
-          {
-            id: 'mrEdit',
-            title: 'MR Edit',
-            type: 'item',
-            url: '/purchase/mrEdit',
-            target: false,
-          },
+          // {
+          //   id: 'mrEdit',
+          //   title: 'MR Edit',
+          //   type: 'item',
+          //   url: '/purchase/mrEdit',
+          //   target: false,
+          // },
         ]
       },
       {

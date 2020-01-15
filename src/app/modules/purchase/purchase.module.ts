@@ -14,6 +14,9 @@ import { SearchViewLotComponent } from './pages/purchaseLot/search-view-lot/sear
 import { PcApprovalComponent } from './pages/purchase-confirmation/pc-approval/pc-approval.component';
 // import { PurchasrListFullDetailsComponent } from 'src/app/shared/components/purchasr-list-full-details/purchasr-list-full-details.component';
 
+// import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { PcApprovalComponent } from './pages/purchase-confirmation/pc-approval/p
     NgbTabsetModule,
     DataTablesModule,
     MrModule,
+  //  ToastrModule.forRoot()
   ]
 })
 export class PurchaseModule { }
