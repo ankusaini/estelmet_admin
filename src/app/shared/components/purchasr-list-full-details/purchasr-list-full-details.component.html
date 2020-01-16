@@ -17,6 +17,7 @@
                     <th>Last Modified Date</th>
                     <th>Created By</th>
                     <th>Last Modified By</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -32,130 +33,18 @@
                     <td>SU-{{purchase.supplierId}}</td>
                     <td>{{purchase.grossWt}}</td>
                     <td>{{purchase.v}}</td>
-                    <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>
-                    <td>{{purchase.purchaseHistory[0].lastModifiedDate | date: 'medium'}}</td>
-                    <td>{{purchase.purchaseHistory[0].createdBy}}</td>
-                    <td>{{purchase.purchaseHistory[0].lastModifiedBy}}</td>
+                    <td>{{purchase.purchaseHistory[0]?.createdDate | date: 'medium'}}</td>
+                    <td>{{purchase.purchaseHistory[0]?.lastModifiedDate | date: 'medium'}}</td>
+                    <td>{{purchase.purchaseHistory[0]?.createdBy}}</td>
+                    <td>{{purchase.purchaseHistory[0]?.lastModifiedBy}}</td>
+                    <td>
+                  
+                  <div class="overlay-edit">
+                    <button (click)="addPurchaseToList(purchase)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                  </div>
+                </td>
                   </tr>
-                  <!-- <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>2.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>3.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>4.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>5.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>6.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>7.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr>
-                  <tr>
-                    <td><label class="badge badge-warning">Pending</label></td>
-                    <td>8.</td>
-                    <td>PC-892</td>
-                    <td>PC-GL-2RC</td>
-                    <td>GL</td>
-                    <td>2RC</td>
-                    <td>GP Global Pvt Ltd.</td>
-                    <td>L-24/25</td>
-                    <td>SU-922</td>
-                    <td>21.2</td>
-                    <td>20.7</td>
-                    <td>24-10-2019</td>
-                    <td>24-10-2019</td>
-                    <td>Aehmad</td>
-                    <td>Kamlesh</td>
-                  </tr> -->
+                 
                 </tbody>
               </table>
             </div>

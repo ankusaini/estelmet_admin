@@ -32,7 +32,7 @@
               <td>{{purchase.grossWt}}</td>
               <td>{{purchase.netWt}}</td>
               <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>
-              <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
+              <td><button type="button"  (click)="addPurchaseToList(purchase)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
             </tr>
             
           </tbody>
@@ -55,24 +55,30 @@
               <th>Shape</th>
               <th>Company Id</th>
               <th>Warehouse Id</th>
+              <th>Supplier Id</th>
+              <th>Gross Wt.</th>
+              <th>Net Wt.</th>
               <th>Date of Creation</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>MR-892</td>
-              <td>MR-GL-2RC</td>
-              <td>GL</td>
-              <td>2RC</td>
-              <td>GP Global Pvt Ltd.</td>
-              <td>L-24/25</td>
-              <td>24-10-2019</td>
+            <tr *ngFor="let purchase of selectedPurchaseList; let i = index">
+              <td>{{i+1}}</td>
+              <td>PC-{{purchase.id}}</td>
+              <td>{{purchase.title}}</td>
+              <td>{{purchase.productCategory}}</td>
+              <td>{{purchase.productShape}}</td>
+              <td>COM-{{purchase.sourceCompanyId}}</td>
+              <td>WAR-{{purchase.sourceWarehouseId}}</td>
+              <td>SU-{{purchase.supplierId}}</td>
+              <td>{{purchase.grossWt}}</td>
+              <td>{{purchase.netWt}}</td>
+              <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>
               <td>
-                <span class="badge badge-light-success">Approved</span>
+                <span class="badge badge-light-success">{{purchase.status}}</span>
                 <div class="overlay-edit">
-                  <button type="button" class="btn btn-icon btn-danger" ><i
+                  <button (click)="removePurchase(purchase)" type="button" class="btn btn-icon btn-danger" ><i
                       class="feather icon-trash-2"></i></button>
                 </div>
               </td>
