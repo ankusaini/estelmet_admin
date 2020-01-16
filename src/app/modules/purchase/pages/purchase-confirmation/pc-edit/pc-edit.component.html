@@ -11,9 +11,9 @@
       <div class="row">
         <div class="col-md-4 mt-md-4">
           <h3 class="f-24">Edit Purchase Confirmation</h3>
-          <p class="m-b-5 text-dark f-w-600">PC Id : <span class="text-muted">PC-782,</span> <span
-              class="f-w-600 text-success"> Approved</span></p>
-          <p class="m-b-5 text-dark f-w-600">PC Title : <span class="text-muted">PC-CR-MWC</span></p>
+          <p class="m-b-5 text-dark f-w-600">PC Id : <span class="text-muted">PC-{{pcResponse?.purchase?.id}}</span> <span
+              class="f-w-600 text-success"> {{pcResponse?.purchase?.status}}</span></p>
+          <p class="m-b-5 text-dark f-w-600">PC Title : <span class="text-muted">{{pcResponse?.purchase?.title}}</span></p>
         </div>
         <div class="col-md-6 mt-md-4">
           <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
@@ -65,26 +65,26 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
               <div class="col-sm-9">
-                Cold Rolled
+                {{pcResponse?.purchase?.productCategory}}
               </div>
             </div>
 
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Shape</label>
               <div class="col-sm-9">
-                Multi Welded Coil
+                {{pcResponse?.purchase?.productShape}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
               <div class="col-sm-9">
-                GP Global Steel
+                {{pcResponse?.company?.name}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
               <div class="col-sm-9">
-                WAR-92, L24/L25 Taloja MIDC
+                {{pcResponse?.warehouse?.name}}
               </div>
             </div>
           </app-card>
@@ -181,9 +181,9 @@
             <button type="button" (click)="this.editProfile = !this.editProfile;"
               class="btn btn-primary btn-sm rounded m-0 float-right">Add More</button>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
-            <div class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover">
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile" >
+            <div  class="dt-responsive table-responsive" cardClass="card-datatable">
+              <table *ngIf="productList" datatable class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>Sr. No.</th>
@@ -212,29 +212,29 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1.</td>
-                    <td>CFRS</td>
-                    <td>CR</td>
-                    <td>2MC</td>
-                    <td>1A</td>
-                    <td>0.12 - 1.2</td>
-                    <td>800 - 909</td>
-                    <td>Coil</td>
-                    <td>T2 -T4</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>Japan</td>
-                    <td>-</td>
-                    <td>Matt</td>
-                    <td>Kachcha</td>
-                    <td>No finish</td>
-                    <td>Box</td>
-                    <td>100 mt</td>
-                    <td>98 mt</td>
-                    <td>No remarks</td>
+                  <tr *ngFor="let product of productList; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{product.productType.productType}}</td>
+                    <td>{{product.productCategory.productCategory}}</td>
+                    <td>{{product.productShape.productShape}}</td>
+                    <td>{{product.productClass.productClass}}</td>
+                    <td>{{product.thicknessMin}} - {{product.thicknessMax}}</td>
+                    <td>{{product.widthMin}} - {{product.widthMax}}</td>
+                    <td>{{product.lengthMin}} - {{product.lengthMax}}</td>
+                    <td>{{product.temperMax.productTemper}}</td>
+                    <td>{{product.productHardness}}</td>
+                    <td>{{product.heigth}}</td>
+                    <td>{{product.productCoating.productCoating}}</td>
+                    <td>{{product.productDefect.productDefect}}</td>
+                    <td>{{product.productOrigin.productOrigin}}</td>
+                    <td>{{product.productOiling.productOiling}}</td>
+                    <td>{{product.productSurfaceCoating.productSurfaceCoating}}</td>
+                    <td>{{product.productAnnealing.productAnnealing}}</td>
+                    <td>{{product.productFinish.productFinish}}</td>
+                    <td>{{product.productPackaging.productPackaging}}</td>
+                    <td>{{productgwt}}</td>
+                    <td>{{product.nwt}}</td>
+                    <td>{{product.remarks}}</td>
                     <td>
                       <button type="button" class="btn btn-icon btn-success"><i
                           class="feather icon-check-circle"></i></button>
@@ -242,37 +242,7 @@
                           class="feather icon-trash-2"></i></button>&nbsp;
                     </td>
                   </tr>
-                  <tr>
-
-                    <td>2.</td>
-                    <td>CFRS</td>
-                    <td>CR</td>
-                    <td>2MC</td>
-                    <td>1A</td>
-                    <td>0.12 - 1.2</td>
-                    <td>800 - 909</td>
-                    <td>Coil</td>
-                    <td>T2 -T4</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>Japan</td>
-                    <td>-</td>
-                    <td>Matt</td>
-                    <td>Kachcha</td>
-                    <td>No finish</td>
-                    <td>Box</td>
-                    <td>100 mt</td>
-                    <td>98 mt</td>
-                    <td>No remarks</td>
-                    <td>
-                      <button type="button" class="btn btn-icon btn-success"><i class="feather icon-check-circle"
-                          (click)="this.editProfile = !this.editProfile; this.editProfileIcon = this.editProfile ? 'icon-x': 'icon-edit';"></i></button>
-                      <button type="button" class="btn btn-icon btn-danger"><i
-                          class="feather icon-trash-2"></i></button>&nbsp;
-                    </td>
-                  </tr>
+                
                 </tbody>
               </table>
             </div>
