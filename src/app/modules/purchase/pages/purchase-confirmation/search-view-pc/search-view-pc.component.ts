@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PurchaseService } from 'src/app/shared/services/purchase.service';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { PurchaseService } from '../../../services/purchase.service';
 
 @Component({
   selector: 'app-search-view-pc',

@@ -56,4 +56,11 @@ export class PurchaseService {
     });
 
   }
+  public getAllGrnByStatus(url) {
+    return new Observable<any>(obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      })
+    })
+  }
 }
