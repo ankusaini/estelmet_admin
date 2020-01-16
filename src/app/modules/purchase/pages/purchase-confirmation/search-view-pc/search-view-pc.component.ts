@@ -10,7 +10,7 @@ import { PurchaseService } from '../../../services/purchase.service';
 export class SearchViewPcComponent implements OnInit {
   public purchaseData: any;
   public purchaseList: Purchase[];
-  
+  public selectedPurchaseList: Purchase[]=[];
 
   constructor(private purchaseService: PurchaseService) { }
 
@@ -26,4 +26,20 @@ export class SearchViewPcComponent implements OnInit {
 
   }
 
+    addPurchaseToList(purchase)
+  {
+    const index: number = this.selectedPurchaseList.indexOf(purchase);
+    if (index == -1) {
+      this.selectedPurchaseList.push(purchase);
+    } else {
+      alert("already added");
+    }
+  }
+
+  removePurchase(purchase) {
+    const index: number = this.selectedPurchaseList.indexOf(purchase);
+    if (index !== -1) {
+      this.selectedPurchaseList.splice(index, 1);
+    }
+  }
 }

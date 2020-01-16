@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Purchase } from '../../Models/purchase.model';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 
@@ -11,7 +11,13 @@ export class PurchasrListFullDetailsComponent implements OnInit {
   @Input('tabSelected') selectedTab: string;
 
   purchaseData: any;
+  //list coming from parent selected tab
   purchaseList: Purchase[];
+
+  //emitting on every add
+    @Output() selectedPurchaseData: EventEmitter<any> = new EventEmitter<any>();
+
+    public addedPurchaseList: Purchase[]=[];
 
   constructor(private purchaseService: PurchaseService) { }
 
@@ -24,5 +30,21 @@ export class PurchasrListFullDetailsComponent implements OnInit {
       console.log("purchaseList " + this.purchaseList);
     });
   }
+
+  //emitting on every add so that parent can show the list
+  addPurchaseToList(purchase)
+  {
+    //check if already added
+     const index: number = this.addedPurchaseList.indexOf(purchase);
+    if (index == -1) {
+      this.addedPurchaseList.push(purchase);
+          this.selectedPurchaseData.emit(this.addedPurchaseList)
+
+    } else {
+      alert("already added");
+    }
+    
+  }
+
 
 }
