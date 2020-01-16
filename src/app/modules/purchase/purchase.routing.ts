@@ -10,6 +10,8 @@ import { MrApporvalComponent } from "src/app/modules/purchase/pages/mr/mr-apporv
 import { MrEditComponent } from "src/app/modules/purchase/pages/mr/mr-edit/mr-edit.component";
 import { SearchViewGrnComponent } from './pages/grnModule/search-view-grn/search-view-grn.component';
 import { GrnApprovalComponent } from './pages/grnModule/grn-approval/grn-approval.component';
+import { PcEditComponent } from './pages/purchase-confirmation/pc-edit/pc-edit.component';
+
 
 
 const routes: Routes = [
@@ -114,10 +116,10 @@ const routes: Routes = [
 //     path: 'mrEdit',
 //     component: MrEditComponent
 //   },
-//   {
-//     path: 'pcEdit',
-//     component: PcEditComponent
-//   },
+  {
+    path: 'pcEdit/:id',
+    component: PcEditComponent
+  },
 //   {
 //     path: 'grnEdit',
 //     component: GrnEditComponent

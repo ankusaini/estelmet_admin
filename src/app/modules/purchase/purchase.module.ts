@@ -17,6 +17,8 @@ import { PcApprovalComponent } from './pages/purchase-confirmation/pc-approval/p
 import { ToastrModule } from 'ngx-toastr';
 import { SearchViewGrnComponent } from './pages/grnModule/search-view-grn/search-view-grn.component';
 import { GrnApprovalComponent } from './pages/grnModule/grn-approval/grn-approval.component';
+import { PcEditComponent } from './pages/purchase-confirmation/pc-edit/pc-edit.component';
+
 
 
 
@@ -28,7 +30,8 @@ import { GrnApprovalComponent } from './pages/grnModule/grn-approval/grn-approva
     // PurchasrListFullDetailsComponent,
     PcApprovalComponent,
     SearchViewGrnComponent,
-    GrnApprovalComponent
+    GrnApprovalComponent,
+    PcEditComponent
   ],
   imports: [
     CommonModule,

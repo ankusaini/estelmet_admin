@@ -22,7 +22,7 @@
           <tbody>
             <tr *ngFor="let purchase of purchaseList; let i = index">
               <td>{{i+1}}</td>
-              <td>PC-{{purchase.id}}</td>
+              <td (click)="routerToPcEdit(purchase.id)">PC-{{purchase.id}}</td>
               <td>{{purchase.title}}</td>
               <td>{{purchase.productCategory}}</td>
               <td>{{purchase.productShape}}</td>

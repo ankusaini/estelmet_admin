@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-view-pc',
@@ -12,7 +13,8 @@ export class SearchViewPcComponent implements OnInit {
   public purchaseList: Purchase[];
   public selectedPurchaseList: Purchase[]=[];
 
-  constructor(private purchaseService: PurchaseService) { }
+  constructor(private purchaseService: PurchaseService,
+              private router: Router ) { }
 
   ngOnInit() {
     let url = "/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/APPROVED";
@@ -41,5 +43,9 @@ export class SearchViewPcComponent implements OnInit {
     if (index !== -1) {
       this.selectedPurchaseList.splice(index, 1);
     }
+  }
+
+  routerToPcEdit(id) {
+    this.router.navigateByUrl("/purchase/pcEdit/"+id);
   }
 }
