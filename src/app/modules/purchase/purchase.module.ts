@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SearchViewGrnComponent } from './pages/grnModule/search-view-grn/search-view-grn.component';
 import { GrnApprovalComponent } from './pages/grnModule/grn-approval/grn-approval.component';
 import { PcEditComponent } from './pages/purchase-confirmation/pc-edit/pc-edit.component';
+import { PurchaseConfirmationModule } from "src/app/modules/purchase/pages/purchase-confirmation/purchase-confirmation.module";
 
 
 
@@ -43,6 +44,7 @@ import { PcEditComponent } from './pages/purchase-confirmation/pc-edit/pc-edit.c
     NgbTabsetModule,
     DataTablesModule,
     MrModule,
+    PurchaseConfirmationModule,
    ToastrModule.forRoot()
   ]
 })

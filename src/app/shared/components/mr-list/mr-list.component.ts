@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Purchase } from "src/app/shared/Models/purchase.model";
+import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-mr-list',
@@ -6,10 +9,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mr-list.component.scss']
 })
 export class MrListComponent implements OnInit {
+public mrList: Purchase[]=[];
+public selectedMr: Purchase;
+  @Output() selectedMrData: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private purchaseService: PurchaseService,private router:Router) {
+    this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
+   }
 
   ngOnInit() {
   }
 
+   getAllPurchaseByTypeAndStatus(type, status) {
+    let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
+    console.log("url",url)
+    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
+      data => {
+        console.log("data",data)
+        this.mrList = data.purchaseList;
+        console.log("data",this.mrList)
+      },
+      error => {}
+    );
+  }
+
+   getSelectedMr(mr)
+  {
+    this.selectedMr=mr;
+    console.log("selected",mr)
+    this.selectedMrData.emit(this.selectedMr);
+  }
 }

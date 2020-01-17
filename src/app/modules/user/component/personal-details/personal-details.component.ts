@@ -5,6 +5,8 @@ import {
   Validators,
   AbstractControl
 } from "@angular/forms";
+import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
+
 import { CustomValidator } from "src/app/Validators/custom-validator";
 
 import { UserService } from 'src/app/shared/services/user.service';
@@ -24,8 +26,12 @@ function passwordConfirming(c: AbstractControl): any {
 })
 export class PersonalDetailsComponent implements OnInit {
 
-  
+      //public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
+
+          public uploadedFiles: Array<File> = [];
+
   @Output() prsonalData : EventEmitter<any> = new EventEmitter<any>();
+  @Output() imageData:EventEmitter<any>=new EventEmitter<any>();
   bodyText : string;
   otp : number = null;
   enterOTP : boolean = false;
@@ -64,11 +70,20 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   personalDetailSubmit() {
-    if (this.userDTO.valid) {
-      this.prsonalData.emit(this.userDTO.value);
-    } else {
-      console.log("disable");
-    }
+    console.log("uploadfile",this.uploadedFiles);
+     if (this.userDTO.valid) {
+       this.prsonalData.emit(this.userDTO.value);
+       this.imageData.emit(this.uploadedFiles);
+     } else {
+       console.log("disable");
+     }
+
+    //let path ="/uploadImage/user/"+22;
+    //  this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
+   //      console.log("image uploaded")
+   //   },error=>{
+
+   //   })
   }
 
   ngOnInit() {
@@ -112,7 +127,14 @@ export class PersonalDetailsComponent implements OnInit {
   this._userService.sendOTP(url).subscribe(
     data => {
      console.log(data);
+     if(data.message=='otp_verified')
+      {
      this.markAsComplete = true;
+      }
+    else
+      {
+        alert("Invalid OTP")
+      }
     },
     error => {}
   );

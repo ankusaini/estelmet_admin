@@ -31,7 +31,8 @@ import { OtpComponent } from './components/otp/otp.component';
   exports:[
     MaterialClassificationSpecificationComponent, 
     AddProductCartComponent,
-    PurchasrListFullDetailsComponent
+    PurchasrListFullDetailsComponent,
+    MrListComponent
   ] 
 
   

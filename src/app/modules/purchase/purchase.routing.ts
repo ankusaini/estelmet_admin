@@ -11,6 +11,7 @@ import { MrEditComponent } from "src/app/modules/purchase/pages/mr/mr-edit/mr-ed
 import { SearchViewGrnComponent } from './pages/grnModule/search-view-grn/search-view-grn.component';
 import { GrnApprovalComponent } from './pages/grnModule/grn-approval/grn-approval.component';
 import { PcEditComponent } from './pages/purchase-confirmation/pc-edit/pc-edit.component';
+import { CreatePcComponent } from "src/app/modules/purchase/pages/purchase-confirmation/create-pc/create-pc.component";
 
 
 
@@ -40,10 +41,10 @@ const routes: Routes = [
 //     path: 'createPo',
 //     component: CreatePurchaseOrderComponent
 //   },
-//   {
-//     path: 'createPc',
-//     component: CreatePcComponent
-//   },
+  {
+    path: 'createPc',
+    component: CreatePcComponent
+  },
   {
     path: 'searchPc',
     component: SearchViewPcComponent

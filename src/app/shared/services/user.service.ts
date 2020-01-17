@@ -67,11 +67,23 @@ export class UserService {
   }
 
   sendOTP(url) {
-    return new Observable<User>(obs=>{
+    return new Observable<any>(obs=>{
       this._apiService.get(url).subscribe(res=>{
           obs.next(res);
       });
     });   
   }
 
+  uploadImage(file,path)
+  {
+    let formData = new FormData();
+    formData.append('file', file);
+    console.log("formdata is",formData);
+     return new Observable<any>(obs => {
+    this._apiService.post(path,file).subscribe(res=>{
+      console.log(res);
+      obs.next(res.body);
+    });
+     });
+  }
 }

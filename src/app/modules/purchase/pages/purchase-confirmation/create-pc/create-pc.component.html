@@ -1,21 +1,22 @@
 <app-card cardTitle="Create Purchase Confirmation" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select MR Id" navigationSymbol="1">
-        <app-mr-list></app-mr-list>                                                                                                                                                                                                     
+        <app-mr-list (selectedMrData)="getSelectedMr($event)"></app-mr-list>                                                                                                                                                                                                     
        
        
-        <div class="col-sm-12 centered-content m-t-20">
+        <!-- <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
             <button type="button" class="btn btn-primary btn-sm" nextStep>Next</button>
           </div>
-        </div>
+        </div> -->
       </wizard-step>
       <wizard-step stepTitle="Generate PC Id" navigationSymbol="2">
         <h5>Products Under Above Selected MR Id </h5>
         <hr/>
-       <app-add-product-cart></app-add-product-cart>
-
+        <div *ngIf="showData">
+       <app-add-product-cart [productList]="productList"></app-add-product-cart>
+        </div>
         <h5 class="m-t-20">Generate PC Id </h5>
         <hr/>
         <div class="row">

@@ -15,6 +15,7 @@ export class CreateUserComponent implements OnInit {
   showGroup = true;
   public isSubmit: boolean;
   public userDto : User = {};
+  public uploadedFiles: Array<File> = [];
 
   constructor(
     private _userService : UserService,
@@ -44,6 +45,11 @@ export class CreateUserComponent implements OnInit {
     this.userDto.password = data.password;
     this.userDto.userRole = data.userRole;
     this.userDto.status = Status.PENDING;
+  }
+  getImageData(data:any)
+  { 
+    this.uploadedFiles=data;
+    console.log("image is",this.uploadedFiles);
   }
 
   companyDetailData(data: any) {
@@ -136,6 +142,13 @@ export class CreateUserComponent implements OnInit {
       console.log(data);
       this._userDataService.add(data);
       this._router.navigate(['/users/profile',data.id]);
+      // let path ="/uploadImage/user/"+data.id;
+      // this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
+      //    this._router.navigate(['/users/profile',data.id]);
+      // },error=>{
+
+      // })
+      
     },error=>{
       
     });
