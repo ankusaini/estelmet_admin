@@ -154,11 +154,11 @@
     <div class="col-md-4">
       <div class="photo_upload">
         <form>
-          <file-upload></file-upload>
+          <file-upload [(ngModel)]="uploadedFiles" name="files" fileslimit="1"></file-upload>
         </form>
-        <div class="text-center m-t-20 m-b-20">
-          <button class="btn btn-success btn-sm">Upload Now</button>
-        </div>
+        <!-- <div class="text-center m-t-20 m-b-20">
+          <button type="button" class="btn btn-success btn-sm">Upload Now</button>
+        </div> -->
       </div>
     </div>
   </div>

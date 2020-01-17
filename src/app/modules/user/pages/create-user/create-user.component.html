@@ -5,7 +5,7 @@
         <div class="col-sm-12">
           <h5>Personal Details</h5>
           <hr />
-          <app-personal-details
+          <app-personal-details (imageData)="getImageData($event)"
             (prsonalData)="getPersonData($event)"
           ></app-personal-details>
         </div>
