@@ -71,19 +71,19 @@ export class PersonalDetailsComponent implements OnInit {
 
   personalDetailSubmit() {
     console.log("uploadfile",this.uploadedFiles);
-    // if (this.userDTO.valid) {
-    //   this.prsonalData.emit(this.userDTO.value);
-    //   this.imageData.emit(this.uploadedFiles);
-    // } else {
-    //   console.log("disable");
-    // }
+     if (this.userDTO.valid) {
+       this.prsonalData.emit(this.userDTO.value);
+       this.imageData.emit(this.uploadedFiles);
+     } else {
+       console.log("disable");
+     }
 
-    let path ="/uploadImage/user/"+22;
-      this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
-         console.log("image uploaded")
-      },error=>{
+    //let path ="/uploadImage/user/"+22;
+    //  this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
+   //      console.log("image uploaded")
+   //   },error=>{
 
-      })
+   //   })
   }
 
   ngOnInit() {
