@@ -222,7 +222,7 @@
                     <td>{{product.widthMin}} - {{product.widthMax}}</td>
                     <td>{{product.lengthMin}} - {{product.lengthMax}}</td>
                     <td>{{product.temperMax.productTemper}}</td>
-                    <td>{{product.productHardness}}</td>
+                    <td>{{product.hardnessMax.productHardness}}</td>
                     <td>{{product.heigth}}</td>
                     <td>{{product.productCoating.productCoating}}</td>
                     <td>{{product.productDefect.productDefect}}</td>
@@ -232,7 +232,7 @@
                     <td>{{product.productAnnealing.productAnnealing}}</td>
                     <td>{{product.productFinish.productFinish}}</td>
                     <td>{{product.productPackaging.productPackaging}}</td>
-                    <td>{{productgwt}}</td>
+                    <td>{{product.gwt}}</td>
                     <td>{{product.nwt}}</td>
                     <td>{{product.remarks}}</td>
                     <td>
@@ -415,61 +415,61 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
               <div class="col-sm-3">
-                SU-927
+                SU-{{pcResponse?.purchase?.supplierId}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
               <div class="col-sm-3">
-                TP-082
+                TP-{{pcResponse?.purchase?.transportId}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
               <div class="col-sm-3">
-                20/12/2019
+                {{pcResponse?.purchase?.expectedDate | date: 'medium'}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
               <div class="col-sm-3">
-                #98487483
+                #98487483??
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
               <div class="col-sm-3">
-                20.84 Mt.
+                {{pcResponse?.purchase?.grossWt}} Mt.
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight </label>
               <div class="col-sm-3">
-                20.84 Mt.
+                {{pcResponse?.purchase?.netWt}} Mt.
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Material Description </label>
               <div class="col-sm-3">
-                CR-MWC
+                {{pcResponse?.purchase?.materialDescription}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles </label>
               <div class="col-sm-3">
-                2 Coils, 3 Bundles
+                {{pcResponse?.purchase?.coilsBundle}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Container Number</label>
               <div class="col-sm-3">
-                937KDJ89783
+                {{pcResponse?.purchase?.containerNumber}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
               <div class="col-sm-3">
-                MH 2AS 9833
+                {{pcResponse?.purchase?.lorryNumber}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name</label>
               <div class="col-sm-3">
-                Ramesh Aggarwal
+                Ramesh Aggarwal??
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
               <div class="col-sm-3">
-                +91-9978262522
+                +91-9978262522??
               </div>
             </div>
           </app-card>

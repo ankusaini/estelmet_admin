@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesService } from 'src/app/shared/services/sales.service';
 import { Sales } from 'src/app/shared/Models/sales.model';
+import { SalesServiceService } from '../../../services/sales-service.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class SoApprovalComponent implements OnInit {
   public approvedList : Sales[];
   public rejectedList : Sales[];
 
-  constructor(private salesService: SalesService) { }
+  constructor(private salesService: SalesServiceService) { }
 
   ngOnInit() {
     let pendingUrl = "/sales/getAllSalesByTypeAndStatus/SALES_OFFER_LOT/PENDING";

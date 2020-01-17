@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesService } from 'src/app/shared/services/sales.service';
 import { Sales } from 'src/app/shared/Models/sales.model';
+import { SalesServiceService } from '../../../services/sales-service.service';
 
 @Component({
   selector: 'app-search-view-so',
@@ -12,7 +12,7 @@ export class SearchViewSoComponent implements OnInit {
   public dataList: any;
   salesList: Sales[];
 
-  constructor(private salesService: SalesService) { }
+  constructor(private salesService: SalesServiceService) { }
 
   ngOnInit() {
     let url="/sales/getAllSalesByTypeAndStatus/SALES_OFFER_LOT/APPROVED";

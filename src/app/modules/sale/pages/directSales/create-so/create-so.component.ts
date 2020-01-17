@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormInput } from 'src/app/demo/sales/direct-sales/create-so/create-so-form-model';
+// import { FormInput } from 'src/app/demo/sales/direct-sales/create-so/create-so-form-model';
 
 
 @Component({

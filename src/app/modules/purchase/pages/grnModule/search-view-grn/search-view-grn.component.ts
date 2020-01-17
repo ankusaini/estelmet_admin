@@ -10,6 +10,8 @@ import { PurchaseService } from '../../../services/purchase.service';
 export class SearchViewGrnComponent implements OnInit {
   grnData: any;
   grnList: Grn[];
+  selectedGrnList: Grn[] =[]; 
+
 
   constructor(private purchaseService: PurchaseService) { }
 
@@ -22,6 +24,24 @@ export class SearchViewGrnComponent implements OnInit {
     },
     error => {}
     );
+  }
+
+  addToSelectedList(grn) {
+    console.log(grn);
+    const index: number = this.selectedGrnList.indexOf(grn);
+    if (index === -1) {
+      this.selectedGrnList.push(grn);
+    } else {
+      alert("already added");
+    }
+  }
+
+  removeFromSelectedList(grn) {
+    console.log(grn);
+    const index: number = this.selectedGrnList.indexOf(grn);
+    if (index !== -1) {
+      this.selectedGrnList.splice(index, 1);
+    }
   }
 
 }
