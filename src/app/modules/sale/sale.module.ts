@@ -25,6 +25,7 @@ import { OtherDetailsTradeleadComponent } from './components/other-details-trade
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,

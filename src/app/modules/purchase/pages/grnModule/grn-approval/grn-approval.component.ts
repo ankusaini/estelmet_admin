@@ -15,6 +15,7 @@ export class GrnApprovalComponent implements OnInit {
   public pendingList : Grn[];
   public approvedList : Grn[];
   public rejectedList : Grn[];
+  public selectedGrnList: Grn[];
 
   constructor(private purchaseService: PurchaseService) { }
 
@@ -49,6 +50,8 @@ export class GrnApprovalComponent implements OnInit {
     error => {
       console.log(error);
     });
+
+    this.selectedGrnList=[];
   }
 
   onTabChange(tab) {
@@ -64,5 +67,23 @@ export class GrnApprovalComponent implements OnInit {
     }
     console.log("selected tab", this.selectedTab);
   }
+
+  addToSelectedList(grn) {
+    console.log(grn);
+    const index: number = this.selectedGrnList.indexOf(grn);
+    if (index === -1) {
+      this.selectedGrnList.push(grn);
+    } else {
+      alert("already added");
+    }
+  }
+
+  // removeFromSelectedList(grn) {
+  //   console.log(grn);
+  //   const index: number = this.selectedGrnList.indexOf(grn);
+  //   if (index !== -1) {
+  //     this.selectedGrnList.splice(index, 1);
+  //   }
+  // }
 
 }
