@@ -211,14 +211,14 @@ const NavigationItems = [
         children: [
           {
             id: 'createPurchaseOrder',
-            title: 'Send Purchase Quotation',
+            title: 'Create Purchase Quotation',
             type: 'item',
             url: '/purchase/createPo',
             target: false,
           },
           {
             id: 'PurchaseQuote',
-            title: ' Purchase Quotation',
+            title: 'Search & View PQ',
             type: 'item',
             url: '/purchase/purchaseQuote',
             target: false,
@@ -230,13 +230,13 @@ const NavigationItems = [
             url: '/purchase/purchaseLink',
             target: false,
           },
-          {
-            id: 'PurchaseEdit',
-            title: ' Edit Purchase Quotation',
-            type: 'item',
-            url: '/purchase/editPQ',
-            target: false,
-          },
+          // {
+          //   id: 'PurchaseEdit',
+          //   title: ' Edit Purchase Quotation',
+          //   type: 'item',
+          //   url: '/purchase/editPQ',
+          //   target: false,
+          // },
         ]
       },
       {
@@ -259,13 +259,13 @@ const NavigationItems = [
             url: '/purchase/searchPc',
             target: false,
           },
-          {
-            id: 'pcOverview',
-            title: 'PC Overview',
-            type: 'item',
-            url: '/purchase/pcOverview',
-            target: false,
-          },
+          // {
+          //   id: 'pcOverview',
+          //   title: 'PC Overview',
+          //   type: 'item',
+          //   url: '/purchase/pcOverview',
+          //   target: false,
+          // },
           {
             id: 'pcApproval',
             title: 'PC Approval',
@@ -273,13 +273,13 @@ const NavigationItems = [
             url: '/purchase/pcApproval',
             target: false,
           },
-          {
-            id: 'PcEdit',
-            title: 'PC Edit',
-            type: 'item',
-            url: '/purchase/pcEdit',
-            target: false,
-          },
+          // {
+          //   id: 'PcEdit',
+          //   title: 'PC Edit',
+          //   type: 'item',
+          //   url: '/purchase/pcEdit',
+          //   target: false,
+          // },
         ]
       },
       {
@@ -316,13 +316,13 @@ const NavigationItems = [
             url: '/purchase/searchLot',
             target: false,
           },
-          {
-            id: 'lotOverview',
-            title: 'LOT Overview',
-            type: 'item',
-            url: '/purchase/lotOverview',
-            target: false,
-          },
+          // {
+          //   id: 'lotOverview',
+          //   title: 'LOT Overview',
+          //   type: 'item',
+          //   url: '/purchase/lotOverview',
+          //   target: false,
+          // },
           {
             id: 'lotApproval',
             title: 'LOT Approval',
@@ -330,13 +330,13 @@ const NavigationItems = [
             url: '/purchase/lotApproval',
             target: false,
           },
-          {
-            id: 'EditApproval',
-            title: 'LOT Edit',
-            type: 'item',
-            url: '/purchase/lotEdit',
-            target: false,
-          },
+          // {
+          //   id: 'EditApproval',
+          //   title: 'LOT Edit',
+          //   type: 'item',
+          //   url: '/purchase/lotEdit',
+          //   target: false,
+          // },
         ]
       },
       {
@@ -372,13 +372,13 @@ const NavigationItems = [
             url: '/purchase/searchGrn',
             target: false,
           },
-          {
-            id: 'grnOverview',
-            title: 'GRN Overview',
-            type: 'item',
-            url: '/purchase/grnOverview',
-            target: false,
-          },
+          // {
+          //   id: 'grnOverview',
+          //   title: 'GRN Overview',
+          //   type: 'item',
+          //   url: '/purchase/grnOverview',
+          //   target: false,
+          // },
           {
             id: 'grnApproval',
             title: 'GRN Approval',
@@ -386,13 +386,13 @@ const NavigationItems = [
             url: '/purchase/grnApproval',
             target: false,
           },
-          {
-            id: 'GrnEdit',
-            title: 'GRN Edit',
-            type: 'item',
-            url: '/purchase/grnEdit',
-            target: false,
-          }
+          // {
+          //   id: 'GrnEdit',
+          //   title: 'GRN Edit',
+          //   type: 'item',
+          //   url: '/purchase/grnEdit',
+          //   target: false,
+          // }
         ]
       }
     ]
