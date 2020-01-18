@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-view-lot',
@@ -13,7 +14,8 @@ export class SearchViewLotComponent implements OnInit {
   public selectedPurchaseList: Purchase[];
 
 
-  constructor(private purchaseService: PurchaseService) { }
+  constructor(private purchaseService: PurchaseService,
+              private router: Router) { }
 
   ngOnInit() {
     let url = "/purchase/getAllPurchaseByTypeAndStatus/LOT/PENDING";
@@ -39,6 +41,10 @@ export class SearchViewLotComponent implements OnInit {
     if (index !== -1) {
       this.selectedPurchaseList.splice(index, 1);
     }
+  }
+
+  navigateToEdit(id) {
+    this.router.navigateByUrl("purchase/lotEdit/" + id);
   }
 
 }

@@ -20,6 +20,8 @@ import { GrnApprovalComponent } from './pages/grnModule/grn-approval/grn-approva
 import { PcEditComponent } from './pages/purchase-confirmation/pc-edit/pc-edit.component';
 import { PurchaseConfirmationModule } from "src/app/modules/purchase/pages/purchase-confirmation/purchase-confirmation.module";
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
+import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component';
+import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 
 
 
@@ -34,7 +36,9 @@ import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-appro
     SearchViewGrnComponent,
     GrnApprovalComponent,
     PcEditComponent,
-    LotApprovalComponent
+    LotApprovalComponent,
+    EditGrnComponent,
+    EditLotComponent
   ],
   imports: [
     CommonModule,

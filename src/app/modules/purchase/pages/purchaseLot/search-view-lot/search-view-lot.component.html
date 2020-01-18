@@ -24,7 +24,7 @@
             <tbody>
               <tr *ngFor="let purchase of purchaseList; let i = index">
                 <td>{{i+1}}</td>
-                <td>LOT-{{purchase.id}}</td>
+                <td (click)="navigateToEdit(purchase.id)" >LOT-{{purchase.id}}</td>
                 <td>LOT-{{purchase.title}}</td>
                 <td>{{purchase.lotType}}</td>
                 <td>{{purchase.status}}</td>

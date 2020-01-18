@@ -22,7 +22,7 @@
             <tbody>
               <tr *ngFor="let grn of grnList; let i = index">
                 <td>{{i+1}}</td>
-                <td>GRN-{{grn.grnId}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">GRN-{{grn.grnId}}</td>
                 <td>LOT-{{grn.purchaseId}}</td>
                 <td>{{grn.grnType}}</td>
                 <td>{{grn.status}}</td>
