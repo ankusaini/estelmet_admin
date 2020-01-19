@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { PurchaseRoutingModule } from './purchase.routing';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { TextMaskModule } from 'angular2-text-mask';
-import { NgbTabsetModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbTabsetModule,
+  NgbDatepickerModule
+} from "@ng-bootstrap/ng-bootstrap";
 import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { ShareModule } from 'src/app/shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
@@ -22,6 +25,8 @@ import { PurchaseConfirmationModule } from "src/app/modules/purchase/pages/purch
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
 import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component';
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
+import { ViewPoComponent } from './pages/purchase-order/view-po/view-po.component';
+import { FormsModule } from "@angular/forms/forms";
 
 
 
@@ -38,7 +43,8 @@ import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.componen
     PcEditComponent,
     LotApprovalComponent,
     EditGrnComponent,
-    EditLotComponent
+    EditLotComponent,
+    ViewPoComponent
   ],
   imports: [
     CommonModule,
@@ -51,6 +57,10 @@ import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.componen
     DataTablesModule,
     MrModule,
     PurchaseConfirmationModule,
+        NgbDatepickerModule,
+         FormsModule,
+    TextMaskModule,
+
    ToastrModule.forRoot()
   ]
 })
