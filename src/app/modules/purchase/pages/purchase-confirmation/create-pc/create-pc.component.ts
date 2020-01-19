@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Product } from "src/app/shared/Models/product.model.";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-create-pc",
@@ -16,6 +17,11 @@ export class CreatePcComponent implements OnInit {
   public selectedMr: Purchase;
   ngOnInit() {}
 
+  //update the status and type of selectedMr
+  //fetch the formcontrol from purchase details(thorugh event binding)
+  //set the details in selcetdMr and call the api
+  // there might be some problem in import module , take 
+   
   getSelectedMr(data) {
     this.selectedMr = data;
     console.log("MR SELECTEd", this.selectedMr);
