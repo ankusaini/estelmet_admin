@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SalesService } from 'src/app/shared/services/sales.service';
 
 
 
@@ -13,16 +12,8 @@ export class SearchViewSoComponent implements OnInit {
 
   public dataList: any;
 
-  constructor(private salesService: SalesService) { }
+  constructor() { }
 
   ngOnInit() {
-    let url="/sales/getAllSalesByTypeAndStatus/SALES_OFFER_LOT/APPROVED";
-    this.salesService.getAllSalesByTypeAndStatus(url).subscribe(data => {
-      this.dataList= data;
-      console.log("your Data is: "+ data);
-      },
-      error => { }
-    );
-    }
-
+  }
 }

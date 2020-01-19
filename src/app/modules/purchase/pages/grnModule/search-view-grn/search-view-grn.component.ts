@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Grn } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-view-grn',
@@ -13,7 +14,8 @@ export class SearchViewGrnComponent implements OnInit {
   selectedGrnList: Grn[] =[]; 
 
 
-  constructor(private purchaseService: PurchaseService) { }
+  constructor(private purchaseService: PurchaseService,
+              private router: Router) { }
 
   ngOnInit() {
     let url = "/purchase/getAllGrn";
@@ -42,6 +44,11 @@ export class SearchViewGrnComponent implements OnInit {
     if (index !== -1) {
       this.selectedGrnList.splice(index, 1);
     }
+  }
+
+  navigateToEdit(id) {
+    // alert(id);
+    this.router.navigateByUrl("/purchase/grnEdit/" + id);
   }
 
 }
