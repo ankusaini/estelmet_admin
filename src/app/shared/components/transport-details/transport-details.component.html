@@ -1,92 +1,99 @@
-
+<form [formGroup]="transportDetails" (ngSubmit)="addTransportDetails()">
+    
  <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Transporter Id</label>
-                    <select class="form-control" name="validation-companyName">
-                        <option value>Select Transporter Id</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Supplier Id</label>
-                    <select class="form-control" name="validation-companyName">
-                        <option value>Select Supplier Id</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                        <label for="validationCustom02">Expected Delivery</label>
-                  
-                         <input class="form-control"  (click)="d.toggle()" autocomplete="on" placeholder="yyyy-mm-dd" name="dp"
-                             ngbDatepicker #d="ngbDatepicker"> 
-                      
-                </div>
-            </div> 
-             <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Vehicle Number</label>
-                    <input type="text" class="form-control" placeholder="Enter Vehicle">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Container No.</label>
-                    <input type="email" class="form-control" placeholder="Enter Container">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Source Gross Wt.</label>
-                    <input type="email" class="form-control" placeholder="Enter Gross Wt.">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Source Net Wt.</label>
-                    <input type="email" class="form-control" placeholder="Enter Net Wt.">
-                </div>
-            </div>
-     
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Material Description</label>
-                    <input type="text" class="form-control" placeholder="Enter Driver">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">No. of Coils/Bundles</label>
-                    <input type="text" class="form-control" placeholder="Enter Mobile">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Licence Number</label>
-                    <input type="text" class="form-control" placeholder="Enter Licence">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Mode</label>
-                    <select class="form-control" name="validation-companyName">
-                        <option value>Select Mode</option>
-                        <option value="1">Road</option>
-                        <option value="2">Train</option>
-                        <option value="3">Air</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label for="validationCustom02">Delivery </label>
-                    <select class="form-control" name="validation-companyName">
-                        <option value>Select Delivery</option>
-                        <option value="1">Our Warehouse</option>
-                        <option value="2">Customer Warehouse</option>
-                    </select>
-                </div>
-            </div>
-        </div>  
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Transporter Id</label>
+            <select class="form-control" name="validation-companyName" formControlName="transportId">
+                <option disabled>Select Transporter Id</option>
+                <option *ngFor="let id of transportId; let i=index" [value]="i+1">{{id}}</option>
+                <!-- put here fetch data and passed it to the parent component, -->
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Supplier Id</label>
+            <select class="form-control" name="validation-companyName" formControlName="supplierId">
+                <option disabled>Select Supplier Id</option>
+                <option *ngFor="let id of supplierId; let i=index" [value]="i+1">{{id}}</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+                <label for="validationCustom02">Expected Delivery</label>
+          
+                 <input class="form-control"  (click)="d.toggle()" formControlName="expectedDate" autocomplete="on" placeholder="yyyy-mm-dd" name="dp"
+                     ngbDatepicker #d="ngbDatepicker"> 
+              
+        </div>
+    </div> 
+     <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Vehicle Number</label>
+            <input type="text" class="form-control" formControlName="lorryNumber" placeholder="Enter Vehicle">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Container No.</label>
+            <input type="email" class="form-control" formControlName="containerNumber" placeholder="Enter Container">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Source Gross Wt.</label>
+            <input type="email" class="form-control" formControlName="grossWt" placeholder="Enter Gross Wt.">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Source Net Wt.</label>
+            <input type="email" class="form-control" formControlName="netWt" placeholder="Enter Net Wt.">
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Material Description</label>
+            <input type="text" class="form-control" formControlName="materialDescription" placeholder="Enter Driver">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">No. of Coils/Bundles</label>
+            <input type="text" class="form-control" formControlName="coilsBundle" placeholder="Enter Mobile">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Licence Number</label>
+            <input type="text" class="form-control" formControlName="licenceNumber" placeholder="Enter Licence">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Mode</label>
+            <select class="form-control" name="validation-companyName" formControlName="mode">
+                <option value>Select Mode</option>
+                <option value="1">Road</option>
+                <option value="2">Train</option>
+                <option value="3">Air</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label for="validationCustom02">Delivery </label>
+            <select class="form-control" name="validation-companyName" formControlName="delivery">
+                <option value>Select Delivery</option>
+                <option value="1">Our Warehouse</option>
+                <option value="2">Customer Warehouse</option>
+            </select>
+        </div>
+    </div>
+</div>  
+<button type="submit" class="btn btn-success" [disabled]="!transportDetails.valid">Add</button>
+</form>

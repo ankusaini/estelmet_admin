@@ -19,21 +19,21 @@
                   </thead>
                   <tbody>
                      <tr  *ngFor="let mr of mrList;let i = index">
-              <td (click)="routeToEditMr(mr.id)">{{i+1}}</td>
-              <td >MR-{{mr.id}}</td>
-              <td>{{mr.title}}</td>
-              <td>{{mr.productCategory}}</td>
-              <td>{{mr.productShape}}</td>
-              <td>{{mr.sourceCompanyId}}</td>
-              <td>{{mr.sourceWarehouseId}}</td>
-              <td>{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
-              <td>
-                  <span class="badge badge-light-success">{{mr.status}}</span>
-                  <div class="overlay-edit">
-                    <button (click)="getSelectedMr(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
-                  </div>
-                </td>
-            </tr> 
+                      <td (click)="routeToEditMr(mr.id)">{{i+1}}</td>
+                      <td >MR-{{mr.id}}</td>
+                      <td>{{mr.title}}</td>
+                      <td>{{mr.productCategory}}</td>
+                      <td>{{mr.productShape}}</td>
+                      <td>{{mr.sourceCompanyId}}</td>
+                      <td>{{mr.sourceWarehouseId}}</td>
+                      <td>{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+                      <td>
+                        <span class="badge badge-light-success">{{mr.status}}</span>
+                        <div class="overlay-edit">
+                          <button (click)="getSelectedMr(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                        </div>
+                      </td>
+                     </tr> 
                     
         
                   </tbody>

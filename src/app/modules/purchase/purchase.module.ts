@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PurchaseRoutingModule } from './purchase.routing';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { TextMaskModule } from 'angular2-text-mask';
+
 import {
   NgbTabsetModule,
   NgbDatepickerModule
@@ -26,7 +27,7 @@ import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-appro
 import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component';
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 import { ViewPoComponent } from './pages/purchase-order/view-po/view-po.component';
-import { FormsModule } from "@angular/forms/forms";
+import { FormsModule } from "@angular/forms";
 
 
 
@@ -57,8 +58,8 @@ import { FormsModule } from "@angular/forms/forms";
     DataTablesModule,
     MrModule,
     PurchaseConfirmationModule,
-        NgbDatepickerModule,
-         FormsModule,
+    NgbDatepickerModule,
+    FormsModule,
     TextMaskModule,
 
    ToastrModule.forRoot()
