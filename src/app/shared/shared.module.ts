@@ -11,6 +11,7 @@ import { TransportDetailsComponent } from "./components/transport-details/transp
 import { ProdListWithProdIdComponent } from "./components/prod-list-with-prod-id/prod-list-with-prod-id.component";
 import { PurchasrListFullDetailsComponent } from "./components/purchasr-list-full-details/purchasr-list-full-details.component";
 import { OtpComponent } from './components/otp/otp.component';
+import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -26,13 +27,16 @@ import { OtpComponent } from './components/otp/otp.component';
     CommonModule,
     SharedModule, 
     TextMaskModule,
-    ArchwizardModule
+    ArchwizardModule,
+    NgbDatepickerModule,
+
   ],
   exports:[
     MaterialClassificationSpecificationComponent, 
     AddProductCartComponent,
     PurchasrListFullDetailsComponent,
-    MrListComponent
+    MrListComponent,
+    TransportDetailsComponent
   ] 
 
   
