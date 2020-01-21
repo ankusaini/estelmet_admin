@@ -6,7 +6,7 @@
             <label for="validationCustom02">Transporter Id</label>
             <select class="form-control" name="validation-companyName" formControlName="transportId">
                 <option disabled>Select Transporter Id</option>
-                <option *ngFor="let id of transportId; let i=index" [value]="i+1">{{id}}</option>
+                <option *ngFor="let id of transportIdList; let i=index" [value]="i+1">{{id}}</option>
                 <!-- put here fetch data and passed it to the parent component, -->
             </select>
         </div>
@@ -16,7 +16,7 @@
             <label for="validationCustom02">Supplier Id</label>
             <select class="form-control" name="validation-companyName" formControlName="supplierId">
                 <option disabled>Select Supplier Id</option>
-                <option *ngFor="let id of supplierId; let i=index" [value]="i+1">{{id}}</option>
+                <option *ngFor="let id of supplierIdList; let i=index" [value]="i+1">{{id}}</option>
 
             </select>
         </div>
