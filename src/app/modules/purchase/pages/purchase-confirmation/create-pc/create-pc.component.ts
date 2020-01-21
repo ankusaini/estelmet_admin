@@ -51,6 +51,14 @@ export class CreatePcComponent implements OnInit {
 
   getTransportData(data) {
     console.log("in create transportData is: ", data);
+    console.log("previous mr",this.selectedMr)
+   // this.selectedMr=data;
+    Object.keys(data).forEach((key) => {
+      console.log("key is",key);
+   this.selectedMr[key] = data[key]
+ })
+
+    console.log("now lastest data is",this.selectedMr);
   }
 
 

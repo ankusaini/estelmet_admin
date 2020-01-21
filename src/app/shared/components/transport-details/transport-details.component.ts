@@ -10,11 +10,11 @@ import { User } from '../../Models/user.model';
   styleUrls: ['./transport-details.component.scss']
 })
 export class TransportDetailsComponent implements OnInit {
-  @Output() TransportData : EventEmitter<any> =new EventEmitter<any>(); 
+  @Output() transportData : EventEmitter<any> =new EventEmitter<any>(); 
   public supplierList: User[];
   public transportList: User[];
-  public supplierId: any[] = [];
-  public transportId: any[] = [];
+  public supplierIdList: any[] = [];
+  public transportIdList: any[] = [];
 
   constructor(private userService: UserService) { }
 
@@ -23,12 +23,15 @@ export class TransportDetailsComponent implements OnInit {
     this.userService.getAllUserByUserRoleAndStatus(supplierUrl).subscribe(data => {
       console.log("Data is: ",data);
       this.supplierList = data;
-      for(let supplier of this.supplierList){
-        console.log("id: ", supplier['id']);
-        this.supplierId.push(supplier['id']);
-      }
-      console.log("list is: ", this.supplierId);
-      },
+      // for(let supplier of this.supplierList){
+      //   console.log("id: ", supplier['id']);
+      //   this.supplierId.push(supplier['id']);
+      // }
+      if(this.supplierList && this.supplierList.length>0)
+        {
+      this.supplierIdList=this.supplierList.map(supplierObj=>supplierObj.id);
+        }
+    },
       error => {
         console.log(error);
       }
@@ -38,11 +41,16 @@ export class TransportDetailsComponent implements OnInit {
     this.userService.getAllUserByUserRoleAndStatus(transportUrl).subscribe(data => {
       console.log("Data is: ",data);
       this.transportList = data;
-      for(let transport of this.transportList){
-        console.log("id: ", transport['id']);
-        this.transportId.push(transport['id']);
-      }
-      console.log("list is: ", this.transportId);
+      // for(let transport of this.transportList){
+      //   console.log("id: ", transport['id']);
+      //   this.transportId.push(transport['id']);
+      // }
+      // console.log("list is: ", this.transportId);
+      //we can use map to get a specific key
+      if(this.transportList && this.transportList.length>0)
+        {
+          this.transportIdList=this.transportList.map(transportObj=>transportObj.id);
+        }
       },
       error => {
         console.log(error);
@@ -69,6 +77,6 @@ export class TransportDetailsComponent implements OnInit {
 
   addTransportDetails() {
     console.log("data is: " ,this.transportDetails.value);
-    this.TransportData.emit(this.transportDetails.value);
+    this.transportData.emit(this.transportDetails.value);
   }
 }
