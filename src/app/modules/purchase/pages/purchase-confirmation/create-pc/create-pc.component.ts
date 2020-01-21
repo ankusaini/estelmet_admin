@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase, PurchaseType } from "src/app/shared/Models/purchase.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Product } from "src/app/shared/Models/product.model.";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+// import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Status } from 'src/app/shared/Models/user.model';
+import { RequestP } from 'src/app/shared/Models/RequestResponse';
+import { ToastrService } from 'ngx-toastr';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-create-pc",
@@ -12,10 +16,15 @@ import { Status } from 'src/app/shared/Models/user.model';
 })
 export class CreatePcComponent implements OnInit {
   showData: boolean;
+  public request : RequestP={};
   public productList: Product[] = [];
-
-  constructor(private purchaseService: PurchaseService) {}
   public selectedMr: Purchase;
+
+  constructor(private purchaseService: PurchaseService,
+              private router: Router,
+              private toastr: ToastrService
+              ) {}
+ 
   
  
   ngOnInit() {}
@@ -59,6 +68,19 @@ export class CreatePcComponent implements OnInit {
  })
 
     console.log("now lastest data is",this.selectedMr);
+  }
+
+  savePcRecord() {
+    this.request.purchase = this.selectedMr;
+    console.log("request is: ", this.request.purchase);
+    let path= "purchase/updatePurchaseHistory";
+    this.purchaseService.updateRequestObject(path, this.request).subscribe( data => {
+      this.toastr.success("Record saved successfully")
+      this.router.navigateByUrl("/purchase/pcApproval");  
+    }, error => {
+      console.log(error);
+    });
+    
   }
 
 
