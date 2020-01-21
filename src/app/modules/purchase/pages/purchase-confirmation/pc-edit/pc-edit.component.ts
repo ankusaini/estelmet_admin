@@ -3,11 +3,12 @@ import {IAlbum, Lightbox, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
 import {Subscription} from 'rxjs';
 import { PurchaseService } from '../../../services/purchase.service';
 import { ResponseP } from 'src/app/shared/Models/RequestResponse';
-import { Product } from 'src/app/shared/Models/product.model.';
+import { Product, ProductCategory } from 'src/app/shared/Models/product.model.';
 import { ActivatedRoute } from '@angular/router';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
+import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
 @Component({
   selector: 'app-pc-edit',
   templateUrl: './pc-edit.component.html',
@@ -30,12 +31,15 @@ export class PcEditComponent implements OnInit {
   public editOtherInfoIcon: string;
 
   public albums: Array<IAlbum>;
+
   private subscription: Subscription;
   routerSubscription: any;
   pcId : any;
   public pcResponse: ResponseP;
   public productList: Product[];
   showData: boolean;
+  public productCategoryList: any[];
+  public productShapeList: any[];
 
 
   constructor(
@@ -43,7 +47,8 @@ export class PcEditComponent implements OnInit {
               private lightboxEvent: LightboxEvent, 
               private lighboxConfig: LightboxConfig,
               private purchaseService: PurchaseService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private staticData: StaticDataService
   ) {
 
       
@@ -82,6 +87,26 @@ export class PcEditComponent implements OnInit {
         );
       }
     });
+
+    this.staticData.getAllProductCategory().subscribe(data => {
+      this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
+        .filter(categoryObj => categoryObj!== null);
+      console.log("categoryList: ", this.productCategoryList);
+
+    });
+
+    this.staticData.getProductShape().subscribe( data => {
+      this.productShapeList= data.map(shapeObj => shapeObj.productShape)
+        .filter(shapeObj => shapeObj!== null);
+      console.log("shapeList: ", this.productShapeList);
+    });
+
+    this.staticData.getProductShape().subscribe( data => {
+      this.productShapeList= data.map(shapeObj => shapeObj.productShape)
+        .filter(shapeObj => shapeObj!== null);
+      console.log("shapeList: ", this.productShapeList);
+    });
+
 
   }
 }
