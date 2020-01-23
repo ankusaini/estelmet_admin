@@ -1,13 +1,65 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Injectable
+} from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UserService } from '../../services/user.service';
 import { User } from '../../Models/user.model';
+import {
+  NgbCalendar,
+  NgbDateAdapter,
+  NgbDateStruct,
+  NgbDateParserFormatter
+} from '@ng-bootstrap/ng-bootstrap';
 
+
+
+
+
+/**
+ * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
+ */
+@Injectable()
+export class CustomDateParserFormatter extends NgbDateParserFormatter {
+
+  readonly DELIMITER = '-';
+
+  parse(value: string): NgbDateStruct {
+    let result: NgbDateStruct = null;
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      result = {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    console.log("date2",result);
+    return result;
+  }
+
+  format(date: NgbDateStruct): string {
+    let result: string = null;
+    if (date) {
+      result = date.year + this.DELIMITER + date.month + this.DELIMITER + date.day;
+    }
+    console.log("date",result);
+    
+    return result;
+  }
+} 
 
 @Component({
   selector: 'app-transport-details',
   templateUrl: './transport-details.component.html',
-  styleUrls: ['./transport-details.component.scss']
+  styleUrls: ['./transport-details.component.scss'],
+   providers: [
+    
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+  ]
 })
 export class TransportDetailsComponent implements OnInit {
   @Output() transportData : EventEmitter<any> =new EventEmitter<any>(); 
@@ -80,3 +132,6 @@ export class TransportDetailsComponent implements OnInit {
     this.transportData.emit(this.transportDetails.value);
   }
 }
+
+
+

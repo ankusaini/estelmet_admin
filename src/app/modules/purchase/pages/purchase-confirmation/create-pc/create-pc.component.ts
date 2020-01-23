@@ -44,18 +44,19 @@ export class CreatePcComponent implements OnInit {
   }
 
   getProductList(id) {
-    // let url = "/purchase/find/" + id;
-    // this.purchaseService.findRequstObjectById(url).subscribe(
-    //   data => {
-    //     this.productList = data.productList;
-    //             console.log("product of this mr",this.productList)
+    id=140;
+    let url = "/purchase/find/" + id;
+    this.purchaseService.findRequstObjectById(url).subscribe(
+      data => {
+        this.productList = data.productList;
+                console.log("product of this mr",this.productList)
 
-    //     this.showData = true;
-    //   },
-    //   error => {
-    //     console.log("error");
-    //   }
-    // );
+        this.showData = true;
+      },
+      error => {
+        console.log("error");
+      }
+    );
   }
 
   getTransportData(data) {
@@ -73,7 +74,7 @@ export class CreatePcComponent implements OnInit {
   savePcRecord() {
     this.request.purchase = this.selectedMr;
     console.log("request is: ", this.request.purchase);
-    let path= "purchase/updatePurchaseHistory";
+    let path= "/purchase/updatePurchaseHistory";
     this.purchaseService.updateRequestObject(path, this.request).subscribe( data => {
       this.toastr.success("Record saved successfully")
       this.router.navigateByUrl("/purchase/pcApproval");  
