@@ -9,6 +9,7 @@ import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-pc-edit',
   templateUrl: './pc-edit.component.html',
@@ -40,7 +41,19 @@ export class PcEditComponent implements OnInit {
   showData: boolean;
   public productCategoryList: any[];
   public productShapeList: any[];
-
+  public productTypeList: any[];
+  public productClassList: any[];
+  public productHardnessList: any[];
+  public productDefectList: any[];
+  public productOilingList: any[];
+  public productAnnealingList: any[];
+  public productCoatingList: any[];
+  public productOriginList: any[];
+  public productSurfaceList: any[];
+  public productFinishList: any[];
+  pcDetails : FormGroup;
+  addProductDetails : FormGroup;
+  transportDetails: FormGroup;
 
   constructor(
               private lightbox: Lightbox,
@@ -51,7 +64,7 @@ export class PcEditComponent implements OnInit {
               private staticData: StaticDataService
   ) {
 
-      
+       
     this.activeTab = 'home';
 
     this.editProfile = false;
@@ -64,6 +77,8 @@ export class PcEditComponent implements OnInit {
     this.editOtherInfoIcon = 'icon-edit';
 
     this.albums = [];
+  
+
   }
 
   ngOnInit() {
@@ -80,6 +95,54 @@ export class PcEditComponent implements OnInit {
             this.productList = this.pcResponse.productList;
             this.showData = true;
             console.log("response", this.pcResponse);
+            this.pcDetails = new FormGroup({
+              productCategory: new FormControl(this.pcResponse.purchase.productCategory,[Validators.required]),
+              productShape: new FormControl(this.pcResponse.purchase.productShape,[Validators.required]),
+              comapnyName: new FormControl(this.pcResponse.company.name, [Validators.required]),
+              warehouseName: new FormControl(this.pcResponse.warehouse.name,[Validators.required])
+            });
+
+            this.addProductDetails = new FormGroup({
+              productType : new FormControl(this.productTypeList[0],[Validators.required]),
+              productCategory: new FormControl(this.productCategoryList[0], [Validators.required]),
+              productShape: new FormControl(this.productShapeList[0], [Validators.required]),
+              productClass: new FormControl(this.productClassList[0], [Validators.required]),
+              thicknessMin: new FormControl("", [Validators.required]),
+              thicknessMax: new FormControl("", [Validators.required]),
+              widthMin: new FormControl("", [Validators.required]),
+              widthMax: new FormControl("", [Validators.required]),
+              lengthMin: new FormControl("", [Validators.required]),
+              lengthMax: new FormControl("", [Validators.required]),
+              productTemperMin: new FormControl("", [Validators.required]),
+              productTemperMax: new FormControl("", [Validators.required]),
+              productHardness: new FormControl(this.productHardnessList[0], [Validators.required]),
+              productCoating: new FormControl(this.productCoatingList[0], [Validators.required]),
+              productDefect: new FormControl(this.productDefectList[0], [Validators.required]),
+              productOrigin: new FormControl(this.productOriginList[0], [Validators.required]),
+              productOiling: new FormControl(this.productOilingList[0], [Validators.required]),
+              productSurfaceCoating: new FormControl(this.productSurfaceList[0], [Validators.required]),
+              productAnnealing: new FormControl(this.productAnnealingList[0], [Validators.required]),
+              productFinish: new FormControl(this.productFinishList[0], [Validators.required]),
+              gwt: new FormControl("", [Validators.required]),
+              nwt: new FormControl("", [Validators.required]),
+              remarks: new FormControl("")
+            });
+            
+            this.transportDetails = new FormGroup({
+              supplierId: new FormControl(this.pcResponse.purchase.supplierId,[Validators.required]),
+              transportId: new FormControl(this.pcResponse.purchase.transportId, [Validators.required]),
+              expectedDate: new FormControl(this.pcResponse.purchase.expectedDate, [Validators.required]),
+              invoice: new FormControl("", [Validators.required]),
+              grossWt: new FormControl(this.pcResponse.purchase.grossWt, [Validators.required]),
+              netWt: new FormControl(this.pcResponse.purchase.netWt,[ Validators.required]),
+              materialDescription: new FormControl(this.pcResponse.purchase.materialDescription, [Validators.required]),
+              coilsBundle: new FormControl(this.pcResponse.purchase.coilsBundle, [Validators.required]),
+              containerNumber: new FormControl(this.pcResponse.purchase.containerNumber, [Validators.required]),
+              lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required]),
+              driverName: new FormControl("", [Validators.required]), 
+              driverMobile: new FormControl("", [Validators.required])
+            });
+             
           },
           error => {
             console.log("error");
@@ -101,12 +164,80 @@ export class PcEditComponent implements OnInit {
       console.log("shapeList: ", this.productShapeList);
     });
 
-    this.staticData.getProductShape().subscribe( data => {
-      this.productShapeList= data.map(shapeObj => shapeObj.productShape)
-        .filter(shapeObj => shapeObj!== null);
-      console.log("shapeList: ", this.productShapeList);
+    this.staticData.getProductType().subscribe( data => {
+      this.productTypeList= data.map(typeObj => typeObj.productType)
+        .filter(typeObj => typeObj!== null);
+      console.log("typeList: ", this.productTypeList);
     });
 
+    this.staticData.getProductClass().subscribe( data => {
+      this.productClassList = data.map(classObj => classObj.productClass)
+      .filter(classObj => classObj!== null);
+      console.log("classList: ", this.productClassList);
+    });
 
+    this.staticData.getAllHardness().subscribe( data => {
+      this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
+      .filter(hardnessObj => hardnessObj!== null);
+      console.log("HardnessList: ", this.productHardnessList);
+    });
+
+    this.staticData.getAllProductCoating().subscribe( data => {
+      this.productCoatingList = data.map(coatingObj => coatingObj.productCoating)
+      .filter(coatingObj => coatingObj!== null);
+      console.log("CoatingList: ", this.productCoatingList);
+    });
+
+    this.staticData.getAllDefect().subscribe( data => {
+      this.productDefectList = data.map(defectObj => defectObj.productDefect)
+      .filter(defectObj => defectObj!== null);
+      console.log("defectList: ", this.productDefectList);
+    });
+
+    this.staticData.getAllOrigin().subscribe( data => {
+      this.productOriginList = data.map(originObj => originObj.productOrigin)
+      .filter(originObj => originObj!== null);
+      console.log("OriginList: ", this.productOriginList);
+    });
+
+    
+    this.staticData.getAllSurface().subscribe( data => {
+      this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
+      .filter(surfaceObj => surfaceObj!== null);
+      console.log("surfaceList: ", this.productSurfaceList);
+    });
+
+    this.staticData.getAllAnnealing().subscribe( data => {
+      this.productAnnealingList = data.map(annealingObj => annealingObj.productAnnealing)
+      .filter(annealingObj => annealingObj!== null);
+      console.log("annealingList: ", this.productAnnealingList);
+    });
+
+    this.staticData.getAllFinish().subscribe( data => {
+      this.productFinishList = data.map(finishObj => finishObj.productFinish)
+      .filter(finishObj => finishObj!== null);
+      console.log("finishList: ", this.productFinishList);
+    });
+
+    this.staticData.getAllProductOiling().subscribe( data => {
+      this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
+      .filter(oilingObj => oilingObj!== null);
+      console.log("oilingList: ", this.productOilingList);
+      
+    });
+    
+  }
+
+  
+  submitPcDetails() {
+    console.log("pcDeatails are: ", this.pcDetails.value);
+  }
+
+  submitProductDetails() {
+    console.log("product details: ", this.addProductDetails.value);
+  }
+
+  submitTransportDetails() {
+    console.log("transport Details: ", this.transportDetails.value);
   }
 }
