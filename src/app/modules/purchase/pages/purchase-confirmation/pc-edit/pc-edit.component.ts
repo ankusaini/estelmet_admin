@@ -51,8 +51,9 @@ export class PcEditComponent implements OnInit {
   public productOriginList: any[];
   public productSurfaceList: any[];
   public productFinishList: any[];
-  pcDetalis : FormGroup;
-  addProduct : FormGroup;
+  pcDetails : FormGroup;
+  addProductDetails : FormGroup;
+  transportDetails: FormGroup;
 
   constructor(
               private lightbox: Lightbox,
@@ -63,7 +64,7 @@ export class PcEditComponent implements OnInit {
               private staticData: StaticDataService
   ) {
 
-      
+       
     this.activeTab = 'home';
 
     this.editProfile = false;
@@ -76,6 +77,8 @@ export class PcEditComponent implements OnInit {
     this.editOtherInfoIcon = 'icon-edit';
 
     this.albums = [];
+  
+
   }
 
   ngOnInit() {
@@ -92,45 +95,60 @@ export class PcEditComponent implements OnInit {
             this.productList = this.pcResponse.productList;
             this.showData = true;
             console.log("response", this.pcResponse);
+            this.pcDetails = new FormGroup({
+              productCategory: new FormControl(this.pcResponse.purchase.productCategory,[Validators.required]),
+              productShape: new FormControl(this.pcResponse.purchase.productShape,[Validators.required]),
+              comapnyName: new FormControl(this.pcResponse.company.name, [Validators.required]),
+              warehouseName: new FormControl(this.pcResponse.warehouse.name,[Validators.required])
+            });
+
+            this.addProductDetails = new FormGroup({
+              productType : new FormControl(this.productTypeList[0],[Validators.required]),
+              productCategory: new FormControl(this.productCategoryList[0], [Validators.required]),
+              productShape: new FormControl(this.productShapeList[0], [Validators.required]),
+              productClass: new FormControl(this.productClassList[0], [Validators.required]),
+              thicknessMin: new FormControl("", [Validators.required]),
+              thicknessMax: new FormControl("", [Validators.required]),
+              widthMin: new FormControl("", [Validators.required]),
+              widthMax: new FormControl("", [Validators.required]),
+              lengthMin: new FormControl("", [Validators.required]),
+              lengthMax: new FormControl("", [Validators.required]),
+              productTemperMin: new FormControl("", [Validators.required]),
+              productTemperMax: new FormControl("", [Validators.required]),
+              productHardness: new FormControl(this.productHardnessList[0], [Validators.required]),
+              productCoating: new FormControl(this.productCoatingList[0], [Validators.required]),
+              productDefect: new FormControl(this.productDefectList[0], [Validators.required]),
+              productOrigin: new FormControl(this.productOriginList[0], [Validators.required]),
+              productOiling: new FormControl(this.productOilingList[0], [Validators.required]),
+              productSurfaceCoating: new FormControl(this.productSurfaceList[0], [Validators.required]),
+              productAnnealing: new FormControl(this.productAnnealingList[0], [Validators.required]),
+              productFinish: new FormControl(this.productFinishList[0], [Validators.required]),
+              gwt: new FormControl("", [Validators.required]),
+              nwt: new FormControl("", [Validators.required]),
+              remarks: new FormControl("")
+            });
+            
+            this.transportDetails = new FormGroup({
+              supplierId: new FormControl(this.pcResponse.purchase.supplierId,[Validators.required]),
+              transportId: new FormControl(this.pcResponse.purchase.transportId, [Validators.required]),
+              expectedDate: new FormControl(this.pcResponse.purchase.expectedDate, [Validators.required]),
+              invoice: new FormControl("", [Validators.required]),
+              grossWt: new FormControl(this.pcResponse.purchase.grossWt, [Validators.required]),
+              netWt: new FormControl(this.pcResponse.purchase.netWt,[ Validators.required]),
+              materialDescription: new FormControl(this.pcResponse.purchase.materialDescription, [Validators.required]),
+              coilsBundle: new FormControl(this.pcResponse.purchase.coilsBundle, [Validators.required]),
+              containerNumber: new FormControl(this.pcResponse.purchase.containerNumber, [Validators.required]),
+              lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required]),
+              driverName: new FormControl("", [Validators.required]), 
+              driverMobile: new FormControl("", [Validators.required])
+            });
+             
           },
           error => {
             console.log("error");
           }
         );
       }
-    });
-
-    this.pcDetalis = new FormGroup({
-      productCategory: new FormControl(this.pcResponse.purchase.productCategory,[Validators.required]),
-      productShape: new FormControl(this.pcResponse.purchase.productShape, [Validators.required]),
-      comapnyName: new FormControl(this.pcResponse.company.name, [Validators.required]),
-      warehouseName: new FormControl(this.pcResponse.warehouse.name,[Validators.required])
-    });
-
-    this.addProduct = new FormGroup({
-      productType : new FormControl("",[Validators.required]),
-      productCategory: new FormControl("", [Validators.required]),
-      productShape: new FormControl("", [Validators.required]),
-      productClass: new FormControl("", [Validators.required]),
-      thicknessMin: new FormControl("", [Validators.required]),
-      thicknessMax: new FormControl("", [Validators.required]),
-      widthMin: new FormControl("", [Validators.required]),
-      widthMax: new FormControl("", [Validators.required]),
-      lengthMin: new FormControl("", [Validators.required]),
-      lengthMax: new FormControl("", [Validators.required]),
-      productTemperMin: new FormControl("", [Validators.required]),
-      productTemperMax: new FormControl("", [Validators.required]),
-      productHardness: new FormControl("", [Validators.required]),
-      productCoating: new FormControl("", [Validators.required]),
-      productDefect: new FormControl("", [Validators.required]),
-      productOrigin: new FormControl("", [Validators.required]),
-      productOiling: new FormControl("", [Validators.required]),
-      productSurfaceCoating: new FormControl("", [Validators.required]),
-      productAnnealing: new FormControl("", [Validators.required]),
-      productFinish: new FormControl("", [Validators.required]),
-      gwt: new FormControl("", [Validators.required]),
-      nwt: new FormControl("", [Validators.required]),
-      remarks: new FormControl("")
     });
 
     this.staticData.getAllProductCategory().subscribe(data => {
@@ -182,12 +200,7 @@ export class PcEditComponent implements OnInit {
       console.log("OriginList: ", this.productOriginList);
     });
 
-    this.staticData.getAllProductOiling().subscribe( data => {
-      this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
-      .filter(oilingObj => oilingObj!== null);
-      console.log("oilingList: ", this.productOilingList);
-    });
-
+    
     this.staticData.getAllSurface().subscribe( data => {
       this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
       .filter(surfaceObj => surfaceObj!== null);
@@ -206,14 +219,25 @@ export class PcEditComponent implements OnInit {
       console.log("finishList: ", this.productFinishList);
     });
 
+    this.staticData.getAllProductOiling().subscribe( data => {
+      this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
+      .filter(oilingObj => oilingObj!== null);
+      console.log("oilingList: ", this.productOilingList);
+      
+    });
     
   }
 
+  
   submitPcDetails() {
-    console.log("pcDeatails are: ", this.pcDetalis.value);
+    console.log("pcDeatails are: ", this.pcDetails.value);
   }
 
   submitProductDetails() {
-    console.log("product details", this.addProduct.value);
+    console.log("product details: ", this.addProductDetails.value);
+  }
+
+  submitTransportDetails() {
+    console.log("transport Details: ", this.transportDetails.value);
   }
 }
