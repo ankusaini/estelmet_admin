@@ -1,18 +1,18 @@
 <app-card cardTitle="Add Product" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
     <wizard-step stepTitle="Select GRN Id" navigationSymbol="1">
-      <app-select-grn></app-select-grn>
-      <div class="col-sm-12 centered-content m-t-20">
+      <app-select-grn (selectedGrnId)="getSelectedGrnId($event)"></app-select-grn>
+      <!-- <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
           <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
         </div>
-      </div>
+      </div> -->
     </wizard-step>
     <wizard-step stepTitle="Add Product" navigationSymbol="1">
-    <app-material-classification-specification></app-material-classification-specification>
+    <app-material-classification-specification (productData)="getProductData($event)"></app-material-classification-specification>
       <div class="m-t-20">
-        <app-add-product-cart></app-add-product-cart>
+        <app-add-product-cart [productList]="productList"></app-add-product-cart>
       </div>
       <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
