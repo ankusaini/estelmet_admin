@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryService } from '../../service/inventory.service';
+import { Product } from 'src/app/shared/Models/product.model.';
 
 @Component({
   selector: 'app-search-view-product',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-view-product.component.scss']
 })
 export class SearchViewProductComponent implements OnInit {
+  
+  productList: Product[];
+  selectedProductList: Product[];
 
-  constructor() { }
+  constructor(private inventoryService: InventoryService) { }
 
   ngOnInit() {
+    let url = "/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED";
+    this.inventoryService.getAllProductByProductStageAndStatus(url).subscribe( data => {
+      this.productList = data;
+      console.log("productList is: ", this.productList);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getSelectedProductList(selectedProductList) {
+    this.selectedProductList = selectedProductList;
+    console.log(this.selectedProductList);
   }
 
 }

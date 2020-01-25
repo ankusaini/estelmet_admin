@@ -2,7 +2,7 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Product Basket Cart" [options]="false"
         cardClass="user-profile-list">
-        <div *ngIf="productList && productList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
+        <div *ngIf="productList" class="dt-responsive table-responsive" cardClass="card-datatable">
           <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -48,9 +48,7 @@
               <td>{{product.productCoating?.productCoating}}</td>
                <td>{{product.productDefect?.productDefect}}</td>
                <td>{{product.productOrigin?.productOrigin}}</td>
-
                <td>{{product.productOiling?.productOiling}}</td>
-
                <td>{{product.productSurfaceCoating?.productSurfaceCoating}}</td>
                <td>{{product.productAnnealing?.productAnnealing}}</td>
                <td>{{product.productFinish?.productFinish}}</td>
@@ -58,13 +56,22 @@
                <td>{{product.gwt}}</td>
                <td>{{product.nwt}}</td>
                <td>{{product.remarks}}</td>
-
               <td>
                 <!-- <span class="badge badge-light-success">{{user.status}}</span> -->
                 <div class="overlay-edit">
-                  <!-- <button type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button> -->
-                  <button (click)="deleteProduct(product)" type="button" class="btn btn-icon btn-danger" ><i class="feather icon-trash-2"></i></button>
+                  <button 
+                    type="button" 
+                    [hidden]="!(component === 'inventory')" 
+                    class="btn btn-icon btn-success"
+                    (click)="addProduct(product)">
+                    <i class="feather icon-check-circle"></i>
+                  </button>
+                  <button 
+                    (click)="deleteProduct(product)" 
+                    type="button" 
+                    class="btn btn-icon btn-danger" >
+                    <i class="feather icon-trash-2"></i>
+                  </button>
                 </div>
               </td>
             </tr> 

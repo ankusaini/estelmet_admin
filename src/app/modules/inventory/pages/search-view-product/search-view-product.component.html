@@ -1,5 +1,12 @@
-<app-add-product-cart></app-add-product-cart>
-<app-add-product-cart></app-add-product-cart>
+<app-add-product-cart 
+    [productList]="productList" 
+    [component]="'inventory'"
+    (selectedProductList)= getSelectedProductList($event)>
+</app-add-product-cart>
+
+<app-add-product-cart 
+    [productList]="selectedProductList">
+</app-add-product-cart>
 <button type="submit" class="btn btn-primary active">CSV</button>&nbsp;
 <button type="submit" class="btn btn-success active">Export</button>&nbsp;
 <button type="submit" class="btn btn-danger active">Print</button>&nbsp;
