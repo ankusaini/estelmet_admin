@@ -36,9 +36,13 @@ const routes: Routes = [
       //   path: 'purchase',
       //   loadChildren: () => import('./demo/purchase/purchase.module').then(module => module.PurchaseModule)
       // },
+      // {
+      //   path: 'inventory',
+      //   loadChildren: () => import('./demo/inventory/inventory.module').then(module => module.InventoryModule)
+      // },
       {
         path: 'inventory',
-        loadChildren: () => import('./demo/inventory/inventory.module').then(module => module.InventoryModule)
+        loadChildren: () => import('./modules/inventory/inventory.module').then(module => module.InventoryModule)
       },
       {
         path: 'processing',

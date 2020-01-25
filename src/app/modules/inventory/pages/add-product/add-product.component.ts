@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormInput } from "src/app/modules/inventory/pages/add-product/add-product-form.model";
+import { Grn } from 'src/app/shared/Models/purchase.model';
+import { Product } from 'src/app/shared/Models/product.model.';
 
 @Component({
   selector: 'app-add-product',
@@ -10,41 +12,44 @@ import { FormInput } from "src/app/modules/inventory/pages/add-product/add-produ
 export class AddProductComponent implements OnInit {
 
 showGroup = true;
-  public isSubmit2: boolean;
-  formInput: FormInput;
-  public maskIP = [/\d/, '.', /\d/, /\d/];
+  // public isSubmit2: boolean;
+  // formInput: FormInput;
+  // public maskIP = [/\d/, '.', /\d/, /\d/];
+  grnList: Grn[];
+  productList : Product[] = [];
+
   constructor() {
-    this.isSubmit2 = false;
+    // this.isSubmit2 = false;
     this.basicSwal();
   }
   ngOnInit() {
-    this.formInput = {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      requiredInput: '',
-      url: '',
-      phone: '',
-      type: '',
-      category: '',
-      shape: '',
-      class: '',
-      thickMin: '',
-      thickMax: '',
-      companyName: '',
-      warehouse: '',
-      address: '',
-      file: '',
-      switcher: ''
-    };
+    // this.formInput = {
+    //   email: '',
+    //   password: '',
+    //   confirmPassword: '',
+    //   requiredInput: '',
+    //   url: '',
+    //   phone: '',
+    //   type: '',
+    //   category: '',
+    //   shape: '',
+    //   class: '',
+    //   thickMin: '',
+    //   thickMax: '',
+    //   companyName: '',
+    //   warehouse: '',
+    //   address: '',
+    //   file: '',
+    //   switcher: ''
+    // };
   }
-  save(form: any) {
-    if (!form.valid) {
-      this.isSubmit2 = true;
-      return;
-    }
-    this.showGroup = false;
-  }
+  // save(form: any) {
+  //   if (!form.valid) {
+  //     this.isSubmit2 = true;
+  //     return;
+  //   }
+  //   this.showGroup = false;
+  // }
   basicSwal() {
     Swal.fire({
       title: 'Add Product With',
@@ -68,6 +73,20 @@ showGroup = true;
           }
         });
       }
+    }).then( selectedType => {
+      if(selectedType !== "") {
+        console.log("selected type", selectedType);
+      }
     });
   }
+
+  getSelectedGrnId(grnId) {
+    console.log("in add-product component", grnId);
+  }
+
+  getProductData(productData) {
+    console.log("product Data is in add product comp: ", productData);
+    this.productList.push(productData);
+  }
+  
 }
