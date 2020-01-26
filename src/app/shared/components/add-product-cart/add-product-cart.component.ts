@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Product } from "src/app/shared/Models/product.model.";
 import { InventoryService } from 'src/app/modules/inventory/service/inventory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-cart',
@@ -15,7 +16,10 @@ export class AddProductCartComponent implements OnInit {
   @Output() selectedProductList: EventEmitter<any> = new EventEmitter<any>();
   setProductList: Product[]=[];
 
-  constructor(private inventoryService : InventoryService) { }
+  constructor(
+              private inventoryService : InventoryService,
+              private router: Router
+              ) { }
 
   ngOnInit() {
   }
@@ -38,6 +42,14 @@ export class AddProductCartComponent implements OnInit {
     if (index !== -1) {
       this.productList.splice(index, 1);
     }
+  }
+
+  navigateToEdit(productId) {
+    if(this.component === "inventory") {
+      console.log("selected id is: ", productId);
+      this.router.navigateByUrl("/inventory/editProduct/"+productId);
+    }
+    
   }
 
  

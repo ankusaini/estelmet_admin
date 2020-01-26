@@ -34,7 +34,7 @@
             </thead>
             <tbody>
               <tr href="kdkd" *ngFor="let product of productList;let i = index">
-              <td>{{i+1}}</td>
+              <td (click)="navigateToEdit(product.productId)">{{i+1}}</td>
               <td>{{product.productType?.productType}}</td>
               <td>{{product.productCategory?.productCategory}}</td>
               <td>{{product.productShape?.productShape}}</td>

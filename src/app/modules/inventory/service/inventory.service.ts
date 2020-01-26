@@ -33,4 +33,13 @@ export class InventoryService {
     });
   }
 
+  public findRequstObjectById(url)
+  {
+    return new Observable<any>(obs=>{
+      this.apiService.get(url).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+
 }

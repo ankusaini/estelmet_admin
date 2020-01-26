@@ -15,7 +15,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './pc-edit.component.html',
   styleUrls: ['./pc-edit.component.css']
 })
-export class PcEditComponent implements OnInit {
+export class PcEditComponent implements OnInit{
   public activeTab: string;
   public editProfile1: boolean;
   public editProfile2: boolean;
@@ -85,7 +85,7 @@ export class PcEditComponent implements OnInit {
 
     this.routerSubscription = this.route.url.subscribe( params => {
       this.pcId = this.route.snapshot.params.id;
-      console.log("id: "+ this.pcId);
+      console.log("id: ", this.pcId);
 
       if(this.pcId) {
         let url = "/purchase/find/" + this.pcId;
@@ -103,10 +103,10 @@ export class PcEditComponent implements OnInit {
             });
 
             this.addProductDetails = new FormGroup({
-              productType : new FormControl(this.productTypeList[0],[Validators.required]),
-              productCategory: new FormControl(this.productCategoryList[0], [Validators.required]),
-              productShape: new FormControl(this.productShapeList[0], [Validators.required]),
-              productClass: new FormControl(this.productClassList[0], [Validators.required]),
+              productType : new FormControl("",[Validators.required]),
+              productCategory: new FormControl("", [Validators.required]),
+              productShape: new FormControl("", [Validators.required]),
+              productClass: new FormControl("", [Validators.required]),
               thicknessMin: new FormControl("", [Validators.required]),
               thicknessMax: new FormControl("", [Validators.required]),
               widthMin: new FormControl("", [Validators.required]),
@@ -115,18 +115,19 @@ export class PcEditComponent implements OnInit {
               lengthMax: new FormControl("", [Validators.required]),
               productTemperMin: new FormControl("", [Validators.required]),
               productTemperMax: new FormControl("", [Validators.required]),
-              productHardness: new FormControl(this.productHardnessList[0], [Validators.required]),
-              productCoating: new FormControl(this.productCoatingList[0], [Validators.required]),
-              productDefect: new FormControl(this.productDefectList[0], [Validators.required]),
-              productOrigin: new FormControl(this.productOriginList[0], [Validators.required]),
-              productOiling: new FormControl(this.productOilingList[0], [Validators.required]),
-              productSurfaceCoating: new FormControl(this.productSurfaceList[0], [Validators.required]),
-              productAnnealing: new FormControl(this.productAnnealingList[0], [Validators.required]),
-              productFinish: new FormControl(this.productFinishList[0], [Validators.required]),
+              productHardness: new FormControl("", [Validators.required]),
+              productCoating: new FormControl("", [Validators.required]),
+              productDefect: new FormControl("", [Validators.required]),
+              productOrigin: new FormControl("", [Validators.required]),
+              productOiling: new FormControl("", [Validators.required]),
+              productSurfaceCoating: new FormControl("", [Validators.required]),
+              productAnnealing: new FormControl("", [Validators.required]),
+              productFinish: new FormControl("", [Validators.required]),
               gwt: new FormControl("", [Validators.required]),
               nwt: new FormControl("", [Validators.required]),
               remarks: new FormControl("")
             });
+
             
             this.transportDetails = new FormGroup({
               supplierId: new FormControl(this.pcResponse.purchase.supplierId,[Validators.required]),
