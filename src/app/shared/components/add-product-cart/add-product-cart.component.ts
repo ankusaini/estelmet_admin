@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Product } from "src/app/shared/Models/product.model.";
+import { InventoryService } from 'src/app/modules/inventory/service/inventory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-cart',
@@ -7,12 +9,29 @@ import { Product } from "src/app/shared/Models/product.model.";
   styleUrls: ['./add-product-cart.component.scss']
 })
 export class AddProductCartComponent implements OnInit {
+  @Input() productList:Product[]=[];
+  @Input() component : any = "";
+  // @Input() selectedTab : string;
 
-  constructor() { }
+  @Output() selectedProductList: EventEmitter<any> = new EventEmitter<any>();
+  setProductList: Product[]=[];
 
-  @Input()
-  productList:Product[]=[];
+  constructor(
+              private inventoryService : InventoryService,
+              private router: Router
+              ) { }
+
   ngOnInit() {
+  }
+
+  addProduct(product) {
+    const index = this.setProductList.indexOf(product);
+    if (index == -1) {
+      this.setProductList.push(product);
+      this.selectedProductList.emit(this.setProductList);
+    } else {
+      alert("already added");
+    }
   }
 
   deleteProduct(product)
@@ -23,6 +42,14 @@ export class AddProductCartComponent implements OnInit {
     if (index !== -1) {
       this.productList.splice(index, 1);
     }
+  }
+
+  navigateToEdit(productId) {
+    if(this.component === "inventory") {
+      console.log("selected id is: ", productId);
+      this.router.navigateByUrl("/inventory/editProduct/"+productId);
+    }
+    
   }
 
  

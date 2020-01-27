@@ -16,4 +16,30 @@ export class InventoryService {
       })
     })
   }
+
+  getAllProductByProductStageAndStatus(url) {
+    return new Observable<any>( obs => {
+      this.apiService.get(url).subscribe( res => {
+        obs.next(res);
+      })
+    });
+  }
+
+  getAllProductByStatus(url) {
+    return new Observable<any>( obs => {
+      this.apiService.get(url).subscribe( res => {
+        obs.next(res);
+      })
+    });
+  }
+
+  public findRequstObjectById(url)
+  {
+    return new Observable<any>(obs=>{
+      this.apiService.get(url).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+
 }
