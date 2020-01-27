@@ -28,6 +28,9 @@ import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component'
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 import { ViewPoComponent } from './pages/purchase-order/view-po/view-po.component';
 import { FormsModule } from "@angular/forms";
+import { CreatePoComponent } from './pages/purchase-order/create-po/create-po.component';
+import { PoEmailSmsComponent } from './pages/purchase-order/po-email-sms/po-email-sms.component';
+import { PurchaseOrderModule } from "src/app/modules/purchase/pages/purchase-order/purchase-order.module";
 
 
 
@@ -45,7 +48,9 @@ import { FormsModule } from "@angular/forms";
     LotApprovalComponent,
     EditGrnComponent,
     EditLotComponent,
-    ViewPoComponent
+    ViewPoComponent,
+    CreatePoComponent,
+    PoEmailSmsComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +66,7 @@ import { FormsModule } from "@angular/forms";
     NgbDatepickerModule,
     FormsModule,
     TextMaskModule,
+    PurchaseOrderModule,
 
    ToastrModule.forRoot()
   ]

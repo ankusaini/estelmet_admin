@@ -156,9 +156,9 @@
         <form>
           <file-upload [(ngModel)]="uploadedFiles" name="files" fileslimit="1"></file-upload>
         </form>
-        <!-- <div class="text-center m-t-20 m-b-20">
-          <button type="button" class="btn btn-success btn-sm">Upload Now</button>
-        </div> -->
+         <div class="text-center m-t-20 m-b-20">
+          <button type="button" (click)="uploadPhoto()" class="btn btn-success btn-sm">Upload Now</button>
+        </div> 
       </div>
     </div>
   </div>
@@ -181,12 +181,14 @@
         Verify OTP
       </button>
     </div>
+    <!--Enabling continue forimage testingt  -->
+     <!-- [disabled]="!(userDTO.status == 'VALID' && markAsComplete)" -->
     <div class="btn-group mt-10">
       <button
         type="submit"
         class="btn btn-primary btn-sm"
         uiSref="work"
-        [disabled]="!(userDTO.status == 'VALID' && markAsComplete)"
+       [disabled]="!(userDTO.status == 'VALID' && markAsComplete)"
         nextStep
       >
         Continue

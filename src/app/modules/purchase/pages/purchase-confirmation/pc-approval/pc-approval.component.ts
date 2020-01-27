@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Purchase } from "src/app/shared/Models/purchase.model";
+import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-pc-approval',
@@ -8,9 +11,9 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 })
 export class PcApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
-  
+  public request : RequestP={};
   public selectedPuchaseList: Purchase[] = [];
-  constructor() { }
+  constructor(private purchaseService: PurchaseService,private router:Router) { }
 
   ngOnInit() {
   }
@@ -46,4 +49,33 @@ export class PcApprovalComponent implements OnInit {
       this.selectedPuchaseList.splice(index, 1);
     }
   }
+
+
+
+
+    changeStatusOfSelectedPurchase(status) {
+    if (this.selectedPuchaseList.length == 0) {
+      alert("select at least one");
+    } else {
+      let path = "/purchase/updatePurchase";
+
+      for (let i = 0; i < this.selectedPuchaseList.length; i++) {
+        this.selectedPuchaseList[i].status = status;
+         this.request.purchase=this.selectedPuchaseList[i];
+        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+          data => {
+            alert("update")
+             this.router.routeReuseStrategy.shouldReuseRoute = function () {
+    return false;
+  };
+             this.selectedTab = "PENDING";
+        this.selectedPuchaseList=[];
+          },
+          error => {}
+        );
+      }
+    }
+  }
+
+
 }

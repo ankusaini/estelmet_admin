@@ -1,4 +1,4 @@
-        <h5>Search & Select MR Id </h5>
+        <!-- <h5>Search & Select MR Id </h5> -->
         <hr/>
         <div class="row">
           <div class="col-md-12">
@@ -20,7 +20,7 @@
                   <tbody>
                      <tr  *ngFor="let mr of mrList;let i = index">
                       <td (click)="routeToEditMr(mr.id)">{{i+1}}</td>
-                      <td >MR-{{mr.id}}</td>
+                      <td >PO-{{mr.id}}</td>
                       <td>{{mr.title}}</td>
                       <td>{{mr.productCategory}}</td>
                       <td>{{mr.productShape}}</td>
@@ -30,7 +30,7 @@
                       <td>
                         <!-- <span class="badge badge-light-success">{{mr.status}}</span> -->
                         <div class="overlay-edit">
-                          <button (click)="getSelectedMr(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                          <button (click)="getSelectedPO(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                         </div>
                       </td>
                      </tr> 

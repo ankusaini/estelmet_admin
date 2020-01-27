@@ -16,6 +16,8 @@ import { SearchViewLotComponent } from './pages/purchaseLot/search-view-lot/sear
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
 import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component';
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
+import { CreatePoComponent } from "src/app/modules/purchase/pages/purchase-order/create-po/create-po.component";
+import { PoEmailSmsComponent } from "src/app/modules/purchase/pages/purchase-order/po-email-sms/po-email-sms.component";
 
 
 
@@ -41,10 +43,15 @@ const routes: Routes = [
 //     path: 'mrOverview',
 //     component: MrOverviewComponent
 //   },
-//   {
-//     path: 'createPo',
-//     component: CreatePurchaseOrderComponent
-//   },
+  {
+    path: 'createPo',
+    component: CreatePoComponent
+  },
+   {
+    path: 'purchaseQuote',
+    component: PoEmailSmsComponent
+  },
+  
   {
     path: 'createPc',
     component: CreatePcComponent
