@@ -5,7 +5,7 @@ import { AddProductCartComponent } from "./components/add-product-cart/add-produ
 import { SharedModule } from "src/app/theme/shared/shared.module";
 import { TextMaskModule } from "angular2-text-mask";
 import { ArchwizardModule } from "ng2-archwizard/dist";
-
+import { DataTablesModule } from 'angular-datatables';
 import { MrListComponent } from "./components/mr-list/mr-list.component";
 import { TransportDetailsComponent } from "./components/transport-details/transport-details.component";
 import { ProdListWithProdIdComponent } from "./components/prod-list-with-prod-id/prod-list-with-prod-id.component";
@@ -33,7 +33,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     TextMaskModule,
     ArchwizardModule,
     NgbDatepickerModule,
-
+    DataTablesModule
   ],
   exports:[
     MaterialClassificationSpecificationComponent, 

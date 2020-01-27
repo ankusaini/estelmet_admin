@@ -14,7 +14,7 @@ const routes: Routes = [
   },
  
       {
-        path: 'editProduct',
+        path: 'editProduct/:id',
         component: EditProductComponent
       }
    ,
