@@ -15,6 +15,7 @@ public selectedPO: Purchase;
 
   constructor(private purchaseService: PurchaseService,private router:Router) {
     this.getAllPurchaseByTypeAndStatus("PURCHASE_ORDER", "APPROVED");
+    
    }
 
   ngOnInit() {

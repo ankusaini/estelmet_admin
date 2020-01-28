@@ -7,8 +7,8 @@
                   <thead>
                     <tr>
                       <th>Sr. No.</th>
-                      <th>MR Id</th>
-                      <th>MR Title</th>
+                      <th>PO Id</th>
+                      <th>PO Title</th>
                       <th>Category</th>
                       <th>Shape</th>
                       <th>Company Id</th>
@@ -18,7 +18,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                     <tr  *ngFor="let mr of mrList;let i = index">
+                     <tr  *ngFor="let mr of poList;let i = index">
                       <td (click)="routeToEditMr(mr.id)">{{i+1}}</td>
                       <td >PO-{{mr.id}}</td>
                       <td>{{mr.title}}</td>
@@ -45,7 +45,7 @@
         <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <!-- <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp; -->
-            <button type="button"  [disabled]="!selectedMr" class="btn btn-primary btn-sm" nextStep>Next</button>
+            <!-- <button type="button"  [disabled]="!selectedMr" class="btn btn-primary btn-sm" nextStep>Next</button> -->
           </div>
         </div>
     

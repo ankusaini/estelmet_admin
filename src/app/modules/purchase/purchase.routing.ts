@@ -18,6 +18,8 @@ import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component'
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 import { CreatePoComponent } from "src/app/modules/purchase/pages/purchase-order/create-po/create-po.component";
 import { PoEmailSmsComponent } from "src/app/modules/purchase/pages/purchase-order/po-email-sms/po-email-sms.component";
+import { ViewPoComponent } from "src/app/modules/purchase/pages/purchase-order/view-po/view-po.component";
+import { EditPoComponent } from "src/app/modules/purchase/pages/purchase-order/edit-po/edit-po.component";
 
 
 
@@ -51,6 +53,16 @@ const routes: Routes = [
     path: 'purchaseQuote',
     component: PoEmailSmsComponent
   },
+  {
+    path: 'viewPO',
+    component: ViewPoComponent
+  },
+   {
+    path: 'editPQ/:id',
+    component: EditPoComponent
+  },
+  
+
   
   {
     path: 'createPc',
