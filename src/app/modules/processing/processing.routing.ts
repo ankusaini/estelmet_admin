@@ -7,7 +7,9 @@ import { ProcessingApprovalComponent } from "src/app/modules/processing/pages/pr
 import { ProcessingOverviewComponent } from "src/app/modules/processing/pages/processing-overview/processing-overview.component";
 import { EditProcessingComponent } from "src/app/modules/processing/pages/edit-processing/edit-processing.component";
 import { MergeProductComponent } from "src/app/modules/processing/pages/merge-product/merge-product.component";
-import { ConvertCoProcessingComponent } from "src/app/demo/processing/convert-co-processing/convert-co-processing.component";
+import { ConvertCoProcessingComponent } from "src/app/modules/processing/pages/convert-co-processing/convert-co-processing.component";
+
+// import { ConvertCoProcessingComponent } from "src/app/demo/processing/convert-co-processing/convert-co-processing.component";
 
 const routes: Routes = [
     {

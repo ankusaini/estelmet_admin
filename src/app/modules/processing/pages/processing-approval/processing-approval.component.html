@@ -2,10 +2,10 @@
     <div class="col-md-12">
       <app-card [hidHeader]="true" cardClass="tab-card">
         <h5 class="mb-3">Processing Approval System</h5>
-        <ngb-tabset type="pills">
-          <ngb-tab title="Pending" class="mb-3">
+        <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
+          <ngb-tab title="Pending" id="pendingTab" class="mb-3">
             <ng-template ngbTabContent>
-              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+              <div *ngIf="pendingProductList" class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
                   <thead>
                     <tr>
@@ -24,19 +24,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><label class="badge badge-warning">Pending</label></td>
-                      <td>1.</td>
-                      <td>MSP-289</td>
-                      <td>Shearing</td>
-                      <td>CR</td>
-                      <td>GP Global Pvt Ltd.</td>
-                      <td>L-24/25</td>
-                      <td>M-21</td>
-                      <td>24-10-2019</td>
-                      <td>24-10-2019</td>
-                      <td>Aehmad</td>
-                      <td>Kamlesh</td>
+                    <tr *ngFor="let product of pendingProductList; let i= index">
+                      <td><label class="badge badge-warning">{{product?.status}}</label></td>
+                      <td>{{i+1}}</td>
+                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td>{{product?.jobWorkType}}</td>
+                      <td>{{product?.productCategory?.productCategory}}</td>
+                      <td>COM-{{product?.companyId}}</td>
+                      <td>WAR-{{product?.warehouseId}}</td>
+                      <td>M-{{product?.machineDetailId}}</td>
+                      <td>{{product?.createdDate | date: 'medium'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdBy}}</td>
+                      <td>{{product?.lastModifiedBy}}</td>
                     </tr>
                    
                   </tbody>
@@ -44,9 +44,9 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Approved">
+          <ngb-tab title="Approved" id="approvedTab">
             <ng-template ngbTabContent>
-              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+              <div *ngIf="approvedProductList" class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
                   <thead>
                     <tr>
@@ -65,19 +65,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><label class="badge badge-success">Approved</label></td>
-                      <td>1.</td>
-                      <td>MSP-289</td>
-                      <td>Shearing</td>
-                      <td>CR</td>
-                      <td>GP Global Pvt Ltd.</td>
-                      <td>L-24/25</td>
-                      <td>M-21</td>
-                      <td>24-10-2019</td>
-                      <td>24-10-2019</td>
-                      <td>Aehmad</td>
-                      <td>Kamlesh</td>
+                    <tr *ngFor="let product of approvedProductList; let i = index">
+                      <td><label class="badge badge-success">{{product?.status}}</label></td>
+                      <td>{{i+1}}</td>
+                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td>{{product?.jobWorkType}}</td>
+                      <td>{{product?.productCategory?.productCategory}}</td>
+                      <td>COM-{{product?.companyId}}</td>
+                      <td>WAR-{{product?.warehouseId}}</td>
+                      <td>M-{{product?.machineDetailId}}</td>
+                      <td>{{product?.createdDate | date: 'medium'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdBy}}</td>
+                      <td>{{product?.lastModifiedBy}}</td>
                     </tr>
                    
                   </tbody>
@@ -85,9 +85,9 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Rejected">
+          <ngb-tab title="Rejected" id="rejectedTab">
             <ng-template ngbTabContent>
-              <div class="dt-responsive table-responsive" cardClass="card-datatable">
+              <div *ngIf="rejectedProductList" class="dt-responsive table-responsive" cardClass="card-datatable">
                 <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
                   <thead>
                     <tr>
@@ -106,19 +106,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><label class="badge badge-danger">Rejected</label></td>
-                      <td>1.</td>
-                      <td>MSP-289</td>
-                      <td>Shearing</td>
-                      <td>CR</td>
-                      <td>GP Global Pvt Ltd.</td>
-                      <td>L-24/25</td>
-                      <td>M-21</td>
-                      <td>24-10-2019</td>
-                      <td>24-10-2019</td>
-                      <td>Aehmad</td>
-                      <td>Kamlesh</td>
+                    <tr *ngFor="let product of rejectedProductList; let i= index">
+                      <td><label class="badge badge-danger">{{product?.status}}</label></td>
+                      <td>{{i+1}}</td>
+                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td>{{product?.jobWorkType}}</td>
+                      <td>{{product?.productCategory?.productCategory}}</td>
+                      <td>COM-{{product?.companyId}}</td>
+                      <td>WAR-{{product?.warehouseId}}</td>
+                      <td>M-{{product?.machineDetailId}}</td>
+                      <td>{{product?.createdDate | date: 'medium'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdBy}}</td>
+                      <td>{{product?.lastModifiedBy}}</td>
                     </tr>
                    
                   </tbody>
@@ -130,8 +130,8 @@
         </ngb-tabset>
   
       </app-card>
-      <app-add-product-cart></app-add-product-cart>
-      <button type="submit" class="btn btn-success active">Approve</button>&nbsp;
-      <button type="submit" class="btn btn-danger active">Reject</button>&nbsp;
+      <!-- <app-add-product-cart></app-add-product-cart> -->
+      <button type="submit" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'"  class="btn btn-success active">Approve</button>&nbsp;
+      <button type="submit" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'"  class="btn btn-danger active">Reject</button>&nbsp;
     </div>
   </div>

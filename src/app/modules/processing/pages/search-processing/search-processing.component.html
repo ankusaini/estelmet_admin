@@ -2,7 +2,11 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & Select Processing Id " [options]="false"
         cardClass="user-profile-list">
-        <app-processing-list></app-processing-list>
+        <app-processing-list
+          [productProcessingList]="productProcessingList"
+          (selectedList)="getSelectedProductList($event)"> 
+        </app-processing-list>
+
       </app-card>
     </div>
   </div>
@@ -10,7 +14,11 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Above Selected Processing Id" [options]="false"
         cardClass="user-profile-list">
-                <app-processing-list></app-processing-list>
+        <app-processing-list
+          [cart]="true"
+          [productProcessingList]="selectedProcessingList"
+          (selectedList)="getSelectedProductList($event)">
+        </app-processing-list>
 
       </app-card>
   
