@@ -20,6 +20,7 @@ import { ConvertCoProcessingComponent } from "src/app/modules/processing/pages/c
 import { MergeProductComponent } from "src/app/modules/processing/pages/merge-product/merge-product.component";
 import { ProcessingOverviewComponent } from "src/app/modules/processing/pages/processing-overview/processing-overview.component";
 import { SearchProcessingComponent } from "src/app/modules/processing/pages/search-processing/search-processing.component";
+import { ProcessingRoutingModule } from './processing.routing';
 
 
 @NgModule({
@@ -32,15 +33,18 @@ import { SearchProcessingComponent } from "src/app/modules/processing/pages/sear
     ArchwizardModule,
     SharedModule,
     NgbDatepickerModule,
-   
     InventoryModule,
     NgbTabsetModule,
     NgbDropdownModule,
     NgbTooltipModule,
     NgbCarouselModule,
-    LightboxModule
+    LightboxModule,
+    ProcessingRoutingModule
   ],
-  declarations: [SelectMrComponent, SelectProcessingComponent, ProcessingListComponent,
+  declarations: [
+    SelectMrComponent, 
+    SelectProcessingComponent, 
+    ProcessingListComponent,
     CreateProcessingComponent,
     UpdateProcessingComponent,
     SearchProcessingComponent,

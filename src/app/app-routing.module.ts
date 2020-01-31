@@ -46,7 +46,9 @@ const routes: Routes = [
       },
       {
         path: 'processing',
-        loadChildren: () => import('./demo/processing/processing.module').then(module => module.ProcessingModule)
+        // loadChildren: () => import('./demo/processing/processing.module').then(module => module.ProcessingModule)
+        loadChildren: () => import('./modules/processing/processing.module').then(module => module.ProcessingModule)
+
       },
       {
         path: 'sales',

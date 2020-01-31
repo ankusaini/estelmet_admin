@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ProcessingService } from '../../service/processing.service';
 
 @Component({
   selector: 'app-search-processing',
@@ -7,12 +8,19 @@ import Swal from 'sweetalert2';
   styleUrls: ['./search-processing.component.css']
 })
 export class SearchProcessingComponent implements OnInit {
+  public processingType: string;
+  public selectedProcessingList: any[];
+  public productProcessingList: any[] ;
+  
 
-  constructor() { }
+  constructor(private processingService: ProcessingService) { }
 
   ngOnInit() {
     this.basicSwal();
+    
   }
+
+
   basicSwal() {
     Swal.fire({
       title: 'Processing Type!',
@@ -35,6 +43,26 @@ export class SearchProcessingComponent implements OnInit {
           }
         });
       }
+    }).then(processingType => {
+      if(processingType != "") {
+        this.processingType = processingType.value.toString().toUpperCase();
+        console.log("selected processing type is:", this.processingType);
+        let url = "/inventory/productProcessing/getAllProductProcessingByProcessingTypeAndStatus/"+ this.processingType +"/APPROVED";
+        console.log(url);
+        this.processingService.getAllProductProcessingByProcessingTypeAndStatus(url).subscribe( data => {
+          this.productProcessingList = data;
+          console.log("data is: ", this.productProcessingList);
+        },error => {
+          console.log(error);
+        });
+      }
     });
+
   }
+
+  getSelectedProductList(processingList: any[]) {
+      this.selectedProcessingList = processingList;
+      console.log("selected list in serach: ", this.selectedProcessingList)
+  }
+
 }
