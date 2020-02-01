@@ -33,7 +33,7 @@ const routes: Routes = [
         component: ProcessingOverviewComponent,
     },
     {
-        path: 'editProcessing',
+        path: 'editProcessing/:id',
         component: EditProcessingComponent,
     },
     {

@@ -17,6 +17,7 @@ import {
   ProductPackaging,
   ProductHardness
 } from "../../Models/product.model.";
+import { MachineDetail } from '../../Models/machineDetails.model';
 @Injectable({
   providedIn: "root"
 })
@@ -179,6 +180,8 @@ export class CommonService {
         });
     });
   }
+
+  
 
   //------------------------- delete API set up module ------------------------
 
