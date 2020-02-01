@@ -4,7 +4,6 @@ import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape
 import { Observable } from "rxjs";
 import { Company } from "src/app/shared/Models/company.model.";
 import { Warehouse } from "src/app/shared/Models/warehouse";
-// import { ProductFilter } from '../interfaces/product-filter';
 
 @Injectable({providedIn: 'root'})
 
@@ -422,6 +421,8 @@ export class StaticDataService {
     {
         window.sessionStorage['storeWarehouse'] = JSON.stringify(data);
     }
+
+   
     // saveProductFilter( data : ProductFilter[] ) {
     //     window.sessionStorage['productFilter'] = JSON.stringify(data);
     // }
@@ -470,4 +471,6 @@ export class StaticDataService {
             }
         });
     }
+
+    
 }
