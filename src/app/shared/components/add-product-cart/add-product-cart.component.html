@@ -61,12 +61,13 @@
                 <div class="overlay-edit">
                   <button 
                     type="button" 
-                    [hidden]="!(component === 'inventory')" 
+                    [hidden]="!(component === 'inventory' || component === 'processing')" 
                     class="btn btn-icon btn-success"
                     (click)="addProduct(product)">
                     <i class="feather icon-check-circle"></i>
                   </button>
                   <button 
+                    [hidden]="!(component === '')"
                     (click)="deleteProduct(product)" 
                     type="button" 
                     class="btn btn-icon btn-danger" >
