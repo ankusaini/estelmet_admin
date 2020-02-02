@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormInput } from './create-processing-form-model';
 import Swal from 'sweetalert2';
+import { ProcessingService } from '../../service/processing.service';
+import { Product } from 'src/app/shared/Models/product.model.';
 
 @Component({
   selector: 'app-create-processing',
@@ -10,23 +12,35 @@ import Swal from 'sweetalert2';
 export class CreateProcessingComponent implements OnInit {
   showGroup = true;
   public isSubmit: boolean;
-  formInput: FormInput;
-  public maskIP = [/\d/, '.', /\d/, /\d/];
-  constructor() {
+  processingType: string = "";
+  public ProductList: Product[];
+
+  // formInput: FormInput;
+  // public maskIP = [/\d/, '.', /\d/, /\d/];
+
+
+  constructor(private processingService: ProcessingService) {
     this.isSubmit = false;
    }
   ngOnInit() {
-    this.formInput = {
-      supplierId: '',
-      companyId: '',
-      lotType: '',
-      warId: '',
-      category: '',
-      shape: '',
-      grosswt: '',
-      netwt: '',
-    };
+    // this.formInput = {
+    //   supplierId: '',
+    //   companyId: '',
+    //   lotType: '',
+    //   warId: '',
+    //   category: '',
+    //   shape: '',
+    //   grosswt: '',
+    //   netwt: '',
+    // };
+
     this.basicSwal();
+
+    let url = "/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED";
+    this.processingService.getAllProductByProductStageAndStatus(url).subscribe(data => {
+      this.ProductList = data;
+      console.log(this.ProductList);
+    });
   }
   basicSwal() {
     Swal.fire({
@@ -50,13 +64,22 @@ export class CreateProcessingComponent implements OnInit {
           }
         });
       }
+    }).then(processingType => {
+      if(processingType != "") {
+        this.processingType = processingType.value.toString().toUpperCase();
+        console.log('processingType: '+ this.processingType);
+      }
     });
   }
-  save(form: any) {
-    if (!form.valid) {
-      this.isSubmit = true;
-      return;
-    }
-    alert('success');
+  // save(form: any) {
+  //   if (!form.valid) {
+  //     this.isSubmit = true;
+  //     return;
+  //   }
+  //   alert('success');
+  // }
+
+  getSelectMrData(data) {
+    console.log("in search: ", data);
   }
 }

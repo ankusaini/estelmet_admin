@@ -1,17 +1,16 @@
  <h5>Select Details To Create Processing Id </h5>
       <hr/>
-      <form #validationForm="ngForm" class="editForm" novalidate>
+      <form [formGroup]="selectMrIdForm" (ngSubmit)="submitSelectMrId()" class="editForm" novalidate>
         <div class="row">
             <div class="col-md-5">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Job Work Type<small
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-8">
-                  <select class="form-control" name="validation-lotType"
-                   >
-                    <option value> Select</option>
-                    <option value="1">Without Purchase Invoice</option>
-                    <option value="2">Job Work Other</option>
+                  <select class="form-control" name="validation-lotType" formControlName="jobWorkType">
+                    <!-- <option value="1" disabled> Select </option> -->
+                    <option value="JOB_WORK_SELF">Job Work Self</option>
+                    <option value="JOB_WORK_OTHER">Job Work Other</option>
                   </select>
                   <!-- <label *ngIf="!lotType.valid && (lotType.dirty || lotType.touched || isSubmit)"
                     id="validation-lotType-error"
@@ -25,11 +24,10 @@
                     <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Category<small
                         class="asterik_sign">*</small></label>
                     <div class="col-sm-8">
-                      <select class="form-control" name="validation-lotType"
-                        >
-                        <option value> Select</option>
-                        <option value="1">Without Purchase Invoice</option>
-                        <option value="2">Job Work Other</option>
+                      <select class="form-control" name="validation-lotType" formControlName="productCategory">
+                        <!-- <option value="1" disabled> Select</option> -->
+                        <option *ngFor="let category of productCategoryList" [value]="category">{{category}}</option>
+                        <!-- <option value="2">Job Work Other</option> -->
                       </select>
                       <!-- <label *ngIf="!lotType.valid && (lotType.dirty || lotType.touched || isSubmit)"
                         id="validation-lotType-error"
@@ -44,28 +42,17 @@
                   <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Contractor<small
                       class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
-                      <select class="form-control" name="validation-warId"
-                     >
-                      <option value>Id</option>
-                      <option value="1">WAR-1</option>
-                      <option value="1">WAR-2</option>
-                      <option value="1">WAR-3</option>
-                      <option value="1">WAR-4</option>
-                      <option value="1">WAR-5</option>
+                      <select class="form-control" formControlName="contractorId" (change)="setContractorName($event.target.value)" name="validation-warId">
+                      <option *ngFor="let id of contractorIdList" [value]="id">WAR-{{id}}</option>
                     </select>
                     <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
                     id="validation-warId-error"
                     class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
                   </div>
                   <div class="col-sm-5">
-                    <select class="form-control" name="validation-pcId">
-                      <option value> Name</option>
-                      <option value="1">A-88</option>
-                      <option value="2">L-24/25</option>
-                      <option value="3">J-18</option>
-                      <option value="4">M-67</option>
-                      <option value="5">GROWELL</option>
-                      <option value="6">PARAMSHAKTI</option>
+                    <select class="form-control" formControlName="contractorFirstName"  (change)="setContractorId($event.target.value)" name="validation-pcId">
+                      <option *ngFor="let name of contractorList" [value]="name">{{name}}</option>
+                      
                     </select>
                     <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
                   </div>
@@ -77,28 +64,18 @@
                     <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Machine Details<small
                         class="asterik_sign">*</small></label>
                     <div class="col-sm-3">
-                        <select class="form-control" name="validation-warId"
-                        >
-                        <option value>Id</option>
-                        <option value="1">WAR-1</option>
-                        <option value="1">WAR-2</option>
-                        <option value="1">WAR-3</option>
-                        <option value="1">WAR-4</option>
-                        <option value="1">WAR-5</option>
+                        <select class="form-control" formControlName="machineDetailId" (change)="setMachineName($event.target.value)" name="validation-warId">
+                        <option *ngFor="let id of machineDetailIdList" [value]="id">WAR-{{id}}</option>
+                        
                       </select>
                       <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
                       id="validation-warId-error"
                       class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
                     </div>
                     <div class="col-sm-5">
-                      <select class="form-control" name="validation-pcId">
-                        <option value> Name</option>
-                        <option value="1">A-88</option>
-                        <option value="2">L-24/25</option>
-                        <option value="3">J-18</option>
-                        <option value="4">M-67</option>
-                        <option value="5">GROWELL</option>
-                        <option value="6">PARAMSHAKTI</option>
+                      <select class="form-control" formControlName="machineName" (change)="setMachineId($event.target.value)" name="validation-pcId">
+                        <option *ngFor="let name of machineDetailList" [value]="name"> {{name}}</option>
+                        
                       </select>
                       <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
                     </div>
@@ -112,28 +89,16 @@
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-3">
-                    <select class="form-control" name="validation-warId"
-                    >
-                    <option value>Id</option>
-                    <option value="1">COM-1</option>
-                    <option value="1">COM-2</option>
-                    <option value="1">COM-3</option>
-                    <option value="1">COM-4</option>
-                    <option value="1">COM-5</option>
+                    <select class="form-control" formControlName="companyId" (change)="setCompanyName($event.target.value)" name="validation-warId">
+                    <option *ngFor="let id of companyIdList" [value]="id">COM-{{id}}</option>
                   </select>
                   <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
                   id="validation-warId-error"
                   class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
                 </div>
                 <div class="col-sm-5">
-                  <select class="form-control" name="validation-pcId">
-                    <option value> Name</option>
-                    <option value="1">A-88</option>
-                    <option value="2">L-24/25</option>
-                    <option value="3">J-18</option>
-                    <option value="4">M-67</option>
-                    <option value="5">GROWELL</option>
-                    <option value="6">PARAMSHAKTI</option>
+                  <select class="form-control" formControlName="companyName" (change)="setCompanyId($event.target.value)"  name="validation-pcId">
+                    <option *ngFor="let name of companyList" [value]="name"> {{name}}</option>
                   </select>
                   <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
                 </div>
@@ -145,28 +110,16 @@
             <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
                 class="asterik_sign">*</small></label>
             <div class="col-sm-3">
-                <select class="form-control" name="validation-warId"
-               >
-                <option value>Id</option>
-                <option value="1">WAR-1</option>
-                <option value="1">WAR-2</option>
-                <option value="1">WAR-3</option>
-                <option value="1">WAR-4</option>
-                <option value="1">WAR-5</option>
+                <select class="form-control" formControlName="warehouseId" (change)="setwarehouseName($event.target.value)"  name="validation-warId">
+                <option *ngFor="let id of warehouseIdList" [value]="id" >WAR-{{id}}</option>
               </select>
               <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
               id="validation-warId-error"
               class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
             </div>
             <div class="col-sm-5">
-              <select class="form-control" name="validation-pcId">
-                <option value> Name</option>
-                <option value="1">A-88</option>
-                <option value="2">L-24/25</option>
-                <option value="3">J-18</option>
-                <option value="4">M-67</option>
-                <option value="5">GROWELL</option>
-                <option value="6">PARAMSHAKTI</option>
+              <select class="form-control" formControlName="warehouseName"  (change)="setwarehouseId($event.target.value)"  name="validation-pcId">
+                <option *ngFor="let name of warehouseList" [value]="name">{{name}}</option>
               </select>
               <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
             </div>
@@ -183,20 +136,32 @@
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Priority Level<small
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-8">
-                  <select class="form-control" name="validation-pcId">
-                    <option value> Name</option>
-                    <option value="1">A-88</option>
-                    <option value="2">L-24/25</option>
-                    <option value="3">J-18</option>
-                    <option value="4">M-67</option>
-                    <option value="5">GROWELL</option>
-                    <option value="6">PARAMSHAKTI</option>
+                  <select class="form-control" formControlName="priorityLevel" name="validation-pcId">
+                    <option *ngFor="let name of priorityList" [value]="name">{{name}}</option>
                   </select>
                 </div>
               </div>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-5">
+          <!-- <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Customer Company<small
+                class="asterik_sign">*</small></label>
+            <div class="col-sm-8">
+              <select class="form-control" formControlName="customerCompanyId" name="validation-pcId">
+                <option *ngFor="let name of customerCompany" [value]="name">{{name}}</option>
+              </select>
+            </div>
+          </div> -->
           </div>
       </div>
+
+      <div class="row form-group">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary btn-sm" [disabled]="!selectMrIdForm.valid" nextStep>Next</button>
+          
+        </div>
+      </div>
+
+
     </form>

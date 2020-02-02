@@ -21,6 +21,7 @@ import { MergeProductComponent } from "src/app/modules/processing/pages/merge-pr
 import { ProcessingOverviewComponent } from "src/app/modules/processing/pages/processing-overview/processing-overview.component";
 import { SearchProcessingComponent } from "src/app/modules/processing/pages/search-processing/search-processing.component";
 import { ProcessingRoutingModule } from './processing.routing';
+import { ShareModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ProcessingRoutingModule } from './processing.routing';
     NgbTooltipModule,
     NgbCarouselModule,
     LightboxModule,
-    ProcessingRoutingModule
+    ProcessingRoutingModule,
+    ShareModule
   ],
   declarations: [
     SelectMrComponent, 
