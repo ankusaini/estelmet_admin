@@ -87,12 +87,13 @@ export class CreateMRComponent implements OnInit {
       return element.id == value
     })
     this.selected_comapny = data[0];
+   // this.warehouseList=data[0].warehouse;
   }
   
   getSelectedWarehouse(event)
   {
     console.log("warehouse",event.target.value);
-    this.selectedWarehouse=this.warehouseList.filter(obj=>obj.id==event.target.value)[0];
+    this.selectedWarehouse=this.selected_comapny.warehouse.filter(obj=>obj.id==event.target.value)[0];
     console.log("selectedWarehouse",this.selectedWarehouse);
   }
 
