@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Purchase } from "src/app/shared/Models/purchase.model";
+import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-mr-apporval",
@@ -10,8 +12,8 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 export class MrApporvalComponent implements OnInit {
   selectedTab: string='PENDING';
 
-  constructor(private purchaseService: PurchaseService) {}
-
+  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) {}
+ public request : RequestP={};
   public pendingMrList: Purchase[] = [];
 
   public rejectedMrList: Purchase[] = [];
@@ -40,9 +42,6 @@ export class MrApporvalComponent implements OnInit {
         if (status == "REJECTED") {
           this.rejectedMrList = data.purchaseList;
         }
-        console.log("pendingMrList", this.pendingMrList);
-        console.log("approvedMrList", this.approvedMrList);
-        console.log("rejectedMrList", this.rejectedMrList);
       },
       error => {}
     );
@@ -72,7 +71,8 @@ export class MrApporvalComponent implements OnInit {
     if (index == -1) {
       this.selectedMrList.push(mr);
     } else {
-      alert("already added");
+      this.toastr.error("Already added");
+     
     }
   }
 
@@ -84,24 +84,27 @@ export class MrApporvalComponent implements OnInit {
   }
 
 
-  // changeStatusOfSelectedMR(status) {
-  //   if (this.selectedMrList.length == 0) {
-  //     alert("select at least one");
-  //   } else {
-  //     let path = "/purchase/updatePurchase";
+  changeStatusOfSelectedMR(status) {
+    if (this.selectedMrList.length == 0) {
+      alert("select at least one");
+    } else {
+      let path = "/purchase/updatePurchase";
 
-  //     for (let i = 0; i < this.selectedMrList.length; i++) {
-  //       this.selectedMrList[i].status = status;
-
-  //       console.log("selected group", this.selectedMrList[i]);
-  //       this.purchaseService.(this.selectedMrList[i]).subscribe(
-  //         data => {
-  //           console.log("user  created", data);
-  //         },
-  //         error => {}
-  //       );
-  //     }
-  //   }
-  // }
+      for (let i = 0; i < this.selectedMrList.length; i++) {
+        this.selectedMrList[i].status = status;
+         this.request.purchase=this.selectedMrList[i];
+        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+          data => {
+           
+      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
+    this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
+    this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
+    this.selectedMrList = [];
+          },
+          error => {}
+        );
+      }
+    }
+  }
 
 }

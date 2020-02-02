@@ -11,7 +11,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Company Name <small class="asterik_sign">*</small></label>
-                  <select formControlName="sourceCompanyId"  class="form-control" name="validation-category"   required >
+                  <select (change)="selectedCompany($event.target.value)" formControlName="sourceCompanyId"  class="form-control" name="validation-category"   required >
                   <option  *ngFor="let item of companyList"    [value]="item?.id"    >{{ item?.name }}</option>
                   </select>
                   <!-- <label *ngIf="!companyName.valid && (companyName.dirty || companyName.touched || isSubmit)"
@@ -21,11 +21,11 @@
                 </div>
               </div>
               <div class="col-md-1"></div>
-              <div class="col-md-5">
+              <div  *ngIf="selected_comapny" class="col-md-5">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Warehouse Name <small class="asterik_sign">*</small></label>
                   <select (change)="getSelectedWarehouse($event)" formControlName="sourceWarehouseId" class="form-control" name="validation-category"   required >
-                  <option  *ngFor="let warehouse of warehouseList"    [value]="warehouse?.id"    >{{ warehouse?.name }}</option>
+                  <option  *ngFor="let warehouse of selected_comapny.warehouse"    [value]="warehouse?.id"    >{{ warehouse?.name }}</option>
                   </select>
                   <!-- <label *ngIf="!warehouse.valid && (warehouse.dirty || warehouse.touched || isSubmit)"
                     id="validation-warehouse-error"
@@ -42,10 +42,10 @@
                   <select formControlName="productCategory"  class="form-control" name="validation-category"   required >
                   <option  *ngFor="let item of productCategoryList"    [value]="item?.productCategory"    >{{ item?.productCategory }}</option>
                   </select>
-                  <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)"
+            <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)"
                     id="validation-category-error"
                     class="error jquery-validation-error small form-text invalid-feedback">Category should be
-                    required.</label> -->
+                    required.</label> -->      
                 </div>
               </div>
               <div class="col-md-1"></div>

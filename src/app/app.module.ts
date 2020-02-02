@@ -48,7 +48,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToggleFullScreenDirective
   ],
   imports: [
-    BrowserModule,
+    
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,

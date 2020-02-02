@@ -96,7 +96,8 @@ export class UserProfileComponent implements OnInit {
 
   updateUser() {
     console.log(this.selectedUser);
-    this._userService.updateUser(this.selectedUser);
+      let path = "/users/updateUser";
+    this._userService.updateUser(path,this.selectedUser);
   }
 
   getUserById(id:any) {

@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col-sm-12">
+    <div class="row">
+    <button type='button' (click)="basicSwal()">Change User Type</button>
+    </div>
     <app-card [hidHeader]="true" cardClass="user-profile-list">
       <div class="dt-responsive table-responsive" *ngIf="userList" cardClass="card-datatable"> 
         <!-- datatable [dtOptions]="dtExportButtonOptions" -->
@@ -25,7 +28,7 @@
               <td>{{user.firstName}}</td>
               <td>{{user.mobile}}</td>
               <td>{{user.email}}</td>
-              <td>{{user.userDetail.companyName}}</td>
+              <td>{{user.userDetail?.companyName}}</td>
               <td>
                 <span class="badge badge-light-success">{{user.status}}</span>
                 <div class="overlay-edit">

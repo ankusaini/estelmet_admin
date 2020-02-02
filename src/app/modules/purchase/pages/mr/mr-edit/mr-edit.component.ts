@@ -106,7 +106,7 @@ export class MrEditComponent implements OnInit {
       alert("please save at least one record");
     } else {
       for (let index in this.productList) {
-        console.log("in", this.productList[index].warehouse);
+      
         this.productList[index].warehouse = this.mrResponse.warehouse;
       }
       //   console.log("final",this.productList)
@@ -115,7 +115,8 @@ export class MrEditComponent implements OnInit {
       this.request.purchase = this.mrResponse.purchase;
 
       console.log("request object is ", this.request);
-      let path = "/purchase/updatePurchase";
+      // let path = "/purchase/updatePurchaseWithProduct";
+        let path = "/purchase/updatePurchase";
       this.purchaseService.updateRequestObject(path, this.request).subscribe(
         data => {
           alert("Mr Updated");

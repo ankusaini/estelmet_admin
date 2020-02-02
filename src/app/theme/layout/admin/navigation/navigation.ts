@@ -218,9 +218,16 @@ const NavigationItems = [
           },
           {
             id: 'PurchaseQuote',
-            title: 'Search & View PQ',
+            title: 'Purchase Quote',
             type: 'item',
             url: '/purchase/purchaseQuote',
+            target: false,
+          },
+           {
+            id: 'PurchaseView',
+            title: 'Search & View PQ',
+            type: 'item',
+            url: '/purchase/viewPO',
             target: false,
           },
           {
