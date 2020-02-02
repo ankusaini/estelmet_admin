@@ -112,7 +112,7 @@ export class CreateLotComponent implements OnInit {
     console.log("data ius",data);
       let path = "/purchase/createMaterialTransfer";
    
-    this.purchaseService.saveRequestObject(path, this.request).subscribe(
+    this.purchaseService.saveRequestObject(path, this.requestObj).subscribe(
       data => {
         this.toastr.success("Record saved successfully");
       },

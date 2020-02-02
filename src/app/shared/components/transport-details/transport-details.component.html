@@ -1,17 +1,17 @@
-<form [formGroup]="transportDetails" (ngSubmit)="addTransportDetails()">
+<form *ngIf="transportList" [formGroup]="transportDetails" (ngSubmit)="addTransportDetails()">
     
  <div class="row">
     <div class="col-md-2">
         <div class="form-group">
             <label for="validationCustom02">Transporter Id</label>
-            <select class="form-control" name="validation-companyName" formControlName="transportId">
+            <select #transporterID class="form-control" name="validation-companyName" formControlName="transportId">
                 <option disabled>Select Transporter Id</option>
-                <option *ngFor="let id of transportIdList; let i=index" [value]="i+1">{{id}}</option>
+                <option *ngFor="let item of transportList; let i=index" [value]="item.id">{{ item.id}}</option>
                 <!-- put here fetch data and passed it to the parent component, -->
             </select>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2" *ngIf="process == ''">
         <div class="form-group">
             <label for="validationCustom02">Supplier Id</label>
             <select class="form-control" name="validation-companyName" formControlName="supplierId">
@@ -21,10 +21,24 @@
             </select>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2" *ngIf="process != ''">
         <div class="form-group">
+            <label for="validationCustom02">Transporter Name</label>
+            <select [(ngModel)]="transporterID.value" class="form-control" name="validation-companyName" formControlName="transportId">
+                <option disabled>Select Transporter Name</option>
+                <option *ngFor="let item of transportList;" [value]="item.id">{{item.firstName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2"  *ngIf="process != ''">
+        <div class="form-group">
+            <label for="validationCustom02">Transport Reciept</label>
+            <input type="text" class="form-control" formControlName="transportRecieptNo" placeholder="Transport Reciept No.">
+        </div>
+    </div>
+    <div class="col-md-2"  *ngIf="process == ''">
+        <div class="form-group" >
                 <label for="validationCustom02">Expected Delivery</label>
-          
                  <input class="form-control"  (click)="d.toggle()" formControlName="expectedDate" autocomplete="on" placeholder="yyyy-mm-dd" name="dp"
                      ngbDatepicker #d="ngbDatepicker"> 
               
@@ -55,16 +69,22 @@
         </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-2"  *ngIf="process == ''">
         <div class="form-group">
             <label for="validationCustom02">Material Description</label>
             <input type="text" class="form-control" formControlName="materialDescription" placeholder="Enter Driver">
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2"  *ngIf="process == ''">
         <div class="form-group">
             <label for="validationCustom02">No. of Coils/Bundles</label>
             <input type="text" class="form-control" formControlName="coilsBundle" placeholder="Enter Mobile">
+        </div>
+    </div>
+    <div class="col-md-2"  *ngIf="process != ''">
+        <div class="form-group">
+            <label for="validationCustom02">Driver Name</label>
+            <input type="text" class="form-control" formControlName="driverName" placeholder="Enter Driver Name">
         </div>
     </div>
     <div class="col-md-2">
@@ -73,7 +93,7 @@
             <input type="text" class="form-control" formControlName="licenceNumber" placeholder="Enter Licence">
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2"  *ngIf="process == ''">
         <div class="form-group">
             <label for="validationCustom02">Mode</label>
             <select class="form-control" name="validation-companyName" formControlName="mode">
@@ -84,7 +104,7 @@
             </select>
         </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2"  *ngIf="process == ''">
         <div class="form-group">
             <label for="validationCustom02">Delivery </label>
             <select class="form-control" name="validation-companyName" formControlName="delivery">

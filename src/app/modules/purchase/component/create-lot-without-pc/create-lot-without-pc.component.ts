@@ -69,7 +69,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
     this.getProductShape();
     this.getAllCompany();
     this.getAllSupplier();
-     this.lotWithoutPc.controls.lotType.value =this.selectedLotType;
+     this.lotWithoutPc.controls.lotType.patchValue(this.selectedLotType);
   }
 
 

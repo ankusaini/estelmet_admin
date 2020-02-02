@@ -67,7 +67,7 @@
     "ngx-lightbox": "^2.0.0",
     "ngx-owl-carousel-o": "^1.1.5",
     "ngx-perfect-scrollbar": "^8.0.0",
-    "ngx-toastr": "^11.3.0",
+    "ngx-toastr": "^11.3.3",
     "nouislider": "^14.0.1",
     "peity": "^3.3.0",
     "rxjs": "^6.5.2",

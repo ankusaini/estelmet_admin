@@ -21,6 +21,7 @@ import { PoEmailSmsComponent } from "src/app/modules/purchase/pages/purchase-ord
 import { ViewPoComponent } from "src/app/modules/purchase/pages/purchase-order/view-po/view-po.component";
 import { EditPoComponent } from "src/app/modules/purchase/pages/purchase-order/edit-po/edit-po.component";
 import { CreateLotComponent } from "src/app/modules/purchase/pages/purchaseLot/create-lot/create-lot.component";
+import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
 
 
 
@@ -93,10 +94,10 @@ const routes: Routes = [
     path: 'searchLot',
     component: SearchViewLotComponent
   },
-//   {
-//     path: 'grnLot',
-//     component: GrnPurchaseInvoiceComponent
-//   },
+  {
+    path: 'grnLot',
+    component: CreateGrnComponent
+  },
 //   {
 //     path: 'grnTransport',
 //     component: GrnTransportDetailsComponent

@@ -78,7 +78,7 @@ export class CreateLotMtSelfComponent implements OnInit {
     this.getAllCompany();
     this.getAllProductByProductStage();
     console.log(this.selectedLotType)
-         this.lotWithoutPc.controls.lotType.value =this.selectedLotType;
+         this.lotWithoutPc.controls.lotType.patchValue(this.selectedLotType);
 
   }
 

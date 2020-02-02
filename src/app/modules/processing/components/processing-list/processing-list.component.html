@@ -1,4 +1,4 @@
-<div class="dt-responsive table-responsive" cardClass="card-datatable">
+<div *ngIf="productProcessingList" class="dt-responsive table-responsive" cardClass="card-datatable">
           <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -7,7 +7,7 @@
                 <th>Processing Type</th>
                 <th>Job Work Type</th>
                 <th>Category</th>
-                <th>Shape</th>
+                <!-- <th>Shape</th> -->
                 <th>Contractor Id</th>
                 <th>Company Id</th>
                 <th>Warehouse Id</th>
@@ -17,77 +17,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>MSP-892</td>
-                <td>Shearing</td>
-                <td>Job Work Self</td>
-                <td>2RC</td>
-                <td>MWC</td>
-                <td>CNT-0238</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>MAC-02</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
+              <tr *ngFor="let processing of productProcessingList; let i = index">
+                <td>{{i+1}}</td>
+                <td>MSP-{{processing?.productProcessingId}}</td>
+                <td>{{processing?.processingType}}</td>
+                <td>{{processing?.jobWorkType}}</td>
+                <td>{{processing?.productCategory?.productCategory}}</td>
+                <!-- <td>MWC</td> -->
+                <td>CNT-{{processing?.contractorId}}</td>
+                <td>COM-{{processing?.companyId}}</td>
+                <td>WAR-{{processing?.warehouseId}}</td>
+                <td>MAC-{{processing?.machineDetailId}}</td>
+                <td>{{processing?.createdDate | date: 'medium'}}</td>
+                <td>
+                  <button *ngIf="!cart" (click)="addToProcessingList(processing)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                  <button *ngIf="cart" (click)="removeFromProcessingList(processing)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-minus"></i></button></td>
               </tr>
-              <tr>
-                <td>2.</td>
-                <td>MBP-892</td>
-                <td>Blanking</td>
-                <td>Job Work Self</td>
-                <td>2RC</td>
-                <td>MWC</td>
-                <td>CNT-0238</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>MAC-02</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>MSP-892</td>
-                <td>Shearing</td>
-                <td>Job Work Self</td>
-                <td>2RC</td>
-                <td>MWC</td>
-                <td>CNT-0238</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>MAC-02</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>MAP-352</td>
-                <td>Assorting</td>
-                <td>Job Work Self</td>
-                <td>2RC</td>
-                <td>MWC</td>
-                <td>CNT-0238</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>MAC-02</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-              <tr>
-                <td>5.</td>
-                <td>MSP-892</td>
-                <td>Shearing</td>
-                <td>Job Work Self</td>
-                <td>2RC</td>
-                <td>MWC</td>
-                <td>CNT-0238</td>
-                <td>GP Global Pvt Ltd.</td>
-                <td>L-24/25</td>
-                <td>MAC-02</td>
-                <td>24-10-2019</td>
-                <td><button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
-              </tr>
-  
             </tbody>
           </table>
         </div>

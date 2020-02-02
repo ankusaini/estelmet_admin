@@ -34,6 +34,8 @@ import { PurchaseOrderModule } from "src/app/modules/purchase/pages/purchase-ord
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CreateLotComponent } from './pages/purchaseLot/create-lot/create-lot.component';
 import { PurchaseLotModule } from "src/app/modules/purchase/pages/purchaseLot/purchaselot.module";
+import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
+import { SupplierComponent } from './component/supplier/supplier.component';
 
 
 
@@ -54,6 +56,8 @@ import { PurchaseLotModule } from "src/app/modules/purchase/pages/purchaseLot/pu
     ViewPoComponent,
     CreatePoComponent,
     PoEmailSmsComponent,
+     CreateGrnComponent,
+    SupplierComponent
       ],
   imports: [
     CommonModule,

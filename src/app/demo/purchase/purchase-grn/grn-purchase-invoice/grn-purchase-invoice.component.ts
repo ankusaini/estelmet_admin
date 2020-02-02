@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormInput } from 'src/app/demo/users/create-group/create-group-form.model';
-import Swal from 'sweetalert2';
-
+import { ApiService } from 'src/app/shared/services/api.service';
 @Component({
   selector: 'app-grn-purchase-invoice',
   templateUrl: './grn-purchase-invoice.component.html',
@@ -12,9 +11,11 @@ export class GrnPurchaseInvoiceComponent implements OnInit {
   public isSubmit2: boolean;
   formInput: FormInput;
   public maskIP = [/\d/, '.', /\d/, /\d/];
-  constructor() {
-    this.isSubmit2 = false;
-    this.basicSwal();
+  constructor(
+    private _apiService : ApiService,
+  ) {
+    // this.isSubmit2 = false;
+    // this.basicSwal();
   }
   ngOnInit() {
   }
@@ -25,29 +26,8 @@ export class GrnPurchaseInvoiceComponent implements OnInit {
     }
     this.showGroup = false;
   }
-  basicSwal() {
-    Swal.fire({
-      title: 'Create GRN With',
-      input: 'select',
-      inputOptions: {
-        purchaseInvoice: 'Purchase Invoice',
-        withoutPurchaseInvoice: 'Without Purchase Invoice',
-        jobWorkChalan: 'Job Work Chalan',
-        materialTransfer: 'MT 7 self Job Work',
-      },
-      inputPlaceholder: 'Select GRN Type',
-      allowOutsideClick: false,
-      confirmButtonText: 'Select',
-      inputValidator(value) {
-        // tslint:disable-next-line: only-arrow-functions
-        return new Promise(function(resolve, reject) {
-          if (value !== '') {
-            resolve();
-          } else {
-            resolve('You need to select Product Type');
-          }
-        });
-      }
-    });
-  }
+
+
+
+
 }
