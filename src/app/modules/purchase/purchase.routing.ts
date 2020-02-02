@@ -16,6 +16,7 @@ import { SearchViewLotComponent } from './pages/purchaseLot/search-view-lot/sear
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
 import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component';
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
+import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
 
 
 
@@ -73,10 +74,10 @@ const routes: Routes = [
     path: 'searchLot',
     component: SearchViewLotComponent
   },
-//   {
-//     path: 'grnLot',
-//     component: GrnPurchaseInvoiceComponent
-//   },
+  {
+    path: 'grnLot',
+    component: CreateGrnComponent
+  },
 //   {
 //     path: 'grnTransport',
 //     component: GrnTransportDetailsComponent

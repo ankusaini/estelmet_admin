@@ -28,6 +28,8 @@ import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component'
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 import { ViewPoComponent } from './pages/purchase-order/view-po/view-po.component';
 import { FormsModule } from "@angular/forms";
+import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
+import { SupplierComponent } from './component/supplier/supplier.component';
 
 
 
@@ -45,7 +47,9 @@ import { FormsModule } from "@angular/forms";
     LotApprovalComponent,
     EditGrnComponent,
     EditLotComponent,
-    ViewPoComponent
+    ViewPoComponent,
+    CreateGrnComponent,
+    SupplierComponent
   ],
   imports: [
     CommonModule,
