@@ -1,0 +1,173 @@
+<form [formGroup]="grnForm" class="editForm" novalidate>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Supplier Id <small
+              class="asterik_sign">*</small></label>
+          <div class="col-sm-3">
+            <select [value]="selectedName.value" #selectedId class="form-control" formControlName="supplierId">
+              <option value>Select id</option>
+              <option [value] = "item.id" *ngFor="let item of suppliarList">{{ item.id }}</option>
+            </select>
+          </div>
+          <div class="col-sm-5">
+            <select #selectedName [value]="selectedId.value" class="form-control" name="validation-pcId" formControlName="supplierId">
+              <option value>Name</option>
+              <option [value] = "item.id" *ngFor="let item of suppliarList">{{ item.firstName }}</option>
+            </select>
+            <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+              class="asterik_sign">*</small></label>
+          <div class="col-sm-3">
+            <select [value]="companyName.value" #companyId (change)="selectedCompany(companyId.value)" class="form-control" formControlName="destinationCompanyId">
+              <option value>Select Id</option>
+              <option [value]="item.id" *ngFor="let item of allCompany">{{ item.id }}</option>
+            </select>
+          </div>
+          <div class="col-sm-5">
+            <select #companyName [value]="companyId.value"  (change)="selectedCompany(companyName.value)" class="form-control" name="validation-pcId" formControlName="destinationCompanyId">
+              <option value> Name</option>
+              <option [value]="item.id" *ngFor="let item of allCompany">{{ item.name }}</option>
+            </select>
+            <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="row">
+      <div *ngIf="process == 'purchaseInvoice' || this.process == 'withoutPurchaseInvoice'" class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Invoice No.</label>
+          <div class="col-sm-8">
+              <input type="text" class="form-control" placeholder="" formControlName="invoiceNo">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="process == 'materialTransfer'" class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Destination Comapany</label>
+          <div class="col-sm-8">
+              <input type="text" class="form-control" placeholder="" >
+          </div>
+        </div>
+      </div>
+      <div *ngIf="process == 'jobWorkChalan'" class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Location</label>
+          <div class="col-sm-8">
+              <input type="text" class="form-control" placeholder="" formControlName="locationjobChalan">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+      <div *ngIf="selected_comapny" class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
+              class="asterik_sign">*</small></label>
+          <div class="col-sm-3">
+            <select [value]="selectedWarehouseName.value" #selectedWarehouseId class="form-control" formControlName="destinationWarehouseId">
+              <option value>Id</option>
+              <option [value]="item.id" *ngFor="let item of selected_comapny.warehouse">{{ item.id }}</option>
+            </select>
+          </div>
+          <div class="col-sm-5">
+            <select #selectedWarehouseName [value]="selectedWarehouseId.value" class="form-control" name="validation-pcId" formControlName="destinationWarehouseId">
+              <option value> Name</option>
+              <option [value]="item.id" *ngFor="let item of selected_comapny.warehouse">{{ item.name }}</option>
+            </select>
+            <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="row" *ngIf="process == 'jobWorkChalan'">
+      <div class="col-md-5">
+          <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Job Work Challan</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="Job Work Challan" formControlName="jobChalan">
+              </div>
+            </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+          <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2" >Challan Date</label>
+              <div class="col-sm-8">
+                  <input type="date" class="form-control" placeholder="Challan Date" formControlName="dateJobChalan">
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="process == 'materialTransfer'" >
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Transfer Chalan No.</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Job Work Challan" formControlName="transferChalanNumber">
+                </div>
+              </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Transfer Chalan Date</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" placeholder="Challan Date" formControlName="transferChalanDate">
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <div  class="row">
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Material Description</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Material Description" formControlName="materialDescription">
+                </div>
+              </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">No. of Coils/ Bundles</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="No. of Coils/ Bundles" formControlName="coilsBundles">
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <!--  -->
+    <div *ngIf="process == 'purchaseInvoice' || this.process == 'withoutPurchaseInvoice'" class="row">
+      <div class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2" >Gross Wt.</label>
+          <div class="col-sm-8">
+              <input type="text" class="form-control" placeholder="Enter Net Wt." formControlName="grossWeight">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Net Wt.<small
+              class="asterik_sign">*</small></label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Enter Net Wt." formControlName="netWeight">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
