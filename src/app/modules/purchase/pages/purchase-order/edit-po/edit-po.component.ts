@@ -7,7 +7,7 @@ import {
   IEvent,
   LIGHTBOX_EVENT
 } from "ngx-lightbox";
-import { ActivatedRoute } from "@angular/router/router";
+import { ActivatedRoute } from "@angular/router";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Product } from "src/app/shared/Models/product.model.";
 import { Subscription } from "rxjs";

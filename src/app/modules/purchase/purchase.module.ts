@@ -31,6 +31,9 @@ import { FormsModule } from "@angular/forms";
 import { CreatePoComponent } from './pages/purchase-order/create-po/create-po.component';
 import { PoEmailSmsComponent } from './pages/purchase-order/po-email-sms/po-email-sms.component';
 import { PurchaseOrderModule } from "src/app/modules/purchase/pages/purchase-order/purchase-order.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CreateLotComponent } from './pages/purchaseLot/create-lot/create-lot.component';
+import { PurchaseLotModule } from "src/app/modules/purchase/pages/purchaseLot/purchaselot.module";
 
 
 
@@ -50,8 +53,8 @@ import { PurchaseOrderModule } from "src/app/modules/purchase/pages/purchase-ord
     EditLotComponent,
     ViewPoComponent,
     CreatePoComponent,
-    PoEmailSmsComponent
-  ],
+    PoEmailSmsComponent,
+      ],
   imports: [
     CommonModule,
     SharedModule,
@@ -67,7 +70,7 @@ import { PurchaseOrderModule } from "src/app/modules/purchase/pages/purchase-ord
     FormsModule,
     TextMaskModule,
     PurchaseOrderModule,
-
+    PurchaseLotModule,
    ToastrModule.forRoot()
   ]
 })

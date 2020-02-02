@@ -21,7 +21,9 @@ export class CreateMRComponent implements OnInit {
 
    public request : RequestP={};
    public companyList:Company[] = [];
+   public selected_comapny:Company;
    public warehouseList:Warehouse[] = [];
+   
    public productShapeList:ProductShape[] = [];
    public productCategoryList:ProductCategory[] = [];   
   public selectedWarehouse:Warehouse;
@@ -45,7 +47,6 @@ export class CreateMRComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCompany();
-    this.getAllwarehouseList();
     this.getAllproductShapeList();
     this.getAllproductCategoryList();
   }
@@ -61,12 +62,6 @@ export class CreateMRComponent implements OnInit {
     });
   }
 
-  getAllwarehouseList()
-  {
-    this.productService.getAllwarehouse().subscribe(data=>{
-        this.warehouseList=data;
-    });
-  }
 
   getAllproductCategoryList()
   {
@@ -87,6 +82,13 @@ export class CreateMRComponent implements OnInit {
     this.productList.push(data);
   }
 
+   selectedCompany(value : number) {
+    let data = this.companyList.filter(element=>{
+      return element.id == value
+    })
+    this.selected_comapny = data[0];
+  }
+  
   getSelectedWarehouse(event)
   {
     console.log("warehouse",event.target.value);

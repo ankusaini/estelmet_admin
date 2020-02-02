@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class CreatePcComponent implements OnInit {
   showData: boolean;
-  public request : RequestP={};
+  public requestObj : RequestP={};
   public productList: Product[] = [];
   public selectedMr: Purchase;
   public selectedMrId:any;
@@ -73,10 +73,10 @@ export class CreatePcComponent implements OnInit {
   }
 
   savePcRecord() {
-    this.request.purchase = this.selectedMr;
-    console.log("request is: ", this.request.purchase);
+    this.requestObj.purchase = this.selectedMr;
+    console.log("request is: ", this.requestObj.purchase);
     let path= "/purchase/updatePurchaseHistory";
-    this.purchaseService.updateRequestObject(path, this.request).subscribe( data => {
+    this.purchaseService.updateRequestObject(path, this.requestObj).subscribe( data => {
       alert("saved")
       this.toastr.success("Record saved successfully")
       this.router.navigateByUrl("/purchase/pcApproval");  

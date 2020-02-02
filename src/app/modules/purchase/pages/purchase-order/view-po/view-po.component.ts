@@ -50,7 +50,7 @@ public selectedPOList: Purchase[]=[];
 
   routeToEditMr(id)
   {
-    this.router.navigateByUrl("/purchase/mrEdit/"+id);
+    this.router.navigateByUrl("/purchase/editPQ/"+id);
   }
 
 }

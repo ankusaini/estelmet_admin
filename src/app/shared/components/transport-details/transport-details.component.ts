@@ -75,6 +75,17 @@ export class TransportDetailsComponent implements OnInit {
     this.userService.getAllUserByUserRoleAndStatus(supplierUrl).subscribe(data => {
       console.log("Data is: ",data);
       this.supplierList = data;
+
+      this.transportDetails.statusChanges.subscribe(data=>{
+      console.log(data);
+      if(data == 'VALID'){
+        console.log("data is: ", this.transportDetails.value);
+        this.transportData.emit(this.transportDetails.value);
+      } else {
+        console.log("data is: ", this.transportDetails.value);
+        this.transportData.emit({});
+      }
+    })
       // for(let supplier of this.supplierList){
       //   console.log("id: ", supplier['id']);
       //   this.supplierId.push(supplier['id']);

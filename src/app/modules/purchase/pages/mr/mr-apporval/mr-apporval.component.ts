@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-mr-apporval",
@@ -11,7 +12,7 @@ import { RequestP } from "src/app/shared/Models/RequestResponse";
 export class MrApporvalComponent implements OnInit {
   selectedTab: string='PENDING';
 
-  constructor(private purchaseService: PurchaseService) {}
+  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) {}
  public request : RequestP={};
   public pendingMrList: Purchase[] = [];
 
@@ -70,7 +71,8 @@ export class MrApporvalComponent implements OnInit {
     if (index == -1) {
       this.selectedMrList.push(mr);
     } else {
-      alert("already added");
+      this.toastr.error("Already added");
+     
     }
   }
 
@@ -93,7 +95,7 @@ export class MrApporvalComponent implements OnInit {
          this.request.purchase=this.selectedMrList[i];
         this.purchaseService.updateRequestObject(path,this.request).subscribe(
           data => {
-            
+           
       this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
     this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
     this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");

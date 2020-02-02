@@ -52,12 +52,22 @@ export class UserService {
      });
   }
 
-  updateUser(data) {
-    this._apiService.put('/users/updateUser',data).subscribe(res=>{
-      console.log(res);
+  updateUser(path,data) {
+    return new Observable<User>(obs => {
+    this._apiService.put(path,data).subscribe(res=>{
+      obs.next(res.body);
+    });
     })
   }
 
+  updateUserGroup(path,data)
+  {
+    return new Observable<UserGroup>(obs => {
+ this._apiService.put(path,data).subscribe(res=>{
+      obs.next(res.body);
+    });
+    })
+  }
   getUserById(userId) {
     return new Observable<User>(obs=>{
       this._apiService.get(`/users/find/${userId}`).subscribe(res=>{

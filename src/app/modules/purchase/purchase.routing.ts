@@ -20,6 +20,7 @@ import { CreatePoComponent } from "src/app/modules/purchase/pages/purchase-order
 import { PoEmailSmsComponent } from "src/app/modules/purchase/pages/purchase-order/po-email-sms/po-email-sms.component";
 import { ViewPoComponent } from "src/app/modules/purchase/pages/purchase-order/view-po/view-po.component";
 import { EditPoComponent } from "src/app/modules/purchase/pages/purchase-order/edit-po/edit-po.component";
+import { CreateLotComponent } from "src/app/modules/purchase/pages/purchaseLot/create-lot/create-lot.component";
 
 
 
@@ -124,6 +125,11 @@ const routes: Routes = [
 //     path: 'lotOverview',
 //     component: LotOverviewComponent
 //   },
+
+{
+    path: 'lotWithPc',
+    component: CreateLotComponent
+  },
   {
     path: 'lotApproval',
     component: LotApprovalComponent
