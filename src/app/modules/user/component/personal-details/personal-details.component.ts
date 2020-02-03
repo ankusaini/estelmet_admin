@@ -86,6 +86,18 @@ export class PersonalDetailsComponent implements OnInit {
    //   })
   }
 
+  uploadPhoto()
+  {
+    console.log("files",this.uploadedFiles[0]);
+    let path ="/uploadImage/user/"+22;
+     this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
+        console.log("image uploaded")
+     },error=>{
+
+     })
+
+  }
+
   ngOnInit() {
     this.bodyText = 'This text can be updated in modal 1';
   }

@@ -29,7 +29,9 @@
               "src/fake-data"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+                "node_modules/ngx-toastr/toastr.css" // try adding '../' if you're using angular cli before 6
+
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

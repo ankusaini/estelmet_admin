@@ -28,6 +28,12 @@ import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component'
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 import { ViewPoComponent } from './pages/purchase-order/view-po/view-po.component';
 import { FormsModule } from "@angular/forms";
+import { CreatePoComponent } from './pages/purchase-order/create-po/create-po.component';
+import { PoEmailSmsComponent } from './pages/purchase-order/po-email-sms/po-email-sms.component';
+import { PurchaseOrderModule } from "src/app/modules/purchase/pages/purchase-order/purchase-order.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CreateLotComponent } from './pages/purchaseLot/create-lot/create-lot.component';
+import { PurchaseLotModule } from "src/app/modules/purchase/pages/purchaseLot/purchaselot.module";
 import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
 import { SupplierComponent } from './component/supplier/supplier.component';
 
@@ -48,9 +54,11 @@ import { SupplierComponent } from './component/supplier/supplier.component';
     EditGrnComponent,
     EditLotComponent,
     ViewPoComponent,
-    CreateGrnComponent,
+    CreatePoComponent,
+    PoEmailSmsComponent,
+     CreateGrnComponent,
     SupplierComponent
-  ],
+      ],
   imports: [
     CommonModule,
     SharedModule,
@@ -65,7 +73,8 @@ import { SupplierComponent } from './component/supplier/supplier.component';
     NgbDatepickerModule,
     FormsModule,
     TextMaskModule,
-
+    PurchaseOrderModule,
+    PurchaseLotModule,
    ToastrModule.forRoot()
   ]
 })

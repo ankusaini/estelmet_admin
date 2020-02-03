@@ -122,15 +122,16 @@ export class UserApprovalComponent implements OnInit {
     if (this.selectedUserList.length == 0) {
       alert("select at least one");
     } else {
-      let path = "/users/group/updateUserGroup";
+      let path = "/users/updateUser";
 
       for (let i = 0; i < this.selectedUserList.length; i++) {
         this.selectedUserList[i].status = status;
 
-        console.log("selected group", this.selectedUserList[i]);
-        this.userService.saveUser(this.selectedUserList[i]).subscribe(
+        this.userService.updateUser(path,this.selectedUserList[i]).subscribe(
           data => {
-            console.log("user  created", data);
+            
+             this.selectedUserList = [];
+             //page refresh here
           },
           error => {}
         );

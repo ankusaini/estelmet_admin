@@ -128,17 +128,18 @@ export class GroupApprovalComponent implements OnInit {
     if (this.selectedUserGroupList.length == 0) {
       alert("select at least one");
     } else {
-      let path = "/users/group/updateuseringroup";
+      let path = "/users/group/updateUserInGroup";
       console.log("path", path);
       for (let i = 0; i < this.selectedUserGroupList.length; i++) {
         this.selectedUserGroupList[i].status = status;
 
-        console.log("selected group", this.selectedUserGroupList[i]);
+       
         this.userService
-          .createUserGroup(path, this.selectedUserGroupList[i])
+          .updateUserGroup(path, this.selectedUserGroupList[i])
           .subscribe(
             data => {
               console.log("user group created", data);
+              alert("update")
             },
             error => {}
           );

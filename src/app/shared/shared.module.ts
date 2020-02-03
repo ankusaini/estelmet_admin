@@ -12,6 +12,8 @@ import { ProdListWithProdIdComponent } from "./components/prod-list-with-prod-id
 import { PurchasrListFullDetailsComponent } from "./components/purchasr-list-full-details/purchasr-list-full-details.component";
 import { OtpComponent } from './components/otp/otp.component';
 import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
+import { PoListComponent } from './components/po-list/po-list.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
     TransportDetailsComponent,
     ProdListWithProdIdComponent,
     PurchasrListFullDetailsComponent,
+    PoListComponent,
+    UserListComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +40,8 @@ import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
     AddProductCartComponent,
     PurchasrListFullDetailsComponent,
     MrListComponent,
-    TransportDetailsComponent
+    TransportDetailsComponent,
+    PoListComponent,UserListComponent
   ] 
 
   

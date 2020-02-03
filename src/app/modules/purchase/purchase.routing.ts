@@ -16,6 +16,11 @@ import { SearchViewLotComponent } from './pages/purchaseLot/search-view-lot/sear
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
 import { EditGrnComponent } from './pages/grnModule/edit-grn/edit-grn.component';
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
+import { CreatePoComponent } from "src/app/modules/purchase/pages/purchase-order/create-po/create-po.component";
+import { PoEmailSmsComponent } from "src/app/modules/purchase/pages/purchase-order/po-email-sms/po-email-sms.component";
+import { ViewPoComponent } from "src/app/modules/purchase/pages/purchase-order/view-po/view-po.component";
+import { EditPoComponent } from "src/app/modules/purchase/pages/purchase-order/edit-po/edit-po.component";
+import { CreateLotComponent } from "src/app/modules/purchase/pages/purchaseLot/create-lot/create-lot.component";
 import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
 
 
@@ -42,10 +47,25 @@ const routes: Routes = [
 //     path: 'mrOverview',
 //     component: MrOverviewComponent
 //   },
-//   {
-//     path: 'createPo',
-//     component: CreatePurchaseOrderComponent
-//   },
+  {
+    path: 'createPo',
+    component: CreatePoComponent
+  },
+   {
+    path: 'purchaseQuote',
+    component: PoEmailSmsComponent
+  },
+  {
+    path: 'viewPO',
+    component: ViewPoComponent
+  },
+   {
+    path: 'editPQ/:id',
+    component: EditPoComponent
+  },
+  
+
+  
   {
     path: 'createPc',
     component: CreatePcComponent
@@ -106,6 +126,11 @@ const routes: Routes = [
 //     path: 'lotOverview',
 //     component: LotOverviewComponent
 //   },
+
+{
+    path: 'lotWithPc',
+    component: CreateLotComponent
+  },
   {
     path: 'lotApproval',
     component: LotApprovalComponent

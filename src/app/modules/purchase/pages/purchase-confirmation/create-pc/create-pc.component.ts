@@ -16,9 +16,11 @@ import { Router } from '@angular/router';
 })
 export class CreatePcComponent implements OnInit {
   showData: boolean;
-  public request : RequestP={};
+  public requestObj : RequestP={};
   public productList: Product[] = [];
   public selectedMr: Purchase;
+  public selectedMrId:any;
+  public generatedPcId:any;
 
   constructor(private purchaseService: PurchaseService,
               private router: Router,
@@ -35,46 +37,47 @@ export class CreatePcComponent implements OnInit {
   // there might be some problem in import module , take// 
    
   getSelectedMr(data) {
-    this.selectedMr = data;
-    console.log("MR SELECTEd", this.selectedMr);
+    this.selectedMr = data;;
     this.getProductList(this.selectedMr.id);
+    this.selectedMrId='MR-'+this.selectedMr.id;
     this.selectedMr.status = Status.PENDING; 
     this.selectedMr.type = PurchaseType.PURCHASE_CONFIRMATION;  
-    console.log("after changes: ", this.selectedMr);  
   }
 
   getProductList(id) {
-    // let url = "/purchase/find/" + id;
-    // this.purchaseService.findRequstObjectById(url).subscribe(
-    //   data => {
-    //     this.productList = data.productList;
-    //             console.log("product of this mr",this.productList)
-
-    //     this.showData = true;
-    //   },
-    //   error => {
-    //     console.log("error");
-    //   }
-    // );
+    
+    let url = "/purchase/find/" + id;
+    this.purchaseService.findRequstObjectById(url).subscribe(
+      data => {
+        this.productList = data.productList;
+        this.showData = true;
+      },
+      error => {
+        console.log("error");
+      }
+    );
   }
 
+  generatePcId()
+  {
+      this.generatedPcId='PC-'+this.selectedMr.id
+  }
   getTransportData(data) {
-    console.log("in create transportData is: ", data);
-    console.log("previous mr",this.selectedMr)
-   // this.selectedMr=data;
+   
     Object.keys(data).forEach((key) => {
-      console.log("key is",key);
+     if(key!='expectedDate')
+      {
    this.selectedMr[key] = data[key]
- })
-
-    console.log("now lastest data is",this.selectedMr);
+      }
+  })
   }
 
   savePcRecord() {
-    this.request.purchase = this.selectedMr;
-    console.log("request is: ", this.request.purchase);
-    let path= "purchase/updatePurchaseHistory";
-    this.purchaseService.updateRequestObject(path, this.request).subscribe( data => {
+    this.requestObj.purchase = this.selectedMr;
+    console.log("request is: ", this.requestObj.purchase);
+    let path= "/purchase/updatePurchaseHistory";
+    this.purchaseService.updateRequestObject(path, this.requestObj).subscribe( data => {
+      alert("saved")
       this.toastr.success("Record saved successfully")
       this.router.navigateByUrl("/purchase/pcApproval");  
     }, error => {
