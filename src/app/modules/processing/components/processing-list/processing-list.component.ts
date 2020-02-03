@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-processing-list',
@@ -11,7 +12,7 @@ export class ProcessingListComponent implements OnInit {
   public selectedProcessingList: any[] = [];
   @Output() selectedList: EventEmitter<any[]> = new EventEmitter<any[]>();
   
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     
@@ -37,6 +38,10 @@ export class ProcessingListComponent implements OnInit {
       this.productProcessingList.splice(index, 1);
       console.log("selected list is: ", this.productProcessingList);
     }
+  }
+
+  navigateToEdit(id) {
+    this.router.navigateByUrl("processing/editProcessing/"+ id);
   }
 
 }
