@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ProcessingService } from '../../service/processing.service';
 
 @Component({
   selector: 'app-update-processing',
@@ -7,8 +8,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./update-processing.component.css']
 })
 export class UpdateProcessingComponent implements OnInit {
+  public processingType: string = "";
+  public processingList: any[];
+  public processingIdList: any[];
+  public selectedProcessingId: any;
 
-  constructor() { }
+  constructor(private processingService: ProcessingService) { }
 
   ngOnInit() {
     this.basicSwal();
@@ -35,6 +40,26 @@ export class UpdateProcessingComponent implements OnInit {
           }
         });
       }
+    }).then(processingType => {
+      if(processingType !== "") {
+        this.processingType = processingType.value.toString().toUpperCase();
+        console.log(this.processingType);
+        let url = "/inventory/productProcessing/getAllProductProcessingByProcessingTypeAndStatus/"+ this.processingType +"/APPROVED";
+        console.log(url);
+        this.processingService.getAllProductProcessingByProcessingTypeAndStatus(url).subscribe( data => {
+          this.processingList = data;
+          this.processingIdList = this.processingList.map(processing => processing.productProcessingId);
+          console.log(this.processingIdList);
+        });
+      }
     });
   }
+
+  getSelectedProcessingId(id) {
+    console.log(id);
+    this.selectedProcessingId = id;
+    console.log(this.selectedProcessingId);
+  }
+
+
 }
