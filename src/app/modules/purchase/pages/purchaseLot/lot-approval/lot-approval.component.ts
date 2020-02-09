@@ -32,7 +32,7 @@ public request : RequestP={};
     
   }
 
-  getAllPurchaseByTypeAndStatus(type,status)
+  getAllPurchaseByTypeAndStatus(type ,status)
   {
 if(status=='REJECETED')
   {

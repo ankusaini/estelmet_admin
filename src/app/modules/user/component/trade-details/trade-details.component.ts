@@ -1,7 +1,51 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, AbstractControl } from "@angular/forms";
 import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
 import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape } from '../../../../shared/Models/product.model.';
+import { ToastrService } from 'ngx-toastr';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
+
+
+function MaxlengthConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minLength = (c.parent.get("lengthMin"));
+  const maxLength = (c.parent.get("lengthMax"));
+  if(!maxLength || ! minLength) return;
+  if(maxLength.value < minLength.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxwidthConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minWidth = (c.parent.get("widthMin"));
+  const maxWidth = (c.parent.get("widthMax"));
+  if(!maxWidth || ! minWidth) return;
+  if(maxWidth.value < minWidth.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxthicknessConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minThickness = (c.parent.get("thicknessMin"));
+  const maxThickness = (c.parent.get("thicknessMax"));
+  if(!maxThickness || ! minThickness) return;
+  if(maxThickness.value < minThickness.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxtemperConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minTemper = (c.parent.get("temperMin"));
+  const maxTemper = (c.parent.get("temperMax"));
+  if(!maxTemper || ! minTemper) return;
+  if(maxTemper.value < minTemper.value) {
+    return { invalid: true};
+  } 
+}
+
 
 
 @Component({
@@ -12,7 +56,7 @@ import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape
 export class TradeDetailsComponent implements OnInit {
 
   @Output() trade_detail : EventEmitter<tempData[]> = new EventEmitter<tempData[]>();
-  public tradeArr : tempData[] = [];
+  public tradeArr : tempData[] =[];
 
   productClassList : ProductClass[];
   productCategoryList : ProductCategory[];
@@ -23,6 +67,7 @@ export class TradeDetailsComponent implements OnInit {
 
   constructor(
     private _staticData : StaticDataService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
@@ -34,27 +79,27 @@ export class TradeDetailsComponent implements OnInit {
   }
 
   tradeDetails = new FormGroup({
-    userProductPreferenceId: new FormControl("", []),
+    userProductPreferenceId: new FormControl(""),
     productType: new FormControl("", [Validators.required]),
     productCategory: new FormControl("", [Validators.required]),
     productShape: new FormControl("", [Validators.required]),
     productClass: new FormControl("", [Validators.required]),
-    thicknessMin: new FormControl("", [Validators.required]),
-    thicknessMax: new FormControl("", [Validators.required]),
-    temperMin: new FormControl("", [Validators.required]),
-    temperMax: new FormControl("", [Validators.required]),
-    lengthMin: new FormControl("", []),
-    lengthMax: new FormControl("", []),
-    widthMin: new FormControl("", []),
-    widthMax: new FormControl("", []),
-    monthlyRequirement: new FormControl("", [Validators.required])
+    thicknessMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+    thicknessMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
+    temperMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+    temperMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxtemperConfirming]),
+    lengthMin: new FormControl("", [CustomValidator.compondValueValidate]),
+    lengthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxlengthConfirming]),
+    widthMin: new FormControl("",[CustomValidator.compondValueValidate]),
+    widthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxwidthConfirming]),
+    monthlyRequirement: new FormControl("", [Validators.required, CustomValidator.compondValueValidate])
   });
 
   tradeDetailsFormOnSubmit() {
     if(this.tradeArr.length > 0) {
       this.trade_detail.emit(this.tradeArr);
     } else {
-      console.log("trade details", this.tradeDetails);
+      this.toastrService.error("Details are invalid!");
     }
   }
 
@@ -63,6 +108,7 @@ export class TradeDetailsComponent implements OnInit {
       this.tradeArr.push(this.tradeDetails.value);
       this.tradeDetails.reset();
     } else {
+      this.toastrService.error("Invalid");
       console.log(this.tradeDetails.value);
     }
   }

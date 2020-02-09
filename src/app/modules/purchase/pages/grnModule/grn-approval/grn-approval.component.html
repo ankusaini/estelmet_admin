@@ -23,6 +23,7 @@
                       <th>Last Modified Date</th>
                       <th>Created By</th>
                       <th>Last Modified By</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -41,6 +42,12 @@
                       <td>{{grn.lastModifiedDate | date: 'medium'}}</td>
                       <td>{{grn.createdBy}}</td>
                       <td>{{grn.lastModifiedBy}}</td>
+                      <td>
+                        <!-- <span class="badge badge-light-success">{{purchase.status}}</span> -->
+                        <div class="overlay-edit">
+                          <button (click)="addToSelectedList(grn)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                        </div>
+                      </td>
                     </tr>
                    
                   </tbody>
@@ -68,6 +75,7 @@
                       <th>Last Modified Date</th>
                       <th>Created By</th>
                       <th>Last Modified By</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -86,6 +94,12 @@
                       <td>{{grn.lastModifiedDate | date: 'medium'}}</td>
                       <td>{{grn.createdBy}}</td>
                       <td>{{grn.lastModifiedBy}}</td>
+                      <td>
+                        <!-- <span class="badge badge-light-success">{{purchase.status}}</span> -->
+                        <div class="overlay-edit">
+                          <button (click)="addToSelectedList(grn)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                        </div>
+                      </td>
                     </tr>
                    
                   </tbody>
@@ -113,6 +127,7 @@
                       <th>Last Modified Date</th>
                       <th>Created By</th>
                       <th>Last Modified By</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -131,6 +146,12 @@
                       <td>{{grn.lastModifiedDate | date: 'medium'}}</td>
                       <td>{{grn.createdBy}}</td>
                       <td>{{grn.lastModifiedBy}}</td>
+                      <td>
+                        <!-- <span class="badge badge-light-success">{{purchase.status}}</span> -->
+                        <div class="overlay-edit">
+                          <button (click)="addToSelectedList(grn)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
+                        </div>
+                      </td>
                     </tr>
                    
                   </tbody>
@@ -142,8 +163,81 @@
         </ngb-tabset>
   
       </app-card>
-      <!-- <app-add-product-cart></app-add-product-cart> -->
-      <button type="submit" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'" class="btn btn-success active">Approve</button>&nbsp;
-      <button type="submit" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" class="btn btn-danger active">Reject</button>&nbsp;
+      <!-- <app-add-product-cart
+        [productList]="selectedGrnList"
+      ></app-add-product-cart> -->
+
+     
+
+     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="false" cardTitle="Take action on above Selected Users" [options]="false"
+        cardClass="user-profile-list">
+        <div class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Sr. No.</th>
+                <th>GRN Id</th>
+                <th>LOT Id</th>
+                <th>GRN Type</th>
+                <th>Status</th>
+                <th>Company Id</th>
+                <th>Warehouse Id</th>
+                <th>Gross Wt.</th>
+                <th>Net Wt.</th>
+                <th>Date of Creation</th>
+                <th>Last Modified Date</th>
+                <th>Created By</th>
+                <th>Last Modified By</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr href="kdkd" *ngFor="let grn of selectedGrnList;let i = index">
+                  <td><label class="badge badge-danger">{{grn?.status}}</label></td>
+                  <td>{{i+1}}</td>
+                  <td>GRN-{{grn?.grnId}}</td>
+                  <td>LOT-{{grn?.purchaseId}}</td>
+                  <td>{{grn?.grnType}}</td>
+                  <td>{{grn?.status}}</td>
+                  <td>COM-{{grn?.sourceCompanyId}}</td>
+                  <td>WAR-{{grn?.sourceWarehouseId}}</td>
+                  <td>{{grn?.grossWeight}}</td>
+                  <td>{{grn.netWeight}}</td>
+                  <td>{{grn?.createdDate | date: 'medium'}}</td>
+                  <td>{{grn?.lastModifiedDate | date: 'medium'}}</td>
+                  <td>{{grn?.createdBy}}</td>
+                  <td>{{grn?.lastModifiedBy}}</td>
+              <td>
+                <!-- <span class="badge badge-light-success">{{user.status}}</span> -->
+                <div class="overlay-edit">
+                  <button 
+                    (click)="removeFromSelectedList(grn)" 
+                    type="button" 
+                    class="btn btn-icon btn-danger" >
+                    <i class="feather icon-trash-2"></i>
+                  </button>
+                </div>
+              </td>
+            </tr> 
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+
     </div>
   </div>
+
+  <div class="col-sm-12 centered-content m-t-20">
+    <div class="btn-group mt-10">
+
+      <button type="submit" (click)="changeStatusOfSelectedGrn('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'" class="btn btn-success active">Approve</button>&nbsp;
+      <button type="submit" (click)="changeStatusOfSelectedGrn('REJECTED')"  *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" class="btn btn-danger active">Reject</button>&nbsp;
+    </div>
+  </div>
+  

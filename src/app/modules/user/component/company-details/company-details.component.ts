@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
+import { CustomValidator } from "src/app/Validators/custom-validator";
 import csc from 'country-state-city'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-company-details",
   templateUrl: "./company-details.component.html",
@@ -12,7 +14,7 @@ export class CompanyDetailsComponent implements OnInit {
   state_list: any;
   city_list: any;
 
-  constructor() {}
+  constructor(private toastrService: ToastrService) {}
 
   ngOnInit() {
     this.getAllCountry();
@@ -28,26 +30,31 @@ export class CompanyDetailsComponent implements OnInit {
   }
   public companyDetailsForm = new FormGroup({
     userDetailId: new FormControl(""),
-    companyName: new FormControl("", [Validators.required]),
-    address1: new FormControl("",[Validators.required]),
-    address2: new FormControl(""),
+    companyName: new FormControl("", [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    address1: new FormControl("",[
+      Validators.required,
+      CustomValidator.addressValidation
+    ]),
+    address2: new FormControl("", [ CustomValidator.addressValidation]),
     gst: new FormControl("", [Validators.required]),
     otp: new FormControl("", ),
-    numberOfEmployees: new FormControl("", []),
+    numberOfEmployees: new FormControl("",[CustomValidator.numberUpdateDurationValidation]),
     country: new FormControl("", [Validators.required]),
     state: new FormControl("", [Validators.required]),
     city: new FormControl("", [Validators.required]),
     pinCode: new FormControl("", [
       Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(6)
+      CustomValidator.pinCodeValidation
     ]),
-    mobile1: new FormControl(""),
-    mobile2: new FormControl(""),
-    emailBusiness: new FormControl(""),
-    annualTurnover1: new FormControl(""),
-    annualTurnover2: new FormControl(""),
-    annualTurnover3: new FormControl("")
+    mobile1: new FormControl("",[CustomValidator.contactNumberValidation]),
+    mobile2: new FormControl("", [CustomValidator.contactNumberValidation]),
+    emailBusiness: new FormControl("", [CustomValidator.emailValidation]),
+    annualTurnover1: new FormControl("",[CustomValidator.compondValueValidate]),
+    annualTurnover2: new FormControl("",[CustomValidator.compondValueValidate]),
+    annualTurnover3: new FormControl("",[CustomValidator.compondValueValidate])
   });
   //  annualTurnOver:new FormArray([this.initializeAnnualTurnOver()]),
   // public initializeAnnualTurnOver(): FormGroup {
@@ -61,7 +68,10 @@ export class CompanyDetailsComponent implements OnInit {
   companyDetailsSubmit() {
     if (this.companyDetailsForm.valid) {
       this.company_details.emit(this.companyDetailsForm.value);
-    } else console.log("company details", this.companyDetailsForm);
+    } else {
+      console.log("company details", this.companyDetailsForm);
+      this.toastrService.error("Details are invalid!");
+    }
   }
   get f() {
     return this.companyDetailsForm.controls;

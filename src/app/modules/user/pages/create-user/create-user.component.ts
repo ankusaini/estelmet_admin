@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { UserService } from 'src/app/shared/services/user.service';
 import { User, Status } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { Router } from '@angular/router';
 import csc from 'country-state-city';
+import { ToastrService } from 'ngx-toastr';
+import { WizardComponent } from 'ng2-archwizard/dist';
 
 @Component({
   selector: "app-create-user",
@@ -11,16 +13,23 @@ import csc from 'country-state-city';
   styleUrls: ["./create-user.component.scss"],
   encapsulation: ViewEncapsulation.None
 })
+
 export class CreateUserComponent implements OnInit {
+  @ViewChild("wizard", { static: true }) wizard: WizardComponent;
   showGroup = true;
   public isSubmit: boolean;
   public userDto : User = {};
   public uploadedFiles: Array<File> = [];
 
+  // public isPersonData: boolean = false;
+  // public isImageData: boolean = false;
+  // public isCompanyDetailData : boolean = false;
+
   constructor(
     private _userService : UserService,
     private _userDataService : UserDataService,
-    private _router : Router
+    private _router : Router,
+    private toastrService: ToastrService 
   ) {
     this.isSubmit = false;
   }
@@ -45,11 +54,13 @@ export class CreateUserComponent implements OnInit {
     this.userDto.password = data.password;
     this.userDto.userRole = data.userRole;
     this.userDto.status = Status.PENDING;
+    this.wizard.navigation.canGoToStep(2);
   }
   getImageData(data:any)
   { 
     this.uploadedFiles=data;
     console.log("image is",this.uploadedFiles);
+    // this.isImageData = true;
   }
 
   companyDetailData(data: any) {
@@ -89,6 +100,9 @@ export class CreateUserComponent implements OnInit {
       turnover : data.annualTurnover3
     });
     console.log(this.userDto);
+    // this.isCompanyDetailData = true;
+    this.wizard.navigation.canGoToStep(3);
+
   }
 
   tradeData(data: any[]) {
@@ -110,6 +124,8 @@ export class CreateUserComponent implements OnInit {
     })
 
     console.log(this.userDto.userDetail.userProductPreference);
+    this.wizard.navigation.canGoToStep(4);
+
   }
 
   keyPersonData(data: any) {
@@ -134,6 +150,8 @@ export class CreateUserComponent implements OnInit {
       email2: "",
       mobile2: ""
     });
+    this.wizard.navigation.canGoToStep(5);
+
   }
 
   final_submit(data: boolean) {
@@ -141,6 +159,7 @@ export class CreateUserComponent implements OnInit {
     this._userService.saveUser(this.userDto).subscribe(data=>{
       console.log(data);
       this._userDataService.add(data);
+      this.wizard.navigation.reset();
       this._router.navigate(['/users/profile',data.id]);
       // let path ="/uploadImage/user/"+data.id;
       // this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
@@ -148,9 +167,10 @@ export class CreateUserComponent implements OnInit {
       // },error=>{
 
       // })
-      
+      this.toastrService.success("Your account created successfully!");
     },error=>{
-      
+      console.log(error);
     });
   }
+
 }

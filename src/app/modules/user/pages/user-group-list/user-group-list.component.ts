@@ -6,6 +6,7 @@ import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-user-group-list",
@@ -14,10 +15,12 @@ import { Router } from "@angular/router";
 })
 export class UserGroupListComponent implements OnInit {
   // /users/group//users/group/getAllUserGroupByUserRoleAndStatus/CUSTOMER/APPROVED+/CUSTOMER/APPROVED
-  constructor(private userService: UserService, public router: Router) {
+  constructor(private userService: UserService, 
+              private router: Router,
+              private toastrService: ToastrService) {
     this.basicSwal();
   }
-  public userGroupList: any;
+  public userGroupList: any[] = [];
   public selectedUserGroupList: UserGroup[] = [];
 
   ngOnInit() {}
@@ -69,7 +72,8 @@ export class UserGroupListComponent implements OnInit {
     if (index == -1) {
       this.selectedUserGroupList.push(userGroup);
     } else {
-      alert("already added");
+      // alert("already added");
+      this.toastrService.info("already added!");
     }
   }
   removeSelectedUserd(userGroup: UserGroup) {

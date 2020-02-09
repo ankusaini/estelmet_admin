@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-terms-conditions',
@@ -10,7 +11,7 @@ export class TermsConditionsComponent implements OnInit {
   @Output() readyToUpdate : EventEmitter<boolean> = new EventEmitter<boolean>();
   public agree : boolean = false;
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class TermsConditionsComponent implements OnInit {
       this.agree = event.target.checked;
     } else {
       this.agree = event.target.checked;
+
     }
     console.log(this.agree);
   }
@@ -29,6 +31,7 @@ export class TermsConditionsComponent implements OnInit {
       this.readyToUpdate.emit(this.agree);
     } else {
       console.log(this.agree);
+      this.toastrService.error("Please accept terms and Conditions!");
     }
   }
 }

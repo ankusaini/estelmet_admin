@@ -10,6 +10,7 @@ import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload'
 import { CustomValidator } from "src/app/Validators/custom-validator";
 
 import { UserService } from 'src/app/shared/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 function passwordConfirming(c: AbstractControl): any {
   if (!c.parent || !c) return;
   const pwd = c.parent.get("password");
@@ -28,8 +29,7 @@ export class PersonalDetailsComponent implements OnInit {
 
       //public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
 
-          public uploadedFiles: Array<File> = [];
-
+  public uploadedFiles: Array<File> = [];
   @Output() prsonalData : EventEmitter<any> = new EventEmitter<any>();
   @Output() imageData:EventEmitter<any>=new EventEmitter<any>();
   bodyText : string;
@@ -52,17 +52,21 @@ export class PersonalDetailsComponent implements OnInit {
       Validators.required,
       CustomValidator.contactNumberValidation
     ]),
-    email: new FormControl("", [Validators.required]),
-
-    password: new FormControl("", [Validators.required,Validators.minLength(8), Validators.maxLength(20)]),
+    email: new FormControl("", [
+      Validators.required, 
+      CustomValidator.emailValidation
+    ]),
+    password: new FormControl("", [Validators.required, CustomValidator.passwordValidation]),
     cpassword: new FormControl("", [Validators.required,passwordConfirming]),
     userRole: new FormControl("", [Validators.required]),
     otp: new FormControl("", [Validators.required]),
+     // otp: new FormControl(""),
     // status: new FormControl("", [Validators.required])
   });
   
   constructor(
-    private _userService : UserService
+    private _userService : UserService,
+    private toastrService: ToastrService
   ) {}
 
   get f() {
@@ -75,7 +79,8 @@ export class PersonalDetailsComponent implements OnInit {
        this.prsonalData.emit(this.userDTO.value);
        this.imageData.emit(this.uploadedFiles);
      } else {
-       console.log("disable");
+      this.toastrService.error("Details are invalid!");
+
      }
 
     //let path ="/uploadImage/user/"+22;
@@ -88,13 +93,17 @@ export class PersonalDetailsComponent implements OnInit {
 
   uploadPhoto()
   {
-    console.log("files",this.uploadedFiles[0]);
-    let path ="/uploadImage/user/"+22;
-     this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
-        console.log("image uploaded")
-     },error=>{
+    if(this.uploadedFiles[0]){
+      console.log("files",this.uploadedFiles[0]);
+      let path ="/uploadImage/user/"+22;
+      this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
+          console.log("image uploaded")
+      },error=>{
 
-     })
+      })
+    } else {
+      this.toastrService.error("Upload photo!");
+    }
 
   }
 
@@ -151,4 +160,8 @@ export class PersonalDetailsComponent implements OnInit {
     error => {}
   );
   }
+
+  
+
+
 }

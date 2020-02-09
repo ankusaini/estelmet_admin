@@ -4,7 +4,7 @@
     <button type='button' (click)="basicSwal()">Change User Group</button>
     </div>
       <app-card [hidHeader]="false" cardTitle="Search & Select Customer/s " [options]="false" cardClass="user-profile-list">
-        <div class="dt-responsive table-responsive" cardClass="card-datatable"> 
+        <div *ngIf="userGroupList" class="dt-responsive table-responsive" cardClass="card-datatable"> 
           <table datatable  class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
