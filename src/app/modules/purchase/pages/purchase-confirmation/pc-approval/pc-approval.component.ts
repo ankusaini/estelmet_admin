@@ -3,6 +3,8 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+
 
 @Component({
   selector: 'app-pc-approval',
@@ -13,7 +15,10 @@ export class PcApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
   public request : RequestP={};
   public selectedPuchaseList: Purchase[] = [];
-  constructor(private purchaseService: PurchaseService,private router:Router) { }
+  constructor(
+            private purchaseService: PurchaseService,
+            private router:Router,
+            private toastrService:ToastrService) { }
 
   ngOnInit() {
   }
@@ -55,7 +60,8 @@ export class PcApprovalComponent implements OnInit {
 
     changeStatusOfSelectedPurchase(status) {
     if (this.selectedPuchaseList.length == 0) {
-      alert("select at least one");
+      this.toastrService.warning("select at least one");
+      // alert("select at least one");
     } else {
       let path = "/purchase/updatePurchase";
 
@@ -64,7 +70,7 @@ export class PcApprovalComponent implements OnInit {
          this.request.purchase=this.selectedPuchaseList[i];
         this.purchaseService.updateRequestObject(path,this.request).subscribe(
           data => {
-            alert("update")
+            this.toastrService.success("Selected PC(s) status changes successfully")
              this.router.routeReuseStrategy.shouldReuseRoute = function () {
     return false;
   };

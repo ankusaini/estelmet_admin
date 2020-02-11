@@ -5,6 +5,7 @@ import { UserService } from "src/app/shared/services/user.service";
 import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
 import { Subject } from "rxjs";
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-user-approval",
   templateUrl: "./user-approval.component.html",
@@ -13,13 +14,14 @@ import { Subject } from "rxjs";
 export class UserApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
 
-  public pendingUserList: UserGroup[] = [];
-  public approvedUserList: UserGroup[] = [];
-  public rejectedUserList: UserGroup[] = [];
+  public pendingUserList: UserGroup[];
+  public approvedUserList: UserGroup[];
+  public rejectedUserList: UserGroup[];
 
   public selectedUserList: UserGroup[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,    
+              private toastrService: ToastrService) {
     this.basicSwal();
   }
 
@@ -66,7 +68,9 @@ export class UserApprovalComponent implements OnInit {
       data => {
         this.pendingUserList = data;
       },
-      error => {}
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -78,7 +82,9 @@ export class UserApprovalComponent implements OnInit {
       data => {
         this.approvedUserList = data;
       },
-      error => {}
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -91,7 +97,9 @@ export class UserApprovalComponent implements OnInit {
         this.rejectedUserList = data;
         console.log("user group list", this.rejectedUserList);
       },
-      error => {}
+      error => {
+        console.log(error);
+      }
     );
   }
   onTabChange(tab) {
@@ -114,13 +122,13 @@ export class UserApprovalComponent implements OnInit {
     if (index == -1) {
       this.selectedUserList.push(userGroup);
     } else {
-      alert("already added");
+      this.toastrService.info("already added!");
     }
   }
 
   changeStatusOfSelectedUser(status) {
     if (this.selectedUserList.length == 0) {
-      alert("select at least one");
+      this.toastrService.warning("select at least one!");
     } else {
       let path = "/users/updateUser";
 
@@ -136,6 +144,7 @@ export class UserApprovalComponent implements OnInit {
           error => {}
         );
       }
+      this.toastrService.success("Selected User(s) status changes successfully!")
     }
   }
 }

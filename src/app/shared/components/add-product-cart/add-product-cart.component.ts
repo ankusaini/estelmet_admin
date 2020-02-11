@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from "@angular/core";
 import { Product } from "src/app/shared/Models/product.model.";
 import { InventoryService } from 'src/app/modules/inventory/service/inventory.service';
 import { Router } from '@angular/router';
@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './add-product-cart.component.html',
   styleUrls: ['./add-product-cart.component.scss']
 })
-export class AddProductCartComponent implements OnInit {
+export class AddProductCartComponent implements OnInit, OnChanges {
   @Input() productList:Product[]=[];
   @Input() component : any = "";
+  // selectedList: Product[] = [];
+  
   // @Input() selectedTab : string;
 
   @Output() selectedProductList: EventEmitter<any> = new EventEmitter<any>();
@@ -22,6 +24,10 @@ export class AddProductCartComponent implements OnInit {
               ) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    // this.selectedList = this.productList;
   }
 
   addProduct(product) {

@@ -14,26 +14,53 @@ export class ProcessingApprovalComponent implements OnInit {
   // public selectedProductList: any[] = [];
 
   constructor(private processingService: ProcessingService) {
-    let pendingUrl ="/inventory/productProcessing/getAllProductProcessingByStatus/PENDING";
-    this.processingService.getAllProductProcessingByStatus(pendingUrl).subscribe( data => {
-      this.pendingProductList = data;
-      console.log(this.pendingProductList);
-    });
-
-    let approvedUrl ="/inventory/productProcessing/getAllProductProcessingByStatus/APPROVED";
-    this.processingService.getAllProductProcessingByStatus(approvedUrl).subscribe(data => {
-      this.approvedProductList = data;
-      console.log(this.approvedProductList);
-    });
-
-    let rejectedUrl ="/inventory/productProcessing/getAllProductProcessingByStatus/REJECTED";
-    this.processingService.getAllProductProcessingByStatus(rejectedUrl).subscribe(data => {
-      this.rejectedProductList = data;
-      console.log(this.rejectedProductList);
-    });
+    
    }
 
   ngOnInit() {
+
+    this.getAllProcessingByTypeAndStatus("PENDING");
+    this.getAllProcessingByTypeAndStatus("APPROVED");
+    this.getAllProcessingByTypeAndStatus("REJECTED");
+
+
+
+  }
+    
+  getAllProcessingByTypeAndStatus(status) {
+        if (status == "PENDING") {
+          let pendingUrl ="/inventory/productProcessing/getAllProductProcessingByStatus/PENDING";
+          this.processingService.getAllProductProcessingByStatus(pendingUrl)
+          .subscribe( data => {
+            this.pendingProductList = data;
+            console.log(this.pendingProductList);
+          }, 
+          error => {
+            console.log(error);
+          });
+        }
+        if (status == "APPROVED") {
+          let approvedUrl ="/inventory/productProcessing/getAllProductProcessingByStatus/APPROVED";
+          this.processingService.getAllProductProcessingByStatus(approvedUrl)
+          .subscribe(data => {
+            this.approvedProductList = data;
+            console.log(this.approvedProductList);
+          }, 
+          error => {
+            console.log(error);
+          });
+              }
+        if (status == "REJECTED") {
+          let rejectedUrl ="/inventory/productProcessing/getAllProductProcessingByStatus/REJECTED";
+          this.processingService.getAllProductProcessingByStatus(rejectedUrl)
+          .subscribe(data => {
+            this.rejectedProductList = data;
+            console.log(this.rejectedProductList);
+          }, 
+          error => {
+            console.log(error);
+          });
+        }
   }
 
   onTabChange(tab) {
@@ -50,7 +77,7 @@ export class ProcessingApprovalComponent implements OnInit {
     if (tab && tab.nextId == "approvedTab") {
       this.selectedTab = "APPROVED";
     }
-    console.log("selecyed tab", this.selectedTab);
+    console.log("selected tab", this.selectedTab);
     // this.selectedProductList = [];
 
   }

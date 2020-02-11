@@ -14,15 +14,17 @@ export class ProcessingService {
   constructor(private apiService: ApiService) { }
 
   public getAllProductProcessingByProcessingTypeAndStatus(url) {
-    return new Observable<any>(obs => {
+    return new Observable<any[]>(obs => {
       this.apiService.get(url).subscribe(res => {
         obs.next(res);
       })
     });
   }
 
+  // getAllProductProcessingByProcessingTypeAndStatus
+
   getAllProductProcessingByStatus(url) {
-    return new Observable<any>(obs => {
+    return new Observable<any[]>(obs => {
       this.apiService.get(url).subscribe(res => {
         obs.next(res);
       })

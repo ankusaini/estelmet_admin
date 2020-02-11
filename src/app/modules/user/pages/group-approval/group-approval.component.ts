@@ -5,6 +5,7 @@ import { UserService } from "src/app/shared/services/user.service";
 import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
 import { Subject } from "rxjs";
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-group-approval",
   templateUrl: "./group-approval.component.html",
@@ -19,7 +20,7 @@ export class GroupApprovalComponent implements OnInit {
 
   public selectedUserGroupList: UserGroup[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private toastrService: ToastrService) {
     this.basicSwal();
   }
 
@@ -118,7 +119,7 @@ export class GroupApprovalComponent implements OnInit {
     if (index == -1) {
       this.selectedUserGroupList.push(userGroup);
     } else {
-      alert("already added");
+      this.toastrService.info("already added!");
     }
   }
 
@@ -139,7 +140,7 @@ export class GroupApprovalComponent implements OnInit {
           .subscribe(
             data => {
               console.log("user group created", data);
-              alert("update")
+              this.toastrService.success("Selected User(s) status changes successfully!");
             },
             error => {}
           );

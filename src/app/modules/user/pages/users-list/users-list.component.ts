@@ -27,7 +27,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   constructor(
     private userService: UserService,
     private router : Router,
-    private _dataService : UserDataService
+    private _dataService : UserDataService,
   ) {}
 
   ngOnInit() {

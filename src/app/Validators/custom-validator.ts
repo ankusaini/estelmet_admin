@@ -338,7 +338,7 @@ export class CustomValidator {
     }
 
     static addressValidation(control: AbstractControl): ValidationErrors {
-        var reg = /^[a-zA-Z0-9-_@. ()&,$!':;]+$/;
+        var reg = /^[a-zA-Z0-9-_@. ()&,$!':;/]+$/;
         if (!control.value) {
             return null;
         }

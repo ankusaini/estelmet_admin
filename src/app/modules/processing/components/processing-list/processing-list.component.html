@@ -19,7 +19,7 @@
             <tbody>
               <tr *ngFor="let processing of productProcessingList; let i = index">
                 <td>{{i+1}}</td>
-                <td>MSP-{{processing?.productProcessingId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">MSP-{{processing?.productProcessingId}}</td>
                 <td>{{processing?.processingType}}</td>
                 <td>{{processing?.jobWorkType}}</td>
                 <td>{{processing?.productCategory?.productCategory}}</td>

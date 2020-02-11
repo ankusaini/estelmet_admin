@@ -12,6 +12,7 @@ import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { User } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-user-profile",
@@ -40,7 +41,8 @@ export class UserProfileComponent implements OnInit {
     private _userDataService : UserDataService,
     private _userService : UserService,
     private lightboxEvent: LightboxEvent,
-    private lighboxConfig: LightboxConfig
+    private lighboxConfig: LightboxConfig,
+    private toastrService: ToastrService
   ) {
     this.activeTab = "home";
 
@@ -98,6 +100,8 @@ export class UserProfileComponent implements OnInit {
     console.log(this.selectedUser);
       let path = "/users/updateUser";
     this._userService.updateUser(path,this.selectedUser);
+    this.toastrService.success("User updated successfully!");
+
   }
 
   getUserById(id:any) {

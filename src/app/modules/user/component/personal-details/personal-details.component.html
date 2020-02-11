@@ -11,6 +11,7 @@
               formControlName="userRole"
               class="form-control"
               name="validation-userType"
+              id="exampleFormControlSelect1"
               [ngClass]="{ 'is-invalid': false }"
               required
             >
@@ -53,6 +54,7 @@
           <input
             formControlName="lastName"
             type="text"
+            id="validationCustom02"
             class="form-control"
             placeholder="Last name"
             required
@@ -89,7 +91,8 @@
           >
           <input
             formControlName="email"
-            type="text"
+            type="email"
+            id="validationCustom02"
             class="form-control"
             placeholder="Email"
             required
@@ -109,6 +112,7 @@
             formControlName="password"
             type="password"
             class="form-control"
+            id="inputPassword5"
             aria-describedby="passwordHelpBlock"
             placeholder="Password"
           />
@@ -116,7 +120,7 @@
         >This field is required.</small>
         
           <small *ngIf="f.password.value.length!=0 && f.password.errors?.minlength  " id="passwordHelpBlock" class="form-text text-muted"
-        >Your password must be 8-20 characters long.</small>
+        >Your password must be 5-20 characters long.</small>
           
         </div>
         <div class="col-md-6 mb-3">
@@ -127,6 +131,7 @@
             formControlName="cpassword"
             type="password"
             class="form-control"
+            id="inputPassword5"
             aria-describedby="passwordHelpBlock"
             placeholder="Confirm Password"
           />
@@ -144,6 +149,7 @@
             formControlName="otp"
             type="number"
             class="form-control"
+            id="inputPassword5"
             aria-describedby="passwordHelpBlock"
             placeholder="Enter OTP"
           />
@@ -155,10 +161,10 @@
       <div class="photo_upload">
         <form>
           <file-upload [(ngModel)]="uploadedFiles" name="files" fileslimit="1"></file-upload>
-        </form>
-         <div class="text-center m-t-20 m-b-20">
+           <div class="text-center m-t-20 m-b-20">
           <button type="button" (click)="uploadPhoto()" class="btn btn-success btn-sm">Upload Now</button>
         </div> 
+      </form>
       </div>
     </div>
   </div>
@@ -186,16 +192,15 @@
     <div class="btn-group mt-10">
       <button
         type="submit"
-        class="btn btn-primary btn-sm"
+        class="btn btn-primary btn-sm" 
         uiSref="work"
-       [disabled]="!(userDTO.status == 'VALID' && markAsComplete)"
-        nextStep
       >
         Continue
       </button>
     </div>
   </div>
 </form>
+
 
 <!-- <otp-modal id="modal-otp">
   <label for="">Enter Otp</label>
