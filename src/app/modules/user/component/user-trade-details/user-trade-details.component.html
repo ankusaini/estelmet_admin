@@ -81,6 +81,8 @@
                 [value]="item?.productType"
               >{{ item?.productType }}</option>
             </select>
+            <small *ngIf="f.productType.value == '' && (f.productType.dirty || f.productType.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
           </div>
           <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
           <div class="col-sm-3">
@@ -90,6 +92,8 @@
               [value]="item?.productCategory"
               >{{ item?.productCategory }}</option>
             </select>
+            <small *ngIf="f.productCategory.value == '' && (f.productCategory.dirty || f.productCategory.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
           </div>
         </div>
         <div class="form-group row">
@@ -101,6 +105,8 @@
               [value]="item?.productShape"
               >{{ item?.productShape }}</option>
             </select>
+            <small *ngIf="f.productShape.value == '' && (f.productShape.dirty || f.productShape.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
           </div>
           <label class="col-sm-3 col-form-label font-weight-bolder">Class</label>
           <div class="col-sm-3">
@@ -110,21 +116,42 @@
                 [value]="item?.productClass"
               >{{ item?.productClass }}</option>
             </select>
+            <small *ngIf="f.productClass.value == '' && (f.productClass.dirty || f.productClass.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range</label>
           <div class="col-sm-3">
             <div class="row">
-              <div class="col-md-6"> <input formControlName="thicknessMin" type="text" class="form-control" placeholder="Min"></div>
-              <div class="col-md-6"> <input formControlName="thicknessMax" type="text" class="form-control" placeholder="Max"></div>
+              <div class="col-md-6"> 
+                <input formControlName="thicknessMin" type="text" class="form-control" value="" placeholder="Min">
+                <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.dirty || f.thicknessMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+              </div>
+              <div class="col-md-6"> 
+                <input formControlName="thicknessMax" type="text" class="form-control" value="" placeholder="Max">
+                <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.dirty || f.thicknessMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum thickness should be greater than minimum thickness.</small
+          >
+              </div>
             </div>
           </div>
           <label class="col-sm-3 col-form-label font-weight-bolder">Width Range</label>
           <div class="col-sm-3">
             <div class="row">
-              <div class="col-md-6"> <input formControlName="widthMin" type="text" class="form-control" placeholder="Min"></div>
-              <div class="col-md-6"> <input formControlName="widthMax" type="text" class="form-control" placeholder="Max"></div>
+              <div class="col-md-6"> 
+                <input formControlName="widthMin" type="text" class="form-control" value="" placeholder="Min">
+
+              </div>
+              <div class="col-md-6"> 
+                <input formControlName="widthMax" type="text" class="form-control" value="" placeholder="Max">
+                <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+                >Maximum width should be greater than minimum width.</small
+              >
+              </div>
             </div>
           </div>
         </div>
@@ -132,18 +159,39 @@
           <label class="col-sm-3 col-form-label font-weight-bolder">Length Range</label>
           <div class="col-sm-3">
             <div class="row">
-              <div class="col-md-6"> <input formControlName="lengthMin" type="text" class="form-control" placeholder="Min"></div>
-              <div class="col-md-6"> <input formControlName="lengthMax" type="text" class="form-control" placeholder="Max"></div>
+              <div class="col-md-6">
+                 <input formControlName="lengthMin" type="text" class="form-control" value="" placeholder="Min">
+                </div>
+              <div class="col-md-6"> 
+                <input formControlName="lengthMax" type="text" class="form-control" value="" placeholder="Max">
+                <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum length should be greater than minimum length.</small
+          >
+              </div>
             </div>
           </div>
           <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
           <div class="col-sm-3">
             <div class="row">
-              <div class="col-md-6"> <input formControlName="temporMin" type="text" class="form-control" placeholder="Min"></div>
-              <div class="col-md-6"> <input formControlName="temporMax" type="text" class="form-control" placeholder="Max"></div>
+              <div class="col-md-6"> 
+                <input formControlName="temporMin" type="text" class="form-control" value="" placeholder="Min">
+                <small *ngIf="f.temporMin.value == '' && (f.temporMin.dirty || f.temporMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+              </div>
+              <div class="col-md-6"> 
+                <input formControlName="temporMax" type="text" class="form-control" value="" placeholder="Max">
+                <small *ngIf="f.temporMax.value == '' && (f.temporMax.dirty || f.temporMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        <small *ngIf="f.temporMax.value !== '' && !f.temporMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum temper should be greater than minimum temper.</small
+          >
+              </div>
             </div>
           </div>
         </div>
+
+
+
         <!-- <div class="form-group row">
           <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
           <div class="col-sm-3">
@@ -214,6 +262,8 @@
           <label class="col-sm-3 col-form-label font-weight-bolder">Monthly Requirment</label>
           <div class="col-sm-9">
             <input formControlName="monthlyRequirement" type="text" class="form-control" placeholder="">
+            <small *ngIf="f.monthlyRequirement.value == '' && (f.monthlyRequirement.dirty || f.monthlyRequirement.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
           </div>
         </div>
         <div class="form-group row">

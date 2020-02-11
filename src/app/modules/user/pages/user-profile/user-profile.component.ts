@@ -35,6 +35,12 @@ export class UserProfileComponent implements OnInit {
   status : boolean = false;
   id: any;
 
+  isPersonalValid: string = 'valid';
+  isBusinessValid: string = 'valid';
+  isKeyPersonValid: string = 'valid';
+  isTradeValid: string = 'valid';
+
+
   constructor(
     private lightbox: Lightbox,
     private _route : ActivatedRoute,
@@ -97,11 +103,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.selectedUser);
+    if(this.isPersonalValid == 'valid' && this.isBusinessValid == 'valid' && this.isKeyPersonValid == 'valid' && this.isTradeValid == 'valid') {
+      console.log(this.selectedUser);
       let path = "/users/updateUser";
-    this._userService.updateUser(path,this.selectedUser);
-    this.toastrService.success("User updated successfully!");
-
+      this._userService.updateUser(path,this.selectedUser);
+      this.toastrService.success("User updated successfully!");
+    } else {
+      this.toastrService.error("Please fill valid Details!");
+    }
   }
 
   getUserById(id:any) {
@@ -109,5 +118,21 @@ export class UserProfileComponent implements OnInit {
       this.selectedUser = res;
       this.status = true;
     })
+  }
+
+  checkPersonal(isValid) {
+    this.isPersonalValid = isValid;
+  }
+
+  checkBusiness(isValid) {
+    this.isBusinessValid = isValid;
+  }
+
+  checkKeyPerson(isValid) {
+    this.isKeyPersonValid = isValid;
+  }
+
+  checkTrade(isValid) {
+    this.isTradeValid = isValid;
   }
 }

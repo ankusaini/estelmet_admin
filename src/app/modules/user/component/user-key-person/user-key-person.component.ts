@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/shared/Models/user.model';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
 
 @Component({
   selector: 'app-user-key-person',
@@ -10,6 +11,8 @@ import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@ang
 export class UserKeyPersonComponent implements OnInit {
 
   @Input() selectedUser : User;
+  @Output() check : EventEmitter<string> = new EventEmitter<string>();
+
   private keyPersonDetails : FormGroup;
   data = [
     {
@@ -40,10 +43,10 @@ export class UserKeyPersonComponent implements OnInit {
     this.selectedUser.userDetail.keyPerson.forEach(element => {
         let tempForm : FormGroup;
         tempForm = this._fb.group({
-          name : new FormControl(element.name,[Validators.required]),
+          name : new FormControl(element.name,[Validators.required, Validators.minLength(3)]),
           designation : new FormControl(element.designation,[Validators.required]),
-          email1 : new FormControl(element.email1,[Validators.required]),
-          mobile1 : new FormControl(element.email1,[Validators.required])
+          email1 : new FormControl(element.email1,[Validators.required, CustomValidator.emailValidation]),
+          mobile1 : new FormControl(element.mobile1,[Validators.required, CustomValidator.contactNumberValidation])
         });
         tempArray.push(tempForm);
     });
@@ -58,8 +61,14 @@ export class UserKeyPersonComponent implements OnInit {
         this.selectedUser.userDetail.keyPerson[index].designation = tempArray.controls[index].value.designation;
         this.selectedUser.userDetail.keyPerson[index].mobile1 = tempArray.controls[index].value.mobile1;
         this.selectedUser.userDetail.keyPerson[index].email1 = tempArray.controls[index].value.email1;
+        this.check.emit(this.keyPersonDetails.valid ? 'valid': 'invalid');
+
       }
     }
    }
+
+   get f(): FormArray {
+		return this.keyPersonDetails.get('details') as FormArray;
+	}
 
 }
