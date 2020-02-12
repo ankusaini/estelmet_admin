@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+  import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/shared/Models/user.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
 
 @Component({
   selector: 'app-user-personal-detail',
@@ -31,10 +32,10 @@ export class UserPersonalDetailComponent implements OnInit {
     //Add 'implements AfterViewInit' to the class.
     if(this.selectedUser) {
       this.prsnlDetailForm = this._fb.group({
-        firstName : new FormControl(this.selectedUser.firstName,[Validators.required]),
+        firstName : new FormControl(this.selectedUser.firstName,[Validators.required, Validators.minLength(2)]),
         userRole : new FormControl(this.selectedUser.userRole,[Validators.required]),
-        mobile : new FormControl(this.selectedUser.mobile,[Validators.required]),
-        email : new FormControl(this.selectedUser.email,[Validators.required]),
+        mobile : new FormControl(this.selectedUser.mobile,[Validators.required, CustomValidator.contactNumberValidation]),
+        email : new FormControl(this.selectedUser.email,[Validators.required, CustomValidator.emailValidation]),
       })  
     } else {
       console.log("error code");
@@ -47,12 +48,17 @@ export class UserPersonalDetailComponent implements OnInit {
     this.selectedUser.userRole = this.prsnlDetailForm.value.userRole;
     this.selectedUser.mobile = this.prsnlDetailForm.value.mobile;
     this.selectedUser.email = this.prsnlDetailForm.value.email;
+    this.check.emit(this.prsnlDetailForm.valid ? 'valid': 'invalid');
    }
   }
 
-  checkStatus() { 
-    console.log(this.selectedUser);
-    this.check.emit('jai mata diii');
+  // checkStatus() { 
+  //   console.log(this.selectedUser);
+  //   this.check.emit('valid');
+  // }
+
+  get f() {
+    return this.prsnlDetailForm.controls;
   }
 
 }

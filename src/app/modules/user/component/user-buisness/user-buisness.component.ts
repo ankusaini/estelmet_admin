@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/shared/Models/user.model';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
 
 @Component({
   selector: 'app-user-buisness',
@@ -10,6 +11,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class UserBuisnessComponent implements OnInit {
 
   @Input() selectedUser : User;
+  @Output() check : EventEmitter<string> = new EventEmitter<string>();
+
   private buisnessDetailForm : FormGroup;
   public editProfile: boolean;
   public editProfileIcon: string;
@@ -24,15 +27,15 @@ export class UserBuisnessComponent implements OnInit {
   ngOnInit() {
     if(this.selectedUser) {
       this.buisnessDetailForm = this._fb.group({
-        companyName : new FormControl(this.selectedUser.userDetail.companyName,[Validators.required]),
-        address1 : new FormControl(this.selectedUser.userDetail.address1,[Validators.required]),
-        address2 : new FormControl(this.selectedUser.userDetail.address2,[Validators.required]),
+        companyName : new FormControl(this.selectedUser.userDetail.companyName,[Validators.required, Validators.minLength(3)]),
+        address1 : new FormControl(this.selectedUser.userDetail.address1,[Validators.required,  CustomValidator.addressValidation]),
+        address2 : new FormControl(this.selectedUser.userDetail.address2,[ CustomValidator.addressValidation]),
         city : new FormControl(this.selectedUser.userDetail.city,[Validators.required]),
         state : new FormControl(this.selectedUser.userDetail.state,[Validators.required]),
-        pincode : new FormControl(this.selectedUser.userDetail.pinCode,[Validators.required]),
+        pincode : new FormControl(this.selectedUser.userDetail.pinCode,[Validators.required, CustomValidator.pinCodeValidation]),
         gst : new FormControl(this.selectedUser.userDetail.gst,[Validators.required]),
-        emailBusiness : new FormControl(this.selectedUser.userDetail.emailBusiness,[Validators.required]),
-        mobile1 : new FormControl(this.selectedUser.userDetail.mobile1,[Validators.required]),
+        emailBusiness : new FormControl(this.selectedUser.userDetail.emailBusiness,[CustomValidator.emailValidation]),
+        mobile1 : new FormControl(this.selectedUser.userDetail.mobile1,[CustomValidator.contactNumberValidation]),
       })  
     } else {
       console.log("error code");
@@ -50,7 +53,13 @@ export class UserBuisnessComponent implements OnInit {
       this.selectedUser.userDetail.gst = this.buisnessDetailForm.value.gst;
       this.selectedUser.userDetail.emailBusiness = this.buisnessDetailForm.value.emailBusiness;
       this.selectedUser.userDetail.mobile1 = this.buisnessDetailForm.value.mobile1;
+      this.check.emit(this.buisnessDetailForm.valid ? 'valid': 'invalid');
+
     }
    }
+
+   get f() {
+    return this.buisnessDetailForm.controls;
+  }
 
 }
