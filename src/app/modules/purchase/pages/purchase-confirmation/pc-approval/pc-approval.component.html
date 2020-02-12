@@ -27,7 +27,7 @@
 </div>
 
 <app-card>
-<div  class="dt-responsive table-responsive" cardClass="card-datatable">
+<div *ngIf="selectedPuchaseList && selectedPuchaseList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
               <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
                 <thead>
                   <tr>

@@ -86,7 +86,7 @@ export class MrApporvalComponent implements OnInit {
 
   changeStatusOfSelectedMR(status) {
     if (this.selectedMrList.length == 0) {
-      alert("select at least one");
+      this.toastr.warning("select at least one record");
     } else {
       let path = "/purchase/updatePurchase";
 
@@ -104,6 +104,7 @@ export class MrApporvalComponent implements OnInit {
           error => {}
         );
       }
+      this.toastr.success("Record successfully saved");
     }
   }
 

@@ -36,7 +36,7 @@ export class CreateLotMtSelfComponent implements OnInit {
 
   productCategoryList: ProductCategory[];
   public   productList: Product[];
-  public selectedProductList:Product[];
+  public selectedProductList:Product[]=[];
   productShapeList: ProductShape[];
   public userList: any;
   public sourceCompanyList: Company[] ;
@@ -111,8 +111,9 @@ export class CreateLotMtSelfComponent implements OnInit {
       console.log(error);
     });
   }
+
  addProduct(product) {
-    const index = this.productList.indexOf(product);
+    const index = this.selectedProductList.indexOf(product);
     if (index == -1) {
       this.selectedProductList.push(product);
     } else {
@@ -123,7 +124,7 @@ export class CreateLotMtSelfComponent implements OnInit {
   deleteProduct(product)
   {
   
-    const index: number = this.productList.indexOf(product);
+    const index: number = this.selectedProductList.indexOf(product);
     console.log("index",index)
     if (index !== -1) {
       this.selectedProductList.splice(index, 1);

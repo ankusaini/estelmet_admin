@@ -18,7 +18,7 @@ export class SearchViewLotComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    let url = "/purchase/getAllPurchaseByTypeAndStatus/LOT/PENDING";
+    let url = "/purchase/getAllPurchaseByTypeAndStatus/LOT/APPROVED";
     this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(data => {
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;

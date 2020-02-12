@@ -2,7 +2,7 @@
 <app-grn-transport-details *ngIf="selecteValue == 'withoutPurchaseInvoice'"></app-grn-transport-details>
 <app-grn-mt-self *ngIf="selecteValue == 'materialTransfer'"></app-grn-mt-self>
 <app-grn-job-work-chalan *ngIf="selecteValue == 'jobWorkChalan'"></app-grn-job-work-chalan> -->
-
+<button type="button" (click)="basicSwal()">Choose Another Type</button>
 <app-card *ngIf="transporterList && transporterList.length" cardTitle="Create GRN" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select LOT Id" navigationSymbol="1">

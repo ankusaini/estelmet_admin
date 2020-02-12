@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../../service/inventory.service';
 import { Product } from 'src/app/shared/Models/product.model.';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-search-view-product',
@@ -12,7 +13,7 @@ export class SearchViewProductComponent implements OnInit {
   productList: Product[];
   selectedProductList: Product[];
 
-  constructor(private inventoryService: InventoryService) { }
+  constructor(private inventoryService: InventoryService,private toastr:ToastrService) { }
 
   ngOnInit() {
     let url = "/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED";

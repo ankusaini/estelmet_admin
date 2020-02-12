@@ -12,44 +12,15 @@ import { Product } from 'src/app/shared/Models/product.model.';
 export class AddProductComponent implements OnInit {
 
 showGroup = true;
-  // public isSubmit2: boolean;
-  // formInput: FormInput;
-  // public maskIP = [/\d/, '.', /\d/, /\d/];
   grnList: Grn[];
   productList : Product[] = [];
 
   constructor() {
-    // this.isSubmit2 = false;
     this.basicSwal();
   }
   ngOnInit() {
-    // this.formInput = {
-    //   email: '',
-    //   password: '',
-    //   confirmPassword: '',
-    //   requiredInput: '',
-    //   url: '',
-    //   phone: '',
-    //   type: '',
-    //   category: '',
-    //   shape: '',
-    //   class: '',
-    //   thickMin: '',
-    //   thickMax: '',
-    //   companyName: '',
-    //   warehouse: '',
-    //   address: '',
-    //   file: '',
-    //   switcher: ''
-    // };
   }
-  // save(form: any) {
-  //   if (!form.valid) {
-  //     this.isSubmit2 = true;
-  //     return;
-  //   }
-  //   this.showGroup = false;
-  // }
+  
   basicSwal() {
     Swal.fire({
       title: 'Add Product With',

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Purchase } from '../../Models/purchase.model';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-purchasr-list-full-details',
@@ -19,7 +20,7 @@ export class PurchasrListFullDetailsComponent implements OnInit {
 
     public addedPurchaseList: Purchase[]=[];
 
-  constructor(private purchaseService: PurchaseService) { }
+  constructor(private purchaseService: PurchaseService,private toastrService:ToastrService) { }
 
   ngOnInit() {
     console.log("in purchaseList " +this.selectedTab);
@@ -41,7 +42,7 @@ export class PurchasrListFullDetailsComponent implements OnInit {
           this.selectedPurchaseData.emit(this.addedPurchaseList)
 
     } else {
-      alert("already added");
+      this.toastrService.warning("record already added");
     }
     
   }

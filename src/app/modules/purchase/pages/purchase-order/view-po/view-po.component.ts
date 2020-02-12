@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-view-po',
@@ -11,7 +12,7 @@ import { Router } from "@angular/router";
 export class ViewPoComponent implements OnInit {
  public poList: Purchase[]=[];
 public selectedPOList: Purchase[]=[];
-  constructor(private purchaseService: PurchaseService,private router:Router) {
+  constructor(private purchaseService: PurchaseService,private router:Router,private toastrService:ToastrService) {
     this.getAllPurchaseByTypeAndStatus("PURCHASE_CONFIRMATION", "APPROVED");
   }
 
@@ -36,7 +37,7 @@ public selectedPOList: Purchase[]=[];
     if (index == -1) {
       this.selectedPOList.push(mr);
     } else {
-      alert("already added");
+      this.toastrService.warning("record already added");
     }
   }
 
