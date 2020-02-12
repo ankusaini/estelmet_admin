@@ -73,7 +73,7 @@ export class UserGroupListComponent implements OnInit {
       this.selectedUserGroupList.push(userGroup);
     } else {
       // alert("already added");
-      this.toastrService.info("already added!");
+      this.toastrService.info("Product already added!");
     }
   }
   removeSelectedUserd(userGroup: UserGroup) {

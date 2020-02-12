@@ -54,7 +54,8 @@ export class CreateUserComponent implements OnInit {
     this.userDto.password = data.password;
     this.userDto.userRole = data.userRole;
     this.userDto.status = Status.PENDING;
-    this.wizard.navigation.canGoToStep(2);
+    // this.wizard.navigation.canGoToStep(2);
+    this.wizard.navigation.goToNextStep();
   }
   getImageData(data:any)
   { 
@@ -101,7 +102,9 @@ export class CreateUserComponent implements OnInit {
     });
     console.log(this.userDto);
     // this.isCompanyDetailData = true;
-    this.wizard.navigation.canGoToStep(3);
+    // this.wizard.navigation.canGoToStep(3);
+    this.wizard.navigation.goToNextStep();
+
 
   }
 
@@ -124,7 +127,9 @@ export class CreateUserComponent implements OnInit {
     })
 
     console.log(this.userDto.userDetail.userProductPreference);
-    this.wizard.navigation.canGoToStep(4);
+    // this.wizard.navigation.canGoToStep(4);
+    this.wizard.navigation.goToNextStep();
+
 
   }
 
@@ -150,7 +155,9 @@ export class CreateUserComponent implements OnInit {
       email2: "",
       mobile2: ""
     });
-    this.wizard.navigation.canGoToStep(5);
+    // this.wizard.navigation.canGoToStep(5);
+    this.wizard.navigation.goToNextStep();
+
 
   }
 

@@ -119,7 +119,7 @@ export class GroupApprovalComponent implements OnInit {
     if (index == -1) {
       this.selectedUserGroupList.push(userGroup);
     } else {
-      this.toastrService.info("already added!");
+      this.toastrService.warning("Product already added!");
     }
   }
 
@@ -135,7 +135,7 @@ export class GroupApprovalComponent implements OnInit {
 
   changeStatusOfSelectedGroup(status) {
     if (this.selectedUserGroupList.length == 0) {
-      alert("select at least one");
+      this.toastrService.warning("Select at least one product!");
     } else {
       let path = "/users/group/updateUserInGroup";
       console.log("path", path);
@@ -152,6 +152,8 @@ export class GroupApprovalComponent implements OnInit {
             },
             error => {}
           );
+          this.selectedUserGroupList = [];
+
       }
     }
   }

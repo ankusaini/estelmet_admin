@@ -9,7 +9,7 @@ import {
 } from "ngx-lightbox";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
-import { UserGroup } from "src/app/shared/Models/user.model";
+import { UserGroup, User } from "src/app/shared/Models/user.model";
 import { UserService } from "src/app/shared/services/user.service";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 @Component({
@@ -22,6 +22,7 @@ export class UserGroupEditviewComponent implements OnInit {
   public selectedUserGroup: UserGroup;
   public doNotShowBack: any = "doNotShowBack";
   public selectedUserType: any;
+  public userGroupList: User[];
 
   public activeTab: string;
   public editProfile1: boolean;
@@ -54,6 +55,7 @@ export class UserGroupEditviewComponent implements OnInit {
         this.userService.findUserGroupById(url).subscribe(
           data => {
             this.selectedUserGroup = data;
+            this.userGroupList = data.user;
             console.log("selected user", this.selectedUserGroup);
           },
           error => {

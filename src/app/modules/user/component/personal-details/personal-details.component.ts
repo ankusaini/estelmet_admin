@@ -56,11 +56,11 @@ export class PersonalDetailsComponent implements OnInit {
       Validators.required, 
       CustomValidator.emailValidation
     ]),
-    password: new FormControl("", [Validators.required, CustomValidator.passwordValidation]),
+    password: new FormControl("", [Validators.required]), //,CustomValidator.passwordValidation
     cpassword: new FormControl("", [Validators.required,passwordConfirming]),
     userRole: new FormControl("", [Validators.required]),
-    otp: new FormControl("", [Validators.required]),
-     // otp: new FormControl(""),
+    // otp: new FormControl("", [Validators.required]),
+     otp: new FormControl(""),
     // status: new FormControl("", [Validators.required])
   });
   

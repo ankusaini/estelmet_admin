@@ -4,8 +4,21 @@ import {
   ProductType
 } from "../../../../shared/Models/product.model.";
 import { StaticDataService } from "src/app/shared/services/data/static-data.service";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, AbstractControl } from "@angular/forms";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { ToastrService } from 'ngx-toastr';
+
+
+function MaxthicknessConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minThickness = (c.parent.get("minThickness"));
+  const maxThickness = (c.parent.get("maxThickness"));
+  if(!maxThickness || ! minThickness) return;
+  if(maxThickness.value < minThickness.value) {
+    return { invalid: true};
+  } 
+}
 
 @Component({
   selector: "app-create-group-id",
@@ -17,7 +30,8 @@ export class CreateGroupIdComponent implements OnInit {
 
   constructor(
     private _staticData: StaticDataService,
-    private _userDataService : UserDataService
+    private _userDataService : UserDataService,
+    private toastService: ToastrService
   ) {}
   productCategoryList: ProductCategory[];
   productTypeList: ProductType[];
@@ -27,8 +41,8 @@ export class CreateGroupIdComponent implements OnInit {
     userGroupName: new FormControl(""),
     productType: new FormControl("", [Validators.required]),
     productCategory: new FormControl("", [Validators.required]),
-    minThickness: new FormControl("", [Validators.required]),
-    maxThickness: new FormControl("", [Validators.required]),
+    minThickness: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+    maxThickness: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
     userRole: new FormControl("", [Validators.required])
   });
 
@@ -66,6 +80,14 @@ export class CreateGroupIdComponent implements OnInit {
       this.groupData.emit(this.createGroupForm.value);
     } else {
       console.log("disable");
+      this.toastService.error("Details are invalid!");
     }
   }
+
+
+  get f() {
+    return this.createGroupForm.controls;
+  }
+
+
 }
