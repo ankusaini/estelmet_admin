@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from "@angular/forms";
 import { UserService } from "src/app/shared/services/user.service";
 import { Router } from '@angular/router';
+import { WizardComponent } from 'ng2-archwizard/dist';
 
 @Component({
   selector: 'app-create-user-group',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-user-group.component.scss']
 })
 export class CreateUserGroupComponent implements OnInit {
+  @ViewChild("wizard", { static: true }) wizard: WizardComponent;
 
   public selectedUserType:any;
   constructor(public userService:UserService,public router:Router) { }
@@ -51,6 +53,8 @@ export class CreateUserGroupComponent implements OnInit {
     this.firstFormData=data;
     this.selectedUserType=data.userRole;
     this.userGroupForm.patchValue(data);
+    this.wizard.navigation.goToNextStep();
+
     
   }
       getSelectedUser(selectedUser)
@@ -64,13 +68,14 @@ export class CreateUserGroupComponent implements OnInit {
 
         });
         let path="/users/group/createUserGroup";
-        console.log("path",path)
+        console.log("path",path);
         this.userService.createUserGroup(path,this.userGroupForm.value).subscribe(data=>{
             console.log("user group created",data)
             this.router.navigate(['/users/editGroup',data.userGroupId]);
         },error=>{
 
-        })
+        });
+        
       }
 
       onStep1Next(event)

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { UserService } from "src/app/shared/services/user.service";
 import { User, UserGroup } from "src/app/shared/Models/user.model";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-user-selection",
@@ -23,7 +24,8 @@ export class UserSelectionComponent implements OnInit {
   constructor(
     private userService: UserService,
     private userDataService : UserDataService,
-    private _cd : ChangeDetectorRef
+    private _cd : ChangeDetectorRef,
+    private toastService: ToastrService
   ) {
     this.userDataService.userRoleData$.subscribe(data=>{
       this.selectedType = data;
@@ -55,7 +57,9 @@ export class UserSelectionComponent implements OnInit {
         console.log("userlist", this.userList2);
         this._cd.detectChanges();
       },
-      error => {}
+      error => {
+        console.log(error);
+      }
     );
   }
 
@@ -64,7 +68,7 @@ export class UserSelectionComponent implements OnInit {
     if (index == -1) {
       this.selectedUserList.push(user);
     } else {
-      alert("already added");
+      this.toastService.warning("Product already added!");
     }
   }
   removeUser(user) {
@@ -76,7 +80,7 @@ export class UserSelectionComponent implements OnInit {
 
   userSelectionSubmit() {
     if (this.selectedUserList.length == 0) {
-      alert("please ssleect any user");
+      this.toastService.warning("Please select any user!");
     } else {
       this.userData.emit(this.selectedUserList);
     }

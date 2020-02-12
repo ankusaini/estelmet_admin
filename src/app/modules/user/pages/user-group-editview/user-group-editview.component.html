@@ -11,9 +11,9 @@
       <div class="row">
         <div class="col-md-4 mt-md-4">
           <h3 class="f-24">Edit User Group</h3>
-          <p class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{selectedUserGroup.userGroupId}}</span> <span
-              class="f-w-600 text-success"> {{selectedUserGroup.status}}</span></p>
-          <p class="m-b-5 text-dark f-w-600">UG Title : <span class="text-muted">{{selectedUserGroup.userGroupName}}</span></p>
+          <p class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{selectedUserGroup?.userGroupId}}</span> <span
+              class="f-w-600 text-success"> {{selectedUserGroup?.status}}</span></p>
+          <p class="m-b-5 text-dark f-w-600">UG Title : <span class="text-muted">{{selectedUserGroup?.userGroupName}}</span></p>
         </div>
         <div class="col-md-6 mt-md-4">
           <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
@@ -64,21 +64,21 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">UG Id</label>
               <div class="col-sm-3">
-                {{selectedUserGroup.userGroupId}}
+                {{selectedUserGroup?.userGroupId}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">CUG Title</label>
               <div class="col-sm-3">
-                {{selectedUserGroup.userGroupName}}
+                {{selectedUserGroup?.userGroupName}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
               <div class="col-sm-3">
-                {{selectedUserGroup.productCategory}}
+                {{selectedUserGroup?.productCategory}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range (mm)</label>
               <div class="col-sm-3">
-              {{selectedUserGroup.minThickness}} -  {{selectedUserGroup.maxThickness}}
+              {{selectedUserGroup?.minThickness}} -  {{selectedUserGroup?.maxThickness}}
               </div>
             </div>
             <!-- <div class="form-group row">
@@ -162,7 +162,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr href="kdkd" *ngFor="let user of selectedUserGroup.user;let i = index">
+                        <tr href="kdkd" *ngFor="let user of userGroupList;let i = index">
                             <td>{{i+1}}</td>
                             <td>{{user.id}}</td>
                             <td>{{user.userRole}}</td>

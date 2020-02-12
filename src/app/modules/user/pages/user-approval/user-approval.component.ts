@@ -122,21 +122,13 @@ export class UserApprovalComponent implements OnInit {
     if (index == -1) {
       this.selectedUserList.push(user);
     } else {
-      this.toastrService.info("User already added!");
-    }
-  }
-
-  removeUser(user)
-  {
-    const index: number = this.selectedUserList.indexOf(user);
-    if (index !== -1) {
-      this.selectedUserList.splice(index, 1);
+      this.toastrService.warning("Product already added!");
     }
   }
 
   changeStatusOfSelectedUser(status) {
     if (this.selectedUserList.length == 0) {
-      this.toastrService.warning("Select at least one!");
+      this.toastrService.warning("Select at least one product!");
     } else {
       let path = "/users/updateUser";
 
