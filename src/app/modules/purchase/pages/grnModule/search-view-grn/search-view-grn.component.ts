@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Grn } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Router } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-search-view-grn',
@@ -15,7 +16,7 @@ export class SearchViewGrnComponent implements OnInit {
 
 
   constructor(private purchaseService: PurchaseService,
-              private router: Router) { }
+              private router: Router,private toastr:ToastrService) { }
 
   ngOnInit() {
     let url = "/purchase/getAllGrn";

@@ -47,7 +47,7 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Above Selected GRN Id" [options]="false"
         cardClass="user-profile-list">
-        <div *ngIf="selectedGrnList" class="dt-responsive table-responsive" cardClass="card-datatable">
+        <div *ngIf="selectedGrnList && selectedGrnList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
           <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
