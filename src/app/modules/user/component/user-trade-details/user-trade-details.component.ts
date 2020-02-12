@@ -1,8 +1,50 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User, UserProductPreference } from 'src/app/shared/Models/user.model';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
 import { ProductClass, ProductCategory, ProductType, ProductShape, ProductTemper } from 'src/app/shared/Models/product.model.';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
+
+
+function MaxlengthConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minLength = (c.parent.get("lengthMin"));
+  const maxLength = (c.parent.get("lengthMax"));
+  if(!maxLength || ! minLength) return;
+  if(maxLength.value < minLength.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxwidthConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minWidth = (c.parent.get("widthMin"));
+  const maxWidth = (c.parent.get("widthMax"));
+  if(!maxWidth || ! minWidth) return;
+  if(maxWidth.value < minWidth.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxthicknessConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minThickness = (c.parent.get("thicknessMin"));
+  const maxThickness = (c.parent.get("thicknessMax"));
+  if(!maxThickness || ! minThickness) return;
+  if(maxThickness.value < minThickness.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxtemperConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minTemper = (c.parent.get("temporMin"));
+  const maxTemper = (c.parent.get("temporMax"));
+  if(!maxTemper || ! minTemper) return;
+  if(maxTemper.value < minTemper.value) {
+    return { invalid: true};
+  } 
+}
 
 @Component({
   selector: 'app-user-trade-details',
@@ -12,6 +54,8 @@ import { ProductClass, ProductCategory, ProductType, ProductShape, ProductTemper
 export class UserTradeDetailsComponent implements OnInit {
 
   @Input() selectedUser : User;
+  @Output() check : EventEmitter<string> = new EventEmitter<string>();
+
   private tradeDetails : FormGroup;
 
   productClassList : ProductClass[];
@@ -33,24 +77,28 @@ export class UserTradeDetailsComponent implements OnInit {
       // this.getProductTempor();
       this.getProductShape();
 
-      this.tradeDetails = this._fb.group({
-        productType : new FormControl('',[Validators.required]),
-        productCategory : new FormControl('',[Validators.required]),
-        productShape : new FormControl('',[Validators.required]),
-        productClass : new FormControl('',[Validators.required]),
-        lengthMin : new FormControl('',[Validators.required]),
-        lengthMax : new FormControl('',[Validators.required]),
-        widthMin : new FormControl('',[Validators.required]),
-        widthMax :  new FormControl('',[Validators.required]),
-        thicknessMin : new FormControl('',[Validators.required]),
-        thicknessMax : new FormControl('',[Validators.required]),
-        temporMin : new FormControl('',[Validators.required]),
-        temporMax : new FormControl('',[Validators.required]),
-        monthlyRequirement: new FormControl("", [Validators.required])
-      })  
+      this.createForm();
     } else {
       console.log("error code");
     }    
+  }
+
+  createForm() {
+    this.tradeDetails = this._fb.group({
+      productType : new FormControl('',[Validators.required]),
+      productCategory : new FormControl('',[Validators.required]),
+      productShape : new FormControl('',[Validators.required]),
+      productClass : new FormControl('',[Validators.required]),
+      lengthMin : new FormControl('',[Validators.required, CustomValidator.compondValueValidate]),
+      lengthMax : new FormControl('',[Validators.required, CustomValidator.compondValueValidate, MaxlengthConfirming]),
+      widthMin : new FormControl('',[Validators.required, CustomValidator.compondValueValidate]),
+      widthMax :  new FormControl('',[Validators.required, CustomValidator.compondValueValidate, MaxwidthConfirming]),
+      thicknessMin : new FormControl('',[Validators.required, CustomValidator.compondValueValidate]),
+      thicknessMax : new FormControl('',[Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
+      temporMin : new FormControl('',[Validators.required, CustomValidator.compondValueValidate]),
+      temporMax : new FormControl('',[Validators.required, CustomValidator.compondValueValidate, MaxtemperConfirming]),
+      monthlyRequirement: new FormControl("", [Validators.required, CustomValidator.compondValueValidate])
+    });
   }
 
   addMore() {
@@ -66,8 +114,16 @@ export class UserTradeDetailsComponent implements OnInit {
     data.monthlyRequirement = this.tradeDetails.value.monthlyRequirement;
 
     this.selectedUser.userDetail.userProductPreference.push(data);
-    this.tradeDetails.reset();
+    this.check.emit('valid');
+
+    // this.tradeDetails.reset();
+    // this.resetForm();
+    this.createForm();
   }
+
+  // resetForm() {
+
+  // }
 
   getProductType() {
     this._staticData.getProductType().subscribe(data=>{
@@ -91,6 +147,14 @@ export class UserTradeDetailsComponent implements OnInit {
     this._staticData.getProductShape().subscribe(data=>{
       this.productShapeList = data;
     })
+  }
+
+  // get f(): FormArray {
+	// 	return this.keyPersonDetails.get('details') as FormArray;
+  // }
+  
+  get f() {
+    return this.tradeDetails.controls;
   }
 
 }

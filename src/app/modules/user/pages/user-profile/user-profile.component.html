@@ -106,21 +106,21 @@
     <div *ngIf="status" class="tab-content" id="myTabContent">
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
         aria-labelledby="home-tab">
-        <app-user-personal-detail [selectedUser]="selectedUser" (check)="print($event)"></app-user-personal-detail>
+        <app-user-personal-detail [selectedUser]="selectedUser" (check)="checkPersonal($event)"></app-user-personal-detail>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
         aria-labelledby="profile-tab">
-        <app-user-buisness [selectedUser]="selectedUser"></app-user-buisness>
+        <app-user-buisness [selectedUser]="selectedUser" (check)="checkBusiness($event)"></app-user-buisness>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'contact'}" id="contact" role="tabpanel"
         aria-labelledby="contact-tab">
         
-        <app-user-key-person [selectedUser]="selectedUser"></app-user-key-person>
+        <app-user-key-person [selectedUser]="selectedUser" (check)="checkKeyPerson($event)"></app-user-key-person>
       
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
         aria-labelledby="gallery-tab">
-        <app-user-trade-details [selectedUser]="selectedUser"></app-user-trade-details>
+        <app-user-trade-details [selectedUser]="selectedUser" (check)="checkTrade($event)"></app-user-trade-details>
       </div>
     </div>
     <div class="form-group row">

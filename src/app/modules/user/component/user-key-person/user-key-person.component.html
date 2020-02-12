@@ -37,29 +37,42 @@
     <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="data[i].editProfile">
       <form [formGroup]="keyPersonDetails">
         <div formArrayName="details">
+          <!-- *ngFor="let detail of details.controls; let i = index"   -->
           <div [formGroupName]="i">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Full Name</label>
               <div class="col-sm-9">
-                <input formControlName="name" type="text" class="form-control" placeholder="Full Name" value="Ramesh Aggarwal">
+                <input formControlName="name" type="text" class="form-control" placeholder="Full Name" value="">
+                <small *ngIf="f.controls[i].get('name').value == '' && (f.controls[i].get('name').dirty || f.controls[i].get('name').touced)" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                  <small *ngIf="f.controls[i].get('name').value !== '' && f.controls[i].get('name').errors?.minlength  " id="passwordHelpBlock" class="form-text text-muted"
+                  >Full Name should be more than 2 characters.</small>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Designation</label>
               <div class="col-sm-9">
-                <input formControlName="designation" type="text" class="form-control" placeholder="Designation" value="Senior Manager">
+                <input formControlName="designation" type="text" class="form-control" placeholder="Designation" value="">
+                <small *ngIf="f.controls[i].get('designation').value == '' && (f.controls[i].get('designation').dirty || f.controls[i].get('designation').touched )" id="passwordHelpBlock" class="form-text text-muted"
+                >This field is required.</small>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Mobile</label>
               <div class="col-sm-9">
-                <input formControlName="email1" type="text" class="form-control" placeholder="Mobile" value="+91 - 9871776756">
+                <input formControlName="mobile1" type="text" class="form-control" placeholder="Mobile" value="">
+                <small *ngIf="f.controls[i].get('mobile1').value == '' && (f.controls[i].get('mobile1').dirty || f.controls[i].get('mobile1').touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        <small *ngIf="f.controls[i].get('mobile1').value !== '' && f.controls[i].get('mobile1').errors?.contactNumberValidation " id="passwordHelpBlock" class="form-text text-muted"
+          >This field only accepts 10 or 13 digits.</small>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
               <div class="col-sm-9">
-                <input formControlName="mobile1" type="text" class="form-control" placeholder="Email" value="rameshAgr@gmail.com">
+                <input formControlName="email1" type="text" class="form-control" placeholder="Email" value="">
+                <small *ngIf="f.controls[i].get('email1').value == ''  && (f.controls[i].get('email1').dirty || f.controls[i].get('email1').touched )" id="passwordHelpBlock" class="form-text text-muted"
+                >This field is required.</small>
               </div>
             </div>
       
