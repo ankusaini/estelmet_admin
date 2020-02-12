@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Router } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-search-view-pc',
@@ -14,7 +15,7 @@ export class SearchViewPcComponent implements OnInit {
   public selectedPurchaseList: Purchase[]=[];
 
   constructor(private purchaseService: PurchaseService,
-              private router: Router ) { }
+              private router: Router,private toastrService:ToastrService ) { }
 
   ngOnInit() {
     let url = "/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/APPROVED";
@@ -34,7 +35,7 @@ export class SearchViewPcComponent implements OnInit {
     if (index == -1) {
       this.selectedPurchaseList.push(purchase);
     } else {
-      alert("already added");
+      this.toastrService.warning(" record already added");
     }
   }
 

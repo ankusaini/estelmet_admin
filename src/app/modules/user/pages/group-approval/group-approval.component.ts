@@ -123,6 +123,14 @@ export class GroupApprovalComponent implements OnInit {
     }
   }
 
+    removeUserGroup(user)
+  {
+    const index: number = this.selectedUserGroupList.indexOf(user);
+    if (index !== -1) {
+      this.selectedUserGroupList.splice(index, 1);
+    }
+  }
+
 
 
   changeStatusOfSelectedGroup(status) {

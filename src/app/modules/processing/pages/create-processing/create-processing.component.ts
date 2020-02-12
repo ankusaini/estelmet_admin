@@ -3,6 +3,7 @@ import { FormInput } from './create-processing-form-model';
 import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
 import { Product } from 'src/app/shared/Models/product.model.';
+import { Processing } from "src/app/shared/Models/processing.model";
 
 @Component({
   selector: 'app-create-processing',
@@ -15,6 +16,8 @@ export class CreateProcessingComponent implements OnInit {
   processingType: string = "";
   public ProductList: Product[];
 
+  private processing:Processing;
+
   // formInput: FormInput;
   // public maskIP = [/\d/, '.', /\d/, /\d/];
 
@@ -23,16 +26,6 @@ export class CreateProcessingComponent implements OnInit {
     this.isSubmit = false;
    }
   ngOnInit() {
-    // this.formInput = {
-    //   supplierId: '',
-    //   companyId: '',
-    //   lotType: '',
-    //   warId: '',
-    //   category: '',
-    //   shape: '',
-    //   grosswt: '',
-    //   netwt: '',
-    // };
 
     this.basicSwal();
 
@@ -81,5 +74,7 @@ export class CreateProcessingComponent implements OnInit {
 
   getSelectMrData(data) {
     console.log("in search: ", data);
+    this.processing=data;
+    console.log("inside MR",this.processing)
   }
 }
