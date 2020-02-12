@@ -14,11 +14,11 @@ import { ToastrService } from 'ngx-toastr';
 export class UserApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
 
-  public pendingUserList: UserGroup[];
-  public approvedUserList: UserGroup[];
-  public rejectedUserList: UserGroup[];
+  public pendingUserList: User[];
+  public approvedUserList: User[];
+  public rejectedUserList: User[];
 
-  public selectedUserList: UserGroup[] = [];
+  public selectedUserList: User[] = [];
 
   constructor(private userService: UserService,    
               private toastrService: ToastrService) {
@@ -103,7 +103,7 @@ export class UserApprovalComponent implements OnInit {
     );
   }
   onTabChange(tab) {
-    console.log("tab ", tab);
+   
    if (tab && tab.nextId == "rejectedTab") {
       this.selectedTab = "REJECTED";
     }
@@ -113,22 +113,30 @@ export class UserApprovalComponent implements OnInit {
     if (tab && tab.nextId == "approvedTab") {
       this.selectedTab = "APPROVED";
     }
-    console.log("selecyed tab", this.selectedTab);
+    
     this.selectedUserList = [];
   }
 
-  selectUser(userGroup: UserGroup) {
-    const index: number = this.selectedUserList.indexOf(userGroup);
+  selectUser(user: User) {
+    const index: number = this.selectedUserList.indexOf(user);
     if (index == -1) {
-      this.selectedUserList.push(userGroup);
+      this.selectedUserList.push(user);
     } else {
-      this.toastrService.info("already added!");
+      this.toastrService.info("User already added!");
+    }
+  }
+
+  removeUser(user)
+  {
+    const index: number = this.selectedUserList.indexOf(user);
+    if (index !== -1) {
+      this.selectedUserList.splice(index, 1);
     }
   }
 
   changeStatusOfSelectedUser(status) {
     if (this.selectedUserList.length == 0) {
-      this.toastrService.warning("select at least one!");
+      this.toastrService.warning("Select at least one!");
     } else {
       let path = "/users/updateUser";
 

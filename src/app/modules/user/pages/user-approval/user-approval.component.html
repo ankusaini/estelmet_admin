@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <app-card [hidHeader]="true" cardClass="tab-card">
-      <h5 class="mb-3">User Group Approval System</h5>
+      <h5 class="mb-3">User Approval System</h5>
       <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
         <ngb-tab title="Pending" id="pendingTab">
           <ng-template ngbTabContent>
@@ -215,11 +215,11 @@
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
-                      <!-- <div class="overlay-edit">
-                        <button (click)="selectUser(user)" type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
+                       <div class="overlay-edit">
+                        <button (click)="removeUser(user)" type="button" class="btn btn-icon btn-danger"><i
+                      class="feather icon-trash-2"></i></button>
 
-                      </div> -->
+                      </div>
                     </td>
                   </tr>
 
