@@ -137,32 +137,32 @@ export class EditProductComponent implements OnInit {
     this.staticData.getAllProductCategory().subscribe(data => {
       this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
         .filter(categoryObj => categoryObj!== null);
-      console.log("categoryList: ", this.productCategoryList);
+     // console.log("categoryList: ", this.productCategoryList);
 
     });
 
     this.staticData.getProductShape().subscribe( data => {
       this.productShapeList= data.map(shapeObj => shapeObj.productShape)
         .filter(shapeObj => shapeObj!== null);
-      console.log("shapeList: ", this.productShapeList);
+     // console.log("shapeList: ", this.productShapeList);
     });
 
     this.staticData.getProductType().subscribe( data => {
       this.productTypeList= data.map(typeObj => typeObj.productType)
         .filter(typeObj => typeObj!== null);
-      console.log("typeList: ", this.productTypeList);
+   //   console.log("typeList: ", this.productTypeList);
     });
 
     this.staticData.getProductClass().subscribe( data => {
       this.productClassList = data.map(classObj => classObj.productClass)
       .filter(classObj => classObj!== null);
-      console.log("classList: ", this.productClassList);
+  //    console.log("classList: ", this.productClassList);
     });
 
     this.staticData.getAllHardness().subscribe( data => {
       this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
       .filter(hardnessObj => hardnessObj!== null);
-      console.log("HardnessList: ", this.productHardnessList);
+    //  console.log("HardnessList: ", this.productHardnessList);
     });
 
     this.staticData.getAllProductCoating().subscribe( data => {

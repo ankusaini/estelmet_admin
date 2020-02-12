@@ -24,8 +24,7 @@ export class PcApprovalComponent implements OnInit {
   }
 
     onTabChange(tab) {
-    console.log("tab ", tab);
-    //here tab.activeId means kon se tab se aaya hai
+    
 
     
     if (tab && tab.nextId == "rejectedTab") {
@@ -37,7 +36,6 @@ export class PcApprovalComponent implements OnInit {
     if (tab && tab.nextId == "approvedTab") {
       this.selectedTab = "APPROVED";
     }
-    console.log("selecyed tab", this.selectedTab);
     //Emptying basket on tab change
     this.selectedPuchaseList=[];
   }
@@ -70,7 +68,7 @@ export class PcApprovalComponent implements OnInit {
          this.request.purchase=this.selectedPuchaseList[i];
         this.purchaseService.updateRequestObject(path,this.request).subscribe(
           data => {
-            this.toastrService.success("Selected PC(s) status changes successfully")
+            
              this.router.routeReuseStrategy.shouldReuseRoute = function () {
     return false;
   };
@@ -80,6 +78,7 @@ export class PcApprovalComponent implements OnInit {
           error => {}
         );
       }
+      this.toastrService.success("Selected PC(s) status changes successfully")
     }
   }
 

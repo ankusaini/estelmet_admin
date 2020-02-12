@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/Models/user.model";
 import { Purchase } from "src/app/shared/Models/purchase.model";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-po-email-sms',
@@ -10,7 +11,7 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 })
 export class PoEmailSmsComponent implements OnInit {
 
-  constructor(private userService: UserService,) { }
+  constructor(private userService: UserService,private toastrService:ToastrService) { }
   public userList: User[];
   public selectedUserList: User[] = [];
   public selectedPO:Purchase;
@@ -22,7 +23,7 @@ export class PoEmailSmsComponent implements OnInit {
     if (index == -1) {
       this.selectedUserList.push(user);
     } else {
-      alert("already added");
+      this.toastrService.warning("record already added");
     }
   }
   removeUser(user) {

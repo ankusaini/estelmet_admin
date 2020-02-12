@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from "@angu
 import { Product } from "src/app/shared/Models/product.model.";
 import { InventoryService } from 'src/app/modules/inventory/service/inventory.service';
 import { Router } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-add-product-cart',
@@ -20,7 +21,7 @@ export class AddProductCartComponent implements OnInit, OnChanges {
 
   constructor(
               private inventoryService : InventoryService,
-              private router: Router
+              private router: Router,private toastr:ToastrService
               ) { }
 
   ngOnInit() {
@@ -36,7 +37,7 @@ export class AddProductCartComponent implements OnInit, OnChanges {
       this.setProductList.push(product);
       this.selectedProductList.emit(this.setProductList);
     } else {
-      alert("already added");
+      this.toastr.warning("Product already added");
     }
   }
 

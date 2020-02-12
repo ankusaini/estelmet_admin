@@ -429,13 +429,13 @@ const NavigationItems = [
             url: '/inventory/searchProduct',
             target: false,
           },
-          {
-            id: 'overviewProduct',
-            title: 'Product Overview',
-            type: 'item',
-            url: '/inventory/productOverview',
-            target: false,
-          },
+          // {
+          //   id: 'overviewProduct',
+          //   title: 'Product Overview',
+          //   type: 'item',
+          //   url: '/inventory/productOverview',
+          //   target: false,
+          // },
           {
             id: 'approvalProduct',
             title: 'Product Approval',
@@ -443,13 +443,13 @@ const NavigationItems = [
             url: '/inventory/productApproval',
             target: false,
           },
-          {
-            id: 'EditProduct',
-            title: 'Edit Product',
-            type: 'item',
-            url: '/inventory/editProduct',
-            target: false,
-          }
+          // {
+          //   id: 'EditProduct',
+          //   title: 'Edit Product',
+          //   type: 'item',
+          //   url: '/inventory/editProduct',
+          //   target: false,
+          // }
         ]
       },
       {
