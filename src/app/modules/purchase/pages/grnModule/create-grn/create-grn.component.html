@@ -8,30 +8,41 @@
       <wizard-step stepTitle="Select LOT Id" navigationSymbol="1">
         <h5>Search & Select LOT Id </h5>
         <hr/>
-        <form  *ngIf="lot_details" #validationForm="ngForm" class="editForm" novalidate>
+        <!-- #validationForm="ngForm" -->
+        
+        <form *ngIf="lot_details" [formGroup]="lotIdForm" class="editForm" novalidate>
           <div class="row">
             <div class="col-md-8">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-3 col-form-label mt-2">Purchase LOT Id <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
-                    <select class="form-control">
-                        <option value>Select LOT Id</option>
+                    <select class="form-control" formControlName="lotId">
+                        <option value='' disabled>Select LOT Id</option>
                         <option [value]="item.id" *ngFor="let item of lot_details.purchaseList">{{ item.id }}</option>
                       </select>
+                      <small *ngIf="f.lotId.value == '' && (f.lotId.dirty || f.lotId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                          >This field is required.</small>
                       <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                      
                 </div>
               </div>
             </div>
-          </div>
+            <!-- <div class="col-md-4"></div> -->
+
+      </div>
+           
           <!-- <button type="submit" class="btn btn-primary" uiSref="work" (click)="save(validationForm)">Submit</button> -->
         </form>
-       
+
         <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm" nextStep>Next</button>
+            <button type="submit" class="btn btn-primary btn-sm" (click)="submitLotId()">Next</button>
           </div>
         </div>
+
+       
+        
       </wizard-step>
       <wizard-step *ngIf="suppliarList" stepTitle="Purchase Invoice Details" navigationSymbol="2">
         <h5>Enter Purchase Invoice Details </h5>
@@ -59,7 +70,7 @@
         <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-danger btn-sm">Print</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-danger btn-sm">Print</button>&nbsp;&nbsp;
             <button type="button" class="btn btn-success btn-sm" (click)="submit()">Send for Approval</button>
           </div>
         </div>
