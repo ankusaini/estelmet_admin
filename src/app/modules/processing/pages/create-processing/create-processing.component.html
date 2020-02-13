@@ -21,15 +21,16 @@
       <h5>Search & Select Product</h5>
       <hr/>
       <app-add-product-cart 
-      [productList]="ProductList"
+      [productList]="ProductList" (selectedProductList)= getSelectedProductList($event)
       [component]="'processing'"></app-add-product-cart>
       <div class="m-t-20">
+        <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>
         <!-- <app-add-product-cart></app-add-product-cart> -->
       </div>
       <div class="col-sm-12 centered-content">
         <div class="btn-group mt-10">
           <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-          <button type="button" class="btn btn-success btn-sm" nextStep>Send for Approval</button>
+          <button type="button" (click)="addProcessing()"class="btn btn-success btn-sm" nextStep>Send for Approval</button>
         </div>
       </div>
     </wizard-step>

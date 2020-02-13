@@ -43,7 +43,7 @@
                       class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
                       <select class="form-control" formControlName="contractorId" (change)="setContractorName($event.target.value)" name="validation-warId">
-                      <option *ngFor="let id of contractorIdList" [value]="id">WAR-{{id}}</option>
+                      <option *ngFor="let id of contractorIdList" [value]="id">CON-{{id}}</option>
                     </select>
                     <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
                     id="validation-warId-error"
@@ -54,7 +54,7 @@
                       <option *ngFor="let name of contractorList" [value]="name">{{name}}</option>
                       
                     </select>
-                    <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                    <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
                   </div>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                         class="asterik_sign">*</small></label>
                     <div class="col-sm-3">
                         <select class="form-control" formControlName="machineDetailId" (change)="setMachineName($event.target.value)" name="validation-warId">
-                        <option *ngFor="let id of machineDetailIdList" [value]="id">WAR-{{id}}</option>
+                        <option *ngFor="let id of machineDetailIdList" [value]="id">MD-{{id}}</option>
                         
                       </select>
                       <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
@@ -77,7 +77,7 @@
                         <option *ngFor="let name of machineDetailList" [value]="name"> {{name}}</option>
                         
                       </select>
-                      <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                      <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
                     </div>
                   </div>
                 </div>
@@ -121,7 +121,7 @@
               <select class="form-control" formControlName="warehouseName"  (change)="setwarehouseId($event.target.value)"  name="validation-pcId">
                 <option *ngFor="let name of warehouseList" [value]="name">{{name}}</option>
               </select>
-              <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+              <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
             </div>
        
           </div>
@@ -137,7 +137,7 @@
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-8">
                   <select class="form-control" formControlName="priorityLevel" name="validation-pcId">
-                    <option *ngFor="let name of priorityList" [value]="name">{{name}}</option>
+                    <option *ngFor="let name of priorityList | keyvalue" [value]="name.key">{{name.value}}</option>
                   </select>
                 </div>
               </div>

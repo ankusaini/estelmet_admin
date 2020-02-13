@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { InventoryService } from '../../service/inventory.service';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-product-approval',
@@ -12,28 +13,40 @@ export class ProductApprovalComponent implements OnInit {
   pendingProductList : Product[]; 
   approvedProductList: Product[];
   rejectedProductList: Product[];
-  selectedProductList: Product[];
+  selectedProductList: Product[]=[];
 
 
-  constructor(private inventoryService: InventoryService) { }
+  constructor(private inventoryService: InventoryService,private toastr:ToastrService) { }
 
   ngOnInit() {
-    let pendingUrl = "/inventory/getAllProductByStatus/PENDING";
-    this.inventoryService.getAllProductByStatus(pendingUrl).subscribe(data => {
-      this.pendingProductList = data;
-      console.log("pending data is: ", this.pendingProductList);
-    });
+    this.getProductByStatus('PENDING');
+    this.getProductByStatus('APPROVED');
+    this.getProductByStatus('REJECTED');
 
-    let approvedUrl = "/inventory/getAllProductByStatus/APPROVED";
-    this.inventoryService.getAllProductByStatus(approvedUrl).subscribe(data => {
-      this.approvedProductList = data;
-    });
+  
 
-    let rejectedUrl = "/inventory/getAllProductByStatus/REJECTED";
-    this.inventoryService.getAllProductByStatus(rejectedUrl).subscribe(data => {
-      this.rejectedProductList = data;
-      console.log("rejected data is: ", this.rejectedProductList);
+  }
+  
+  getProductByStatus(status)
+  {
+    let url = "/inventory/getAllProductByStatus/"+status;
+      this.inventoryService.getAllProductByStatus(url).subscribe(data => {
+    if(status=='REJECTED')
+      {
+         this.rejectedProductList = data;
+      }
+        if(status=='PENDING')
+          {
+
+            this.pendingProductList=data;
+          }
+        if(status=='APPROVED')
+      {
+         this.approvedProductList = data;
+      }
+     
     });
+    
 
   }
 
@@ -60,4 +73,27 @@ export class ProductApprovalComponent implements OnInit {
     console.log(this.selectedProductList);
   }
 
+  changeStatusOfProduct(status)
+  {
+     if (this.selectedProductList.length == 0) {
+      this.toastr.warning("select at least one record");
+    } else {
+      let path = "/inventory/updateProduct";
+
+      for (let i = 0; i < this.selectedProductList.length; i++) {
+        this.selectedProductList[i].status = status;
+      }
+        this.inventoryService.updateProduct(path,this.selectedProductList).subscribe(
+          data => {
+           this.toastr.success("Record(s) successfully updated");
+     this.selectedProductList = [];
+     this.getProductByStatus('PENDING');
+    this.getProductByStatus('APPROVED');
+    this.getProductByStatus('REJECTED');
+          },
+          error => {}
+        );
+      
+    }
+  }
 }

@@ -33,6 +33,15 @@ export class InventoryService {
     });
   }
 
+  public updateProduct(path,productList):Observable<any>
+  {
+    return new Observable<any>(obs=>{
+      this.apiService.put(path,productList).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+
   public findRequstObjectById(url)
   {
     return new Observable<any>(obs=>{

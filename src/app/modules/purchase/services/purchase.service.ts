@@ -32,7 +32,7 @@ export class PurchaseService {
 
   public updateProduct(path,productList):Observable<any>
   {
-    return new Observable<ResponseP>(obs=>{
+    return new Observable<any>(obs=>{
       this._apiService.put(path,productList).subscribe(res=>{
         obs.next(res);
       });

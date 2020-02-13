@@ -5,6 +5,7 @@ import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { Product } from 'src/app/shared/Models/product.model.';
+import { Processing } from "src/app/shared/Models/processing.model";
 
 @Injectable({
   providedIn: 'root'
@@ -71,5 +72,13 @@ export class ProcessingService {
     });
   }
 
+    public addProcessing(path,requestObj:Processing):Observable<Processing>
+  {
+    return new Observable<Processing>(obs=>{
+      this.apiService.post(path,requestObj).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
 
 }

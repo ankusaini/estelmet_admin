@@ -32,8 +32,12 @@ export class SelectMrComponent implements OnInit, OnChanges {
   contractorList: any[];
   contractorIdList: any[];
   // customerCompany : any[];
-  priorityList : any[] = ['Immidiate', 'Within One Day', 'Within Two Day', 'Within Three Day', 'More Than Three Day'];
-
+  priorityList : any= 
+  {
+    'IMMIDIATE':'Immidiate',
+     'ONE_DAY':'Within One Day', 'TWO_DAY':'Within Two Day', 'THREE_DAY':'Within Three Day','MORE_THEN_THREE_DAY': 'More Than Three Day'
+  }
+  
   selectMrIdForm: FormGroup;
 
   constructor(private staticData: StaticDataService,
@@ -42,6 +46,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.staticData.getAllProductCategory().subscribe(data => {
+      
       this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
         .filter(categoryObj => categoryObj!== null);
       console.log("categoryList: ", this.productCategoryList);
@@ -54,8 +59,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
         .filter(company => company !== null);
       this.companyIdList = data.map(company => company.id)
         .filter(company => company !== null);
-      console.log(this.companyList);
-      console.log(this.companyIdList);
+      
     });
     
     let warehouseUrl = "/inventory/getAllWarehouse";
@@ -65,8 +69,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
         .filter( warehouse => warehouse !== null);
       this.warehouseIdList = data.map(warehouse => warehouse.id)
         .filter(warehouse => warehouse !== null);
-      console.log(this.warehouseList);
-      console.log(this.warehouseIdList);
+     
     });
 
     let machineUrl = "/inventory/getAllMachineDetail";
@@ -76,8 +79,6 @@ export class SelectMrComponent implements OnInit, OnChanges {
         .filter(machine => machine !== null);
       this.machineDetailIdList = data.map(machine => machine.machineDetailId)
       .filter(machine => machine !== null);
-    console.log(this.machineDetailList);
-    console.log(this.machineDetailIdList);
     });
 
     let contractorUrl = "/users/getAllUsersByUserRoleAndStatus/CONTRACTOR/APPROVED";
@@ -87,8 +88,6 @@ export class SelectMrComponent implements OnInit, OnChanges {
         .filter(contarctor => contarctor!==null);
       this.contractorIdList = data.map(contarctor => contarctor.id)
         .filter(contarctor => contarctor!==null);
-      console.log(this.contractorList);
-      console.log(this.contractorIdList);
     });
   
     // let customerUrl = "/users/getAllUsersByUserRoleAndStatus/CUSTOMER/APPROVED";

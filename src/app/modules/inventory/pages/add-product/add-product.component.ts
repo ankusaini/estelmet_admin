@@ -1,63 +1,91 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import { Component, OnInit } from "@angular/core";
+import Swal from "sweetalert2";
 import { FormInput } from "src/app/modules/inventory/pages/add-product/add-product-form.model";
-import { Grn } from 'src/app/shared/Models/purchase.model';
-import { Product } from 'src/app/shared/Models/product.model.';
+import { Grn } from "src/app/shared/Models/purchase.model";
+import { Product } from "src/app/shared/Models/product.model.";
+import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { ToastrService } from "ngx-toastr";
+import { InventoryService } from "src/app/modules/inventory/service/inventory.service";
+import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: "app-add-product",
+  templateUrl: "./add-product.component.html",
+  styleUrls: ["./add-product.component.scss"]
 })
 export class AddProductComponent implements OnInit {
-
-showGroup = true;
+  public requestObj: RequestP = {};
+  showGroup = true;
   grnList: Grn[];
-  productList : Product[] = [];
+  productList: Product[] = [];
+  selectedGrn:Grn;
+  selectedProductType: any;
 
-  constructor() {
+  constructor(private toastr: ToastrService,private purchaseService: PurchaseService) {
     this.basicSwal();
   }
-  ngOnInit() {
-  }
-  
+  ngOnInit() {}
+
   basicSwal() {
     Swal.fire({
-      title: 'Add Product With',
-      input: 'select',
+      title: "Add Product With",
+      input: "select",
       inputOptions: {
-        purchaseInvoice: 'Purchase Invoice',
-        withoutPurchaseInvoice: 'Without Purchase Invoice',
-        jobWorkChalan: 'Job Work Chalan',
-        materialTransfer: 'Material Transfer',
+        PURCHASE_INVOICE: "Purchase Invoice",
+        withoutPurchaseInvoice: "Without Purchase Invoice",
+        jobWorkChalan: "Job Work Chalan",
+        materialTransfer: "Material Transfer"
       },
-      inputPlaceholder: 'Select Product Type',
+      inputPlaceholder: "Select Product Type",
       allowOutsideClick: false,
-      confirmButtonText: 'Select',
+      confirmButtonText: "Select",
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
         return new Promise(function(resolve, reject) {
-          if (value !== '') {
+          if (value !== "") {
             resolve();
           } else {
-            resolve('You need to select Product Type');
+            resolve("You need to select Product Type");
           }
         });
       }
-    }).then( selectedType => {
-      if(selectedType !== "") {
+    }).then(selectedType => {
+      if (selectedType !== "") {
         console.log("selected type", selectedType);
+        this.selectedProductType = selectedType.value;
       }
     });
   }
 
   getSelectedGrnId(grnId) {
     console.log("in add-product component", grnId);
+    this.selectedGrn=grnId;
   }
 
   getProductData(productData) {
     console.log("product Data is in add product comp: ", productData);
     this.productList.push(productData);
   }
-  
+
+  sendForApproval() {
+    if (this.productList.length > 0) {
+     
+
+        this.requestObj.grn=this.selectedGrn;
+        this.requestObj.productList=this.productList;
+        console.log("Request to send",this.requestObj)
+        let url ="/purchase/updateGrnWithProduct";
+
+          this.purchaseService.saveRequestObject(url,this.requestObj).subscribe(data=>{
+            this.toastr.success("Record saved successfully")
+            
+
+          },error=>{
+            console.log("error is",error);
+          })
+   
+    } else {
+      this.toastr.warning("Please add any product");
+    }
+  }
 }
