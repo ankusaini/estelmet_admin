@@ -112,20 +112,21 @@ export class GrnApprovalComponent implements OnInit {
     else {
       // incomplete url and request body
 
-      // let path = "/purchase/updatePurchase";
-      // for(let i=0; i< this.selectedGrnList.length; i++) {
-      //   this.selectedGrnList[i].status = status;
-      //   this.request.grn = this.selectedGrnList[i];
-      //   this.purchaseService.updateRequestObject(path, this.request)
-      //     .subscribe(data => {
-      //       this.getAllGrnByStatus("PENDING");
-      //       this.getAllGrnByStatus("APPROVED");
-      //       this.getAllGrnByStatus("REJECETED");
-      //       this.selectedGrnList = [];
-      //     }, error => {
-      //       console.log(error);
-      //     });
-      // }
+       let path = "/purchase/updatePurchase";
+   
+        for (let i = 0; i < this.selectedGrnList.length; i++) {
+        this.selectedGrnList[i].status = status;
+         this.request.grn=this.selectedGrnList[i];
+        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+          data => {
+           this.getAllGrnByStatus("PENDING");
+             this.getAllGrnByStatus("APPROVED");
+             this.getAllGrnByStatus("REJECETED");
+    this.selectedGrnList = [];
+          },
+          error => {}
+        );
+      }
       this.toastr.success("Selected Grn(s) status changes successfully");
 
     }

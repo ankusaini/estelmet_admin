@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormInput } from './create-processing-form-model';
 import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
-import { Product } from 'src/app/shared/Models/product.model.';
+import { Product, ProductCategory } from "src/app/shared/Models/product.model.";
 import { Processing } from "src/app/shared/Models/processing.model";
+import { ToastrService } from "ngx-toastr";
+import { StaticDataService } from "src/app/shared/services/data/static-data.service";
 
 @Component({
   selector: 'app-create-processing',
@@ -15,14 +17,15 @@ export class CreateProcessingComponent implements OnInit {
   public isSubmit: boolean;
   processingType: string = "";
   public ProductList: Product[];
-
+  productCategoryList: ProductCategory[];
   private processing:Processing;
-
+  selectedProductList: Product[]=[];
+  selectedProductCategory:ProductCategory;
   // formInput: FormInput;
   // public maskIP = [/\d/, '.', /\d/, /\d/];
 
 
-  constructor(private processingService: ProcessingService) {
+  constructor(private processingService: ProcessingService,private toastr:ToastrService,private staticData: StaticDataService) {
     this.isSubmit = false;
    }
   ngOnInit() {
@@ -34,15 +37,19 @@ export class CreateProcessingComponent implements OnInit {
       this.ProductList = data;
       console.log(this.ProductList);
     });
+      this.staticData.getAllProductCategory().subscribe(data => {
+      this.productCategoryList= data;
+      console.log("categoryList: ", this.productCategoryList);
+    });
   }
   basicSwal() {
     Swal.fire({
       title: 'Processing Type!',
       input: 'select',
       inputOptions: {
-        Shearing: 'Shearing',
-        Blanking: 'Blanking',
-        Assorting: 'Assorting',
+        SHEARING: 'Shearing',
+        BLANKING: 'Blanking',
+        ASSORTING: 'Assorting',
       },
       inputPlaceholder: '-Select-',
       allowOutsideClick: false,
@@ -73,8 +80,41 @@ export class CreateProcessingComponent implements OnInit {
   // }
 
   getSelectMrData(data) {
-    console.log("in search: ", data);
     this.processing=data;
-    console.log("inside MR",this.processing)
+    
+    let selectedPC=this.productCategoryList.filter(obj=>{
+      return obj.productCategory==data.productCategory
+    });
+  
+    if(selectedPC)
+      {
+        this.processing.productCategory=selectedPC[0];
+      }
+  }
+
+    getSelectedProductList(selectedProductList) {
+    this.selectedProductList = selectedProductList;
+
+  }
+
+
+  addProcessing()
+  {
+    if(this.selectedProductList.length==0)
+      {
+        this.toastr.warning("Please select any product");
+      }
+      else
+        {
+          this.processing.productList=this.selectedProductList;
+          this.processing.processingType=this.processingType;
+          console.log("Full processning",this.processing)
+          let url="inventory/productProcessing/addProductProcessing";
+          this.processingService.addProcessing(url,this.processing).subscribe(data=>{
+            this.toastr.success("Record saved successfully");
+          },error=>{
+            this.toastr.warning("something went wrong");
+          })
+        }
   }
 }

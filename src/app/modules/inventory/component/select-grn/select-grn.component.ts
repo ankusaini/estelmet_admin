@@ -12,7 +12,7 @@ export class SelectGrnComponent implements OnInit {
   @Output() selectedGrnId : EventEmitter<any> = new EventEmitter<any>();
   grnList: Grn[];
   grnIdList : any[];
-  grnIdForm : FormGroup;
+  grnIdForm : FormGroup;    
 
   constructor(private inventoryService: InventoryService) { 
     
@@ -36,7 +36,13 @@ export class SelectGrnComponent implements OnInit {
 
   saveGrnId() {
     console.log("GrnIdValue is: ",this.grnIdForm.value);
-    this.selectedGrnId.emit(this.grnIdForm.value);
+    let grn = this.grnList.filter(obj=>{
+      return obj.grnId==this.grnIdForm.controls.grnId.value;
+    })
+    if(grn)
+      {
+    this.selectedGrnId.emit(grn[0]);
+  }
   }
 
 }
