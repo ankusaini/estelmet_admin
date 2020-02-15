@@ -532,12 +532,19 @@
                 <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="supplierId" disabled>
+                  <small *ngIf="f2.supplierId.value == '' && (f2.supplierId.dirty || f2.supplierId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
                 <div class="col-sm-3">
                   <div class="row">
                     <div class="col-md-5">
                       <input type="text" class="form-control" placeholder="" formControlName="transportId">
+                      <small *ngIf="f2.transportId.value == '' && (f2.transportId.dirty || f2.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                      >This field is required.</small>
+                      <small *ngIf="f2.transportId.value !== '' && !f2.transportId.valid " id="passwordHelpBlock" class="form-text text-muted"
+                      >This field only accepts numeric values.</small
+                    >
 
                       <!-- <select class="form-control" id="" formControlName="transportId">
                         <option value="1">TP-022</option>
@@ -559,30 +566,50 @@
                 <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
                 <div class="col-sm-3">
                   <input type="date" class="form-control" placeholder="" formControlName="expectedDate">
+                  <small *ngIf="f2.expectedDate.value == '' && (f2.expectedDate.dirty || f2.expectedDate.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="invoice">
+                  <small *ngIf="f2.invoice.value == '' && (f2.invoice.dirty || f2.invoice.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="grossWt">
+                  <small *ngIf="f2.grossWt.value !== '' && !f2.grossWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="netWt">
+                  <small *ngIf="f2.netWt.value !== '' && !f2.netWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="materialDescription">
+                  <small *ngIf="f2.materialDescription.value == '' && (f2.materialDescription.dirty || f2.materialDescription.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+            <small *ngIf="f2.materialDescription.value !== '' && !f2.materialDescription.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Material Description should be more than 2 characters.</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="coilsBundle">
+                  <small *ngIf="f2.coilsBundle.value == '' && (f2.coilsBundle.dirty || f2.coilsBundle.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+            <small *ngIf="f2.coilsBundle.value !== '' && !f2.coilsBundle.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
                 </div>
               </div>
               <div class="form-group row">
@@ -590,10 +617,20 @@
                 </label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="containerNumber">
+                  <small *ngIf="f2.containerNumber.value == '' && (f2.containerNumber.dirty || f2.containerNumber.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
+                     <small *ngIf="f2.containerNumber.value !== '' && !f2.containerNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="lorryNumber">
+                  <small *ngIf="f2.lorryNumber.value == '' && (f2.lorryNumber.dirty || f2.lorryNumber.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
+                     <small *ngIf="f2.lorryNumber.value !== '' && !f2.lorryNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
                 </div>
               </div>
               <div class="form-group row">
@@ -601,10 +638,20 @@
                 </label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="driverName">
+                   <small *ngIf="f2.driverName.value == '' && (f2.driverName.dirty || f2.driverName.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+            <small *ngIf="f2.driverName.value !== '' && f2.driverName.errors?.minlength " id="passwordHelpBlock" class="form-text text-muted"
+            >Driver Name should be more than 2 characters.</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="driverMobile">
+                  <small *ngIf="f2.driverMobile.value == '' && (f2.driverMobile.dirty || f2.driverMobile.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                    <small *ngIf="f2.driverMobile.value !== '' && f2.driverMobile.errors?.contactNumberValidation " id="passwordHelpBlock" class="form-text text-muted"
+                  >This field only accepts 10 or 13 digits.</small>
+                  
                 </div>
               </div>
               <div class="form-group row">

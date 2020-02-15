@@ -75,8 +75,6 @@
         <div class="form-group">
             <label for="validationCustom02">Source Gross Wt.</label>
             <input type="text" class="form-control" formControlName="grossWt" placeholder="Enter Gross Wt.">
-            <small *ngIf="f.grossWt.value == '' && (f.grossWt.dirty || f.grossWt.touched )" id="passwordHelpBlock" class="form-text text-muted"
-                     >This field is required.</small>
                      <small *ngIf="f.grossWt.value !== '' && !f.grossWt.valid " id="passwordHelpBlock" class="form-text text-muted"
             >This field only accepts numbers and this symbol:.</small
           >
@@ -86,8 +84,6 @@
         <div class="form-group">
             <label for="validationCustom02">Source Net Wt.</label>
             <input type="text" class="form-control" formControlName="netWt" placeholder="Enter Net Wt.">
-            <small *ngIf="f.netWt.value == '' && (f.netWt.dirty || f.netWt.touched )" id="passwordHelpBlock" class="form-text text-muted"
-            >This field is required.</small>
             <small *ngIf="f.netWt.value !== '' && !f.netWt.valid " id="passwordHelpBlock" class="form-text text-muted"
             >This field only accepts numbers and this symbol:.</small
           >

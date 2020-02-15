@@ -175,17 +175,17 @@ export class PcEditComponent implements OnInit{
             
             this.transportDetails = new FormGroup({
               supplierId: new FormControl(this.pcResponse.purchase.supplierId,[Validators.required]),
-              transportId: new FormControl(this.pcResponse.purchase.transportId, [Validators.required]),
+              transportId: new FormControl(this.pcResponse.purchase.transportId, [Validators.required, CustomValidator.numberUpdateDurationValidation]),
               expectedDate: new FormControl(this.pcResponse.purchase.expectedDate, [Validators.required]),
-              invoice: new FormControl("", [Validators.required]),
-              grossWt: new FormControl(this.pcResponse.purchase.grossWt, [Validators.required]),
-              netWt: new FormControl(this.pcResponse.purchase.netWt,[ Validators.required]),
-              materialDescription: new FormControl(this.pcResponse.purchase.materialDescription, [Validators.required]),
-              coilsBundle: new FormControl(this.pcResponse.purchase.coilsBundle, [Validators.required]),
-              containerNumber: new FormControl(this.pcResponse.purchase.containerNumber, [Validators.required]),
-              lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required]),
-              driverName: new FormControl("", [Validators.required]), 
-              driverMobile: new FormControl("", [Validators.required])
+              invoice: new FormControl("", [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
+              grossWt: new FormControl(this.pcResponse.purchase.grossWt, [CustomValidator.compondValueValidate]),
+              netWt: new FormControl(this.pcResponse.purchase.netWt,[CustomValidator.compondValueValidate]),
+              materialDescription: new FormControl(this.pcResponse.purchase.materialDescription, [Validators.required, Validators.minLength(3)]),
+              coilsBundle: new FormControl(this.pcResponse.purchase.coilsBundle, [Validators.required, CustomValidator.compondValueValidate]),
+              containerNumber: new FormControl(this.pcResponse.purchase.containerNumber, [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
+              lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
+              driverName: new FormControl("", [Validators.required, Validators.minLength(3)]), 
+              driverMobile: new FormControl("", [Validators.required, CustomValidator.contactNumberValidation])
             });
              
           },
