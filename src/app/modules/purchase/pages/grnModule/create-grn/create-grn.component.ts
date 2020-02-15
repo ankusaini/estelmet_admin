@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { User } from 'src/app/shared/Models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { purchaseConstants } from '../../../purchaseConst';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { ToastrService } from 'ngx-toastr';
+import { WizardComponent } from 'ng2-archwizard/dist';
 
 @Component({
   selector: 'app-create-grn',
@@ -13,6 +14,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-grn.component.scss']
 })
 export class CreateGrnComponent implements OnInit {
+  @ViewChild("wizard", {static: false}) wizard : WizardComponent; 
+  lotIdForm: FormGroup;
 
   lot_details : any;
   transporterList : User[] = [];
@@ -40,6 +43,9 @@ export class CreateGrnComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.lotIdForm = new FormGroup({
+      lotId: new FormControl('', [Validators.required])
+    });
   }
 
   basicSwal() {
@@ -161,7 +167,19 @@ export class CreateGrnComponent implements OnInit {
     transportId: new FormControl(''),
     weighingCompanyId: new FormControl(''),
     transferChalanNumber: new FormControl('')
-  })
+  });
+
+  
+  submitLotId() {
+    if(this.lotIdForm.valid) {
+      // alert(this.lotIdForm.value.lotId);
+      this.wizard.navigation.goToNextStep();
+    } else {
+      this.toastr.warning("Please select LOT Id!");
+    }
+  }
+
+
 
   patchSupplierData(data) {
     console.log(data);
@@ -190,6 +208,10 @@ export class CreateGrnComponent implements OnInit {
       console.log(res);
       this.toastr.success("Record saved successfully")
     })
+  }
+
+  get f() {
+    return this.lotIdForm.controls;
   }
 
 }
