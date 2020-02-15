@@ -9,7 +9,50 @@ import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
+
+function MaxlengthConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minLength = (c.parent.get("lengthMin"));
+  const maxLength = (c.parent.get("lengthMax"));
+  if(!maxLength || ! minLength) return;
+  if(maxLength.value < minLength.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxwidthConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minWidth = (c.parent.get("widthMin"));
+  const maxWidth = (c.parent.get("widthMax"));
+  if(!maxWidth || ! minWidth) return;
+  if(maxWidth.value < minWidth.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxthicknessConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minThickness = (c.parent.get("thicknessMin"));
+  const maxThickness = (c.parent.get("thicknessMax"));
+  if(!maxThickness || ! minThickness) return;
+  if(maxThickness.value < minThickness.value) {
+    return { invalid: true};
+  } 
+}
+
+function MaxtemperConfirming(c: AbstractControl): any {
+  if(!c.parent || !c) return;
+  const minTemper = (c.parent.get("productTemperMin"));
+  const maxTemper = (c.parent.get("productTemperMax"));
+  if(!maxTemper || ! minTemper) return;
+  if(maxTemper.value < minTemper.value) {
+    return { invalid: true};
+  } 
+}
+
 @Component({
   selector: 'app-pc-edit',
   templateUrl: './pc-edit.component.html',
@@ -61,7 +104,8 @@ export class PcEditComponent implements OnInit{
               private lighboxConfig: LightboxConfig,
               private purchaseService: PurchaseService,
               private route: ActivatedRoute,
-              private staticData: StaticDataService
+              private staticData: StaticDataService,
+              private toastr: ToastrService
   ) {
 
        
@@ -107,14 +151,14 @@ export class PcEditComponent implements OnInit{
               productCategory: new FormControl("", [Validators.required]),
               productShape: new FormControl("", [Validators.required]),
               productClass: new FormControl("", [Validators.required]),
-              thicknessMin: new FormControl("", [Validators.required]),
-              thicknessMax: new FormControl("", [Validators.required]),
-              widthMin: new FormControl("", [Validators.required]),
-              widthMax: new FormControl("", [Validators.required]),
-              lengthMin: new FormControl("", [Validators.required]),
-              lengthMax: new FormControl("", [Validators.required]),
-              productTemperMin: new FormControl("", [Validators.required]),
-              productTemperMax: new FormControl("", [Validators.required]),
+              thicknessMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+              thicknessMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
+              widthMin: new FormControl("", [CustomValidator.compondValueValidate]),
+              widthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxwidthConfirming]),
+              lengthMin: new FormControl("", [CustomValidator.compondValueValidate]),
+              lengthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxlengthConfirming]),
+              productTemperMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+              productTemperMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxtemperConfirming]),
               productHardness: new FormControl("", [Validators.required]),
               productCoating: new FormControl("", [Validators.required]),
               productDefect: new FormControl("", [Validators.required]),
@@ -123,9 +167,9 @@ export class PcEditComponent implements OnInit{
               productSurfaceCoating: new FormControl("", [Validators.required]),
               productAnnealing: new FormControl("", [Validators.required]),
               productFinish: new FormControl("", [Validators.required]),
-              gwt: new FormControl("", [Validators.required]),
-              nwt: new FormControl("", [Validators.required]),
-              remarks: new FormControl("")
+              gwt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+              nwt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+              remarks: new FormControl("", [Validators.minLength(3)])
             });
 
             
@@ -229,16 +273,44 @@ export class PcEditComponent implements OnInit{
     
   }
 
+  get f1() {
+    return this.pcDetails.controls;
+  }
+
+  get f() {
+    return this.addProductDetails.controls;
+  }
+
+  get f2() {
+    return this.transportDetails.controls;
+  }
+
   
   submitPcDetails() {
-    console.log("pcDeatails are: ", this.pcDetails.value);
+    if(this.pcDetails.valid) {
+      console.log("pcDeatails are: ", this.pcDetails.value);
+    }
+    else {
+      this.toastr.error("Error! Invalid Details.")
+    }
   }
 
   submitProductDetails() {
-    console.log("product details: ", this.addProductDetails.value);
+    if(this.addProductDetails.valid) {
+      console.log("product details: ", this.addProductDetails.value);
+    }
+    else {
+      this.toastr.error("Error! Invalid Details.")
+    }
+    
   }
 
   submitTransportDetails() {
+    if(this.addProductDetails.valid) {
     console.log("transport Details: ", this.transportDetails.value);
+    }
+    else {
+      this.toastr.error("Error! Invalid Details.")
+    }
   }
 }

@@ -58,8 +58,7 @@ export class PcApprovalComponent implements OnInit {
 
     changeStatusOfSelectedPurchase(status) {
     if (this.selectedPuchaseList.length == 0) {
-      this.toastrService.warning("select at least one");
-      // alert("select at least one");
+      this.toastrService.warning("Select at least one!");
     } else {
       let path = "/purchase/updatePurchase";
 
@@ -78,7 +77,7 @@ export class PcApprovalComponent implements OnInit {
           error => {}
         );
       }
-      this.toastrService.success("Selected PC(s) status changes successfully")
+      this.toastrService.success("Selected PC(s) status changes successfully!")
     }
   }
 
