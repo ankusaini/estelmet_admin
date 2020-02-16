@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Purchase, PurchaseType } from "src/app/shared/Models/purchase.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Product } from "src/app/shared/Models/product.model.";
 // import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Status } from 'src/app/shared/Models/user.model';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
+import { WizardComponent } from 'ng2-archwizard/dist';
 import { ToastrService } from 'ngx-toastr';
 
 import { Router } from '@angular/router';
@@ -15,9 +16,11 @@ import { Router } from '@angular/router';
   styleUrls: ["./create-pc.component.scss"]
 })
 export class CreatePcComponent implements OnInit {
+@ViewChild("wizard", {static: true}) wizard: WizardComponent;
+
   showData: boolean;
   public requestObj : RequestP={};
-  public productList: Product[] = [];
+  public productList: Product[];
   public selectedMr: Purchase;
   public selectedMrId:any;
   public generatedPcId:any;
@@ -41,7 +44,9 @@ export class CreatePcComponent implements OnInit {
     this.getProductList(this.selectedMr.id);
     this.selectedMrId='MR-'+this.selectedMr.id;
     this.selectedMr.status = Status.PENDING; 
-    this.selectedMr.type = PurchaseType.PURCHASE_CONFIRMATION;  
+    this.selectedMr.type = PurchaseType.PURCHASE_CONFIRMATION; 
+    this.wizard.navigation.goToNextStep();
+
   }
 
   getProductList(id) {
@@ -58,16 +63,25 @@ export class CreatePcComponent implements OnInit {
     );
   }
 
+  submitGeneratedPcId() {
+    if(this.generatedPcId) {
+      this.wizard.navigation.goToNextStep();
+    } else {
+      this.toastr.warning("Please generate PC Id!");
+    }
+  }
+
   generatePcId()
   {
       this.generatedPcId='PC-'+this.selectedMr.id
   }
   getTransportData(data) {
-   
+    console.log(data);
     Object.keys(data).forEach((key) => {
      if(key!='expectedDate')
       {
-   this.selectedMr[key] = data[key]
+        this.selectedMr[key] = data[key];
+        this.savePcRecord();
       }
   })
   }
