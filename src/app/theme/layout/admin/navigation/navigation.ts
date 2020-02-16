@@ -479,13 +479,13 @@ const NavigationItems = [
             url: '/processing/searchProcessing',
             target: false,
           },
-          {
-            id: 'processingOverview',
-            title: 'Processing Overview',
-            type: 'item',
-            url: '/processing/processingOverview',
-            target: false,
-          },
+          // {
+          //   id: 'processingOverview',
+          //   title: 'Processing Overview',
+          //   type: 'item',
+          //   url: '/processing/processingOverview',
+          //   target: false,
+          // },
           {
             id: 'approvalProcessing',
             title: 'Processing Approval',
@@ -493,13 +493,13 @@ const NavigationItems = [
             url: '/processing/processingApproval',
             target: false,
           },
-          {
-            id: 'EditProcessing',
-            title: 'Edit Processing',
-            type: 'item',
-            url: '/processing/editProcessing',
-            target: false,
-          },
+          // {
+          //   id: 'EditProcessing',
+          //   title: 'Edit Processing',
+          //   type: 'item',
+          //   url: '/processing/editProcessing',
+          //   target: false,
+          // },
           {
             id: 'COProcessing',
             title: 'CO to Processing',

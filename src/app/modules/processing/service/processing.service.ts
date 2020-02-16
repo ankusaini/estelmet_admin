@@ -81,4 +81,13 @@ export class ProcessingService {
     });
   }
 
+   public updateProcessing(path,requestObj:Processing):Observable<Processing>
+  {
+    return new Observable<Processing>(obs=>{
+      this.apiService.put(path,requestObj).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+
 }
