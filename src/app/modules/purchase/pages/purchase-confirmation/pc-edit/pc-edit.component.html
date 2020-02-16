@@ -101,6 +101,8 @@
                       {{category}}
                     </option>
                   </select>
+                  <small *ngIf="f1.productCategory.value == '' && (f1.productCategory.dirty || f1.productCategory.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -113,18 +115,24 @@
                     {{shape}}
                     </option>
                   </select>
+                  <small *ngIf="f1.productShape.value == '' && (f1.productShape.dirty || f1.productShape.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
                 <div class="col-sm-9">
                   <input type="text"  class="form-control" disabled formControlName="comapnyName">
+                  <small *ngIf="f1.comapnyName.value == '' && (f1.comapnyName.dirty || f1.comapnyName.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" disabled formControlName="warehouseName">
+                  <small *ngIf="f1.warehouseName.value == '' && (f1.warehouseName.dirty || f1.warehouseName.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
                 </div>
               </div>
   
@@ -222,6 +230,8 @@
                     <option *ngFor="let type of productTypeList; let i=index"
                       [value]="type">{{type}}</option>
                   </select>
+                  <small *ngIf="f.productType.value == '' && (f.productType.dirty || f.productType.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
                 <div class="col-sm-3">
@@ -229,6 +239,8 @@
                     <option *ngFor="let category of productCategoryList; let i=index"
                       [value]="category">{{category}}</option>
                   </select>
+                  <small *ngIf="f.productCategory.value == '' && (f.productCategory.dirty || f.productCategory.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -238,28 +250,50 @@
                     <option *ngFor="let shape of productShapeList; let i=index"
                       [value]="shape">{{shape}}</option>
                   </select>
+                  <small *ngIf="f.productShape.value == '' && (f.productShape.dirty || f.productShape.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Class</label>
                 <div class="col-sm-3">
-                  <select class="form-control" id="exampleFormControlSelect4" fromControlName="productClass">
+                  <select class="form-control" id="exampleFormControlSelect4" formControlName="productClass">
                     <option *ngFor="let class of productClassList; let i=index"
                       [value]="class">{{class}}</option>
                   </select>
+                  <small *ngIf="f.productClass.value == '' && (f.productClass.dirty || f.productClass.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range</label>
                 <div class="col-sm-3">
                   <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min" formControlName="thicknessMin"></div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max" formControlName="thicknessMax"></div>
+                    <div class="col-md-6">
+                       <input type="text" class="form-control" placeholder="Min" formControlName="thicknessMin">
+                       <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.dirty || f.thicknessMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                      </div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Max" formControlName="thicknessMax">
+                      <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.dirty || f.thicknessMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                      <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum thickness should be greater than minimum thickness.</small
+          >
+                    </div>
                   </div>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Width Range</label>
                 <div class="col-sm-3">
                   <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min"formControlName="widthMin"></div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max" formControlName="widthMax"></div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Min"formControlName="widthMin">
+                    </div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Max" formControlName="widthMax">
+                      <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum width should be greater than minimum width.</small
+          >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -267,15 +301,33 @@
                 <label class="col-sm-3 col-form-label font-weight-bolder">Length Range</label>
                 <div class="col-sm-3">
                   <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min" formControlName="lengthMin"></div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max" formControlName="lengthMax"></div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Min" formControlName="lengthMin">
+                    </div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Max" formControlName="lengthMax">
+                      <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum length should be greater than minimum length.</small
+          >
+                    </div>
                   </div>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
                 <div class="col-sm-3">
                   <div class="row">
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Min" formControlName="productTemperMin"></div>
-                    <div class="col-md-6"> <input type="text" class="form-control" placeholder="Max" formControlName="productTemperMax"></div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Min" formControlName="productTemperMin">
+                      <small *ngIf="f.productTemperMin.value == '' && (f.productTemperMin.dirty || f.productTemperMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                    </div>
+                    <div class="col-md-6"> 
+                      <input type="text" class="form-control" placeholder="Max" formControlName="productTemperMax">
+                      <small *ngIf="f.productTemperMax.value == '' && (f.productTemperMax.dirty || f.productTemperMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                      <small *ngIf="f.productTemperMax.value !== '' && !f.productTemperMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Maximum temper should be greater than minimum temper.</small
+          >
+                    </div>
                   </div>
                 </div>
               </div>
@@ -286,6 +338,8 @@
                     <option *ngFor="let hardness of productHardnessList; let i=index"
                       [value]="hardness">{{hardness}}</option>
                   </select>
+                  <small *ngIf="f.productHardness.value == '' && (f.productHardness.dirty || f.productHardness.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
                 <div class="col-sm-3">
@@ -293,6 +347,8 @@
                     <option *ngFor="let coating of productCoatingList; let i=index"
                       [value]="coating">{{coating}}</option>
                   </select>
+                  <small *ngIf="f.productCoating.value == '' && (f.productCoating.dirty || f.productCoating.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -302,6 +358,8 @@
                     <option *ngFor="let defect of productDefectList; let i= index"
                       [value]="defect">{{defect}}</option>
                   </select>
+                  <small *ngIf="f.productDefect.value == '' && (f.productDefect.dirty || f.productDefect.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Origin</label>
                 <div class="col-sm-3">
@@ -309,6 +367,8 @@
                     <option *ngFor="let origin of productOriginList; let i=index"
                       [value]="origin">{{origin}}</option>
                   </select>
+                  <small *ngIf="f.productOrigin.value == '' && (f.productOrigin.dirty || f.productOrigin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
               </div>
               <!--  -->
@@ -319,6 +379,8 @@
                     <option *ngFor="let oiling of productOilingList; let i=index"
                       [value]="oiling">{{oiling}}</option>
                   </select>
+                  <small *ngIf="f.productOiling.value == '' && (f.productOiling.dirty || f.productOiling.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Surface</label>
                 <div class="col-sm-3">
@@ -326,6 +388,8 @@
                     <option *ngFor="let surface of productSurfaceList; let i=index"
                       [value]="surface">{{surface}}</option>
                   </select>
+                  <small *ngIf="f.productSurfaceCoating.value == '' && (f.productSurfaceCoating.dirty || f.productSurfaceCoating.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -335,6 +399,8 @@
                     <option *ngFor="let annealing of productAnnealingList; let i=index"
                       [value]="annealing">{{annealing}}</option>
                   </select>
+                  <small *ngIf="f.productAnnealing.value == '' && (f.productAnnealing.dirty || f.productAnnealing.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Finish</label>
                 <div class="col-sm-3">
@@ -342,22 +408,30 @@
                     <option *ngFor="let finish of productFinishList; let i=index"
                       [value]="finish">{{finish}}</option>
                   </select>
+                  <small *ngIf="f.productFinish.value == '' && (f.productFinish.dirty || f.productFinish.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Gross Wt.</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="Mt." formControlName="gwt">
+                  <small *ngIf="f.gwt.value !== '' && !f.gwt.valid " id="passwordHelpBlock" class="form-text text-muted"
+                >This field only accepts numbers and this symbol:.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Net Wt.</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="Mt." formControlName="nwt">
+                  <small *ngIf="f.nwt.value !== '' && !f.nwt.valid " id="passwordHelpBlock" class="form-text text-muted"
+                >This field only accepts numbers and this symbol:.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Remarks</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="" formcontrolName="remarks">
+                  <input type="text" class="form-control" placeholder="" formControlName="remarks">
+                <small *ngIf="f.remarks.value.length!== '' && f.remarks.errors?.minlength  " id="passwordHelpBlock" class="form-text text-muted"
+                  >Remarks should be more than 2 characters.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -458,12 +532,19 @@
                 <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="supplierId" disabled>
+                  <small *ngIf="f2.supplierId.value == '' && (f2.supplierId.dirty || f2.supplierId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
                 <div class="col-sm-3">
                   <div class="row">
                     <div class="col-md-5">
                       <input type="text" class="form-control" placeholder="" formControlName="transportId">
+                      <small *ngIf="f2.transportId.value == '' && (f2.transportId.dirty || f2.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                      >This field is required.</small>
+                      <small *ngIf="f2.transportId.value !== '' && !f2.transportId.valid " id="passwordHelpBlock" class="form-text text-muted"
+                      >This field only accepts numeric values.</small
+                    >
 
                       <!-- <select class="form-control" id="" formControlName="transportId">
                         <option value="1">TP-022</option>
@@ -485,30 +566,50 @@
                 <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
                 <div class="col-sm-3">
                   <input type="date" class="form-control" placeholder="" formControlName="expectedDate">
+                  <small *ngIf="f2.expectedDate.value == '' && (f2.expectedDate.dirty || f2.expectedDate.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="invoice">
+                  <small *ngIf="f2.invoice.value == '' && (f2.invoice.dirty || f2.invoice.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="grossWt">
+                  <small *ngIf="f2.grossWt.value !== '' && !f2.grossWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="netWt">
+                  <small *ngIf="f2.netWt.value !== '' && !f2.netWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="materialDescription">
+                  <small *ngIf="f2.materialDescription.value == '' && (f2.materialDescription.dirty || f2.materialDescription.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+            <small *ngIf="f2.materialDescription.value !== '' && !f2.materialDescription.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Material Description should be more than 2 characters.</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="coilsBundle">
+                  <small *ngIf="f2.coilsBundle.value == '' && (f2.coilsBundle.dirty || f2.coilsBundle.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+            <small *ngIf="f2.coilsBundle.value !== '' && !f2.coilsBundle.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
                 </div>
               </div>
               <div class="form-group row">
@@ -516,10 +617,20 @@
                 </label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="containerNumber">
+                  <small *ngIf="f2.containerNumber.value == '' && (f2.containerNumber.dirty || f2.containerNumber.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
+                     <small *ngIf="f2.containerNumber.value !== '' && !f2.containerNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="lorryNumber">
+                  <small *ngIf="f2.lorryNumber.value == '' && (f2.lorryNumber.dirty || f2.lorryNumber.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
+                     <small *ngIf="f2.lorryNumber.value !== '' && !f2.lorryNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
                 </div>
               </div>
               <div class="form-group row">
@@ -527,10 +638,20 @@
                 </label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="driverName">
+                   <small *ngIf="f2.driverName.value == '' && (f2.driverName.dirty || f2.driverName.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+            <small *ngIf="f2.driverName.value !== '' && f2.driverName.errors?.minlength " id="passwordHelpBlock" class="form-text text-muted"
+            >Driver Name should be more than 2 characters.</small
+          >
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="driverMobile">
+                  <small *ngIf="f2.driverMobile.value == '' && (f2.driverMobile.dirty || f2.driverMobile.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                    <small *ngIf="f2.driverMobile.value !== '' && f2.driverMobile.errors?.contactNumberValidation " id="passwordHelpBlock" class="form-text text-muted"
+                  >This field only accepts 10 or 13 digits.</small>
+                  
                 </div>
               </div>
               <div class="form-group row">

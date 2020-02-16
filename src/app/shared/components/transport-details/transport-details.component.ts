@@ -13,6 +13,8 @@ import {
   NgbDateParserFormatter,
   NgbDateStruct
 } from "@ng-bootstrap/ng-bootstrap";
+import { ToastrService } from 'ngx-toastr';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
 
 
 
@@ -65,6 +67,7 @@ export class TransportDetailsComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private toastr: ToastrService
   ) {
     this.transportDetails.statusChanges.subscribe(data=>{
       // console.log(data);
@@ -146,20 +149,29 @@ export class TransportDetailsComponent implements OnInit {
     transportId: new FormControl("", [Validators.required]),
     // supplierId: new FormControl("", [Validators.required]),
     expectedDate: new FormControl("", [Validators.required]),
-    containerNumber: new FormControl("", [Validators.required]),
-    grossWt: new FormControl("", [Validators.required]),
-    netWt: new FormControl("", [Validators.required]),
-    materialDescription: new FormControl("", [Validators.required]),
-    coilsBundle: new FormControl("", [Validators.required]),
-    lorryNumber: new FormControl("", [Validators.required]),
+    containerNumber: new FormControl("", [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
+    grossWt: new FormControl("", [CustomValidator.compondValueValidate]),
+    netWt: new FormControl("", [CustomValidator.compondValueValidate]),
+    materialDescription: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    coilsBundle: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+    lorryNumber: new FormControl("", [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
     mode: new FormControl(""),
     delivery: new FormControl(""),
-    licenceNumber: new FormControl("")
+    licenceNumber: new FormControl("", [ CustomValidator.alphanumericSpecialCharacterValidate])
   });
 
   addTransportDetails() {
-    console.log("data is: ", this.transportDetails.value);
-    this.transportData.emit(this.transportDetails.value);
+    if(this.transportDetails.valid) {
+      console.log("data is: ", this.transportDetails.value);
+      this.transportData.emit(this.transportDetails.value);
+    } else {
+      this.toastr.error("Error! Invalid Details");
+    }
+    
+  }
+
+  get f() {
+    return this.transportDetails.controls;
   }
 }
 

@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter} from "@angular/core";
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mr-list',
@@ -9,11 +10,14 @@ import { Router } from "@angular/router";
   styleUrls: ['./mr-list.component.scss']
 })
 export class MrListComponent implements OnInit {
-public mrList: Purchase[]=[];
+public mrList: Purchase[];
 public selectedMr: Purchase;
   @Output() selectedMrData: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private purchaseService: PurchaseService,private router:Router) {
+  constructor(private purchaseService: PurchaseService,
+    private router:Router,
+    private toastService: ToastrService
+    ) {
     this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
    }
 
@@ -33,10 +37,19 @@ public selectedMr: Purchase;
     );
   }
 
+  submitSelectMrId() {
+    if(this.selectedMr) {
+      this.selectedMrData.emit(this.selectedMr);
+    }
+    else {
+      this.toastService.warning("Select Mr Id!");
+    }
+  }
+
+
    getSelectedMr(mr)
   {
     this.selectedMr=mr;
     console.log("selected",mr)
-    this.selectedMrData.emit(this.selectedMr);
   }
 }
