@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Sales } from 'src/app/shared/Models/sales.model';
+import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { SalesServiceService } from '../../../services/sales-service.service';
+import { Product } from 'src/app/shared/Models/product.model.';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,10 +20,21 @@ export class SoApprovalComponent implements OnInit {
   public pendingList : Sales[];
   public approvedList : Sales[];
   public rejectedList : Sales[];
+  selectedSalesList: Sales[] = [];
+  public request : RequestP ={};
 
-  constructor(private salesService: SalesServiceService) { }
+
+  constructor(private salesService: SalesServiceService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit() {
+    this.getPendingList();
+    this.getApprovedList();
+    this.getRejectedList();    
+  }
+
+  getPendingList() {
     let pendingUrl = "/sales/getAllSalesByTypeAndStatus/SALES_OFFER_LOT/PENDING";
     this.salesService.getAllSalesByTypeAndStatus(pendingUrl).subscribe(
       data => {
@@ -31,7 +46,9 @@ export class SoApprovalComponent implements OnInit {
         console.log(error);
       }
     );
+  }
 
+  getApprovedList() {
     let approvedUrl = "/sales/getAllSalesByTypeAndStatus/SALES_OFFER_LOT/APPROVED";
     this.salesService.getAllSalesByTypeAndStatus(approvedUrl).subscribe(
       data => {
@@ -43,7 +60,9 @@ export class SoApprovalComponent implements OnInit {
         console.log(error);
       }
     );
+  }
 
+  getRejectedList() {
     let rejectedUrl = "/sales/getAllSalesByTypeAndStatus/SALES_OFFER_LOT/REJECTED";
     this.salesService.getAllSalesByTypeAndStatus(rejectedUrl).subscribe(
       data => {
@@ -70,7 +89,53 @@ export class SoApprovalComponent implements OnInit {
       this.selectedTab = "REJECTED";
     }
     console.log("selected tab", this.selectedTab);
+    this.selectedSalesList = [];
   }
 
+
+  addToSelectedList(sale) {
+    const index = this.selectedSalesList.indexOf(sale);
+    if (index == -1) {
+      this.selectedSalesList.push(sale);
+    } else {
+      this.toastr.warning("Product already added");
+    }
+  }
+
+  removeFromSelectedList(sale)
+  {
+  
+    const index: number = this.selectedSalesList.indexOf(sale);
+    console.log("index",index)
+    if (index !== -1) {
+      this.selectedSalesList.splice(index, 1);
+    }
+  }
+
+
+  changeStatusOfSelectedSales(status) {
+    if (this.selectedSalesList.length == 0) {
+      this.toastr.warning("Select at least one!");
+    } else {
+      let path = "/sales/updateSales";
+
+      for (let i = 0; i < this.selectedSalesList.length; i++) {
+        this.selectedSalesList[i].status = status;
+         this.request.sales=this.selectedSalesList[i];
+        this.salesService.updateRequestObject(path, this.request).subscribe(
+          data => {
+            
+            this.getPendingList();
+            this.getApprovedList();
+            this.getRejectedList(); 
+            this.selectedTab = "PENDING";
+            this.selectedSalesList=[];            
+          },
+          error => {}
+        );
+      }
+      this.toastr.success("Selected Sale(s) status changes successfully!")
+    }
+  }
 
 }

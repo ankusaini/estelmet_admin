@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/internal/Observable";
 import { ApiService } from 'src/app/shared/services/api.service';
+import { RequestP, ResponseP } from 'src/app/shared/Models/RequestResponse';
 
 
 @Injectable({
@@ -17,5 +18,14 @@ export class SalesServiceService {
             })
         });
     }
+
+    public updateRequestObject(path,requestObj:RequestP):Observable<ResponseP>
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.put(path,requestObj).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
 
 }
