@@ -8,6 +8,7 @@ import { ScApprovalComponent } from './pages/salesConfirmation/sc-approval/sc-ap
 import { SoApprovalComponent } from './pages/directSales/so-approval/so-approval.component';
 import { CreateSoComponent } from './pages/directSales/create-so/create-so.component';
 import { CreateTradleadComponent } from './pages/websiteSales/create-tradlead/create-tradlead.component';
+import { SoEditComponent } from './pages/directSales/so-edit/so-edit.component';
 
 
 const routes: Routes= [
@@ -18,6 +19,10 @@ const routes: Routes= [
     {
         path: 'searchSo',
         component: SearchViewSoComponent
+    },
+    {
+        path: 'soEdit/:id',
+        component: SoEditComponent
     },
     {
         path: 'createTradelead',
