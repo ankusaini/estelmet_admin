@@ -8,6 +8,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment'
 import { catchError } from 'rxjs/internal/operators/catchError';
+import { JwtService } from "src/app/shared/services/login/jwt.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ApiService {
   
  
 
-  constructor(private http: HttpClient, private httpBackend: HttpBackend) { }
+  constructor(private http: HttpClient, private httpBackend: HttpBackend,private jwtTokenService:JwtService) { }
 
     private formatErrors(error: any) {
       return   (error.error);
@@ -61,16 +62,16 @@ export class ApiService {
       postWithMedia(path: string, body): Observable<any> {
     const HttpUploadOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "multipart/form-data"
-        // Authorization: "Bearer " + this.jwtTokenService.getToken()
-      })
+       // "Content-Type": "multipart/form-data",
+      "Authorization":  this.jwtTokenService.getToken()
+    })
     };
     this.http = new HttpClient(this.httpBackend);
 
     console.log("path..." + environment.base_url + path);
     console.log("body..."+ body);
     return this.http
-      .post(`${environment.base_url}${path}`, body)
+      .post(`${environment.base_url}${path}`, body, HttpUploadOptions)
       .pipe(catchError(this.formatErrors));
   }
 }
