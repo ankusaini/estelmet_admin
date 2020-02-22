@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Sales } from 'src/app/shared/Models/sales.model';
 import { SalesServiceService } from '../../../services/sales-service.service';
+import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,10 +19,22 @@ export class ScApprovalComponent implements OnInit {
   public pendingList : Sales[];
   public approvedList : Sales[];
   public rejectedList : Sales[];
+  public selectedSalesList: Sales[] = [];
+  public request : RequestP ={};
 
-  constructor(private salesService: SalesServiceService) { }
+
+  constructor(private salesService: SalesServiceService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
+   
+    this.getPendingList();
+    this.getApprovedList();
+    this.getRejectedList();
+   
+  }
+
+  getPendingList() {
     let pendingUrl = "/sales/getAllSalesByTypeAndStatus/SALES_CONFIRMATION/PENDING";
     this.salesService.getAllSalesByTypeAndStatus(pendingUrl).subscribe(
       data => {
@@ -32,7 +46,9 @@ export class ScApprovalComponent implements OnInit {
         console.log(error);
       }
     );
+  }
 
+  getApprovedList() {
     let approvedUrl = "/sales/getAllSalesByTypeAndStatus/SALES_CONFIRMATION/APPROVED";
     this.salesService.getAllSalesByTypeAndStatus(approvedUrl).subscribe(
       data => {
@@ -45,6 +61,9 @@ export class ScApprovalComponent implements OnInit {
       }
     );
 
+  }
+
+  getRejectedList() {
     let rejectedUrl = "/sales/getAllSalesByTypeAndStatus/SALES_CONFIRMATION/REJECTED";
     this.salesService.getAllSalesByTypeAndStatus(rejectedUrl).subscribe(
       data => {
@@ -60,17 +79,63 @@ export class ScApprovalComponent implements OnInit {
   }
 
   onTabChange(tab) {
-    // alert("tab "+ tab.activeId);
-    if (tab && tab.activeId == "rejectedTab") {
-      this.selectedTab = "PENDING";
-    }
-    if (tab && tab.activeId == "pendingTab") {
-      this.selectedTab = "APPROVED";
-    }
-    if (tab && tab.activeId == "approvedTab") {
+    // alert("tab "+ tab.nextId);
+    if (tab && tab.nextId == "rejectedTab") {
       this.selectedTab = "REJECTED";
     }
+    if (tab && tab.nextId == "pendingTab") {
+      this.selectedTab = "PENDING";
+    }
+    if (tab && tab.nextId == "approvedTab") {
+      this.selectedTab = "APPROVED";
+    }
     console.log("selected tab", this.selectedTab);
+    this.selectedSalesList = [];
+    }
+
+
+  addToSelectedList(sale) {
+    const index = this.selectedSalesList.indexOf(sale);
+    if (index == -1) {
+      this.selectedSalesList.push(sale);
+    } else {
+      this.toastr.warning("Product already added");
+    }
+  }
+
+  removeFromSelectedList(sale)
+  {
+  
+    const index: number = this.selectedSalesList.indexOf(sale);
+    console.log("index",index)
+    if (index !== -1) {
+      this.selectedSalesList.splice(index, 1);
+    }
+  }
+
+  changeStatusOfSelectedSales(status) {
+    if (this.selectedSalesList.length == 0) {
+      this.toastr.warning("Select at least one!");
+    } else {
+      let path = "/sales/updateSales";
+
+      for (let i = 0; i < this.selectedSalesList.length; i++) {
+        this.selectedSalesList[i].status = status;
+         this.request.sales=this.selectedSalesList[i];
+        this.salesService.updateRequestObject(path, this.request).subscribe(
+          data => {
+            
+            this.getPendingList();
+            this.getApprovedList();
+            this.getRejectedList(); 
+            this.selectedTab = "PENDING";
+            this.selectedSalesList=[];            
+          },
+          error => {}
+        );
+      }
+      this.toastr.success("Selected Sale(s) status changes successfully!")
+    }
   }
 
 }

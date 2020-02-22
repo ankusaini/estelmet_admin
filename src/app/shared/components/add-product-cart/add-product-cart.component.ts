@@ -48,6 +48,7 @@ export class AddProductCartComponent implements OnInit, OnChanges {
     console.log("index",index)
     if (index !== -1) {
       this.productList.splice(index, 1);
+      this.selectedProductList.emit(this.setProductList);
     }
   }
 

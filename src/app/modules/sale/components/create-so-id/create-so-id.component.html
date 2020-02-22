@@ -6,16 +6,15 @@
                 Company Name <small class="asterik_sign">*</small>
             </label>
             <select 
+              (change)="selectedCompany($event.target.value)"
               class="form-control" 
               name="validation-companyName"
               [ngClass]="{'is-invalid': false }"
               formControlName="companyName" 
               required 
             >
-              <option value="0" disabled>Select Company</option>
-              <option value="1">GP Global Energy Pvt Ltd</option>
-              <option value="2">GP Global Asphalt Pvt Ltd</option>
-              <option value="3">GP Global Kimitsu Pvt Ltd</option>
+              <option value="" disabled>Select Company</option>
+              <option *ngFor="let company of companyList" [value]="company?.id">{{company?.name}}</option>
             </select>
             <small *ngIf="!f.companyName.valid && (f.companyName.dirty || f.companyName.touched)"
               id="validation-companyName-error"
@@ -25,7 +24,7 @@
           </div>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-5">
+        <div *ngIf="selected_comapny" class="col-md-5">
           <div class="form-group">
             <label for="exampleFormControlSelect1"
                 >Warehouse Name <small class="asterik_sign">*</small>
@@ -33,16 +32,12 @@
             <select 
                 class="form-control" 
                 name="validation-warehouse"
+                (change)="getSelectedWarehouse($event)"
                 [ngClass]="{'is-invalid': false}"
                 formControlName="warehouseName"
                 required >
-              <option value="0" disabled>Select Warehouse</option>
-              <option value="1">A-88</option>
-              <option value="2">L-24/25</option>
-              <option value="3">J-18</option>
-              <option value="4">M-67</option>
-              <option value="5">GROWELL</option>
-              <option value="6">PARAMSHAKTI</option>
+              <option value="" disabled>Select Warehouse</option>
+              <option *ngFor="let warehouse of selected_comapny.warehouse" [value]="warehouse?.id">{{warehouse?.name}}</option>
             </select>
             <small *ngIf="!f.warehouseName.valid && (f.warehouseName.dirty || f.warehouseName.touched)"
               id="validation-warehouseName-error"
@@ -65,39 +60,8 @@
                 [ngClass]="{'is-invalid': false}"
                 formControlName="productCategory"
                 required >
-              <option value="0" disabled>Select Category</option>
-              <option value="1">HR</option>
-              <option value="2">CR</option>
-              <option value="3">GL</option>
-              <option value="4">CC</option>
-              <option value="5">EG</option>
-              <option value="6">TP</option>
-              <option value="7">TFS</option>
-              <option value="8">BP</option>
-              <option value="9">TPL</option>
-              <option value="10">GALVALUM</option>
-              <option value="11">MISPRINT</option>
-              <option value="12">PCRC</option>
-              <option value="13">TFS/LIKER</option>
-              <option value="14">TP/LIKER</option>
-              <option value="15">MIX</option>
-              <option value="16">GA</option>
-              <option value="17">GAJ</option>
-              <option value="18">GI</option>
-              <option value="19">COLOR</option>
-              <option value="20">CR/GA</option>
-              <option value="21">GI/GA</option>
-              <option value="22">CRJ</option>
-              <option value="23">GIJ</option>
-              <option value="24">ALSTER</option>
-              <option value="25">PVC/COLOR</option>
-              <option value="26">PVC&amp;CB</option>
-              <option value="27">BLANK</option>
-              <option value="28">PVC-NON-CB</option>
-              <option value="29">CR/GI</option>
-              <option value="30">NON-CB</option>
-              <option value="31">COLOR-CS</option>
-              <option value="32">MATT</option>
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let category of categoryList" [value]="category?.id">{{category?.productCategory}}</option>
             </select>
             <small *ngIf="!f.productCategory.valid && (f.productCategory.dirty || f.productCategory.touched)"
               id="validation-category-error"
@@ -118,20 +82,8 @@
                 [ngClass]="{'is-invalid': false }" 
                 formControlName="productShape"
                 required >
-              <option value="0" disabled>Select User</option>
-              <option value="1">SLC</option>
-              <option value="2">MWC</option>
-              <option value="3">2RC</option>
-              <option value="4">MC</option>
-              <option value="5">SC</option>
-              <option value="6">FAPS</option>
-              <option value="7">BAPS</option>
-              <option value="8">US</option>
-              <option value="9">FASS</option>
-              <option value="11">BASS</option>
-              <option value="12">SHEETS</option>
-              <option value="13">NO</option>
-              <option value="14">SLC / STS</option>
+              <option value="" disabled>Select User</option>
+              <option *ngFor="let shape of shapeList" [value]="shape?.id">{{shape?.productShape}}</option>
             </select>
             <small *ngIf="!f.productShape.valid && (f.productShape.dirty || f.productShape.touched)"
               id="validation-shape-error"
@@ -140,7 +92,7 @@
             </small>
           </div>
         </div>
-      <!-- </div> -->
+      <!-- [disabled]="!salesDto.valid" -->
     </div>
     <div class="col-sm-12 centered-content">
       <div class="btn-group mt-10">
@@ -148,7 +100,6 @@
           type="submit" 
           class="btn btn-primary btn-sm" 
           uiSref="work" 
-          [disabled]="!salesDto.valid"
           nextStep
         >
           Continue
