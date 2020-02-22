@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { WizardComponent } from 'ng2-archwizard/dist';
+import { SalesServiceService } from '../../../services/sales-service.service';
+import { ToastService } from 'src/app/theme/shared/components/toast/toast.service';
+import { Product } from 'src/app/shared/Models/product.model.';
 // import { FormInput } from 'src/app/demo/sales/direct-sales/create-so/create-so-form-model';
 
 
@@ -8,20 +12,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-so.component.scss']
 })
 export class CreateSoComponent implements OnInit {
+  @ViewChild("wizard", {static: false}) wizard: WizardComponent;
 
   showGroup = true;
   public isSubmit: boolean;
+  public productList: Product[];
   // public isSubmit2: boolean;
   // formInput: FormInput;
   // public maskIP = [/\d/, '.', /\d/, /\d/];
   
-  constructor() {
+  constructor(private salesService: SalesServiceService, private toastr: ToastService) {
     this.isSubmit = false;
     // this.isSubmit2 = false;
   }
 
 
   ngOnInit() {
+    this.getProductList();
     // this.formInput = {
     //   email: '',
     //   password: '',
@@ -44,6 +51,17 @@ export class CreateSoComponent implements OnInit {
     // };
   }
 
+  getProductList() {
+    let url = "/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED";
+    this.salesService.getAllProductByProductStageAndStatus(url).subscribe(
+      data => {
+        this.productList = data;
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   
   save(form: any) {
     if (!form.valid) {
@@ -58,7 +76,7 @@ export class CreateSoComponent implements OnInit {
     console.log("Your Data is: "+ data.warehouseName);
     console.log("Your Data is: "+ data.productCategory);
     console.log("Your Data is: "+ data.productShape);
-
+    this.wizard.navigation.goToNextStep();
   }
 
 }

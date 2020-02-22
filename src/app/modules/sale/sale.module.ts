@@ -21,6 +21,7 @@ import { CreateTradleadComponent } from './pages/websiteSales/create-tradlead/cr
 import { CreateSoIdTradeleadComponent } from './components/create-so-id-tradelead/create-so-id-tradelead.component';
 import { SelectProductTradeleadComponent } from './components/select-product-tradelead/select-product-tradelead.component';
 import { OtherDetailsTradeleadComponent } from './components/other-details-tradelead/other-details-tradelead.component';
+import { ShareModule } from 'src/app/shared/shared.module';
 
 
 
@@ -40,7 +41,8 @@ import { OtherDetailsTradeleadComponent } from './components/other-details-trade
     NgbDropdownModule,
     NgbTooltipModule,
     NgbCarouselModule,
-    LightboxModule
+    LightboxModule, 
+    ShareModule
   ],
   declarations: [
     SearchTradleadComponent,
