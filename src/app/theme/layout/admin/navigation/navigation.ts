@@ -26,44 +26,50 @@ export interface Navigation extends NavigationItem {
 }
 
 const NavigationItems = [
-  // {
-  //   id: 'dashboard',
-  //   title: 'Dashboard',
-  //   type: 'collapse',
-  //   icon: 'feather icon-home',
-  //   children: [
-  //     {
-  //       id: 'userDash',
-  //       title: 'Users',
-  //       type: 'item',
-  //       url: '/dashboard/default'
-  //     },
-  //     {
-  //       id: 'purchasDash',
-  //       title: 'Purchase',
-  //       type: 'item',
-  //       url: '/dashboard/sale'
-  //     },
-  //     {
-  //       id: 'inventoryDash',
-  //       title: 'Inventory',
-  //       type: 'item',
-  //       url: '/dashboard/crm'
-  //     },
-  //     {
-  //       id: 'salesDash',
-  //       title: 'Sales',
-  //       type: 'item',
-  //       url: '/dashboard/analytics'
-  //     },
-  //     // {
-  //     //   id: 'project',
-  //     //   title: 'Project',
-  //     //   type: 'item',
-  //     //   url: '/dashboard/project'
-  //     // }
-  //   ]
-  // },
+  {
+    id: 'dashboard',
+    title: 'Dashboard',
+    type: 'collapse',
+    icon: 'feather icon-home',
+    children: [
+      {
+        id: 'userDash',
+        title: 'Users',
+        type: 'item',
+        url: '/dashboard/default'
+      },
+      {
+        id: 'purchasDash',
+        title: 'Purchase',
+        type: 'item',
+        url: '/dashboard/sale'
+      },
+      {
+        id: 'inventoryDash',
+        title: 'Inventory',
+        type: 'item',
+        url: '/dashboard/crm'
+      },
+      {
+        id: 'processDash',
+        title: 'Processing',
+        type: 'item',
+        url: '/dashboard/project'
+      },
+      {
+        id: 'salesDash',
+        title: 'Sales',
+        type: 'item',
+        url: '/dashboard/analytics'
+      },
+      // {
+      //   id: 'project',
+      //   title: 'Project',
+      //   type: 'item',
+      //   url: '/dashboard/project'
+      // }
+    ]
+  },
   {
     id: 'userTitle',
     title: 'Users',
@@ -74,7 +80,7 @@ const NavigationItems = [
         id: 'user',
         title: 'Users',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-user',
         children: [
           {
             id: 'CreateUser',
@@ -111,7 +117,7 @@ const NavigationItems = [
         id: 'groupUser',
         title: 'Users Group',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-users',
         children: [
           {
             id: 'CreateUserGroup',
@@ -163,7 +169,7 @@ const NavigationItems = [
       {
         id: 'materialRequirement',
         title: 'Material Requirement',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-layers',
         type: 'collapse',
         children: [
           {
@@ -206,7 +212,7 @@ const NavigationItems = [
       {
         id: 'purchaseOrder',
         title: 'Purchase Order',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-file-text',
         type: 'collapse',
         children: [
           {
@@ -249,7 +255,7 @@ const NavigationItems = [
       {
         id: 'purchaseConfirmation',
         title: 'Purchase Confirmation',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-thumbs-up',
         type: 'collapse',
         children: [
           {
@@ -292,7 +298,7 @@ const NavigationItems = [
       {
         id: 'purchaseLot',
         title: 'Purchase Lot',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-box',
         type: 'collapse',
         children: [
           {
@@ -349,7 +355,7 @@ const NavigationItems = [
       {
         id: 'grnModule',
         title: 'GRN Module',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-command',
         type: 'collapse',
         children: [
           {
@@ -413,7 +419,7 @@ const NavigationItems = [
         id: 'inventory',
         title: 'Inventory',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-grid',
         children: [
           {
             id: 'addProduct',
@@ -456,7 +462,7 @@ const NavigationItems = [
         id: 'processing',
         title: 'Processing',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-sliders',
         children: [
           {
             id: 'createProcessing',
@@ -523,47 +529,47 @@ const NavigationItems = [
     title: 'Sales',
     type: 'group',
     children: [
-      // {
-      //   id: 'salesLead',
-      //   title: 'Sales Lead',
-      //   type: 'collapse',
-      //   icon: 'feather icon-layout',
-      //   children: [
-      //     {
-      //       id: 'createSalesLead',
-      //       title: 'Create Sales lead',
-      //       type: 'item',
-      //       url: '/salesLead/createSalesLead',
-      //       target: false,
-      //     },
-      //     {
-      //       id: 'searchSalesLead',
-      //       title: 'Search Sales lead',
-      //       type: 'item',
-      //       url: '/salesLead/searchSalesLead',
-      //       target: false,
-      //     },
-      //     {
-      //       id: 'OverviewSalesLead',
-      //       title: 'Sales lead Overview',
-      //       type: 'item',
-      //       url: '/salesLead/slOverview',
-      //       target: false,
-      //     },
-      //     {
-      //       id: 'EditSalesLead',
-      //       title: 'Edit Sales lead',
-      //       type: 'item',
-      //       url: '/salesLead/editSl',
-      //       target: false,
-      //     }
-      //   ]
-      // },
+      {
+        id: 'salesLead',
+        title: 'Sales Lead',
+        type: 'collapse',
+        icon: 'feather icon-shopping-cart',
+        children: [
+          {
+            id: 'createSalesLead',
+            title: 'Create Sales lead',
+            type: 'item',
+            url: '/salesLead/createSalesLead',
+            target: false,
+          },
+          {
+            id: 'searchSalesLead',
+            title: 'Search Sales lead',
+            type: 'item',
+            url: '/salesLead/searchSalesLead',
+            target: false,
+          },
+          {
+            id: 'OverviewSalesLead',
+            title: 'Sales lead Overview',
+            type: 'item',
+            url: '/salesLead/slOverview',
+            target: false,
+          },
+          {
+            id: 'EditSalesLead',
+            title: 'Edit Sales lead',
+            type: 'item',
+            url: '/salesLead/editSl',
+            target: false,
+          }
+        ]
+      },
       {
         id: 'salesTab',
         title: 'Sales',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-shopping-cart',
         children: [
           {
             id: 'directSales',
@@ -795,7 +801,7 @@ const NavigationItems = [
         id: 'dispatch',
         title: 'Dispatch',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-copy',
         children: [
           {
             id: 'load',
@@ -908,7 +914,7 @@ const NavigationItems = [
         id: 'superAdmin',
         title: 'Super Admin',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-user-check',
         children: [
           {
             id: 'addPrice',
@@ -930,7 +936,7 @@ const NavigationItems = [
         id: 'setupTab',
         title: 'Setup',
         type: 'collapse',
-        icon: 'feather icon-layout',
+        icon: 'feather icon-settings',
         children: [
           {
             id: 'createCompany',

@@ -24,6 +24,10 @@ const routes: Routes = [
       {
         path: 'project',
         loadChildren: () => import('./dash-project/dash-project.module').then(module => module.DashProjectModule)
+      },
+      {
+        path: 'process',
+        loadChildren: () => import('./dash-processing/dash-processing.module').then(module => module.DashProcessingModule)
       }
     ]
   }
