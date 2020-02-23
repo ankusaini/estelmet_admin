@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="false" cardTitle="Search & View Sales Invoive" [options]="false"
+        cardClass="user-profile-list">
+        <div *ngIf="saleinvoclist && saleinvoclist.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table datatable class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>SI Id</th>
+                <th>Company CIN No.</th>
+                <th>Order No.</th>
+                <th>Payment Term</th>
+                <th>Order Date</th>
+                <th>Seller Company</th>
+                <th>Transporter Id</th>
+                <th>Invoice Net Wt.</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let saleinvoice of saleinvoclist; let i=index">
+                <td>{{i+1}}.</td>
+                <td>SI-{{saleinvoice.invoiceId}}</td>
+                <td>{{saleinvoice.companyCINNo}}</td>
+                <td>{{saleinvoice.buyersOrderNo}}</td>
+                <td>{{saleinvoice.paymentTerm}}</td>
+                <td>{{saleinvoice.buyersOrderDate}}</td>
+                <td>{{saleinvoice.sellerCompanyName}}</td>
+                <td>{{saleinvoice.transporter}}</td>
+                <td>{{saleinvoice.invoicenetWt}}</td>
+                <td><button type="button" (click)="addsaleinvoice(saleinvoice)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-card [hidHeader]="false" cardTitle="View Selected Sales Invoive" [options]="false"
+        cardClass="user-profile-list">
+        <div  *ngIf="selectedsaleinvoclist && selectedsaleinvoclist.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table datatable class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                  <th>Sr. No.</th>
+                  <th>SI Id</th>
+                  <th>Company CIN No.</th>
+                  <th>Order No.</th>
+                  <th>Payment Term</th>
+                  <th>Order Date</th>
+                  <th>Seller Company</th>
+                  <th>Transporter Id</th>
+                  <th>Invoice Net Wt.</th>
+                  <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let saleinvoice of selectedsaleinvoclist; let i=index">
+                <td>{{i+1}}.</td>
+                <td>SI-{{saleinvoice.invoiceId}}</td>
+                <td>{{saleinvoice.companyCINNo}}</td>
+                <td>{{saleinvoice.buyersOrderNo}}</td>
+                <td>{{saleinvoice.paymentTerm}}</td>
+                <td>{{saleinvoice.buyersOrderDate}}</td>
+                <td>{{saleinvoice.sellerCompanyName}}</td>
+                <td>{{saleinvoice.transporter}}</td>
+                <td>{{saleinvoice.invoicenetWt}}</td> 
+                <td>
+                  <span class="badge badge-light-success">Approved</span>
+                  <div class="overlay-edit">
+                <button (click)="removesaleinvoice(saleinvoice)" type="button" class="btn btn-icon btn-danger" ><i
+                  class="feather icon-trash-2"></i></button>
+                  </div>   
+
+            </tbody>
+          </table>
+        </div>
+      </app-card>
+
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary active">CSV</button>&nbsp;
+  <button type="submit" class="btn btn-success active">Export</button>&nbsp;
+  <button type="submit" class="btn btn-danger active">Print</button>&nbsp;
+  <button type="submit" class="btn btn-warning active">Copy</button>&nbsp;
