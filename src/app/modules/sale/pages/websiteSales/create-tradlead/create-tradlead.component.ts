@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { WizardComponent } from 'ng2-archwizard/dist';
 
 @Component({
   selector: 'app-create-tradlead',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTradleadComponent implements OnInit {
 
+  @ViewChild("wizard", {static: false}) wizard: WizardComponent
   showGroup = true;
   public isSubmit: boolean;
   // public isSubmit2: boolean;
@@ -53,7 +55,16 @@ export class CreateTradleadComponent implements OnInit {
     console.log("Your Data is: "+ data.warehouseName);
     console.log("Your Data is: "+ data.productCategory);
     console.log("Your Data is: "+ data.productShape);
+    this.wizard.navigation.goToNextStep();
+  }
 
+  getSelectProductData(data: any) {
+    console.log(data);
+    this.wizard.navigation.goToNextStep();
+  }
+
+  getOtherDetailsData(data: any) {
+    console.log(data);
   }
 
 }

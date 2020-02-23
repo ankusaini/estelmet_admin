@@ -1,15 +1,21 @@
-<form #validationForm="ngForm" class="editForm" novalidate>
+<form [formGroup]="otherDeatilsForm" class="editForm" novalidate>
     <div class="row">
       <div class="col-md-3">
         <div class="form-group">
           <label for="validationCustom02">Gross Quantity</label>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="form-control" placeholder="" formControlName="grossQuantity">
+          <small *ngIf="f.grossQuantity.value == '' && (f.grossQuantity.dirty || f.grossQuantity.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                        >This field is required.</small>
+          <small *ngIf="f.grossQuantity.value !== '' && !f.grossQuantity.valid " id="passwordHelpBlock" class="form-text text-muted"
+                      >This field only accepts numbers and this symbol:.</small>
         </div>
       </div>
       <div class="col-md-3">
         <div class="form-group">
           <label for="validationCustom02">Location</label>
-          <input type="text" class="form-control" placeholder="">
+          <input type="text" class="form-control" placeholder=""formControlName="location">
+          <small *ngIf="f.location.value == '' && (f.location.dirty || f.location.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                        >This field is required.</small>
         </div>
       </div>
       <div class="col-md-3">
@@ -17,10 +23,17 @@
           <label for="validationCustom02">Thickness Range</label>
           <div class="row">
             <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Min">
+              <input type="text" class="form-control" placeholder="Min" formControlName="thicknessMin" >
+              <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.dirty || f.thicknessMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                        >This field is required.</small>
             </div>
             <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Max">
+                <input type="text" class="form-control" placeholder="Max" formControlName="thicknessMax" >
+                <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.dirty || f.thicknessMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                        >This field is required.</small>
+                        <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+                        >Maximum thickness should be greater than minimum thickness.</small
+                      >
             </div>
           </div>
         </div>
@@ -30,10 +43,17 @@
           <label for="validationCustom02">Width Range</label>
           <div class="row">
               <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="Min">
+                <input type="text" class="form-control" placeholder="Min" formControlName="widthMin">
+                <small *ngIf="f.widthMin.value == '' && (f.widthMin.dirty || f.widthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                        >This field is required.</small>
               </div>
               <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Max">
+                  <input type="text" class="form-control" placeholder="Max" formControlName="widthMax">
+                  <small *ngIf="f.widthMax.value == '' && (f.widthMax.dirty || f.widthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                        >This field is required.</small>
+                        <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+                  >Maximum width should be greater than minimum width.</small
+                >
               </div>
             </div>
         </div>
@@ -43,6 +63,6 @@
   <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-success btn-sm">Send for Approval</button>
+      <button type="button" class="btn btn-success btn-sm" (click)="submitOtherDetailsForm()">Send for Approval</button>
     </div>
   </div>
