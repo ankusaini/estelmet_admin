@@ -21,10 +21,10 @@ export class SalesServiceService {
         });
     }
 
-    public updateRequestObject(path,requestObj:RequestP):Observable<ResponseP>
+    public updateRequestObject(url,requestObj:RequestP):Observable<ResponseP>
   {
     return new Observable<ResponseP>(obs=>{
-      this._apiService.put(path,requestObj).subscribe(res=>{
+      this._apiService.put(url,requestObj).subscribe(res=>{
         obs.next(res);
       });
     });
@@ -57,6 +57,15 @@ export class SalesServiceService {
   getAllProductByProductStageAndStatus(url) {
     return new Observable<Product[]>(obs => {
       this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  public findRequstObjectById(url)
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.get(url).subscribe(res=>{
         obs.next(res);
       });
     });

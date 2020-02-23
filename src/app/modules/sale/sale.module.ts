@@ -22,6 +22,7 @@ import { CreateSoIdTradeleadComponent } from './components/create-so-id-tradelea
 import { SelectProductTradeleadComponent } from './components/select-product-tradelead/select-product-tradelead.component';
 import { OtherDetailsTradeleadComponent } from './components/other-details-tradelead/other-details-tradelead.component';
 import { ShareModule } from 'src/app/shared/shared.module';
+import { SoEditComponent } from './pages/directSales/so-edit/so-edit.component';
 
 
 
@@ -56,7 +57,8 @@ import { ShareModule } from 'src/app/shared/shared.module';
     CreateTradleadComponent,
     CreateSoIdTradeleadComponent,
     SelectProductTradeleadComponent,
-    OtherDetailsTradeleadComponent
+    OtherDetailsTradeleadComponent,
+    SoEditComponent
   ]
 })
 export class SaleModule { }
