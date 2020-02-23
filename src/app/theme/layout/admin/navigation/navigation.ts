@@ -479,13 +479,13 @@ const NavigationItems = [
             url: '/processing/searchProcessing',
             target: false,
           },
-          {
-            id: 'processingOverview',
-            title: 'Processing Overview',
-            type: 'item',
-            url: '/processing/processingOverview',
-            target: false,
-          },
+          // {
+          //   id: 'processingOverview',
+          //   title: 'Processing Overview',
+          //   type: 'item',
+          //   url: '/processing/processingOverview',
+          //   target: false,
+          // },
           {
             id: 'approvalProcessing',
             title: 'Processing Approval',
@@ -493,13 +493,13 @@ const NavigationItems = [
             url: '/processing/processingApproval',
             target: false,
           },
-          {
-            id: 'EditProcessing',
-            title: 'Edit Processing',
-            type: 'item',
-            url: '/processing/editProcessing',
-            target: false,
-          },
+          // {
+          //   id: 'EditProcessing',
+          //   title: 'Edit Processing',
+          //   type: 'item',
+          //   url: '/processing/editProcessing',
+          //   target: false,
+          // },
           {
             id: 'COProcessing',
             title: 'CO to Processing',
@@ -523,42 +523,42 @@ const NavigationItems = [
     title: 'Sales',
     type: 'group',
     children: [
-      {
-        id: 'salesLead',
-        title: 'Sales Lead',
-        type: 'collapse',
-        icon: 'feather icon-layout',
-        children: [
-          {
-            id: 'createSalesLead',
-            title: 'Create Sales lead',
-            type: 'item',
-            url: '/salesLead/createSalesLead',
-            target: false,
-          },
-          {
-            id: 'searchSalesLead',
-            title: 'Search Sales lead',
-            type: 'item',
-            url: '/salesLead/searchSalesLead',
-            target: false,
-          },
-          {
-            id: 'OverviewSalesLead',
-            title: 'Sales lead Overview',
-            type: 'item',
-            url: '/salesLead/slOverview',
-            target: false,
-          },
-          {
-            id: 'EditSalesLead',
-            title: 'Edit Sales lead',
-            type: 'item',
-            url: '/salesLead/editSl',
-            target: false,
-          }
-        ]
-      },
+      // {
+      //   id: 'salesLead',
+      //   title: 'Sales Lead',
+      //   type: 'collapse',
+      //   icon: 'feather icon-layout',
+      //   children: [
+      //     {
+      //       id: 'createSalesLead',
+      //       title: 'Create Sales lead',
+      //       type: 'item',
+      //       url: '/salesLead/createSalesLead',
+      //       target: false,
+      //     },
+      //     {
+      //       id: 'searchSalesLead',
+      //       title: 'Search Sales lead',
+      //       type: 'item',
+      //       url: '/salesLead/searchSalesLead',
+      //       target: false,
+      //     },
+      //     {
+      //       id: 'OverviewSalesLead',
+      //       title: 'Sales lead Overview',
+      //       type: 'item',
+      //       url: '/salesLead/slOverview',
+      //       target: false,
+      //     },
+      //     {
+      //       id: 'EditSalesLead',
+      //       title: 'Edit Sales lead',
+      //       type: 'item',
+      //       url: '/salesLead/editSl',
+      //       target: false,
+      //     }
+      //   ]
+      // },
       {
         id: 'salesTab',
         title: 'Sales',
@@ -719,34 +719,34 @@ const NavigationItems = [
               },
             ]
           },
-          {
-            id: 'customerOrder',
-            title: 'Customer Order (CO)',
-            type: 'collapse',
-            children: [
-              {
-                id: 'createCustomerOrder',
-                title: 'Create CO LOT Id',
-                type: 'item',
-                url: '/sales/createCO',
-                target: false,
-              },
-              {
-                id: 'SearchCustomerOrder',
-                title: 'Search & View CO LOT',
-                type: 'item',
-                url: '/sales/searchCo',
-                target: false,
-              },
-              {
-                id: 'overviewCustomerOrder',
-                title: 'CO LOT Overview',
-                type: 'item',
-                url: '/layout/fixed',
-                target: false,
-              },
-            ]
-          },
+          // {
+          //   id: 'customerOrder',
+          //   title: 'Customer Order (CO)',
+          //   type: 'collapse',
+          //   children: [
+          //     {
+          //       id: 'createCustomerOrder',
+          //       title: 'Create CO LOT Id',
+          //       type: 'item',
+          //       url: '/sales/createCO',
+          //       target: false,
+          //     },
+          //     {
+          //       id: 'SearchCustomerOrder',
+          //       title: 'Search & View CO LOT',
+          //       type: 'item',
+          //       url: '/sales/searchCo',
+          //       target: false,
+          //     },
+          //     {
+          //       id: 'overviewCustomerOrder',
+          //       title: 'CO LOT Overview',
+          //       type: 'item',
+          //       url: '/layout/fixed',
+          //       target: false,
+          //     },
+          //   ]
+          // },
           {
             id: 'salesConfirmation',
             title: 'Sales Confirmation (SC)',
@@ -830,13 +830,13 @@ const NavigationItems = [
                 url: '/dispatch/searchDo',
                 target: false,
               },
-              {
-                id: 'overviewDeliveryOrder',
-                title: 'DO Overview',
-                type: 'item',
-                url: '/dispatch/doOverview',
-                target: false,
-              },
+              // {
+              //   id: 'overviewDeliveryOrder',
+              //   title: 'DO Overview',
+              //   type: 'item',
+              //   url: '/dispatch/doOverview',
+              //   target: false,
+              // },
               {
                 id: 'approvalDeliveryOrder',
                 title: 'DO Approval',
@@ -872,13 +872,13 @@ const NavigationItems = [
                 url: '/dispatch/searchSi',
                 target: false,
               },
-              {
-                id: 'overviewSalesInvoice',
-                title: 'SI Overview',
-                type: 'item',
-                url: '/dispatch/siOverview',
-                target: false,
-              },
+              // {
+              //   id: 'overviewSalesInvoice',
+              //   title: 'SI Overview',
+              //   type: 'item',
+              //   url: '/dispatch/siOverview',
+              //   target: false,
+              // },
               {
                 id: 'generateInvoice',
                 title: 'Invoice',

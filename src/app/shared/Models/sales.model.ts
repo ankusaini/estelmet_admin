@@ -2,7 +2,7 @@
 
 import { Status } from "src/app/shared/Models/user.model";
 
-export class Sales {
+export interface Sales {
   id: string;
   salesHistory: SalesHistory[];
   deliveryOrder: DeliveryOrder[];
@@ -47,7 +47,7 @@ export class Sales {
   widthRange: string;
 }
 
-export class SalesHistory {
+export interface SalesHistory {
     salesHistoryId: string;
     salesId: string;
     salesType: SalesType;
@@ -55,18 +55,10 @@ export class SalesHistory {
     createdDate: string;
     lastModifiedBy: string;
     lastModifiedDate: string;
-    constructor() {
-        this.salesHistoryId = '';
-        this.salesId = '';
-        this.salesType = null;
-        this.createdBy = '';
-        this.createdDate = '';
-        this.lastModifiedBy = '';
-        this.lastModifiedDate = '';
-    }
+    
 }
 
-export class DeliveryOrder {
+export interface DeliveryOrder {
     deliveryOrderId: string;
     status: Status;
     deliveryOrderType: SalesType;
@@ -111,7 +103,7 @@ export class DeliveryOrder {
 
 }
 
-export class Invoice {
+export interface Invoice {
     invoiceId: string;
     driverName: string;
     companyCINNo: string;

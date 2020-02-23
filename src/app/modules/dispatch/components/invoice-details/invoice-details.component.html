@@ -1,0 +1,123 @@
+<form class="editForm" [formGroup]="invoiceDetails" >
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Customer Id <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-3">
+                <select [value]="selectedName1.value" #selectedId1 formControlName="customerId" class="form-control" name="validation-category" required>
+                  <option value> Id</option>
+                  <option  *ngFor="let item of customerList"    [value]="item?.id"    >{{ item?.id }}</option>
+                  </select>
+              </div>
+              <div class="col-sm-5">
+                <select #selectedName1 [value]="selectedId1.value"  formControlName="customerId"   class="form-control" name="validation-pcId">
+                  <option value> Name</option>
+                  <option  *ngFor="let item of customerList"    [value]="item?.id"    >{{ item?.firstName }}</option>
+
+                </select>
+                <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click   Here!</a></small> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-3">
+                 <select [value]="selectedName2.value" (change)="selectedCompany(selectedId2.value)" #selectedId2 formControlName="sourceCompanyId" class="form-control" name="validation-category" required>
+                  <option value> Id</option>
+                  <option  *ngFor="let item of companyList"    [value]="item?.id"    >{{ item?.id }}</option>
+                  </select>
+              </div>
+              <div class="col-sm-5">
+                 <select #selectedName2 [value]="selectedId2.value"  formControlName="sourceCompanyId"  (change)="selectedCompany(selectedId2.value)" class="form-control" name="validation-pcId">
+                  <option value> Name</option>
+                  <option  *ngFor="let item of companyList"    [value]="item?.id"    >{{ item?.name }}</option>
+
+                </select>
+                <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Invoice No.</label>
+              <div class="col-sm-8">
+                  <input formControlName="invoiceNo" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div *ngIf="selectedCmp" class="col-md-5">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-3">
+                <select formControlName="sourceWarehouseId" [value]="selectedWarehouseName.value" #selectedWarehouseId class="form-control">
+                  <option value>Id</option>
+                  <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.id }}</option>
+                </select>
+              </div>
+              <div class="col-sm-5">
+                <select #selectedWarehouseName formControlName="sourceWarehouseId" [value]="selectedWarehouseId.value" class="form-control" name="validation-pcId">
+                  <option value> Name</option>
+                  <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.name }}</option>
+                </select>
+                <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!--  -->
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Material Description</label>
+                    <div class="col-sm-8">
+                        <input formControlName="materialDescription" type="text" class="form-control" placeholder="Material Description">
+                    </div>
+                  </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">No. of Coils/ Bundles</label>
+                    <div class="col-sm-8">
+                        <input formControlName="coilsBundle" type="text" class="form-control" placeholder="No. of Coils/ Bundles">
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-md-5">
+                  <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Invoice Gross Wt.</label>
+                      <div class="col-sm-8">
+                          <input formControlName="invoiceGrossWeight" type="text" class="form-control" placeholder="">
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                  <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Invoice Net Wt.</label>
+                      <div class="col-sm-8">
+                          <input formControlName="invoiceNetWeight" type="text" class="form-control" placeholder="">
+                      </div>
+                    </div>
+              </div>
+            </div>
+
+             <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
+        </div>
+      </div>
+      </form>

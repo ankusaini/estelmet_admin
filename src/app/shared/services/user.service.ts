@@ -88,9 +88,9 @@ export class UserService {
   {
     let formData = new FormData();
     formData.append('file', file);
-    console.log("formdata is",formData);
+   // console.log("formdata is",formData);
      return new Observable<any>(obs => {
-    this._apiService.postWithMedia(path,file).subscribe(res=>{
+    this._apiService.postWithMedia(path,formData).subscribe(res=>{
       console.log(res);
       obs.next(res.body);
     });

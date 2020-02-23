@@ -14,6 +14,7 @@ import { OtpComponent } from './components/otp/otp.component';
 import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
 import { PoListComponent } from './components/po-list/po-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { TransporterDoComponent } from './components/transporter-do/transporter-do.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     PurchasrListFullDetailsComponent,
     PoListComponent,
     UserListComponent,
+    TransporterDoComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
     PurchasrListFullDetailsComponent,
     MrListComponent,
     TransportDetailsComponent,
-    PoListComponent,UserListComponent
+    PoListComponent,UserListComponent,TransporterDoComponent
   ] 
 
   

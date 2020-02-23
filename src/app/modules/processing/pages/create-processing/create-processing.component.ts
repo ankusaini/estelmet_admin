@@ -109,7 +109,7 @@ export class CreateProcessingComponent implements OnInit {
           this.processing.productList=this.selectedProductList;
           this.processing.processingType=this.processingType;
           console.log("Full processning",this.processing)
-          let url="inventory/productProcessing/addProductProcessing";
+          let url="/inventory/productProcessing/addProductProcessing";
           this.processingService.addProcessing(url,this.processing).subscribe(data=>{
             this.toastr.success("Record saved successfully");
           },error=>{

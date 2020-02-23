@@ -96,14 +96,15 @@ export class PersonalDetailsComponent implements OnInit {
     if(this.uploadedFiles[0]){
       console.log("files",this.uploadedFiles[0]);
      // let path ="/employee/uploadFile/"+22;
-     let path ="/employee/uploadFile?userId="+22;
+     //let path ="/employee/uploadFile?userId="+22;
+      let path ="/employee/uploadFile";
       this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
            this.toastrService.error("success Upload photo!");
       },error=>{
 
       })
     } else {
-      this.toastrService.error("Error Upload photo!");
+      this.toastrService.error("Error Upload photo!");     
     }
 
   }

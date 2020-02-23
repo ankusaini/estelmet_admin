@@ -60,7 +60,7 @@ const routes: Routes = [
       },
       {
         path: 'dispatch',
-        loadChildren: () => import('./demo/dispatch/dispatch.module').then(module => module.DispatchModule)
+        loadChildren: () => import('./modules/dispatch/dispatch.module').then(module => module.DispatchModule)
       },
       {
         path: 'setup',
