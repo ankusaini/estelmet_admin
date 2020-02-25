@@ -9,6 +9,9 @@ import { SoApprovalComponent } from './pages/directSales/so-approval/so-approval
 import { CreateSoComponent } from './pages/directSales/create-so/create-so.component';
 import { CreateTradleadComponent } from './pages/websiteSales/create-tradlead/create-tradlead.component';
 import { SoEditComponent } from './pages/directSales/so-edit/so-edit.component';
+import { TlEditComponent } from './pages/websiteSales/tl-edit/tl-edit.component';
+import { CreateScComponent } from './pages/salesConfirmation/create-sc/create-sc.component';
+import { ScEditComponent } from './pages/salesConfirmation/sc-edit/sc-edit.component';
 
 
 const routes: Routes= [
@@ -44,7 +47,20 @@ const routes: Routes= [
         path: 'soApproval',
         component: SoApprovalComponent
     },
-]
+    {
+        path: 'createSc',
+        component: CreateScComponent
+    },
+    {
+        path: 'tlEdit/:id',
+        component: TlEditComponent
+    },
+    {
+        path: 'scEdit/:id',
+        component: ScEditComponent
+    }
+
+];
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
