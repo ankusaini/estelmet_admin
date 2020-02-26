@@ -71,5 +71,12 @@ export class SalesServiceService {
     });
   }
 
-  
+  public saveRequestObject(url,requestObj:RequestP):Observable<ResponseP>
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.post(url,requestObj).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
 }

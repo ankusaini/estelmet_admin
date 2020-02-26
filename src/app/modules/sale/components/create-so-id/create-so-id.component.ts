@@ -5,6 +5,7 @@ import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { ProductCategory, ProductShape } from 'src/app/shared/Models/product.model.';
 import { SalesServiceService } from '../../services/sales-service.service';
 import { ToastrService } from 'ngx-toastr';
+// import { RequestP } from 'src/app/shared/Models/RequestResponse';
 
 @Component({
   selector: 'app-create-so-id',
@@ -20,10 +21,17 @@ export class CreateSoIdComponent implements OnInit {
   public shapeList: ProductShape[];
   public selectedWarehouse:Warehouse;
   public selected_comapny:Company;
-
+  generatedSoId: string = '';
+  soIdForm: FormGroup;
+  selectedCategory: any;
+  selectedShape: any;
+  // request: RequestP = {};
 
   salesDto = new FormGroup({
     id : new FormControl(""),
+    type: new FormControl("SALES_OFFER_LOT"),
+    status: new FormControl("PENDING"),
+    title: new FormControl(""),
     companyName: new FormControl("", [Validators.required]),
     warehouseName: new FormControl("", [Validators.required]),
     productCategory: new FormControl("", [Validators.required]),
@@ -38,6 +46,10 @@ export class CreateSoIdComponent implements OnInit {
     this.getCategoryList();
     this.getShapeList();
 
+    this.soIdForm = new FormGroup({
+      title: new FormControl("", [Validators.required])
+    });
+
   }
 
   get f()
@@ -46,7 +58,7 @@ export class CreateSoIdComponent implements OnInit {
   }
 
   createSoIdSubmit() {
-    if(this.salesDto.valid) {
+    if(this.salesDto.valid && this.soIdForm.valid) {
       this.createSoId.emit(this.salesDto.value);
     } else {
       this.toastr.error("Error! Invalid Details.");
@@ -100,5 +112,29 @@ export class CreateSoIdComponent implements OnInit {
     console.log("warehouse",event.target.value);
     this.selectedWarehouse=this.selected_comapny.warehouse.filter(obj=>obj.id==event.target.value)[0];
     console.log("selectedWarehouse",this.selectedWarehouse);
+  }
+
+  generateSoId() {
+    if(this.salesDto.value.productCategory && this.salesDto.value.productShape) {
+     this.categoryList.map(category=> {
+        if(category.id == this.salesDto.value.productCategory) {
+           this.selectedCategory = category.productCategory;
+        }
+      });
+
+      this.shapeList.map(shape => {
+        if(shape.id == this.salesDto.value.productShape) {
+          this.selectedShape = shape.productShape;
+        }
+      });
+      console.log("Category is"+ this.selectedCategory + this.selectedShape);
+      this.salesDto.value.title = this.selectedCategory + "-" + this.selectedShape;
+      this.generatedSoId = this.salesDto.value.title;
+      console.log(this.salesDto.value.title);
+    }
+    // this.request.sales = this.salesDto.value;
+    // console.log(this.request); 
+    
+    // let url = "/sales/createSales";
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { ToastrService } from 'ngx-toastr';
 
@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SelectProductComponent implements OnInit {
   @Input() productList: Product[];
+  @Output() outputselectedList : EventEmitter<any> =new EventEmitter<any>();
   public selectedList: Product[] = [];
 
   constructor(private toastr: ToastrService) { }
@@ -25,7 +26,8 @@ export class SelectProductComponent implements OnInit {
 
   finalSubmit() {
     if(this.selectedList.length >0) {
-      alert("submitted!");
+      this.outputselectedList.emit(this.selectedList);
+      // alert("submitted!");
     }
     else {
       this.toastr.warning("Select at least one product!");
