@@ -1,0 +1,23 @@
+<app-card cardTitle="Create Auction Offer LOT" [options]="false">
+    <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+      <wizard-step stepTitle="Create Auction Offer Id" navigationSymbol="1">
+        <div class="row">
+          <div class="col-sm-12">
+            <h5>Create Auction Offer Id</h5>
+            <hr>
+            <app-create-auction-id (createAoId)=getAuctionIdData($event)></app-create-auction-id>
+            <!-- <app-create-so-id-tradelead
+                (createSoId)= "getCreateSoId($event)"
+                >
+            </app-create-so-id-tradelead> -->
+          </div> 
+        </div>
+      </wizard-step>
+      <wizard-step stepTitle="Select Product" navigationSymbol="2">
+        <app-select-product-tradelead (ouputSelectedList)="getSelectProductData($event)"></app-select-product-tradelead>
+      </wizard-step>
+      <!-- <wizard-step stepTitle="Other Details" navigationSymbol="3">
+        <app-other-details-tradelead (otherDetailsData)="getOtherDetailsData($event)"></app-other-details-tradelead>
+      </wizard-step> -->
+    </wizard>
+  </app-card>

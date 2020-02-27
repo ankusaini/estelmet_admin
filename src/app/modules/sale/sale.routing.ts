@@ -12,6 +12,8 @@ import { SoEditComponent } from './pages/directSales/so-edit/so-edit.component';
 import { TlEditComponent } from './pages/websiteSales/tl-edit/tl-edit.component';
 import { CreateScComponent } from './pages/salesConfirmation/create-sc/create-sc.component';
 import { ScEditComponent } from './pages/salesConfirmation/sc-edit/sc-edit.component';
+import { SearchAuctionComponent } from './pages/websiteSales/search-auction/search-auction.component';
+import { CreateAuctionComponent } from './pages/websiteSales/create-auction/create-auction.component';
 
 
 const routes: Routes= [
@@ -58,9 +60,60 @@ const routes: Routes= [
     {
         path: 'scEdit/:id',
         component: ScEditComponent
+    },
+    {
+        path: 'searchAuction',
+        component: SearchAuctionComponent
+    },
+    {
+        path: 'createAuction',
+        component: CreateAuctionComponent
     }
 
 ];
+
+// children: [
+//     {
+//       id: 'createAuctionOffer',
+//       title: 'Create Auction LOT',
+//       type: 'item',
+//       // url: '/layout/static',
+//       url: '/createAuction',
+//       target: false,
+//     },
+//     {
+//       id: 'searchAuctionOffer',
+//       title: 'Search Auction LOT',
+//       type: 'item',
+//       // url: '/layout/static',
+//       url: '/searchAuction',
+//       target: false,
+//     },
+//     {
+//       id: 'scheduleAuctionOffer',
+//       title: 'Schedule Auction LOT',
+//       type: 'item',
+//       // url: '/layout/static',
+//       url: 'scheduleAuction',
+//       target: false,
+//     },
+//     {
+//       id: 'sendAuctionOffer',
+//       title: 'Send Auction Notification',
+//       type: 'item',
+//       // url: '/layout/static',
+//       url: 'sendAuctionOffer',
+//       target: false,
+//     },
+//     {
+//       id: 'overviewAuctionOffer',
+//       title: 'Auction Overview',
+//       type: 'item',
+//       // url: '/layout/static',
+//       url: 'overviewAuction',
+//       target: false,
+//     }
+//   ]
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]

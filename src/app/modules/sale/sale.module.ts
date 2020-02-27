@@ -30,6 +30,9 @@ import { SelectCustomerOrderIdComponent } from './components/select-customer-ord
 import { EnterCustomerDetailsComponent } from './components/enter-customer-details/enter-customer-details.component';
 import { CustomerOrderDetailsComponent } from './components/customer-order-details/customer-order-details.component';
 import { OtherDetailsComponent } from './components/other-details/other-details.component';
+import { CreateAuctionComponent } from './pages/websiteSales/create-auction/create-auction.component';
+import { SearchAuctionComponent } from './pages/websiteSales/search-auction/search-auction.component';
+import { CreateAuctionIdComponent } from './components/create-auction-id/create-auction-id.component';
 
 
 
@@ -72,7 +75,10 @@ import { OtherDetailsComponent } from './components/other-details/other-details.
     SelectCustomerOrderIdComponent,
     EnterCustomerDetailsComponent,
     CustomerOrderDetailsComponent,
-    OtherDetailsComponent
+    OtherDetailsComponent,
+    CreateAuctionComponent,
+    SearchAuctionComponent,
+    CreateAuctionIdComponent
   ]
 })
 export class SaleModule { }
