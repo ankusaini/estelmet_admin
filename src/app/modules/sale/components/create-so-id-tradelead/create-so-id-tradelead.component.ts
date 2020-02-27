@@ -20,9 +20,17 @@ export class CreateSoIdTradeleadComponent implements OnInit {
   public selectedWarehouse:Warehouse;
   public selected_comapny:Company;
 
+  generatedTlId: string = '';
+  tlIdForm: FormGroup;
+  selectedCategory: any;
+  selectedShape: any;
+
 
   salesDto = new FormGroup({
     id : new FormControl(""),
+    type: new FormControl("TRADE_LEAD_LOT"),
+    status: new FormControl("PENDING"),
+    title: new FormControl(""),
     companyName: new FormControl("", [Validators.required]),
     warehouseName: new FormControl("", [Validators.required]),
     productCategory: new FormControl("", [Validators.required]),
@@ -37,6 +45,11 @@ export class CreateSoIdTradeleadComponent implements OnInit {
     this.getCompanyList();
     this.getCategoryList();
     this.getShapeList();
+
+    this.tlIdForm = new FormGroup({
+      title: new FormControl("", [Validators.required])
+    });
+
   }
 
   get f()
@@ -100,5 +113,26 @@ export class CreateSoIdTradeleadComponent implements OnInit {
    this.selectedWarehouse=this.selected_comapny.warehouse.filter(obj=>obj.id==event.target.value)[0];
    console.log("selectedWarehouse",this.selectedWarehouse);
  }
+
+ generateTlId() {
+  if(this.salesDto.value.productCategory && this.salesDto.value.productShape) {
+   this.categoryList.map(category=> {
+      if(category.id == this.salesDto.value.productCategory) {
+         this.selectedCategory = category.productCategory;
+      }
+    });
+
+    this.shapeList.map(shape => {
+      if(shape.id == this.salesDto.value.productShape) {
+        this.selectedShape = shape.productShape;
+      }
+    });
+    console.log("Category is"+ this.selectedCategory + this.selectedShape);
+    this.salesDto.value.title = this.selectedCategory + "-" + this.selectedShape;
+    this.generatedTlId = this.salesDto.value.title;
+    console.log(this.salesDto.value.title);
+  }
+}
+
 
 }

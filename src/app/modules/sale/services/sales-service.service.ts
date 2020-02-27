@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { RequestP, ResponseP } from 'src/app/shared/Models/RequestResponse';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { ProductCategory, ProductShape, Product } from 'src/app/shared/Models/product.model.';
+import { User } from 'src/app/shared/Models/user.model';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class SalesServiceService {
 
   constructor(private _apiService: ApiService) { }
 
-    getAllSalesByTypeAndStatus(url): Observable<any> {
+    public getAllSalesByTypeAndStatus(url): Observable<any> {
         return new Observable<any>( obs => {
             this._apiService.get(url).subscribe( res => {
                 obs.next(res);
@@ -30,7 +31,7 @@ export class SalesServiceService {
     });
   }
 
-  getAllCompany(url) {
+  public getAllCompany(url) {
     return new Observable<Company[]>(obs => {
       this._apiService.get(url).subscribe(res => {
         obs.next(res);
@@ -38,7 +39,7 @@ export class SalesServiceService {
     });
   }
 
-  getProductCategory(url) {
+  public getProductCategory(url) {
     return new Observable<ProductCategory[]>(obs => {
       this._apiService.get(url).subscribe(res => {
         obs.next(res);
@@ -46,7 +47,7 @@ export class SalesServiceService {
     });
   }
 
-  getProductShape(url) {
+  public getProductShape(url) {
     return new Observable<ProductShape[]>(obs => {
       this._apiService.get(url).subscribe(res => {
         obs.next(res);
@@ -54,7 +55,7 @@ export class SalesServiceService {
     });
   }
 
-  getAllProductByProductStageAndStatus(url) {
+  public getAllProductByProductStageAndStatus(url) {
     return new Observable<Product[]>(obs => {
       this._apiService.get(url).subscribe(res => {
         obs.next(res);
@@ -79,4 +80,15 @@ export class SalesServiceService {
       });
     });
   }
+
+  public getAllUsersByUserRoleAndStatus(url) {
+    return new Observable<User[]>(obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+
+
 }

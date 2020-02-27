@@ -1,4 +1,4 @@
-<app-card cardTitle="Create Sales Confirmation" [options]="false">
+<!-- <app-card cardTitle="Create Sales Confirmation" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select Customer Order Id" navigationSymbol="1">
         <app-select-customer-order-id (outputSelected)="getProductData($event)" ></app-select-customer-order-id>
@@ -12,5 +12,22 @@
       <wizard-step stepTitle="Other Details" navigationSymbol="4">
         <app-other-details> </app-other-details>
       </wizard-step>
+    </wizard>
+  </app-card> -->
+
+  <app-card cardTitle="Create Sales Confirmation" [options]="false">
+    <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+      <wizard-step stepTitle="Select Customer Order Id" navigationSymbol="1">
+        <app-select-customer-order-id (outputSelected)="getProductData($event)" ></app-select-customer-order-id>
+      </wizard-step>
+      <wizard-step stepTitle="Generate Sales Confirmation Id" navigationSymbol="2">
+            <app-enter-customer-details [id]="selectedId" (scId)="getScId($event)"></app-enter-customer-details>
+      </wizard-step>
+      <wizard-step stepTitle="Transport Delivery Details" navigationSymbol="3">
+        <app-customer-order-details (transportData)="getTransportData($event)"></app-customer-order-details>
+      </wizard-step>
+      <!-- <wizard-step stepTitle="Other Details" navigationSymbol="4">
+        <app-other-details> </app-other-details>
+      </wizard-step> -->
     </wizard>
   </app-card>

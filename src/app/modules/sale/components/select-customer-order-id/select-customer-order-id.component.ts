@@ -33,9 +33,7 @@ export class SelectCustomerOrderIdComponent implements OnInit {
   }
 
   submitSelected() {
-    // alert("selected");
     if(this.selectedProduct) {
-      // alert("yes!");
       this.outputSelected.emit(this.selectedProduct);
     }else {
       this.toastr.error("Error! Select at least one");
