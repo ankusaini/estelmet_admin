@@ -35,7 +35,7 @@ export class CustomerOrderDetailsComponent implements OnInit {
       expectedDate: new FormControl(""),
       netWt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),      
       grossWt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-      coilsBundle: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+      coilsBundle: new FormControl("", [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
       materialDescription: new FormControl("", [Validators.minLength(3)]), 
       lorryNumber: new FormControl("", [CustomValidator.alphanumericSpecialCharacterValidate]),
       lorryType: new FormControl("")

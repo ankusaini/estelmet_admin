@@ -1,4 +1,4 @@
-<div class="user-profile user-card mb-4">
+`<div class="user-profile user-card mb-4">
     <div class="card-header border-0 p-0 pb-0">
       <div class="cover-img-block">
         <div class="overlay"></div>
@@ -22,11 +22,11 @@
                   (click)="this.activeTab = 'home'" id="home-tab" data-toggle="tab" href="javascript:" role="tab"
                   aria-controls="home" aria-selected="true"><i class="feather icon-home mr-2"></i>SC Details</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'profile'}"
                   (click)="this.activeTab = 'profile'" id="profile-tab" data-toggle="tab" href="javascript:" role="tab"
                   aria-controls="profile" aria-selected="false"><i class="feather icon-user mr-2"></i>Product Details</a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'contact'}"
                   (click)="this.activeTab = 'contact'" id="contact-tab" data-toggle="tab" href="javascript:" role="tab"
@@ -54,12 +54,12 @@
           <div class="merge-card">
             <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
               <h5 class="mb-0">SC Details</h5>
-              <button type="button"
+              <!-- <button type="button"
                 (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
                 class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
                 aria-expanded="false" aria-controls="pro-det-edit-1">
                 <i class="feather" [ngClass]="editProfileIcon"></i>
-              </button>
+              </button> -->
             </app-card>
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
               <div class="form-group row">
@@ -95,38 +95,7 @@
                   <select class="form-control" id="exampleFormControlSelect1">
                     <option value>CR</option>
                     <option value="1">HR</option>
-                    <option value="2">CR</option>
-                    <option value="3">GL</option>
-                    <option value="4">CC</option>
-                    <option value="5">EG</option>
-                    <option value="6">TP</option>
-                    <option value="7">TFS</option>
-                    <option value="8">BP</option>
-                    <option value="9">TPL</option>
-                    <option value="10">GALVALUM</option>
-                    <option value="11">MISPRINT</option>
-                    <option value="12">SCRC</option>
-                    <option value="13">TFS/LIKER</option>
-                    <option value="14">TP/LIKER</option>
-                    <option value="15">MIX</option>
-                    <option value="16">GA</option>
-                    <option value="17">GAJ</option>
-                    <option value="18">GI</option>
-                    <option value="19">COLOR</option>
-                    <option value="20">CR/GA</option>
-                    <option value="21">GI/GA</option>
-                    <option value="22">CRJ</option>
-                    <option value="23">GIJ</option>
-                    <option value="24">ALSTER</option>
-                    <option value="25">PVC/COLOR</option>
-                    <option value="26">PVC&amp;CB</option>
-                    <option value="27">BLANK</option>
-                    <option value="28">PVC-NON-CB</option>
-                    <option value="29">CR/GI</option>
-                    <option value="30">NON-CB</option>
-                    <option value="31">COLOR-CS</option>
-                    <option value="32">MATT</option>
-  
+                    
                   </select>
                 </div>
               </div>
@@ -136,18 +105,7 @@
                   <select class="form-control" id="exampleFormControlSelect1">
                     <option value>MWC</option>
                     <option value="1">SLC</option>
-                    <option value="2">MWC</option>
-                    <option value="3">2RC</option>
-                    <option value="4">MC</option>
-                    <option value="5">SC</option>
-                    <option value="6">FAPS</option>
-                    <option value="7">BAPS</option>
-                    <option value="8">US</option>
-                    <option value="9">FASS</option>
-                    <option value="11">BASS</option>
-                    <option value="12">SHEETS</option>
-                    <option value="13">NO</option>
-                    <option value="14">SLC / STS</option>
+                    
                   </select>
                 </div>
               </div>
@@ -173,7 +131,7 @@
             </app-card>
           </div>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
+        <!-- <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
           aria-labelledby="profile-tab">
           <div class="merge-card">
             <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
@@ -367,8 +325,8 @@
                   </select>
                 </div>
               </div>
-              <!--  -->
-              <div class="form-group row">
+                -->
+              <!-- <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Oiling</label>
                 <div class="col-sm-3">
                   <select class="form-control" id="exampleFormControlSelect1">
@@ -427,7 +385,7 @@
               </div>
             </app-card>
           </div>
-        </div>
+        </div> --> 
         <!-- transport -->
         <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'contact'}" id="contact" role="tabpanel"
           aria-labelledby="contact-tab">
@@ -504,89 +462,105 @@
               </div>
             </app-card>
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile3">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="CU-927" disabled>
-                </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
-                <div class="col-sm-3">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <select class="form-control" id="">
-                        <option value="1">TP-022</option>
-                        <option value="2">TP-352</option>
-                        <option value="3">TP-234</option>
-                      </select>
-                    </div>
-                    <div class="col-md-7">
-                      <select class="form-control" id="">
-                        <option value="1">Shri Transport Pvt Ltd.</option>
-                        <option value="2">Vidya Transport Pvt Ltd.</option>
-                        <option value="3">Kamal Transport Pvt Ltd.</option>
-                      </select>
-                    </div>
+              <form [formGroup]="transportForm" (ngSubmit)="updateTransportData()">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" disabled formControlName="customerId">
+                  </div>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Transport Id</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" disabled formControlName="transportId">
                   </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
-                <div class="col-sm-3">
-                  <input type="date" class="form-control" placeholder="" value="20/12/2019">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
+                  <div class="col-sm-3">
+                    <input type="date" class="form-control" placeholder="" formControlName="expectedDate">
+                  </div>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="netWt">
+                    <small *ngIf="f.netWt.value == '' && (f.netWt.dirty || f.netWt.touched)"
+              id="validation-warehouseName-error"
+              class="form-text text-muted">
+              This field should be required.
+            </small>
+          <small *ngIf="f.netWt.value !== '' && !f.netWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+                        >This field accept only numeric data.</small
+                      >
+                  </div>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="+91 - 9871776756">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="grossWt">
+                    <small *ngIf="f.grossWt.value == '' && (f.grossWt.dirty || f.grossWt.touched)"
+              id="validation-warehouseName-error"
+              class="form-text text-muted">
+              This field should be required.
+            </small>
+          <small *ngIf="f.grossWt.value !== '' && !f.grossWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+          >This field accept only numeric data.</small
+        >
+                  </div>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Number of Coils/Bundles</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="coilsBundle">
+                    <small *ngIf="f.coilsBundle.value == '' && (f.coilsBundle.dirty || f.coilsBundle.touched)"
+              id="validation-warehouseName-error"
+              class="form-text text-muted">
+              This field should be required.
+            </small>
+            <small *ngIf="f.coilsBundle.value !== '' && !f.coilsBundle.valid " id="passwordHelpBlock" class="form-text text-muted"
+          >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+        >
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="20.84 Mt.">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="materialDescription">
+                    <small *ngIf="f.materialDescription.value !== '' && !f.materialDescription.valid" id="passwordHelpBlock" class="form-text text-muted"
+                  >Material Description should be more than 2 characters.</small>
+                  </div>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Lorry Number</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="lorryNumber">
+                    <small *ngIf="f.lorryNumber.value !== '' && !f.lorryNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+          >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+        >
+                  </div>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value=" 20.84 Mt.">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Lorry Type
+                  </label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" disabled formControlName="lorryType">
+                  </div>
+                  <!-- <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" value="MH 2AS 9833">
+                  </div> -->
                 </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="CR-MWC">
+                <!-- <div class="form-group row">
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name
+                  </label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" value="Ramesh Aggarwal">
+                  </div>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
+                  <div class="col-sm-3">
+                    <input type="text" class="form-control" placeholder="" value="+91-9978262522">
+                  </div>
+                </div> -->
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"></label>
+                  <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="2 Coils, 3 Bundles">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Container Number
-                </label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="937KDJ89783">
-                </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="MH 2AS 9833">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name
-                </label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="Ramesh Aggarwal">
-                </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" placeholder="" value="+91-9978262522">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label"></label>
-                <div class="col-sm-9">
-                  <button type="button" class="btn btn-primary">Save</button>
-                </div>
-              </div>
+              </form>
             </app-card>
           </div>
         </div>
