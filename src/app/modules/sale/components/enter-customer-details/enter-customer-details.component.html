@@ -1,0 +1,209 @@
+<div class="row">
+  <div class="col-md-12">
+    <h5 class="m-t-20">Generate SC Id </h5>
+        <hr/>
+        <form [formGroup]="scIdForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label mt-2">Sales Confirmation Id</label>
+                    <div class="col-sm-3">
+                        <input type="text" [(ngModel)]="generatedScId" class="form-control" id="inputEmail3" placeholder="" formControlName="title" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit"  (click)="generateScId()" class="btn btn-success primary btn-sm">Generate SC Id</button>
+        <label>Your SC id is :  {{generatedScId}}</label>
+      </form>
+
+    <div class="col-sm-12 centered-content">
+      <div class="btn-group mt-10">
+        <button 
+          type="submit" 
+          (click)="submitScId()"
+          class="btn btn-primary btn-sm" 
+          uiSref="work" 
+          
+        >
+          Continue
+        </button>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="row">
+    <div class="col-md-5">
+      <h5>Customer Company Detail</h5>
+      <hr>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+            class="asterik_sign">*</small></label>
+        <div class="col-sm-3"> -->
+          <!-- [ngClass]="{'is-invalid': !customerId.valid && (customerId.dirty || customerId.touched || isSubmit)}" -->
+          <!-- <select class="form-control" name="validation-customerId"
+             required > -->
+
+
+             <!-- #customerId="ngModel"  [(ngModel)]="formInput.customerId" -->
+
+
+            <!-- <option value>Id</option>
+            <option value="1">CU-#121</option>
+            <option value="2">CU-#564</option>
+            <option value="3">CU-#754</option>
+          </select> -->
+
+
+          <!-- <label *ngIf="!customerId.valid && (customerId.dirty || customerId.touched || isSubmit)"
+            id="validation-customerId-error"
+            class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
+
+
+        <!-- </div>
+        <div class="col-sm-5">
+          <select class="form-control" name="validation-pcId">
+            <option value> Name</option>
+            <option value="1">Kamles</option>
+            <option value="2">Rajinder</option>
+            <option value="3">Diljeet</option>
+            <option value="4">Mannu</option>
+            <option value="5">Amjad</option>
+          </select>
+          <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <h5>Own Company Detail</h5>
+      <hr>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+            class="asterik_sign">*</small></label>
+        <div class="col-sm-3"> -->
+
+
+          <!-- [ngClass]="{'is-invalid': !companyId.valid && (companyId.dirty || companyId.touched || isSubmit)}" -->
+
+
+          <!-- <select class="form-control" name="validation-companyId"
+           
+             required > -->
+
+
+            <!-- [(ngModel)]="formInput.companyId"  #companyId="ngModel" -->
+
+
+            <!-- <option value>Id</option>
+            <option value="1">COMP-1</option>
+            <option value="2">COMP-2</option>
+            <option value="3">COMP-3</option>
+            <option value="4">COMP-4</option>
+          </select> -->
+          <!-- <label *ngIf="!companyId.valid && (companyId.dirty || companyId.touched || isSubmit)"
+            id="validation-companyId-error"
+            class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
+        <!-- </div>
+        <div class="col-sm-5">
+          <select class="form-control" name="validation-pcId">
+            <option value> Name</option>
+            <option value="1">GP Global Energy</option>
+            <option value="1">GP Global Asphalt</option>
+            <option value="1">GP Global Kimitsu</option>
+          </select>
+          <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Address</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Address</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!--  -->
+  <!-- <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pincode</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pincode</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!--  -->
+  <!-- <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">City</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">City</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!--  -->
+  <!-- <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">GST</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">GST</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 centered-content">
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary btn-sm" uiSref="work" 
+        nextStep>Continue</button>
+    </div>
+  </div> -->

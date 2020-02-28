@@ -1,0 +1,128 @@
+<form [formGroup]="salesDto" (submit)="createAoIdSubmit()">
+    <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">
+              Company Name <small class="asterik_sign">*</small>
+            </label>
+            <select 
+              class="form-control" 
+              name="validation-companyName"
+              (change)="selectedCompany($event.target.value)"
+              [ngClass]="{'is-invalid': false }"
+              formControlName="companyName" 
+              required >
+              <option value="" disabled>Select Company</option>
+              <option *ngFor="let company of companyList" [value]="company?.id">{{company?.name}}</option>
+            </select>
+            <small *ngIf="!f.companyName.valid && (f.companyName.dirty || f.companyName.touched)"
+              id="validation-companyName-error"
+              class="form-text text-muted">
+              Company Name should be required.
+            </small>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div *ngIf="selected_comapny"  class="col-md-5">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">
+              Warehouse Name <small class="asterik_sign">*</small>
+            </label>
+            <select 
+              class="form-control" 
+              name="validation-warehouse"
+              (change)="getSelectedWarehouse($event)"
+              [ngClass]="{'is-invalid': false }"
+              formControlName="warehouseName"
+              required >
+              <option value="" disabled>Select Warehouse</option>
+              <option *ngFor="let warehouse of selected_comapny.warehouse" [value]="warehouse?.id">{{warehouse?.name}}</option>
+            </select>
+            <small *ngIf="!f.warehouseName.valid && (f.warehouseName.dirty || f.warehouseName.touched)"
+              id="validation-warehouseName-error"
+              class="form-text text-muted">
+              Warehouse Name should be required.
+            </small>
+          </div>
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-xs-6">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">
+              Product Category <small class="asterik_sign">*</small>
+            </label>
+            <select 
+              class="form-control" 
+              name="validation-category"
+              [ngClass]="{'is-invalid': false }"
+              formControlName="productCategory"
+              required >
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let category of categoryList" [value]="category?.id">{{category?.productCategory}}</option>
+            </select>
+            <small *ngIf="!f.productCategory.valid && (f.productCategory.dirty || f.productCategory.touched)"
+              id="validation-category-error"
+              class="form-text text-muted">
+              Category should be required.
+            </small>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5 col-xs-6">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">
+              Product Shape <small class="asterik_sign">*</small>
+            </label>
+            <select 
+              class="form-control" 
+              name="validation-shape"
+              [ngClass]="{'is-invalid': false }"
+              formControlName="productShape" 
+              required >
+              <option value="" disabled>Select User</option>
+              <option *ngFor="let shape of shapeList" [value]="shape?.id">{{shape?.productShape}}</option>
+            </select>
+            <small *ngIf="!f.productShape.valid && (f.productShape.dirty || f.productShape.touched)"
+              id="validation-shape-error"
+              class="form-text text-muted">
+              Shape Name should be required.
+            </small>
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+
+    <h5 class="m-t-20">Generate Auction Offer Id </h5>
+        <hr/>
+        <form [formGroup]="AoIdForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label mt-2">Sales Auction Offer Id</label>
+                    <div class="col-sm-3">
+                        <input type="text" [(ngModel)]="generatedAoId" class="form-control" id="inputEmail3" placeholder="" formControlName="title" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit"  (click)="generateAoId()" class="btn btn-success primary btn-sm">Generate Auction Offer Id</button>
+        <label>Your Auction Offer id is :  {{generatedAoId}}</label>
+      </form>
+
+
+    <div class="col-sm-12 centered-content">
+      <div class="btn-group mt-10">
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-sm" 
+          uiSref="work" 
+          
+        >
+          Continue
+        </button>
+      </div>
+      </div>
+</form>
+

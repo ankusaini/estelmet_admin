@@ -1,12 +1,18 @@
 <div class="m-t-20">
-    <!-- <app-add-product-cart></app-add-product-cart> -->
+    <app-add-product-cart 
+      [productList]="productList"
+      (selectedProductList)= getSelectedList($event)
+      [component]="'sales'"
+    ></app-add-product-cart>
    </div>
  <div class="m-t-20">
-  <!-- <app-add-product-cart></app-add-product-cart> -->
+  <app-add-product-cart 
+    [productList]="selectedProductList">
+  </app-add-product-cart>
  </div>
   <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+      <button type="button" class="btn btn-primary btn-sm" (click)="submitSelectProductData()">Continue</button>
     </div>
   </div>

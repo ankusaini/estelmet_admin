@@ -23,6 +23,16 @@ import { SelectProductTradeleadComponent } from './components/select-product-tra
 import { OtherDetailsTradeleadComponent } from './components/other-details-tradelead/other-details-tradelead.component';
 import { ShareModule } from 'src/app/shared/shared.module';
 import { SoEditComponent } from './pages/directSales/so-edit/so-edit.component';
+import { TlEditComponent } from './pages/websiteSales/tl-edit/tl-edit.component';
+import { CreateScComponent } from './pages/salesConfirmation/create-sc/create-sc.component';
+import { ScEditComponent } from './pages/salesConfirmation/sc-edit/sc-edit.component';
+import { SelectCustomerOrderIdComponent } from './components/select-customer-order-id/select-customer-order-id.component';
+import { EnterCustomerDetailsComponent } from './components/enter-customer-details/enter-customer-details.component';
+import { CustomerOrderDetailsComponent } from './components/customer-order-details/customer-order-details.component';
+import { OtherDetailsComponent } from './components/other-details/other-details.component';
+import { CreateAuctionComponent } from './pages/websiteSales/create-auction/create-auction.component';
+import { SearchAuctionComponent } from './pages/websiteSales/search-auction/search-auction.component';
+import { CreateAuctionIdComponent } from './components/create-auction-id/create-auction-id.component';
 
 
 
@@ -58,7 +68,17 @@ import { SoEditComponent } from './pages/directSales/so-edit/so-edit.component';
     CreateSoIdTradeleadComponent,
     SelectProductTradeleadComponent,
     OtherDetailsTradeleadComponent,
-    SoEditComponent
+    SoEditComponent,
+    TlEditComponent,
+    CreateScComponent,
+    ScEditComponent,
+    SelectCustomerOrderIdComponent,
+    EnterCustomerDetailsComponent,
+    CustomerOrderDetailsComponent,
+    OtherDetailsComponent,
+    CreateAuctionComponent,
+    SearchAuctionComponent,
+    CreateAuctionIdComponent
   ]
 })
 export class SaleModule { }

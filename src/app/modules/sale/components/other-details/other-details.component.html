@@ -1,0 +1,164 @@
+<form #validationForm="ngForm" class="editForm" novalidate>
+    <app-card cardTitle="Terms & Condition Of Sales" [options]="false">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">1. GST applicable of Invoice Value</label>
+            <input type="text" class="form-control" placeholder="">
+            <small class="form-text text-muted">% Extra</small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">2. Loading & Unloading Charges</label>
+            <input type="text" class="form-control" placeholder="">
+            <small class="form-text text-muted">PMT Extra</small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">3. Packaging Charges</label>
+            <input type="text" class="form-control" placeholder="">
+            <small class="form-text text-muted">PMT Extra</small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">4. Delivery Charges</label>
+            <input type="text" class="form-control" placeholder="">
+            <small class="form-text text-muted">PMT Extra</small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">5. Any Other Charges</label>
+            <input type="text" class="form-control" placeholder="">
+            <small class="form-text text-muted">PMT Extra</small>
+          </div>
+        </div>
+      </div>
+    </app-card>
+    <app-card cardTitle="Contact Person Details" [options]="false">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">Contact Person Name</label>
+            <input type="text" class="form-control" placeholder="Enter Name">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="Enter Mobile">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">Whatsapp Number</label>
+            <input type="text" class="form-control" placeholder="Enter Whatsapp">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="validationCustom02">E-mail</label>
+            <input type="email" class="form-control" placeholder="Enter Email">
+          </div>
+        </div>
+      </div>
+    </app-card>
+    <app-card cardTitle="Transport Details" [options]="false">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Transporter Id</label>
+            <select class="form-control" name="validation-companyName">
+              <option value>Select Transporter Id</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Transport Reciept</label>
+            <input type="text" class="form-control" placeholder="Enter Reciept">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Vehicle Number</label>
+            <input type="text" class="form-control" placeholder="Enter Vehicle">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Container No.</label>
+            <input type="email" class="form-control" placeholder="Enter Container">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Source Gross Wt.</label>
+            <input type="email" class="form-control" placeholder="Enter Gross Wt.">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Source Net Wt.</label>
+            <input type="email" class="form-control" placeholder="Enter Net Wt.">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Driver Name</label>
+            <input type="text" class="form-control" placeholder="Enter Driver">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Driver Mobile</label>
+            <input type="text" class="form-control" placeholder="Enter Mobile">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Licence Number</label>
+            <input type="text" class="form-control" placeholder="Enter Licence">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Mode</label>
+            <select class="form-control" name="validation-companyName">
+              <option value>Select Mode</option>
+              <option value="1">Road</option>
+              <option value="2">Train</option>
+              <option value="3">Air</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Delivery </label>
+            <select class="form-control" name="validation-companyName">
+              <option value>Select Delivery</option>
+              <option value="1">Our Warehouse</option>
+              <option value="2">Customer Warehouse</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="validationCustom02">Any Other</label>
+            <input type="email" class="form-control" placeholder="Other">
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </form>
+  <div class="col-sm-12 centered-content m-t-20">
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-success btn-sm">Submit</button>
+    </div>
+  </div>
