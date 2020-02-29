@@ -71,4 +71,14 @@ export class DispatchService {
       });
     });
   }
+
+  public findRequstObjectById(url)
+  {
+    return new Observable<ResponseP>(obs=>{
+      this._apiService.get(url).subscribe(res=>{
+        obs.next(res);
+      });
+    });
+  }
+  
 }
