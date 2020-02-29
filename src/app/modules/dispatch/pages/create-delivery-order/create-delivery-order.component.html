@@ -8,11 +8,16 @@
               <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Select SC LOT Id<small class="asterik_sign">*</small></label>
               <div class="col-sm-6">
                   
-                     <select formControlName="salesId"  (change)="getLoadingId($event.target.value)"  class="form-control" name="validation-pcId">
-                  <option value=""> Select SC Id</option>
-                  <option  *ngFor="let item of salesLotList"    [value]="item?.id" >SC-{{ item?.id }}</option>
+                  <select formControlName="salesId"  (change)="getLoadingId($event.target.value)"  class="form-control" name="validation-pcId">
+                  <option value="" disabled> Select SC Id</option>
+                  <option  *ngFor="let item of salesLotList" [value]="item.id" >SC-{{ item.id }}</option>
 
                 </select>
+                <small *ngIf="f.salesId.value == '' && (f.salesId.dirty || f.salesId.touched)"
+              id="validation-companyName-error"
+              class="form-text text-muted">
+              This field should be required.
+            </small>
                     <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
               </div>
             </div>
@@ -22,10 +27,16 @@
                 <label for="inputEmail3"  class="col-sm-4 col-form-label mt-2">Create Loading Slip<small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
                     <select formControlName="deliveryOrderId" class="form-control">
-                        <option value="">Select Loading Id</option>
-                        <option *ngFor="let item of deliveryOrderList"  [value]="item?.id" >LS-{{ item?.deliveryOrderId }}</option>
+                        <option value="" disabled>Select Loading Id</option>
+                        <option *ngFor="let item of deliveryOrderList"  [value]="item.id" >LS-{{ item.deliveryOrderId }}</option>
                       </select>
+
                       <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                      <small *ngIf="f.deliveryOrderId.value == '' && (f.deliveryOrderId.dirty || f.deliveryOrderId.touched)"
+              id="validation-companyName-error"
+              class="form-text text-muted">
+              This field should be required.
+            </small>
                 </div>
               </div>
             </div>
@@ -33,18 +44,18 @@
            <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           
-          <button [disabled]="deliverOrderForm.invalid" type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="submitSelectScId()">Continue</button>
         </div>
       </div>
       </form>
      
     </wizard-step>
     <wizard-step stepTitle="Enter Sales Invoice Details" navigationSymbol="2">
-      <app-invoice-details></app-invoice-details>
+      <app-invoice-details (invoiceDetailsData)="getInvoiceData($event)"></app-invoice-details>
      
     </wizard-step>
     <wizard-step stepTitle="Transport Details" navigationSymbol="3">
-      <app-transporter-do></app-transporter-do>
+      <app-transporter-do (transportData)= "getTransportData($event)"></app-transporter-do>
     </wizard-step>
   </wizard>
 </app-card>

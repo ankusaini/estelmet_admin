@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy,ChangeDetectorRef, Output, EventEmitter } from "@angular/core";
 import { Company } from "src/app/shared/Models/company.model.";
 import { Warehouse } from   "src/app/shared/Models/warehouse";
 import {
@@ -18,9 +18,11 @@ import { User } from "src/app/shared/Models/user.model";
 @Component({
   selector: "app-invoice-details",
   templateUrl: "./invoice-details.component.html",
-  styleUrls: ["./invoice-details.component.scss"]
+  styleUrls: ["./invoice-details.component.scss"],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class InvoiceDetailsComponent implements OnInit {
+  @Output() invoiceDetailsData: EventEmitter<any> = new EventEmitter<any>();
   public companyList: Company[] = [];
  public selectedCmp: Company;
    public warehouseList: Warehouse[] = [];
@@ -88,6 +90,18 @@ export class InvoiceDetailsComponent implements OnInit {
       return element.id == value
     })
     this.selectedCmp = data[0];
-    this._cd.detectChanges();
+    // this._cd.detectChanges();
+  }
+
+  submitInvoiceDetails() {
+    if(this.invoiceDetails.valid) {
+      this.invoiceDetailsData.emit(this.invoiceDetails.value);
+    } else {
+      this.toastr.error("Error! Invalid details.");
+    }
+  }
+
+  get f() {
+    return this.invoiceDetails.controls;
   }
 }
