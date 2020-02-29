@@ -26,16 +26,16 @@ export class TransporterDoComponent implements OnInit {
 
   constructor( private userService: UserService,
     private toastr: ToastrService) {
-      this.transportDetails.statusChanges.subscribe(data=>{
-      // console.log(data);
-      if(data == 'VALID'){
-        console.log("data is: ", this.transportDetails.value);
-        this.transportData.emit(this.transportDetails.value);
-      } else {
-        console.log("data is: ", this.transportDetails.value);
-        this.transportData.emit({});
-      }
-    })
+    //   this.transportDetails.statusChanges.subscribe(data=>{
+    //   // console.log(data);
+    //   if(data == 'VALID'){
+    //     console.log("data is: ", this.transportDetails.value);
+    //     this.transportData.emit(this.transportDetails.value);
+    //   } else {
+    //     console.log("data is: ", this.transportDetails.value);
+    //     this.transportData.emit({});
+    //   }
+    // })
      }
 
        public transportDetails = new FormGroup({
@@ -71,6 +71,14 @@ export class TransporterDoComponent implements OnInit {
     }
      get f() {
     return this.transportDetails.controls;
+  }
+
+  addTransportDetails() {
+    if(this.transportDetails.valid) {
+      this.transportData.emit(this.transportDetails.value);
+    } else {
+      this.toastr.error("Error! Invalid details.");
+    }
   }
 
   }
