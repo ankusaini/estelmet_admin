@@ -11,9 +11,9 @@
       <div class="row">
         <div class="col-md-3 mt-md-4">
           <h3 class="f-24">Edit Delivery Order</h3>
-          <p class="m-b-5 text-dark f-w-600">DO Id : <span class="text-muted">DO-782,</span> <span
-              class="f-w-600 text-success"> Approved</span></p>
-          <p class="m-b-5 text-dark f-w-600">DO Title : <span class="text-muted">DO-CR-MWC</span></p>
+          <p class="m-b-5 text-dark f-w-600">DO Id : <span class="text-muted">DO-{{response?.deliveryOrder?.deliveryOrderId}},</span> <span
+              class="f-w-600 text-success"> {{response?.deliveryOrder?.status}}</span></p>
+          <p class="m-b-5 text-dark f-w-600">DO Title : <span class="text-muted">{{response?.deliveryOrder?.deliveryOrderType}}</span></p>
         </div>
         <div class="col-md-9 mt-md-4">
           <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
@@ -34,12 +34,12 @@
                 aria-controls="contact" aria-selected="false"><i class="feather icon-phone mr-2"></i>Transport
                 Details</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'gallery'}"
                 (click)="this.activeTab = 'gallery'" id="gallery-tab" data-toggle="tab" href="javascript:" role="tab"
                 aria-controls="gallery" aria-selected="false"><i class="feather icon-image mr-2"></i>Weigh Bridge
                 Details</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -56,40 +56,40 @@
         <div class="merge-card">
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
             <h5 class="mb-0">DO Details</h5>
-            <button type="button"
+            <!-- <button type="button"
               (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
               class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
               aria-expanded="false" aria-controls="pro-det-edit-1">
               <i class="feather" [ngClass]="editProfileIcon"></i>
-            </button>
+            </button> -->
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">DO Id</label>
               <div class="col-sm-3">
-                DO-902
+                DO-{{response?.deliveryOrder?.deliveryOrderId}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">LOT Id</label>
               <div class="col-sm-3">
-                LOT-902
+                LOT-{{response?.deliveryOrder?.salesId}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
               <div class="col-sm-9">
-                GP Global Steel
+                COM-{{response?.company?.id}}, {{response?.company?.name}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
               <div class="col-sm-9">
-                WAR-92, L24/L25 Taloja MIDC
+                WAR-{{response?.warehouse?.id}}, {{response?.warehouse?.address}}
               </div>
             </div>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
+          <!-- <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
               <div class="col-sm-9">
@@ -171,7 +171,7 @@
                 <button type="button" class="btn btn-primary">Save</button>
               </div>
             </div>
-          </app-card>
+          </app-card> -->
         </div>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
@@ -190,97 +190,124 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
               <div class="col-sm-3">
-                CU-927
+                CU-{{response?.deliveryOrder?.customerId}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
               <div class="col-sm-3">
-                COM-02
+                COM-{{response?.deliveryOrder?.sourceCompanyId}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Invoice No.</label>
               <div class="col-sm-3">
-                9378LKK927
+                {{response?.deliveryOrder?.invoiceNo}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
               <div class="col-sm-3">
-                WAR-02
+                WAR-{{response?.deliveryOrder?.sourceWarehouseId}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
               <div class="col-sm-3">
-                PCRC-MWC
+                {{response?.deliveryOrder?.materialDescription}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/ Bundles</label>
               <div class="col-sm-3">
-                2 Coils, 1 Bundle
+                {{response?.deliveryOrder?.coilsBundles}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Gross Wt.</label>
               <div class="col-sm-3">
-                22.87 Mt.
+                {{response?.deliveryOrder?.invoiceGrossWeight}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Net Wt.</label>
               <div class="col-sm-3">
-                20.87 Mt.
+                {{response?.deliveryOrder?.invoiceNetWeight}}
               </div>
             </div>
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile2">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1" disabled>
-                  <option value="1">CUP-90</option>
-                </select>
+            <form [formGroup]="invoiceDetailsForm" >
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" disabled formControlName="customerId" value="">
+                  <small *ngIf="f.customerId.value == '' && (f.customerId.dirty || f.customerId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+                  <!-- <select class="form-control" id="exampleFormControlSelect1" disabled>
+                    <option value="1">CUP-90</option>
+                  </select> -->
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" disabled formControlName="sourceCompanyId" value="">
+                  <small *ngIf="f.sourceCompanyId.value == '' && (f.sourceCompanyId.dirty || f.sourceCompanyId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                  <!-- <select class="form-control" id="exampleFormControlSelect1" disabled>
+                    <option value="1">COM-02</option>
+                  </select> -->
+                </div>
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1" disabled>
-                  <option value="1">COM-02</option>
-                </select>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Invoice No.</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="invoiceNo" value="">
+                  <small *ngIf="f.invoiceNo.value == '' && (f.invoiceNo.dirty || f.invoiceNo.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" disabled formControlName="sourceWarehouseId" value="">
+                  <small *ngIf="f.sourceWarehouseId.value == '' && (f.sourceWarehouseId.dirty || f.sourceWarehouseId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+                  <!-- <select class="form-control" id="exampleFormControlSelect1" disabled>
+                    <option value="1">COM-02</option>
+                  </select> -->
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice No.</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="9378LKK927">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="materialDescription" value="">
+                  <small *ngIf="f.materialDescription.value == '' && (f.materialDescription.dirty || f.materialDescription.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+        <small *ngIf="f.materialDescription.value !== '' && !f.materialDescription.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >Material Description should have minimum 3 length.</small
+          >
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/ Bundles</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="coilsBundle" value="">
+                  <small *ngIf="f.coilsBundle.value == '' && (f.coilsBundle.dirty || f.coilsBundle.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                  <small *ngIf="f.coilsBundle.value !== '' && !f.coilsBundle.valid " id="passwordHelpBlock" class="form-text text-muted"
+                      >This field only accepts numbers and this symbol:.</small
+                    >
+                </div>
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
-              <div class="col-sm-3">
-                <select class="form-control" id="exampleFormControlSelect1" disabled>
-                  <option value="1">COM-02</option>
-                </select>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Gross Wt.</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="invoiceGrossWeight" value="">
+                  <small *ngIf="f.invoiceGrossWeight.value == '' && (f.invoiceGrossWeight.dirty || f.invoiceGrossWeight.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                  >This field is required.</small>
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Net Wt.</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="invoiceNetWeight" value="">
+                  <small *ngIf="f.invoiceNetWeight.value == '' && (f.invoiceNetWeight.dirty || f.invoiceNetWeight.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="PCRC-MWC">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-1">
+                  <button type="submit" class="btn btn-primary" (click)="saveInvoiceDetails()">Save</button>&nbsp;
+                </div>
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/ Bundles</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="2 Coils, 1 Bundle">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Gross Wt.</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="22.87 Mt.">
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Net Wt.</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="20.87 Mt.">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label"></label>
-              <div class="col-sm-1">
-                <button type="button" class="btn btn-primary">Save</button>&nbsp;
-              </div>
-            </div>
+            </form>
           </app-card>
         </div>
       </div>
@@ -302,14 +329,14 @@
 
               <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
               <div class="col-sm-3">
-                TP-082
+                TP-{{response?.deliveryOrder?.transportId}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Reciept</label>
               <div class="col-sm-3">
-                44KJD886764
+                {{response?.deliveryOrder?.transportRecieptNo}}
               </div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
               <div class="col-sm-3">
                 20/12/2019
@@ -318,128 +345,159 @@
               <div class="col-sm-3">
                 #98487483
               </div>
-            </div>
+            </div> -->
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
               <div class="col-sm-3">
-                20.84 Mt.
+                {{response?.deliveryOrder?.grossWeight}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight </label>
               <div class="col-sm-3">
-                20.84 Mt.
+                {{response?.deliveryOrder?.netWeight}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Container Number</label>
               <div class="col-sm-3">
-                937KDJ89783
+                {{response?.deliveryOrder?.dLicence}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
               <div class="col-sm-3">
-                MH 2AS 9833
+               {{response?.deliveryOrder?.vehicleNo}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name</label>
               <div class="col-sm-3">
-                Ramesh Aggarwal
+                {{response?.deliveryOrder?.driverName}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
               <div class="col-sm-3">
-                +91-9978262522
+                {{response?.deliveryOrder?.dMobile}}
               </div>
             </div>
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile3">
-            <div class="form-group row">
+            <form [formGroup]="transportDetailsForm" (ngSubmit)="saveTransportDetails()">
+              <div class="form-group row">
 
-              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
-              <div class="col-sm-3">
-                <div class="row">
-                  <div class="col-md-5">
-                    <select class="form-control" id="">
-                      <option value="1">TP-022</option>
-                      <option value="2">TP-352</option>
-                      <option value="3">TP-234</option>
-                    </select>
-                  </div>
-                  <div class="col-md-7">
-                    <select class="form-control" id="">
-                      <option value="1">Shri Transport Pvt Ltd.</option>
-                      <option value="2">Vidya Transport Pvt Ltd.</option>
-                      <option value="3">Kamal Transport Pvt Ltd.</option>
-                    </select>
-                  </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" disabled formControlName="transportId" value="">
+                  <small *ngIf="f1.transportId.value == '' && (f1.transportId.dirty || f1.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small>
+                  <!-- <div class="row">
+                    <div class="col-md-5"> -->
+                      <!-- <select class="form-control" id="">
+                        <option value="1">TP-022</option>
+                        <option value="2">TP-352</option>
+                        <option value="3">TP-234</option>
+                      </select> -->
+  
+                    <!-- </div>
+                    <div class="col-md-7"> -->
+  
+                      <!-- <select class="form-control" id="">
+                        <option value="1">Shri Transport Pvt Ltd.</option>
+                        <option value="2">Vidya Transport Pvt Ltd.</option>
+                        <option value="3">Kamal Transport Pvt Ltd.</option>
+                      </select> -->
+                    <!-- </div>
+                  </div> -->
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Reciept</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="transportRecieptNo" value="">
+                  
+        <small *ngIf="f1.transportRecieptNo.value == '' && (f1.transportRecieptNo.dirty || f1.transportRecieptNo.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
                 </div>
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Reciept</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="44KJD886764">
+              <!-- <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
+                <div class="col-sm-3">
+                  <input type="date" class="form-control" placeholder="" value="20/12/2019">
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" value="+91 - 9871776756">
+                </div> -->
+              <!-- </div> -->
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="grossWt" value="">
+                  <small *ngIf="f1.grossWt.value !== '' && !f1.grossWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+                  >This field only accepts numbers and this symbol:.</small
+                >
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="netWt" value="">
+                  <small *ngIf="f1.netWt.value !== '' && !f1.netWt.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts numbers and this symbol:.</small
+          >
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
-              <div class="col-sm-3">
-                <input type="date" class="form-control" placeholder="" value="20/12/2019">
+              <!-- <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" value="CR-MWC">
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" value="2 Coils, 3 Bundles">
+                </div>
+              </div> -->
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Container Number
+                </label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="containerNumber" value="">
+                  <small *ngIf="f1.containerNumber.value == '' && (f1.containerNumber.dirty || f1.containerNumber.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
+                     <small *ngIf="f1.containerNumber.value !== '' && !f1.containerNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="lorryNumber" value="">
+                  <small *ngIf="f1.lorryNumber.value == '' && (f1.lorryNumber.dirty || f1.lorryNumber.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                     >This field is required.</small>
+                     <small *ngIf="f1.lorryNumber.value !== '' && !f1.lorryNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
+                </div>
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="+91 - 9871776756">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name
+                </label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="driverName" value="">
+                  <small *ngIf="f1.driverName.value == '' && (f1.driverName.dirty || f1.driverName.touched )" id="passwordHelpBlock" class="form-text text-muted"
+            >This field is required.</small>
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Licence Number</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" placeholder="" formControlName="driverName" value="">
+                  <small *ngIf="f1.licenceNumber.value !== '' && !f1.licenceNumber.valid " id="passwordHelpBlock" class="form-text text-muted"
+            >This field only accepts alphanumeric characters and these symbols: - . ( ) _</small
+          >
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="20.84 Mt.">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value=" 20.84 Mt.">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Material Description</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="CR-MWC">
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="2 Coils, 3 Bundles">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Container Number
-              </label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="937KDJ89783">
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="MH 2AS 9833">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name
-              </label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="Ramesh Aggarwal">
-              </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="" value="+91-9978262522">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label"></label>
-              <div class="col-sm-9">
-                <button type="button" class="btn btn-primary">Save</button>
-              </div>
-            </div>
+            </form>
           </app-card>
         </div>
       </div>
       <!-- weigh bridge -->
-      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
+      <!-- <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
         aria-labelledby="gallery-tab">
         <div class="merge-card">
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
@@ -525,7 +583,7 @@
             </div>
           </app-card>
         </div>
-      </div>
+      </div> -->
       <!--  -->
     </div>
   </div>

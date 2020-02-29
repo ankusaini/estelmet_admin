@@ -63,7 +63,7 @@ const routes: Routes = [
         component: SiOverviewComponent,
     },
     {
-        path: 'doEdit',
+        path: 'doEdit/:id',
         component: DoEditComponent,
     },
     {
