@@ -4,6 +4,7 @@ import { HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { DeliveryOrder, Invoice } from "src/app/shared/Models/sales.model";
 import { RequestP, ResponseP } from "src/app/shared/Models/RequestResponse";
+import { Product } from 'src/app/shared/Models/product.model.';
 @Injectable({
   providedIn: "root"
 })
@@ -44,6 +45,17 @@ export class DispatchService {
     });
   }
 
+  public updateProductObject(
+    path,
+    requestObj: Product[]
+  ): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this._apiService.put(path, requestObj).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
   public getAllSalesByTypeAndStatus(path): Observable<any> {
     return new Observable<any>(obs => {
       this._apiService.get(path).subscribe(res => {
@@ -52,4 +64,11 @@ export class DispatchService {
     });
   }
 
+  public getAllProductsByTypeAndStatus(path): Observable<Product[]> {
+    return new Observable<Product[]>(obs => {
+      this._apiService.get(path).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
 }

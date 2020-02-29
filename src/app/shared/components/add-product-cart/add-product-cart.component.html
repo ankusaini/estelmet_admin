@@ -8,6 +8,7 @@
               <tr>
                 <!-- <th><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="customCheck1"><label class="custom-control-label" for="customCheck1"></label></div></th> -->
                 <th>Sr. No.</th>
+                <th>Product Id</th>
                 <th>Type</th>
                 <th>Category</th>
                 <th>Shape</th>
@@ -29,12 +30,13 @@
                 <th>Gross Wt.</th>
                 <th>Net Wt.</th>
                 <th>Remarks</th>
-                <th>Action</th>
+                <th *ngIf= "component !== 'dispatch'">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr href="kdkd" *ngFor="let product of productList;let i = index">
               <td (click)="navigateToEdit(product.productId)">{{i+1}}</td>
+              <td>{{product.productId}}</td>
               <td>{{product.productType?.productType}}</td>
               <td>{{product.productCategory?.productCategory}}</td>
               <td>{{product.productShape?.productShape}}</td>
@@ -56,7 +58,7 @@
                <td>{{product.gwt}}</td>
                <td>{{product.nwt}}</td>
                <td>{{product.remarks}}</td>
-              <td>
+              <td *ngIf="component!== 'dispatch'">
                 <!-- <span class="badge badge-light-success">{{user.status}}</span> -->
                 <div class="overlay-edit">
                   <button 
