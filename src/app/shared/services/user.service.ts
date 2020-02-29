@@ -19,6 +19,15 @@ export class UserService {
     });
   }
 
+
+   getAllUsersForDashboard(url): Observable<User[]> {
+    return new Observable<User[]>(obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
   getAllUserByUserGroupRoleAndStatus(url): Observable<UserGroup[]> {
     return new Observable<UserGroup[]>(obs => {
       this._apiService.get(url).subscribe(res => {
