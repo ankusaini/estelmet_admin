@@ -29,7 +29,8 @@ export class SearchViewDoComponent implements OnInit {
 
   constructor(
     private dispatchService: DispatchService,
-    private router : Router,private toastr:ToastrService
+    private router : Router,
+    private toastr:ToastrService
   ) {}
 
   ngOnInit() {
@@ -68,6 +69,10 @@ removedeliveryOrder(id) {
   {
   this.selectdeliveryOrder.splice(index, 1);
   }
+}
+
+navigateToEdit(id) {
+  this.router.navigateByUrl("/dispatch/doEdit/" + id);
 }
 
 }

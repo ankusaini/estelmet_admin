@@ -21,7 +21,7 @@
             <tbody>
                 <tr *ngFor="let delivery of deliveryOrderlist ;let i = index">
                   <td>{{i+1}}.</td>
-                  <td>DO-{{delivery.deliveryOrderId}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">DO-{{delivery.deliveryOrderId}}</td>
                   <td>{{delivery.deliveryOrderType}}</td>
                   <td>CU-{{delivery.customerId}}</td>
                   <td>TU-{{delivery.transportId}}</td>
