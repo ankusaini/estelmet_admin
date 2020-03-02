@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <app-card [hidHeader]="false" cardTitle="Search & Select PO " [options]="false" cardClass="user-profile-list">
-     <app-po-list (selectedPO)="getSelectedPO()"></app-po-list>
+     <app-po-list (selectedPO)="getSelectedPO($event)"></app-po-list>
     </app-card>
   </div>
 </div>

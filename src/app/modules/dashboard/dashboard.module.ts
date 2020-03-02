@@ -7,11 +7,19 @@ import { DashCrmComponent } from "src/app/modules/dashboard/pages/dash-crm/dash-
 import { DashProjectComponent } from "src/app/modules/dashboard/pages/dash-project/dash-project.component";
 import { DashAnalyticsComponent } from "src/app/modules/dashboard/pages/dash-analytics/dash-analytics.component";import { SharedModule } from "src/app/theme/shared/shared.module";
 import { ShareModule } from "src/app/shared/shared.module";
+import { DashProcessingComponent } from "../dashboard/pages/dash-processing/dash-processing.component";
 
 
 
 @NgModule({
-  declarations: [DashDefaultComponent,DashSaleComponent,DashCrmComponent,DashProjectComponent,DashAnalyticsComponent],
+  declarations: [
+    DashDefaultComponent,
+    DashSaleComponent,
+    DashCrmComponent,
+    DashProjectComponent,
+    DashAnalyticsComponent,
+    DashProcessingComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,

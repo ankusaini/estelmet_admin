@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormInput } from 'src/app/demo/sales/customer-order/customer-order-form-model';
 import { WizardComponent } from 'ng2-archwizard/dist';
 import { Sales, SalesType } from 'src/app/shared/Models/sales.model';
 import { Status } from 'src/app/shared/Models/user.model';
@@ -20,7 +19,6 @@ export class CreateScComponent implements OnInit {
   
   showGroup = true;
   public isSubmit: boolean;
-  formInput: FormInput;
   selectedId: any;
   selectedSaleData: Sales;
   public scId : any;

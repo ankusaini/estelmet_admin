@@ -55,6 +55,7 @@ export class UserTradeDetailsComponent implements OnInit {
 
   @Input() selectedUser : User;
   @Output() check : EventEmitter<string> = new EventEmitter<string>();
+  editProfile: boolean = false;
 
   private tradeDetails : FormGroup;
 

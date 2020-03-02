@@ -36,9 +36,9 @@ import { CreateLotComponent } from './pages/purchaseLot/create-lot/create-lot.co
 import { PurchaseLotModule } from "src/app/modules/purchase/pages/purchaseLot/purchaselot.module";
 import { CreateGrnComponent } from './pages/grnModule/create-grn/create-grn.component';
 import { SupplierComponent } from './component/supplier/supplier.component';
-
-
-
+import { CreateMRComponent } from '../purchase/pages/create-mr/create-mr.component';
+import { ViewMRComponent } from '../purchase/pages/view-mr/view-mr.component';
+import { PcOverviewComponent } from '../purchase/pages/purchase-confirmation/pc-overview/pc-overview.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,10 @@ import { SupplierComponent } from './component/supplier/supplier.component';
     CreatePoComponent,
     PoEmailSmsComponent,
      CreateGrnComponent,
-    SupplierComponent
+    SupplierComponent,
+    CreateMRComponent,
+    PcOverviewComponent,
+    ViewMRComponent
       ],
   imports: [
     CommonModule,

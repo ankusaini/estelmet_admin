@@ -27,7 +27,7 @@ import { TransporterDoComponent } from './components/transporter-do/transporter-
     PurchasrListFullDetailsComponent,
     PoListComponent,
     UserListComponent,
-    TransporterDoComponent,
+    TransporterDoComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +43,8 @@ import { TransporterDoComponent } from './components/transporter-do/transporter-
     PurchasrListFullDetailsComponent,
     MrListComponent,
     TransportDetailsComponent,
-    PoListComponent,UserListComponent,TransporterDoComponent
+    PoListComponent,UserListComponent,TransporterDoComponent,
+    ProdListWithProdIdComponent
   ] 
 
   
