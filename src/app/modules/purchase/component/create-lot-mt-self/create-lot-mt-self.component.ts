@@ -138,6 +138,10 @@ export class CreateLotMtSelfComponent implements OnInit {
     this._cd.detectChanges();
   }
 
+  selectedCompany(value) {
+    console.log(value);
+  }
+
    selectedDestinationCompany(value : number) {
     let data = this.destinationCompanyList.filter(element=>{
       return element.id == value

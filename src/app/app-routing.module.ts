@@ -70,30 +70,30 @@ const routes: Routes = [
       //   path: 'setup',
       //   loadChildren: () => import('./demo/setup/setup.module').then(module => module.SetupModule)
       // },
-      {
-        path: 'super',
-        loadChildren: () => import('./demo/super/super.module').then(module => module.SuperModule)
-      },
-      {
-        path: 'salesLead',
-        loadChildren: () => import('./demo/salesLead/salesLead.module').then(module => module.SalesLeadModule)
-      }
+      // {
+      //   path: 'super',
+      //   loadChildren: () => import('./demo/super/super.module').then(module => module.SuperModule)
+      // },
+      // {
+      //   path: 'salesLead',
+      //   loadChildren: () => import('./demo/salesLead/salesLead.module').then(module => module.SalesLeadModule)
+      // }
     ]
   },
   {
     path : 'account',
     loadChildren : () => import('./modules/account/account.module').then(module => module.AccountModule)
   },
-  {
-    path: '',
-    component: AuthComponent,
-    children: [
-      {
-        path: 'maintenance',
-        loadChildren: () => import('./demo/pages/maintenance/maintenance.module').then(module => module.MaintenanceModule)
-      }
-    ]
-  }
+  // {
+  //   path: '',
+  //   component: AuthComponent,
+  //   children: [
+  //     {
+  //       path: 'maintenance',
+  //       loadChildren: () => import('./demo/pages/maintenance/maintenance.module').then(module => module.MaintenanceModule)
+  //     }
+  //   ]
+  // }
 ];
 
 @NgModule({

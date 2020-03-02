@@ -9,7 +9,7 @@ import { CreateSiComponent } from "src/app/modules/dispatch/pages/create-si/crea
 import { SearchSiComponent } from "src/app/modules/dispatch/pages/search-si/search-si.component";
 import { DoOverviewComponent } from "src/app/modules/dispatch/pages/do-overview/do-overview.component";
 import { DoApprovalComponent } from "src/app/modules/dispatch/pages/do-approval/do-approval.component";
-import { LoadingSlipOverviewComponent } from "src/app/demo/dispatch/loading-slip/loading-slip-overview/loading-slip-overview.component";
+// import { LoadingSlipOverviewComponent } from "src/app/demo/dispatch/loading-slip/loading-slip-overview/loading-slip-overview.component";
 import { GenerateInvoiceComponent } from "src/app/modules/dispatch/pages/generate-invoice/generate-invoice.component";
 import { SiOverviewComponent } from "src/app/modules/dispatch/pages/si-overview/si-overview.component";
 import { DoEditComponent } from "src/app/modules/dispatch/pages/do-edit/do-edit.component";
@@ -39,7 +39,7 @@ import { InvoiceDetailsComponent } from './components/invoice-details/invoice-de
     SearchSiComponent,
     DoOverviewComponent,
     DoApprovalComponent,
-    LoadingSlipOverviewComponent,
+    // LoadingSlipOverviewComponent,
     GenerateInvoiceComponent,
     SiOverviewComponent,
     DoEditComponent,
