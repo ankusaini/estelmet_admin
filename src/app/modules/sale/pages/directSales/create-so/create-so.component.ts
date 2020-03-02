@@ -81,7 +81,6 @@ export class CreateSoComponent implements OnInit {
   // }
 
   getCreateSoId(data: any) {
-    console.log("Your Data is: "+ data);
     this.soData = data;
     // console.log("Your Data is: "+ data.warehouseName);
     // console.log("Your Data is: "+ data.productCategory);
@@ -94,8 +93,6 @@ export class CreateSoComponent implements OnInit {
 
     this.request.productList = data;
     this.request.sales = this.soData;
-    console.log(data);
-    console.log(this.request);
 
     let url = "/sales/createSales";
     this.salesService.saveRequestObject(url, this.request).subscribe(
