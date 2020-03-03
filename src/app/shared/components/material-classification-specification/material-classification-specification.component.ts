@@ -47,7 +47,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit {
   productPackagingList: ProductPackaging[];
 
   public productForm = new FormGroup({
-    productId: new FormControl(""),
+    // productId: new FormControl(""),
     // productType:new FormGroup({
 
     productType: new FormGroup({

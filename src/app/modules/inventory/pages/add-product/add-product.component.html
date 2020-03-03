@@ -1,7 +1,7 @@
 <app-card cardTitle="Add Product" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
     <wizard-step stepTitle="Select GRN Id" navigationSymbol="1">
-      <app-select-grn (selectedGrnId)="getSelectedGrnId($event)"></app-select-grn>
+      <app-select-grn (selectedGrnId)="getSelectedGrnId($event)" [grntype]="selectedProductType" [grnList]="grnList"></app-select-grn>
       <!-- <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;

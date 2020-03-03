@@ -75,15 +75,17 @@ export class CreatePcComponent implements OnInit {
   {
       this.generatedPcId='PC-'+this.selectedMr.id
   }
+
   getTransportData(data) {
     console.log(data);
-    Object.keys(data).forEach((key) => {
-     if(key!='expectedDate')
-      {
-        this.selectedMr[key] = data[key];
-        this.savePcRecord();
-      }
-  })
+  //   Object.keys(data).forEach((key) => {
+  //    if(key!='expectedDate')
+  //     {
+  //       this.selectedMr[key] = data[key];
+  //       this.savePcRecord();
+  //     }
+  // })
+  this.savePcRecord();
   }
 
   savePcRecord() {
@@ -91,7 +93,7 @@ export class CreatePcComponent implements OnInit {
     console.log("request is: ", this.requestObj.purchase);
     let path= "/purchase/updatePurchaseHistory";
     this.purchaseService.updateRequestObject(path, this.requestObj).subscribe( data => {
-      alert("saved")
+      // alert("saved")
       this.toastr.success("Record saved successfully")
       this.router.navigateByUrl("/purchase/pcApproval");  
     }, error => {

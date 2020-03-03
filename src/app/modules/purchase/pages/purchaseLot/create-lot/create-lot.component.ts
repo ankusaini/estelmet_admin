@@ -13,6 +13,7 @@ import { UserService } from "src/app/shared/services/user.service";
 import { InventoryService } from "src/app/modules/inventory/service/inventory.service";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { ToastrService } from "ngx-toastr";
+import { Router } from '@angular/router';
 @Component({
   selector: "app-create-lot",
   templateUrl: "./create-lot.component.html",
@@ -38,7 +39,8 @@ export class CreateLotComponent implements OnInit {
     private purchaseService: PurchaseService,
     private userService: UserService,
     private inventoryService: InventoryService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.isSubmit = false;
     this.basicSwal();
@@ -94,11 +96,13 @@ export class CreateLotComponent implements OnInit {
 
   getPurchaseData(data:Purchase) {
     this.requestObj.purchase = data;
+    this.requestObj.productList = [];
     let path = "/purchase/createPurchase";
    console.log("request",this.requestObj)
     this.purchaseService.saveRequestObject(path, this.requestObj).subscribe(
       data => {
         this.toastr.success("Record saved successfully");
+        this.router.navigateByUrl("/purchase/lotApproval");
       },
       error => {
         console.log("error is", error);
@@ -115,6 +119,8 @@ export class CreateLotComponent implements OnInit {
     this.purchaseService.saveRequestObject(path, this.requestObj).subscribe(
       data => {
         this.toastr.success("Record saved successfully");
+        this.router.navigateByUrl("/purchase/lotApproval");
+
       },
       error => {
         console.log("error is", error);

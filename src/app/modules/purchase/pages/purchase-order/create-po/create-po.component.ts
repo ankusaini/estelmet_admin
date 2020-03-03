@@ -4,6 +4,7 @@ import { Purchase, PurchaseType } from "src/app/shared/Models/purchase.model";
 import { Status } from "src/app/shared/Models/user.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-po',
@@ -14,6 +15,7 @@ export class CreatePoComponent implements OnInit {
 public request : RequestP={};
   public selectedMr: Purchase;
   constructor(private purchaseService: PurchaseService,
+              private toastr: ToastrService,
               private router: Router,) { }
 
   ngOnInit() {
@@ -29,7 +31,8 @@ public request : RequestP={};
     console.log("request is: ", this.request.purchase);
     let path= "/purchase/updatePurchase";
     this.purchaseService.updateRequestObject(path, this.request).subscribe( data => {
-      alert("saved")
+      // alert("saved");
+      this.toastr.success("Record saved successfully!");
       this.router.navigateByUrl("/purchase/pcApproval");  
     }, error => {
       console.log(error);

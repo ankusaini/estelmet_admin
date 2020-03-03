@@ -17,6 +17,7 @@ export class UserApprovalComponent implements OnInit {
   public pendingUserList: User[];
   public approvedUserList: User[];
   public rejectedUserList: User[];
+  public selectedRole: any;
 
   public selectedUserList: User[] = [];
 
@@ -51,6 +52,7 @@ export class UserApprovalComponent implements OnInit {
       }
     }).then(selectedRole => {
       if (selectedRole != "") {
+        this.selectedRole = selectedRole.value;
         this.getPendingUserList(selectedRole.value);
         this.getApprovedUserList(selectedRole.value);
         this.getRejectedUserList(selectedRole.value);
@@ -139,6 +141,10 @@ export class UserApprovalComponent implements OnInit {
           data => {
             
              this.selectedUserList = [];
+             this.getPendingUserList(this.selectedRole);
+             this.getApprovedUserList(this.selectedRole);
+            this.getRejectedUserList(this.selectedRole);
+
              //page refresh here
           },
           error => {}

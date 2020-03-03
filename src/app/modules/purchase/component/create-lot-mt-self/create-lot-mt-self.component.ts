@@ -21,6 +21,7 @@ import { UserService } from "src/app/shared/services/user.service";
 import { ToastrService } from "ngx-toastr";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { LotType } from 'src/app/shared/Models/purchase.model';
 
 @Component({
   selector: 'app-create-lot-mt-self',
@@ -44,7 +45,7 @@ export class CreateLotMtSelfComponent implements OnInit {
 
   public selectedSourceCmpy: Company;
   public selectedDestinationCmp: Company;
-
+  public role: LotType;
 
 
   
@@ -64,8 +65,8 @@ export class CreateLotMtSelfComponent implements OnInit {
     
   showGroup = true;
   public isSubmit: boolean;
-  formInput: FormInput;
-  public maskIP = [/\d/, '.', /\d/, /\d/];
+  // formInput: FormInput;
+  // public maskIP = [/\d/, '.', /\d/, /\d/];
   constructor(private _staticData: StaticDataService,
     private userService: UserService,
     private inventoryService: InventoryService,private toastr:ToastrService,private _cd : ChangeDetectorRef) {
@@ -77,10 +78,23 @@ export class CreateLotMtSelfComponent implements OnInit {
     this.getProductShape();
     this.getAllCompany();
     this.getAllProductByProductStage();
-    console.log(this.selectedLotType)
-         this.lotWithoutPc.controls.lotType.patchValue(this.selectedLotType);
+    console.log(this.selectedLotType);
+    this.setLotValue(this.selectedLotType);
+
+        //  this.lotWithoutPc.controls.lotType.patchValue(this.selectedLotType);
 
   }
+
+  setLotValue(value) {
+    if(value == 'MATERIAL_TRANSFER') {
+      this.role = LotType.MATERIAL_TRANSFER;
+    } else {
+      this.role = LotType.JOB_WORK_SELF;
+      this.lotWithoutPc.removeControl('sourceWarehouseId');
+    }
+    this.lotWithoutPc.get('lotType').patchValue(this.role);
+  }
+
 
     getAllCompany() {
     this._staticData.getAllCompany().subscribe(data => {
@@ -153,7 +167,7 @@ export class CreateLotMtSelfComponent implements OnInit {
  sendForApproval()
   {
      if (this.lotWithoutPc.invalid) {
-      this.toastr.warning("Please fill aall the details");
+      this.toastr.warning("Please fill all the details");
     }
     else if(this.selectedProductList.length==0)
       {
@@ -162,7 +176,7 @@ export class CreateLotMtSelfComponent implements OnInit {
       } else {
       this.request.purchase=this.lotWithoutPc.value;
       this.request.productList=this.selectedProductList;
-      this.purchaseDataWithProduct.emit(this.lotWithoutPc.value);
+      this.purchaseDataWithProduct.emit(this.request);
      
     }
   }
