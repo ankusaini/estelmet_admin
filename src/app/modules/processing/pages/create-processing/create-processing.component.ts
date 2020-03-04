@@ -6,6 +6,7 @@ import { Product, ProductCategory } from "src/app/shared/Models/product.model.";
 import { Processing } from "src/app/shared/Models/processing.model";
 import { ToastrService } from "ngx-toastr";
 import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-processing',
@@ -25,7 +26,11 @@ export class CreateProcessingComponent implements OnInit {
   // public maskIP = [/\d/, '.', /\d/, /\d/];
 
 
-  constructor(private processingService: ProcessingService,private toastr:ToastrService,private staticData: StaticDataService) {
+  constructor(
+          private processingService: ProcessingService,
+          private toastr:ToastrService,
+          private router: Router,
+          private staticData: StaticDataService) {
     this.isSubmit = false;
    }
   ngOnInit() {
@@ -112,6 +117,7 @@ export class CreateProcessingComponent implements OnInit {
           let url="/inventory/productProcessing/addProductProcessing";
           this.processingService.addProcessing(url,this.processing).subscribe(data=>{
             this.toastr.success("Record saved successfully");
+            this.router.navigateByUrl("/processing/processingApproval");
           },error=>{
             this.toastr.warning("something went wrong");
           })

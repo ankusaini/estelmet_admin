@@ -1,48 +1,92 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { InventoryService } from '../../service/inventory.service';
-import { Grn } from 'src/app/shared/Models/purchase.model';
+import { Grn, LotType } from 'src/app/shared/Models/purchase.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-select-grn',
   templateUrl: './select-grn.component.html',
   styleUrls: ['./select-grn.component.scss']
 })
-export class SelectGrnComponent implements OnInit {
+export class SelectGrnComponent implements OnInit, OnChanges {
   @Output() selectedGrnId : EventEmitter<any> = new EventEmitter<any>();
-  grnList: Grn[];
-  grnIdList : any[];
+  @Input() grntype: string = '';
+  @Input() grnList: Grn[];
+  grnIdList : any[] = [];
   grnIdForm : FormGroup;    
 
-  constructor(private inventoryService: InventoryService) { 
+  constructor(private inventoryService: InventoryService, private toastr: ToastrService) { 
     
   }
 
   ngOnInit() {
-    let url = "/purchase/getAllGrnByStatus/PENDING";
-    this.inventoryService.getAllGrnByStatus(url).subscribe( data => {
-        this.grnList = data.grnList;
-        console.log("grnList is: ", this.grnList);
-        this.grnIdList = this.grnList.map(grnObj => grnObj.grnId);
-        });
-
-        console.log("grnIdList is: ", this.grnIdList);
-        this.grnIdForm = new FormGroup({
-          grnId: new FormControl("Select GRN Id", [Validators.required, Validators.maxLength(9)])
-        }); 
-
+    // this.get();
+    console.log(this.grnList);
+    this.grnIdForm = new FormGroup({
+      grnId: new FormControl("", [Validators.required])
+    }); 
         
+  }
+  ngOnChanges() {
+    this.grnIdList = [];
+    console.log(this.grntype);
+    console.log(this.grnList);
+    if(this.grntype === 'withoutPurchaseInvoice') {
+      this.grnList.filter(obj => {
+        if(obj.grnType === LotType.WITHOUT_PC) {
+          this.grnIdList.push(obj);
+        }
+      })
+    } if(this.grntype === 'PURCHASE_INVOICE') {
+      this.grnList.filter(obj => {
+        if(obj.grnType === LotType.WITH_PC) {
+          this.grnIdList.push(obj);
+        }
+      })
+    } if(this.grntype === 'jobWorkChalan') {
+      this.grnList.filter(obj => {
+        if(obj.grnType === LotType.JOB_WORK_OTHER) {
+          this.grnIdList.push(obj);
+        }
+      })
+    } if(this.grntype === 'materialTransfer') {
+      this.grnList.filter(obj => {
+        if(obj.grnType === LotType.MATERIAL_TRANSFER) {
+          this.grnIdList.push(obj);
+        }
+      })
+    }
+    // this.get();
   }
 
   saveGrnId() {
-    console.log("GrnIdValue is: ",this.grnIdForm.value);
+    if(this.grnIdForm.valid) {
+      console.log("GrnIdValue is: ",this.grnIdForm.value);
     let grn = this.grnList.filter(obj=>{
       return obj.grnId==this.grnIdForm.controls.grnId.value;
     })
     if(grn)
       {
     this.selectedGrnId.emit(grn[0]);
+  } 
+    }else {
+      this.toastr.error("Error! Invaid details.");
+    }
   }
-  }
+
+  // get() {
+ 
+  //     this.grnList.map(grnObj => {
+  //       if(grnObj.grnType == this.grntype) {
+  //         this.grnIdList.push(grnObj.grnId);
+  //       }
+  //     });
+  //     console.log("grnIdList is: ", this.grnIdList);
+  //     this.grnIdForm = new FormGroup({
+  //       grnId: new FormControl("", [Validators.required])
+  //     }); 
+
+  // }
 
 }

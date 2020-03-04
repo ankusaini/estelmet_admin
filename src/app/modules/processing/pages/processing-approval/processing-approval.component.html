@@ -28,7 +28,7 @@
                     <tr *ngFor="let product of pendingProductList; let i= index">
                       <td><label class="badge badge-warning">{{product?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td>{{product?.productProcessingId}}</td>
                       <td>{{product?.jobWorkType}}</td>
                       <td>{{product?.productCategory?.productCategory}}</td>
                       <td>COM-{{product?.companyId}}</td>

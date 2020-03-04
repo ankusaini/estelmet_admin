@@ -7,6 +7,7 @@ import { purchaseConstants } from '../../../purchaseConst';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { ToastrService } from 'ngx-toastr';
 import { WizardComponent } from 'ng2-archwizard/dist';
+import { LotType } from 'src/app/shared/Models/purchase.model';
 
 @Component({
   selector: 'app-create-grn',
@@ -22,6 +23,7 @@ export class CreateGrnComponent implements OnInit {
   suppliarList : User[] = [];
   allCompany : any[];
   selected_comapny : any;
+  selectedRole: LotType;
 
   dataToSend : RequestP = {
     purchase : null,
@@ -73,6 +75,7 @@ export class CreateGrnComponent implements OnInit {
       }
     }).then(val => {
       this.selecteValue = val.value;
+      this.getSelectedRole(this.selecteValue);
       console.log(val);
       this.getAllPendingLot();
       this.getAllSuppliar();
@@ -80,6 +83,19 @@ export class CreateGrnComponent implements OnInit {
       this.getAllCompany();
     });
   }
+
+  getSelectedRole(role) {
+    if(role === 'withoutPurchaseInvoice') {
+      this.selectedRole = LotType.WITHOUT_PC;
+    } else if(role === 'purchaseInvoice') {
+      this.selectedRole = LotType.WITH_PC;
+    } else if( role === 'jobWorkChalan') {
+      this.selectedRole = LotType.JOB_WORK_OTHER;
+    } else {
+      this.selectedRole = LotType.JOB_WORK_SELF;
+    }
+  }
+
 
   getAllPendingLot() {
     this._apiService.get(purchaseConstants.pendingLot_url).subscribe(res => {
@@ -127,7 +143,7 @@ export class CreateGrnComponent implements OnInit {
   public grnForm = this._fb.group({
     grnId: new FormControl(''),
     status: new FormControl('PENDING'),
-    grnType: new FormControl(''),
+    grnType: new FormControl(),
     transferChalanDate: new FormControl(''),
     purchaseId: new FormControl(''),
     materialTransferId: new FormControl(''),
@@ -198,11 +214,13 @@ export class CreateGrnComponent implements OnInit {
     this.grnForm.get('netWeight').patchValue(data.netWt);
     this.grnForm.get('grossWeight').patchValue(data.grossWt);
     this.grnForm.get('containerNumber').patchValue(data.containerNumber);
+    this.grnForm.get('grnType').patchValue(this.selectedRole);
     console.log(this.grnForm.value);
   }
 
   submit() {
     this.dataToSend.grn = this.grnForm.value;
+    this.dataToSend.productList = [];
     console.log(this.dataToSend);
     this._apiService.post(purchaseConstants.save_GRN_url,this.dataToSend).subscribe(res=>{
       console.log(res);

@@ -59,6 +59,7 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
 })
 export class TransportDetailsComponent implements OnInit {
   @Input() process : string = '';
+  @Input() component : string = '';
   @Output() transportData: EventEmitter<any> = new EventEmitter<any>();
   public supplierList: User[];
   public transportList: User[];
@@ -69,16 +70,16 @@ export class TransportDetailsComponent implements OnInit {
     private userService: UserService,
     private toastr: ToastrService
   ) {
-    this.transportDetails.statusChanges.subscribe(data=>{
-      // console.log(data);
-      if(data == 'VALID'){
-        console.log("data is: ", this.transportDetails.value);
-        this.transportData.emit(this.transportDetails.value);
-      } else {
-        console.log("data is: ", this.transportDetails.value);
-        this.transportData.emit({});
-      }
-    })
+    // this.transportDetails.statusChanges.subscribe(data=>{
+    //   // console.log(data);
+    //   if(data == 'VALID'){
+    //     console.log("data is: ", this.transportDetails.value);
+    //     this.transportData.emit(this.transportDetails.value);
+    //   } else {
+    //     console.log("data is: ", this.transportDetails.value);
+    //     this.transportData.emit({});
+    //   }
+    // })
   }
 
   ngOnInit() {
