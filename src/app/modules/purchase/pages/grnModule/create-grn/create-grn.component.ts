@@ -8,6 +8,7 @@ import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { ToastrService } from 'ngx-toastr';
 import { WizardComponent } from 'ng2-archwizard/dist';
 import { LotType } from 'src/app/shared/Models/purchase.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-grn',
@@ -39,7 +40,8 @@ export class CreateGrnComponent implements OnInit {
   constructor(
     private _apiService : ApiService,
     private _fb : FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.basicSwal();
    }
@@ -201,6 +203,7 @@ export class CreateGrnComponent implements OnInit {
     console.log(data);
     this.grnForm.patchValue(data);
     console.log(this.grnForm.value);
+    this.wizard.navigation.goToNextStep();
   }
 
   patchtransportData(data) {
@@ -222,9 +225,10 @@ export class CreateGrnComponent implements OnInit {
     this.dataToSend.grn = this.grnForm.value;
     this.dataToSend.productList = [];
     console.log(this.dataToSend);
-    this._apiService.post(purchaseConstants.save_GRN_url,this.dataToSend).subscribe(res=>{
+    this._apiService.put(purchaseConstants.save_GRN_url,this.dataToSend).subscribe(res=>{
       console.log(res);
-      this.toastr.success("Record saved successfully")
+      this.toastr.success("Record saved successfully");
+      this.router.navigateByUrl("/purchase/grnApproval");
     })
   }
 

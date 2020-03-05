@@ -47,7 +47,7 @@
         </ngb-tab>
         <ngb-tab title="Approved" id="approvedTab">
           <ng-template ngbTabContent>
-            <div class="dt-responsive table-responsive" cardClass="card-datatable">
+            <div *ngIf="approvedMrList" class="dt-responsive table-responsive" cardClass="card-datatable">
                <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -89,7 +89,7 @@
         </ngb-tab>
         <ngb-tab title="Rejected" id="rejectedTab">
           <ng-template ngbTabContent>
-            <div class="dt-responsive table-responsive" cardClass="card-datatable">
+            <div *ngIf = "rejectedMrList" class="dt-responsive table-responsive" cardClass="card-datatable">
                <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -145,7 +145,7 @@
     <div class="col-md-12">
         <app-card [hidHeader]="false" cardTitle="Take action on above Selected MR" [options]="false" cardClass="user-profile-list">
             <div class="dt-responsive table-responsive" cardClass="card-datatable">
-                 <table datatable class="table table-striped table-bordered table-hover">
+                 <table  class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>

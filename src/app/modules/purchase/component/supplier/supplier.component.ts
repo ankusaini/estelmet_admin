@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-supplier',
@@ -19,20 +20,22 @@ export class SupplierComponent implements OnInit {
 
   constructor(
     private _fb : FormBuilder,
-    private _cd : ChangeDetectorRef
+    private _cd : ChangeDetectorRef,
+    private toastr: ToastrService
   ) { 
-    this.grnForm.statusChanges.subscribe(data=>{
-      // console.log(data);
-      if(data == 'VALID'){
-        this.supplierData.emit(this.grnForm.value);
-      } else {
-        this.supplierData.emit({})
-      }
-      // console.log(this.grnForm.value);
-    })
+    // this.grnForm.statusChanges.subscribe(data=>{
+    //   // console.log(data);
+    //   if(data == 'VALID'){
+    //     this.supplierData.emit(this.grnForm.value);
+    //   } else {
+    //     this.supplierData.emit({})
+    //   }
+    //   // console.log(this.grnForm.value);
+    // })
   }
 
   ngOnInit() {
+
   }
 
   ngAfterContentInit(): void {
@@ -64,18 +67,18 @@ export class SupplierComponent implements OnInit {
 
   public grnForm = this._fb.group({
     materialTransferId: new FormControl(''),
-    materialDescription: new FormControl(''),
+    materialDescription: new FormControl('', [Validators.minLength(2)]),
     materialNetWeightslip: new FormControl(''),
     containerNumber: new FormControl(''),
-    grossWeight: new FormControl(''),
-    netWeight: new FormControl(''),
+    grossWeight: new FormControl('', [Validators.required]),
+    netWeight: new FormControl('', [Validators.required]),
     coilsBundles: new FormControl(''),
     weighingSlipNo: new FormControl(''),
     sourceCompanyId: new FormControl(''),
     sourceWarehouseId: new FormControl(''),
     destinationCompanyId: new FormControl(''),
     destinationWarehouseId: new FormControl(''),
-    supplierId: new FormControl(''),
+    supplierId: new FormControl('', [Validators.required]),
   });
 
   selectedCompany(value : number) {
@@ -86,5 +89,14 @@ export class SupplierComponent implements OnInit {
     this.selected_comapny = data[0];
     console.log(this.selected_comapny);
     this._cd.detectChanges();
+  }
+
+  submitSupplier() {
+    if(this.grnForm.valid) {
+        this.supplierData.emit(this.grnForm.value);
+    } else {
+      this.toastr.error("Error! Invalid details.");
+    }
+
   }
 }
