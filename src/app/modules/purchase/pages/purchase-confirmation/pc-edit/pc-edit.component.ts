@@ -2,56 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {IAlbum, Lightbox, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
 import {Subscription} from 'rxjs';
 import { PurchaseService } from '../../../services/purchase.service';
-import { ResponseP } from 'src/app/shared/Models/RequestResponse';
+import { ResponseP, RequestP } from 'src/app/shared/Models/RequestResponse';
 import { Product, ProductCategory } from 'src/app/shared/Models/product.model.';
 import { ActivatedRoute } from '@angular/router';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 
-function MaxlengthConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minLength = (c.parent.get("lengthMin"));
-  const maxLength = (c.parent.get("lengthMax"));
-  if(!maxLength || ! minLength) return;
-  if(maxLength.value < minLength.value) {
-    return { invalid: true};
-  } 
-}
 
-function MaxwidthConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minWidth = (c.parent.get("widthMin"));
-  const maxWidth = (c.parent.get("widthMax"));
-  if(!maxWidth || ! minWidth) return;
-  if(maxWidth.value < minWidth.value) {
-    return { invalid: true};
-  } 
-}
-
-function MaxthicknessConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minThickness = (c.parent.get("thicknessMin"));
-  const maxThickness = (c.parent.get("thicknessMax"));
-  if(!maxThickness || ! minThickness) return;
-  if(maxThickness.value < minThickness.value) {
-    return { invalid: true};
-  } 
-}
-
-function MaxtemperConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minTemper = (c.parent.get("productTemperMin"));
-  const maxTemper = (c.parent.get("productTemperMax"));
-  if(!maxTemper || ! minTemper) return;
-  if(maxTemper.value < minTemper.value) {
-    return { invalid: true};
-  } 
-}
 
 @Component({
   selector: 'app-pc-edit',
@@ -97,6 +59,9 @@ export class PcEditComponent implements OnInit{
   pcDetails : FormGroup;
   addProductDetails : FormGroup;
   transportDetails: FormGroup;
+  selectedProduct: Product;
+  purchaseData: Purchase;
+  request: RequestP = {};
 
   constructor(
               private lightbox: Lightbox,
@@ -136,6 +101,7 @@ export class PcEditComponent implements OnInit{
         this.purchaseService.findRequstObjectById(url).subscribe(
           data => {
             this.pcResponse = data;
+            this.purchaseData = data.purchase;
             this.productList = this.pcResponse.productList;
             this.showData = true;
             console.log("response", this.pcResponse);
@@ -146,46 +112,46 @@ export class PcEditComponent implements OnInit{
               warehouseName: new FormControl(this.pcResponse.warehouse.name,[Validators.required])
             });
 
-            this.addProductDetails = new FormGroup({
-              productType : new FormControl("",[Validators.required]),
-              productCategory: new FormControl("", [Validators.required]),
-              productShape: new FormControl("", [Validators.required]),
-              productClass: new FormControl("", [Validators.required]),
-              thicknessMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-              thicknessMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
-              widthMin: new FormControl("", [CustomValidator.compondValueValidate]),
-              widthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxwidthConfirming]),
-              lengthMin: new FormControl("", [CustomValidator.compondValueValidate]),
-              lengthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxlengthConfirming]),
-              productTemperMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-              productTemperMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxtemperConfirming]),
-              productHardness: new FormControl("", [Validators.required]),
-              productCoating: new FormControl("", [Validators.required]),
-              productDefect: new FormControl("", [Validators.required]),
-              productOrigin: new FormControl("", [Validators.required]),
-              productOiling: new FormControl("", [Validators.required]),
-              productSurfaceCoating: new FormControl("", [Validators.required]),
-              productAnnealing: new FormControl("", [Validators.required]),
-              productFinish: new FormControl("", [Validators.required]),
-              gwt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-              nwt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-              remarks: new FormControl("", [Validators.minLength(3)])
-            });
+            // this.addProductDetails = new FormGroup({
+            //   productType : new FormControl("",[Validators.required]),
+            //   productCategory: new FormControl("", [Validators.required]),
+            //   productShape: new FormControl("", [Validators.required]),
+            //   productClass: new FormControl("", [Validators.required]),
+            //   thicknessMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+            //   thicknessMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
+            //   widthMin: new FormControl("", [CustomValidator.compondValueValidate]),
+            //   widthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxwidthConfirming]),
+            //   lengthMin: new FormControl("", [CustomValidator.compondValueValidate]),
+            //   lengthMax: new FormControl("", [CustomValidator.compondValueValidate, MaxlengthConfirming]),
+            //   productTemperMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+            //   productTemperMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxtemperConfirming]),
+            //   productHardness: new FormControl("", [Validators.required]),
+            //   productCoating: new FormControl("", [Validators.required]),
+            //   productDefect: new FormControl("", [Validators.required]),
+            //   productOrigin: new FormControl("", [Validators.required]),
+            //   productOiling: new FormControl("", [Validators.required]),
+            //   productSurfaceCoating: new FormControl("", [Validators.required]),
+            //   productAnnealing: new FormControl("", [Validators.required]),
+            //   productFinish: new FormControl("", [Validators.required]),
+            //   gwt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+            //   nwt: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+            //   remarks: new FormControl("", [Validators.minLength(3)])
+            // });
 
             
             this.transportDetails = new FormGroup({
-              supplierId: new FormControl(this.pcResponse.purchase.supplierId,[Validators.required]),
-              transportId: new FormControl(this.pcResponse.purchase.transportId, [Validators.required, CustomValidator.numberUpdateDurationValidation]),
+              supplierId: new FormControl(this.pcResponse.purchase.supplierId),
+              transportId: new FormControl(this.pcResponse.purchase.transportId),
               expectedDate: new FormControl(this.pcResponse.purchase.expectedDate, [Validators.required]),
-              invoice: new FormControl("", [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
+              // invoice: new FormControl("", [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
               grossWt: new FormControl(this.pcResponse.purchase.grossWt, [CustomValidator.compondValueValidate]),
               netWt: new FormControl(this.pcResponse.purchase.netWt,[CustomValidator.compondValueValidate]),
               materialDescription: new FormControl(this.pcResponse.purchase.materialDescription, [Validators.required, Validators.minLength(3)]),
               coilsBundle: new FormControl(this.pcResponse.purchase.coilsBundle, [Validators.required, CustomValidator.compondValueValidate]),
               containerNumber: new FormControl(this.pcResponse.purchase.containerNumber, [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
               lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
-              driverName: new FormControl("", [Validators.required, Validators.minLength(3)]), 
-              driverMobile: new FormControl("", [Validators.required, CustomValidator.contactNumberValidation])
+              // driverName: new FormControl("", [Validators.required, Validators.minLength(3)]), 
+              // driverMobile: new FormControl("", [Validators.required, CustomValidator.contactNumberValidation])
             });
              
           },
@@ -277,9 +243,9 @@ export class PcEditComponent implements OnInit{
     return this.pcDetails.controls;
   }
 
-  get f() {
-    return this.addProductDetails.controls;
-  }
+  // get f() {
+  //   return this.addProductDetails.controls;
+  // }
 
   get f2() {
     return this.transportDetails.controls;
@@ -295,22 +261,67 @@ export class PcEditComponent implements OnInit{
     }
   }
 
-  submitProductDetails() {
-    if(this.addProductDetails.valid) {
-      console.log("product details: ", this.addProductDetails.value);
-    }
-    else {
-      this.toastr.error("Error! Invalid Details.")
-    }
+  // submitProductDetails() {
+  //   if(this.addProductDetails.valid) {
+  //     console.log("product details: ", this.addProductDetails.value);
+  //     this.selectedProduct = this.addProductDetails.value;
+  //     this.productList.push(this.selectedProduct);
+
+  //   }
+  //   else {
+  //     this.toastr.error("Error! Invalid Details.")
+  //   }
     
-  }
+  // }
 
   submitTransportDetails() {
-    if(this.addProductDetails.valid) {
+    if(this.transportDetails.valid) {
     console.log("transport Details: ", this.transportDetails.value);
+    this.purchaseData.expectedDate = this.transportDetails.value.expectedDate;
+    this.purchaseData.netWt = this.transportDetails.value.netWt;
+    this.purchaseData.grossWt = this.transportDetails.value.grossWt;
+    this.purchaseData.coilsBundle = this.transportDetails.value.coilsBundle;
+    this.purchaseData.containerNumber = this.transportDetails.value.containerNumber;
+    this.purchaseData.lorryNumber = this.transportDetails.value.lorryNumber;
+    this.purchaseData.materialDescription = this.transportDetails.value.materialDescription;
+
+    this.request.purchase = this.purchaseData;
+    this.request.productList = this.productList;
+    let url = "/purchase/updatePurchaseWithProduct";
+    this.purchaseService.updateRequestObject(url, this.request).subscribe(
+      data => {
+        this.toastr.success("Record update successfully!");
+      }, error => {
+        console.log(error);
+      }
+    )
     }
     else {
       this.toastr.error("Error! Invalid Details.")
+    }
+  }
+
+  getProductData(data) {
+    console.log(data);
+    this.selectedProduct = data;
+    this.productList.push(this.selectedProduct);
+    this.selectedProduct = null;
+  }
+
+  saveProductList() {
+    if(this.productList.length >0) {
+    //   this.request.purchase = this.purchaseData;
+    //   this.request.productList = this.productList;
+    //   let url = "/purchase/updatePurchaseWithProduct";
+    // this.purchaseService.updateRequestObject(url, this.request).subscribe(
+    //   data => {
+    //     this.toastr.success("Record update successfully!");
+    //   }, error => {
+    //     console.log(error);
+    //   }
+    // )
+    } else {
+      this.toastr.warning("Product is Empty!");
     }
   }
 }

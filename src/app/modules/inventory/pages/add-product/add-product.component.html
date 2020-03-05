@@ -10,7 +10,7 @@
       </div> -->
     </wizard-step>
     <wizard-step stepTitle="Add Product" navigationSymbol="1">
-    <app-material-classification-specification (productData)="getProductData($event)"></app-material-classification-specification>
+    <app-material-classification-specification (productData)="getProductData($event)" [grntype]="selectedProductType"></app-material-classification-specification>
       <div class="m-t-20">
         <app-add-product-cart [productList]="productList"></app-add-product-cart>
       </div>

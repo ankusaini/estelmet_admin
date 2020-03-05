@@ -6,7 +6,7 @@
             <label for="validationCustom02">Transporter Id</label>
             <select #transporterID class="form-control" name="validation-companyName" formControlName="transportId">
                 <option value="" disabled>Select Transporter Id</option>
-                <option *ngFor="let item of transportList; let i=index" [value]="item.id">{{ item.id}}</option>
+                <option *ngFor="let item of transportList; let i=index" [value]="item.id">TP-{{ item.id}}</option>
                 <!-- put here fetch data and passed it to the parent component, -->
             </select>
             <small *ngIf="f.transportId.value == '' && (f.transportId.dirty || f.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -18,7 +18,7 @@
             <label for="validationCustom02">Supplier Id</label>
             <select class="form-control" name="validation-companyName" formControlName="supplierId">
                 <option value="" disabled>Select Supplier Id</option>
-                <option *ngFor="let id of supplierIdList; let i=index" [value]="i+1">{{id}}</option>
+                <option *ngFor="let id of supplierIdList; let i=index" [value]="id">SU-{{id}}</option>
 
             </select>
             <small *ngIf="f.supplierId.value == '' && (f.supplierId.dirty || f.supplierId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -93,7 +93,7 @@
     <div class="col-md-2"  *ngIf="process == ''">
         <div class="form-group">
             <label for="validationCustom02">Material Description</label>
-            <input type="text" class="form-control" formControlName="materialDescription" placeholder="Enter Driver">
+            <input type="text" class="form-control" formControlName="materialDescription" placeholder="Enter Material Description">
             <small *ngIf="f.materialDescription.value == '' && (f.materialDescription.dirty || f.materialDescription.touched )" id="passwordHelpBlock" class="form-text text-muted"
             >This field is required.</small>
             <small *ngIf="f.materialDescription.value !== '' && !f.materialDescription.valid " id="passwordHelpBlock" class="form-text text-muted"
