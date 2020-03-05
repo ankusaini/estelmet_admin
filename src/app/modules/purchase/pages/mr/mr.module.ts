@@ -9,6 +9,7 @@ import { PurchaseModule } from "src/app/modules/purchase/purchase.module";
 import { MrApporvalComponent } from './mr-apporval/mr-apporval.component';
 import { NgbTabsetModule } from "@ng-bootstrap/ng-bootstrap";
 import { MrEditComponent } from './mr-edit/mr-edit.component';
+import { DataTablesModule } from 'angular-datatables';
 import { ToastrModule } from 'ngx-toastr';
 
 
@@ -21,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     ShareModule,
     SharedModule,
     NgbTabsetModule,
-        ToastrModule.forRoot()
+    DataTablesModule,
+    ToastrModule.forRoot()
 
   ]
 })

@@ -13,14 +13,14 @@ import { UserDataService } from 'src/app/shared/services/data/userData.service';
   templateUrl: "./users-list.component.html",
   styleUrls: ["./users-list.component.scss"]
 })
-export class UsersListComponent implements OnInit, AfterViewInit {
+export class UsersListComponent implements OnInit {
   public userList: any;
   dtExportButtonOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   dtRouterLinkOptions: any = {};
 
   @ViewChild(DataTableDirective, { static: false })
-  datatableElement: DataTableDirective;
+  private datatableElement: DataTableDirective;
   public limit = 15;
   public offset = 0;
 
@@ -147,16 +147,16 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.columns().every(function() {
-        const that = this;
-        $("input", this.footer()).on("keyup change", function() {
-          if (that.search() !== this["value"]) {
-            that.search(this["value"]).draw();
-          }
-        });
-      });
-    });
-  }
+  // ngAfterViewInit(): void {
+  //   this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+  //     dtInstance.columns().every(function() {
+  //       const that = this;
+  //       $("input", this.footer()).on("keyup change", function() {
+  //         if (that.search() !== this["value"]) {
+  //           that.search(this["value"]).draw();
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
 }

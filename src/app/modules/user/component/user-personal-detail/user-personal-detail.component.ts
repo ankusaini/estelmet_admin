@@ -33,6 +33,7 @@ export class UserPersonalDetailComponent implements OnInit {
     if(this.selectedUser) {
       this.prsnlDetailForm = this._fb.group({
         firstName : new FormControl(this.selectedUser.firstName,[Validators.required, Validators.minLength(2)]),
+        lastName : new FormControl(this.selectedUser.lastName,[Validators.required, Validators.minLength(2)]),
         userRole : new FormControl(this.selectedUser.userRole,[Validators.required]),
         mobile : new FormControl(this.selectedUser.mobile,[Validators.required, CustomValidator.contactNumberValidation]),
         email : new FormControl(this.selectedUser.email,[Validators.required, CustomValidator.emailValidation]),
@@ -45,6 +46,7 @@ export class UserPersonalDetailComponent implements OnInit {
   ngAfterContentChecked(): void {
    if(this.selectedUser && this.prsnlDetailForm){
     this.selectedUser.firstName = this.prsnlDetailForm.value.firstName;
+    this.selectedUser.lastName = this.prsnlDetailForm.value.lastName;
     this.selectedUser.userRole = this.prsnlDetailForm.value.userRole;
     this.selectedUser.mobile = this.prsnlDetailForm.value.mobile;
     this.selectedUser.email = this.prsnlDetailForm.value.email;

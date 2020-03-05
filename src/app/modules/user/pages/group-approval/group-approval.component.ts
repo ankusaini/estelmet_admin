@@ -13,10 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GroupApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
-
-  public pendingUserGroupList: UserGroup[] = [];
-  public approvedUserGroupList: UserGroup[] = [];
-  public rejectedUserGroupList: UserGroup[] = [];
+  selectedUserType: any;
+  public pendingUserGroupList: UserGroup[];
+  public approvedUserGroupList: UserGroup[];
+  public rejectedUserGroupList: UserGroup[];
 
   public selectedUserGroupList: UserGroup[] = [];
 
@@ -50,6 +50,7 @@ export class GroupApprovalComponent implements OnInit {
       }
     }).then(selectedRole => {
       if (selectedRole != "") {
+        this.selectedUserType = selectedRole.value;
         this.getPendingUserGroupList(selectedRole.value);
         this.getApprovedUserGroupList(selectedRole.value);
         this.getRejectedUserGroupList(selectedRole.value);
@@ -149,11 +150,18 @@ export class GroupApprovalComponent implements OnInit {
             data => {
               console.log("user group created", data);
               this.toastrService.success("Selected User(s) status changes successfully!");
+              this.getPendingUserGroupList(this.selectedUserType);
+          this.getApprovedUserGroupList(this.selectedUserType);
+          this.getRejectedUserGroupList(this.selectedUserType);
+              console.log(this.selectedUserType);
+              
             },
-            error => {}
+            error => {
+              console.log(error);
+            }
           );
           this.selectedUserGroupList = [];
-
+          
       }
     }
   }

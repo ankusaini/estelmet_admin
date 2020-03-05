@@ -14,11 +14,11 @@ export class MrApporvalComponent implements OnInit {
 
   constructor(private purchaseService: PurchaseService,private toastr:ToastrService) {}
  public request : RequestP={};
-  public pendingMrList: Purchase[] = [];
+  public pendingMrList: Purchase[];
 
-  public rejectedMrList: Purchase[] = [];
+  public rejectedMrList: Purchase[];
 
-  public approvedMrList: Purchase[] = [];
+  public approvedMrList: Purchase[];
 
   public selectedMrList: Purchase[] = [];
 
@@ -96,12 +96,14 @@ export class MrApporvalComponent implements OnInit {
         this.purchaseService.updateRequestObject(path,this.request).subscribe(
           data => {
            
-      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
-    this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
-    this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
-    this.selectedMrList = [];
+          this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
+          this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
+          this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
+          this.selectedMrList = [];
           },
-          error => {}
+          error => {
+            console.log(error);
+          }
         );
       }
       this.toastr.success("Record successfully saved");
