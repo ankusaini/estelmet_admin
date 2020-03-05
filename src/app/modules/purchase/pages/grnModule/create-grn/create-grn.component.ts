@@ -222,7 +222,7 @@ export class CreateGrnComponent implements OnInit {
     this.dataToSend.grn = this.grnForm.value;
     this.dataToSend.productList = [];
     console.log(this.dataToSend);
-    this._apiService.post(purchaseConstants.save_GRN_url,this.dataToSend).subscribe(res=>{
+    this._apiService.put(purchaseConstants.save_GRN_url,this.dataToSend).subscribe(res=>{
       console.log(res);
       this.toastr.success("Record saved successfully")
     })

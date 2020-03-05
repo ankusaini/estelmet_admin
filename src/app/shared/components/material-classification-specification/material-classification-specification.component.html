@@ -5,15 +5,13 @@
     <div class="col-md-3 col-xs-6">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Product Type <small class="asterik_sign">*</small></label>
-         <fieldset formGroupName="productType"> 
-           <select (change)="setValue($event,'productType')" formControlName="id" class="form-control" id="exampleFormControlSelect1"> 
-          <option title="item?.productType"
-            *ngFor="let item of productTypeList"
-            [value]="item?.id"
-            >{{ item?.productType }}</option
-          >
-        </select>
-         </fieldset> 
+        <fieldset formGroupName="productType">
+          <select (change)="setValue($event,'productType')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option title="item?.productType" *ngFor="let item of productTypeList" [value]="item?.id">
+              {{ item?.productType }}</option>
+          </select>
+        </fieldset>
         <!-- <label *ngIf="!type.valid && (type.dirty || type.touched || isSubmit2)" id="validation-type-error"
                   class="error jquery-validation-error small form-text invalid-feedback">Product Type should be
                   required.</label> -->
@@ -23,13 +21,10 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
         <fieldset formGroupName="productCategory">
-          <select (change)="setValue($event,'productCategory')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option 
-            *ngFor="let item of productCategoryList"
-            [value]="item?.id"
-            >{{ item?.productCategory }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productCategory')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productCategoryList" [value]="item?.id">{{ item?.productCategory }}</option>
+          </select>
         </fieldset>
         <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit2)"
                   id="validation-category-error"
@@ -41,13 +36,10 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
         <fieldset formGroupName="productShape">
-          <select (change)="setValue($event,'productShape')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productShapeList"
-            [value]="item?.id"
-            >{{ item?.productShape }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productShape')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productShapeList" [value]="item?.id">{{ item?.productShape }}</option>
+          </select>
         </fieldset>
         <!-- <label *ngIf="!shape.valid && (shape.dirty || shape.touched || isSubmit2)" id="validation-shape-error"
                   class="error jquery-validation-error small form-text invalid-feedback">Shape should be
@@ -58,13 +50,10 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Product Class <small class="asterik_sign">*</small></label>
         <fieldset formGroupName="productClass">
-          <select (change)="setValue($event,'productClass')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productClassList"
-            [value]="item?.id"
-            >{{ item?.productClass }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productClass')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productClassList" [value]="item?.id">{{ item?.productClass }}</option>
+          </select>
         </fieldset>
         <!-- <label *ngIf="!class.valid && (class.dirty || class.touched || isSubmit2)" id="validation-class-error"
                   class="error jquery-validation-error small form-text invalid-feedback">Class should be
@@ -84,7 +73,7 @@
             <small class="form-text text-muted">(mm)</small>
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="thicknessMax" type="text"  class="form-control">
+            <input formControlName="thicknessMax" type="text" class="form-control">
             <small class="form-text text-muted">(mm)</small>
           </div>
         </div>
@@ -125,27 +114,21 @@
         <label for="validationCustom02">Hardness Range</label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
-                    <fieldset formGroupName="hardnessMin">
+            <fieldset formGroupName="hardnessMin">
 
-            <select (change)="setValueTwoField($event,'hardnessMin','productHardness')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productHarndessList"
-            [value]="item?.id"
-            >{{ item?.description }}</option
-          >
-        </select>
-                    </fieldset>
+              <select (change)="setValueTwoField($event,'hardnessMin','productHardness')" formControlName="id"
+                class="form-control" id="exampleFormControlSelect1">
+                <option *ngFor="let item of productHarndessList" [value]="item?.id">{{ item?.description }}</option>
+              </select>
+            </fieldset>
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
-                    <fieldset formGroupName="hardnessMax">
-            <select (change)="setValueTwoField($event,'hardnessMax','productHardness')" formControlName="id"  class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productHarndessList"
-            [value]="item?.id"
-            >{{ item?.description }}</option
-          >
-        </select>
-                    </fieldset>
+            <fieldset formGroupName="hardnessMax">
+              <select (change)="setValueTwoField($event,'hardnessMax','productHardness')" formControlName="id"
+                class="form-control" id="exampleFormControlSelect1">
+                <option *ngFor="let item of productHarndessList" [value]="item?.id">{{ item?.description }}</option>
+              </select>
+            </fieldset>
           </div>
         </div>
       </div>
@@ -155,28 +138,22 @@
         <label for="validationCustom02">Temper Range</label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
-                                <fieldset formGroupName="temperMin">
+            <fieldset formGroupName="temperMin">
 
-            <select (change)="setValueTwoField($event,'temperMin','productTemper')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productTemperList"
-            [value]="item?.id"
-            >{{ item?.productTemper }}</option
-          >
-        </select>
-                                </fieldset>
+              <select (change)="setValueTwoField($event,'temperMin','productTemper')" formControlName="id"
+                class="form-control" id="exampleFormControlSelect1">
+                <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}</option>
+              </select>
+            </fieldset>
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
-                                <fieldset formGroupName="temperMax">
+            <fieldset formGroupName="temperMax">
 
-            <select (change)="setValueTwoField($event,'temperMax','productTemper')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productTemperList"
-            [value]="item?.id"
-            >{{ item?.productTemper }}</option
-          >
-        </select>
-                                </fieldset>
+              <select (change)="setValueTwoField($event,'temperMax','productTemper')" formControlName="id"
+                class="form-control" id="exampleFormControlSelect1">
+                <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}</option>
+              </select>
+            </fieldset>
           </div>
         </div>
       </div>
@@ -196,13 +173,10 @@
         <label for="exampleFormControlSelect1">Coating</label>
         <fieldset formGroupName="productCoating">
 
-          <select (change)="setValue($event,'productCoating')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productCoatingList"
-            [value]="item?.id"
-            >{{ item?.productCoating }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productCoating')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productCoatingList" [value]="item?.id">{{ item?.productCoating }}</option>
+          </select>
         </fieldset>
       </div>
     </div>
@@ -210,13 +184,10 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Defect</label>
         <fieldset formGroupName="productDefect">
-          <select (change)="setValue($event,'productDefect')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productDefectList"
-            [value]="item?.id"
-            >{{ item?.productDefect }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productDefect')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productDefectList" [value]="item?.id">{{ item?.productDefect }}</option>
+          </select>
         </fieldset>
 
       </div>
@@ -226,13 +197,10 @@
         <label for="exampleFormControlSelect1">Origin</label>
         <fieldset formGroupName="productOrigin">
 
-          <select (change)="setValue($event,'productOrigin')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productOriginList"
-            [value]="item?.id"
-            >{{ item?.productOrigin }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productOrigin')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productOriginList" [value]="item?.id">{{ item?.productOrigin }}</option>
+          </select>
         </fieldset>
 
       </div>
@@ -242,13 +210,10 @@
         <label>Oiling</label>
         <fieldset formGroupName="productOiling">
 
-          <select (change)="setValue($event,'productOiling')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productOilingList"
-            [value]="item?.id"
-            >{{ item?.productOiling }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productOiling')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productOilingList" [value]="item?.id">{{ item?.productOiling }}</option>
+          </select>
         </fieldset>
       </div>
     </div>
@@ -257,13 +222,11 @@
         <label for="exampleFormControlSelect1">Surface</label>
         <fieldset formGroupName="productSurfaceCoating">
 
-          <select (change)="setValue($event,'productSurfaceCoating')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productSurfaceList"
-            [value]="item?.id"
-            >{{ item?.productSurfaceCoating }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productSurfaceCoating')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productSurfaceList" [value]="item?.id">{{ item?.productSurfaceCoating }}
+            </option>
+          </select>
         </fieldset>
       </div>
     </div>
@@ -272,13 +235,10 @@
         <label for="exampleFormControlSelect1">Annealing</label>
         <fieldset formGroupName="productAnnealing">
 
-          <select (change)="setValue($event,'productAnnealing')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productAnnealingList"
-            [value]="item?.id"
-            >{{ item?.productAnnealing }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productAnnealing')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productAnnealingList" [value]="item?.id">{{ item?.productAnnealing }}</option>
+          </select>
         </fieldset>
 
       </div>
@@ -291,13 +251,10 @@
         <label for="exampleFormControlSelect1">Finish</label>
         <fieldset formGroupName="productFinish">
 
-          <select (change)="setValue($event,'productFinish')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productFinishList"
-            [value]="item?.id"
-            >{{ item?.productFinish }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productFinish')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productFinishList" [value]="item?.id">{{ item?.productFinish }}</option>
+          </select>
         </fieldset>
       </div>
     </div>
@@ -306,13 +263,10 @@
         <label for="exampleFormControlSelect1">Packaging</label>
         <fieldset formGroupName="productPackaging">
 
-          <select (change)="setValue($event,'productPackaging')" formControlName="id" class="form-control" id="exampleFormControlSelect1">
-          <option
-            *ngFor="let item of productPackagingList"
-            [value]="item?.id"
-            >{{ item?.productPackaging }}</option
-          >
-        </select>
+          <select (change)="setValue($event,'productPackaging')" formControlName="id" class="form-control"
+            id="exampleFormControlSelect1">
+            <option *ngFor="let item of productPackagingList" [value]="item?.id">{{ item?.productPackaging }}</option>
+          </select>
         </fieldset>
 
       </div>
@@ -339,7 +293,8 @@
     </div>
 
   </div>
-  <button [disabled]="productForm.status != 'VALID'" type="submit" class="btn btn-primary" uiSref="work">Add More</button>
+  <button [disabled]="productForm.status != 'VALID'" type="submit" class="btn btn-primary" uiSref="work">Add
+    More</button>
 </form>
 <div class="m-t-20">
   <!-- <app-add-product-cart></app-add-product-cart> -->

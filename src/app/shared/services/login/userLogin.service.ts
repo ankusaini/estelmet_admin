@@ -24,7 +24,7 @@ export class UserLoginService {
 
   constructor(
     private jwtService: JwtService,
-    private apiService: ApiService, 
+    private apiService: ApiService,
     private router: Router,
     // private _commonService : CommonService,
   ) { }
@@ -84,7 +84,7 @@ export class UserLoginService {
     const route = '/login';
     return this.apiService.post2(route, credentials).pipe(
       map(data => {
-        console.log("login res",data.headers.get('authorization'));
+        console.log('login res', data.headers.get('authorization'));
         this.setAuth(data.headers.get('authorization'));
         // this.getUserById(data.headers.get('ID'));
         return data;

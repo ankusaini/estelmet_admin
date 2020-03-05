@@ -1,4 +1,4 @@
-//personal detail
+// personal detail
 export interface User {
     id?: string;
     firstName?: string;
@@ -12,7 +12,6 @@ export interface User {
     userDetail?: UserDetail;
     employeeDetail?: EmployeeDetail;
     userGroup?: UserGroup[];
- 
 }
 
 export enum Status {
@@ -58,10 +57,10 @@ export interface EmployeeDetail {
     currentLocation?: string;
     skills?: string;
     experience?: string;
-    
+
 }
 
-//comPANY DETAIL
+// comPANY DETAIL
 export interface UserDetail {
     userDetailId?: string;
     userProductPreference?: UserProductPreference[];
@@ -85,14 +84,14 @@ export interface UserDetail {
     creditLimit?: string;
     currentOutstanding?: string;
     daysPayableOutstanding?: string;
-  
+
 }
 
 export interface AnnualTurnover {
     annualTurnoverId?: string;
     year?: string;
     turnover?: string;
-   
+
 }
 
 export interface KeyPerson {
@@ -103,7 +102,7 @@ export interface KeyPerson {
     mobile2?: string;
     email1?: string;
     email2?: string;
-   
+
 }
 
 export interface UserProductPreference {
@@ -117,21 +116,21 @@ export interface UserProductPreference {
     widthRange?: string;
     lengthRange?: string;
     monthlyRequirement?: string;
-   
+
 }
 
 export interface SecurityQuestion {
     securityQuestionId?: string;
     securityQuestion?: string;
     securityAnswer?: string;
-   
+
 }
 
 export interface FrequentlyAskedQuestions {
-    frequentlyAskedQuestionsId?: String;
+    frequentlyAskedQuestionsId?: string;
     frequentlyAskedQuestion?: string;
     frequentlyAskedAnswer?: string;
-   
+
 }
 
 export interface UserGroup {
@@ -152,12 +151,12 @@ export interface UserGroup {
     userGroupDate?: string;
     alias?: string;
     createdDate?: string;
-    
+
 }
 
 export interface Roles {
     id?: string;
     role?: string;
     description?: string;
-  
+
 }

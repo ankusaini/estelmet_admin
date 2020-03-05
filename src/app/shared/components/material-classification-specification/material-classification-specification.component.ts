@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import {
   ProductClass,
@@ -16,16 +16,16 @@ import {
   ProductOiling,
   ProductOrigin,
   ProductSurfaceCoating
-} from "src/app/shared/Models/product.model.";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+} from 'src/app/shared/Models/product.model.';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 
 @Component({
-  selector: "app-material-classification-specification",
-  templateUrl: "./material-classification-specification.component.html",
-  styleUrls: ["./material-classification-specification.component.scss"]
+  selector: 'app-material-classification-specification',
+  templateUrl: './material-classification-specification.component.html',
+  styleUrls: ['./material-classification-specification.component.scss']
 })
 export class MaterialClassificationSpecificationComponent implements OnInit {
-  constructor(private _staticData: StaticDataService) {}
+  constructor(private _staticData: StaticDataService) { }
 
   @Output() productData: EventEmitter<any> = new EventEmitter<any>();
 
@@ -35,7 +35,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit {
   productShapeList: ProductShape[];
 
   productHarndessList: ProductHardness[];
-  productTemperList: ProductTemper[];
+  productTemperList: ProductTemper[]; 
 
   productCoatingList: ProductCoating[];
   productDefectList: ProductDefect[];
@@ -51,81 +51,81 @@ export class MaterialClassificationSpecificationComponent implements OnInit {
     // productType:new FormGroup({
 
     productType: new FormGroup({
-      id: new FormControl(""),
-      productType: new FormControl("", [Validators.required])
+      id: new FormControl(''),
+      productType: new FormControl('', [Validators.required])
     }),
     productCategory: new FormGroup({
-      id: new FormControl(""),
-      productCategory: new FormControl("", [Validators.required])
+      id: new FormControl(''),
+      productCategory: new FormControl('', [Validators.required])
     }),
     productShape: new FormGroup({
-      id: new FormControl(""),
-      productShape: new FormControl("", [Validators.required])
+      id: new FormControl(''),
+      productShape: new FormControl('', [Validators.required])
     }),
     productClass: new FormGroup({
-      id: new FormControl(""),
-      productClass: new FormControl("", [Validators.required])
+      id: new FormControl(''),
+      productClass: new FormControl('', [Validators.required])
     }),
-    thicknessMin: new FormControl(""),
-    thicknessMax: new FormControl(""),
-    widthMin: new FormControl(""),
-    widthMax: new FormControl(""),
-    lengthMin: new FormControl(""),
-    lengthMax: new FormControl(""),
+    thicknessMin: new FormControl(''),
+    thicknessMax: new FormControl(''),
+    widthMin: new FormControl(''),
+    widthMax: new FormControl(''),
+    lengthMin: new FormControl(''),
+    lengthMax: new FormControl(''),
     hardnessMin: new FormGroup({
-      id: new FormControl(""),
-      productHardness: new FormControl("")
+      id: new FormControl(''),
+      productHardness: new FormControl('')
     }),
     hardnessMax: new FormGroup({
-      id: new FormControl(""),
-      productHardness: new FormControl("")
+      id: new FormControl(''),
+      productHardness: new FormControl('')
     }),
     temperMin: new FormGroup({
-      id: new FormControl(""),
-      productTemper: new FormControl("")
+      id: new FormControl(''),
+      productTemper: new FormControl('')
     }),
     temperMax: new FormGroup({
-      id: new FormControl(""),
-      productTemper: new FormControl("")
+      id: new FormControl(''),
+      productTemper: new FormControl('')
     }),
 
-    height: new FormControl(""),
+    height: new FormControl(''),
     productCoating: new FormGroup({
-      id: new FormControl(""),
-      productCoating: new FormControl("")
+      id: new FormControl(''),
+      productCoating: new FormControl('')
     }),
     productDefect: new FormGroup({
-      id: new FormControl(""),
-      productDefect: new FormControl("")
+      id: new FormControl(''),
+      productDefect: new FormControl('')
     }),
     productOrigin: new FormGroup({
-      id:new FormControl(''),
-      productOrigin: new FormControl("")
+      id: new FormControl(''),
+      productOrigin: new FormControl('')
     }),
     productOiling: new FormGroup({
-      id:new FormControl(''),
-      productOiling: new FormControl("")
+      id: new FormControl(''),
+      productOiling: new FormControl('')
     }),
     productSurfaceCoating: new FormGroup({
-      id:new FormControl(''),
-      productSurfaceCoating: new FormControl("")
+      id: new FormControl(''),
+      productSurfaceCoating: new FormControl('')
     }),
     productAnnealing: new FormGroup({
-      id:new FormControl(''),
-      productAnnealing: new FormControl("")
+      id: new FormControl(''),
+      productAnnealing: new FormControl('')
     }),
     productFinish: new FormGroup({
-      id:new FormControl(''),     
-      productFinish: new FormControl("")
+      id: new FormControl(''),
+      productFinish: new FormControl('')
     }),
     productPackaging: new FormGroup({
-      id:new FormControl(''),
-      productPackaging: new FormControl("")
+      id: new FormControl(''),
+      productPackaging: new FormControl('')
     }),
-    gwt: new FormControl(""),
-    nwt: new FormControl(""),
-    remarks: new FormControl(""),
-    status: new FormControl("PENDING")
+    gwt: new FormControl(''),
+    nwt: new FormControl(''),
+    remarks: new FormControl(''),
+    status: new FormControl('PENDING')
   });
 
   ngOnInit() {
@@ -234,7 +234,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit {
   productFormOnSubmit() {
     console.log(this.productForm);
     if (this.productForm.invalid) {
-      alert("form invalid");
+      alert('form invalid');
     } else {
       this.productData.emit(this.productForm.value);
       this.resetForm();
@@ -247,13 +247,13 @@ export class MaterialClassificationSpecificationComponent implements OnInit {
   }
 
   setValue(event, type) {
-    this.productForm["controls"][type]["controls"][type].patchValue(
+    this.productForm['controls'][type]['controls'][type].patchValue(
       event.target.options[event.target.options.selectedIndex].text
     );
   }
 
-  setValueTwoField(event,type1,type2) {
-    this.productForm["controls"][type1]["controls"][type2].patchValue(
+  setValueTwoField(event, type1, type2) {
+    this.productForm['controls'][type1]['controls'][type2].patchValue(
       event.target.options[event.target.options.selectedIndex].text
     );
   }

@@ -3,5 +3,4 @@ export interface MachineDetail {
     machineName: string;
     machineType: string;
     description: string;
-    
 }

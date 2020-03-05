@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User, UserProductPreference } from 'src/app/shared/Models/user.model';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { ProductClass, ProductCategory, ProductType, ProductShape, ProductTemper } from 'src/app/shared/Models/product.model.';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 

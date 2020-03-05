@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProductService } from "src/app/shared/services/product.service";
 import { ProductType } from "src/app/shared/Models/product.model.";
-import { StaticDataService } from 'src/app/shared/services/Data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({

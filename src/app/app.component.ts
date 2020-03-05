@@ -3,8 +3,7 @@ import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `<router-outlet><app-spinner></app-spinner></router-outlet>`,
 })
 export class AppComponent implements OnInit {
 

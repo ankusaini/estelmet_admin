@@ -30,10 +30,9 @@ export class ExcelProduct {
     productStage: string;
     status: string;
     warehouse: string;
-    remarks: String;
+    remarks: string;
     createdBy: string;
     createdDate: string;
     lastModifiedBy: string;
     lastModifiedDate: string;
-   
 }

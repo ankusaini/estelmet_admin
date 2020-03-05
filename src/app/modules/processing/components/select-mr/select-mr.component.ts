@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { ProcessingService } from '../../service/processing.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

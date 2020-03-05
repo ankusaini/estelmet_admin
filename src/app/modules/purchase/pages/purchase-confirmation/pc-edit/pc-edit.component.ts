@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';

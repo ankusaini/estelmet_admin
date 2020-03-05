@@ -5,23 +5,17 @@ import {
   EventEmitter,
   Input,
   Injectable
-} from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
-import { User } from "../../Models/user.model";
+} from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from '../../Models/user.model';
 import {
   NgbDateParserFormatter,
   NgbDateStruct
-} from "@ng-bootstrap/ng-bootstrap";
+} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 
-
-
-
-/**
- * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
- */
 @Injectable()
 export class CustomDateParserFormatter extends NgbDateParserFormatter {
 
@@ -30,14 +24,14 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
   parse(value: string): NgbDateStruct {
     let result: NgbDateStruct = null;
     if (value) {
-      let date = value.split(this.DELIMITER);
+      const date = value.split(this.DELIMITER);
       result = {
-        day : parseInt(date[0], 10),
-        month : parseInt(date[1], 10),
-        year : parseInt(date[2], 10)
+        day: parseInt(date[0], 10),
+        month: parseInt(date[1], 10),
+        year: parseInt(date[2], 10)
       };
     }
-    console.log("date2",result);
+    console.log('date2', result);
     return result;
   }
 
@@ -46,20 +40,36 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
     if (date) {
       result = date.year + this.DELIMITER + date.month + this.DELIMITER + date.day;
     }
-    console.log("date",result);
-    
+    console.log('date', result);
+
     return result;
   }
-} 
+}
 
 @Component({
-  selector: "app-transport-details",
-  templateUrl: "./transport-details.component.html",
-  styleUrls: ["./transport-details.component.scss"]
+  selector: 'app-transport-details',
+  templateUrl: './transport-details.component.html',
+  styleUrls: ['./transport-details.component.scss']
 })
 export class TransportDetailsComponent implements OnInit {
-  @Input() process : string = '';
-  @Input() component : string = '';
+
+  public transportDetails = new FormGroup({
+    transportId: new FormControl('', [Validators.required]),
+    // supplierId: new FormControl("", [Validators.required]),
+    expectedDate: new FormControl('', [Validators.required]),
+    containerNumber: new FormControl('', [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
+    grossWt: new FormControl('', [CustomValidator.compondValueValidate]),
+    netWt: new FormControl('', [CustomValidator.compondValueValidate]),
+    materialDescription: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    coilsBundle: new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
+    lorryNumber: new FormControl('', [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
+    mode: new FormControl(''),
+    delivery: new FormControl(''),
+    licenceNumber: new FormControl('', [CustomValidator.alphanumericSpecialCharacterValidate])
+  });
+
+  @Input() process: string = '';
+  @Input() component: string = '';
   @Output() transportData: EventEmitter<any> = new EventEmitter<any>();
   public supplierList: User[];
   public transportList: User[];
@@ -83,10 +93,10 @@ export class TransportDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    let supplierUrl = "/users/getAllUsersByUserRoleAndStatus/SUPPLIER/APPROVED";
+    const supplierUrl = '/users/getAllUsersByUserRoleAndStatus/SUPPLIER/APPROVED';
     this.userService.getAllUserByUserRoleAndStatus(supplierUrl).subscribe(
       data => {
-        console.log("Data is: ", data);
+        console.log('Data is: ', data);
         this.supplierList = data;
         // for(let supplier of this.supplierList){
         //   console.log("id: ", supplier['id']);
@@ -103,18 +113,18 @@ export class TransportDetailsComponent implements OnInit {
       }
     );
 
-    let transportUrl =
-      "/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED";
+    const transportUrl =
+      '/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED';
     this.userService.getAllUserByUserRoleAndStatus(transportUrl).subscribe(
       data => {
-        console.log("Data is: ", data);
+        console.log('Data is: ', data);
         this.transportList = data;
         // for(let transport of this.transportList){
         //   console.log("id: ", transport['id']);
         //   this.transportId.push(transport['id']);
         // }
         // console.log("list is: ", this.transportId);
-        //we can use map to get a specific key
+        // we can use map to get a specific key
         if (this.transportList && this.transportList.length > 0) {
           this.transportIdList = this.transportList.map(
             transportObj => transportObj.id
@@ -128,12 +138,13 @@ export class TransportDetailsComponent implements OnInit {
   }
 
   ngAfterContentInit(): void {
-    //Called after ngOnInit when the component's or directive's content has been initialized.
-    //Add 'implements AfterContentInit' to the class.
+    // Called after ngOnInit when the component's or directive's content has been initialized.
+    // Add 'implements AfterContentInit' to the class.
     console.log(this.process);
-    if(this.process == 'purchaseInvoice' || this.process == 'materialTransfer' || this.process == 'jobWorkChalan' || this.process == 'withoutPurchaseInvoice') {
-      this.transportDetails.addControl('transportRecieptNo',new FormControl(''));
-      this.transportDetails.addControl('driverName',new FormControl(''));
+    if (this.process === 'purchaseInvoice' ||
+      this.process === 'materialTransfer' || this.process === 'jobWorkChalan' || this.process === 'withoutPurchaseInvoice') {
+      this.transportDetails.addControl('transportRecieptNo', new FormControl(''));
+      this.transportDetails.addControl('driverName', new FormControl(''));
 
       this.transportDetails.removeControl('expectedDate');
       this.transportDetails.removeControl('materialDescription');
@@ -141,34 +152,18 @@ export class TransportDetailsComponent implements OnInit {
       this.transportDetails.removeControl('mode');
       this.transportDetails.removeControl('delivery');
     } else {
-      this.transportDetails.addControl('supplierId',new FormControl('',[Validators.required]));
+      this.transportDetails.addControl('supplierId', new FormControl('', [Validators.required]));
     }
-  
   }
 
-  public transportDetails = new FormGroup({
-    transportId: new FormControl("", [Validators.required]),
-    // supplierId: new FormControl("", [Validators.required]),
-    expectedDate: new FormControl("", [Validators.required]),
-    containerNumber: new FormControl("", [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
-    grossWt: new FormControl("", [CustomValidator.compondValueValidate]),
-    netWt: new FormControl("", [CustomValidator.compondValueValidate]),
-    materialDescription: new FormControl("", [Validators.required, Validators.minLength(3)]),
-    coilsBundle: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-    lorryNumber: new FormControl("", [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
-    mode: new FormControl(""),
-    delivery: new FormControl(""),
-    licenceNumber: new FormControl("", [ CustomValidator.alphanumericSpecialCharacterValidate])
-  });
-
   addTransportDetails() {
-    if(this.transportDetails.valid) {
-      console.log("data is: ", this.transportDetails.value);
+    if (this.transportDetails.valid) {
+      console.log('data is: ', this.transportDetails.value);
       this.transportData.emit(this.transportDetails.value);
     } else {
-      this.toastr.error("Error! Invalid Details");
+      this.toastr.error('Error! Invalid Details');
     }
-    
+
   }
 
   get f() {

@@ -1,50 +1,48 @@
-
-
-import { Status } from "src/app/shared/Models/user.model";
+import { Status } from 'src/app/shared/Models/user.model';
 
 export interface Sales {
-  id: string;
-  salesHistory: SalesHistory[];
-  deliveryOrder: DeliveryOrder[];
-  type: SalesType;
-  salesOfferType: SalesOfferType;
-  status: Status;
-  employeeId: string;
-  customerId: string;
-  transportId: string;
-  sourceCompanyId: string;
-  sourceWarehouseId: string;
-  destinationCompanyId: string;
-  destinationWarehouseId: string;
-  expectedDate: string;
-  title: string;
-  remarks: string;
-  totalPrice: string;
-  grossWt: string;
-  netWt: string;
-  materialDescription: string;
-  lorryType: string;
-  coilsBundle: string;
-  lorryNumber: string;
-  productCategory: string;
-  productShape: string;
-  totalQuantity: string;
-  grossQuantity: string;
-  packaging: string;
-  regionPreffered: string;
-  location: string;
-  isTreadLeadBuy: boolean;
-  gstInvoice: string;
-  loadingUnloadingCharges: string;
-  packagingCharges: string;
-  deliveryCharges: string;
-  anyOtherCharges: string;
-  contactPersonName: string;
-  contactPersonMobile: string;
-  contactPersonWhatsapp: string;
-  contactPersonEmail: string;
-  thicknessRange: string;
-  widthRange: string;
+    id: string;
+    salesHistory: SalesHistory[];
+    deliveryOrder: DeliveryOrder[];
+    type: SalesType;
+    salesOfferType: SalesOfferType;
+    status: Status;
+    employeeId: string;
+    customerId: string;
+    transportId: string;
+    sourceCompanyId: string;
+    sourceWarehouseId: string;
+    destinationCompanyId: string;
+    destinationWarehouseId: string;
+    expectedDate: string;
+    title: string;
+    remarks: string;
+    totalPrice: string;
+    grossWt: string;
+    netWt: string;
+    materialDescription: string;
+    lorryType: string;
+    coilsBundle: string;
+    lorryNumber: string;
+    productCategory: string;
+    productShape: string;
+    totalQuantity: string;
+    grossQuantity: string;
+    packaging: string;
+    regionPreffered: string;
+    location: string;
+    isTreadLeadBuy: boolean;
+    gstInvoice: string;
+    loadingUnloadingCharges: string;
+    packagingCharges: string;
+    deliveryCharges: string;
+    anyOtherCharges: string;
+    contactPersonName: string;
+    contactPersonMobile: string;
+    contactPersonWhatsapp: string;
+    contactPersonEmail: string;
+    thicknessRange: string;
+    widthRange: string;
 }
 
 export interface SalesHistory {
@@ -55,7 +53,7 @@ export interface SalesHistory {
     createdDate: string;
     lastModifiedBy: string;
     lastModifiedDate: string;
-    
+
 }
 
 export interface DeliveryOrder {
@@ -75,7 +73,7 @@ export interface DeliveryOrder {
     transportRecieptNo: string;
     driverName: string;
     vehicleNo: string;
-    vehicleType: String;
+    vehicleType: string;
     dMobile: string;
     dLicence: string;
     weighingSlipNo: string;
@@ -92,7 +90,7 @@ export interface DeliveryOrder {
     destinationWarehouseId: string;
     customerId: string;
     transportId: string;
-    weighingCompanyId: String;
+    weighingCompanyId: string;
     transferChalanNumber: string;
     invoice: Invoice;
     createdBy: string;

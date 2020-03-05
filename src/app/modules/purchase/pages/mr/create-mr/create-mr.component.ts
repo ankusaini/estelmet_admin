@@ -6,7 +6,7 @@ import {
   ProductShape,
   Product
 } from "src/app/shared/Models/product.model.";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
@@ -32,7 +32,11 @@ export class CreateMRComponent implements OnInit {
   constructor(private productService:StaticDataService,
     private toastr: ToastrService,
     public purchaseService: PurchaseService,
-    public router:Router) { }
+    public router:Router) {
+      // this.selected_comapny = {
+      //   warehouse : []
+      // }
+     }
 
 
    public mrPurchase = new FormGroup({ 

@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { ApiService } from "src/app/shared/services/api.service";
-import { Observable } from "rxjs/internal/Observable";
+import { Injectable } from '@angular/core';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Observable } from 'rxjs/internal/Observable';
 import {
   ProductClass,
   ProductType,
@@ -16,18 +16,18 @@ import {
   ProductFinish,
   ProductPackaging,
   ProductHardness
-} from "../../Models/product.model.";
-import { MachineDetail } from '../../Models/machineDetails.model';
+} from '../../Models/product.model.';
+
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class CommonService {
-  constructor(private _apiService: ApiService) {}
+  constructor(private _apiService: ApiService) { }
 
   saveProductClass(data: any): Observable<ProductClass> {
     return new Observable(obs => {
       this._apiService
-        .post("/inventory/productClassification/setProductClass", data)
+        .post('/inventory/productClassification/setProductClass', data)
         .subscribe(res => {
           obs.next(res.body);
           obs.complete();
@@ -37,9 +37,9 @@ export class CommonService {
 
   saveProductType(data: ProductType): Observable<ProductType> {
     console.log(data);
-    return new Observable(res => {
+    return new Observable(() => {
       this._apiService
-        .post("/inventory/productClassification/setProductType", data)
+        .post('/inventory/productClassification/setProductType', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -50,7 +50,7 @@ export class CommonService {
   saveProductCategory(data: ProductCategory): Observable<ProductCategory> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductCategory", data)
+        .post('/inventory/productClassification/setProductCategory', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -61,7 +61,7 @@ export class CommonService {
   saveProductShape(data: ProductShape): Observable<ProductShape> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductShape", data)
+        .post('/inventory/productClassification/setProductShape', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -72,7 +72,7 @@ export class CommonService {
   saveProductTemper(data: ProductTemper): Observable<ProductTemper> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductTemper", data)
+        .post('/inventory/productClassification/setProductTemper', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -83,7 +83,7 @@ export class CommonService {
   saveProductCoatiing(data: ProductCoating): Observable<ProductCoating> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductCoating", data)
+        .post('/inventory/productClassification/setProductCoating', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -94,7 +94,7 @@ export class CommonService {
   saveProductOiling(data: ProductOiling): Observable<ProductOiling> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductOiling", data)
+        .post('/inventory/productClassification/setProductOiling', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -107,7 +107,7 @@ export class CommonService {
   ): Observable<ProductSurfaceCoating> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductSurfaceCoating", data)
+        .post('/inventory/productClassification/setProductSurfaceCoating', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -118,7 +118,7 @@ export class CommonService {
   saveProductOrigin(data: ProductOrigin): Observable<ProductOrigin> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductOrigin", data)
+        .post('/inventory/productClassification/setProductOrigin', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -129,7 +129,7 @@ export class CommonService {
   saveProductAnnealing(data: ProductAnnealing): Observable<ProductAnnealing> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductAnnealing", data)
+        .post('/inventory/productClassification/setProductAnnealing', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -140,7 +140,7 @@ export class CommonService {
   saveProductDefect(data: ProductDefect): Observable<ProductDefect> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductDefect", data)
+        .post('/inventory/productClassification/setProductDefect', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -151,7 +151,7 @@ export class CommonService {
   saveProductFinish(data: ProductFinish): Observable<ProductFinish> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductFinish", data)
+        .post('/inventory/productClassification/setProductFinish', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -162,7 +162,7 @@ export class CommonService {
   saveProductPackaging(data: ProductPackaging): Observable<ProductPackaging> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductPackaging", data)
+        .post('/inventory/productClassification/setProductPackaging', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -173,7 +173,7 @@ export class CommonService {
   saveProductHardness(data: ProductHardness): Observable<ProductHardness> {
     return new Observable(res => {
       this._apiService
-        .post("/inventory/productClassification/setProductHardness", data)
+        .post('/inventory/productClassification/setProductHardness', data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -181,14 +181,14 @@ export class CommonService {
     });
   }
 
-  
+
 
   //------------------------- delete API set up module ------------------------
 
   deleteProductClass(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductClass/" + data)
+        .delete('/inventory/productClassification/deleteProductClass/' + data)
         .subscribe(res => {
           obs.next(res.body);
           obs.complete();
@@ -200,7 +200,7 @@ export class CommonService {
     console.log(data);
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductType/" + data)
+        .delete('/inventory/productClassification/deleteProductType/' + data)
         .subscribe(res => {
           res.next(res.body);
           console.log(res.body);
@@ -213,7 +213,7 @@ export class CommonService {
     return new Observable(obs => {
       this._apiService
         .delete(
-          "/inventory/productClassification/deleteProductCategory/" + data
+          '/inventory/productClassification/deleteProductCategory/' + data
         )
         .subscribe(res => {
           res.next(res.body);
@@ -225,7 +225,7 @@ export class CommonService {
   deleteProductShape(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductShape/" + data)
+        .delete('/inventory/productClassification/deleteProductShape/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -236,7 +236,7 @@ export class CommonService {
   deleteProductTemper(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductTemper/" + data)
+        .delete('/inventory/productClassification/deleteProductTemper/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -247,7 +247,7 @@ export class CommonService {
   deleteProductCoatiing(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductCoating/" + data)
+        .delete('/inventory/productClassification/deleteProductCoating/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -258,7 +258,7 @@ export class CommonService {
   deleteProductOiling(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductOiling/" + data)
+        .delete('/inventory/productClassification/deleteProductOiling/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -270,7 +270,7 @@ export class CommonService {
     return new Observable(obs => {
       this._apiService
         .delete(
-          "/inventory/productClassification/deleteProductSurfaceCoating/" + data
+          '/inventory/productClassification/deleteProductSurfaceCoating/' + data
         )
         .subscribe(res => {
           res.next(res.body);
@@ -282,7 +282,7 @@ export class CommonService {
   deleteProductOrigin(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductOrigin/" + data)
+        .delete('/inventory/productClassification/deleteProductOrigin/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -293,7 +293,7 @@ export class CommonService {
   deleteProductAnnealing(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .post("/inventory/productClassification/deleteProductAnnealing/" + data)
+        .post('/inventory/productClassification/deleteProductAnnealing/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -304,7 +304,7 @@ export class CommonService {
   deleteProductDefect(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductDefect/" + data)
+        .delete('/inventory/productClassification/deleteProductDefect/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -315,7 +315,7 @@ export class CommonService {
   deleteProductFinish(data: string): Observable<boolean> {
     return new Observable(obs => {
       this._apiService
-        .delete("/inventory/productClassification/deleteProductFinish/" + data)
+        .delete('/inventory/productClassification/deleteProductFinish/' + data)
         .subscribe(res => {
           res.next(res.body);
           res.complete();
@@ -327,7 +327,7 @@ export class CommonService {
     return new Observable(obs => {
       this._apiService
         .delete(
-          "/inventory/productClassification/deleteProductPackaging/" + data
+          '/inventory/productClassification/deleteProductPackaging/' + data
         )
         .subscribe(res => {
           res.next(res.body);
@@ -340,7 +340,7 @@ export class CommonService {
     return new Observable(obs => {
       this._apiService
         .delete(
-          "/inventory/productClassification/deleteProductHardness/" + data
+          '/inventory/productClassification/deleteProductHardness/' + data
         )
         .subscribe(res => {
           res.next(res.body);

@@ -5,7 +5,7 @@ import {
   ProductShape,
   Product
 } from "src/app/shared/Models/product.model.";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { Company } from "src/app/shared/Models/company.model.";
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";

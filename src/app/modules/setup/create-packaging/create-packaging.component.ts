@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/Data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { ProductPackaging } from 'src/app/shared/Models/product.model.';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CommonService } from 'src/app/shared/services/http/commonService';

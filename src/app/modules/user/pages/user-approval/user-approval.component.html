@@ -27,7 +27,7 @@
                 </thead>
                 <tbody>
                   <tr href="kdkd" *ngFor="let user of pendingUserList;let i = index">
-                  <td>{{user.status}}</td>
+                  <td><label class="badge badge-warning">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{user.id}}</td>
                     <td>{{user.userRole}}</td>
@@ -44,7 +44,7 @@
 
                       <div class="overlay-edit">
                         <button (click)="selectUser(user)" type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
+                      class="feather icon-plus"></i></button>
 
                       </div>
                     </td>
@@ -80,7 +80,7 @@
                 </thead>
                 <tbody>
                   <tr href="kdkd" *ngFor="let user of approvedUserList;let i = index">
-                   <td>{{user.status}}</td>
+                   <td><label class="badge badge-success">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{user.id}}</td>
                     <td>{{user.userRole}}</td>
@@ -134,7 +134,7 @@
                 </thead>
                 <tbody>
                   <tr href="kdkd" *ngFor="let user of rejectedUserList;let i = index">
-                  <td>{{user.status}}</td>
+                  <td><label class="badge badge-danger">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{user.id}}</td>
                     <td>{{user.userRole}}</td>
@@ -191,16 +191,12 @@
                     <th>Location</th>
                     <th>Date of Creation</th>
                     <th>Last Modified Date</th>
-                    <th>
-                      Action
-                    </th>
-                    <!-- <th>Created By</th>
-                    <th>Last Modified By</th> -->
+                    <th>Action</th>
                   </tr>
                     </thead>
                     <tbody>
                          <tr href="kdkd" *ngFor="let user of selectedUserList;let i = index">
-                  <td>{{user.status}}</td>
+                  <td><label class="badge badge-default">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{user.id}}</td>
                     <td>{{user.userRole}}</td>
@@ -210,9 +206,7 @@
                     <td>{{user.email}}</td>
                     <td>{{user?.userDetail?.address1}}</td>
                     <td>{{user.createdDate}}</td>
-                    <!-- <td>{{user.createdBy}}</td> -->
                     <td>{{user.lastModifiedDate}}</td>
-                    <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
                        <div class="overlay-edit">

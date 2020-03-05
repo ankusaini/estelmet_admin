@@ -7,5 +7,4 @@ export interface Gatepass {
     vehicleNo: string;
     gateOperator: string;
     reciever: string;
-
 }

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProcessingService } from '../../service/processing.service';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
 @Component({
   selector: 'app-edit-processing',

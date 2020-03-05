@@ -6,7 +6,7 @@ import { Product } from 'src/app/shared/Models/product.model.';
 import { ActivatedRoute } from '@angular/router';
 import { InventoryService } from '../../service/inventory.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 
 
 @Component({
