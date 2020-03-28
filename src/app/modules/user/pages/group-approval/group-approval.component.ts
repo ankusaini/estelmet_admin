@@ -62,9 +62,7 @@ export class GroupApprovalComponent implements OnInit {
 
   getPendingUserGroupList(selectedRole) {
     let url =
-      "/users/group/getAllUserGroupByUserRoleAndStatus/" +
-      selectedRole +
-      "/PENDING";
+      "/users/group/getAllUserGroupByUserRoleAndStatus?userRole=" + selectedRole + "&status=PENDING&limit=2&offset=1";
 
     this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
       data => {
@@ -76,9 +74,7 @@ export class GroupApprovalComponent implements OnInit {
 
   getApprovedUserGroupList(selectedRole) {
     let url =
-      "/users/group/getAllUserGroupByUserRoleAndStatus/" +
-      selectedRole +
-      "/APPROVED";
+      "/users/group/getAllUserGroupByUserRoleAndStatus?userRole=" + selectedRole + "&status=APPROVED&limit=2&offset=1";
 
     this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
       data => {
@@ -90,9 +86,7 @@ export class GroupApprovalComponent implements OnInit {
 
   getRejectedUserGroupList(selectedRole) {
     let url =
-      "/users/group/getAllUserGroupByUserRoleAndStatus/" +
-      selectedRole +
-      "/REJECTED";
+      "/users/group/getAllUserGroupByUserRoleAndStatus?userRole=" + selectedRole + "&status=REJECTED&limit=2&offset=1";
 
     this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
       data => {
@@ -138,21 +132,33 @@ export class GroupApprovalComponent implements OnInit {
     if (this.selectedUserGroupList.length == 0) {
       this.toastrService.warning("Select at least one product!");
     } else {
-      let path = "/users/group/updateUserInGroup";
-      console.log("path", path);
-      for (let i = 0; i < this.selectedUserGroupList.length; i++) {
-        this.selectedUserGroupList[i].status = status;
+      // let path = "/users/group/updateUserInGroup";
+      // console.log("path", path);
+      // for (let i = 0; i < this.selectedUserGroupList.length; i++) {
+      //   this.selectedUserGroupList[i].status = status;
+
+      let idList = this.selectedUserGroupList.map(user => {
+        return user.userGroupId;
+      });
+      // let idList = [1, 2, 3];
+      const ids = idList.toString();
+      console.log(idList);
+      console.log(idList.toString());
+
+      let path = "/users/group/updateUserInGroup?userDetailIds=" + ids + "&status=" + status;
+
 
        
         this.userService
-          .updateUserGroup(path, this.selectedUserGroupList[i])
+          .updateUserGroup(path)
           .subscribe(
             data => {
               console.log("user group created", data);
               this.toastrService.success("Selected User(s) status changes successfully!");
+              this.selectedUserGroupList = [];
               this.getPendingUserGroupList(this.selectedUserType);
-          this.getApprovedUserGroupList(this.selectedUserType);
-          this.getRejectedUserGroupList(this.selectedUserType);
+              this.getApprovedUserGroupList(this.selectedUserType);
+              this.getRejectedUserGroupList(this.selectedUserType);
               console.log(this.selectedUserType);
               
             },
@@ -160,9 +166,8 @@ export class GroupApprovalComponent implements OnInit {
               console.log(error);
             }
           );
-          this.selectedUserGroupList = [];
           
-      }
+      // }
     }
   }
 }
