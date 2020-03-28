@@ -5,7 +5,7 @@ import { ProcessingService } from '../../service/processing.service';
 import { Product, ProductCategory } from "src/app/shared/Models/product.model.";
 import { Processing } from "src/app/shared/Models/processing.model";
 import { ToastrService } from "ngx-toastr";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { Router } from '@angular/router';
 
 @Component({

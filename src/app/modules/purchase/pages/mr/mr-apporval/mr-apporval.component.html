@@ -5,7 +5,7 @@
       <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
         <ngb-tab title="Pending" id="pendingTab" class="mb-3">
           <ng-template ngbTabContent>
-            <div *ngIf="pendingMrList" class="dt-responsive table-responsive" cardClass="card-datatable">
+            <div *ngIf="pendingMrList && pendingMrList.length" class="dt-responsive table-responsive" cardClass="card-datatable">
                <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
@@ -31,7 +31,7 @@
               <td>{{mr.productShape}}</td>
               <td>{{mr.productShape}}</td>
               <td>
-                  <span class="badge badge-light-success">{{mr.status}}</span>
+                  <span class="badge badge-light-warning">{{mr.status}}</span>
                   <div class="overlay-edit">
                     <button (click)="addMrToList(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                   </div>
@@ -115,7 +115,7 @@
               <td>{{mr.productShape}}</td>
               <td>{{mr.productShape}}</td>
               <td>
-                  <span class="badge badge-light-success">{{mr.status}}</span>
+                  <span class="badge badge-light-danger">{{mr.status}}</span>
                   <div class="overlay-edit">
                     <button (click)="addMrToList(mr)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                   </div>
@@ -144,8 +144,8 @@
 <div class="row">
     <div class="col-md-12">
         <app-card [hidHeader]="false" cardTitle="Take action on above Selected MR" [options]="false" cardClass="user-profile-list">
-            <div class="dt-responsive table-responsive" cardClass="card-datatable">
-                 <table  class="table table-striped table-bordered table-hover">
+            <div *ngIf="selectedMrList" class="dt-responsive table-responsive" cardClass="card-datatable">
+                 <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -170,7 +170,11 @@
               <td>{{mr.productShape}}</td>
               <td>{{mr.productShape}}</td>
               <td>
-                  <span class="badge badge-light-success">{{mr.status}}</span>
+                  <span class="badge" 
+                        [ngClass]="{'badge-light-warning': (mr.status == 'PENDING'),
+                                    'badge-light-success': (mr.status == 'APPROVED'),
+                                    'badge-light-danger': (mr.status == 'REJECTED')}"
+                  >{{mr.status}}</span>
                   <div class="overlay-edit">
                     <button (click)="removeSelectedUserd(mr)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-trash"></i></button>
                   </div>

@@ -6,7 +6,7 @@ import {
   ProductShape,
   Product
 } from "src/app/shared/Models/product.model.";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";

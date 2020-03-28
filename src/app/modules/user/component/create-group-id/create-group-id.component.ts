@@ -3,7 +3,7 @@ import {
   ProductCategory,
   ProductType
 } from "../../../../shared/Models/product.model.";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { FormGroup, FormControl, Validators, AbstractControl } from "@angular/forms";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
@@ -26,6 +26,7 @@ function MaxthicknessConfirming(c: AbstractControl): any {
   styleUrls: ["./create-group-id.component.scss"]
 })
 export class CreateGroupIdComponent implements OnInit {
+  public thickMask = [/\d/, '.', /\d/, /\d/, /\d/,];
   @Output() groupData: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(

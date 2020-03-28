@@ -5,7 +5,7 @@
     </div>
     <app-card [hidHeader]="true" cardClass="tab-card">
       <h5 class="mb-3">User Group Approval System</h5>
-      <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
+      <ngb-tabset (tabChange)="onTabChange($event)" type="pills"> 
         <ngb-tab title="Pending" id="pendingTab" class="mb-3">
           <ng-template ngbTabContent>
             <div *ngIf="pendingUserGroupList" class="dt-responsive table-responsive" cardClass="card-datatable">
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                   <tr href="kdkd" *ngFor="let userGroup of pendingUserGroupList;let i = index">
-                    <td>{{userGroup.status}}</td>
+                    <td><label class="badge badge-warning">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
@@ -45,7 +45,7 @@
 
                       <div class="overlay-edit">
                         <button (click)="selectUser(userGroup)" type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
+                      class="feather icon-plus"></i></button>
 
                       </div>
                     </td>
@@ -78,7 +78,7 @@
                 </thead>
                 <tbody>
                   <tr href="kdkd" *ngFor="let userGroup of approvedUserGroupList;let i = index">
-                    <td>{{userGroup.status}}</td>
+                    <td><label class="badge badge-success">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
@@ -94,7 +94,7 @@
 
                       <div class="overlay-edit">
                         <button (click)="selectUser(userGroup)" type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
+                      class="feather icon-plus"></i></button>
 
                       </div>
                     </td>
@@ -128,7 +128,7 @@
                 </thead>
                 <tbody>
                   <tr href="kdkd" *ngFor="let userGroup of rejectedUserGroupList;let i = index">
-                    <td>{{userGroup.status}}</td>
+                    <td><label class="badge badge-danger">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
@@ -144,7 +144,7 @@
 
                       <div class="overlay-edit">
                         <button (click)="selectUser(userGroup)" type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>
+                      class="feather icon-plus"></i></button>
 
                       </div>
                     </td>
@@ -190,7 +190,7 @@
                     </thead>
                     <tbody>
                          <tr href="kdkd" *ngFor="let userGroup of selectedUserGroupList;let i = index">
-                    <td>{{userGroup.status}}</td>
+                          <td><label class="badge badge-default">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
                     <td>{{userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>

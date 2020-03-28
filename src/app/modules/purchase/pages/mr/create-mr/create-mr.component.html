@@ -33,6 +33,12 @@
                     required.</label> -->
                 </div>
               </div>
+              <div  *ngIf="!selected_comapny" class="col-md-5">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Warehouse Name <small class="asterik_sign">*</small></label>
+                  <select disabled class="form-control" name="validation-category"></select>
+                </div>
+              </div>
              
             </div>
             <div class="row">

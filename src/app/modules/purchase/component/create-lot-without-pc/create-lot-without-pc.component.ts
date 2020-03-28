@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { FormInput } from './create-lot-form.model';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { UserService } from "src/app/shared/services/user.service";
 import { InventoryService } from "src/app/modules/inventory/service/inventory.service";
 import {

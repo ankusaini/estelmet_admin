@@ -1,6 +1,4 @@
-
-
-import { Status } from "src/app/shared/Models/user.model";
+import { Status } from 'src/app/shared/Models/user.model';
 
 export class Purchase {
   id: string;
@@ -32,69 +30,69 @@ export class Purchase {
 }
 
 export interface PurchaseHistory {
-    purchaseHistoryId: string;
-    purchaseId: string;
-    purchaseType: PurchaseType;
-    createdBy: string;
-    createdDate: Date;
-    lastModifiedBy: string;
-    lastModifiedDate: string;
-   
+  purchaseHistoryId: string;
+  purchaseId: string;
+  purchaseType: PurchaseType;
+  createdBy: string;
+  createdDate: Date;
+  lastModifiedBy: string;
+  lastModifiedDate: string;
+
 }
 
 export interface Grn {
-    grnId: string;
-    status: Status;
-    grnType: LotType;
-    purchaseId: string;
-    materialTransferId: string;
-    name: string;
-    invoiceNo: string;
-    invoiceDate: string;
-    materialDescription: string;
-    invoiceGrossWeight: string;
-    invoiceNetWeight: string;
-    grossWeight: string;
-    netWeight: string;
-    coilsBundles: string;
-    transportRecieptNo: string;
-    containerNumber: string;
-    driverName: string;
-    vehicleNo: string;
-    vehicleType: String;
-    dMobile: string;
-    dLicence: string;
-    weighingSlipNo: string;
-    vehicleLoadedWeight: string;
-    materialNetWeightslip: string;
-    location: string;
-    vehicleTareWeight: string;
-    jobChalan: string;
-    dateJobChalan: string;
-    locationjobChalan: string;
-    sourceCompanyId: string;
-    sourceWarehouseId: string;
-    destinationCompanyId: string;
-    destinationWarehouseId: string;
-    supplierId: string;
-    transportId: string;
-    weighingCompanyId: string;
-    transferChalanNumber: string;
-    transferChalanDate: string;
-    createdBy: string;
-    createdDate: Date;
-    lastModifiedBy: string;
-    lastModifiedDate: string;
-    
+  grnId: string;
+  status: Status;
+  grnType: LotType;
+  purchaseId: string;
+  materialTransferId: string;
+  name: string;
+  invoiceNo: string;
+  invoiceDate: string;
+  materialDescription: string;
+  invoiceGrossWeight: string;
+  invoiceNetWeight: string;
+  grossWeight: string;
+  netWeight: string;
+  coilsBundles: string;
+  transportRecieptNo: string;
+  containerNumber: string;
+  driverName: string;
+  vehicleNo: string;
+  vehicleType: string;
+  dMobile: string;
+  dLicence: string;
+  weighingSlipNo: string;
+  vehicleLoadedWeight: string;
+  materialNetWeightslip: string;
+  location: string;
+  vehicleTareWeight: string;
+  jobChalan: string;
+  dateJobChalan: string;
+  locationjobChalan: string;
+  sourceCompanyId: string;
+  sourceWarehouseId: string;
+  destinationCompanyId: string;
+  destinationWarehouseId: string;
+  supplierId: string;
+  transportId: string;
+  weighingCompanyId: string;
+  transferChalanNumber: string;
+  transferChalanDate: string;
+  createdBy: string;
+  createdDate: Date;
+  lastModifiedBy: string;
+  lastModifiedDate: string;
+
 }
 
 export enum PurchaseType {
-    MATERIAL_REQURIMENT = 'MATERIAL_REQURIMENT',
-    PURCHASE_CONFIRMATION = 'PURCHASE_CONFIRMATION',
-    PURCHASE_ORDER = 'PURCHASE_ORDER',
-    DELETED = 'DELETED',
-    COMPLETED = 'COMPLETED',
-    LOT = 'LOT'
+  MATERIAL_REQURIMENT = 'MATERIAL_REQURIMENT',
+  PURCHASE_CONFIRMATION = 'PURCHASE_CONFIRMATION',
+  PURCHASE_ORDER = 'PURCHASE_ORDER',
+  DELETED = 'DELETED',
+  COMPLETED = 'COMPLETED',
+  LOT = 'LOT'
 }
 
 export enum LotType {

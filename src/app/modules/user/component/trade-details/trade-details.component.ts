@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, Validators, AbstractControl } from "@angular/forms";
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape } from '../../../../shared/Models/product.model.';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
@@ -54,7 +54,7 @@ function MaxtemperConfirming(c: AbstractControl): any {
   styleUrls: ["./trade-details.component.scss"]
 })
 export class TradeDetailsComponent implements OnInit {
-
+  public thickMask = [/\d/, '.', /\d/, /\d/, /\d/,];
   @Output() trade_detail : EventEmitter<tempData[]> = new EventEmitter<tempData[]>();
   public tradeArr : tempData[] =[];
 
@@ -74,8 +74,7 @@ export class TradeDetailsComponent implements OnInit {
     this.getProductCategory();
     this.getProductClass();
     this.getProductType();
-    this.getProductTempor();
-    this.getProductShape();
+    this.getProductShape();  
   }
 
   tradeDetails = new FormGroup({
@@ -131,6 +130,7 @@ export class TradeDetailsComponent implements OnInit {
     })
   }
 
+  
   getProductShape() {
     this._staticData.getProductShape().subscribe(data=>{
       this.productShapeList = data;

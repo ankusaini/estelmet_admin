@@ -2,7 +2,7 @@ import {
   ProductTemper,
   ProductCoating,
   ProductCategory
-} from "src/app/shared/Models/product.model.";
+} from 'src/app/shared/Models/product.model.';
 
 export class Price {
   id: string;

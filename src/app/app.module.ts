@@ -18,13 +18,11 @@ import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavRightComponent } from './theme/layout/admin/nav-bar/nav-right/nav-right.component';
 import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
-
 import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
-
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptorService } from './shared/services/http/http-token-interceptor.service';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -48,7 +46,6 @@ import { ToastrModule } from 'ngx-toastr';
     ToggleFullScreenDirective
   ],
   imports: [
-    
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
@@ -62,13 +59,13 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [
     CookieService,
     NavigationItem,
-      {
-        provide: HTTP_INTERCEPTORS,
-        useClass: HttpTokenInterceptorService,
-        multi: true
-      }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 }

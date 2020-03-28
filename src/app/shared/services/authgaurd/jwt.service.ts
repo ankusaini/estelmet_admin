@@ -6,10 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class JwtService {
 
-  constructor(
-    private _cookieService :CookieService
-  ) { }
-
+  constructor(private _cookieService: CookieService) { }
 
   getToken(): string {
     // return window.localStorage['jwtToken'];
@@ -19,7 +16,7 @@ export class JwtService {
 
   saveToken(token: string) {
     // window.localStorage['jwtToken'] = token;
-    this._cookieService.set('token',token);
+    this._cookieService.set('token', token);
   }
 
   destroyToken() {

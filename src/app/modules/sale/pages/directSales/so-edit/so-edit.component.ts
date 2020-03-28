@@ -7,7 +7,7 @@ import { Product, ProductCategory, ProductShape } from 'src/app/shared/Models/pr
 import { SalesServiceService } from '../../../services/sales-service.service';
 import { Sales } from 'src/app/shared/Models/sales.model';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 import { ToastrService } from 'ngx-toastr';
 

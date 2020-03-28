@@ -15,7 +15,7 @@ import {
 } from "src/app/shared/Models/product.model.";
 import { Company } from "src/app/shared/Models/company.model.";
 import { Warehouse } from "src/app/shared/Models/warehouse";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { StaticDataService } from "src/app/shared/services/data/staticData.service";
 import { InventoryService } from "src/app/modules/inventory/service/inventory.service";
 import { UserService } from "src/app/shared/services/user.service";
 import { ToastrService } from "ngx-toastr";

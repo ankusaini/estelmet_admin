@@ -1,7 +1,7 @@
 export interface Email {
     from: string;
-    fromName: String;
-    to: String;
-    subject: String;
+    fromName: string;
+    to: string;
+    subject: string;
     body: string;
 }

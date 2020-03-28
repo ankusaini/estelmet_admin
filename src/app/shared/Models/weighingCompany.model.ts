@@ -8,6 +8,4 @@ export interface WeighingCompany {
     state: string;
     city: string;
     pincode: string;
-
-
 }

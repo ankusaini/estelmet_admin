@@ -5,10 +5,10 @@ import {
   Input,
   Output,
   ChangeDetectorRef
-} from "@angular/core";
-import { User } from "src/app/shared/Models/user.model";
-import { UserService } from "src/app/shared/services/user.service";
-import { UserDataService } from "src/app/shared/services/data/userData.service";
+} from '@angular/core';
+import { User } from 'src/app/shared/Models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
+import { UserDataService } from 'src/app/shared/services/data/userData.service';
 
 @Component({
   selector: 'app-user-list',
@@ -21,55 +21,55 @@ export class UserListComponent implements OnInit {
   public selectedUserList: User[] = [];
   @Output() userData: EventEmitter<any> = new EventEmitter<any>();
   @Input() doNotShowBack: any;
-  @Input() selectedUserType :string;
+  @Input() selectedUserType: string;
   // @Input() selectedUserGroup : UserGroup;
-  
-  public selectedType : string;
+
+  public selectedType: string;
 
 
   constructor(
     private userService: UserService,
-    private userDataService : UserDataService,
-    private _cd : ChangeDetectorRef
+    private userDataService: UserDataService,
+    private _cd: ChangeDetectorRef
   ) {
-    this.userDataService.userRoleData$.subscribe(data=>{
+    this.userDataService.userRoleData$.subscribe(data => {
       this.selectedType = data;
       console.log(this.selectedType);
-      if(this.selectedType != ""){
+      if (this.selectedType !== '') {
         this.getAllUserByUserRoleAndStatus(this.selectedType);
         this.selectedUserList = [];
       }
     });
-    this.userDataService.group$.subscribe(data=>{
+    this.userDataService.group$.subscribe(data => {
       console.log(data);
       this.selectedUserList = data.user;
       this.getAllUserByUserRoleAndStatus(data.userRole);
-    })
+    });
   }
 
   ngOnInit() {
   }
 
   getAllUserByUserRoleAndStatus(selectedUserType) {
-    let url =
-      "/users/getAllUsersByUserRoleAndStatus/" + selectedUserType + "/APPROVED";
+    const url =
+      '/users/getAllUsersByUserRoleAndStatus/' + selectedUserType + '/APPROVED';
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
         this.userList2 = data;
-        console.log("userlist", this.userList2);
+        console.log('userlist', this.userList2);
         this._cd.detectChanges();
       },
-      error => {}
+      error => { }
     );
   }
 
   selectUser(user: User) {
     const index: number = this.selectedUserList.indexOf(user);
-    if (index == -1) {
+    if (index === -1) {
       this.selectedUserList.push(user);
     } else {
-      alert("already added");
+      alert('already added');
     }
   }
   removeUser(user) {
@@ -80,8 +80,8 @@ export class UserListComponent implements OnInit {
   }
 
   userSelectionSubmit() {
-    if (this.selectedUserList.length == 0) {
-      alert("please ssleect any user");
+    if (this.selectedUserList.length === 0) {
+      alert('please ssleect any user');
     } else {
       this.userData.emit(this.selectedUserList);
     }

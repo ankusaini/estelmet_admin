@@ -5,10 +5,10 @@ import {
   EventEmitter,
   Input,
   Injectable
-} from "@angular/core";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
-import { User } from "../../Models/user.model";
+} from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from '../../Models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 
@@ -19,13 +19,12 @@ import { CustomValidator } from 'src/app/Validators/custom-validator';
 })
 export class TransporterDoComponent implements OnInit {
 
-   @Output() transportData: EventEmitter<any> = new EventEmitter<any>();
+  @Output() transportData: EventEmitter<any> = new EventEmitter<any>();
   public transportList: User[];
   public transportIdList: any[] = [];
 
 
-  constructor( private userService: UserService,
-    private toastr: ToastrService) {
+  constructor(private userService: UserService, private toastr: ToastrService) {
     //   this.transportDetails.statusChanges.subscribe(data=>{
     //   // console.log(data);
     //   if(data == 'VALID'){
@@ -36,26 +35,25 @@ export class TransporterDoComponent implements OnInit {
     //     this.transportData.emit({});
     //   }
     // })
-     }
+  }
 
-       public transportDetails = new FormGroup({
-    transportId: new FormControl("", [Validators.required]),
-     transportRecieptNo: new FormControl("", [Validators.required]),
-    containerNumber: new FormControl("", [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
-    grossWt: new FormControl("", [CustomValidator.compondValueValidate]),
-    netWt: new FormControl("", [CustomValidator.compondValueValidate]),
-     lorryNumber: new FormControl("", [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
-      driverName: new FormControl(""),
-      licenceNumber: new FormControl("", [ CustomValidator.alphanumericSpecialCharacterValidate])
-    });
+  public transportDetails = new FormGroup({
+    transportId: new FormControl('', [Validators.required]),
+    transportRecieptNo: new FormControl('', [Validators.required]),
+    containerNumber: new FormControl('', [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
+    grossWt: new FormControl('', [CustomValidator.compondValueValidate]),
+    netWt: new FormControl('', [CustomValidator.compondValueValidate]),
+    lorryNumber: new FormControl('', [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
+    driverName: new FormControl(''),
+    licenceNumber: new FormControl('', [CustomValidator.alphanumericSpecialCharacterValidate])
+  });
 
-    ngOnInit() {
-
-          let transportUrl =
-      "/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED";
+  ngOnInit() {
+    const transportUrl =
+      '/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED';
     this.userService.getAllUserByUserRoleAndStatus(transportUrl).subscribe(
       data => {
-        console.log("Data is: ", data);
+        console.log('Data is: ', data);
         this.transportList = data;
         if (this.transportList && this.transportList.length > 0) {
           this.transportIdList = this.transportList.map(
@@ -67,18 +65,18 @@ export class TransporterDoComponent implements OnInit {
         console.log(error);
       }
     );
-      
-    }
-     get f() {
+
+  }
+  get f() {
     return this.transportDetails.controls;
   }
 
   addTransportDetails() {
-    if(this.transportDetails.valid) {
+    if (this.transportDetails.valid) {
       this.transportData.emit(this.transportDetails.value);
     } else {
-      this.toastr.error("Error! Invalid details.");
+      this.toastr.error('Error! Invalid details.');
     }
   }
 
-  }
+}

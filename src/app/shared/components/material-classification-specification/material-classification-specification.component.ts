@@ -64,9 +64,9 @@ function MaxtemperConfirming(c: AbstractControl): any {
   } 
 }
 @Component({
-  selector: "app-material-classification-specification",
-  templateUrl: "./material-classification-specification.component.html",
-  styleUrls: ["./material-classification-specification.component.scss"]
+  selector: 'app-material-classification-specification',
+  templateUrl: './material-classification-specification.component.html',
+  styleUrls: ['./material-classification-specification.component.scss']
 })
 export class MaterialClassificationSpecificationComponent implements OnInit, OnChanges {
   constructor(private _staticData: StaticDataService, private toastr: ToastrService) {}
@@ -83,7 +83,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   productShapeList: ProductShape[];
 
   productHarndessList: ProductHardness[];
-  productTemperList: ProductTemper[];
+  productTemperList: ProductTemper[]; 
 
   productCoatingList: ProductCoating[];
   productDefectList: ProductDefect[];
@@ -331,13 +331,13 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   // }
 
   setValue(event, type) {
-    this.productForm["controls"][type]["controls"][type].patchValue(
+    this.productForm['controls'][type]['controls'][type].patchValue(
       event.target.options[event.target.options.selectedIndex].text
     );
   }
 
-  setValueTwoField(event,type1,type2) {
-    this.productForm["controls"][type1]["controls"][type2].patchValue(
+  setValueTwoField(event, type1, type2) {
+    this.productForm['controls'][type1]['controls'][type2].patchValue(
       event.target.options[event.target.options.selectedIndex].text
     );
   }
