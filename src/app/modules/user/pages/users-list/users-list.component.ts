@@ -7,7 +7,7 @@ import { User } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
 import { Subject } from "rxjs";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
-import * as xlsx from 'xlsx';
+// import * as xlsx from 'xlsx';
 @Component({
   selector: "app-users-list",
   templateUrl: "./users-list.component.html",
@@ -153,23 +153,23 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.columns().every(function() {
-        const that = this;
-        $("input", this.footer()).on("keyup change", function() {
-          if (that.search() !== this["value"]) {
-            that.search(this["value"]).draw();
-          }
-        });
-      });
+      // dtInstance.columns().every(function() {
+      //   const that = this;
+      //   $("input", this.footer()).on("keyup change", function() {
+      //     if (that.search() !== this["value"]) {
+      //       that.search(this["value"]).draw();
+      //     }
+      //   });
+      // });
     });
   }
 
   exportToExcel() {
-    const ws: xlsx.WorkSheet =   
-    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
-    const wb: xlsx.WorkBook = xlsx.utils.book_new();
-    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
-    xlsx.writeFile(wb, 'epltable.xlsx');
+    // const ws: xlsx.WorkSheet =   
+    // xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    // const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    // xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    // xlsx.writeFile(wb, 'epltable.xlsx');
    }
    print() {
     window.print();
