@@ -1,17 +1,21 @@
 // personal detail
-export interface User {
-    id?: string;
+export interface UserDetail {
+    id?: String;
+    username?: string;
+    userDetialId?: string;
     firstName?: string;
     lastName?: string;
     mobile?: string;
-    email?: string;
-    password?: string;
+    emailId?: string;
     userRole?: UserRole;
     status?: Status;
+    roles?: string[];
     privileges?: string[];
-    userDetail?: UserDetail;
-    employeeDetail?: EmployeeDetail;
+    businessDetails?: BusinessDetails;
     userGroup?: UserGroup[];
+    userProductPreference?: UserProductPreference[];
+    keyPerson?: KeyPerson[];
+    annualTurnover?: AnnualTurnover[];
 }
 
 export enum Status {
@@ -61,13 +65,8 @@ export interface EmployeeDetail {
 }
 
 // comPANY DETAIL
-export interface UserDetail {
-    userDetailId?: string;
-    userProductPreference?: UserProductPreference[];
-    securityQuestionId?: SecurityQuestion;
-    faqId1?: FrequentlyAskedQuestions;
-    keyPerson?: KeyPerson[];
-    annualTurnover?: AnnualTurnover[];
+export interface BusinessDetails {
+    businessDetailId?: string;
     companyName?: string;
     address1?: string;
     address2?: string;
@@ -78,9 +77,9 @@ export interface UserDetail {
     state?: string;
     city?: string;
     pinCode?: string;
-    mobile1?: string;
-    mobile2?: string;
-    emailBusiness?: string;
+    mobile?: string;
+    landline?: string;
+    businessEmail?: string;
     creditLimit?: string;
     currentOutstanding?: string;
     daysPayableOutstanding?: string;
@@ -111,52 +110,64 @@ export interface UserProductPreference {
     productCategory?: string;
     productShape?: string;
     productClass?: string;
-    thicknessRange?: string;
-    temperRange?: string;
-    widthRange?: string;
-    lengthRange?: string;
+    temperMin?: string;
+    temperMax?: string;
+    hardnessMin?: string;
+    hardnessMax?: string;
+    status: Status;
+    productStage: ProductStage;
+    priceHide?: string;
+    heigth?: string;
+    gwt?: string;
+    nwt?: string;
+    remarks?: string;
+    title?: string;
+    thicknessMin?: string;
+    thicknessMax?: string;
+    widthMin?: string;
+    widthMax?: string;
+    lengthMin?: string;
+    lengthMax?: string;
     monthlyRequirement?: string;
-
 }
 
+export enum ProductStage {
+    CART, WISHLIST, ORDER, PRODUCT_PREFERENCE, SALES, PURCHASE, REQUEST_QUOTATION
+}
 export interface SecurityQuestion {
     securityQuestionId?: string;
     securityQuestion?: string;
     securityAnswer?: string;
-
 }
 
 export interface FrequentlyAskedQuestions {
     frequentlyAskedQuestionsId?: string;
     frequentlyAskedQuestion?: string;
     frequentlyAskedAnswer?: string;
-
 }
 
 export interface UserGroup {
     userGroupId?: string;
-    user?: User[];
+    user?: UserDetail[];
     userRole?: UserRole;
     status?: Status;
     userGroupName?: string;
     productType?: string;
     productCategory?: string;
-    minThickness?: string;
-    maxThickness?: string;
-    minWidth?: string;
-    maxWidth?: string;
-    minTemper?: string;
-    maxTemper?: string;
+    thicknessMin?: string;
+    thicknessMax?: string;
+    widthMin?: string;
+    widthMax?: string;
+    temperMin?: string;
+    temperMax?: string;
     userGroupNoOfUser?: string;
     userGroupDate?: string;
     alias?: string;
     createdDate?: string;
-
 }
 
 export interface Roles {
     id?: string;
     role?: string;
     description?: string;
-
 }

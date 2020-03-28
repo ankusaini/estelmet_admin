@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
         console.log(user);
         if(Object.keys(user)) {
           this._userLoginService.saveUser(user);
-          this._router.navigate(['']);
+          this._router.navigateByUrl("dashboard/default");
+         // this._router.navigate(['dashboard/default']);
         }
       })
     }

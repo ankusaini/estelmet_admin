@@ -1,6 +1,7 @@
+import { BusinessDetails } from './../../../../shared/Models/user.model';
 import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { UserService } from 'src/app/shared/services/user.service';
-import { User, Status } from 'src/app/shared/Models/user.model';
+import { UserDetail, Status } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { Router } from '@angular/router';
 import csc from 'country-state-city';
@@ -18,7 +19,7 @@ export class CreateUserComponent implements OnInit {
   @ViewChild("wizard", { static: true }) wizard: WizardComponent;
   showGroup = true;
   public isSubmit: boolean;
-  public userDto : User = {};
+  public userDto : UserDetail = {};
   public uploadedFiles: Array<File> = [];
 
   // public isPersonData: boolean = false;
@@ -50,8 +51,8 @@ export class CreateUserComponent implements OnInit {
     this.userDto.firstName = data.firstName;
     this.userDto.lastName = data.lastName;
     this.userDto.mobile = data.mobile;
-    this.userDto.email = data.email;
-    this.userDto.password = data.password;
+    this.userDto.emailId = data.email;
+    // this.userDto.password = data.password;
     this.userDto.userRole = data.userRole;
     this.userDto.status = Status.PENDING;
     // this.wizard.navigation.canGoToStep(2);

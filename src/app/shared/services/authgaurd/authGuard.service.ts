@@ -54,6 +54,7 @@ export class AuthGuardService implements CanActivate {
     if (this._jwtService.getToken()) {
       return true;
     } else {
+      console.log("auth guard");
       this.router.navigate(['/account/login'], { queryParams: { redirectURL: state.url } });
       // this.router.navigateByUrl("/classic/account/login");
       return false;
