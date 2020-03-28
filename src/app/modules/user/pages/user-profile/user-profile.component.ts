@@ -106,7 +106,7 @@ export class UserProfileComponent implements OnInit {
     if(this.isPersonalValid == 'valid' && this.isBusinessValid == 'valid' && this.isKeyPersonValid == 'valid' && this.isTradeValid == 'valid') {
       console.log(this.selectedUser);
       let path = "/users/updateUser";
-      this._userService.updateUser(path,this.selectedUser);
+      //this._userService.updateUser(path,this.selectedUser);
       this.toastrService.success("User updated successfully!");
     } else {
       this.toastrService.error("Please fill valid Details!");
