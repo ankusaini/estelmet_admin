@@ -14,7 +14,7 @@ import { UserDataService } from 'src/app/shared/services/data/userData.service';
   styleUrls: ["./users-list.component.scss"]
 })
 export class UsersListComponent implements OnInit {
-  public userList: any;
+  public userList: User[];
   dtExportButtonOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   dtRouterLinkOptions: any = {};
@@ -103,14 +103,14 @@ export class UsersListComponent implements OnInit {
       if (selectedRole != "") {
         console.log("selected role", selectedRole);
         let url =
-          "/users/getAllUsersByUserRoleAndStatus/" +
+          "/users/getAllUsersByUserRoleAndStatus?userRole=" +
           selectedRole.value +
-          "/APPROVED";
+          "&status=APPROVED&limit=2&offset=1";
 
-        this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+          this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
           data => {
             this.userList = data;
-            console.log("your data is: "+data);
+            console.log("your data is: ",data);
 
             // let obj={
             //   data:data
@@ -126,7 +126,8 @@ export class UsersListComponent implements OnInit {
 
   goToView(user : User) {
     this._dataService.add(user).subscribe(()=>{
-      this.router.navigate(['/users/profile',user.id]);
+      this.router.navigateByUrl('/users/find?userId='+ user.id);
+      // this.router.navigate(['/users/profile',user.id]);
     });
   }
 

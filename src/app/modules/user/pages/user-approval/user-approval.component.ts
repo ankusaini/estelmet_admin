@@ -64,11 +64,12 @@ export class UserApprovalComponent implements OnInit {
 
   getPendingUserList(selectedRole) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus/" + selectedRole + "/PENDING";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=PENDING&limit=2&offset=1";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
         this.pendingUserList = data;
+        console.log(this.pendingUserList);
       },
       error => {
         console.log(error);
@@ -78,11 +79,12 @@ export class UserApprovalComponent implements OnInit {
 
   getApprovedUserList(selectedRole) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus/" + selectedRole + "/APPROVED";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=APPROVED&limit=2&offset=1";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
         this.approvedUserList = data;
+        console.log(this.approvedUserList);
       },
       error => {
         console.log(error);
@@ -92,7 +94,7 @@ export class UserApprovalComponent implements OnInit {
 
   getRejectedUserList(selectedRole) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus/" + selectedRole + "/REJECTED";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=REJECTED&limit=2&offset=1";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
@@ -132,25 +134,36 @@ export class UserApprovalComponent implements OnInit {
     if (this.selectedUserList.length == 0) {
       this.toastrService.warning("Select at least one product!");
     } else {
-      let path = "/users/updateUser";
+      // let path = "/users/updateUser";
+      let idList = this.selectedUserList.map(user => {
+        return user.id;
+      });
+      // let idList = [1, 2, 3];
+      const ids = idList.toString();
+      console.log(idList);
+      console.log(idList.toString());
 
-      for (let i = 0; i < this.selectedUserList.length; i++) {
-        this.selectedUserList[i].status = status;
+      let path = "/users/updateUser?userDetailIds=" + ids + "&status=" + status;
 
-        this.userService.updateUser(path,this.selectedUserList[i]).subscribe(
+
+      // for (let i = 0; i < this.selectedUserList.length; i++) {
+      //   this.selectedUserList[i].status = status;
+
+        this.userService.updateUser(path).subscribe(
           data => {
-            
-             this.selectedUserList = [];
-             this.getPendingUserList(this.selectedRole);
-             this.getApprovedUserList(this.selectedRole);
+            this.toastrService.success("Selected User(s) status changes successfully!")
+            this.selectedUserList = [];
+            this.getPendingUserList(this.selectedRole);
+            this.getApprovedUserList(this.selectedRole);
             this.getRejectedUserList(this.selectedRole);
 
              //page refresh here
           },
-          error => {}
+          error => {
+            console.log(error);
+          }
         );
-      }
-      this.toastrService.success("Selected User(s) status changes successfully!")
+      // }
     }
   }
 }
