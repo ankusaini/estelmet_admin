@@ -1,4 +1,4 @@
-<form [formGroup]="userDTO" (submit)="personalDetailSubmit()">
+<form [formGroup]="userDTO">
   <div class="row">
     <div class="col-md-7">
       <div class="form-row">
@@ -145,6 +145,7 @@
             >Enter OTP<small class="asterik_sign">*</small></label
           >
           <input
+            [readonly] = "markAsComplete"
             formControlName="otp"
             type="number"
             class="form-control"
@@ -168,22 +169,31 @@
     </div>
   </div>
   <div class="col-sm-12 centered-content">
-    <div class="btn-group mt-10" *ngIf="!f.mobile.errors && !f.email.errors && !enterOTP">
+    <div style="margin-right:10px" class="btn-group mt-10 mr-10" *ngIf="!f.mobile.errors && !f.email.errors && !enterOTP">
       <button 
-        class="btn  btn-sm"
-        [disabled]="f.mobile.errors && f.email.errors"
+        class="btn btn-primary btn-sm"
+        [disabled]="(f.mobile.errors && f.email.errors) || markAsComplete"
         (click)="SendOTP()"
       >
         Send OTP
       </button>
     </div>
-    <div class="btn-group mt-10" *ngIf="enterOTP">
+    <div style="margin-right:10px" class="btn-group mt-10 mr-10" *ngIf="enterOTP">
       <button 
-        class="btn  btn-sm"
-        [disabled]="f.otp.errors"
+        class="btn  btn-primary btn-sm"
+        [disabled]="f.otp.errors || markAsComplete"
         (click)="verifyOTP()"
       >
         Verify OTP
+      </button>
+    </div>
+    <div style="margin-right:10px" class="btn-group mt-10 mr-10" *ngIf="enterOTP">
+      <button 
+        class="btn btn-primary  btn-sm"
+        [disabled]="f.otp.errors || markAsComplete"
+        (click)="SendOTP()"
+      >
+        Resend OTP
       </button>
     </div>
     <!--Enabling continue forimage testingt  -->
@@ -191,6 +201,7 @@
      <!-- [disabled]="!userDTO.valid"  -->
     <div class="btn-group mt-10">
       <button
+        (click)="personalDetailSubmit()"
         type="submit"
         class="btn btn-primary btn-sm"
         uiSref="work"

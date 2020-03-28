@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <app-card cardTitle="Select Details To Create Lot ID" [options]="false">
+    <app-card cardTitle="Create LOT Without PC" [options]="false">
       <form [formGroup]="lotWithoutPc" class="editForm" (submit)="generateLotId()">
         <div class="row">
 
@@ -9,19 +9,20 @@
               <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Supplier Name <small
                   class="asterik_sign">*</small></label>
               <div class="col-sm-3">
-                 <select [value]="selectedName.value" formControlName="supplierId" #selectedId class="form-control" >
+                <select [value]="selectedName.value" formControlName="supplierId" #selectedId class="form-control">
                   <option value>Select</option>
-                  <option  *ngFor="let item of userList"    [value]="item?.id"    >{{ item?.id }}</option>
+                  <option *ngFor="let item of userList" [value]="item?.id">{{ item?.id }}</option>
 
-                </select> 
+                </select>
                 <!-- <label *ngIf="!supplierId.valid && (supplierId.dirty || supplierId.touched || isSubmit)"
                   id="validation-supplierId-error"
                   class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
               </div>
               <div class="col-sm-5">
-                <select  #selectedName [value]="selectedId.value" formControlName="supplierId" class="form-control" name="validation-category" required>
-                  <option  *ngFor="let item of userList"    [value]="item?.id"    >{{ item?.firstName }}</option>
-                  </select>
+                <select #selectedName [value]="selectedId.value" formControlName="supplierId" class="form-control"
+                  name="validation-category" required>
+                  <option *ngFor="let item of userList" [value]="item?.id">{{ item?.firstName }}</option>
+                </select>
                 <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
               </div>
             </div>
@@ -34,27 +35,29 @@
               <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Name <small
                   class="asterik_sign">*</small></label>
               <div class="col-sm-3">
-                <select [value]="selectedName2.value" (change)="selectedCompany(selectedId2.value)" #selectedId2 formControlName="sourceCompanyId" class="form-control" name="validation-category" required>
+                <select [value]="selectedName2.value" (change)="selectedCompany(selectedId2.value)" #selectedId2
+                  formControlName="sourceCompanyId" class="form-control" name="validation-category" required>
                   <option value> Id</option>
-                  <option  *ngFor="let item of companyList"    [value]="item?.id"    >{{ item?.id }}</option>
-                  </select>
+                  <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.id }}</option>
+                </select>
               </div>
-               <div class="col-sm-5">
-                <select #selectedName2 [value]="selectedId2.value"  formControlName="sourceCompanyId"  (change)="selectedCompany(selectedId2.value)" class="form-control" name="validation-pcId">
+              <div class="col-sm-5">
+                <select #selectedName2 [value]="selectedId2.value" formControlName="sourceCompanyId"
+                  (change)="selectedCompany(selectedId2.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
-                  <option  *ngFor="let item of companyList"    [value]="item?.id"    >{{ item?.name }}</option>
+                  <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
 
                 </select>
                 <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
-              </div> 
+              </div>
             </div>
           </div>
         </div>
 
         <!--  -->
         <div class="row">
-          <!-- <div class="col-md-5">
-            <div class="form-group row">
+          <div class="col-md-5">
+            <!-- <div class="form-group row">
               <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Lot Type<small
                   class="asterik_sign">*</small></label>
               <div class="col-sm-8">
@@ -65,39 +68,44 @@
                 </select>
                
               </div>
-            </div>
-          </div> -->
-          <!-- <div class="col-md-1"></div> -->
-          <div *ngIf="selectedCmp" class="col-md-5">
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
-                  class="asterik_sign">*</small></label>
-              <div class="col-sm-3">
-                <select formControlName="sourceWarehouseId" [value]="selectedWarehouseName.value" #selectedWarehouseId class="form-control">
-                  <option value>Id</option>
-                  <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.id }}</option>
-                </select>
-              </div>
-              <div class="col-sm-5">
-                <select #selectedWarehouseName formControlName="sourceWarehouseId" [value]="selectedWarehouseId.value" class="form-control" name="validation-pcId">
-                  <option value> Name</option>
-                  <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.name }}</option>
-                </select>
-                <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
+            </div> -->
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <div *ngIf="selectedCmp">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
+                    class="asterik_sign">*</small></label>
+                <div class="col-sm-3">
+                  <select formControlName="sourceWarehouseId" [value]="selectedWarehouseName.value" #selectedWarehouseId
+                    class="form-control">
+                    <option value>Id</option>
+                    <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.id }}</option>
+                  </select>
+                </div>
+                <div class="col-sm-5">
+                  <select #selectedWarehouseName formControlName="sourceWarehouseId" [value]="selectedWarehouseId.value"
+                    class="form-control" name="validation-pcId">
+                    <option value> Name</option>
+                    <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.name }}</option>
+                  </select>
+                  <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- </div> -->
         <!--  -->
         <div class="row">
           <div class="col-md-5">
             <div class="form-group row">
-              <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
-              <div class="col-sm-7">
-              <select formControlName="productCategory" class="form-control" name="validation-category" required>
-                  <option  *ngFor="let item of productCategoryList"    [value]="item?.productCategory"    >{{ item?.productCategory }}</option>
-                  </select>
+              <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label mt-2">Product Cat. <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-8">
+                <select formControlName="productCategory" class="form-control" name="validation-category" required>
+                  <option *ngFor="let item of productCategoryList" [value]="item?.productCategory">
+                    {{ item?.productCategory }}</option>
+                </select>
               </div>
               <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)" id="validation-category-error" class="error jquery-validation-error small form-text invalid-feedback">Product Category should be required.</label> -->
             </div>
@@ -106,12 +114,14 @@
           <div class="col-md-1"></div>
           <div class="col-md-5">
             <div class="form-group row">
-              <label for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
-             <div class="col-sm-7">
-              <select formControlName="productShape" class="form-control" name="validation-category" required>
-                  <option  *ngFor="let productShape of productShapeList"    [value]="productShape?.productShape"    >{{ productShape?.productShape }}</option>
-                  </select>
-             </div>
+              <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label mt-2">Product Shape <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-8">
+                <select formControlName="productShape" class="form-control" name="validation-category" required>
+                  <option *ngFor="let productShape of productShapeList" [value]="productShape?.productShape">
+                    {{ productShape?.productShape }}</option>
+                </select>
+              </div>
               <!-- <label *ngIf="!shape.valid && (shape.dirty || shape.touched || isSubmit)" id="validation-shape-error" class="error jquery-validation-error small form-text invalid-feedback">Product Shape should be required.</label> -->
             </div>
           </div>
@@ -145,7 +155,7 @@
         <div class="row">
           <div class="col-sm-12 text-center">
             <!-- [disabled] ="this.lotWithoutPc.invalid"  -->
-            <button type="submit" class="btn btn-success" >Generate Lot Id</button>
+            <button type="submit" class="btn btn-success">Generate Lot Id</button>
           </div>
         </div>
       </form>

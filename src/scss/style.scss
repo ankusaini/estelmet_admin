@@ -97,3 +97,12 @@ File: style.css
 
 // custom
 @import "themes/custom";
+
+@media print {
+  .print_hide {
+      display: none;
+  }
+  .print_show {
+      display: block;
+  }
+}

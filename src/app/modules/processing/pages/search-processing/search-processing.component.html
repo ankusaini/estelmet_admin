@@ -1,6 +1,11 @@
-<button (click)="basicSwal()">Change Processing Type</button>
+<div class="row">
+  <div class="col-md-12">
+          <button type="button" (click)="basicSwal()" class="btn btn-primary btn-sm btn-rounded" style="margin: 45px 0px 10px;float:right;">Change Processing Type</button>
+  </div>
+</div>
 <div class="row">
     <div class="col-md-12">
+      <!-- <button (click)="basicSwal()"></button> -->
       <app-card [hidHeader]="false" cardTitle="Search & Select Processing Id " [options]="false"
         cardClass="user-profile-list">
         <app-processing-list

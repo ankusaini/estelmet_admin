@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
 import Swal from "sweetalert2";
 import { Router } from '@angular/router';
 import { DataTableDirective } from "angular-datatables";
@@ -7,20 +7,22 @@ import { User } from "src/app/shared/Models/user.model";
 import { Observable } from "rxjs/internal/Observable";
 import { Subject } from "rxjs";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
-
+import * as xlsx from 'xlsx';
 @Component({
   selector: "app-users-list",
   templateUrl: "./users-list.component.html",
   styleUrls: ["./users-list.component.scss"]
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnInit, AfterViewInit {
+  
+  @ViewChild('epltable', { static: false }) epltable: ElementRef;
   public userList: any;
   dtExportButtonOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   dtRouterLinkOptions: any = {};
 
   @ViewChild(DataTableDirective, { static: false })
-  private datatableElement: DataTableDirective;
+  datatableElement: DataTableDirective;
   public limit = 15;
   public offset = 0;
 
@@ -31,6 +33,7 @@ export class UsersListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.dtExportButtonOptions = this.userList;
     this.basicSwal();
     // .subscribe(data=>{
     //   this.userList=data;
@@ -147,16 +150,27 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  // ngAfterViewInit(): void {
-  //   this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
-  //     dtInstance.columns().every(function() {
-  //       const that = this;
-  //       $("input", this.footer()).on("keyup change", function() {
-  //         if (that.search() !== this["value"]) {
-  //           that.search(this["value"]).draw();
-  //         }
-  //       });
-  //     });
-  //   });
-  // }
+  ngAfterViewInit(): void {
+    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.columns().every(function() {
+        const that = this;
+        $("input", this.footer()).on("keyup change", function() {
+          if (that.search() !== this["value"]) {
+            that.search(this["value"]).draw();
+          }
+        });
+      });
+    });
+  }
+
+  exportToExcel() {
+    const ws: xlsx.WorkSheet =   
+    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'epltable.xlsx');
+   }
+   print() {
+    window.print();
+  }
 }

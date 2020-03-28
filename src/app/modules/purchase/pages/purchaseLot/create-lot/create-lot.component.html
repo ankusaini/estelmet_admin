@@ -1,4 +1,14 @@
-<button type="button" (click)="basicSwal()">Choose Another Type</button>
-<app-create-lot-without-pc [selectedLotType]="selectedLotType" (purchaseData)="getPurchaseData($event)" *ngIf="selectedLotType=='WITHOUT_PC' || selectedLotType=='JOB_WORK_OTHER'"></app-create-lot-without-pc>
-<app-create-lot-with-pc  [selectedLotType]="selectedLotType" *ngIf="selectedLotType=='WITH_PC' "></app-create-lot-with-pc>
-<app-create-lot-mt-self [selectedLotType]="selectedLotType" (purchaseDataWithProduct)="getPurchaseDataRequest($event)"  *ngIf="selectedLotType =='MATERIAL_TRANSFER' || selectedLotType =='JOB_WORK_SELF'"></app-create-lot-mt-self>
+<div class="row">
+    <div class="col-md-12">
+            <button type="button" (click)="basicSwal()" class="btn btn-primary btn-sm" style="margin: 45px 0px 10px;float:right;">Choose Another Type</button>
+    </div>
+</div>
+
+
+    <app-create-lot-without-pc [selectedLotType]="selectedLotType" (purchaseData)="getPurchaseData($event)"
+        *ngIf="selectedLotType=='WITHOUT_PC' || selectedLotType=='JOB_WORK_OTHER'"></app-create-lot-without-pc>
+    <app-create-lot-with-pc [selectedLotType]="selectedLotType" *ngIf="selectedLotType=='WITH_PC' ">
+    </app-create-lot-with-pc>
+    <app-create-lot-mt-self [selectedLotType]="selectedLotType"
+        (purchaseDataWithProduct)="getPurchaseDataRequest($event)"
+        *ngIf="selectedLotType =='MATERIAL_TRANSFER' || selectedLotType =='JOB_WORK_SELF'"></app-create-lot-mt-self>

@@ -28,7 +28,7 @@
             <option *ngFor="let item of productCategoryList" [value]="item?.id">{{ item?.productCategory }}</option>
           </select>
         </fieldset>
-        <label *ngIf="f.productCategory.value === '' && (f.productCategory.dirty || f.productCategory.touched || isSubmit2)"
+        <label *ngIf="f.productCategory.value === '' && (f.productCategory.dirty || f.productCategory.touched)"
                   id="validation-category-error"
                   class="error jquery-validation-error small form-text invalid-feedback">Category should be
                   required.</label>
@@ -43,7 +43,7 @@
             <option *ngFor="let item of productShapeList" [value]="item?.id">{{ item?.productShape }}</option>
           </select>
         </fieldset>
-        <label *ngIf="f.productShape.value === '' && (f.productShape.dirty || f.productShape.touched || isSubmit2)" id="validation-shape-error"
+        <label *ngIf="f.productShape.value === '' && (f.productShape.dirty || f.productShape.touched)" id="validation-shape-error"
                   class="error jquery-validation-error small form-text invalid-feedback">Shape should be
                   required.</label>
       </div>
@@ -57,7 +57,7 @@
             <option *ngFor="let item of productClassList" [value]="item?.id">{{ item?.productClass }}</option>
           </select>
         </fieldset>
-        <label *ngIf="f.productClass.value === '' && (f.productClass.dirty || f.productClass.touched || isSubmit2)" id="validation-class-error"
+        <label *ngIf="f.productClass.value === '' && (f.productClass.dirty || f.productClass.touched)" id="validation-class-error"
                   class="error jquery-validation-error small form-text invalid-feedback">Class should be
                   required.</label>
       </div>
