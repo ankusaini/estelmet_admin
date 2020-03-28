@@ -14,7 +14,7 @@ export class UserService {
   getAllUserByUserRoleAndStatus(url): Observable<User[]> {
     return new Observable<User[]>(obs => {
       this._apiService.get(url).subscribe(res => {
-        obs.next(res);
+        obs.next(res.data);
       });
     });
   }
@@ -31,7 +31,7 @@ export class UserService {
   getAllUserByUserGroupRoleAndStatus(url): Observable<UserGroup[]> {
     return new Observable<UserGroup[]>(obs => {
       this._apiService.get(url).subscribe(res => {
-        obs.next(res);
+        obs.next(res.data);
       });
     });
   }
@@ -61,17 +61,17 @@ export class UserService {
     });
   }
 
-  updateUser(path, data) {
+  updateUser(path) {
     return new Observable<User>(obs => {
-      this._apiService.put(path, data).subscribe(res => {
+      this._apiService.put(path).subscribe(res => {
         obs.next(res.body);
       });
     })
   }
 
-  updateUserGroup(path, data) {
+  updateUserGroup(path) {
     return new Observable<UserGroup>(obs => {
-      this._apiService.put(path, data).subscribe(res => {
+      this._apiService.put(path).subscribe(res => {
         obs.next(res.body);
       });
     })

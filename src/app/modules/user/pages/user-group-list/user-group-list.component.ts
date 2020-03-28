@@ -52,9 +52,9 @@ export class UserGroupListComponent implements OnInit {
       if (selectedRole != "") {
         console.log("selected role", selectedRole);
         let url =
-          "/users/group/getAllUserGroupByUserRoleAndStatus/" +
+          "/users/group/getAllUserGroupByUserRoleAndStatus?userRole=" +
           selectedRole.value +
-          "/APPROVED";
+          "&status=APPROVED&limit=2&offset=1";
 
         this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
           data => {
@@ -84,7 +84,10 @@ export class UserGroupListComponent implements OnInit {
   }
 
   navigateToEditView(userGroupId) {
-    let url = "users/editGroup/" + userGroupId;
+    let url = "users/find?userId="+ userGroupId;
     this.router.navigateByUrl(url);
   }
 }
+
+
+// getAllUsersByUserRole
