@@ -108,13 +108,17 @@ export class UserTradeDetailsComponent implements OnInit {
     data.productCategory = this.tradeDetails.value.productCategory;
     data.productShape = this.tradeDetails.value.productShape;
     data.productType = this.tradeDetails.value.productType;
-    data.lengthRange = this.tradeDetails.value.lengthMin.toString() + " - " + this.tradeDetails.value.lengthMax.toString();
-    data.widthRange = this.tradeDetails.value.widthMin.toString() + " - " + this.tradeDetails.value.widthMax.toString();
-    data.thicknessRange = this.tradeDetails.value.thicknessMin.toString() + " - " + this.tradeDetails.value.thicknessMax.toString();
-    data.temperRange = this.tradeDetails.value.temporMin.toString() + " - " + this.tradeDetails.value.temporMax.toString();
+    data.lengthMin = this.tradeDetails.value.lengthMin;
+    data.lengthMax = this.tradeDetails.value.lengthMax;
+    data.widthMin = this.tradeDetails.value.widthMin
+    data.widthMax = this.tradeDetails.value.widthMax;
+    data.thicknessMin = this.tradeDetails.value.thicknessMin
+    data.thicknessMax = this.tradeDetails.value.thicknessMax;
+    data.temperMin = this.tradeDetails.value.temporMin;
+    data.temperMax = this.tradeDetails.value.temporMax;
     data.monthlyRequirement = this.tradeDetails.value.monthlyRequirement;
 
-    this.selectedUser.userDetail.userProductPreference.push(data);
+    this.selectedUser.userProductPreference.push(data);
     this.check.emit('valid');
 
     // this.tradeDetails.reset();

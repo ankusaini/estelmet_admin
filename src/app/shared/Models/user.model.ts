@@ -1,4 +1,7 @@
 // personal detail
+export interface User extends UserDetail {
+
+}
 export interface UserDetail {
     id?: String;
     username?: string;
@@ -83,7 +86,6 @@ export interface BusinessDetails {
     creditLimit?: string;
     currentOutstanding?: string;
     daysPayableOutstanding?: string;
-
 }
 
 export interface AnnualTurnover {
@@ -114,8 +116,8 @@ export interface UserProductPreference {
     temperMax?: string;
     hardnessMin?: string;
     hardnessMax?: string;
-    status: Status;
-    productStage: ProductStage;
+    status?: Status;
+    productStage?: ProductStage;
     priceHide?: string;
     heigth?: string;
     gwt?: string;
