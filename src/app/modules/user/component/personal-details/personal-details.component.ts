@@ -60,7 +60,7 @@ export class PersonalDetailsComponent implements OnInit {
     cpassword: new FormControl("", [Validators.required,passwordConfirming]),
     userRole: new FormControl("", [Validators.required]),
     // otp: new FormControl("", [Validators.required]),
-     otp: new FormControl(""),
+     otp: new FormControl(),
     // status: new FormControl("", [Validators.required])
   });
   
@@ -134,6 +134,11 @@ export class PersonalDetailsComponent implements OnInit {
         this.userDTO.controls.email.value;
       this._userService.sendOTP(url).subscribe(
         data => {
+          if(data.type == "success"){
+            this.toastrService.success("OTP sent successfully."); 
+          } else {
+            this.toastrService.error("Error sending OTP."); 
+          }
           console.log(data);
         },
         error => {}
@@ -142,6 +147,10 @@ export class PersonalDetailsComponent implements OnInit {
   }
 
   verifyOTP() {
+    if(!this.userDTO.controls.otp.value) {
+      this.toastrService.error("Invalid OTP"); 
+      return
+    }
     let url =
     "/users/verifyOtp/" +
     this.userDTO.controls.mobile.value + 
@@ -153,13 +162,16 @@ export class PersonalDetailsComponent implements OnInit {
      if(data.message=='otp_verified')
       {
      this.markAsComplete = true;
+     this.toastrService.success("OTP verified"); 
       }
     else
       {
-        alert("Invalid OTP")
+        this.toastrService.error("Invalid OTP"); 
       }
     },
-    error => {}
+    error => {
+      this.toastrService.error("Invalid OTP"); 
+    }
   );
   }
 

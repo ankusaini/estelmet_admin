@@ -36,7 +36,7 @@ export class UserPersonalDetailComponent implements OnInit {
         lastName : new FormControl(this.selectedUser.lastName,[Validators.required, Validators.minLength(2)]),
         userRole : new FormControl(this.selectedUser.userRole,[Validators.required]),
         mobile : new FormControl(this.selectedUser.mobile,[Validators.required, CustomValidator.contactNumberValidation]),
-        email : new FormControl(this.selectedUser.email,[Validators.required, CustomValidator.emailValidation]),
+        email : new FormControl(this.selectedUser.emailId,[Validators.required, CustomValidator.emailValidation]),
       })  
     } else {
       console.log("error code");
@@ -49,7 +49,7 @@ export class UserPersonalDetailComponent implements OnInit {
     this.selectedUser.lastName = this.prsnlDetailForm.value.lastName;
     this.selectedUser.userRole = this.prsnlDetailForm.value.userRole;
     this.selectedUser.mobile = this.prsnlDetailForm.value.mobile;
-    this.selectedUser.email = this.prsnlDetailForm.value.email;
+    this.selectedUser.emailId = this.prsnlDetailForm.value.email;
     this.check.emit(this.prsnlDetailForm.valid ? 'valid': 'invalid');
    }
   }

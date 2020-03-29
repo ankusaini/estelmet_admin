@@ -67,36 +67,36 @@ export class CreateUserComponent implements OnInit {
 
   companyDetailData(data: any) {
     console.log(data);
-    this.userDto.userDetail = {};
-    this.userDto.userDetail.userDetailId = ""
-    this.userDto.userDetail.companyName = data.companyName;
-    this.userDto.userDetail.address1 = data.address1;
-    this.userDto.userDetail.address2 = data.address2;
-    this.userDto.userDetail.gst = data.gst;
-    this.userDto.userDetail.otp = data.otp;
-    this.userDto.userDetail.numberOfEmployees = data.numberOfEmployees;
-    this.userDto.userDetail.country = csc.getCountryById(data.country).name;
-    this.userDto.userDetail.state = csc.getStateById(data.state).name;
-    this.userDto.userDetail.city = csc.getCityById(data.city).name;
-    this.userDto.userDetail.pinCode = data.pinCode;
-    this.userDto.userDetail.mobile1 = data.mobile1;
-    this.userDto.userDetail.mobile2 = data.mobile2
-    this.userDto.userDetail.emailBusiness = data.emailBusiness;
-    this.userDto.userDetail.annualTurnover = [];
+    this.userDto.businessDetails = {};
+    this.userDto.businessDetails.businessDetailId = ""
+    this.userDto.businessDetails.companyName = data.companyName;
+    this.userDto.businessDetails.address1 = data.address1;
+    this.userDto.businessDetails.address2 = data.address2;
+    this.userDto.businessDetails.gst = data.gst;
+    this.userDto.businessDetails.otp = data.otp;
+    this.userDto.businessDetails.numberOfEmployees = data.numberOfEmployees;
+    this.userDto.businessDetails.country = csc.getCountryById(data.country).name;
+    this.userDto.businessDetails.state = csc.getStateById(data.state).name;
+    this.userDto.businessDetails.city = csc.getCityById(data.city).name;
+    this.userDto.businessDetails.pinCode = data.pinCode;
+    this.userDto.businessDetails.mobile = data.mobile1;
+    this.userDto.businessDetails.mobile = data.mobile2
+    this.userDto.businessDetails.businessEmail = data.emailBusiness;
+    this.userDto.annualTurnover = [];
 
-    this.userDto.userDetail.annualTurnover.push({
+    this.userDto.annualTurnover.push({
       annualTurnoverId : "",
       year : '2016-2017',
       turnover : data.annualTurnover1
     });
 
-    this.userDto.userDetail.annualTurnover.push({
+    this.userDto.annualTurnover.push({
       annualTurnoverId : "",
       year : '2017-2018',
       turnover : data.annualTurnover2
     });
 
-    this.userDto.userDetail.annualTurnover.push({
+    this.userDto.annualTurnover.push({
       annualTurnoverId : "",
       year : '2018-2019',
       turnover : data.annualTurnover3
@@ -110,24 +110,28 @@ export class CreateUserComponent implements OnInit {
   }
 
   tradeData(data: any[]) {
-    this.userDto.userDetail.userProductPreference = []
+    this.userDto.userProductPreference = []
     // console.log(data);
 
     data.forEach(ele =>{
-      this.userDto.userDetail.userProductPreference.push({
+      this.userDto.userProductPreference.push({
         productType : ele.productType,
         productCategory : ele.productCategory,
         productClass : ele.productClass,
         productShape : ele.productShape,
-        thicknessRange : ele.thicknessMin +' - '+ ele.thicknessMax,
-        widthRange : ele.widthMin +' - '+ ele.widthMax,
-        temperRange : ele.temperMin +' - '+ ele.temperMax,
-        lengthRange : ele.lengthMin +' - '+ ele.lengthMax,
+        thicknessMin : ele.thicknessMin,
+        thicknessMax : ele.thicknessMax,
+        widthMin : ele.widthMin,
+        widthMax : ele.widthMax,
+        temperMin : ele.temperMin,
+        temperMax : ele.temperMax,
+        lengthMin : ele.lengthMin,
+        lengthMax : ele.lengthMax,
         monthlyRequirement : ele.monthlyRequirement
       })
     })
 
-    console.log(this.userDto.userDetail.userProductPreference);
+    console.log(this.userDto.userProductPreference);
     // this.wizard.navigation.canGoToStep(4);
     this.wizard.navigation.goToNextStep();
 
@@ -135,9 +139,9 @@ export class CreateUserComponent implements OnInit {
   }
 
   keyPersonData(data: any) {
-    this.userDto.userDetail.keyPerson = [];
+    this.userDto.keyPerson = [];
 
-    this.userDto.userDetail.keyPerson.push({
+    this.userDto.keyPerson.push({
       keyPersonId: "",
       name: data.fullName1,
       designation: data.designation1,
@@ -147,7 +151,7 @@ export class CreateUserComponent implements OnInit {
       mobile2: ""
     });
 
-    this.userDto.userDetail.keyPerson.push({
+    this.userDto.keyPerson.push({
       keyPersonId: "",
       name: data.fullName2,
       designation: data.designation2,

@@ -40,7 +40,7 @@ export class UserKeyPersonComponent implements OnInit {
 
   addKeyPerson() : FormGroup[] {
     let tempArray : FormGroup[] = [];
-    this.selectedUser.userDetail.keyPerson.forEach(element => {
+    this.selectedUser.keyPerson.forEach(element => {
         let tempForm : FormGroup;
         tempForm = this._fb.group({
           name : new FormControl(element.name,[Validators.required, Validators.minLength(3)]),
@@ -57,10 +57,10 @@ export class UserKeyPersonComponent implements OnInit {
     if(this.selectedUser && this.keyPersonDetails){
       let tempArray = this.keyPersonDetails.get('details') as FormArray;
       for (let index = 0; index < tempArray.length; index++) {
-        this.selectedUser.userDetail.keyPerson[index].name = tempArray.controls[index].value.name;
-        this.selectedUser.userDetail.keyPerson[index].designation = tempArray.controls[index].value.designation;
-        this.selectedUser.userDetail.keyPerson[index].mobile1 = tempArray.controls[index].value.mobile1;
-        this.selectedUser.userDetail.keyPerson[index].email1 = tempArray.controls[index].value.email1;
+        this.selectedUser.keyPerson[index].name = tempArray.controls[index].value.name;
+        this.selectedUser.keyPerson[index].designation = tempArray.controls[index].value.designation;
+        this.selectedUser.keyPerson[index].mobile1 = tempArray.controls[index].value.mobile1;
+        this.selectedUser.keyPerson[index].email1 = tempArray.controls[index].value.email1;
         this.check.emit(this.keyPersonDetails.valid ? 'valid': 'invalid');
 
       }
