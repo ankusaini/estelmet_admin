@@ -145,7 +145,7 @@ export class GroupApprovalComponent implements OnInit {
       console.log(idList);
       console.log(idList.toString());
 
-      let path = "/users/group/updateUserInGroup?userDetailIds=" + ids + "&status=" + status;
+      let path = "/users/group/updateStatusInGroup?userGroupIds=" + ids + "&status=" + status;
 
 
        

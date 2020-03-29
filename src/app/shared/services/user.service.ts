@@ -103,4 +103,12 @@ export class UserService {
       });
     });
   }
+
+  forgetPassword(path, body) {
+    return new Observable<any>(obs => {
+      this._apiService.post(path, body).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
 }
