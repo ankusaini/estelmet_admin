@@ -25,18 +25,37 @@ export class CreateUserGroupComponent implements OnInit {
     userGroupName: new FormControl(""),
     productType: new FormControl(""),
     productCategory: new FormControl(""),
-    minThickness: new FormControl(""),
-    maxThickness: new FormControl(""),
-    minWidth: new FormControl(""),
-    maxWidth: new FormControl(""),
-    minTemper: new FormControl(""),
-    maxTemper: new FormControl(""),
+    thicknessMin: new FormControl(""),
+    thicknessMax: new FormControl(""),
+    widthMin: new FormControl(""),
+    widthMax: new FormControl(""),
+    temperMin: new FormControl(""),
+    temperMax: new FormControl(""),
     userGroupNoOfUser: new FormControl(""),
     userGroupDate: new FormControl(""),
     alias: new FormControl(""),
     createdDate: new FormControl(""),
-    user:new FormArray([])
   });
+
+//   export interface UserGroup {
+//     userGroupId?: string;
+//     user?: UserDetail[];
+//     userRole?: UserRole;
+//     status?: Status;
+//     userGroupName?: string;
+//     productType?: string;
+//     productCategory?: string;
+//     thicknessMin?: string;
+//     thicknessMax?: string;
+//     widthMin?: string;
+//     widthMax?: string;
+//     temperMin?: string;
+//     temperMax?: string;
+//     userGroupNoOfUser?: string;
+//     userGroupDate?: string;
+//     alias?: string;
+//     createdDate?: string;
+// }
 
   initialiseFormGroup() : FormGroup
   {
@@ -61,10 +80,12 @@ export class CreateUserGroupComponent implements OnInit {
       {
         this.userArray = this.userGroupForm.get('user') as FormArray;
         this.secondFormData=selectedUser;
+        this.userGroupForm.value['user'] = [];
         selectedUser.forEach(element => {
-          this.userArray.push(new FormGroup({
-            id:new FormControl(element.id)
-          }));
+          // this.userArray.push(new FormGroup({
+          //   id:new FormControl(element.userDetialId)
+          // }));
+          this.userGroupForm.value.user.push(element)
 
         });
         let path="/users/group/createUserGroup";

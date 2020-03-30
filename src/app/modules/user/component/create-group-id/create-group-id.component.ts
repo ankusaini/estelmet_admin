@@ -12,8 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 
 function MaxthicknessConfirming(c: AbstractControl): any {
   if(!c.parent || !c) return;
-  const minThickness = (c.parent.get("minThickness"));
-  const maxThickness = (c.parent.get("maxThickness"));
+  const minThickness = (c.parent.get("thicknessMin"));
+  const maxThickness = (c.parent.get("thicknessMax"));
   if(!maxThickness || ! minThickness) return;
   if(maxThickness.value < minThickness.value) {
     return { invalid: true};
@@ -42,10 +42,30 @@ export class CreateGroupIdComponent implements OnInit {
     userGroupName: new FormControl(""),
     productType: new FormControl("", [Validators.required]),
     productCategory: new FormControl("", [Validators.required]),
-    minThickness: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
-    maxThickness: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
+    thicknessMin: new FormControl("", [Validators.required, CustomValidator.compondValueValidate]),
+    thicknessMax: new FormControl("", [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
     userRole: new FormControl("", [Validators.required])
   });
+
+  //   export interface UserGroup {
+//     userGroupId?: string;
+//     user?: UserDetail[];
+//     userRole?: UserRole;
+//     status?: Status;
+//     userGroupName?: string;
+//     productType?: string;
+//     productCategory?: string;
+//     thicknessMin?: string;
+//     thicknessMax?: string;
+//     widthMin?: string;
+//     widthMax?: string;
+//     temperMin?: string;
+//     temperMax?: string;
+//     userGroupNoOfUser?: string;
+//     userGroupDate?: string;
+//     alias?: string;
+//     createdDate?: string;
+// }
 
   ngOnInit() {
     this.getProductType();
@@ -71,9 +91,9 @@ export class CreateGroupIdComponent implements OnInit {
       "-" +
       this.createGroupForm.controls.productCategory.value +
       "-" +
-      this.createGroupForm.controls.minThickness.value +
+      this.createGroupForm.controls.thicknessMin.value +
       "-" +
-      this.createGroupForm.controls.maxThickness.value;
+      this.createGroupForm.controls.thicknessMax.value;
     this.createGroupForm.controls.userGroupName.patchValue(userGroupName);
     console.log("form", this.createGroupForm);
 

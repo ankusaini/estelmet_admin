@@ -29,7 +29,7 @@
                   <tr href="kdkd" *ngFor="let user of pendingUserList;let i = index">
                   <td><label class="badge badge-warning">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.id}}</td>
+                    <td>{{user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user?.userDetail?.companyName}}</td>
@@ -82,7 +82,7 @@
                   <tr href="kdkd" *ngFor="let user of approvedUserList;let i = index">
                    <td><label class="badge badge-success">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.id}}</td>
+                    <td>{{user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user?.userDetail?.companyName}}</td>
@@ -136,7 +136,7 @@
                   <tr href="kdkd" *ngFor="let user of rejectedUserList;let i = index">
                   <td><label class="badge badge-danger">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.id}}</td>
+                    <td>{{user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user?.userDetail?.companyName}}</td>
@@ -198,7 +198,7 @@
                          <tr href="kdkd" *ngFor="let user of selectedUserList;let i = index">
                   <td><label class="badge badge-default">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.id}}</td>
+                    <td>{{user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user?.userDetail?.companyName}}</td>

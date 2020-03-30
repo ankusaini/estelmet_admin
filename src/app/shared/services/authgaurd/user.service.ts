@@ -66,7 +66,7 @@ export class UserService {
     console.log('logout');
     this.purgeAuth();
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/account/login']);
     //
   }
 

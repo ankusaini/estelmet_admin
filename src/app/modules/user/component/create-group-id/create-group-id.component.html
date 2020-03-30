@@ -37,19 +37,19 @@
               <label for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
               <div class="row">
                 <div class="col-md-6 col-xs-6 mb-3">
-                    <input formControlName="minThickness" [textMask]="{mask: thickMask}"  type="text"  class="form-control"  placeholder="0.00"  required >
-                    <small *ngIf="f.minThickness.value == '' && (f.minThickness.dirty || f.minThickness.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                    <input formControlName="thicknessMin"   type="text"  class="form-control"  placeholder="0.00"  required >
+                    <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.dirty || f.thicknessMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
               >This field is required.</small>
-                    <!-- <label *ngIf="!minThickness.valid && (minThickness.dirty || minThickness.touched || isSubmit)" id="validation-thickMin-error" class="error jquery-validation-error small form-text invalid-feedback">This field should be required</label> -->
+                    <!-- <label *ngIf="!thicknessMin.valid && (thicknessMin.dirty || thicknessMin.touched || isSubmit)" id="validation-thickMin-error" class="error jquery-validation-error small form-text invalid-feedback">This field should be required</label> -->
                 </div>
                 <div class="col-md-6 col-xs-6 mb-3">
-                    <input  formControlName="maxThickness"  type="text" [textMask]="{mask: thickMask}" class="form-control"  placeholder="0.00"  required >
-                    <small *ngIf="f.maxThickness.value == '' && (f.maxThickness.dirty || f.maxThickness.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                    <input  formControlName="thicknessMax"  type="text"  class="form-control"  placeholder="0.00"  required >
+                    <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.dirty || f.thicknessMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
               >This field is required.</small>
-              <small *ngIf="f.maxThickness.value !== '' && !f.maxThickness.valid " id="passwordHelpBlock" class="form-text text-muted"
+              <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-muted"
             >Maximum thickness should be greater than minimum thickness.</small
           >
-                    <!-- <label *ngIf="!maxThickness.valid && (maxThickness.dirty || maxThickness.touched || isSubmit)" id="validation-thickMax-error" class="error jquery-validation-error small form-text invalid-feedback">This field should be required</label> -->
+                    <!-- <label *ngIf="!thicknessMax.valid && (thicknessMax.dirty || thicknessMax.touched || isSubmit)" id="validation-thickMax-error" class="error jquery-validation-error small form-text invalid-feedback">This field should be required</label> -->
                 </div>
               </div>
             </div>

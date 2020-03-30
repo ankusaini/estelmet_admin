@@ -21,11 +21,12 @@ import { ConfigurationComponent } from './theme/layout/admin/configuration/confi
 import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptorService } from './shared/services/http/http-token-interceptor.service';
 import { CookieService } from 'ngx-cookie-service';
-
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModalModule, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ToastrModule } from 'ngx-toastr';
     NgbTooltipModule,
     NgbButtonsModule,
     NgbTabsetModule,
+    NgbModalModule,
     ToastrModule.forRoot()
   ],
   providers: [

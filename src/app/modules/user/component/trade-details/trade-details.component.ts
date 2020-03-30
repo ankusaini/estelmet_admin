@@ -4,6 +4,7 @@ import { StaticDataService } from 'src/app/shared/services/data/staticData.servi
 import { ProductClass, ProductCategory, ProductTemper, ProductType, ProductShape } from '../../../../shared/Models/product.model.';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 
 function MaxlengthConfirming(c: AbstractControl): any {
@@ -67,14 +68,15 @@ export class TradeDetailsComponent implements OnInit {
 
   constructor(
     private _staticData : StaticDataService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private apiService: ApiService
   ) {}
 
   ngOnInit() {
     this.getProductCategory();
     this.getProductClass();
     this.getProductType();
-    this.getProductShape();  
+    this.getProductShape(); 
   }
 
   tradeDetails = new FormGroup({
@@ -115,18 +117,23 @@ export class TradeDetailsComponent implements OnInit {
   getProductType() {
     this._staticData.getProductType().subscribe(data=>{
       this.productTypeList = data;
+      console.log(this.productTypeList);
     })
   }
 
   getProductClass() {
     this._staticData.getProductClass().subscribe(data=>{
       this.productClassList = data;
+      console.log(this.productClassList);
+
     })
   }
 
   getProductCategory() {
     this._staticData.getAllProductCategory().subscribe(data=>{
       this.productCategoryList = data;
+      console.log("category",this.productCategoryList);
+
     })
   }
 
@@ -134,6 +141,8 @@ export class TradeDetailsComponent implements OnInit {
   getProductShape() {
     this._staticData.getProductShape().subscribe(data=>{
       this.productShapeList = data;
+      console.log(this.productShapeList);
+
     })
   }
 
@@ -146,6 +155,8 @@ export class TradeDetailsComponent implements OnInit {
       this.productTemporList = data;
     })
   }
+
+
 }
 
 interface tempData {
@@ -163,4 +174,7 @@ interface tempData {
   widthMin: string;
   widthMax: string;
   monthlyRequirement:string; 
+
+
+ 
 }

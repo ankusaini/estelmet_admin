@@ -54,7 +54,7 @@ export class UserGroupListComponent implements OnInit {
         let url =
           "/users/group/getAllUserGroupByUserRoleAndStatus?userRole=" +
           selectedRole.value +
-          "&status=APPROVED&limit=2&offset=1";
+          "&status=APPROVED&limit=10&offset=1";
 
         this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
           data => {
@@ -84,7 +84,8 @@ export class UserGroupListComponent implements OnInit {
   }
 
   navigateToEditView(userGroupId) {
-    let url = "users/find?userId="+ userGroupId;
+    // this.router.navigate(['/users/profile',user.id]);
+    let url = "/users/editGroup/" + userGroupId;
     this.router.navigateByUrl(url);
   }
 }

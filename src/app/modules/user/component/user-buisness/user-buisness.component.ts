@@ -27,15 +27,15 @@ export class UserBuisnessComponent implements OnInit {
   ngOnInit() {
     if(this.selectedUser) {
       this.buisnessDetailForm = this._fb.group({
-        companyName : new FormControl(this.selectedUser.businessDetails.companyName,[Validators.required, Validators.minLength(3)]),
-        address1 : new FormControl(this.selectedUser.businessDetails.address1,[Validators.required,  CustomValidator.addressValidation]),
-        address2 : new FormControl(this.selectedUser.businessDetails.address2,[ CustomValidator.addressValidation]),
-        city : new FormControl(this.selectedUser.businessDetails.city,[Validators.required]),
-        state : new FormControl(this.selectedUser.businessDetails.state,[Validators.required]),
-        pincode : new FormControl(this.selectedUser.businessDetails.pinCode,[Validators.required, CustomValidator.pinCodeValidation]),
-        gst : new FormControl(this.selectedUser.businessDetails.gst,[Validators.required]),
-        emailBusiness : new FormControl(this.selectedUser.businessDetails.businessEmail,[CustomValidator.emailValidation]),
-        mobile1 : new FormControl(this.selectedUser.businessDetails.mobile,[CustomValidator.contactNumberValidation]),
+        companyName : new FormControl(this.selectedUser.businessDetails[0].companyName,[Validators.required, Validators.minLength(3)]),
+        address1 : new FormControl(this.selectedUser.businessDetails[0].address1,[Validators.required,  CustomValidator.addressValidation]),
+        address2 : new FormControl(this.selectedUser.businessDetails[0].address2,[ CustomValidator.addressValidation]),
+        city : new FormControl(this.selectedUser.businessDetails[0].city,[Validators.required]),
+        state : new FormControl(this.selectedUser.businessDetails[0].state,[Validators.required]),
+        pincode : new FormControl(this.selectedUser.businessDetails[0].pinCode,[Validators.required, CustomValidator.pinCodeValidation]),
+        gst : new FormControl(this.selectedUser.businessDetails[0].gst,[Validators.required]),
+        emailBusiness : new FormControl(this.selectedUser.businessDetails[0].businessEmail,[CustomValidator.emailValidation]),
+        mobile1 : new FormControl(this.selectedUser.businessDetails[0].mobile,[CustomValidator.contactNumberValidation]),
       })  
     } else {
       console.log("error code");
@@ -44,15 +44,15 @@ export class UserBuisnessComponent implements OnInit {
 
   ngAfterContentChecked(): void {
     if(this.selectedUser && this.buisnessDetailForm){
-      this.selectedUser.businessDetails.companyName = this.buisnessDetailForm.value.companyName;
-      this.selectedUser.businessDetails.address1 = this.buisnessDetailForm.value.address1;
-      this.selectedUser.businessDetails.address2 = this.buisnessDetailForm.value.address2;
-      this.selectedUser.businessDetails.city = this.buisnessDetailForm.value.city;
-      this.selectedUser.businessDetails.state = this.buisnessDetailForm.value.state;
-      this.selectedUser.businessDetails.pinCode = this.buisnessDetailForm.value.pinCode;
-      this.selectedUser.businessDetails.gst = this.buisnessDetailForm.value.gst;
-      this.selectedUser.businessDetails.businessEmail = this.buisnessDetailForm.value.emailBusiness;
-      this.selectedUser.businessDetails.mobile = this.buisnessDetailForm.value.mobile1;
+      this.selectedUser.businessDetails[0].companyName = this.buisnessDetailForm.value.companyName;
+      this.selectedUser.businessDetails[0].address1 = this.buisnessDetailForm.value.address1;
+      this.selectedUser.businessDetails[0].address2 = this.buisnessDetailForm.value.address2;
+      this.selectedUser.businessDetails[0].city = this.buisnessDetailForm.value.city;
+      this.selectedUser.businessDetails[0].state = this.buisnessDetailForm.value.state;
+      this.selectedUser.businessDetails[0].pinCode = this.buisnessDetailForm.value.pinCode;
+      this.selectedUser.businessDetails[0].gst = this.buisnessDetailForm.value.gst;
+      this.selectedUser.businessDetails[0].businessEmail = this.buisnessDetailForm.value.emailBusiness;
+      this.selectedUser.businessDetails[0].mobile = this.buisnessDetailForm.value.mobile1;
       this.check.emit(this.buisnessDetailForm.valid ? 'valid': 'invalid');
 
     }

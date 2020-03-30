@@ -45,7 +45,7 @@ export class StaticDataService {
                     this.saveProductClass(item);
                     data.next(this.productClass);
                     data.complete();
-                    // console.log("cat543",this.productClass);
+                    console.log("cat543",this.productClass);
                 },error=>{
                 // console.log('error');
                 });
@@ -58,7 +58,7 @@ export class StaticDataService {
             let store_Type : string = window.sessionStorage['productType'];
             if(store_Type) {
                 this.productType = JSON.parse(store_Type);
-                // console.log("product Type",this.productType);
+                console.log("product Type",this.productType);
                 data.next(this.productType);
                 data.complete();
             } else {
@@ -67,9 +67,9 @@ export class StaticDataService {
                     this.saveProductType(item);
                     data.next(this.productType);
                     data.complete();
-                    // console.log("cat543",this.productType);
+                    console.log("cat543",this.productType);
                 },error=>{
-                // console.log('error');
+                console.log('error');
                 });
             }
         });
@@ -80,7 +80,7 @@ export class StaticDataService {
             let store_Shape : string = window.sessionStorage['productShape'];
             if(store_Shape) {
                 this.productShape = JSON.parse(store_Shape);
-                // console.log("product Shape",this.productShape);
+                console.log("product Shape",this.productShape);
                 data.next(this.productShape);
                 data.complete();
             } else {
@@ -89,9 +89,9 @@ export class StaticDataService {
                     this.saveProductShape(item);
                     data.next(this.productShape);
                     data.complete();
-                    // console.log("cat543",this.productShape);
+                    console.log("cat543",this.productShape);
                 },error=>{
-                // console.log('error');
+                console.log('error');
                 });
             }
         });
@@ -113,7 +113,7 @@ export class StaticDataService {
                     data.complete();
                     // console.log("cat543",this.productTemper);
                 },error=>{
-                // console.log('error');
+                console.log('error');
                 });
             }
         });
@@ -135,7 +135,7 @@ export class StaticDataService {
                     data.complete();
                     // console.log("cat543",this.productCategory);
                 },error=>{
-                // console.log('error');
+                console.log('error');
                 });
             }
         });
@@ -156,7 +156,7 @@ export class StaticDataService {
                     data.next(this.productCoating);
                     data.complete();
                 },error=>{
-                    // console.log('error');
+                    console.log('error');
                 });
 
             }
@@ -178,7 +178,7 @@ export class StaticDataService {
                     data.next(this.productOiling);
                     data.complete();
                 },error=>{
-                    // console.log('error');
+                    console.log('error');
                 });
 
             }

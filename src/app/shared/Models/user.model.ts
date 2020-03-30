@@ -11,10 +11,12 @@ export interface UserDetail {
     mobile?: string;
     emailId?: string;
     userRole?: UserRole;
+    password?: string;
+    image?: string;
     status?: Status;
     roles?: string[];
     privileges?: string[];
-    businessDetails?: BusinessDetails;
+    businessDetails?: BusinessDetails[];
     userGroup?: UserGroup[];
     userProductPreference?: UserProductPreference[];
     keyPerson?: KeyPerson[];
