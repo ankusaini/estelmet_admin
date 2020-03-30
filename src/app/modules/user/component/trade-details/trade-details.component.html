@@ -4,7 +4,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Type <small class="asterik_sign">*</small></label>
         <select formControlName="productType" class="form-control" id="exampleFormControlSelect1">
-          <option value>Select Type</option>
+          <option value="">Select Type</option>
           <option *ngFor="let item of productTypeList" [value]="item.productType">{{ item?.productType }}</option>
         </select>
         <small *ngIf="f.productType.value == '' && (f.productType.dirty || f.productType.touched )"
@@ -15,7 +15,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Category <small class="asterik_sign">*</small></label>
         <select formControlName="productCategory" class="form-control" id="exampleFormControlSelect1">
-          <option value>Select Category</option>
+          <option value="">Select Category</option>
           <option *ngFor="let item of productCategoryList" [value]="item?.productCategory">{{ item?.productCategory }}
           </option>
         </select>
@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Shape <small class="asterik_sign">*</small></label>
         <select formControlName="productShape" class="form-control" id="exampleFormControlSelect1">
-          <option value>Select Shape</option>
+          <option value="">Select Shape</option>
           <option *ngFor="let item of productShapeList" [value]="item?.productShape">{{ item?.productShape }}</option>
         </select>
         <small *ngIf="f.productShape.value == '' && (f.productShape.dirty || f.productShape.touched )"
@@ -38,7 +38,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Class <small class="asterik_sign">*</small></label>
         <select formControlName="productClass" class="form-control" id="exampleFormControlSelect1">
-          <option value>Select Class</option>
+          <option value="">Select Class</option>
           <option *ngFor="let item of productClassList" [value]="item?.productClass">{{ item?.productClass }}</option>
         </select>
         <small *ngIf="f.productClass.value == '' && (f.productClass.dirty || f.productClass.touched )"
@@ -51,12 +51,12 @@
       <label for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <input formControlName="thicknessMin" [textMask]="{mask: thickMask}" type="text" class="form-control" placeholder="0.000" required />
+          <input formControlName="thicknessMin" type="text" class="form-control" placeholder="0.000" required />
           <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.dirty || f.thicknessMin.touched )"
             id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
         <div class="col-md-6 mb-3">
-          <input formControlName="thicknessMax" [textMask]="{mask: thickMask}" type="text" class="form-control" placeholder="0.000" />
+          <input formControlName="thicknessMax" type="text" class="form-control" placeholder="0.000" />
           <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.dirty || f.thicknessMax.touched )"
             id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock"
@@ -69,13 +69,11 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <input formControlName="widthMin" type="text" class="form-control" placeholder="Min" />
-          <!-- <small *ngIf="f.widthMin.value == '' && (f.widthMin.dirty || f.widthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small> -->
+         
         </div>
         <div class="col-md-6 mb-3">
           <input formControlName="widthMax" type="text" class="form-control" placeholder="Max" />
-          <!-- <small *ngIf="f.widthMax.value == '' && (f.widthMax.dirty || f.widthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small> -->
+         
           <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock"
             class="form-text text-muted">Maximum width should be greater than minimum width.</small>
         </div>
@@ -86,13 +84,11 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <input formControlName="lengthMin" type="text" class="form-control" placeholder="Min" />
-          <!-- <small *ngIf="f.lengthMin.value == '' && (f.lengthMin.dirty || f.lengthMin.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small> -->
+         
         </div>
         <div class="col-md-6 mb-3">
           <input formControlName="lengthMax" type="text" class="form-control" placeholder="Max" />
-          <!-- <small *ngIf="f.lengthMax.value == '' && (f.lengthMax.dirty || f.lengthMax.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small> -->
+          
           <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock"
             class="form-text text-muted">Maximum length should be greater than minimum length.</small>
         </div>
@@ -121,7 +117,6 @@
       <small *ngIf="f.monthlyRequirement.value == '' && (f.monthlyRequirement.dirty || f.monthlyRequirement.touched )"
         id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
     </div>
-    <!-- [disabled]="tradeDetails.status != 'VALID'" [disabled]="!tradeDetails.valid" -->
     <div class="col-md-offset-6 col-md-3 mb-3">
       <div class="mt-4">
         <button type="button" [disabled]="!tradeDetails.valid" class="btn btn-primary btn-sm" (click)="addMore()">
@@ -191,4 +186,3 @@
     </div>
   </div>
 </form>
-<!-- [disabled]="tradeArr.length == 0" -->

@@ -39,7 +39,8 @@ export class UserService {
   findUserGroupById(url): Observable<UserGroup> {
     return new Observable<UserGroup>(obs => {
       this._apiService.get(url).subscribe(res => {
-        obs.next(res);
+        console.log(res);
+        obs.next(res.data);
       });
     });
   }
@@ -47,7 +48,8 @@ export class UserService {
   createUserGroup(url, data): Observable<UserGroup> {
     return new Observable<UserGroup>(obs => {
       this._apiService.post(url, data).subscribe(res => {
-        obs.next(res.body);
+        console.log(res);
+        obs.next(res.body.data);
       });
     });
   }
@@ -61,25 +63,27 @@ export class UserService {
     });
   }
 
-  updateUser(path) {
+  updateUser(path, body) {
     return new Observable<User>(obs => {
-      this._apiService.put(path).subscribe(res => {
+      this._apiService.put(path, body).subscribe(res => {
         obs.next(res.body);
       });
     })
   }
 
-  updateUserGroup(path) {
+  updateUserGroup(path, body) {
     return new Observable<UserGroup>(obs => {
-      this._apiService.put(path).subscribe(res => {
+      this._apiService.put(path, body).subscribe(res => {
         obs.next(res.body);
       });
     })
   }
+      // this.router.navigateByUrl('/users/find?userId='+ user.id);
+
   getUserById(userId) {
     return new Observable<User>(obs => {
-      this._apiService.get(`/users/find/${userId}`).subscribe(res => {
-        obs.next(res);
+      this._apiService.get("/users/find?userId="+ userId).subscribe(res => {
+        obs.next(res.data);
       });
     });
   }
@@ -100,6 +104,14 @@ export class UserService {
       this._apiService.postWithMedia(path, formData).subscribe(res => {
         console.log(res);
         obs.next(res.body);
+      });
+    });
+  }
+
+  forgetPassword(path, body) {
+    return new Observable<any>(obs => {
+      this._apiService.post(path, body).subscribe(res => {
+        obs.next(res);
       });
     });
   }

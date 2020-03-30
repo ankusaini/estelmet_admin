@@ -33,6 +33,7 @@ export class ProductService {
     return new Observable<ProductCategory[]>(obs => {
       this._apiService.get(url).subscribe(res => {
         obs.next(res);
+        console.log(res);
       });
     });
   }

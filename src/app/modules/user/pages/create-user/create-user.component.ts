@@ -1,4 +1,4 @@
-import { BusinessDetails } from './../../../../shared/Models/user.model';
+import { BusinessDetails, ProductStage } from './../../../../shared/Models/user.model';
 import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { UserService } from 'src/app/shared/services/user.service';
 import { UserDetail, Status } from 'src/app/shared/Models/user.model';
@@ -52,9 +52,10 @@ export class CreateUserComponent implements OnInit {
     this.userDto.lastName = data.lastName;
     this.userDto.mobile = data.mobile;
     this.userDto.emailId = data.email;
-    // this.userDto.password = data.password;
+    this.userDto.password = data.password;
     this.userDto.userRole = data.userRole;
     this.userDto.status = Status.PENDING;
+    this.userDto.image = '';
     // this.wizard.navigation.canGoToStep(2);
     this.wizard.navigation.goToNextStep();
   }
@@ -67,21 +68,28 @@ export class CreateUserComponent implements OnInit {
 
   companyDetailData(data: any) {
     console.log(data);
-    this.userDto.businessDetails = {};
-    this.userDto.businessDetails.businessDetailId = ""
-    this.userDto.businessDetails.companyName = data.companyName;
-    this.userDto.businessDetails.address1 = data.address1;
-    this.userDto.businessDetails.address2 = data.address2;
-    this.userDto.businessDetails.gst = data.gst;
-    this.userDto.businessDetails.otp = data.otp;
-    this.userDto.businessDetails.numberOfEmployees = data.numberOfEmployees;
-    this.userDto.businessDetails.country = csc.getCountryById(data.country).name;
-    this.userDto.businessDetails.state = csc.getStateById(data.state).name;
-    this.userDto.businessDetails.city = csc.getCityById(data.city).name;
-    this.userDto.businessDetails.pinCode = data.pinCode;
-    this.userDto.businessDetails.mobile = data.mobile1;
-    this.userDto.businessDetails.mobile = data.mobile2
-    this.userDto.businessDetails.businessEmail = data.emailBusiness;
+    this.userDto.businessDetails = [];
+    let tempobj : BusinessDetails =  {}
+    tempobj.businessDetailId = ""
+    tempobj.companyName = data.companyName;
+    tempobj.address1 = data.address1;
+    tempobj.address2 = data.address2;
+    tempobj.gst = data.gst;
+    tempobj.otp = data.otp;
+    tempobj.numberOfEmployees = data.numberOfEmployees;
+    tempobj.country = csc.getCountryById(data.country).name;
+    tempobj.state = csc.getStateById(data.state).name;
+    tempobj.city = csc.getCityById(data.city).name;
+    tempobj.pinCode = data.pinCode;
+    tempobj.mobile = data.mobile1;
+    tempobj.mobile = data.mobile2;
+    tempobj.businessEmail = data.emailBusiness;
+    // 
+    tempobj.creditLimit = '';
+    tempobj.currentOutstanding = '';
+    tempobj.daysPayableOutstanding = '';
+    tempobj.landline = '';
+    this.userDto.businessDetails.push(tempobj);
     this.userDto.annualTurnover = [];
 
     this.userDto.annualTurnover.push({
@@ -127,7 +135,16 @@ export class CreateUserComponent implements OnInit {
         temperMax : ele.temperMax,
         lengthMin : ele.lengthMin,
         lengthMax : ele.lengthMax,
-        monthlyRequirement : ele.monthlyRequirement
+        monthlyRequirement : ele.monthlyRequirement,
+        // 
+        hardnessMax : '',
+        hardnessMin : '',
+        productStage : ProductStage.PRODUCT_PREFERENCE,
+        heigth : '',
+        gwt: '',
+        nwt: '',
+        remarks : '',
+        title: ''
       })
     })
 

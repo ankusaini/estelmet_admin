@@ -49,7 +49,8 @@ export class UserSelectionComponent implements OnInit {
 
   getAllUserByUserRoleAndStatus(selectedUserType) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus/" + selectedUserType + "/APPROVED";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedUserType + "&status=APPROVED&limit=2&offset=1";
+      // "/users/getAllUsersByUserRoleAndStatus/" + selectedUserType + "/APPROVED";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {

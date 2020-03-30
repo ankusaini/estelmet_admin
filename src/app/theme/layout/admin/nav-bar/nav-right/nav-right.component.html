@@ -71,12 +71,13 @@
         <div class="pro-head">
           <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
           <span>John Doe</span>
-          <a href="javascript:" class="dud-logout" title="Logout">
+          <a (click)="logout()" class="dud-logout" title="Logout">
             <i class="feather icon-log-out"></i>
           </a>
         </div>
         <ul class="pro-body">
           <li><a href="javascript:" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
+          <li><a (click)="open(content)" class="dropdown-item"><i class="feather icon-settings"></i>Change Password</a></li>
           <li><a href="javascript:" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
           <li><a href="javascript:" class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li>
         </ul>
@@ -84,3 +85,44 @@
     </div>
   </li>
 </ul>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Change Password</h4>
+
+    
+    <!-- <input type="password" formControlName="oldPassword" for="oldPwd" class="form-control" > -->
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="passwordForm">
+  <div class="modal-body">
+    
+      <label for="oldPwd">Old Password <small class="asterik_sign">*</small></label>
+      <div class="row">
+        <div class="col-md-12 mb-12"> 
+          <input formControlName="oldPassword" type="password" class="form-control" placeholder="old password" />
+          <small *ngIf="f.oldPassword.value == '' && (f.oldPassword.dirty || f.oldPassword.touched )" id="passwordHelpBlock"
+            class="form-text text-muted">This field is required.</small>
+        </div>
+      </div>
+      <br>
+
+      <label for="newPwd">New Password <small class="asterik_sign">*</small></label>
+      <div class="row">
+        <div class="col-md-12 mb-12"> 
+                 <input formControlName="newPassword" type="password" class="form-control" placeholder="new password" />
+          <small *ngIf="f.newPassword.value == '' && (f.newPassword.dirty || f.newPassword.touched )" id="passwordHelpBlock"
+            class="form-text text-muted">This field is required.</small>
+        </div>
+      </div>
+
+    <!-- <p>Hello, World!</p> -->
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-dark" [disabled]="!passwordForm.valid" (click)="changePassword(content)" >Change</button>
+  </div>
+</form>
+</ng-template>
+
