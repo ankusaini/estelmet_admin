@@ -41,7 +41,7 @@ export class StaticDataService {
             const storeClass: string = window.sessionStorage['productClass'];
             if (storeClass) {
                 this.productClass = JSON.parse(storeClass);
-                // console.log("product Class",this.productClass);
+                console.log("product Class",this.productClass);
                 data.next(this.productClass);
                 data.complete();
             } else {
@@ -50,9 +50,9 @@ export class StaticDataService {
                     this.saveProductClass(item);
                     data.next(this.productClass);
                     data.complete();
-                    // console.log("cat543",this.productClass);
+                    console.log("cat543",this.productClass);
                 }, error => {
-                    // console.log('error');
+                    console.log('error');
                 });
             }
         });
@@ -63,7 +63,7 @@ export class StaticDataService {
             const storeType: string = window.sessionStorage['productType'];
             if (storeType) {
                 this.productType = JSON.parse(storeType);
-                // console.log("product Type",this.productType);
+                console.log("product Type",this.productType);
                 data.next(this.productType);
                 data.complete();
             } else {
@@ -72,9 +72,9 @@ export class StaticDataService {
                     this.saveProductType(item);
                     data.next(this.productType);
                     data.complete();
-                    // console.log("cat543",this.productType);
+                    console.log("cat543",this.productType);
                 }, error => {
-                    // console.log('error');
+                    console.log('error');
                 });
             }
         });
@@ -85,7 +85,7 @@ export class StaticDataService {
             const storeShape: string = window.sessionStorage['productShape'];
             if (storeShape) {
                 this.productShape = JSON.parse(storeShape);
-                // console.log("product Shape",this.productShape);
+                console.log("product Shape",this.productShape);
                 data.next(this.productShape);
                 data.complete();
             } else {
@@ -94,9 +94,9 @@ export class StaticDataService {
                     this.saveProductShape(item);
                     data.next(this.productShape);
                     data.complete();
-                    // console.log("cat543",this.productShape);
+                    console.log("cat543",this.productShape);
                 }, error => {
-                    // console.log('error');
+                    console.log('error');
                 });
             }
         });
@@ -107,7 +107,7 @@ export class StaticDataService {
             const storeTempor: string = window.sessionStorage['productTempor'];
             if (storeTempor) {
                 this.productTemper = JSON.parse(storeTempor);
-                // console.log("product Class",this.productTemper);
+                console.log("product Class",this.productTemper);
                 data.next(this.productTemper);
                 data.complete();
             } else {
@@ -116,9 +116,9 @@ export class StaticDataService {
                     this.saveProductTempor(item);
                     data.next(this.productTemper);
                     data.complete();
-                    // console.log("cat543",this.productTemper);
+                    console.log("cat543",this.productTemper);
                 }, error => {
-                    // console.log('error');
+                    console.log('error');
                 });
             }
         });
@@ -129,7 +129,7 @@ export class StaticDataService {
             const storeCategory: string = window.sessionStorage['productCategory'];
             if (storeCategory) {
                 this.productCategory = JSON.parse(storeCategory);
-                // console.log("product Category",this.productCategory);
+                console.log("product Category",this.productCategory);
                 data.next(this.productCategory);
                 data.complete();
             } else {
@@ -138,9 +138,9 @@ export class StaticDataService {
                     this.saveProductCategory(item);
                     data.next(this.productCategory);
                     data.complete();
-                    // console.log("cat543",this.productCategory);
+                    console.log("cat543",this.productCategory);
                 }, error => {
-                    // console.log('error');
+                    console.log('error');
                 });
             }
         });

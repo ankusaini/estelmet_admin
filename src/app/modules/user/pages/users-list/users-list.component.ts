@@ -108,7 +108,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         let url =
           "/users/getAllUsersByUserRoleAndStatus?userRole=" +
           selectedRole.value +
-          "&status=APPROVED&limit=2&offset=1";
+          "&status=APPROVED&limit=10&offset=1";
 
           this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
           data => {
@@ -129,8 +129,8 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
   goToView(user : User) {
     this._dataService.add(user).subscribe(()=>{
-      this.router.navigateByUrl('/users/find?userId='+ user.id);
-      // this.router.navigate(['/users/profile',user.id]);
+      // this.router.navigateByUrl('/users/find?userId='+ user.id);
+      this.router.navigate(['/users/profile',user.userDetialId]);
     });
   }
 

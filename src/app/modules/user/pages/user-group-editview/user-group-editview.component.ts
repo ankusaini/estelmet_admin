@@ -8,7 +8,7 @@ import {
   LightboxEvent
 } from "ngx-lightbox";
 import { Subscription } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { UserGroup, User } from "src/app/shared/Models/user.model";
 import { UserService } from "src/app/shared/services/user.service";
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
@@ -46,12 +46,13 @@ export class UserGroupEditviewComponent implements OnInit {
     private lighboxConfig: LightboxConfig,
     private route: ActivatedRoute,
     private _userDataService : UserDataService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.routerSubscription = this.route.url.subscribe(params => {
       this.groupId = this.route.snapshot.params.groupId;
       if (this.groupId) {
-        let url = "/users/group/find/" + this.groupId;
+        let url = "/users/group/find?userGroupId=" + this.groupId;
         this.userService.findUserGroupById(url).subscribe(
           data => {
             this.selectedUserGroup = data;
@@ -105,5 +106,20 @@ export class UserGroupEditviewComponent implements OnInit {
         this.editProfile = !this.editProfile;
       });
     }
+  }
+
+  updateGroup(data) {
+    console.log(data);
+    this.selectedUserGroup.user = [];
+    this.selectedUserGroup.user = data;
+    let path="/users/group/createUserGroup";
+        console.log("path",path);
+        this.userService.updateUserGroup(path,this.selectedUserGroup).subscribe(data=>{
+            console.log("user group created",data)
+            this.router.navigate(['/users/editGroup',this.selectedUserGroup.userGroupId]);
+        },error=>{
+
+        });
+    console.log(this.selectedUserGroup.user);
   }
 }

@@ -19,12 +19,12 @@
                     <tbody>
                         <tr *ngFor="let user of userList2; let i = index">
                             <td>{{i+1}}</td>
-                            <td>{{user.id}}</td>
+                            <td>{{user.userDetialId}}</td>
                             <td>{{user.userRole}}</td>
                             <td>{{user.firstName}}</td>
                             <td>{{user.mobile}}</td>
-                            <td>{{user.email}}</td>
-                            <td>{{user?.userDetail?.companyName}}</td>
+                            <td>{{user.emailId}}</td>
+                            <td>{{user.businessDetails[0]?.companyName}}</td>
                             <td>
                                 <span class="badge badge-light-success">{{user.status}}</span>
                                 <div class="overlay-edit">
@@ -66,12 +66,12 @@
                     <tbody>
                         <tr href="kdkd" *ngFor="let user of selectedUserList;let i = index">
                             <td>{{i+1}}</td>
-                            <td>{{user.id}}</td>
+                            <td>{{user.userDetialId}}</td>
                             <td>{{user.userRole}}</td>
                             <td>{{user.firstName}}</td>
                             <td>{{user.mobile}}</td>
-                            <td>{{user.email}}</td>
-                            <td>{{user?.userDetail?.companyName}}</td>
+                            <td>{{user.emailId}}</td>
+                            <td>{{user.businessDetails[0]?.companyName}}</td>
                             <td>
                                 <span class="badge badge-light-success">{{user.status}}</span>
                                 <div class="overlay-edit">

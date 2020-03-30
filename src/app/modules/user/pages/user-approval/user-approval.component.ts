@@ -64,7 +64,7 @@ export class UserApprovalComponent implements OnInit {
 
   getPendingUserList(selectedRole) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=PENDING&limit=2&offset=1";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=PENDING&limit=10&offset=1";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
@@ -79,7 +79,7 @@ export class UserApprovalComponent implements OnInit {
 
   getApprovedUserList(selectedRole) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=APPROVED&limit=2&offset=1";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=APPROVED&limit=10&offset=1";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
@@ -94,7 +94,7 @@ export class UserApprovalComponent implements OnInit {
 
   getRejectedUserList(selectedRole) {
     let url =
-      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=REJECTED&limit=2&offset=1";
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedRole + "&status=REJECTED&limit=10&offset=1";
 
     this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
       data => {
@@ -134,22 +134,22 @@ export class UserApprovalComponent implements OnInit {
     if (this.selectedUserList.length == 0) {
       this.toastrService.warning("Select at least one product!");
     } else {
-      // let path = "/users/updateUser";
-      let idList = this.selectedUserList.map(user => {
-        return user.id;
-      });
-      // let idList = [1, 2, 3];
-      const ids = idList.toString();
-      console.log(idList);
-      console.log(idList.toString());
+      let path = "/users/updateUser";
+      // let idList = this.selectedUserList.map(user => {
+      //   return user.userDetialId;
+      // });
+      // const ids = idList.toString();
+      // console.log(idList);
+      // console.log(idList.toString());
 
-      let path = "/users/updateUser?userDetailIds=" + ids + "&status=" + status;
+      // let path = "/users/updateUser?userDetailIds=" + ids + "&status=" + status;
 
 
-      // for (let i = 0; i < this.selectedUserList.length; i++) {
-      //   this.selectedUserList[i].status = status;
+      for (let i = 0; i < this.selectedUserList.length; i++) {
+        this.selectedUserList[i].status = status;
 
-        this.userService.updateUser(path).subscribe(
+        this.userService.updateUser(path, this.selectedUserList[i]).subscribe(
+          // this.userService.updateUser(path).subscribe(
           data => {
             this.toastrService.success("Selected User(s) status changes successfully!")
             this.selectedUserList = [];
@@ -163,7 +163,7 @@ export class UserApprovalComponent implements OnInit {
             console.log(error);
           }
         );
-      // }
+      }
     }
   }
 }

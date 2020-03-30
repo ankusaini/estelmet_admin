@@ -36,16 +36,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of selectedUser?.userDetail?.userProductPreference; let i = index">
+            <tr *ngFor="let item of selectedUser?.userProductPreference; let i = index">
               <td>{{ (i+1) + '.' }}</td>
               <td>{{ item.productType }}</td>
               <td>{{ item.productCategory }}</td>
               <td>{{ item.productShape }}</td>
               <td>{{ item.productClass }}</td>
-              <td>{{ item.thicknessRange }}</td>
-              <td>{{ item.widthRange }}</td>
-              <td>{{ item.lengthRange }}</td>
-              <td>{{ item.temperRange }}</td>
+              <td>{{ item.thicknessMin }}-{{ item.thicknessMax }}</td>
+              <td>{{ item.widthMin }}--{{ item.widthMax }}</td>
+              <td>{{ item.lengthMin }}-{{ item.lengthMax }}</td>
+              <td>{{ item.temperMin }}-{{ item.temperMax }}</td>
               <td>-</td>
               <td>-</td>
               <td>-</td>
