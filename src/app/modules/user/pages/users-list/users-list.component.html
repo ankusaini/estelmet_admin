@@ -9,7 +9,7 @@
     <app-card [hidHeader]="true" cardClass="user-profile-list">
       <div class="dt-responsive table-responsive" *ngIf="userList" cardClass="card-datatable" #epltable> 
         <!-- datatable [dtOptions]="dtExportButtonOptions" -->
-        <table datatable  [dtOptions]="dtExportButtonOptions" class="table table-striped table-bordered table-hover" >
+        <table datatable id="contentToConvert"  [dtOptions]="dtExportButtonOptions" class="table table-striped table-bordered table-hover" >
           <thead>
             <tr>
               <th>Sr. No.</th>
