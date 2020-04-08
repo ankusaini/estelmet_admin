@@ -11,47 +11,44 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreateOilingComponent implements OnInit {
 
-  productOilingFormGroup : FormGroup;
+  productOilingFormGroup: FormGroup;
 
-  productOilingList : ProductOiling[];
+  productOilingList: ProductOiling[];
 
-  constructor(private productOiling : StaticDataService,private _commonService : CommonService) {
+  constructor(private productOiling: StaticDataService, private commonService: CommonService) {
 
     this.productOilingFormGroup = new FormGroup({
-
-      id : new FormControl(""),
-    productOiling : new FormControl("",Validators.required),
-    description : new FormControl("",Validators.required),
-    parentId : new FormControl("",Validators.required),
+      productOiling: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
     });
-   }
+  }
 
   ngOnInit() {
     this.getOiling();
   }
 
-  getOiling(){
-    this.productOiling.getAllProductOiling().subscribe(data=>{
+  getOiling() {
+    this.productOiling.getAllProductOiling().subscribe(data => {
       this.productOilingList = data;
     });
   }
 
-  saveOiling(){
-    if(this.productOilingFormGroup.valid){
-      this._commonService.saveProductOiling(this.productOilingFormGroup.value).subscribe(res=>{
-        console.log(res);
+  saveOiling() {
+    if (this.productOilingFormGroup.valid) {
+      this.commonService.saveProductOiling(this.productOilingFormGroup.value).subscribe(res => {
         this.productOilingList.push(res);
+        this.productOilingFormGroup.reset();
         this.productOiling.saveProductOiling(this.productOilingList);
       });
-    }else{
-      console.log("All fields are necessary");
+    } else {
+      console.log('All fields are necessary');
     }
   }
 
-  deleteOiling(productOiling : ProductOiling){
-    this._commonService.deleteProductOiling(productOiling.id.toString()).subscribe(res=>{
+  deleteOiling(productOiling: ProductOiling) {
+    this.commonService.deleteProductOiling(productOiling.id.toString()).subscribe(res => {
       this.productOilingList = this.productOilingList.filter(element => {
-        return element!=productOiling
+        return element !== productOiling;
       });
       this.productOiling.saveProductOiling(this.productOilingList);
     });

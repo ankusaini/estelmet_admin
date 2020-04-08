@@ -2,7 +2,6 @@ export interface Warehouse {
   id: number;
   companyId: number;
   name: string;
-  desciption: string;
   address: string;
   email: string;
   country: string;

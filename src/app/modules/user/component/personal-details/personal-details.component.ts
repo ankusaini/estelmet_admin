@@ -1,110 +1,70 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  AbstractControl
-} from "@angular/forms";
-import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload';
-
-import { CustomValidator } from "src/app/Validators/custom-validator";
-
-import { UserService } from 'src/app/shared/services/user.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/shared/services/user.service';
+import { CustomValidator } from 'src/app/Validators/custom-validator';
+
+
 function passwordConfirming(c: AbstractControl): any {
-  if (!c.parent || !c) return;
-  const pwd = c.parent.get("password");
-  const cpwd = c.parent.get("cpassword");
-  if (!pwd || !cpwd) return;
+  if (!c.parent || !c) { return; }
+  const pwd = c.parent.get('password');
+  const cpwd = c.parent.get('cpassword');
+  if (!pwd || !cpwd) { return; }
   if (pwd.value !== cpwd.value) {
     return { invalid: true };
   }
 }
 @Component({
-  selector: "app-personal-details",
-  templateUrl: "./personal-details.component.html",
-  styleUrls: ["./personal-details.component.scss"]
+  selector: 'app-personal-details',
+  templateUrl: './personal-details.component.html',
+  styleUrls: ['./personal-details.component.scss']
 })
 export class PersonalDetailsComponent implements OnInit {
 
-      //public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
-
-  public uploadedFiles: Array<File> = [];
-  @Output() prsonalData : EventEmitter<any> = new EventEmitter<any>();
-  @Output() imageData:EventEmitter<any>=new EventEmitter<any>();
-  bodyText : string;
-  otp : number = null;
-  enterOTP : boolean = false;
-  markAsComplete : boolean = false;
+  @Output() prsonalData: EventEmitter<any> = new EventEmitter<any>();
+  bodyText: string;
+  otp: number = null;
+  enterOTP = false;
+  markAsComplete = false;
 
   userDTO = new FormGroup({
-    // this.utils.noWhitespaceValidator,CustomValidator.emailValidate
-    id: new FormControl(""),
-    firstName: new FormControl("", [
+    id: new FormControl(''),
+    firstName: new FormControl('', [
       Validators.required,
       Validators.minLength(2)
     ]),
-    lastName: new FormControl("", [
+    lastName: new FormControl('', [
       Validators.required,
       Validators.minLength(2)
     ]),
-    mobile: new FormControl("", [
+    mobile: new FormControl('', [
       Validators.required,
       CustomValidator.contactNumberValidation
     ]),
-    email: new FormControl("", [
-      Validators.required, 
+    email: new FormControl('', [
+      Validators.required,
       CustomValidator.emailValidation
     ]),
-    password: new FormControl("", [Validators.required]), //,CustomValidator.passwordValidation
-    cpassword: new FormControl("", [Validators.required,passwordConfirming]),
-    userRole: new FormControl("", [Validators.required]),
-    // otp: new FormControl("", [Validators.required]),
-     otp: new FormControl(),
-    // status: new FormControl("", [Validators.required])
+    password: new FormControl('', [Validators.required]), // ,CustomValidator.passwordValidation
+    cpassword: new FormControl('', [Validators.required, passwordConfirming]),
+    userRole: new FormControl('', [Validators.required]),
+    otp: new FormControl(),
   });
-  
+
   constructor(
-    private _userService : UserService,
+    private userService: UserService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   get f() {
     return this.userDTO.controls;
   }
 
   personalDetailSubmit() {
-    console.log("uploadfile",this.uploadedFiles);
-     if (this.userDTO.valid) {
-       this.prsonalData.emit(this.userDTO.value);
-       this.imageData.emit(this.uploadedFiles);
-     } else {
-      this.toastrService.error("Details are invalid!");
-
-     }
-
-    //let path ="/uploadImage/user/"+22;
-    //  this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
-   //      console.log("image uploaded")
-   //   },error=>{
-
-   //   })
-  }
-
-  uploadPhoto()
-  {
-    if(this.uploadedFiles[0]){
-      console.log("files",this.uploadedFiles[0]);
-     // let path ="/employee/uploadFile/"+22;
-     //let path ="/employee/uploadFile?userId="+22;
-      let path ="/employee/uploadFile";
-      this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
-           this.toastrService.error("success Upload photo!");
-      },error=>{
-
-      })
+    if (this.userDTO.valid) {
+      this.prsonalData.emit(this.userDTO.value);
     } else {
-      this.toastrService.error("Error Upload photo!");     
+      this.toastrService.error('Details are invalid!');
     }
 
   }
@@ -113,69 +73,60 @@ export class PersonalDetailsComponent implements OnInit {
     this.bodyText = 'This text can be updated in modal 1';
   }
 
-  // openModal(id: string) {
-  //   this.modalService.open(id);
-  // }
-
-  // closeModal(id: string) {
-  //   this.nextStep = true;
-  //   this.modalService.close(id);
-  // }
   SendOTP() {
     this.enterOTP = true;
     if (
-      this.userDTO.controls.mobile.value != "" &&
-      this.userDTO.controls.email.value != ""
+      this.userDTO.controls.mobile.value !== '' &&
+      this.userDTO.controls.email.value !== ''
     ) {
-      let url =
-        "/users/sendOtp/" +
-        this.userDTO.controls.mobile.value +
-        "/" +
-        this.userDTO.controls.email.value;
-      this._userService.sendOTP(url).subscribe(
+      const mobile = this.userDTO.controls.mobile.value;
+      const email = this.userDTO.controls.email.value;
+      this.userService.sendOTP(mobile, email).subscribe(
         data => {
-          if(data.type == "success"){
-            this.toastrService.success("OTP sent successfully."); 
+          if (data.message === 'Success') {
+            this.toastrService.success('OTP sent successfully.');
           } else {
-            this.toastrService.error("Error sending OTP."); 
+            this.toastrService.error('Error sending OTP.');
           }
-          console.log(data);
         },
-        error => {}
+        error => {
+          console.log(error);
+        }
       );
     }
   }
 
   verifyOTP() {
-    if(!this.userDTO.controls.otp.value) {
-      this.toastrService.error("Invalid OTP"); 
-      return
+    if (!this.userDTO.controls.otp.value) {
+      this.toastrService.error('Invalid OTP');
+      return;
     }
-    let url =
-    "/users/verifyOtp/" +
-    this.userDTO.controls.mobile.value + 
-    "/" +
-    this.userDTO.controls.otp.value;
-  this._userService.sendOTP(url).subscribe(
-    data => {
-     console.log(data);
-     if(data.message=='otp_verified')
-      {
-     this.markAsComplete = true;
-     this.toastrService.success("OTP verified"); 
+    const mobile = this.userDTO.controls.mobile.value;
+    const otp = this.userDTO.controls.otp.value;
+    this.userService.verifyOtp(mobile, otp).subscribe(
+      data => {
+        if (data.message === 'Success') {
+          this.markAsComplete = true;
+          this.toastrService.success('OTP verified');
+        } else {
+          this.toastrService.error('Invalid OTP');
+        }
+      },
+      error => {
+        this.toastrService.error('Invalid OTP');
       }
-    else
-      {
-        this.toastrService.error("Invalid OTP"); 
-      }
-    },
-    error => {
-      this.toastrService.error("Invalid OTP"); 
-    }
-  );
+    );
   }
 
-  
-
+  checkEmail() {
+    this.userService.existsByEmailId(this.userDTO.value.email).subscribe(
+      data => {
+        if (data.data) {
+          this.userDTO.get('email').setValue('');
+          this.toastrService.error('Email Already Exists');
+        }
+      }
+    );
+  }
 
 }

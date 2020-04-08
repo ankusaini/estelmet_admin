@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,40 +8,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProcessingListComponent implements OnInit {
   @Input() productProcessingList: any[];
-  @Input() cart: boolean = false;
+  @Input() cart = false;
   public selectedProcessingList: any[] = [];
   @Output() selectedList: EventEmitter<any[]> = new EventEmitter<any[]>();
-  
+
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    
+
   }
 
   addToProcessingList(processing) {
     const index = this.selectedProcessingList.indexOf(processing);
-    if(index == -1) {
+    if (index === -1) {
       this.selectedProcessingList.push(processing);
-      console.log("selected list is: ", this.selectedProcessingList);
       this.selectedList.emit(this.selectedProcessingList);
-    }
-    else {
-      alert("Product already added!");
+    } else {
+      alert('Product already added!');
     }
   }
 
   removeFromProcessingList(processing) {
     const index = this.productProcessingList.indexOf(processing);
-    console.log("removing: ", index);
-
-    if(index != -1) {
+    if (index !== -1) {
       this.productProcessingList.splice(index, 1);
-      console.log("selected list is: ", this.productProcessingList);
     }
   }
 
   navigateToEdit(id) {
-    this.router.navigateByUrl("processing/editProcessing/"+ id);
+    this.router.navigateByUrl('processing/editProcessing/' + id);
   }
 
 }

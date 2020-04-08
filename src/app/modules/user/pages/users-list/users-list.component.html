@@ -1,13 +1,14 @@
 <div class="row">
   <div class="col-sm-12">
-    <button type='button' (click)="basicSwal()"  class="btn btn-primary btn-sm" style="margin: 45px 0px 10px;float:right;">Change User Type</button>
+    <button type='button' (click)="basicSwal()" class="btn btn-primary btn-sm"
+      style="margin: 45px 0px 10px;float:right;">Change User Type</button>
   </div>
-  </div>
+</div>
 <div class="row">
   <div class="col-sm-12">
 
     <app-card [hidHeader]="true" cardClass="user-profile-list">
-      <div class="dt-responsive table-responsive" *ngIf="userList" cardClass="card-datatable" #epltable> 
+      <div class="dt-responsive table-responsive" *ngIf="userList" cardClass="card-datatable" #epltable>
         <!-- datatable [dtOptions]="dtExportButtonOptions" -->
         <table datatable id="contentToConvert"  [dtOptions]="dtExportButtonOptions" class="table table-striped table-bordered table-hover" >
           <thead>
@@ -20,11 +21,11 @@
               <th>Email</th>
               <th>Company Name</th>
               <th>Status</th>
-              
+
             </tr>
           </thead>
-           <tbody> 
-             <tr href="kdkd" *ngFor="let user of userList;let i = index">
+          <tbody>
+            <tr href="kdkd" *ngFor="let user of userList;let i = index">
               <td>{{i+1}}</td>
               <td (click)="goToView(user)">{{user.userDetialId}}</td>
               <td>{{user.userRole}}</td>
@@ -35,16 +36,15 @@
               <td>
                 <span class="badge badge-light-success">{{user.status}}</span>
                 <div class="overlay-edit">
-                  <button type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-plus"></i></button>
+                  <button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                   <!-- <button type="button" class="btn btn-icon btn-danger" ><i class="feather icon-trash-2"></i></button> -->
                 </div>
               </td>
-            </tr> 
-         
-            
-           </tbody>  
-           <!-- <tfoot>
+            </tr>
+
+
+          </tbody>
+          <!-- <tfoot>
             <tr>
               <th><input type="text" placeholder="S.No." name="search-userType" class="form-control" /></th>
               <th><input type="text" placeholder="User Id" name="search-userType" class="form-control" /></th>
@@ -63,4 +63,3 @@
 <button type="submit" class="btn btn-success active" (click)="exportToExcel()">Export</button>&nbsp;
 <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp;
 <button type="submit" class="btn btn-warning active">Copy</button>&nbsp;
-

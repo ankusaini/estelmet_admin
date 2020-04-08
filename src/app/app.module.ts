@@ -1,33 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbButtonsModule, NgbDropdownModule, NgbModalModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './theme/shared/shared.module';
-
 import { AppComponent } from './app.component';
+import { HttpTokenInterceptorService } from './shared/services/http/http-token-interceptor.service';
 import { AdminComponent } from './theme/layout/admin/admin.component';
-import { AuthComponent } from './theme/layout/auth/auth.component';
-import { NavigationComponent } from './theme/layout/admin/navigation/navigation.component';
-import { NavContentComponent } from './theme/layout/admin/navigation/nav-content/nav-content.component';
-import { NavGroupComponent } from './theme/layout/admin/navigation/nav-content/nav-group/nav-group.component';
-import { NavCollapseComponent } from './theme/layout/admin/navigation/nav-content/nav-collapse/nav-collapse.component';
-import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/nav-item/nav-item.component';
+import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
 import { NavBarComponent } from './theme/layout/admin/nav-bar/nav-bar.component';
 import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left.component';
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavRightComponent } from './theme/layout/admin/nav-bar/nav-right/nav-right.component';
-import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
-import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
+import { NavCollapseComponent } from './theme/layout/admin/navigation/nav-content/nav-collapse/nav-collapse.component';
+import { NavContentComponent } from './theme/layout/admin/navigation/nav-content/nav-content.component';
+import { NavGroupComponent } from './theme/layout/admin/navigation/nav-content/nav-group/nav-group.component';
+import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/nav-item/nav-item.component';
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpTokenInterceptorService } from './shared/services/http/http-token-interceptor.service';
-import { CookieService } from 'ngx-cookie-service';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgbModalModule, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { ToastrModule } from 'ngx-toastr';
+import { NavigationComponent } from './theme/layout/admin/navigation/navigation.component';
+import { AuthComponent } from './theme/layout/auth/auth.component';
+import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
+import { SharedModule } from './theme/shared/shared.module';
 
 @NgModule({
   declarations: [

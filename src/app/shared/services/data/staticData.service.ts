@@ -1,167 +1,148 @@
 import { Injectable } from '@angular/core';
-import { ProductService } from '../product.service';
-import {
-    ProductClass, ProductCategory, ProductTemper, ProductType,
-    ProductShape, ProductCoating, ProductOiling, ProductSurfaceCoating,
-    ProductOrigin, ProductAnnealing, ProductDefect, ProductFinish,
-    ProductPackaging, ProductHardness
-} from '../../Models/product.model.';
 import { Observable } from 'rxjs';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
+import {
+    ProductAnnealing, ProductCategory, ProductClass, ProductCoating,
+    ProductDefect, ProductFinish, ProductHardness, ProductOiling,
+    ProductOrigin, ProductPackaging, ProductShape, ProductSurfaceCoating,
+    ProductTemper, ProductType
+} from '../../Models/product.model.';
+import { ProductService } from '../product.service';
+import { ToastrService } from 'ngx-toastr';
+import { MachineDetail } from '../../Models/machineDetails.model';
+import { WeighingCompany } from '../../Models/weighingCompany.model';
 
 @Injectable({ providedIn: 'root' })
 
 export class StaticDataService {
 
-    companyClass: Company[];
-    warehouseClass: Warehouse[];
-    productClass: ProductClass[];
-    productCategory: ProductCategory[];
-    productTemper: ProductTemper[];
-    productType: ProductType[];
-    productShape: ProductShape[];
-    productCoating: ProductCoating[];
-    productOiling: ProductOiling[];
-    productSurface: ProductSurfaceCoating[];
-    productOrigin: ProductOrigin[];
-    productAnnealing: ProductAnnealing[];
-    productDefect: ProductDefect[];
-    productFinish: ProductFinish[];
-    productPackaging: ProductPackaging[];
-    productHardness: ProductHardness[];
-    // searchFilter : ProductFilter[];
-
     constructor(
-        private _commonService: ProductService
+        private productService: ProductService,
+        private toastr: ToastrService
     ) { }
 
     getProductClass(): Observable<ProductClass[]> {
+        let productClass: ProductClass[];
         return new Observable(data => {
-            const storeClass: string = window.sessionStorage['productClass'];
+            const storeClass: string = window.sessionStorage.productClass;
             if (storeClass) {
-                this.productClass = JSON.parse(storeClass);
-                console.log("product Class",this.productClass);
-                data.next(this.productClass);
+                productClass = JSON.parse(storeClass);
+                data.next(productClass);
                 data.complete();
             } else {
-                this._commonService.getProductClass('/inventory/productClassification/getProductClass').subscribe(item => {
-                    this.productClass = item;
+                this.productService.getProductClass('/inventory/productClassification/getProductClass').subscribe(item => {
+                    productClass = item;
                     this.saveProductClass(item);
-                    data.next(this.productClass);
+                    data.next(productClass);
                     data.complete();
-                    console.log("cat543",this.productClass);
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getProductType(): Observable<ProductType[]> {
+        let productType: ProductType[];
         return new Observable(data => {
-            const storeType: string = window.sessionStorage['productType'];
+            const storeType: string = window.sessionStorage.productType;
             if (storeType) {
-                this.productType = JSON.parse(storeType);
-                console.log("product Type",this.productType);
-                data.next(this.productType);
+                productType = JSON.parse(storeType);
+                data.next(productType);
                 data.complete();
             } else {
-                this._commonService.getProductType('/inventory/productClassification/getProductType').subscribe(item => {
-                    this.productType = item;
+                this.productService.getProductType('/inventory/productClassification/getProductType').subscribe(item => {
+                    productType = item;
                     this.saveProductType(item);
-                    data.next(this.productType);
+                    data.next(productType);
                     data.complete();
-                    console.log("cat543",this.productType);
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getProductShape(): Observable<ProductShape[]> {
+        let productShape: ProductShape[];
         return new Observable(data => {
-            const storeShape: string = window.sessionStorage['productShape'];
+            const storeShape: string = window.sessionStorage.productShape;
             if (storeShape) {
-                this.productShape = JSON.parse(storeShape);
-                console.log("product Shape",this.productShape);
-                data.next(this.productShape);
+                productShape = JSON.parse(storeShape);
+                data.next(productShape);
                 data.complete();
             } else {
-                this._commonService.getProductShape('/inventory/productClassification/getProductShape').subscribe(item => {
-                    this.productShape = item;
+                this.productService.getProductShape('/inventory/productClassification/getProductShape').subscribe(item => {
+                    productShape = item;
                     this.saveProductShape(item);
-                    data.next(this.productShape);
+                    data.next(productShape);
                     data.complete();
-                    console.log("cat543",this.productShape);
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getProductTempor(): Observable<ProductTemper[]> {
+        let productTemper: ProductTemper[];
         return new Observable(data => {
-            const storeTempor: string = window.sessionStorage['productTempor'];
+            const storeTempor: string = window.sessionStorage.productTempor;
             if (storeTempor) {
-                this.productTemper = JSON.parse(storeTempor);
-                console.log("product Class",this.productTemper);
-                data.next(this.productTemper);
+                productTemper = JSON.parse(storeTempor);
+                data.next(productTemper);
                 data.complete();
             } else {
-                this._commonService.getProductTemper('/inventory/productClassification/getProductTemper').subscribe(item => {
-                    this.productTemper = item;
+                this.productService.getProductTemper('/inventory/productClassification/getProductTemper').subscribe(item => {
+                    productTemper = item;
                     this.saveProductTempor(item);
-                    data.next(this.productTemper);
+                    data.next(productTemper);
                     data.complete();
-                    console.log("cat543",this.productTemper);
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getAllProductCategory(): Observable<ProductCategory[]> {
+        let productCategory: ProductCategory[];
         return new Observable(data => {
-            const storeCategory: string = window.sessionStorage['productCategory'];
+            const storeCategory: string = window.sessionStorage.productCategory;
             if (storeCategory) {
-                this.productCategory = JSON.parse(storeCategory);
-                console.log("product Category",this.productCategory);
-                data.next(this.productCategory);
+                productCategory = JSON.parse(storeCategory);
+                data.next(productCategory);
                 data.complete();
             } else {
-                this._commonService.getProductCategory('/inventory/productClassification/getProductCategory').subscribe(item => {
-                    this.productCategory = item;
+                this.productService.getProductCategory('/inventory/productClassification/getProductCategory').subscribe(item => {
+                    productCategory = item;
                     this.saveProductCategory(item);
-                    data.next(this.productCategory);
+                    data.next(productCategory);
                     data.complete();
-                    console.log("cat543",this.productCategory);
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getAllProductCoating(): Observable<ProductCoating[]> {
+        let productCoating: ProductCoating[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productCoating'];
+            const storeCoating = window.sessionStorage.productCoating;
             if (storeCoating) {
-                this.productCoating = JSON.parse(storeCoating);
-                // console.log("product Category",this.productCategory);
-                data.next(this.productCoating);
+                productCoating = JSON.parse(storeCoating);
+                data.next(productCoating);
                 data.complete();
             } else {
-                this._commonService.getProductCoating('/inventory/productClassification/getProductCoating').subscribe(item => {
-                    this.productCoating = item;
+                this.productService.getProductCoating('/inventory/productClassification/getProductCoating').subscribe(item => {
+                    productCoating = item;
                     this.saveProductCoating(item);
-                    data.next(this.productCoating);
+                    data.next(productCoating);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
 
             }
@@ -169,21 +150,21 @@ export class StaticDataService {
     }
 
     getAllProductOiling(): Observable<ProductOiling[]> {
+        let productOiling: ProductOiling[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productOiling'];
+            const storeCoating = window.sessionStorage.productOiling;
             if (storeCoating) {
-                this.productOiling = JSON.parse(storeCoating);
-                // console.log("productOiling",this.productOiling);
-                data.next(this.productOiling);
+                productOiling = JSON.parse(storeCoating);
+                data.next(productOiling);
                 data.complete();
             } else {
-                this._commonService.getProductOiling('/inventory/productClassification/getProductOiling').subscribe(item => {
-                    this.productOiling = item;
+                this.productService.getProductOiling('/inventory/productClassification/getProductOiling').subscribe(item => {
+                    productOiling = item;
                     this.saveProductOiling(item);
-                    data.next(this.productOiling);
+                    data.next(productOiling);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
 
             }
@@ -191,22 +172,22 @@ export class StaticDataService {
     }
 
     getAllSurface(): Observable<ProductSurfaceCoating[]> {
+        let productSurface: ProductSurfaceCoating[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productSurface'];
+            const storeCoating = window.sessionStorage.productSurface;
             if (storeCoating) {
-                this.productSurface = JSON.parse(storeCoating);
-                // console.log("productSurface",this.productSurface);
-                data.next(this.productSurface);
+                productSurface = JSON.parse(storeCoating);
+                data.next(productSurface);
                 data.complete();
             } else {
-                this._commonService.
+                this.productService.
                     getProductSurfaceCoating('/inventory/productClassification/getProductSurfaceCoating').subscribe(item => {
-                        this.productSurface = item;
+                        productSurface = item;
                         this.saveProductSurface(item);
-                        data.next(this.productSurface);
+                        data.next(productSurface);
                         data.complete();
                     }, error => {
-                        // console.log('error');
+                        this.toastr.error('Error');
                     });
 
             }
@@ -214,21 +195,21 @@ export class StaticDataService {
     }
 
     getAllOrigin(): Observable<ProductOrigin[]> {
+        let productOrigin: ProductOrigin[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productOrigin'];
+            const storeCoating = window.sessionStorage.productOrigin;
             if (storeCoating) {
-                this.productOrigin = JSON.parse(storeCoating);
-                // console.log("productOrigin",this.productOrigin);
-                data.next(this.productOrigin);
+                productOrigin = JSON.parse(storeCoating);
+                data.next(productOrigin);
                 data.complete();
             } else {
-                this._commonService.getProductOrigin('/inventory/productClassification/getProductOrigin').subscribe(item => {
-                    this.productOrigin = item;
+                this.productService.getProductOrigin('/inventory/productClassification/getProductOrigin').subscribe(item => {
+                    productOrigin = item;
                     this.saveProductOrigin(item);
-                    data.next(this.productOrigin);
+                    data.next(productOrigin);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
 
             }
@@ -236,21 +217,21 @@ export class StaticDataService {
     }
 
     getAllAnnealing(): Observable<ProductAnnealing[]> {
+        let productAnnealing: ProductAnnealing[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productAnnealing'];
+            const storeCoating = window.sessionStorage.productAnnealing;
             if (storeCoating) {
-                this.productAnnealing = JSON.parse(storeCoating);
-                // console.log("productAnnealing",this.productAnnealing);
-                data.next(this.productAnnealing);
+                productAnnealing = JSON.parse(storeCoating);
+                data.next(productAnnealing);
                 data.complete();
             } else {
-                this._commonService.getProductAnnealing('/inventory/productClassification/getProductAnnealing').subscribe(item => {
-                    this.productAnnealing = item;
+                this.productService.getProductAnnealing('/inventory/productClassification/getProductAnnealing').subscribe(item => {
+                    productAnnealing = item;
                     this.saveProductAnnealing(item);
-                    data.next(this.productAnnealing);
+                    data.next(productAnnealing);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
 
             }
@@ -259,41 +240,42 @@ export class StaticDataService {
 
 
     getAllDefect(): Observable<ProductDefect[]> {
+        let productDefect: ProductDefect[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productDefect'];
+            const storeCoating = window.sessionStorage.productDefect;
             if (storeCoating) {
-                this.productDefect = JSON.parse(storeCoating);
-                // console.log("productDefect",this.productDefect);
-                data.next(this.productDefect);
+                productDefect = JSON.parse(storeCoating);
+                data.next(productDefect);
                 data.complete();
             } else {
-                this._commonService.getProductDefect('/inventory/productClassification/getProductDefect').subscribe(item => {
-                    this.productDefect = item;
+                this.productService.getProductDefect('/inventory/productClassification/getProductDefect').subscribe(item => {
+                    productDefect = item;
                     this.saveProductDefect(item);
-                    data.next(this.productDefect);
+                    data.next(productDefect);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getAllFinish(): Observable<ProductFinish[]> {
+        let productFinish: ProductFinish[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productFinish'];
+            const storeCoating = window.sessionStorage.productFinish;
             if (storeCoating) {
-                this.productFinish = JSON.parse(storeCoating);
-                data.next(this.productFinish);
+                productFinish = JSON.parse(storeCoating);
+                data.next(productFinish);
                 data.complete();
             } else {
-                this._commonService.getProductFinish('/inventory/productClassification/getProductFinish').subscribe(item => {
-                    this.productFinish = item;
+                this.productService.getProductFinish('/inventory/productClassification/getProductFinish').subscribe(item => {
+                    productFinish = item;
                     this.saveProductFinish(item);
-                    data.next(this.productFinish);
+                    data.next(productFinish);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
 
             }
@@ -301,21 +283,21 @@ export class StaticDataService {
     }
 
     getAllPackaging(): Observable<ProductPackaging[]> {
+        let productPackaging: ProductPackaging[];
         return new Observable(data => {
-            const storeCoating = window.sessionStorage['productPackaging'];
+            const storeCoating = window.sessionStorage.productPackaging;
             if (storeCoating) {
-                this.productPackaging = JSON.parse(storeCoating);
-                // console.log("productPackaging",this.productPackaging);
-                data.next(this.productPackaging);
+                productPackaging = JSON.parse(storeCoating);
+                data.next(productPackaging);
                 data.complete();
             } else {
-                this._commonService.getProductPackaging('/inventory/productClassification/getProductPackaging').subscribe(item => {
-                    this.productPackaging = item;
+                this.productService.getProductPackaging('/inventory/productClassification/getProductPackaging').subscribe(item => {
+                    productPackaging = item;
                     this.saveProductPackaging(item);
-                    data.next(this.productPackaging);
+                    data.next(productPackaging);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
 
             }
@@ -323,151 +305,220 @@ export class StaticDataService {
     }
 
     getAllHardness(): Observable<ProductHardness[]> {
+        let productHardness: ProductHardness[];
         return new Observable<ProductHardness[]>(data => {
-            const storeCoating = window.sessionStorage['productHardness'];
+            const storeCoating = window.sessionStorage.productHardness;
             if (storeCoating) {
-                this.productHardness = JSON.parse(storeCoating);
-                // console.log("productHardness",this.productHardness);
-                data.next(this.productHardness);
+                productHardness = JSON.parse(storeCoating);
+                data.next(productHardness);
                 data.complete();
             } else {
-                this._commonService.getProductHardness('/inventory/productClassification/getProductHardness').subscribe(item => {
-                    this.productHardness = item;
+                this.productService.getProductHardness('/inventory/productClassification/getProductHardness').subscribe(item => {
+                    productHardness = item;
                     this.saveProductHardness(item);
-                    data.next(this.productHardness);
+                    data.next(productHardness);
                     data.complete();
                 }, error => {
-                    // console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
-    // getSearchFilter() : Observable<ProductFilter[]>{
-    //     return new Observable(data=>{
-    //         let store_Filter : string = window.sessionStorage['productFilter'];
-    //         if(store_Filter) {
-    //             this.searchFilter = JSON.parse(store_Filter);
-    // console.log("product Category",this.searchFilter);
-    //             data.next(this.searchFilter);
-    //             data.complete();
-    //         } else {
-    //             this._commonService.getAllFilter().subscribe(item=>{
-    //                 this.searchFilter = item;
-    //                 this.saveProductFilter(item);
-    //                 data.next(this.searchFilter);
-    //                 data.complete();
-    // console.log("cat543",this.searchFilter);
-    //             },error=>{
-    // console.log('error');
-    //             });
-    //         }
-    //     });
-    // }
-
-    saveProductClass(data: ProductClass[]) {
-        window.sessionStorage['productClass'] = JSON.stringify(data);
-    }
-
-    saveProductCategory(data: ProductCategory[]) {
-        window.sessionStorage['productCategory'] = JSON.stringify(data);
-    }
-
-    saveProductTempor(data: ProductTemper[]) {
-        window.sessionStorage['productTempor'] = JSON.stringify(data);
-    }
-
-    saveProductType(data: ProductType[]) {
-        window.sessionStorage['productType'] = JSON.stringify(data);
-    }
-
-    saveProductShape(data: ProductShape[]) {
-        window.sessionStorage['productShape'] = JSON.stringify(data);
-    }
-
-    saveProductCoating(data: ProductCoating[]) {
-        window.sessionStorage['productCoating'] = JSON.stringify(data);
-    }
-
-    saveProductOiling(data: ProductOiling[]) {
-        window.sessionStorage['ProductOiling'] = JSON.stringify(data);
-    }
-
-    saveProductSurface(data: ProductSurfaceCoating[]) {
-        window.sessionStorage['productSurface'] = JSON.stringify(data);
-    }
-    saveProductAnnealing(data: ProductAnnealing[]) {
-        window.sessionStorage['productAnnealing'] = JSON.stringify(data);
-    }
-    saveProductDefect(data: ProductDefect[]) {
-        window.sessionStorage['productDefect'] = JSON.stringify(data);
-    }
-    saveProductFinish(data: ProductFinish[]) {
-        window.sessionStorage['productFinish'] = JSON.stringify(data);
-    }
-    saveProductPackaging(data: ProductPackaging[]) {
-        window.sessionStorage['productPackaging'] = JSON.stringify(data);
-    }
-    saveProductHardness(data: ProductHardness[]) {
-        window.sessionStorage['productHardness'] = JSON.stringify(data);
-    }
-    saveProductOrigin(data: ProductOrigin[]) {
-        window.sessionStorage['productOrigin'] = JSON.stringify(data);
-    }
-
-    saveCompanyClass(data: Company[]) {
-        window.sessionStorage['storeCompany'] = JSON.stringify(data);
-    }
-
-    saveWarehouse(data: Warehouse[]) {
-        window.sessionStorage['storeWarehouse'] = JSON.stringify(data);
-    }
-
-
-    // saveProductFilter( data : ProductFilter[] ) {
-    //     window.sessionStorage['productFilter'] = JSON.stringify(data);
-    // }
-
-
     getAllCompany(): Observable<Company[]> {
+        let companyClass: Company[];
         return new Observable(data => {
-            const storeCompany: string = window.sessionStorage['storeCompany'];
+            const storeCompany: string = window.sessionStorage.storeCompany;
             if (storeCompany) {
-                this.companyClass = JSON.parse(storeCompany);
-                console.log('product Class', this.companyClass);
-                data.next(this.companyClass);
+                companyClass = JSON.parse(storeCompany);
+                data.next(companyClass);
                 data.complete();
             } else {
-                this._commonService.getAllCompany('/inventory/getAllCompany').subscribe(item => {
-                    this.companyClass = item;
-                    this.saveCompanyClass(item);
-                    data.next(this.companyClass);
+                this.productService.getAllCompany('/inventory/getAllCompany').subscribe(item => {
+                    companyClass = item;
+                    this.saveCompany(item);
+                    data.next(companyClass);
                     data.complete();
-                    console.log('cat543', this.companyClass);
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
 
     getAllwarehouse(): Observable<Warehouse[]> {
+        let warehouseClass: Warehouse[];
         return new Observable(data => {
-            const storeWarehouse: string = window.sessionStorage['storeWarehouse'];
+            const storeWarehouse: string = window.sessionStorage.storeWarehouse;
             if (storeWarehouse) {
-                this.warehouseClass = JSON.parse(storeWarehouse);
-                data.next(this.warehouseClass);
+                warehouseClass = JSON.parse(storeWarehouse);
+                data.next(warehouseClass);
                 data.complete();
             } else {
-                this._commonService.getAllWarehouse('/inventory/getAllWarehouse').subscribe(item => {
-                    this.warehouseClass = item;
+                this.productService.getAllWarehouse('/inventory/getAllWarehouse').subscribe(item => {
+                    warehouseClass = item;
                     this.saveWarehouse(item);
-                    data.next(this.warehouseClass);
+                    data.next(warehouseClass);
                     data.complete();
                 }, error => {
-                    console.log('error');
+                    this.toastr.error('Error');
                 });
             }
         });
     }
+
+    getWarehouseById(warehouseId): Warehouse {
+        const warehouseList = this.getAllwarehouse();
+        let warehouse: Warehouse;
+        warehouseList.subscribe(data => warehouse = data.filter(obj => obj.id === warehouseId)[0]);
+        return warehouse;
+    }
+
+    getAllWarehouseByCompanyId(companyId): Warehouse[] {
+        const warehouseList = this.getAllwarehouse();
+        let warehouse: Warehouse[];
+        warehouseList.subscribe(data => warehouse = data.filter(obj => obj.companyId === companyId));
+        return warehouse;
+    }
+
+    getCompanyById(companyId): Company {
+        const companyList = this.getAllCompany();
+        let company: Company;
+        companyList.subscribe(data => company = data.filter(obj => obj.id === companyId)[0]);
+        return company;
+    }
+
+    getAllMachineDetail(): Observable<MachineDetail[]> {
+        let machineDetail: MachineDetail[];
+        return new Observable(data => {
+            const storeMachineDetail: string = window.sessionStorage.storeMachineDetail;
+            if (storeMachineDetail) {
+                machineDetail = JSON.parse(storeMachineDetail);
+                data.next(machineDetail);
+                data.complete();
+            } else {
+                this.productService.getMachineDetail('/inventory/getAllMachineDetail').subscribe(item => {
+                    machineDetail = item;
+                    this.saveMachineDetail(item);
+                    data.next(machineDetail);
+                    data.complete();
+                }, error => {
+                    this.toastr.error('Error');
+                });
+            }
+        });
+    }
+
+    getAllWeighingCompany(): Observable<WeighingCompany[]> {
+        let weighingCompany: WeighingCompany[];
+        return new Observable(data => {
+            const storeWeighingCompany: string = window.sessionStorage.storeWeighingCompany;
+            if (storeWeighingCompany) {
+                weighingCompany = JSON.parse(storeWeighingCompany);
+                data.next(weighingCompany);
+                data.complete();
+            } else {
+                this.productService.getWeighingCompany('/inventory/getAllWeighingCompany').subscribe(item => {
+                    weighingCompany = item;
+                    this.saveWeighingCompany(item);
+                    data.next(weighingCompany);
+                    data.complete();
+                }, error => {
+                    this.toastr.error('Error');
+                });
+            }
+        });
+    }
+
+    // getSearchFilter() : Observable<ProductFilter[]>{
+        // let searchFilter : ProductFilter[];
+    //     return new Observable(data=>{
+    //         let store_Filter : string = window.sessionStorage['productFilter'];
+    //         if(store_Filter) {
+    //             searchFilter = JSON.parse(store_Filter);
+    //             data.next(searchFilter);
+    //             data.complete();
+    //         } else {
+    //             this.productService.getAllFilter().subscribe(item=>{
+    //                 searchFilter = item;
+    //                 this.saveProductFilter(item);
+    //                 data.next(searchFilter);
+    //                 data.complete();
+    //             },error=>{
+    // this.toastr.error('Error');
+    //             });
+    //         }
+    //     });
+    // }
+
+    saveProductClass(data: ProductClass[]) {
+        window.sessionStorage.productClass = JSON.stringify(data);
+    }
+
+    saveProductCategory(data: ProductCategory[]) {
+        window.sessionStorage.productCategory = JSON.stringify(data);
+    }
+
+    saveProductTempor(data: ProductTemper[]) {
+        window.sessionStorage.productTempor = JSON.stringify(data);
+    }
+
+    saveProductType(data: ProductType[]) {
+        window.sessionStorage.productType = JSON.stringify(data);
+    }
+
+    saveProductShape(data: ProductShape[]) {
+        window.sessionStorage.productShape = JSON.stringify(data);
+    }
+
+    saveProductCoating(data: ProductCoating[]) {
+        window.sessionStorage.productCoating = JSON.stringify(data);
+    }
+
+    saveProductOiling(data: ProductOiling[]) {
+        window.sessionStorage.ProductOiling = JSON.stringify(data);
+    }
+
+    saveProductSurface(data: ProductSurfaceCoating[]) {
+        window.sessionStorage.productSurface = JSON.stringify(data);
+    }
+    saveProductAnnealing(data: ProductAnnealing[]) {
+        window.sessionStorage.productAnnealing = JSON.stringify(data);
+    }
+    saveProductDefect(data: ProductDefect[]) {
+        window.sessionStorage.productDefect = JSON.stringify(data);
+    }
+    saveProductFinish(data: ProductFinish[]) {
+        window.sessionStorage.productFinish = JSON.stringify(data);
+    }
+    saveProductPackaging(data: ProductPackaging[]) {
+        window.sessionStorage.productPackaging = JSON.stringify(data);
+    }
+    saveProductHardness(data: ProductHardness[]) {
+        window.sessionStorage.productHardness = JSON.stringify(data);
+    }
+    saveProductOrigin(data: ProductOrigin[]) {
+        window.sessionStorage.productOrigin = JSON.stringify(data);
+    }
+
+    saveCompany(data: Company[]) {
+        window.sessionStorage.storeCompany = JSON.stringify(data);
+    }
+
+    saveWarehouse(data: Warehouse[]) {
+        window.sessionStorage.storeWarehouse = JSON.stringify(data);
+    }
+
+    saveMachineDetail(data: MachineDetail[]) {
+        window.sessionStorage.storeMachineDetail = JSON.stringify(data);
+    }
+
+    saveWeighingCompany(data: WeighingCompany[]) {
+        window.sessionStorage.storeWeighingCompany = JSON.stringify(data);
+    }
+
+    // saveProductFilter( data : ProductFilter[] ) {
+    //     window.sessionStorage['productFilter'] = JSON.stringify(data);
+    // }
+
 }

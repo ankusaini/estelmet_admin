@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
-import { ProcessingService } from '../../service/processing.service';
-import { UserService } from 'src/app/shared/services/user.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Warehouse } from 'src/app/shared/Models/warehouse';
-import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Company } from 'src/app/shared/Models/company.model.';
+import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
 import { User } from 'src/app/shared/Models/user.model';
+import { Warehouse } from 'src/app/shared/Models/warehouse';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { ProcessingService } from '../../service/processing.service';
 
 @Component({
   selector: 'app-select-mr',
@@ -32,97 +32,88 @@ export class SelectMrComponent implements OnInit, OnChanges {
   contractorList: any[];
   contractorIdList: any[];
   // customerCompany : any[];
-  priorityList : any= 
-  {
-    'IMMIDIATE':'Immidiate',
-     'ONE_DAY':'Within One Day', 'TWO_DAY':'Within Two Day', 'THREE_DAY':'Within Three Day','MORE_THEN_THREE_DAY': 'More Than Three Day'
-  }
-  
+  priorityList: any =
+    {
+      IMMIDIATE: 'Immidiate',
+      ONE_DAY: 'Within One Day', TWO_DAY: 'Within Two Day', THREE_DAY: 'Within Three Day', MORE_THEN_THREE_DAY: 'More Than Three Day'
+    };
+
   selectMrIdForm: FormGroup;
 
-  constructor(private staticData: StaticDataService,
-              private processingService: ProcessingService,
-              private userService: UserService) { }
+  constructor(
+    private staticData: StaticDataService,
+    private processingService: ProcessingService,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.staticData.getAllProductCategory().subscribe(data => {
-      
-      this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
-        .filter(categoryObj => categoryObj!== null);
-      console.log("categoryList: ", this.productCategoryList);
+
+      this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
+        .filter(categoryObj => categoryObj !== null);
     });
 
-    let companyUrl = "/inventory/getAllCompany";
+    const companyUrl = '/inventory/getAllCompany';
     this.processingService.getAllCompany(companyUrl).subscribe(data => {
       this.companyData = data;
       this.companyList = data.map(company => company.name)
         .filter(company => company !== null);
       this.companyIdList = data.map(company => company.id)
         .filter(company => company !== null);
-      
-    });
-    
-    let warehouseUrl = "/inventory/getAllWarehouse";
-    this.processingService.getAllWarehouse(warehouseUrl).subscribe( data => {
-      this.warehouseData = data;
-      this.warehouseList = data.map(warehouse => warehouse.name)
-        .filter( warehouse => warehouse !== null);
-      this.warehouseIdList = data.map(warehouse => warehouse.id)
-        .filter(warehouse => warehouse !== null);
-     
+
     });
 
-    let machineUrl = "/inventory/getAllMachineDetail";
+    const warehouseUrl = '/inventory/getAllWarehouse';
+    this.processingService.getAllWarehouse(warehouseUrl).subscribe(data => {
+      this.warehouseData = data;
+      this.warehouseList = data.map(warehouse => warehouse.name)
+        .filter(warehouse => warehouse !== null);
+      this.warehouseIdList = data.map(warehouse => warehouse.id)
+        .filter(warehouse => warehouse !== null);
+
+    });
+
+    const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineData = data;
       this.machineDetailList = data.map(machine => machine.machineName)
         .filter(machine => machine !== null);
-      this.machineDetailIdList = data.map(machine => machine.machineDetailId)
-      .filter(machine => machine !== null);
+      this.machineDetailIdList = data.map(machine => machine.id)
+        .filter(machine => machine !== null);
     });
 
-    let contractorUrl = "/users/getAllUsersByUserRoleAndStatus/CONTRACTOR/APPROVED";
-    this.userService.getAllUserByUserRoleAndStatus(contractorUrl).subscribe( data =>{
+    const contractorUrl = '/users/getAllUsersByUserRoleAndStatus/CONTRACTOR/APPROVED';
+    this.userService.getAllUserByUserRoleAndStatus(contractorUrl).subscribe(data => {
       this.contractorData = data;
       this.contractorList = data.map(contarctor => contarctor.firstName)
-        .filter(contarctor => contarctor!==null);
+        .filter(contarctor => contarctor !== null);
       this.contractorIdList = data.map(contarctor => contarctor.id)
-        .filter(contarctor => contarctor!==null);
+        .filter(contarctor => contarctor !== null);
     });
-  
-    // let customerUrl = "/users/getAllUsersByUserRoleAndStatus/CUSTOMER/APPROVED";
-    // this.userService.getAllUserByUserRoleAndStatus(customerUrl).subscribe(data => {
-    //   this.customerCompany = data.map(customer => customer.firstName)
-    //     .filter(customer => customer!==null);
-    //   console.log(this.customerCompany);
-    // });
 
     this.selectMrIdForm = new FormGroup({
-      jobWorkType: new FormControl("", [Validators.required]),
-      productCategory: new FormControl("", [Validators.required]),
-      contractorId: new FormControl("", [Validators.required]),
-      contractorFirstName: new FormControl("", [Validators.required]),
-      machineDetailId: new FormControl("", [Validators.required]),
-      machineName: new FormControl("", [Validators.required]),
-      companyId: new FormControl("", [Validators.required]),
-      companyName: new FormControl("", [Validators.required]),
-      warehouseId: new FormControl("", [Validators.required]),
-      warehouseName: new FormControl("",[Validators.required]),
-      priorityLevel: new FormControl("", [Validators.required]),
+      jobWorkType: new FormControl('', [Validators.required]),
+      productCategory: new FormControl('', [Validators.required]),
+      contractorId: new FormControl('', [Validators.required]),
+      contractorFirstName: new FormControl('', [Validators.required]),
+      machineDetailId: new FormControl('', [Validators.required]),
+      machineName: new FormControl('', [Validators.required]),
+      companyId: new FormControl('', [Validators.required]),
+      companyName: new FormControl('', [Validators.required]),
+      warehouseId: new FormControl('', [Validators.required]),
+      warehouseName: new FormControl('', [Validators.required]),
+      priorityLevel: new FormControl('', [Validators.required]),
       // customerCompanyId: new FormControl("")
     });
-
   }
 
   ngOnChanges() {
-    console.log(this.processingType);
   }
 
   setContractorName(id) {
     this.contractorData.find(contractor => {
-      if(contractor.id == id) {
+      if (contractor.id === id) {
         this.selectMrIdForm.patchValue({
-          contractorFirstName : contractor.firstName
+          contractorFirstName: contractor.firstName
         });
       }
     });
@@ -130,10 +121,10 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setMachineName(id) {
     this.machineData.find(machine => {
-      if(machine.machineDetailId == id) {
+      if (machine.id === id) {
         // alert(name);
         this.selectMrIdForm.patchValue({
-          machineName : machine.machineName
+          machineName: machine.machineName
         });
       }
     });
@@ -142,8 +133,8 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setCompanyName(id) {
     this.companyData.find(company => {
-      if(company.id == id) {
-          this.selectMrIdForm.patchValue({
+      if (company.id === id) {
+        this.selectMrIdForm.patchValue({
           companyName: company.name
         });
       }
@@ -152,7 +143,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setwarehouseName(id) {
     this.warehouseData.find(warehouse => {
-      if(warehouse.id == id) {
+      if (warehouse.id === id) {
         this.selectMrIdForm.patchValue({
           warehouseName: warehouse.name
         });
@@ -162,19 +153,19 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setContractorId(name) {
     this.contractorData.find(contractor => {
-      if(contractor.firstName == name) {
+      if (contractor.firstName === name) {
         this.selectMrIdForm.patchValue({
           contractorId: contractor.id
         });
       }
     });
   }
-  
+
   setMachineId(name) {
     this.machineData.find(machine => {
-      if(machine.machineName == name) {
+      if (machine.machineName === name) {
         this.selectMrIdForm.patchValue({
-          machineDetailId: machine.machineDetailId
+          machineDetailId: machine.id
         });
       }
     });
@@ -182,7 +173,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setCompanyId(name) {
     this.companyData.find(company => {
-      if(company.name == name) {
+      if (company.name === name) {
         this.selectMrIdForm.patchValue({
           companyId: company.id
         });
@@ -192,7 +183,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setwarehouseId(name) {
     this.warehouseData.find(warehouse => {
-      if(warehouse.name == name) {
+      if (warehouse.name === name) {
         this.selectMrIdForm.patchValue({
           warehouseId: warehouse.id
         });
@@ -201,7 +192,6 @@ export class SelectMrComponent implements OnInit, OnChanges {
   }
 
   submitSelectMrId() {
-    console.log(JSON.stringify(this.selectMrIdForm.value));
     this.selectMrData.emit(this.selectMrIdForm.value);
   }
 

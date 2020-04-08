@@ -1,14 +1,14 @@
-import { JwtService } from './jwt.service';
-
-import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
-import { User } from '../../Models/user.model';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs/internal/Observable';
 import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
+import { map } from 'rxjs/operators';
+import { User } from '../../Models/user.model';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
+import { JwtService } from './jwt.service';
+
 // import { UserService } from '../user.service';
 
 @Injectable({

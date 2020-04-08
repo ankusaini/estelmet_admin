@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InventoryService } from '../../service/inventory.service';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/shared/Models/product.model.';
-import { ToastrService } from "ngx-toastr";
+import { InventoryService } from '../../service/inventory.service';
 
 @Component({
   selector: 'app-search-view-product',
@@ -9,18 +9,17 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ['./search-view-product.component.scss']
 })
 export class SearchViewProductComponent implements OnInit {
-  
+
   productList: Product[];
   selectedProductList: Product[];
 
-  constructor(private inventoryService: InventoryService,private toastr:ToastrService) { }
+  constructor(private inventoryService: InventoryService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    let url = "/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED";
+    const url = '/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED';
     // let url = "/inventory/getAllProductByStatus/PENDING";
-    this.inventoryService.getAllProductByProductStageAndStatus(url).subscribe( data => {
+    this.inventoryService.getAllProductByProductStageAndStatus(url).subscribe(data => {
       this.productList = data;
-      console.log("productList is: ", this.productList);
     }, error => {
       console.log(error);
     });
@@ -28,7 +27,6 @@ export class SearchViewProductComponent implements OnInit {
 
   getSelectedProductList(selectedProductList) {
     this.selectedProductList = selectedProductList;
-    console.log(this.selectedProductList);
   }
 
 }

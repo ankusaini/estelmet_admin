@@ -1,11 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from "@angular/core";
-import { DispatchService } from "src/app/modules/dispatch/services/dispatch.service";
-import { Sales, DeliveryOrder } from "src/app/shared/Models/sales.model";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { WizardComponent } from 'ng2-archwizard/dist';
 import { ToastrService } from 'ngx-toastr';
+import { DispatchService } from 'src/app/modules/dispatch/services/dispatch.service';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
-import { Router } from '@angular/router';
+import { DeliveryOrder, Sales } from 'src/app/shared/Models/sales.model';
 
 @Component({
   selector: 'app-create-delivery-order',
@@ -14,63 +14,52 @@ import { Router } from '@angular/router';
   // changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class CreateDeliveryOrderComponent implements OnInit {
-  @ViewChild("wizard", {static: false}) wizard: WizardComponent; 
+  @ViewChild('wizard', { static: false }) wizard: WizardComponent;
   // invoiceData: FormGroup;
   deliveryData: DeliveryOrder;
   request: RequestP = {};
 
 
   constructor(
-          private dispatchService:DispatchService, 
-          private toastr: ToastrService,
-          private router: Router
-          ) { }
+    private dispatchService: DispatchService,
+    private toastr: ToastrService,
+    private router: Router
+  ) { }
 
-  salesLotList:Sales[]=[];
-  deliveryOrderList:DeliveryOrder[]=[];
-
-  ngOnInit() {
-    this.getAllSales('SALES_CONFIRMATION','APPROVED');
-  }
-
-   public deliverOrderForm = new FormGroup({ 
-    
-    salesId: new FormControl("",[Validators.required]),
-    deliveryOrderId: new FormControl("", [Validators.required]),
-
+  salesLotList: Sales[] = [];
+  deliveryOrderList: DeliveryOrder[] = [];
+  public deliverOrderForm = new FormGroup({
+    salesId: new FormControl('', [Validators.required]),
+    deliveryOrderId: new FormControl('', [Validators.required]),
   });
 
-  getAllSales(type,status)
-  {
-    let salesUrl = "/sales/getAllSalesByTypeAndStatus/"+type+"/"+status;
+  ngOnInit() {
+    this.getAllSales('SALES_CONFIRMATION', 'APPROVED');
+  }
+
+
+  getAllSales(type, status) {
+    const salesUrl = '/sales/getAllSalesByTypeAndStatus/' + type + '/' + status;
     this.dispatchService.getAllSalesByTypeAndStatus(salesUrl).subscribe(
       data => {
         this.salesLotList = data.salesList;
-        console.log(this.salesLotList);
-       
       },
       error => {
         console.log(error);
       }
     );
   }
-  getLoadingId(id)
-  {
-    if(id!='')
-      {
-     let data=   this.salesLotList.filter(obj=>{
-          return obj.id==id;
-        });
-        if(data)
-          {
-            this.deliveryOrderList=data[0].deliveryOrder;
-            console.log(this.deliveryOrderList);
-          }
+  getLoadingId(id) {
+    if (id !== '') {
+      const data = this.salesLotList.filter(obj => {
+        return obj.id === id;
+      });
+      if (data) {
+        this.deliveryOrderList = data[0].deliveryOrder;
       }
-      else
-        {
-          this.deliveryOrderList=[];
-        }
+    } else {
+      this.deliveryOrderList = [];
+    }
   }
 
   get f() {
@@ -78,25 +67,19 @@ export class CreateDeliveryOrderComponent implements OnInit {
   }
 
   submitSelectScId() {
-    if(this.deliverOrderForm.valid) {
+    if (this.deliverOrderForm.valid) {
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.error("Error! Invalid Details.");
+      this.toastr.error('Error! Invalid Details.');
     }
   }
 
   getInvoiceData(data) {
-    console.log(data);
-    // this.invoiceData = data;
     this.deliveryData = data;
-    // console.log(data.value);
     this.wizard.navigation.goToNextStep();
   }
 
   getTransportData(data) {
-    console.log(data);
-    // this.invoiceData.patchValue(data);
-    // console.log(this.invoiceData);
 
     this.deliveryData.transportId = data.transportId;
     this.deliveryData.transportRecieptNo = data.transportRecieptNo;
@@ -109,17 +92,16 @@ export class CreateDeliveryOrderComponent implements OnInit {
 
     this.request.deliveryOrder = this.deliveryData;
     this.request.productList = [];
-    console.log(this.request);
-    
-    let url = "/sales/createDeliveryOrder";
+
+    const url = '/sales/createDeliveryOrder';
     this.dispatchService.saveRequestObject(url, this.request).subscribe(
-      data => {
-        this.toastr.success("Record saved successfully!");
-        this.router.navigateByUrl("/dispatch/doApproval");
+      () => {
+        this.toastr.success('Record saved successfully!');
+        this.router.navigateByUrl('/dispatch/doApproval');
       }, error => {
         console.log(error);
       }
-    )
+    );
   }
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductSurfaceCoating } from 'src/app/shared/Models/product.model.';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
@@ -11,45 +11,44 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreateSurfaceComponent implements OnInit {
 
-  productSurfaceFormGroup : FormGroup;
+  productSurfaceFormGroup: FormGroup;
 
-  productSurfaceList : ProductSurfaceCoating[];
+  productSurfaceList: ProductSurfaceCoating[];
 
-  constructor(private productSurface : StaticDataService,private _commonSurface : CommonService) {
+  constructor(private productSurface: StaticDataService, private commonSurface: CommonService) {
 
     this.productSurfaceFormGroup = new FormGroup({
-      id : new FormControl(""),
-      productSurfaceCoating : new FormControl("",Validators.required),
-      description : new FormControl("",Validators.required),
-      parentId : new FormControl("",Validators.required)
+      productSurfaceCoating: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
-   }
+  }
 
   ngOnInit() {
     this.getSurfaceCoating();
   }
 
-  getSurfaceCoating(){
-    this.productSurface.getAllSurface().subscribe(data=>{
+  getSurfaceCoating() {
+    this.productSurface.getAllSurface().subscribe(data => {
       this.productSurfaceList = data;
     });
   }
 
-  saveSurfaceCoating(){
-    if(this.productSurfaceFormGroup.valid){
-      this._commonSurface.saveProductSurface(this.productSurfaceFormGroup.value).subscribe(res=>{
+  saveSurfaceCoating() {
+    if (this.productSurfaceFormGroup.valid) {
+      this.commonSurface.saveProductSurface(this.productSurfaceFormGroup.value).subscribe(res => {
         this.productSurfaceList.push(res);
+        this.productSurfaceFormGroup.reset();
         this.productSurface.saveProductSurface(this.productSurfaceList);
       });
-    }else{
-      console.log("All fields are necessary");
+    } else {
+      console.log('All fields are necessary');
     }
   }
 
-  deleteSurface(productSurface : ProductSurfaceCoating){
-    this._commonSurface.deleteProductSurface(productSurface.id.toString()).subscribe(res=>{
+  deleteSurface(productSurface: ProductSurfaceCoating) {
+    this.commonSurface.deleteProductSurface(productSurface.id.toString()).subscribe(res => {
       this.productSurfaceList = this.productSurfaceList.filter(element => {
-        return element!=productSurface
+        return element !== productSurface;
       });
       this.productSurface.saveProductSurface(this.productSurfaceList);
     });

@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="col-md-1"></div>
-        <div *ngIf="selected_comapny"  class="col-md-5">
+        <div *ngIf="selectedComapny"  class="col-md-5">
           <div class="form-group">
             <label for="exampleFormControlSelect1">
               Warehouse Name <small class="asterik_sign">*</small>
@@ -36,7 +36,7 @@
               formControlName="warehouseName"
               required >
               <option value="" disabled>Select Warehouse</option>
-              <option *ngFor="let warehouse of selected_comapny.warehouse" [value]="warehouse?.id">{{warehouse?.name}}</option>
+              <option *ngFor="let warehouse of selectedComapny.warehouse" [value]="warehouse?.id">{{warehouse?.name}}</option>
             </select>
             <small *ngIf="!f.warehouseName.valid && (f.warehouseName.dirty || f.warehouseName.touched)"
               id="validation-warehouseName-error"

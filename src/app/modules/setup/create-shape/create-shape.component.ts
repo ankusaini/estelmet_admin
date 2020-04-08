@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductShape } from 'src/app/shared/Models/product.model.';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
@@ -11,36 +11,35 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreateShapeComponent implements OnInit {
 
-  productShapeFormgroup : FormGroup;
+  productShapeFormgroup: FormGroup;
 
-  productShapeList : ProductShape[];
+  productShapeList: ProductShape[];
 
-  constructor(private productShape : StaticDataService, private _commonService : CommonService) {
+  constructor(private productShape: StaticDataService, private commonService: CommonService) {
 
     this.productShapeFormgroup = new FormGroup({
-      id : new FormControl(""),
-      productShape : new FormControl("",Validators.required),
-   // description : new FormControl("",Validators.required),
-     parentId : new FormControl("",Validators.required)
+      id: new FormControl(''),
+      productShape: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      // parentId: new FormControl('', Validators.required)
     });
-   }
+  }
 
   ngOnInit() {
     this.getShape();
   }
 
-  getShape(){
-    this.productShape.getProductShape().subscribe(data=>{
-      this.productShapeList = data ;
-    })
+  getShape() {
+    this.productShape.getProductShape().subscribe(data => {
+      this.productShapeList = data;
+    });
   }
 
-  saveShape(){
+  saveShape() {
     console.log(this.productShapeFormgroup);
-    if(this.productShapeFormgroup.valid) {
-     // this.productTypeForm.reset();
-      this._commonService.saveProductShape(this.productShapeFormgroup.value).subscribe(res=>{
-        console.log(res);
+    if (this.productShapeFormgroup.valid) {
+      this.commonService.saveProductShape(this.productShapeFormgroup.value).subscribe(res => {
+        this.productShapeFormgroup.reset();
         this.productShapeList.push(res);
         this.productShape.saveProductShape(this.productShapeList);
       });
@@ -49,10 +48,10 @@ export class CreateShapeComponent implements OnInit {
     }
   }
 
-  deleteShape(productShape : ProductShape){
-    this._commonService.deleteProductShape(productShape.id.toString()).subscribe(res=>{
+  deleteShape(productShape: ProductShape) {
+    this.commonService.deleteProductShape(productShape.id.toString()).subscribe(res => {
       this.productShapeList = this.productShapeList.filter(element => {
-        return element!=productShape
+        return element !== productShape;
       });
       this.productShape.saveProductShape(this.productShapeList);
     });

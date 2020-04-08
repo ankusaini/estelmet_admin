@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { UserLoginService } from 'src/app/shared/services/login/userLogin.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/Models/user.model';
+import { UserLoginService } from 'src/app/shared/services/login/userLogin.service';
 
 @Component({
   selector: 'app-login',
@@ -11,35 +11,34 @@ import { User } from 'src/app/shared/Models/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm : FormGroup;
+  loginForm: FormGroup;
   constructor(
-    private _fb : FormBuilder,
-    private _userLoginService : UserLoginService,
-    private _router : Router,
-  ) { 
-    this.loginForm = this._fb.group({
-      username : new FormControl('',[Validators.required]),
-      password : new FormControl('',[Validators.required]),
-    })
+    private fb: FormBuilder,
+    private userLoginService: UserLoginService,
+    private router: Router,
+  ) {
+    this.loginForm = this.fb.group({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    });
   }
 
   ngOnInit() {
-    let user : User = this._userLoginService.getCurrentUser();
-    if(Object.keys(user)){
-      this._router.navigate(['']);
+    const user: User = this.userLoginService.getCurrentUser();
+    if (Object.keys(user)) {
+      this.router.navigate(['']);
     }
   }
 
   login() {
-    if(this.loginForm.status == 'VALID') {
-      this._userLoginService.attemptAuth(this.loginForm.value).subscribe(user=>{
-        console.log(user);
-        if(Object.keys(user)) {
-          this._userLoginService.saveUser(user);
-          this._router.navigateByUrl("dashboard/default");
-         // this._router.navigate(['dashboard/default']);
+    if (this.loginForm.status === 'VALID') {
+      this.userLoginService.attemptAuth(this.loginForm.value).subscribe(user => {
+        if (Object.keys(user)) {
+          this.userLoginService.saveUser(user);
+          this.router.navigateByUrl('dashboard/default');
+          // this.router.navigate(['dashboard/default']);
         }
-      })
+      });
     }
   }
 
