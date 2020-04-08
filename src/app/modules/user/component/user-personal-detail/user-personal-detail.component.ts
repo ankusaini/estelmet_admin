@@ -23,6 +23,7 @@ export class UserPersonalDetailComponent implements OnInit {
     this.Ids = ids;
     this.editProfile = false;
     this.editProfileIcon = "icon-edit";
+    this.Ids = ids;
    }
 
   ngOnInit() {

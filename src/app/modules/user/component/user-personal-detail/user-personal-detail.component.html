@@ -32,6 +32,8 @@
         <span *ngIf="selectedUser.userRole == 'TRANSPORTER'">{{ Ids.TRANSPORTER+ '-' +selectedUser.userDetialId }}</span>
       </div>
     </div>
+
+
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">User Type</label>
       <div class="col-sm-9">
@@ -47,7 +49,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
       <div class="col-sm-9">
-        {{ selectedUser.email }}
+        {{ selectedUser.emailId }}
       </div>
     </div>
   </app-card>

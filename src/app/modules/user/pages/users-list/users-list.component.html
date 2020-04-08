@@ -27,12 +27,16 @@
           <tbody>
             <tr href="kdkd" *ngFor="let user of userList;let i = index">
               <td>{{i+1}}</td>
-              <td (click)="goToView(user)">{{user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">{{Ids.AGENT + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
               <td>{{user.userRole}}</td>
               <td>{{user.firstName}}</td>
               <td>{{user.mobile}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user.userDetail?.companyName}}</td>
+              <td>{{user.emailId}}</td>
+              <td>{{user.businessDetails[0]?.companyName}}</td>
               <td>
                 <span class="badge badge-light-success">{{user.status}}</span>
                 <div class="overlay-edit">
