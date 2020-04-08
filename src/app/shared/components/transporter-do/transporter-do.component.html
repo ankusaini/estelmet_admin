@@ -7,7 +7,7 @@
                 class="asterik_sign">*</small></label>
             <select #transporterID class="form-control" name="validation-companyName" formControlName="transportId">
                 <option value="" disabled>Select Transporter Id</option>
-                <option *ngFor="let item of transportList; let i=index" [value]="item.id">{{ item.id}}</option>
+                <option *ngFor="let item of transportList; let i=index" [value]="item.userDetialId">{{ item.userDetialId}}</option>
                 <!-- put here fetch data and passed it to the parent component, -->
             </select>
             <small *ngIf="f.transportId.value == '' && (f.transportId.dirty || f.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"

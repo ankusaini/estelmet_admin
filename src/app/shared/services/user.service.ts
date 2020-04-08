@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { User, UserGroup } from 'src/app/shared/Models/user.model';
+import { User, UserGroup, UserMini } from 'src/app/shared/Models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Injectable({
@@ -11,7 +11,10 @@ export class UserService {
 
   constructor(private apiService: ApiService) { }
 
-  getAllUserByUserRoleAndStatus(url): Observable<User[]> {
+  getAllUserByUserRoleAndStatus(selectedUserType,status,limit,offset): Observable<User[]> {
+    let url =
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedUserType + "&status="+status+"&limit="+limit+"&offset="+offset;
+      
     return new Observable<User[]>(obs => {
       this.apiService.get(url).subscribe(res => {
         obs.next(res.data);
@@ -19,6 +22,15 @@ export class UserService {
     });
   }
 
+  getAllUserByUserNameAndCompany(userRole,status): Observable<UserMini[]>
+  {
+    let url = '/users/getAllUsersNameAndComapny?userRole='+userRole+'&status='+status;
+    return new Observable<UserMini[]>(obs => {
+      this.apiService.get(url).subscribe(res => {
+        obs.next(res.data);
+      });
+    });
+  }
 
   getAllUsersForDashboard(url): Observable<User[]> {
     return new Observable<User[]>(obs => {

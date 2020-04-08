@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, On
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Company } from 'src/app/shared/Models/company.model.';
-import { User } from 'src/app/shared/Models/user.model';
+import { User, UserMini } from 'src/app/shared/Models/user.model';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -19,7 +19,7 @@ export class InvoiceDetailsComponent implements OnInit {
   public selectedCmp: Company;
   public warehouseList: Warehouse[] = [];
 
-  public customerList: User[];
+  public customerList: UserMini[];
   public customerIdList: any[] = [];
 
   constructor(
@@ -59,13 +59,13 @@ export class InvoiceDetailsComponent implements OnInit {
   }
 
   getAllCustomer() {
-    const customerUrl = '/users/getAllUsersByUserRoleAndStatus/CUSTOMER/APPROVED';
-    this.userService.getAllUserByUserRoleAndStatus(customerUrl).subscribe(
+
+    this.userService.getAllUserByUserNameAndCompany('CUSTOMER','APPROVED').subscribe(
       data => {
         this.customerList = data;
         if (this.customerList && this.customerList.length > 0) {
           this.customerIdList = this.customerList.map(
-            supplierObj => supplierObj.id
+            supplierObj => supplierObj.userDetialId
           );
         }
       },

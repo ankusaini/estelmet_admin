@@ -17,6 +17,8 @@ export class UserApprovalComponent implements OnInit {
   public selectedRole: any;
 
   public selectedUserList: User[] = [];
+  public limit=15;
+  public offset=1;
 
   constructor(private userService: UserService,
     private toastrService: ToastrService) {
@@ -60,10 +62,8 @@ export class UserApprovalComponent implements OnInit {
   ngOnInit() { }
 
   getPendingUserList(selectedRole) {
-    const url =
-      '/users/getAllUsersByUserRoleAndStatus?userRole=' + selectedRole + '&status=PENDING&limit=10&offset=1';
 
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserRoleAndStatus(selectedRole,'PENDING',this.limit,this.offset).subscribe(
       data => {
         this.pendingUserList = data;
         console.log(this.pendingUserList);
@@ -75,10 +75,8 @@ export class UserApprovalComponent implements OnInit {
   }
 
   getApprovedUserList(selectedRole) {
-    const url =
-      '/users/getAllUsersByUserRoleAndStatus?userRole=' + selectedRole + '&status=APPROVED&limit=10&offset=1';
-
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+   
+    this.userService.getAllUserByUserRoleAndStatus(selectedRole,'APPROVED',this.limit,this.offset).subscribe(
       data => {
         this.approvedUserList = data;
         console.log(this.approvedUserList);
@@ -90,10 +88,8 @@ export class UserApprovalComponent implements OnInit {
   }
 
   getRejectedUserList(selectedRole) {
-    const url =
-      '/users/getAllUsersByUserRoleAndStatus?userRole=' + selectedRole + '&status=REJECTED&limit=10&offset=1';
 
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserRoleAndStatus(selectedRole,'REJECTED',this.limit,this.offset).subscribe(
       data => {
         this.rejectedUserList = data;
         console.log('user group list', this.rejectedUserList);

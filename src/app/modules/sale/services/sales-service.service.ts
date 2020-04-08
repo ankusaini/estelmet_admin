@@ -81,14 +81,17 @@ export class SalesServiceService {
     });
   }
 
-  public getAllUsersByUserRoleAndStatus(url) {
+
+ getAllUserByUserRoleAndStatus(selectedUserType,status,limit,offset): Observable<User[]> {
+    let url =
+      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedUserType + "&status="+status+"&limit="+limit+"&offset="+offset;
+      
     return new Observable<User[]>(obs => {
       this._apiService.get(url).subscribe(res => {
-        obs.next(res);
+        obs.next(res.data);
       });
     });
   }
-
 
 
 }
