@@ -6,7 +6,7 @@ import { User } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
-
+import { ids } from 'src/app/shared/Models/ids.model';
 // import * as jspdf from 'jspdf'; 
  
 // import html2canvas from 'html2canvas';
@@ -24,17 +24,21 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   dtExportButtonOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
   dtRouterLinkOptions: any = {};
+  public Ids: any;
 
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
   public limit = 15;
   public offset = 0;
+  public selectedRole= '';
 
   constructor(
     private userService: UserService,
     private router: Router,
     private dataService: UserDataService,
-  ) { }
+  ) {
+      this.Ids = ids;
+   }
 
   ngOnInit() {
     this.dtExportButtonOptions = this.userList;
@@ -81,48 +85,54 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   }
   // : Observable<any>
   // return new Observable<any>(obs=>{
-  basicSwal() {
-    Swal.fire({
-      title: 'Filter Search!',
-      input: 'select',
-      inputOptions: {
-        CUSTOMER: 'CUSTOMER',
-        SUPPLIER: 'SUPPLIER',
-        AGENT: 'AGENT',
-        CONTRACTOR: 'CONTRACTOR',
-        TRANSPORTER: 'TRANSPORTER'
-      },
-
-      inputPlaceholder: 'Select User Type',
-      allowOutsideClick: false,
-      confirmButtonText: 'Search',
-      inputValidator: value => {
-        // tslint:disable-next-line: only-arrow-functions
-        return new Promise(function (resolve, reject) {
-          if (value !== '') {
-            resolve();
-          } else {
-            resolve('You need to select user type');
-          }
-        });
-      }
-    }).then(selectedRole => {
-      if (selectedRole !== '') {
-        console.log('selected role', selectedRole);
-        const url =
-          '/users/getAllUsersByUserRoleAndStatus?userRole=' +
-          selectedRole.value +
-          '&status=APPROVED&limit=10&offset=1';
-
-        this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
-          data => {
-            this.userList = data;
-          },
-          error => { }
-        );
-      }
-    });
-  }
+    basicSwal() {
+      Swal.fire({
+        title: 'Filter Search!',
+        input: 'select',
+        inputOptions: {
+          CUSTOMER: 'CUSTOMER',
+          SUPPLIER: 'SUPPLIER',
+          AGENT: 'AGENT',
+          CONTRACTOR: 'CONTRACTOR',
+          TRANSPORTER: 'TRANSPORTER'
+        },
+  
+        inputPlaceholder: 'Select User Type',
+        allowOutsideClick: false,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Search',
+        inputValidator: value => {
+          // tslint:disable-next-line: only-arrow-functions
+          return new Promise(function (resolve, reject) {
+            if (value !== '') {
+              resolve();
+            } else {
+              resolve('You need to select user type');
+            }
+          });
+        }
+      }).then(selectedRole => {
+        if (selectedRole.value) {
+          this.selectedRole = selectedRole.value;
+          console.log('selected role', selectedRole);
+          const url =
+            '/users/getAllUsersByUserRoleAndStatus?userRole=' +
+            selectedRole.value +
+            '&status=APPROVED&limit=10&offset=1';
+  
+          this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+            data => {
+              this.userList = data;
+            },
+            error => { }
+          );
+        } else if(selectedRole.dismiss === Swal.DismissReason.cancel){
+          console.log("dismiss Called");
+          this.router.navigate(['/dashboard/default']);
+        }
+      });
+    }
 
   goToView(user: User) {
     this.dataService.add(user).subscribe(() => {

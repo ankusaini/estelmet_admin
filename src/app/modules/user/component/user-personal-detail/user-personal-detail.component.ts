@@ -2,6 +2,7 @@
 import { User } from 'src/app/shared/Models/user.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-user-personal-detail',
@@ -16,12 +17,14 @@ export class UserPersonalDetailComponent implements OnInit {
   private prsnlDetailForm : FormGroup;
   public editProfile: boolean;
   public editProfileIcon: string;
+  public Ids : any;
 
   constructor(
     private _fb : FormBuilder
   ) {
     this.editProfile = false;
     this.editProfileIcon = "icon-edit";
+    this.Ids = ids;
    }
 
   ngOnInit() {

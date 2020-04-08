@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/shared/Models/user.model';
+import { User, UserDetail } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
+import { ids } from 'src/app/shared/Models/ids.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-approval',
   templateUrl: './user-approval.component.html',
@@ -10,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class UserApprovalComponent implements OnInit {
   selectedTab = 'PENDING';
+  public Ids: any;
 
   public pendingUserList: User[];
   public approvedUserList: User[];
@@ -19,7 +22,9 @@ export class UserApprovalComponent implements OnInit {
   public selectedUserList: User[] = [];
 
   constructor(private userService: UserService,
+    private router: Router,
     private toastrService: ToastrService) {
+      this.Ids = ids;
     this.basicSwal();
   }
 
@@ -36,6 +41,8 @@ export class UserApprovalComponent implements OnInit {
       },
       inputPlaceholder: 'Select User Type',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -48,11 +55,14 @@ export class UserApprovalComponent implements OnInit {
         });
       }
     }).then(selectedRole => {
-      if (selectedRole !== '') {
+      if (selectedRole.value) {
         this.selectedRole = selectedRole.value;
         this.getPendingUserList(selectedRole.value);
         this.getApprovedUserList(selectedRole.value);
         this.getRejectedUserList(selectedRole.value);
+      } else if(selectedRole.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }
@@ -162,5 +172,10 @@ export class UserApprovalComponent implements OnInit {
         );
       }
     }
+  }
+
+  removeUser(user: UserDetail) {
+    let index = this.selectedUserList.indexOf(user);
+    this.selectedUserList.splice(index, 1);
   }
 }

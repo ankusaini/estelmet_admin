@@ -29,16 +29,20 @@
                   <tr href="kdkd" *ngFor="let user of pendingUserList;let i = index">
                     <td><label class="badge badge-warning">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'TRANSPORTER'" >{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
-                    <td>{{user?.userDetail?.companyName}}</td>
+                    <td>{{user.businessDetails[0]?.companyName}}</td>
                     <td>{{user.mobile}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user?.userDetail?.address1}}</td>
-                    <td>{{user.createdDate | date:"medium"}}</td>
+                    <td>{{user.emailId}}</td>
+                    <td>{{user.businessDetails[0]?.address1}}</td>
+                    <td>{{user.createdDate | date: 'medium'}}</td>
                     <!-- <td>{{user.createdBy}}</td> -->
-                    <td>{{user.lastModifiedDate | date:"medium"}}</td>
+                    <td>{{user.lastModifiedDate | date: 'medium' }}</td>
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
@@ -82,16 +86,20 @@
                   <tr href="kdkd" *ngFor="let user of approvedUserList;let i = index">
                     <td><label class="badge badge-success">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'TRANSPORTER'" >{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
-                    <td>{{user?.userDetail?.companyName}}</td>
+                    <td>{{user.businessDetails[0]?.companyName}}</td>
                     <td>{{user.mobile}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user?.userDetail?.address1}}</td>
-                    <td>{{user.createdDate}}</td>
+                    <td>{{user.emailId}}</td>
+                    <td>{{user.businessDetails[0]?.address1}}</td>
+                    <td>{{user.createdDate | date: 'medium'}}</td>
                     <!-- <td>{{user.createdBy}}</td> -->
-                    <td>{{user.lastModifiedDate}}</td>
+                    <td>{{user.lastModifiedDate | date: 'medium'}}</td>
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
@@ -136,16 +144,20 @@
                   <tr href="kdkd" *ngFor="let user of rejectedUserList;let i = index">
                     <td><label class="badge badge-danger">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'TRANSPORTER'" >{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
-                    <td>{{user?.userDetail?.companyName}}</td>
+                    <td>{{user.businessDetails[0]?.companyName}}</td>
                     <td>{{user.mobile}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user?.userDetail?.address1}}</td>
-                    <td>{{user.createdDate}}</td>
+                    <td>{{user.emailId}}</td>
+                    <td>{{user.businessDetails[0]?.address1}}</td>
+                    <td>{{user.createdDate | date: 'medium'}}</td>
                     <!-- <td>{{user.createdBy}}</td> -->
-                    <td>{{user.lastModifiedDate}}</td>
+                    <td>{{user.lastModifiedDate | date: 'medium'}}</td>
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
@@ -199,13 +211,17 @@
             <tr href="kdkd" *ngFor="let user of selectedUserList;let i = index">
               <td><label class="badge badge-default">{{user.status}}</label></td>
               <td>{{i+1}}</td>
-              <td>{{user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'TRANSPORTER'" >{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
               <td>{{user.userRole}}</td>
               <td>{{user.firstName}} {{user.lastName}}</td>
-              <td>{{user?.userDetail?.companyName}}</td>
+              <td>{{user.businessDetails[0]?.companyName}}</td>
               <td>{{user.mobile}}</td>
-              <td>{{user.email}}</td>
-              <td>{{user?.userDetail?.address1}}</td>
+              <td>{{user.emailId}}</td>
+              <td>{{user.businessDetails[0]?.address1}}</td>
               <td>{{user.createdDate | date:"medium"}}</td>
               <td>{{user.lastModifiedDate | date:"medium"}}</td>
               <td>

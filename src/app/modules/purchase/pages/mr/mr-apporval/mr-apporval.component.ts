@@ -96,16 +96,18 @@ export class MrApporvalComponent implements OnInit {
         this.purchaseService.updateRequestObject(path,this.request).subscribe(
           data => {
            
-          this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
-          this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
-          this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
-          this.selectedMrList = [];
+          
           },
           error => {
             console.log(error);
           }
         );
+        
       }
+      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
+      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
+      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
+      this.selectedMrList = [];
       this.toastr.success("Record successfully saved");
     }
   }

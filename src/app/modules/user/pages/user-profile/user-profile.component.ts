@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { User } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,6 +15,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class UserProfileComponent implements OnInit {
   public activeTab: string;
+  public Ids: any;
 
   public editContact: boolean;
   public editContactIcon: string;
@@ -43,6 +45,7 @@ export class UserProfileComponent implements OnInit {
     private lighboxConfig: LightboxConfig,
     private toastrService: ToastrService
   ) {
+    this.Ids = ids;
     this.activeTab = 'home';
 
 
@@ -64,7 +67,7 @@ export class UserProfileComponent implements OnInit {
     }
     this.lighboxConfig.fadeDuration = 1;
     this.route.params.subscribe(param => {
-      this.id = param.id;
+      this.id = Number(param.id);
     });
     this.userDataService.items$.subscribe(data => {
       this.selectedUser = data;
@@ -102,14 +105,19 @@ export class UserProfileComponent implements OnInit {
       this.isTradeValid === 'valid') {
       console.log(this.selectedUser);
       const path = '/users/updateUser';
-      // this.userService.updateUser(path,this.selectedUser);
-      this.toastrService.success('User updated successfully!');
+      this.userService.updateUser(path,this.selectedUser).subscribe(
+        data => {
+          this.toastrService.success('User updated successfully!');
+        }, error => {
+          console.log(error);
+        }
+      );
     } else {
       this.toastrService.error('Please fill valid Details!');
     }
   }
 
-  getUserById(id: any) {
+  getUserById(id: number) {
     this.userService.getUserById(id).subscribe(res => {
       this.selectedUser = res;
       this.status = true;

@@ -24,10 +24,28 @@
 
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">User Id</label>
-      <div class="col-sm-9">
-        {{ selectedUser.userDetialId }}
+      <div *ngIf="selectedUser.userRole === 'CUSTOMER'" class="col-sm-9">
+        {{Ids.CUSTOMER + '-' + selectedUser.userDetialId }}
+      </div>
+
+      <div *ngIf="selectedUser.userRole === 'SUPPLIER'" class="col-sm-9">
+        {{Ids.SUPPLIER + '-' + selectedUser.userDetialId }}
+      </div>
+
+      <div *ngIf="selectedUser.userRole === 'AGENT'" class="col-sm-9">
+        {{Ids.AGENT + '-' + selectedUser.userDetialId }}
+      </div>
+
+      <div *ngIf="selectedUser.userRole === 'CONTRACTOR'" class="col-sm-9">
+        {{Ids.CONTRACTOR + '-' + selectedUser.userDetialId }}
+      </div>
+
+      <div *ngIf="selectedUser.userRole === 'TRANSPORTER'" class="col-sm-9">
+        {{Ids.TRANSPORTER + '-' + selectedUser.userDetialId }}
       </div>
     </div>
+
+
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">User Type</label>
       <div class="col-sm-9">
@@ -43,7 +61,7 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">Email</label>
       <div class="col-sm-9">
-        {{ selectedUser.email }}
+        {{ selectedUser.emailId }}
       </div>
     </div>
   </app-card>

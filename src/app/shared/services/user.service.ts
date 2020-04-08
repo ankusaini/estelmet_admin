@@ -80,7 +80,7 @@ export class UserService {
   }
   // this.router.navigateByUrl('/users/find?userId='+ user.id);
 
-  getUserById(userId) {
+  getUserById(userId: number) {
     return new Observable<User>(obs => {
       this.apiService.get('/users/find?userId=' + userId).subscribe(res => {
         obs.next(res.data);
