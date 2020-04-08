@@ -8,10 +8,9 @@ import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 
 // import * as jspdf from 'jspdf'; 
- 
 // import html2canvas from 'html2canvas';
-
 // import * as xlsx from 'xlsx';
+
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -39,45 +38,6 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dtExportButtonOptions = this.userList;
     this.basicSwal();
-    // .subscribe(data=>{
-    //   this.userList=data;
-    // this.dtExportButtonOptions = {
-    //   data: JSON.stringify(data),
-    //   columns: [{
-    //     title: 'User Id',
-    //     data: 'id'
-    //   }, {
-    //     title: 'User Type',
-    //     data: 'userRole'
-    //   }, {
-    //     title: 'User Name',
-    //     data: 'firstName'
-    //   }, {
-    //     title: 'Mobile',
-    //     data: 'mobile'
-    //   }, {
-    //     title: 'Email',
-    //     data: 'email'
-    //   }, {
-    //     title: 'Company Name',
-    //     data: 'email'
-    //   }, {
-    //     title: 'Action',
-    //     render(data: any, type: any, full: any) {
-    //       return '<button class="btn btn-outline-primary btn-sm">View</button>';
-    //     }
-    //   }],
-    //   responsive: true,
-    //   dom: 'Bfrtip',
-    //   buttons: [
-    //     'copy',
-    //     'print',
-    //     'excel',
-    //     'csv'
-    //   ]
-    // };
-    // });
-    // this.dtTrigger.next();
   }
   // : Observable<any>
   // return new Observable<any>(obs=>{
@@ -95,6 +55,8 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
       inputPlaceholder: 'Select User Type',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',
       inputValidator: value => {
         // tslint:disable-next-line: only-arrow-functions
@@ -107,7 +69,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
         });
       }
     }).then(selectedRole => {
-      if (selectedRole !== '') {
+      if (selectedRole.value) {
         console.log('selected role', selectedRole);
    
 
@@ -117,6 +79,9 @@ export class UsersListComponent implements OnInit, AfterViewInit {
           },
           error => { }
         );
+      } else if(selectedRole.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }

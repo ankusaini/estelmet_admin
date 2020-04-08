@@ -1,8 +1,8 @@
-  import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/shared/Models/user.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
-
+import { ids } from '../../../../shared/Models/ids.model';
 @Component({
   selector: 'app-user-personal-detail',
   templateUrl: './user-personal-detail.component.html',
@@ -16,10 +16,11 @@ export class UserPersonalDetailComponent implements OnInit {
   private prsnlDetailForm : FormGroup;
   public editProfile: boolean;
   public editProfileIcon: string;
-
+  public Ids: any;
   constructor(
     private _fb : FormBuilder
   ) {
+    this.Ids = ids;
     this.editProfile = false;
     this.editProfileIcon = "icon-edit";
    }
