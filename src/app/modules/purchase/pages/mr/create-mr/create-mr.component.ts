@@ -25,6 +25,7 @@ export class CreateMRComponent implements OnInit {
   public selectedWarehouse: Warehouse;
   public productList: Product[] = [];
 
+  public myTitle='Create MR';
   constructor(
     private productService: StaticDataService,
     private toastr: ToastrService,
@@ -40,6 +41,7 @@ export class CreateMRComponent implements OnInit {
     type: new FormControl('MATERIAL_REQURIMENT'),
     sourceCompanyId: new FormControl('', [Validators.required]),
     status: new FormControl('PENDING'),
+    title: new FormControl(''),
     sourceWarehouseId: new FormControl('', [Validators.required]),
     productCategory: new FormControl('', [Validators.required]),
     productShape: new FormControl('', [Validators.required]),
@@ -106,5 +108,14 @@ export class CreateMRComponent implements OnInit {
         console.log('error is', error);
       });
     }
+  }
+
+
+  setTitle()
+  {
+    let myValue=this.mrPurchase.controls.productCategory.value+' - '+this.mrPurchase.controls.productShape.value;
+    this.mrPurchase.controls.title.patchValue(myValue);
+    this.myTitle=myValue;
+    console.log(myValue)
   }
 }
