@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
-import { User } from '../../Models/user.model';
+import { User, UserMini } from '../../Models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Injectable()
@@ -59,8 +59,8 @@ export class TransportDetailsComponent implements OnInit {
   @Input() process: string = '';
   @Input() component: string = '';
   @Output() transportData: EventEmitter<any> = new EventEmitter<any>();
-  public supplierList: User[];
-  public transportList: User[];
+  public supplierList: UserMini[];
+  public transportList: UserMini[];
   public supplierIdList: any[] = [];
   public transportIdList: any[] = [];
 
@@ -81,8 +81,8 @@ export class TransportDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    const supplierUrl = '/users/getAllUsersByUserRoleAndStatus/SUPPLIER/APPROVED';
-    this.userService.getAllUserByUserRoleAndStatus(supplierUrl).subscribe(
+   
+    this.userService.getAllUserByUserNameAndCompany('SUPPLIER','APPROVED').subscribe(
       data => {
         console.log('Data is: ', data);
         this.supplierList = data;
@@ -92,7 +92,7 @@ export class TransportDetailsComponent implements OnInit {
         // }
         if (this.supplierList && this.supplierList.length > 0) {
           this.supplierIdList = this.supplierList.map(
-            supplierObj => supplierObj.id
+            supplierObj => supplierObj.userDetialId
           );
         }
       },
@@ -101,9 +101,8 @@ export class TransportDetailsComponent implements OnInit {
       }
     );
 
-    const transportUrl =
-      '/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED';
-    this.userService.getAllUserByUserRoleAndStatus(transportUrl).subscribe(
+
+     this.userService.getAllUserByUserNameAndCompany('TRANSPORTER','APPROVED').subscribe(
       data => {
         console.log('Data is: ', data);
         this.transportList = data;
@@ -115,7 +114,7 @@ export class TransportDetailsComponent implements OnInit {
         // we can use map to get a specific key
         if (this.transportList && this.transportList.length > 0) {
           this.transportIdList = this.transportList.map(
-            transportObj => transportObj.id
+            transportObj => transportObj.userDetialId
           );
         }
       },

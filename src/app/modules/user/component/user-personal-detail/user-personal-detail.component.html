@@ -24,24 +24,12 @@
 
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">User Id</label>
-      <div *ngIf="selectedUser.userRole === 'CUSTOMER'" class="col-sm-9">
-        {{Ids.CUSTOMER + '-' + selectedUser.userDetialId }}
-      </div>
-
-      <div *ngIf="selectedUser.userRole === 'SUPPLIER'" class="col-sm-9">
-        {{Ids.SUPPLIER + '-' + selectedUser.userDetialId }}
-      </div>
-
-      <div *ngIf="selectedUser.userRole === 'AGENT'" class="col-sm-9">
-        {{Ids.AGENT + '-' + selectedUser.userDetialId }}
-      </div>
-
-      <div *ngIf="selectedUser.userRole === 'CONTRACTOR'" class="col-sm-9">
-        {{Ids.CONTRACTOR + '-' + selectedUser.userDetialId }}
-      </div>
-
-      <div *ngIf="selectedUser.userRole === 'TRANSPORTER'" class="col-sm-9">
-        {{Ids.TRANSPORTER + '-' + selectedUser.userDetialId }}
+      <div class="col-sm-9">
+        <span *ngIf="selectedUser.userRole == 'SUPPLIER'">{{ Ids.SUPPLIER+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'CUSTOMER'">{{ Ids.CUSTOMER+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'AGENT'">{{ Ids.AGENT+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'CONTRACTOR'">{{ Ids.CONTRACTOR+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'TRANSPORTER'">{{ Ids.TRANSPORTER+ '-' +selectedUser.userDetialId }}</span>
       </div>
     </div>
 

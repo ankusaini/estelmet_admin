@@ -67,6 +67,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
     private inventoryService: InventoryService,private toastr:ToastrService,private _cd : ChangeDetectorRef) {
    }
   ngOnInit() {
+    console.log("called")
    this.getProductCategory();
     this.getProductShape();
     this.getAllCompany();
@@ -89,6 +90,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
 
     getAllCompany() {
     this._staticData.getAllCompany().subscribe(data => {
+      console.log("company data"+data)
       this.companyList = data;
     });
   }
@@ -105,9 +107,8 @@ export class CreateLotWithoutPcComponent implements OnInit {
     });
   }
    getAllSupplier() {
-    let url = "/users/getAllUsersByUserRoleAndStatus/SUPPLIER/APPROVED";
 
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserNameAndCompany('SUPPLIER','APPROVED').subscribe(
       data => {
         this.userList = data;
       },

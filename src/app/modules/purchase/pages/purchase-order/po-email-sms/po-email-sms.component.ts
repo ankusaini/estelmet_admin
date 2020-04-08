@@ -15,6 +15,9 @@ export class PoEmailSmsComponent implements OnInit {
   public userList: User[];
   public selectedUserList: User[] = [];
   public selectedPO:Purchase;
+  public  limit=15;
+  public offset=1;
+  
   ngOnInit() {
     this.getAllUserByUserRoleAndStatus('APPROVED','SUPPLIER');
   }
@@ -41,10 +44,8 @@ export class PoEmailSmsComponent implements OnInit {
 
   getAllUserByUserRoleAndStatus(status,userType)
   {
-    let url =
-      "/users/getAllUsersByUserRoleAndStatus/" + userType + "/APPROVED";
 
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserRoleAndStatus(status,userType,this.limit,this.offset).subscribe(
       data => {
         this.userList = data;
        

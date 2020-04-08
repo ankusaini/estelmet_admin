@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
-import { User } from 'src/app/shared/Models/user.model';
+import { User, UserMini } from 'src/app/shared/Models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { purchaseConstants } from '../../../purchaseConst';
@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WizardComponent } from 'ng2-archwizard/dist';
 import { LotType } from 'src/app/shared/Models/purchase.model';
 import { Router } from '@angular/router';
+import { UserService } from "src/app/shared/services/user.service";
 
 @Component({
   selector: 'app-create-grn',
@@ -23,6 +24,8 @@ export class CreateGrnComponent implements OnInit {
   transporterList : User[] = [];
   suppliarList : User[] = [];
   allCompany : any[];
+  limit=150;
+  offse=1;
   selected_comapny : any;
   selectedRole: LotType;
 
@@ -41,7 +44,8 @@ export class CreateGrnComponent implements OnInit {
     private _apiService : ApiService,
     private _fb : FormBuilder,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private userService:UserService
   ) {
     this.basicSwal();
    }
@@ -109,7 +113,7 @@ export class CreateGrnComponent implements OnInit {
   }
 
   getAllSuppliar(){
-    this._apiService.get(purchaseConstants.suppliar_url).subscribe(res => {
+    this.userService.getAllUserByUserRoleAndStatus('SUPPLIER','APPROVED',this.limit,this.offse).subscribe(res => {
       if(res) {
         console.log(res);
         this.suppliarList = res;
@@ -118,7 +122,7 @@ export class CreateGrnComponent implements OnInit {
   }
 
   getAllTransporter(){
-    this._apiService.get(purchaseConstants.transporter_url).subscribe(res => {
+    this.userService.getAllUserByUserRoleAndStatus('TRANSPORTER','APPROVED',this.limit,this.offse).subscribe(res => {
       if(res) {
         console.log(res);
         this.transporterList = res;

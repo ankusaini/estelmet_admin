@@ -23,6 +23,8 @@ export class UserListComponent implements OnInit {
   @Input() doNotShowBack: any;
   @Input() selectedUserType: string;
   // @Input() selectedUserGroup : UserGroup;
+  public limit=15;
+  public offset=1;
 
   public selectedType: string;
 
@@ -51,10 +53,8 @@ export class UserListComponent implements OnInit {
   }
 
   getAllUserByUserRoleAndStatus(selectedUserType) {
-    const url =
-      '/users/getAllUsersByUserRoleAndStatus/' + selectedUserType + '/APPROVED';
 
-    this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserRoleAndStatus(selectedUserType,'APPROVED',this.limit,this.offset).subscribe(
       data => {
         this.userList2 = data;
         console.log('userlist', this.userList2);

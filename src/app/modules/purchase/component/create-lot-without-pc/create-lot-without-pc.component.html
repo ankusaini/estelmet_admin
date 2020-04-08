@@ -11,7 +11,7 @@
               <div class="col-sm-3">
                 <select [value]="selectedName.value" formControlName="supplierId" #selectedId class="form-control">
                   <option value>Select</option>
-                  <option *ngFor="let item of userList" [value]="item?.id">{{ item?.id }}</option>
+                  <option *ngFor="let item of userList" [value]="item?.userDetialId">{{ item?.userDetialId }}</option>
 
                 </select>
                 <!-- <label *ngIf="!supplierId.valid && (supplierId.dirty || supplierId.touched || isSubmit)"
@@ -21,7 +21,7 @@
               <div class="col-sm-5">
                 <select #selectedName [value]="selectedId.value" formControlName="supplierId" class="form-control"
                   name="validation-category" required>
-                  <option *ngFor="let item of userList" [value]="item?.id">{{ item?.firstName }}</option>
+                  <option *ngFor="let item of userList" [value]="item?.userDetialId">{{ item?.firstName }}</option>
                 </select>
                 <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
               </div>
