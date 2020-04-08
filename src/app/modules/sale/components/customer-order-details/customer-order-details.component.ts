@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
-import { User } from 'src/app/shared/Models/user.model';
+import { User, UserMini } from 'src/app/shared/Models/user.model';
 import { SalesServiceService } from '../../services/sales-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from "src/app/shared/services/user.service";
 
 @Component({
   selector: 'app-customer-order-details',
@@ -14,12 +15,13 @@ import { ToastrService } from 'ngx-toastr';
 export class CustomerOrderDetailsComponent implements OnInit {
   @Output() transportData: EventEmitter<any> = new EventEmitter<any>(); 
   transportDetailsForm: FormGroup;
-  customerList: User[];
-  transportList: User[];
+  customerList: UserMini[];
+  transportList: UserMini[];
 
   constructor(
     private salesService: SalesServiceService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public userService:UserService
   ) { }
 
   ngOnInit() {
@@ -47,8 +49,7 @@ export class CustomerOrderDetailsComponent implements OnInit {
   }
 
   getCustomerList() {
-    let url = "/users/getAllUsersByUserRoleAndStatus/CUSTOMER/APPROVED";
-    this.salesService.getAllUsersByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserNameAndCompany('CUSTOMER','APPROVED').subscribe(
       data => {
         this.customerList = data;
         console.log(this.customerList)
@@ -59,8 +60,7 @@ export class CustomerOrderDetailsComponent implements OnInit {
   }
 
   getTransportList() {
-    let url = "/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED";
-    this.salesService.getAllUsersByUserRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserNameAndCompany('TRANSPORTER','APPROVED').subscribe(
       data => {
         this.transportList = data;
         console.log(this.transportList)

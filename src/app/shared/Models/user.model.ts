@@ -175,3 +175,10 @@ export interface Roles {
     role?: string;
     description?: string;
 }
+
+export interface UserMini
+{
+    userDetialId?: string;
+    firstName?: string;
+    companyName?: string;   
+}

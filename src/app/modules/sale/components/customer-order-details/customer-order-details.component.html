@@ -7,7 +7,7 @@
         <div class="col-sm-3">
             <select [value]="customerName.value" #customerId class="form-control" name="validation-warId" formControlName="customerId">
               <option value="" disabled>Select Id</option>
-            <option *ngFor="let customer of customerList" [value]="customer.id">CU-{{customer.id}}</option>
+            <option *ngFor="let customer of customerList" [value]="customer.userDetialId">CU-{{customer.userDetialId}}</option>
           </select>
           <small *ngIf="f.customerId.value == '' && (f.customerId.dirty || f.customerId.touched)"
               id="validation-warehouseName-error"
@@ -19,7 +19,7 @@
         <div class="col-sm-5">
           <select #customerName [value]="customerId.value" class="form-control" name="validation-pcId" formControlName="customerId">
             <option value="" disabled>Select Name</option>
-            <option *ngFor="let customer of customerList" [value]="customer.id">{{customer.firstName}}</option>           
+            <option *ngFor="let customer of customerList" [value]="customer.userDetialId">{{customer.firstName}}</option>           
           </select>
           <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
           <!-- <small *ngIf="!f.customerId.valid && (f.customerId.dirty || f.customerId.touched)"
@@ -38,7 +38,7 @@
           <div class="col-sm-3">
               <select [value]="transportName.value" #transportId class="form-control" name="validation-warId" formControlName="transportId">
               <option value="" disabled>Select Id</option>
-              <option *ngFor="let transport of transportList" [value]="transport.id">TR-{{transport.id}}</option>            
+              <option *ngFor="let transport of transportList" [value]="transport.userDetialId">TR-{{transport.userDetialId}}</option>            
             </select>
             <small *ngIf="f.transportId.value == '' && (f.transportId.dirty || f.transportId.touched)"
               id="validation-warehouseName-error"
@@ -50,7 +50,7 @@
           <div class="col-sm-5">
             <select #transportName [value]="transportId.value" class="form-control" name="validation-pcId" formControlName="transportId">
               <option value="" disabled>Select Name</option>
-              <option *ngFor="let transport of transportList" [value]="transport.id"> {{transport.firstName}}</option>
+              <option *ngFor="let transport of transportList" [value]="transport.userDetialId"> {{transport.firstName}}</option>
             </select>
             <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
             <!-- <small *ngIf="!f.transportId.valid && (f.transportId.dirty || f.transportId.touched)"

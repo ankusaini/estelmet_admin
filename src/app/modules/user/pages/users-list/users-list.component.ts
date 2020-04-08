@@ -71,12 +71,9 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     }).then(selectedRole => {
       if (selectedRole.value) {
         console.log('selected role', selectedRole);
-        const url =
-          '/users/getAllUsersByUserRoleAndStatus?userRole=' +
-          selectedRole.value +
-          '&status=APPROVED&limit=10&offset=1';
+   
 
-        this.userService.getAllUserByUserRoleAndStatus(url).subscribe(
+        this.userService.getAllUserByUserRoleAndStatus(selectedRole.value,'APPROVED',this.limit,this.offset).subscribe(
           data => {
             this.userList = data;
           },

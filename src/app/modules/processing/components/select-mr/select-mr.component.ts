@@ -81,12 +81,13 @@ export class SelectMrComponent implements OnInit, OnChanges {
         .filter(machine => machine !== null);
     });
 
-    const contractorUrl = '/users/getAllUsersByUserRoleAndStatus/CONTRACTOR/APPROVED';
-    this.userService.getAllUserByUserRoleAndStatus(contractorUrl).subscribe(data => {
+    
+
+    this.userService.getAllUserByUserNameAndCompany('CONTRACTOR','APPROVED').subscribe(data => {
       this.contractorData = data;
       this.contractorList = data.map(contarctor => contarctor.firstName)
         .filter(contarctor => contarctor !== null);
-      this.contractorIdList = data.map(contarctor => contarctor.id)
+      this.contractorIdList = data.map(contarctor => contarctor.userDetialId)
         .filter(contarctor => contarctor !== null);
     });
 

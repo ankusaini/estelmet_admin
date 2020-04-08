@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from '../../Models/user.model';
+import { User, UserMini } from '../../Models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 
@@ -20,7 +20,7 @@ import { CustomValidator } from 'src/app/Validators/custom-validator';
 export class TransporterDoComponent implements OnInit {
 
   @Output() transportData: EventEmitter<any> = new EventEmitter<any>();
-  public transportList: User[];
+  public transportList: UserMini[];
   public transportIdList: any[] = [];
 
 
@@ -49,15 +49,14 @@ export class TransporterDoComponent implements OnInit {
   });
 
   ngOnInit() {
-    const transportUrl =
-      '/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED';
-    this.userService.getAllUserByUserRoleAndStatus(transportUrl).subscribe(
+
+    this.userService.getAllUserByUserNameAndCompany('TRANSPORTER','APPROVED').subscribe(
       data => {
         console.log('Data is: ', data);
         this.transportList = data;
         if (this.transportList && this.transportList.length > 0) {
           this.transportIdList = this.transportList.map(
-            transportObj => transportObj.id
+            transportObj => transportObj.userDetialId
           );
         }
       },
