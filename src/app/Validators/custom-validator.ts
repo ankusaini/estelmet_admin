@@ -326,7 +326,7 @@ export class CustomValidator {
         return isValid ? null : message;
     }
 
-    
+
     static emailCharacterValidation(control: AbstractControl): ValidationErrors {
         const reg = /^[a-zA-Z0-9-_@.]+$/;
         if (!control.value) {

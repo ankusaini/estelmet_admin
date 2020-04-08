@@ -1,26 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {IAlbum, Lightbox, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
-import {Subscription} from 'rxjs';
-import { PurchaseService } from '../../../services/purchase.service';
-import { ResponseP, RequestP } from 'src/app/shared/Models/RequestResponse';
-import { Product, ProductCategory } from 'src/app/shared/Models/product.model.';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Purchase } from 'src/app/shared/Models/purchase.model';
-import { Company } from 'src/app/shared/Models/company.model.';
-import { Warehouse } from 'src/app/shared/Models/warehouse';
-import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IAlbum, Lightbox, LightboxConfig, LightboxEvent } from 'ngx-lightbox';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { Product } from 'src/app/shared/Models/product.model.';
+import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { RequestP, ResponseP } from 'src/app/shared/Models/RequestResponse';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
-
-
+import { PurchaseService } from '../../../services/purchase.service';
 
 @Component({
   selector: 'app-pc-edit',
   templateUrl: './pc-edit.component.html',
   styleUrls: ['./pc-edit.component.css']
 })
-export class PcEditComponent implements OnInit{
+export class PcEditComponent implements OnInit {
   public activeTab: string;
   public editProfile1: boolean;
   public editProfile2: boolean;
@@ -40,7 +36,7 @@ export class PcEditComponent implements OnInit{
 
   private subscription: Subscription;
   routerSubscription: any;
-  pcId : any;
+  pcId: any;
   public pcResponse: ResponseP;
   public productList: Product[];
   showData: boolean;
@@ -56,24 +52,24 @@ export class PcEditComponent implements OnInit{
   public productOriginList: any[];
   public productSurfaceList: any[];
   public productFinishList: any[];
-  pcDetails : FormGroup;
-  addProductDetails : FormGroup;
+  pcDetails: FormGroup;
+  addProductDetails: FormGroup;
   transportDetails: FormGroup;
   selectedProduct: Product;
   purchaseData: Purchase;
   request: RequestP = {};
 
   constructor(
-              private lightbox: Lightbox,
-              private lightboxEvent: LightboxEvent, 
-              private lighboxConfig: LightboxConfig,
-              private purchaseService: PurchaseService,
-              private route: ActivatedRoute,
-              private staticData: StaticDataService,
-              private toastr: ToastrService
+    private lightbox: Lightbox,
+    private lightboxEvent: LightboxEvent,
+    private lighboxConfig: LightboxConfig,
+    private purchaseService: PurchaseService,
+    private route: ActivatedRoute,
+    private staticData: StaticDataService,
+    private toastr: ToastrService
   ) {
 
-       
+
     this.activeTab = 'home';
 
     this.editProfile = false;
@@ -86,17 +82,17 @@ export class PcEditComponent implements OnInit{
     this.editOtherInfoIcon = 'icon-edit';
 
     this.albums = [];
-  
+
 
   }
 
   ngOnInit() {
 
-    this.routerSubscription = this.route.url.subscribe( params => {
+    this.routerSubscription = this.route.url.subscribe(params => {
       this.pcId = this.route.snapshot.params.id;
       console.log("id: ", this.pcId);
 
-      if(this.pcId) {
+      if (this.pcId) {
         let url = "/purchase/find/" + this.pcId;
         this.purchaseService.findRequstObjectById(url).subscribe(
           data => {
@@ -106,10 +102,10 @@ export class PcEditComponent implements OnInit{
             this.showData = true;
             console.log("response", this.pcResponse);
             this.pcDetails = new FormGroup({
-              productCategory: new FormControl(this.pcResponse.purchase.productCategory,[Validators.required]),
-              productShape: new FormControl(this.pcResponse.purchase.productShape,[Validators.required]),
+              productCategory: new FormControl(this.pcResponse.purchase.productCategory, [Validators.required]),
+              productShape: new FormControl(this.pcResponse.purchase.productShape, [Validators.required]),
               comapnyName: new FormControl(this.pcResponse.company.name, [Validators.required]),
-              warehouseName: new FormControl(this.pcResponse.warehouse.name,[Validators.required])
+              warehouseName: new FormControl(this.pcResponse.warehouse.name, [Validators.required])
             });
 
             // this.addProductDetails = new FormGroup({
@@ -138,22 +134,22 @@ export class PcEditComponent implements OnInit{
             //   remarks: new FormControl("", [Validators.minLength(3)])
             // });
 
-            
+
             this.transportDetails = new FormGroup({
               supplierId: new FormControl(this.pcResponse.purchase.supplierId),
               transportId: new FormControl(this.pcResponse.purchase.transportId),
               expectedDate: new FormControl(this.pcResponse.purchase.expectedDate, [Validators.required]),
               // invoice: new FormControl("", [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
               grossWt: new FormControl(this.pcResponse.purchase.grossWt, [CustomValidator.compondValueValidate]),
-              netWt: new FormControl(this.pcResponse.purchase.netWt,[CustomValidator.compondValueValidate]),
+              netWt: new FormControl(this.pcResponse.purchase.netWt, [CustomValidator.compondValueValidate]),
               materialDescription: new FormControl(this.pcResponse.purchase.materialDescription, [Validators.required, Validators.minLength(3)]),
               coilsBundle: new FormControl(this.pcResponse.purchase.coilsBundle, [Validators.required, CustomValidator.compondValueValidate]),
               containerNumber: new FormControl(this.pcResponse.purchase.containerNumber, [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
-              lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required,  CustomValidator.alphanumericSpecialCharacterValidate]),
+              lorryNumber: new FormControl(this.pcResponse.purchase.lorryNumber, [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
               // driverName: new FormControl("", [Validators.required, Validators.minLength(3)]), 
               // driverMobile: new FormControl("", [Validators.required, CustomValidator.contactNumberValidation])
             });
-             
+
           },
           error => {
             console.log("error");
@@ -163,80 +159,80 @@ export class PcEditComponent implements OnInit{
     });
 
     this.staticData.getAllProductCategory().subscribe(data => {
-      this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
-        .filter(categoryObj => categoryObj!== null);
+      this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
+        .filter(categoryObj => categoryObj !== null);
       console.log("categoryList: ", this.productCategoryList);
 
     });
 
-    this.staticData.getProductShape().subscribe( data => {
-      this.productShapeList= data.map(shapeObj => shapeObj.productShape)
-        .filter(shapeObj => shapeObj!== null);
+    this.staticData.getProductShape().subscribe(data => {
+      this.productShapeList = data.map(shapeObj => shapeObj.productShape)
+        .filter(shapeObj => shapeObj !== null);
       console.log("shapeList: ", this.productShapeList);
     });
 
-    this.staticData.getProductType().subscribe( data => {
-      this.productTypeList= data.map(typeObj => typeObj.productType)
-        .filter(typeObj => typeObj!== null);
+    this.staticData.getProductType().subscribe(data => {
+      this.productTypeList = data.map(typeObj => typeObj.productType)
+        .filter(typeObj => typeObj !== null);
       console.log("typeList: ", this.productTypeList);
     });
 
-    this.staticData.getProductClass().subscribe( data => {
+    this.staticData.getProductClass().subscribe(data => {
       this.productClassList = data.map(classObj => classObj.productClass)
-      .filter(classObj => classObj!== null);
+        .filter(classObj => classObj !== null);
       console.log("classList: ", this.productClassList);
     });
 
-    this.staticData.getAllHardness().subscribe( data => {
+    this.staticData.getAllHardness().subscribe(data => {
       this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
-      .filter(hardnessObj => hardnessObj!== null);
+        .filter(hardnessObj => hardnessObj !== null);
       console.log("HardnessList: ", this.productHardnessList);
     });
 
-    this.staticData.getAllProductCoating().subscribe( data => {
+    this.staticData.getAllProductCoating().subscribe(data => {
       this.productCoatingList = data.map(coatingObj => coatingObj.productCoating)
-      .filter(coatingObj => coatingObj!== null);
+        .filter(coatingObj => coatingObj !== null);
       console.log("CoatingList: ", this.productCoatingList);
     });
 
-    this.staticData.getAllDefect().subscribe( data => {
+    this.staticData.getAllDefect().subscribe(data => {
       this.productDefectList = data.map(defectObj => defectObj.productDefect)
-      .filter(defectObj => defectObj!== null);
+        .filter(defectObj => defectObj !== null);
       console.log("defectList: ", this.productDefectList);
     });
 
-    this.staticData.getAllOrigin().subscribe( data => {
+    this.staticData.getAllOrigin().subscribe(data => {
       this.productOriginList = data.map(originObj => originObj.productOrigin)
-      .filter(originObj => originObj!== null);
+        .filter(originObj => originObj !== null);
       console.log("OriginList: ", this.productOriginList);
     });
 
-    
-    this.staticData.getAllSurface().subscribe( data => {
+
+    this.staticData.getAllSurface().subscribe(data => {
       this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
-      .filter(surfaceObj => surfaceObj!== null);
+        .filter(surfaceObj => surfaceObj !== null);
       console.log("surfaceList: ", this.productSurfaceList);
     });
 
-    this.staticData.getAllAnnealing().subscribe( data => {
+    this.staticData.getAllAnnealing().subscribe(data => {
       this.productAnnealingList = data.map(annealingObj => annealingObj.productAnnealing)
-      .filter(annealingObj => annealingObj!== null);
+        .filter(annealingObj => annealingObj !== null);
       console.log("annealingList: ", this.productAnnealingList);
     });
 
-    this.staticData.getAllFinish().subscribe( data => {
+    this.staticData.getAllFinish().subscribe(data => {
       this.productFinishList = data.map(finishObj => finishObj.productFinish)
-      .filter(finishObj => finishObj!== null);
+        .filter(finishObj => finishObj !== null);
       console.log("finishList: ", this.productFinishList);
     });
 
-    this.staticData.getAllProductOiling().subscribe( data => {
+    this.staticData.getAllProductOiling().subscribe(data => {
       this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
-      .filter(oilingObj => oilingObj!== null);
+        .filter(oilingObj => oilingObj !== null);
       console.log("oilingList: ", this.productOilingList);
-      
+
     });
-    
+
   }
 
   get f1() {
@@ -251,9 +247,9 @@ export class PcEditComponent implements OnInit{
     return this.transportDetails.controls;
   }
 
-  
+
   submitPcDetails() {
-    if(this.pcDetails.valid) {
+    if (this.pcDetails.valid) {
       console.log("pcDeatails are: ", this.pcDetails.value);
     }
     else {
@@ -271,30 +267,30 @@ export class PcEditComponent implements OnInit{
   //   else {
   //     this.toastr.error("Error! Invalid Details.")
   //   }
-    
+
   // }
 
   submitTransportDetails() {
-    if(this.transportDetails.valid) {
-    console.log("transport Details: ", this.transportDetails.value);
-    this.purchaseData.expectedDate = this.transportDetails.value.expectedDate;
-    this.purchaseData.netWt = this.transportDetails.value.netWt;
-    this.purchaseData.grossWt = this.transportDetails.value.grossWt;
-    this.purchaseData.coilsBundle = this.transportDetails.value.coilsBundle;
-    this.purchaseData.containerNumber = this.transportDetails.value.containerNumber;
-    this.purchaseData.lorryNumber = this.transportDetails.value.lorryNumber;
-    this.purchaseData.materialDescription = this.transportDetails.value.materialDescription;
+    if (this.transportDetails.valid) {
+      console.log("transport Details: ", this.transportDetails.value);
+      this.purchaseData.expectedDate = this.transportDetails.value.expectedDate;
+      this.purchaseData.netWt = this.transportDetails.value.netWt;
+      this.purchaseData.grossWt = this.transportDetails.value.grossWt;
+      this.purchaseData.coilsBundle = this.transportDetails.value.coilsBundle;
+      this.purchaseData.containerNumber = this.transportDetails.value.containerNumber;
+      this.purchaseData.lorryNumber = this.transportDetails.value.lorryNumber;
+      this.purchaseData.materialDescription = this.transportDetails.value.materialDescription;
 
-    this.request.purchase = this.purchaseData;
-    this.request.productList = this.productList;
-    let url = "/purchase/updatePurchaseWithProduct";
-    this.purchaseService.updateRequestObject(url, this.request).subscribe(
-      data => {
-        this.toastr.success("Record update successfully!");
-      }, error => {
-        console.log(error);
-      }
-    )
+      this.request.purchase = this.purchaseData;
+      this.request.productList = this.productList;
+      let url = "/purchase/updatePurchaseWithProduct";
+      this.purchaseService.updateRequestObject(url, this.request).subscribe(
+        data => {
+          this.toastr.success("Record update successfully!");
+        }, error => {
+          console.log(error);
+        }
+      )
     }
     else {
       this.toastr.error("Error! Invalid Details.")
@@ -309,17 +305,17 @@ export class PcEditComponent implements OnInit{
   }
 
   saveProductList() {
-    if(this.productList.length >0) {
-    //   this.request.purchase = this.purchaseData;
-    //   this.request.productList = this.productList;
-    //   let url = "/purchase/updatePurchaseWithProduct";
-    // this.purchaseService.updateRequestObject(url, this.request).subscribe(
-    //   data => {
-    //     this.toastr.success("Record update successfully!");
-    //   }, error => {
-    //     console.log(error);
-    //   }
-    // )
+    if (this.productList.length > 0) {
+      //   this.request.purchase = this.purchaseData;
+      //   this.request.productList = this.productList;
+      //   let url = "/purchase/updatePurchaseWithProduct";
+      // this.purchaseService.updateRequestObject(url, this.request).subscribe(
+      //   data => {
+      //     this.toastr.success("Record update successfully!");
+      //   }, error => {
+      //     console.log(error);
+      //   }
+      // )
     } else {
       this.toastr.warning("Product is Empty!");
     }

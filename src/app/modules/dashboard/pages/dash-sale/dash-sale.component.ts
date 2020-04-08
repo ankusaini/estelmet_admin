@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {SeoAnalyticChart1} from './chart/seo-analytic-chart-1';
-import {SeoAnalyticChart2} from './chart/seo-analytic-chart-2';
-import {SeoAnalyticChart3} from './chart/seo-analytic-chart-3';
-import {SeoAnalyticChart4} from './chart/seo-analytic-chart-4';
-import {SecEcommerceChartLine} from './chart/sec-ecommerce-chart-line';
-import {SecEcommerceChartBar} from './chart/sec-ecommerce-chart-bar';
-import {MonthlyProfit1} from './chart/monthly-profit-1';
-import {MonthlyProfit2} from './chart/monthly-profit-2';
-import { Purchase } from "src/app/shared/Models/purchase.model";
-import { ToastrService } from "ngx-toastr";
-import { PurchaseService } from "src/app/shared/services/purchase.service";
+import { ToastrService } from 'ngx-toastr';
+import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { PurchaseService } from 'src/app/shared/services/purchase.service';
+import { MonthlyProfit1 } from './chart/monthly-profit-1';
+import { MonthlyProfit2 } from './chart/monthly-profit-2';
+import { SecEcommerceChartBar } from './chart/sec-ecommerce-chart-bar';
+import { SecEcommerceChartLine } from './chart/sec-ecommerce-chart-line';
+import { SeoAnalyticChart1 } from './chart/seo-analytic-chart-1';
+import { SeoAnalyticChart2 } from './chart/seo-analytic-chart-2';
+import { SeoAnalyticChart3 } from './chart/seo-analytic-chart-3';
+import { SeoAnalyticChart4 } from './chart/seo-analytic-chart-4';
 
 @Component({
   selector: 'app-dash-sale',
@@ -26,9 +26,9 @@ export class DashSaleComponent implements OnInit {
   public monthlyProfitChartData1: any;
   public monthlyProfitChartData2: any;
 
-  public purchaseList:Purchase[]=[];
+  public purchaseList: Purchase[] = [];
 
-  constructor(  private sharedService: PurchaseService,
+  constructor(private sharedService: PurchaseService,
     private toastrService: ToastrService) {
     this.seoChartData1 = SeoAnalyticChart1.seoChartData;
     this.seoChartData2 = SeoAnalyticChart2.seoChartData;
@@ -46,19 +46,15 @@ export class DashSaleComponent implements OnInit {
   }
 
 
-  getAllPurchase()
-  {
-    let url="/purchase/getAllPurchase";
-    this.sharedService.getAllResponse(url).subscribe(data=>{
-        if(data && data.purchaseList)
-          {
-            this.purchaseList=data.purchaseList;
-            console.log("purchase list",this.purchaseList);
-
-          }
-    },error=>{
-      this.toastrService.error("Something Went Wrong");
-    })
+  getAllPurchase() {
+    const url = '/purchase/getAllPurchase';
+    this.sharedService.getAllResponse(url).subscribe(data => {
+      if (data && data.purchaseList) {
+        this.purchaseList = data.purchaseList;
+      }
+    }, error => {
+      this.toastrService.error('Something Went Wrong');
+    });
   }
 
 }

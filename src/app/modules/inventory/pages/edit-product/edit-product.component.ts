@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {IAlbum, IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
-import {Subscription} from 'rxjs';
-
-import { Product } from 'src/app/shared/Models/product.model.';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { InventoryService } from '../../service/inventory.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IAlbum, IEvent, Lightbox, LightboxEvent, LIGHTBOX_EVENT, LightboxConfig } from 'ngx-lightbox';
+import { Subscription } from 'rxjs';
+import { Product } from 'src/app/shared/Models/product.model.';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
+import { InventoryService } from '../../service/inventory.service';
+
 
 
 @Component({
@@ -16,7 +16,7 @@ import { StaticDataService } from 'src/app/shared/services/data/staticData.servi
 })
 export class EditProductComponent implements OnInit {
 
- public activeTab: string;
+  public activeTab: string;
   public editProfile1: boolean;
   public editProfile2: boolean;
 
@@ -32,7 +32,7 @@ export class EditProductComponent implements OnInit {
   public albums: Array<IAlbum>;
   private subscription: Subscription;
   routerSubscription: any;
-  productId : any;
+  productId: any;
   public productResponse: any;
   public productList: Product[];
   productIdForm: FormGroup;
@@ -51,13 +51,14 @@ export class EditProductComponent implements OnInit {
   public productSurfaceList: any[];
   public productFinishList: any[];
 
-  constructor(private lightbox: Lightbox,
-             private lightboxEvent: LightboxEvent,
-             private lighboxConfig: LightboxConfig,
-             private route: ActivatedRoute,
-             private inventoryService: InventoryService,
-             private staticData: StaticDataService
-             ) {
+  constructor(
+    private lightbox: Lightbox,
+    private lightboxEvent: LightboxEvent,
+    private route: ActivatedRoute,
+    private lighboxConfig: LightboxConfig,
+    private inventoryService: InventoryService,
+    private staticData: StaticDataService
+  ) {
     this.activeTab = 'home';
 
     this.editProfile = false;
@@ -79,22 +80,20 @@ export class EditProductComponent implements OnInit {
 
       this.albums.push(album);
     }
-    lighboxConfig.fadeDuration = 1;
+    this.lighboxConfig.fadeDuration = 1;
   }
 
   ngOnInit() {
-    this.routerSubscription = this.route.url.subscribe( params => {
+    this.routerSubscription = this.route.url.subscribe(params => {
       this.productId = this.route.snapshot.params.id;
-      console.log("id is: ", this.productId); 
 
-      if(this.productId) {
-        let url = "/inventory/find/" + this.productId;
-        this.inventoryService.findRequstObjectById(url).subscribe( data => {
+      if (this.productId) {
+        const url = '/inventory/find/' + this.productId;
+        this.inventoryService.findRequstObjectById(url).subscribe(data => {
           this.productResponse = data;
-          console.log("productData is : ", this.productResponse);
 
           this.productIdForm = new FormGroup({
-            productId : new FormControl(this.productResponse.productId, [Validators.required]),
+            productId: new FormControl(this.productResponse.productId, [Validators.required]),
             title: new FormControl(this.productResponse.title, [Validators.required]),
             purchaseId: new FormControl(this.productResponse.purchaseId, [Validators.required]),
             grnId: new FormControl(this.productResponse.grnId, [Validators.required]),
@@ -106,7 +105,7 @@ export class EditProductComponent implements OnInit {
             productType: new FormControl(this.productResponse.productType.productType, [Validators.required]),
             productCategory: new FormControl(this.productResponse.productCategory.productCategory, [Validators.required]),
             productShape: new FormControl(this.productResponse.productShape.productShape, [Validators.required]),
-            productClass: new FormControl(this.productResponse.productClass.productClass,[Validators.required]),
+            productClass: new FormControl(this.productResponse.productClass.productClass, [Validators.required]),
             thicknessMin: new FormControl(this.productResponse.thicknessMin, [Validators.required]),
             thicknessMax: new FormControl(this.productResponse.thicknessMax, [Validators.required]),
             widthMin: new FormControl(this.productResponse.widthMin, [Validators.required]),
@@ -125,7 +124,7 @@ export class EditProductComponent implements OnInit {
             productFinish: new FormControl(this.productResponse.productFinish, [Validators.required]),
             gwt: new FormControl(this.productResponse.gwt, [Validators.required]),
             nwt: new FormControl(this.productResponse.nwt, [Validators.required]),
-            remarks: new FormControl("")
+            remarks: new FormControl('')
           });
 
         }, error => {
@@ -135,80 +134,68 @@ export class EditProductComponent implements OnInit {
     });
 
     this.staticData.getAllProductCategory().subscribe(data => {
-      this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
-        .filter(categoryObj => categoryObj!== null);
-     // console.log("categoryList: ", this.productCategoryList);
+      this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
+        .filter(categoryObj => categoryObj !== null);
 
     });
 
-    this.staticData.getProductShape().subscribe( data => {
-      this.productShapeList= data.map(shapeObj => shapeObj.productShape)
-        .filter(shapeObj => shapeObj!== null);
-     // console.log("shapeList: ", this.productShapeList);
+    this.staticData.getProductShape().subscribe(data => {
+      this.productShapeList = data.map(shapeObj => shapeObj.productShape)
+        .filter(shapeObj => shapeObj !== null);
     });
 
-    this.staticData.getProductType().subscribe( data => {
-      this.productTypeList= data.map(typeObj => typeObj.productType)
-        .filter(typeObj => typeObj!== null);
-   //   console.log("typeList: ", this.productTypeList);
+    this.staticData.getProductType().subscribe(data => {
+      this.productTypeList = data.map(typeObj => typeObj.productType)
+        .filter(typeObj => typeObj !== null);
     });
 
-    this.staticData.getProductClass().subscribe( data => {
+    this.staticData.getProductClass().subscribe(data => {
       this.productClassList = data.map(classObj => classObj.productClass)
-      .filter(classObj => classObj!== null);
-  //    console.log("classList: ", this.productClassList);
+        .filter(classObj => classObj !== null);
     });
 
-    this.staticData.getAllHardness().subscribe( data => {
+    this.staticData.getAllHardness().subscribe(data => {
       this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
-      .filter(hardnessObj => hardnessObj!== null);
-    //  console.log("HardnessList: ", this.productHardnessList);
+        .filter(hardnessObj => hardnessObj !== null);
     });
 
-    this.staticData.getAllProductCoating().subscribe( data => {
+    this.staticData.getAllProductCoating().subscribe(data => {
       this.productCoatingList = data.map(coatingObj => coatingObj.productCoating)
-      .filter(coatingObj => coatingObj!== null);
-      console.log("CoatingList: ", this.productCoatingList);
+        .filter(coatingObj => coatingObj !== null);
     });
 
-    this.staticData.getAllDefect().subscribe( data => {
+    this.staticData.getAllDefect().subscribe(data => {
       this.productDefectList = data.map(defectObj => defectObj.productDefect)
-      .filter(defectObj => defectObj!== null);
-      console.log("defectList: ", this.productDefectList);
+        .filter(defectObj => defectObj !== null);
     });
 
-    this.staticData.getAllOrigin().subscribe( data => {
+    this.staticData.getAllOrigin().subscribe(data => {
       this.productOriginList = data.map(originObj => originObj.productOrigin)
-      .filter(originObj => originObj!== null);
-      console.log("OriginList: ", this.productOriginList);
+        .filter(originObj => originObj !== null);
     });
 
-    
-    this.staticData.getAllSurface().subscribe( data => {
+
+    this.staticData.getAllSurface().subscribe(data => {
       this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
-      .filter(surfaceObj => surfaceObj!== null);
-      console.log("surfaceList: ", this.productSurfaceList);
+        .filter(surfaceObj => surfaceObj !== null);
     });
 
-    this.staticData.getAllAnnealing().subscribe( data => {
+    this.staticData.getAllAnnealing().subscribe(data => {
       this.productAnnealingList = data.map(annealingObj => annealingObj.productAnnealing)
-      .filter(annealingObj => annealingObj!== null);
-      console.log("annealingList: ", this.productAnnealingList);
+        .filter(annealingObj => annealingObj !== null);
     });
 
-    this.staticData.getAllFinish().subscribe( data => {
+    this.staticData.getAllFinish().subscribe(data => {
       this.productFinishList = data.map(finishObj => finishObj.productFinish)
-      .filter(finishObj => finishObj!== null);
-      console.log("finishList: ", this.productFinishList);
+        .filter(finishObj => finishObj !== null);
     });
 
-    this.staticData.getAllProductOiling().subscribe( data => {
+    this.staticData.getAllProductOiling().subscribe(data => {
       this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
-      .filter(oilingObj => oilingObj!== null);
-      console.log("oilingList: ", this.productOilingList);
-      
+        .filter(oilingObj => oilingObj !== null);
+
     });
-    
+
 
 
   }
@@ -225,11 +212,11 @@ export class EditProductComponent implements OnInit {
   }
 
   saveProductId() {
-    console.log("submitted data of productid is: ", this.productIdForm.value);
+    console.log('submitted data of productid is: ', this.productIdForm.value);
   }
 
   submitProductDetails() {
-    console.log("submitted data of productDetails is: ", this.productDetailForm.value);
+    console.log('submitted data of productDetails is: ', this.productDetailForm.value);
 
   }
 }

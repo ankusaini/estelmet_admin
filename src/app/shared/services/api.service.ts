@@ -1,14 +1,9 @@
+import { HttpBackend, HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpParams,
-  HttpHeaders,
-  HttpBackend
-} from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { JwtService } from 'src/app/shared/services/login/jwt.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,24 +23,17 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  put(path: string, body: Object = {}): Observable<any> {
+  put(path: string, body: object = {}): Observable<any> {
     return this.http.put(
       `${environment.base_url}${path}`,
       JSON.stringify(body)
     ).pipe(catchError(this.formatErrors));
   }
 
-  post(path: string, body: Object = {}): Observable<any> {
+  post(path: string, body: object = {}): Observable<any> {
 
     return this.http.post(
       `${environment.base_url}${path}`,
-      JSON.stringify(body), { observe: 'response' }
-    ).pipe(catchError(this.formatErrors));
-  }
-
-  post2(path: string, body: Object = {}): Observable<any> {
-    return this.http.post(
-      `${environment.base_url2}${path}`,
       JSON.stringify(body), { observe: 'response' }
     ).pipe(catchError(this.formatErrors));
   }

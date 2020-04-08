@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
 import { HttpParams } from '@angular/common/http';
-import { User, UserGroup } from 'src/app/shared/Models/user.model';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { User, UserGroup } from 'src/app/shared/Models/user.model';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private _apiService: ApiService) { }
+  constructor(private apiService: ApiService) { }
 
   getAllUserByUserRoleAndStatus(url): Observable<User[]> {
     return new Observable<User[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res.data);
       });
     });
@@ -22,7 +22,7 @@ export class UserService {
 
   getAllUsersForDashboard(url): Observable<User[]> {
     return new Observable<User[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -30,7 +30,7 @@ export class UserService {
 
   getAllUserByUserGroupRoleAndStatus(url): Observable<UserGroup[]> {
     return new Observable<UserGroup[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res.data);
       });
     });
@@ -38,7 +38,7 @@ export class UserService {
 
   findUserGroupById(url): Observable<UserGroup> {
     return new Observable<UserGroup>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         console.log(res);
         obs.next(res.data);
       });
@@ -47,7 +47,7 @@ export class UserService {
 
   createUserGroup(url, data): Observable<UserGroup> {
     return new Observable<UserGroup>(obs => {
-      this._apiService.post(url, data).subscribe(res => {
+      this.apiService.post(url, data).subscribe(res => {
         console.log(res);
         obs.next(res.body.data);
       });
@@ -56,7 +56,7 @@ export class UserService {
 
   saveUser(data): Observable<User> {
     return new Observable<User>(obs => {
-      this._apiService.post('/users/createUser', data).subscribe(res => {
+      this.apiService.post('/users/createUser', data).subscribe(res => {
         console.log(res);
         obs.next(res.body);
       });
@@ -65,43 +65,66 @@ export class UserService {
 
   updateUser(path, body) {
     return new Observable<User>(obs => {
-      this._apiService.put(path, body).subscribe(res => {
+      this.apiService.put(path, body).subscribe(res => {
         obs.next(res.body);
       });
-    })
+    });
   }
 
   updateUserGroup(path, body) {
     return new Observable<UserGroup>(obs => {
-      this._apiService.put(path, body).subscribe(res => {
+      this.apiService.put(path, body).subscribe(res => {
         obs.next(res.body);
       });
-    })
+    });
   }
-      // this.router.navigateByUrl('/users/find?userId='+ user.id);
+  // this.router.navigateByUrl('/users/find?userId='+ user.id);
 
   getUserById(userId) {
     return new Observable<User>(obs => {
-      this._apiService.get("/users/find?userId="+ userId).subscribe(res => {
+      this.apiService.get('/users/find?userId=' + userId).subscribe(res => {
         obs.next(res.data);
       });
     });
   }
 
-  sendOTP(url) {
+  sendOTP(mobile: string, email: string) {
+    const params: HttpParams = new HttpParams()
+    .set('number', mobile)
+    .set('email', email);
     return new Observable<any>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(`/common/sendOtp`, params).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  existsByEmailId(email: string) {
+    const params: HttpParams = new HttpParams()
+    .set('email', email);
+    return new Observable<any>(obs => {
+      this.apiService.get(`/common/existsByEmailId`, params).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  verifyOtp(mobile, otp) {
+    const params: HttpParams = new HttpParams()
+    .set('number', mobile)
+    .set('otp', otp);
+    return new Observable<any>(obs => {
+      this.apiService.get('/common/verifyOtp', params).subscribe(res => {
         obs.next(res);
       });
     });
   }
 
   uploadImage(file, path) {
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('file', file);
-    // console.log("formdata is",formData);
     return new Observable<any>(obs => {
-      this._apiService.postWithMedia(path, formData).subscribe(res => {
+      this.apiService.postWithMedia(path, formData).subscribe(res => {
         console.log(res);
         obs.next(res.body);
       });
@@ -110,7 +133,7 @@ export class UserService {
 
   forgetPassword(path, body) {
     return new Observable<any>(obs => {
-      this._apiService.post(path, body).subscribe(res => {
+      this.apiService.post(path, body).subscribe(res => {
         obs.next(res);
       });
     });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductPackaging } from 'src/app/shared/Models/product.model.';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
@@ -11,14 +11,12 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreatePackagingComponent implements OnInit {
 
-  productPackagingFormGroup : FormGroup;
-  productPackagingList : ProductPackaging[];
-  constructor(private productPackaging : StaticDataService,private _commonService  : CommonService) { 
+  productPackagingFormGroup: FormGroup;
+  productPackagingList: ProductPackaging[];
+  constructor(private productPackaging: StaticDataService, private commonService: CommonService) {
     this.productPackagingFormGroup = new FormGroup({
-      id : new FormControl(""),
-      productPackaging : new FormControl("",Validators.required),
-      description : new FormControl("",Validators.required),
-      parentId : new FormControl("",Validators.required)
+      productPackaging: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
   }
 
@@ -26,27 +24,28 @@ export class CreatePackagingComponent implements OnInit {
     this.getPackaging();
   }
 
-  getPackaging(){
-    this.productPackaging.getAllPackaging().subscribe(data=>{
+  getPackaging() {
+    this.productPackaging.getAllPackaging().subscribe(data => {
       this.productPackagingList = data;
     });
   }
 
-  savePackaging(){
-    if(this.productPackagingFormGroup.valid){
-      this._commonService.saveProductPackaging(this.productPackagingFormGroup.value).subscribe(res=>{
+  savePackaging() {
+    if (this.productPackagingFormGroup.valid) {
+      this.commonService.saveProductPackaging(this.productPackagingFormGroup.value).subscribe(res => {
         this.productPackagingList.push(res);
-        this.productPackaging.saveProductPackaging( this.productPackagingList);
+        this.productPackagingFormGroup.reset();
+        this.productPackaging.saveProductPackaging(this.productPackagingList);
       });
-    }else{
-      console.log("All fields are necessary");
+    } else {
+      console.log('All fields are necessary');
     }
   }
 
-  deletePackaging(productPackage : ProductPackaging){
-    this._commonService.deleteProductPackaging(productPackage.id.toString()).subscribe(res=>{
+  deletePackaging(productPackage: ProductPackaging) {
+    this.commonService.deleteProductPackaging(productPackage.id.toString()).subscribe(res => {
       this.productPackagingList = this.productPackagingList.filter(element => {
-        return element!=productPackage
+        return element !== productPackage;
       });
       this.productPackaging.saveProductPackaging(this.productPackagingList);
     });

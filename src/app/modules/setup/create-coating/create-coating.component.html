@@ -1,71 +1,73 @@
 <div class="row">
-    <div class="col-md-7">
-      <app-card cardTitle="Add Product Coating" [options]="false">
-        <form [formGroup]="productCoatingFormGroup" (submit)="saveCoating()" #validationForm="ngForm" class="editForm" novalidate>
-          <div class="row">
-            <div class="col-md-12">
+  <div class="col-md-7">
+    <app-card cardTitle="Add Product Coating" [options]="false">
+      <form [formGroup]="productCoatingFormGroup" (submit)="saveCoating()" #validationForm="ngForm" class="editForm"
+        novalidate>
+        <div class="row">
+          <!-- <div class="col-md-12">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Code <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
                     <input formControlName ="id" type="text" class="form-control">
                 </div>
               </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Coating <small class="asterik_sign">*</small></label>
-                  <div class="col-sm-6">
-                      <input formControlName ="productCoating" type="text" class="form-control">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Description <small class="asterik_sign">*</small></label>
-                  <div class="col-sm-6">
-                      <input formControlName ="description" type="text" class="form-control">
-                  </div>
-                </div>
+            </div> -->
+          <div class="col-md-12">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Coating <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                <input formControlName="productCoating" type="text" class="form-control">
               </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Coating</button>
-          </form>
-        </app-card>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-        <app-card [hidHeader]="false" cardTitle="View or Modify Coating" [options]="false"
-        cardCoating="user-profile-list">
-        <div class="dt-responsive table-responsive" cardCoating="card-datatable">
-          <table datatable class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                  <th>Sr. No.</th>
-                  <th>Product Code</th>
-                  <th>Product Coating</th>
-                  <th>Product Description</th>
-                  <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor = "let Coating of productCoatingList">
-                  <td></td>
-                  <td>{{Coating.id}}</td>
-                  <td>{{Coating.productCoating}}</td>
-                  <td>{{Coating.description}}</td>
-                <td>
-                    <button type="button" class="btn btn-icon btn-success"><i
-                      class="feather icon-check-circle"></i></button>&nbsp;
-               
-                    <button type="button" class="btn btn-icon btn-danger" ><i
-                        class="feather icon-trash-2" (click)="deleteCoating(Coating)"></i></button>
-                
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Description <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-6">
+                <input formControlName="description" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
         </div>
-      </app-card>
-    </div>
+        <button type="submit" class="btn btn-primary btn-sm" uiSref="work">Add Product Coating</button>
+      </form>
+    </app-card>
   </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-card [hidHeader]="false" cardTitle="View or Modify Coating" [options]="false" cardCoating="user-profile-list">
+      <div class="dt-responsive table-responsive" cardCoating="card-datatable">
+        <table datatable class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Sr. No.</th>
+              <th>Product Code</th>
+              <th>Product Coating</th>
+              <th>Product Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Coating of productCoatingList">
+              <td>{{Coating.id}}</td>
+              <td>{{Coating.id}}</td>
+              <td>{{Coating.productCoating}}</td>
+              <td>{{Coating.description}}</td>
+              <td>
+                <button type="button" class="btn btn-icon btn-success"><i
+                    class="feather icon-check-circle"></i></button>&nbsp;
+
+                <button type="button" class="btn btn-icon btn-danger"><i class="feather icon-trash-2"
+                    (click)="deleteCoating(Coating)"></i></button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

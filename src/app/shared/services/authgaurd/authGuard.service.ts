@@ -1,16 +1,8 @@
-import { UserLoginService } from '../login/userLogin.service';
-import { Observable } from 'rxjs/internal/Observable';
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRoute,
-  Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
-import { take } from 'rxjs/internal/operators/take';
-import { CanActivateChild, CanActivate } from '@angular/router';
-import { User, UserRole } from '../../Models/user.model';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { User } from '../../Models/user.model';
 import { JwtService } from '../login/jwt.service';
+import { UserLoginService } from '../login/userLogin.service';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +46,7 @@ export class AuthGuardService implements CanActivate {
     if (this._jwtService.getToken()) {
       return true;
     } else {
-      console.log("auth guard");
+      console.log('auth guard');
       this.router.navigate(['/account/login'], { queryParams: { redirectURL: state.url } });
       // this.router.navigateByUrl("/classic/account/login");
       return false;

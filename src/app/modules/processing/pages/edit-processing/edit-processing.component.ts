@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {IAlbum, IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
-import {Subscription} from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ProcessingService } from '../../service/processing.service';
-import { Product } from 'src/app/shared/Models/product.model.';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
+import { IAlbum, IEvent, Lightbox, LightboxConfig, LightboxEvent, LIGHTBOX_EVENT } from 'ngx-lightbox';
+import { Subscription } from 'rxjs';
 import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
+import { Product } from 'src/app/shared/Models/product.model.';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
+import { ProcessingService } from '../../service/processing.service';
 @Component({
   selector: 'app-edit-processing',
   templateUrl: './edit-processing.component.html',
@@ -53,13 +53,13 @@ export class EditProcessingComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-              private lightbox: Lightbox, 
-              private lightboxEvent: LightboxEvent, 
-              private lighboxConfig: LightboxConfig,
-              private route: ActivatedRoute,
-              private processingService: ProcessingService,
-              private staticData: StaticDataService
-              ) {
+    private lightbox: Lightbox,
+    private lightboxEvent: LightboxEvent,
+    private lighboxConfig: LightboxConfig,
+    private route: ActivatedRoute,
+    private processingService: ProcessingService,
+    private staticData: StaticDataService
+  ) {
     this.activeTab = 'home';
 
     this.editProfile = false;
@@ -81,149 +81,127 @@ export class EditProcessingComponent implements OnInit {
 
       this.albums.push(album);
     }
-    lighboxConfig.fadeDuration = 1;
+    this.lighboxConfig.fadeDuration = 1;
   }
 
   ngOnInit() {
-    this.routerSubscription = this.route.url.subscribe( params => {
+    this.routerSubscription = this.route.url.subscribe(params => {
       this.processingId = this.route.snapshot.params.id;
-      console.log("id: ", this.processingId);
 
-      if(this.processingId) {
-        let url = "/inventory/productProcessing/find/" + this.processingId;
-        this.processingService.findProductById(url).subscribe( data => {
+      if (this.processingId) {
+        const url = '/inventory/productProcessing/find/' + this.processingId;
+        this.processingService.findProductById(url).subscribe(data => {
           this.processingData = data;
           this.productList = this.processingData.productList;
-          console.log(this.productList);
 
           // form initate
           this.processingDetails = new FormGroup({
             productProcessingId: new FormControl(this.processingData.productProcessingId, [Validators.required]),
-            contractorId: new FormControl(this.processingData.contractorId,[Validators.required]),
+            contractorId: new FormControl(this.processingData.contractorId, [Validators.required]),
             jobWorkType: new FormControl(this.processingData.jobWorkType, [Validators.required]),
             machineDetailId: new FormControl(this.processingData.machineDetailId, [Validators.required]),
-            companyId: new FormControl('COM-'+this.processingData.companyId, [Validators.required]),
-            warehouseId: new FormControl('WAR-'+this.processingData.warehouseId, [Validators.required])
+            companyId: new FormControl('COM-' + this.processingData.companyId, [Validators.required]),
+            warehouseId: new FormControl('WAR-' + this.processingData.warehouseId, [Validators.required])
           });
 
           this.productDetails = new FormGroup({
-            productType: new FormControl("", [Validators.required]),
-            productCategory: new FormControl("", [Validators.required]),
-            productShape: new FormControl("", [Validators.required]),
-            productClass: new FormControl("",[Validators.required]),
-            thicknessMin: new FormControl("", [Validators.required]),
-            thicknessMax: new FormControl("", [Validators.required]),
-            widthMin: new FormControl("", [Validators.required]),
-            widthMax: new FormControl("", [Validators.required]),
-            lengthMin: new FormControl("", [Validators.required]),
-            lengthMax: new FormControl("", [Validators.required]),
-            temperMin: new FormControl("", [Validators.required]),
-            temperMax: new FormControl("", [Validators.required]),
-            productHardness: new FormControl("", [Validators.required]),
-            productCoating: new FormControl("", [Validators.required]),
-            productDefect: new FormControl("", [Validators.required]),
-            productOrigin: new FormControl("", [Validators.required]),
-            productOiling: new FormControl("", [Validators.required]),
-            productSurfaceCoating: new FormControl("", [Validators.required]),
-            productAnnealing: new FormControl("", [Validators.required]),
-            productFinish: new FormControl("", [Validators.required]),
-            gwt: new FormControl("", [Validators.required]),
-            nwt: new FormControl("", [Validators.required]),
-            lengthToBeCut: new FormControl(""),
-            remarks: new FormControl("")
+            productType: new FormControl('', [Validators.required]),
+            productCategory: new FormControl('', [Validators.required]),
+            productShape: new FormControl('', [Validators.required]),
+            productClass: new FormControl('', [Validators.required]),
+            thicknessMin: new FormControl('', [Validators.required]),
+            thicknessMax: new FormControl('', [Validators.required]),
+            widthMin: new FormControl('', [Validators.required]),
+            widthMax: new FormControl('', [Validators.required]),
+            lengthMin: new FormControl('', [Validators.required]),
+            lengthMax: new FormControl('', [Validators.required]),
+            temperMin: new FormControl('', [Validators.required]),
+            temperMax: new FormControl('', [Validators.required]),
+            productHardness: new FormControl('', [Validators.required]),
+            productCoating: new FormControl('', [Validators.required]),
+            productDefect: new FormControl('', [Validators.required]),
+            productOrigin: new FormControl('', [Validators.required]),
+            productOiling: new FormControl('', [Validators.required]),
+            productSurfaceCoating: new FormControl('', [Validators.required]),
+            productAnnealing: new FormControl('', [Validators.required]),
+            productFinish: new FormControl('', [Validators.required]),
+            gwt: new FormControl('', [Validators.required]),
+            nwt: new FormControl('', [Validators.required]),
+            lengthToBeCut: new FormControl(''),
+            remarks: new FormControl('')
           });
-
-
         });
       }
     });
 
-   
-    let machineUrl = "/inventory/getAllMachineDetail";
+    const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineDetailList = data;
-      this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.machineDetailId);
-      console.log(this.machineDetailIdList);
+      this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.id);
     }, error => {
       console.log(error);
-    })
+    });
 
     this.staticData.getAllProductCategory().subscribe(data => {
-      this.productCategoryList= data.map(categoryObj => categoryObj.productCategory)
-        .filter(categoryObj => categoryObj!== null);
-      console.log("categoryList: ", this.productCategoryList);
-
+      this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
+        .filter(categoryObj => categoryObj !== null);
     });
 
-    this.staticData.getProductShape().subscribe( data => {
-      this.productShapeList= data.map(shapeObj => shapeObj.productShape)
-        .filter(shapeObj => shapeObj!== null);
-      console.log("shapeList: ", this.productShapeList);
+    this.staticData.getProductShape().subscribe(data => {
+      this.productShapeList = data.map(shapeObj => shapeObj.productShape)
+        .filter(shapeObj => shapeObj !== null);
     });
 
-    this.staticData.getProductType().subscribe( data => {
-      this.productTypeList= data.map(typeObj => typeObj.productType)
-        .filter(typeObj => typeObj!== null);
-      console.log("typeList: ", this.productTypeList);
+    this.staticData.getProductType().subscribe(data => {
+      this.productTypeList = data.map(typeObj => typeObj.productType)
+        .filter(typeObj => typeObj !== null);
     });
 
-    this.staticData.getProductClass().subscribe( data => {
+    this.staticData.getProductClass().subscribe(data => {
       this.productClassList = data.map(classObj => classObj.productClass)
-      .filter(classObj => classObj!== null);
-      console.log("classList: ", this.productClassList);
+        .filter(classObj => classObj !== null);
     });
 
-    this.staticData.getAllHardness().subscribe( data => {
+    this.staticData.getAllHardness().subscribe(data => {
       this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
-      .filter(hardnessObj => hardnessObj!== null);
-      console.log("HardnessList: ", this.productHardnessList);
+        .filter(hardnessObj => hardnessObj !== null);
     });
 
-    this.staticData.getAllProductCoating().subscribe( data => {
+    this.staticData.getAllProductCoating().subscribe(data => {
       this.productCoatingList = data.map(coatingObj => coatingObj.productCoating)
-      .filter(coatingObj => coatingObj!== null);
-      console.log("CoatingList: ", this.productCoatingList);
+        .filter(coatingObj => coatingObj !== null);
     });
 
-    this.staticData.getAllDefect().subscribe( data => {
+    this.staticData.getAllDefect().subscribe(data => {
       this.productDefectList = data.map(defectObj => defectObj.productDefect)
-      .filter(defectObj => defectObj!== null);
-      console.log("defectList: ", this.productDefectList);
+        .filter(defectObj => defectObj !== null);
     });
 
-    this.staticData.getAllOrigin().subscribe( data => {
+    this.staticData.getAllOrigin().subscribe(data => {
       this.productOriginList = data.map(originObj => originObj.productOrigin)
-      .filter(originObj => originObj!== null);
-      console.log("OriginList: ", this.productOriginList);
+        .filter(originObj => originObj !== null);
     });
 
-    
-    this.staticData.getAllSurface().subscribe( data => {
+
+    this.staticData.getAllSurface().subscribe(data => {
       this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
-      .filter(surfaceObj => surfaceObj!== null);
-      console.log("surfaceList: ", this.productSurfaceList);
+        .filter(surfaceObj => surfaceObj !== null);
     });
 
-    this.staticData.getAllAnnealing().subscribe( data => {
+    this.staticData.getAllAnnealing().subscribe(data => {
       this.productAnnealingList = data.map(annealingObj => annealingObj.productAnnealing)
-      .filter(annealingObj => annealingObj!== null);
-      console.log("annealingList: ", this.productAnnealingList);
+        .filter(annealingObj => annealingObj !== null);
     });
 
-    this.staticData.getAllFinish().subscribe( data => {
+    this.staticData.getAllFinish().subscribe(data => {
       this.productFinishList = data.map(finishObj => finishObj.productFinish)
-      .filter(finishObj => finishObj!== null);
-      console.log("finishList: ", this.productFinishList);
+        .filter(finishObj => finishObj !== null);
     });
 
-    this.staticData.getAllProductOiling().subscribe( data => {
+    this.staticData.getAllProductOiling().subscribe(data => {
       this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
-      .filter(oilingObj => oilingObj!== null);
-      console.log("oilingList: ", this.productOilingList);
-      
+        .filter(oilingObj => oilingObj !== null);
     });
-    
-
   }
 
   open(index: number): void {

@@ -1,155 +1,157 @@
 <form [formGroup]="companyDetailsForm" (submit)="companyDetailsSubmit()">
-      <div class="form-row">
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Company Name <small class="asterik_sign">*</small></label>
-          <input formControlName="companyName" type="text" class="form-control" placeholder="" >
-         <small *ngIf="f.companyName.value.length==0 && (f.companyName.dirty || f.companyName.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-        <small *ngIf="f.companyName.value.length!=0 && f.companyName.errors?.minlength  " id="passwordHelpBlock" class="form-text text-muted"
-        >Company Name should be more than 2 characters.</small>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mb-3">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Address Line 1 <small class="asterik_sign">*</small></label>
-          <input formControlName="address1" type="text" class="form-control" placeholder="" >
-         <small *ngIf="f.address1.value.length==0 && (f.address1.dirty || f.address1.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-        <small *ngIf="f.address1.value.length!=0 && f.address1.errors?.addressValidation" id="passwordHelpBlock" class="form-text text-muted"
-        > Please enter valid address.</small>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Address Line 2</label>
-          <input formControlName="address2" type="text" class="form-control" placeholder="" >
-        <!-- <small *ngIf="f.address2.value.length==0 && (f.address2.dirty || f.address2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Company Name <small class="asterik_sign">*</small></label>
+      <input formControlName="companyName" type="text" class="form-control" placeholder="">
+      <small *ngIf="f.companyName.value.length==0 && (f.companyName.dirty || f.companyName.touched )"
+        id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+      <small *ngIf="f.companyName.value.length!=0 && f.companyName.errors?.minlength  " id="passwordHelpBlock"
+        class="form-text text-muted">Company Name should be more than 2 characters.</small>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 mb-3">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Address Line 1 <small class="asterik_sign">*</small></label>
+      <input formControlName="address1" type="text" class="form-control" placeholder="">
+      <small *ngIf="f.address1.value.length==0 && (f.address1.dirty || f.address1.touched )" id="passwordHelpBlock"
+        class="form-text text-muted">This field is required.</small>
+      <small *ngIf="f.address1.value.length!=0 && f.address1.errors?.addressValidation" id="passwordHelpBlock"
+        class="form-text text-muted"> Please enter valid address.</small>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Address Line 2</label>
+      <input formControlName="address2" type="text" class="form-control" placeholder="">
+      <!-- <small *ngIf="f.address2.value.length==0 && (f.address2.dirty || f.address2.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
-        <!-- <small *ngIf="f.address2.value.length!=0 && f.address2.errors?.addressValidation" id="passwordHelpBlock" class="form-text text-muted"
+      <!-- <small *ngIf="f.address2.value.length!=0 && f.address2.errors?.addressValidation" id="passwordHelpBlock" class="form-text text-muted"
         > Please enter valid address.</small> -->
-        </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Country <small class="asterik_sign">*</small></label>
+        <select formControlName="country" class="form-control" id="exampleFormControlSelect1" #country
+          (change)="getAllState(country.value)">
+          <option value="India" disabled>Select Country</option>
+          <option *ngFor="let item of countryList" [value]="item.id"> {{ item?.name }}</option>
+        </select>
+        <small *ngIf="f.country.value.length==0 && (f.country.dirty || f.country.touched )" id="passwordHelpBlock"
+          class="form-text text-muted">This field is required.</small>
       </div>
-      <div class="form-row">
-        <div class="col-md-5 mb-3">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Country <small class="asterik_sign">*</small></label>
-            <select formControlName="country" class="form-control" id="exampleFormControlSelect1" #country (change)="getAllState(country.value)">
-              <option value="India" disabled>Select Country</option>
-              <option *ngFor="let item of countryList" [value]="item.id" > {{ item?.name }}</option>
-            </select>
-           <small *ngIf="f.country.value.length==0 && (f.country.dirty || f.country.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-          </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mb-3">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">State <small class="asterik_sign">*</small></label>
-            <select  formControlName="state" class="form-control" id="exampleFormControlSelect1" #state (change)="getAllCity(state.value)">
-              <option value="" disabled>Select State</option>
-              <option *ngFor="let item of state_list" [value]="item.id" > {{ item?.name }}</option>
-            </select>
-           <small *ngIf="f.state.value.length==0 && (f.state.dirty || f.state.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-          </div>
-        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">State <small class="asterik_sign">*</small></label>
+        <select formControlName="state" class="form-control" id="exampleFormControlSelect1" #state
+          (change)="getAllCity(state.value)">
+          <option value="" disabled>Select State</option>
+          <option *ngFor="let item of stateList" [value]="item.id"> {{ item?.name }}</option>
+        </select>
+        <small *ngIf="f.state.value.length==0 && (f.state.dirty || f.state.touched )" id="passwordHelpBlock"
+          class="form-text text-muted">This field is required.</small>
       </div>
-      <div class="form-row">
-        <div class="col-md-5 mb-3">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">City <small class="asterik_sign">*</small></label>
-            <select formControlName="city" class="form-control" id="exampleFormControlSelect1">
-              <option value="" disabled>Select City</option>
-              <option *ngFor="let item of city_list" [value]="item.id" > {{ item?.name }}</option>
-            </select>
-          <small *ngIf="f.city.value.length==0 && (f.city.dirty || f.city.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-          </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Pincode <small class="asterik_sign">*</small></label>
-          <input formControlName="pinCode" type="text" class="form-control" placeholder="Pin Code" >
-       <small *ngIf="f.pinCode.value.length==0 && (f.pinCode.dirty || f.pinCode.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-         <small *ngIf="f.pinCode.value.length!=0 && f.pinCode.errors?.pinCodeValidation  " id="passwordHelpBlock" class="form-text text-muted"
-        >Pincode should be 6 digits.</small>
-        </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">City <small class="asterik_sign">*</small></label>
+        <select formControlName="city" class="form-control" id="exampleFormControlSelect1">
+          <option value="" disabled>Select City</option>
+          <option *ngFor="let item of cityList" [value]="item.id"> {{ item?.name }}</option>
+        </select>
+        <small *ngIf="f.city.value.length==0 && (f.city.dirty || f.city.touched )" id="passwordHelpBlock"
+          class="form-text text-muted">This field is required.</small>
       </div>
-      <div class="form-row">
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">GST <small class="asterik_sign">*</small></label>
-          <input formControlName="gst" type="text" class="form-control" placeholder="GST" >
-       <small *ngIf="f.gst.value.length==0 && (f.gst.dirty || f.gst.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Mobile</label>
-          <input formControlName="mobile1" type="text" class="form-control" placeholder="Mobile" >
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Pincode <small class="asterik_sign">*</small></label>
+      <input formControlName="pinCode" type="text" class="form-control" placeholder="Pin Code">
+      <small *ngIf="f.pinCode.value.length==0 && (f.pinCode.dirty || f.pinCode.touched )" id="passwordHelpBlock"
+        class="form-text text-muted">This field is required.</small>
+      <small *ngIf="f.pinCode.value.length!=0 && f.pinCode.errors?.pinCodeValidation  " id="passwordHelpBlock"
+        class="form-text text-muted">Pincode should be 6 digits.</small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">GST <small class="asterik_sign">*</small></label>
+      <input formControlName="gst" type="text" class="form-control" placeholder="GST">
+      <small *ngIf="f.gst.value.length==0 && (f.gst.dirty || f.gst.touched )" id="passwordHelpBlock"
+        class="form-text text-muted">This field is required.</small>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Mobile</label>
+      <input formControlName="mobile1" type="text" class="form-control" placeholder="Mobile">
       <!-- <small *ngIf="f.mobile1.value.length==0 && (f.mobile1.dirty || f.mobile1.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
-        <small *ngIf="f.mobile1.value.length>0 && f.mobile1.errors?.contactNumberValidation " id="passwordHelpBlock" class="form-text text-muted"
-          >This field only accepts 10 or 13 digits.</small>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Landline</label>
-          <input  formControlName="mobile2" type="text" class="form-control" placeholder="Landline" >
+      <small *ngIf="f.mobile1.value.length>0 && f.mobile1.errors?.contactNumberValidation " id="passwordHelpBlock"
+        class="form-text text-muted">This field only accepts 10 or 13 digits.</small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Landline</label>
+      <input formControlName="mobile2" type="text" class="form-control" placeholder="Landline">
       <!-- <small *ngIf="f.mobile2.value.length==0 && (f.mobile2.dirty || f.mobile2.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
-        <small *ngIf="f.mobile2.value.length>0 && f.mobile2.errors?.contactNumberValidation " id="passwordHelpBlock" class="form-text text-muted"
-          >This field only accepts 10 or 13 digits.</small>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5 mb-3">
-          <label for="validationCustom02">Email</label>
-          <input  formControlName="emailBusiness" type="email" class="form-control" placeholder="Business Email" >
-        <!-- <small *ngIf="f.emailBusiness.value.length==0 && (f.emailBusiness.dirty || f.emailBusiness.touched )" id="passwordHelpBlock" class="form-text text-muted"
+      <small *ngIf="f.mobile2.value.length>0 && f.mobile2.errors?.contactNumberValidation " id="passwordHelpBlock"
+        class="form-text text-muted">This field only accepts 10 or 13 digits.</small>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Email</label>
+      <input formControlName="emailBusiness" type="email" class="form-control" placeholder="Business Email">
+      <!-- <small *ngIf="f.emailBusiness.value.length==0 && (f.emailBusiness.dirty || f.emailBusiness.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>-->
-        <!-- <small *ngIf="f.emailBusiness.value.length>0 && f.emailBusiness.errors?.emailValidation " id="passwordHelpBlock" class="form-text text-muted"
+      <!-- <small *ngIf="f.emailBusiness.value.length>0 && f.emailBusiness.errors?.emailValidation " id="passwordHelpBlock" class="form-text text-muted"
           >Please enter valid Email address.</small> -->
-        </div> 
-      </div>
-      <div class="form-row">
-         <div class="col-md-5">
-          <label for="validationCustom02">Annual Turnover</label>
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <input formControlName="annualTurnover1" type="text" class="form-control" placeholder="" >
-              <small id="emailHelp" class="form-text text-muted">2016 - 2017 (in Lacs)</small>
-               <!-- <small *ngIf="f.annualTurnover1.value.length==0 && (f.annualTurnover1.dirty || f.annualTurnover1.touched )" id="passwordHelpBlock" class="form-text text-muted"
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-5">
+      <label for="validationCustom02">Annual Turnover</label>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <input formControlName="annualTurnover1" type="text" class="form-control" placeholder="">
+          <small id="emailHelp" class="form-text text-muted">2016 - 2017 (in Lacs)</small>
+          <!-- <small *ngIf="f.annualTurnover1.value.length==0 && (f.annualTurnover1.dirty || f.annualTurnover1.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
-            </div>
-            <div class="col-md-4 mb-3">
-              <input formControlName="annualTurnover2" type="text" class="form-control" placeholder="" >
-              <small id="emailHelp" class="form-text text-muted">2017 - 2018 (in Lacs)</small>
-               <!-- <small *ngIf="f.annualTurnover2.value.length==0 && (f.annualTurnover2.dirty || f.annualTurnover2.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        </div>
+        <div class="col-md-4 mb-3">
+          <input formControlName="annualTurnover2" type="text" class="form-control" placeholder="">
+          <small id="emailHelp" class="form-text text-muted">2017 - 2018 (in Lacs)</small>
+          <!-- <small *ngIf="f.annualTurnover2.value.length==0 && (f.annualTurnover2.dirty || f.annualTurnover2.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
-            </div>
-            <div class="col-md-4 mb-3">
-              <input formControlName="annualTurnover3" type="text" class="form-control" placeholder="" >
-              <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
-               <!-- <small *ngIf="f.annualTurnover3.value.length==0 && (f.annualTurnover3.dirty || f.annualTurnover3.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small> -->
-            </div>
-          </div>
-        </div> 
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
-          <label for="validationCustom02">No. of Employees</label>
-          <input formControlName="numberOfEmployees" type="number" class="form-control" placeholder="" >
-        <!-- <small *ngIf="f.numberOfEmployees.value.length==0 && (f.numberOfEmployees.dirty || f.numberOfEmployees.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        </div>
+        <div class="col-md-4 mb-3">
+          <input formControlName="annualTurnover3" type="text" class="form-control" placeholder="">
+          <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
+          <!-- <small *ngIf="f.annualTurnover3.value.length==0 && (f.annualTurnover3.dirty || f.annualTurnover3.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
         </div>
       </div>
-      <div class="col-sm-12 centered-content m-t-20">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary btn-sm" >Continue</button>
-          </div>
-        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <label for="validationCustom02">No. of Employees</label>
+      <input formControlName="numberOfEmployees" type="number" class="form-control" placeholder="">
+      <!-- <small *ngIf="f.numberOfEmployees.value.length==0 && (f.numberOfEmployees.dirty || f.numberOfEmployees.touched )" id="passwordHelpBlock" class="form-text text-muted"
+        >This field is required.</small> -->
+    </div>
+  </div>
+  <div class="col-sm-12 centered-content m-t-20">
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary btn-sm">Continue</button>
+    </div>
+  </div>
 </form>

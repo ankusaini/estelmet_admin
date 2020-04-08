@@ -1,106 +1,100 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import Swal from "sweetalert2";
-import { FormInput } from "src/app/modules/inventory/pages/add-product/add-product-form.model";
-import { Grn } from "src/app/shared/Models/purchase.model";
-import { Product } from "src/app/shared/Models/product.model.";
-import { RequestP } from "src/app/shared/Models/RequestResponse";
-import { ToastrService } from "ngx-toastr";
-import { InventoryService } from "src/app/modules/inventory/service/inventory.service";
-import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import Swal from 'sweetalert2';
+import { FormInput } from 'src/app/modules/inventory/pages/add-product/add-product-form.model';
+import { Grn } from 'src/app/shared/Models/purchase.model';
+import { Product } from 'src/app/shared/Models/product.model.';
+import { RequestP } from 'src/app/shared/Models/RequestResponse';
+import { ToastrService } from 'ngx-toastr';
+import { InventoryService } from 'src/app/modules/inventory/service/inventory.service';
+import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { WizardComponent } from 'ng2-archwizard/dist';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-add-product",
-  templateUrl: "./add-product.component.html",
-  styleUrls: ["./add-product.component.scss"]
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  @ViewChild("wizard", {static: false}) wizard: WizardComponent;
+  @ViewChild('wizard', { static: false }) wizard: WizardComponent;
   public requestObj: RequestP = {};
   showGroup = true;
   grnList: Grn[];
   productList: Product[] = [];
-  selectedGrn:Grn;
+  selectedGrn: Grn;
   selectedProductType: any = '';
 
-  constructor(private toastr: ToastrService,
+  constructor(
+    private toastr: ToastrService,
     private inventoryService: InventoryService,
     private router: Router,
     private purchaseService: PurchaseService) {
     this.basicSwal();
   }
   ngOnInit() {
-    let url = "/purchase/getAllGrnByStatus/PENDING";
-      this.inventoryService.getAllGrnByStatus(url).subscribe( data => {
-        this.grnList = data.grnList;
-        console.log("grnList is: ", this.grnList);
-      });
+    const url = '/purchase/getAllGrnByStatus/PENDING';
+    this.inventoryService.getAllGrnByStatus(url).subscribe(data => {
+      this.grnList = data.grnList;
+    });
   }
 
-  
+
 
   basicSwal() {
     Swal.fire({
-      title: "Add Product With",
-      input: "select",
+      title: 'Add Product With',
+      input: 'select',
       inputOptions: {
-        PURCHASE_INVOICE: "Purchase Invoice",
-        withoutPurchaseInvoice: "Without Purchase Invoice",
-        jobWorkChalan: "Job Work Chalan",
-        materialTransfer: "Material Transfer"
+        PURCHASE_INVOICE: 'Purchase Invoice',
+        withoutPurchaseInvoice: 'Without Purchase Invoice',
+        jobWorkChalan: 'Job Work Chalan',
+        materialTransfer: 'Material Transfer'
       },
-      inputPlaceholder: "Select Product Type",
+      inputPlaceholder: 'Select Product Type',
       allowOutsideClick: false,
-      confirmButtonText: "Select",
+      confirmButtonText: 'Select',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
-        return new Promise(function(resolve, reject) {
-          if (value !== "") {
+        return new Promise(function (resolve, reject) {
+          if (value !== '') {
             resolve();
           } else {
-            resolve("You need to select Product Type");
+            resolve('You need to select Product Type');
           }
         });
       }
     }).then(selectedType => {
-      if (selectedType !== "") {
-        console.log("selected type", selectedType.value);
+      if (selectedType !== '') {
         this.selectedProductType = selectedType.value;
       }
     });
   }
 
   getSelectedGrnId(grnId) {
-    console.log("in add-product component", grnId);
-    this.selectedGrn=grnId;
+    this.selectedGrn = grnId;
     this.wizard.navigation.goToNextStep();
   }
 
   getProductData(productData) {
-    console.log("product Data is in add product comp: ", productData);
     this.productList.push(productData);
   }
 
   sendForApproval() {
     if (this.productList.length > 0) {
-     
+      this.requestObj.grn = this.selectedGrn;
+      this.requestObj.productList = this.productList;
+      const url = '/purchase/updateGrnWithProduct';
 
-        this.requestObj.grn=this.selectedGrn;
-        this.requestObj.productList=this.productList;
-        console.log("Request to send",this.requestObj)
-        let url ="/purchase/updateGrnWithProduct";
+      this.purchaseService.saveRequestObject(url, this.requestObj).subscribe(data => {
+        this.toastr.success('Record saved successfully');
+        this.router.navigateByUrl('/inventory/productApproval');
 
-          this.purchaseService.saveRequestObject(url,this.requestObj).subscribe(data=>{
-            this.toastr.success("Record saved successfully")
-            this.router.navigateByUrl("/inventory/productApproval");
+      }, error => {
+        console.log('error is', error);
+      });
 
-          },error=>{
-            console.log("error is",error);
-          })
-   
     } else {
-      this.toastr.warning("Please add any product");
+      this.toastr.warning('Please add any product');
     }
   }
 }
