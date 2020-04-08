@@ -25,7 +25,7 @@ export class UserSelectionComponent implements OnInit {
     private userService: UserService,
     private userDataService : UserDataService,
     private _cd : ChangeDetectorRef,
-    private toastService: ToastrService
+    private toastService: ToastrService,
   ) {
     this.userDataService.userRoleData$.subscribe(data=>{
       this.selectedType = data;
