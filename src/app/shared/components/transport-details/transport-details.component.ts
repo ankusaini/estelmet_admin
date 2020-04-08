@@ -1,20 +1,10 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-  Injectable
-} from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { User } from '../../Models/user.model';
-import {
-  NgbDateParserFormatter,
-  NgbDateStruct
-} from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { User } from '../../Models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Injectable()
 export class CustomDateParserFormatter extends NgbDateParserFormatter {
@@ -40,8 +30,6 @@ export class CustomDateParserFormatter extends NgbDateParserFormatter {
     if (date) {
       result = date.year + this.DELIMITER + date.month + this.DELIMITER + date.day;
     }
-    console.log('date', result);
-
     return result;
   }
 }

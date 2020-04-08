@@ -1,67 +1,55 @@
-import { Component, OnInit, Output, EventEmitter, OnChanges, Input } from "@angular/core";
-import { FormGroup, FormControl, Validators, AbstractControl } from "@angular/forms";
-
-import {
-  ProductClass,
-  ProductCategory,
-  ProductTemper,
-  ProductType,
-  ProductShape,
-  ProductHardness,
-  ProductCoating,
-  ProductDefect,
-  ProductPackaging,
-  ProductFinish,
-  ProductAnnealing,
-  ProductOiling,
-  ProductOrigin,
-  ProductSurfaceCoating,
-  ProductStage
-} from "src/app/shared/Models/product.model.";
-import { StaticDataService } from "src/app/shared/services/data/static-data.service";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { LotType } from '../../Models/purchase.model';
-import { Warehouse } from '../../Models/warehouse';
+import {
+  ProductAnnealing, ProductCategory, ProductClass, ProductCoating,
+  ProductDefect, ProductFinish, ProductHardness, ProductOiling,
+  ProductOrigin, ProductPackaging, ProductShape, ProductStage,
+  ProductSurfaceCoating, ProductTemper, ProductType
+} from 'src/app/shared/Models/product.model.';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { Warehouse } from '../../Models/warehouse';
+
 
 function MaxlengthConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minLength = (c.parent.get("lengthMin"));
-  const maxLength = (c.parent.get("lengthMax"));
-  if(!maxLength || ! minLength) return;
-  if(maxLength.value < minLength.value) {
-    return { invalid: true};
-  } 
+  if (!c.parent || !c) { return; }
+  const minLength = (c.parent.get('lengthMin'));
+  const maxLength = (c.parent.get('lengthMax'));
+  if (!maxLength || !minLength) { return; }
+  if (maxLength.value < minLength.value) {
+    return { invalid: true };
+  }
 }
 
 function MaxwidthConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minWidth = (c.parent.get("widthMin"));
-  const maxWidth = (c.parent.get("widthMax"));
-  if(!maxWidth || ! minWidth) return;
-  if(maxWidth.value < minWidth.value) {
-    return { invalid: true};
-  } 
+  if (!c.parent || !c) { return; }
+  const minWidth = (c.parent.get('widthMin'));
+  const maxWidth = (c.parent.get('widthMax'));
+  if (!maxWidth || !minWidth) { return; }
+  if (maxWidth.value < minWidth.value) {
+    return { invalid: true };
+  }
 }
 
 function MaxthicknessConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minThickness = (c.parent.get("thicknessMin"));
-  const maxThickness = (c.parent.get("thicknessMax"));
-  if(!maxThickness || ! minThickness) return;
-  if(maxThickness.value < minThickness.value) {
-    return { invalid: true};
-  } 
+  if (!c.parent || !c) { return; }
+  const minThickness = (c.parent.get('thicknessMin'));
+  const maxThickness = (c.parent.get('thicknessMax'));
+  if (!maxThickness || !minThickness) { return; }
+  if (maxThickness.value < minThickness.value) {
+    return { invalid: true };
+  }
 }
 
 function MaxtemperConfirming(c: AbstractControl): any {
-  if(!c.parent || !c) return;
-  const minTemper = (c.parent.get("productTemperMin"));
-  const maxTemper = (c.parent.get("productTemperMax"));
-  if(!maxTemper || ! minTemper) return;
-  if(maxTemper.value < minTemper.value) {
-    return { invalid: true};
-  } 
+  if (!c.parent || !c) { return; }
+  const minTemper = (c.parent.get('productTemperMin'));
+  const maxTemper = (c.parent.get('productTemperMax'));
+  if (!maxTemper || !minTemper) { return; }
+  if (maxTemper.value < minTemper.value) {
+    return { invalid: true };
+  }
 }
 @Component({
   selector: 'app-material-classification-specification',
@@ -69,10 +57,10 @@ function MaxtemperConfirming(c: AbstractControl): any {
   styleUrls: ['./material-classification-specification.component.scss']
 })
 export class MaterialClassificationSpecificationComponent implements OnInit, OnChanges {
-  constructor(private _staticData: StaticDataService, private toastr: ToastrService) {}
+  constructor(private staticData: StaticDataService, private toastr: ToastrService) { }
 
   @Input() grntype: any = '';
-  @Input() component: string = '';
+  @Input() component = '';
   @Output() productData: EventEmitter<any> = new EventEmitter<any>();
   selectedGrnType: string;
   warehouse: Warehouse = null;
@@ -83,7 +71,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   productShapeList: ProductShape[];
 
   productHarndessList: ProductHardness[];
-  productTemperList: ProductTemper[]; 
+  productTemperList: ProductTemper[];
 
   productCoatingList: ProductCoating[];
   productDefectList: ProductDefect[];
@@ -115,10 +103,10 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
     this.getProductPackaging();
     this.createForm();
 
-    if(this.component === 'purchase') {
+    if (this.component === 'purchase') {
       this.productForm.removeControl('gpId');
       this.productForm.removeControl('warehouse');
-      
+
     }
   }
 
@@ -126,88 +114,88 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
     this.productForm = new FormGroup({
       // productId: new FormControl(""),
       // productType:new FormGroup({
-  
+
       productType: new FormGroup({
-        id: new FormControl(""),
-        productType: new FormControl("", [Validators.required])
+        id: new FormControl(''),
+        productType: new FormControl('', [Validators.required])
       }),
       productCategory: new FormGroup({
-        id: new FormControl(""),
-        productCategory: new FormControl("", [Validators.required])
+        id: new FormControl(''),
+        productCategory: new FormControl('', [Validators.required])
       }),
       productShape: new FormGroup({
-        id: new FormControl(""),
-        productShape: new FormControl("", [Validators.required])
+        id: new FormControl(''),
+        productShape: new FormControl('', [Validators.required])
       }),
       productClass: new FormGroup({
-        id: new FormControl(""),
-        productClass: new FormControl("", [Validators.required])
+        id: new FormControl(''),
+        productClass: new FormControl('', [Validators.required])
       }),
-      thicknessMin: new FormControl(""),
-      thicknessMax: new FormControl("", [CustomValidator.compondValueValidate, MaxthicknessConfirming]),
-      widthMin: new FormControl(""),
-      widthMax: new FormControl("", [MaxwidthConfirming, CustomValidator.compondValueValidate]),
-      lengthMin: new FormControl(""),
-      lengthMax: new FormControl("", [MaxlengthConfirming, CustomValidator.compondValueValidate]),
+      thicknessMin: new FormControl(''),
+      thicknessMax: new FormControl('', [CustomValidator.compondValueValidate, MaxthicknessConfirming]),
+      widthMin: new FormControl(''),
+      widthMax: new FormControl('', [MaxwidthConfirming, CustomValidator.compondValueValidate]),
+      lengthMin: new FormControl(''),
+      lengthMax: new FormControl('', [MaxlengthConfirming, CustomValidator.compondValueValidate]),
       hardnessMin: new FormGroup({
-        id: new FormControl(""),
-        productHardness: new FormControl("")
+        id: new FormControl(''),
+        productHardness: new FormControl('')
       }),
       hardnessMax: new FormGroup({
-        id: new FormControl(""),
-        productHardness: new FormControl("")
+        id: new FormControl(''),
+        productHardness: new FormControl('')
       }),
       temperMin: new FormGroup({
-        id: new FormControl(""),
-        productTemper: new FormControl("")
+        id: new FormControl(''),
+        productTemper: new FormControl('')
       }),
       temperMax: new FormGroup({
-        id: new FormControl(""),
-        productTemper: new FormControl("")
+        id: new FormControl(''),
+        productTemper: new FormControl('')
       }),
-  
-      heigth: new FormControl("", [CustomValidator.compondValueValidate]),
+
+      heigth: new FormControl('', [CustomValidator.compondValueValidate]),
       productCoating: new FormGroup({
-        id: new FormControl(""),
-        productCoating: new FormControl("")
+        id: new FormControl(''),
+        productCoating: new FormControl('')
       }),
       productDefect: new FormGroup({
-        id: new FormControl(""),
-        productDefect: new FormControl("")
+        id: new FormControl(''),
+        productDefect: new FormControl('')
       }),
       productOrigin: new FormGroup({
-        id:new FormControl(''),
-        productOrigin: new FormControl("")
+        id: new FormControl(''),
+        productOrigin: new FormControl('')
       }),
       productOiling: new FormGroup({
-        id:new FormControl(''),
-        productOiling: new FormControl("")
+        id: new FormControl(''),
+        productOiling: new FormControl('')
       }),
       productSurfaceCoating: new FormGroup({
-        id:new FormControl(''),
-        productSurfaceCoating: new FormControl("")
+        id: new FormControl(''),
+        productSurfaceCoating: new FormControl('')
       }),
       productAnnealing: new FormGroup({
-        id:new FormControl(''),
-        productAnnealing: new FormControl("")
+        id: new FormControl(''),
+        productAnnealing: new FormControl('')
       }),
       productFinish: new FormGroup({
-        id:new FormControl(''),     
-        productFinish: new FormControl("")
+        id: new FormControl(''),
+        productFinish: new FormControl('')
       }),
       productPackaging: new FormGroup({
-        id:new FormControl(''),
-        productPackaging: new FormControl("")
+        id: new FormControl(''),
+        productPackaging: new FormControl('')
       }),
-      gwt: new FormControl("", [CustomValidator.compondValueValidate]),
-      nwt: new FormControl("", [CustomValidator.compondValueValidate]),
-      remarks: new FormControl(""),
-      status: new FormControl("PENDING"),
-      gpId: new FormControl(""),
-      productStage: new FormControl(""),
+      gwt: new FormControl('', [CustomValidator.compondValueValidate]),
+      nwt: new FormControl('', [CustomValidator.compondValueValidate]),
+      remarks: new FormControl(''),
+      status: new FormControl('PENDING'),
+      gpId: new FormControl(''),
+      productStage: new FormControl(''),
       warehouse: new FormControl(this.warehouse)
     });
-  
+
   }
 
   ngOnChanges() {
@@ -224,85 +212,85 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   }
 
   getProductHardness() {
-    this._staticData.getAllHardness().subscribe(data => {
+    this.staticData.getAllHardness().subscribe(data => {
       this.productHarndessList = data;
     });
   }
 
   getProductTemper() {
-    this._staticData.getProductTempor().subscribe(data => {
+    this.staticData.getProductTempor().subscribe(data => {
       this.productTemperList = data;
     });
   }
 
   getProductType() {
-    this._staticData.getProductType().subscribe(data => {
+    this.staticData.getProductType().subscribe(data => {
       this.productTypeList = data;
     });
   }
 
   getProductClass() {
-    this._staticData.getProductClass().subscribe(data => {
+    this.staticData.getProductClass().subscribe(data => {
       this.productClassList = data;
     });
   }
 
   getProductCategory() {
-    this._staticData.getAllProductCategory().subscribe(data => {
+    this.staticData.getAllProductCategory().subscribe(data => {
       this.productCategoryList = data;
     });
   }
 
   getProductShape() {
-    this._staticData.getProductShape().subscribe(data => {
+    this.staticData.getProductShape().subscribe(data => {
       this.productShapeList = data;
     });
   }
 
   getProductCoating() {
-    this._staticData.getAllProductCoating().subscribe(data => {
+    this.staticData.getAllProductCoating().subscribe(data => {
       this.productCoatingList = data;
     });
   }
 
   getProductAnnealing() {
-    this._staticData.getAllAnnealing().subscribe(data => {
+    this.staticData.getAllAnnealing().subscribe(data => {
       this.productAnnealingList = data;
     });
   }
 
   getProductFinish() {
-    this._staticData.getAllFinish().subscribe(data => {
+    this.staticData.getAllFinish().subscribe(data => {
       this.productFinishList = data;
     });
   }
 
   getProductPackaging() {
-    this._staticData.getAllPackaging().subscribe(data => {
+    this.staticData.getAllPackaging().subscribe(data => {
       this.productPackagingList = data;
     });
   }
 
   getProductSurface() {
-    this._staticData.getAllSurface().subscribe(data => {
+    this.staticData.getAllSurface().subscribe(data => {
       this.productSurfaceList = data;
     });
   }
 
   getProductDefect() {
-    this._staticData.getAllDefect().subscribe(data => {
+    this.staticData.getAllDefect().subscribe(data => {
       this.productDefectList = data;
     });
   }
 
   getProductOrigin() {
-    this._staticData.getAllOrigin().subscribe(data => {
+    this.staticData.getAllOrigin().subscribe(data => {
       this.productOriginList = data;
     });
   }
 
   getProductOiling() {
-    this._staticData.getAllProductOiling().subscribe(data => {
+    this.staticData.getAllProductOiling().subscribe(data => {
       this.productOilingList = data;
     });
   }
@@ -311,13 +299,13 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
     console.log(this.productForm);
     if (this.productForm.invalid) {
       // alert("form invalid");
-      this.toastr.error("Error! Invalid details.");
+      this.toastr.error('Error! Invalid details.');
     } else {
       // this.productForm.get('productStage').patchValue(this.selectedGrnType);
-      if(this.component === 'purchase') {
+      if (this.component === 'purchase') {
         this.productForm.get('productStage').patchValue(ProductStage.TEMP);
       } else {
-      this.productForm.get('productStage').patchValue(ProductStage.JOB_WORK_OTHERS);
+        this.productForm.get('productStage').patchValue(ProductStage.JOB_WORK_OTHERS);
       }
       this.productData.emit(this.productForm.value);
       // this.resetForm();
@@ -331,13 +319,13 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   // }
 
   setValue(event, type) {
-    this.productForm['controls'][type]['controls'][type].patchValue(
+    this.productForm.controls[type]['controls'][type].patchValue(
       event.target.options[event.target.options.selectedIndex].text
     );
   }
 
   setValueTwoField(event, type1, type2) {
-    this.productForm['controls'][type1]['controls'][type2].patchValue(
+    this.productForm.controls[type1]['controls'][type2].patchValue(
       event.target.options[event.target.options.selectedIndex].text
     );
   }

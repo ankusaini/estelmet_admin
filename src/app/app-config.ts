@@ -1,3 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export class NextConfig {
   public static config = {
     layout: 'vertical', // vertical, horizontal

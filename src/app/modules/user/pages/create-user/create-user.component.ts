@@ -1,41 +1,36 @@
-import { BusinessDetails, ProductStage } from './../../../../shared/Models/user.model';
-import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
-import { UserService } from 'src/app/shared/services/user.service';
-import { UserDetail, Status } from 'src/app/shared/Models/user.model';
-import { UserDataService } from 'src/app/shared/services/data/userData.service';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import csc from 'country-state-city';
-import { ToastrService } from 'ngx-toastr';
 import { WizardComponent } from 'ng2-archwizard/dist';
+import { ToastrService } from 'ngx-toastr';
+import { Status, UserDetail } from 'src/app/shared/Models/user.model';
+import { UserDataService } from 'src/app/shared/services/data/userData.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { BusinessDetails, ProductStage } from './../../../../shared/Models/user.model';
 
 @Component({
-  selector: "app-create-user",
-  templateUrl: "./create-user.component.html",
-  styleUrls: ["./create-user.component.scss"],
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 
 export class CreateUserComponent implements OnInit {
-  @ViewChild("wizard", { static: true }) wizard: WizardComponent;
+  @ViewChild('wizard', { static: true }) wizard: WizardComponent;
   showGroup = true;
   public isSubmit: boolean;
-  public userDto : UserDetail = {};
-  public uploadedFiles: Array<File> = [];
-
-  // public isPersonData: boolean = false;
-  // public isImageData: boolean = false;
-  // public isCompanyDetailData : boolean = false;
+  public userDto: UserDetail = {};
 
   constructor(
-    private _userService : UserService,
-    private _userDataService : UserDataService,
-    private _router : Router,
-    private toastrService: ToastrService 
+    private userService: UserService,
+    private userDataService: UserDataService,
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.isSubmit = false;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   save(form: any) {
     if (!form.valid) {
@@ -47,7 +42,7 @@ export class CreateUserComponent implements OnInit {
 
   getPersonData(data: any) {
     console.log(data);
-    this.userDto.id = "";
+    this.userDto.id = '';
     this.userDto.firstName = data.firstName;
     this.userDto.lastName = data.lastName;
     this.userDto.mobile = data.mobile;
@@ -59,18 +54,12 @@ export class CreateUserComponent implements OnInit {
     // this.wizard.navigation.canGoToStep(2);
     this.wizard.navigation.goToNextStep();
   }
-  getImageData(data:any)
-  { 
-    this.uploadedFiles=data;
-    console.log("image is",this.uploadedFiles);
-    // this.isImageData = true;
-  }
 
   companyDetailData(data: any) {
     console.log(data);
     this.userDto.businessDetails = [];
-    let tempobj : BusinessDetails =  {}
-    tempobj.businessDetailId = ""
+    const tempobj: BusinessDetails = {};
+    tempobj.businessDetailId = '';
     tempobj.companyName = data.companyName;
     tempobj.address1 = data.address1;
     tempobj.address2 = data.address2;
@@ -84,7 +73,7 @@ export class CreateUserComponent implements OnInit {
     tempobj.mobile = data.mobile1;
     tempobj.mobile = data.mobile2;
     tempobj.businessEmail = data.emailBusiness;
-    // 
+    //
     tempobj.creditLimit = '';
     tempobj.currentOutstanding = '';
     tempobj.daysPayableOutstanding = '';
@@ -93,21 +82,21 @@ export class CreateUserComponent implements OnInit {
     this.userDto.annualTurnover = [];
 
     this.userDto.annualTurnover.push({
-      annualTurnoverId : "",
-      year : '2016-2017',
-      turnover : data.annualTurnover1
+      annualTurnoverId: '',
+      year: '2016-2017',
+      turnover: data.annualTurnover1
     });
 
     this.userDto.annualTurnover.push({
-      annualTurnoverId : "",
-      year : '2017-2018',
-      turnover : data.annualTurnover2
+      annualTurnoverId: '',
+      year: '2017-2018',
+      turnover: data.annualTurnover2
     });
 
     this.userDto.annualTurnover.push({
-      annualTurnoverId : "",
-      year : '2018-2019',
-      turnover : data.annualTurnover3
+      annualTurnoverId: '',
+      year: '2018-2019',
+      turnover: data.annualTurnover3
     });
     console.log(this.userDto);
     // this.isCompanyDetailData = true;
@@ -118,35 +107,35 @@ export class CreateUserComponent implements OnInit {
   }
 
   tradeData(data: any[]) {
-    this.userDto.userProductPreference = []
+    this.userDto.userProductPreference = [];
     // console.log(data);
 
-    data.forEach(ele =>{
+    data.forEach(ele => {
       this.userDto.userProductPreference.push({
-        productType : ele.productType,
-        productCategory : ele.productCategory,
-        productClass : ele.productClass,
-        productShape : ele.productShape,
-        thicknessMin : ele.thicknessMin,
-        thicknessMax : ele.thicknessMax,
-        widthMin : ele.widthMin,
-        widthMax : ele.widthMax,
-        temperMin : ele.temperMin,
-        temperMax : ele.temperMax,
-        lengthMin : ele.lengthMin,
-        lengthMax : ele.lengthMax,
-        monthlyRequirement : ele.monthlyRequirement,
-        // 
-        hardnessMax : '',
-        hardnessMin : '',
-        productStage : ProductStage.PRODUCT_PREFERENCE,
-        heigth : '',
+        productType: ele.productType,
+        productCategory: ele.productCategory,
+        productClass: ele.productClass,
+        productShape: ele.productShape,
+        thicknessMin: ele.thicknessMin,
+        thicknessMax: ele.thicknessMax,
+        widthMin: ele.widthMin,
+        widthMax: ele.widthMax,
+        temperMin: ele.temperMin,
+        temperMax: ele.temperMax,
+        lengthMin: ele.lengthMin,
+        lengthMax: ele.lengthMax,
+        monthlyRequirement: ele.monthlyRequirement,
+        //
+        hardnessMax: '',
+        hardnessMin: '',
+        productStage: ProductStage.PRODUCT_PREFERENCE,
+        heigth: '',
         gwt: '',
         nwt: '',
-        remarks : '',
+        remarks: '',
         title: ''
-      })
-    })
+      });
+    });
 
     console.log(this.userDto.userProductPreference);
     // this.wizard.navigation.canGoToStep(4);
@@ -157,47 +146,35 @@ export class CreateUserComponent implements OnInit {
 
   keyPersonData(data: any) {
     this.userDto.keyPerson = [];
-
     this.userDto.keyPerson.push({
-      keyPersonId: "",
+      keyPersonId: '',
       name: data.fullName1,
       designation: data.designation1,
       email1: data.email1,
       mobile1: data.mobile1,
-      email2: "",
-      mobile2: ""
+      email2: '',
+      mobile2: ''
     });
-
     this.userDto.keyPerson.push({
-      keyPersonId: "",
+      keyPersonId: '',
       name: data.fullName2,
       designation: data.designation2,
       email1: data.email2,
       mobile1: data.mobile2,
-      email2: "",
-      mobile2: ""
+      email2: '',
+      mobile2: ''
     });
     // this.wizard.navigation.canGoToStep(5);
     this.wizard.navigation.goToNextStep();
-
-
   }
 
-  final_submit(data: boolean) {
-    console.log(this.userDto);
-    this._userService.saveUser(this.userDto).subscribe(data=>{
-      console.log(data);
-      this._userDataService.add(data);
+  finalSubmit() {
+    this.userService.saveUser(this.userDto).subscribe(data => {
+      this.userDataService.add(data);
       this.wizard.navigation.reset();
-      this._router.navigate(['/users/profile',data.id]);
-      // let path ="/uploadImage/user/"+data.id;
-      // this._userService.uploadImage(this.uploadedFiles[0],path).subscribe(res=>{
-      //    this._router.navigate(['/users/profile',data.id]);
-      // },error=>{
-
-      // })
-      this.toastrService.success("Your account created successfully!");
-    },error=>{
+      this.router.navigate(['/users/profile', data.id]);
+      this.toastrService.success('Your account created successfully!');
+    }, error => {
       console.log(error);
     });
   }

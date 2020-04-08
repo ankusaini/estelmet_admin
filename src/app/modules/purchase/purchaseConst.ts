@@ -5,4 +5,4 @@ export const purchaseConstants =  {
     transporter_url : '/users/getAllUsersByUserRoleAndStatus/TRANSPORTER/APPROVED',
     suppliar_url :  '/users/getAllUsersByUserRoleAndStatus/SUPPLIER/APPROVED',
     save_GRN_url : '/purchase/createGrn'
-}
+};

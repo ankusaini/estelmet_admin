@@ -11,34 +11,33 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreateCategoryComponent implements OnInit {
 
-  public ProductCategoryList : ProductCategory[];
-  productCategoryForm : FormGroup;
-  constructor(private productCategory : StaticDataService, private _commonService : CommonService) { 
+  public ProductCategoryList: ProductCategory[];
+  productCategoryForm: FormGroup;
+  constructor(private productCategory: StaticDataService, private commonService: CommonService) {
 
-     this.productCategoryForm = new FormGroup({
-      id:new FormControl(""),
+    this.productCategoryForm = new FormGroup({
+      id: new FormControl(''),
       // parentId:new FormControl("",Validators.required),
-      productCategory:new FormControl("",Validators.required),
-      description:new FormControl("",Validators.required)
+      productCategory: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
   }
 
   ngOnInit() {
-     this.getCategory();
+    this.getCategory();
   }
 
-  getCategory(){
-    this.productCategory.getAllProductCategory().subscribe(data=>{
-       this.ProductCategoryList = data;
+  getCategory() {
+    this.productCategory.getAllProductCategory().subscribe(data => {
+      this.ProductCategoryList = data;
     });
   }
 
-  saveCategory(){
+  saveCategory() {
     console.log(this.productCategoryForm);
-    if(this.productCategoryForm.valid) {
-     // this.productTypeForm.reset();
-      this._commonService.saveProductCategory(this.productCategoryForm.value).subscribe(res=>{
-        console.log(res);
+    if (this.productCategoryForm.valid) {
+      this.commonService.saveProductCategory(this.productCategoryForm.value).subscribe(res => {
+        this.productCategoryForm.reset();
         this.ProductCategoryList.push(res);
         this.productCategory.saveProductCategory(this.ProductCategoryList);
       });
@@ -47,10 +46,10 @@ export class CreateCategoryComponent implements OnInit {
     }
   }
 
-  deleteCategory(productCategory : ProductCategory){
-    this._commonService.deleteProductCategory(productCategory.id.toString()).subscribe(res=>{
+  deleteCategory(productCategory: ProductCategory) {
+    this.commonService.deleteProductCategory(productCategory.id.toString()).subscribe(res => {
       this.ProductCategoryList = this.ProductCategoryList.filter(element => {
-        return element!=productCategory
+        return element !== productCategory;
       });
       this.productCategory.saveProductCategory(this.ProductCategoryList);
     });

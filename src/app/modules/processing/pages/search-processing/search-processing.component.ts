@@ -10,16 +10,14 @@ import { ProcessingService } from '../../service/processing.service';
 export class SearchProcessingComponent implements OnInit {
   public processingType: string;
   public selectedProcessingList: any[];
-  public productProcessingList: any[] ;
-  
+  public productProcessingList: any[];
+
 
   constructor(private processingService: ProcessingService) { }
 
   ngOnInit() {
     this.basicSwal();
-    
   }
-
 
   basicSwal() {
     Swal.fire({
@@ -44,15 +42,12 @@ export class SearchProcessingComponent implements OnInit {
         });
       }
     }).then(processingType => {
-      if(processingType != "") {
+      if (processingType !== '') {
         this.processingType = processingType.value.toString().toUpperCase();
-        console.log("selected processing type is:", this.processingType);
-        let url = "/inventory/productProcessing/getAllProductProcessingByProcessingTypeAndStatus/"+ this.processingType +"/APPROVED";
-        console.log(url);
-        this.processingService.getAllProductProcessingByProcessingTypeAndStatus(url).subscribe( data => {
+        const url = '/inventory/productProcessing/getAllProductProcessingByProcessingTypeAndStatus/' + this.processingType + '/APPROVED';
+        this.processingService.getAllProductProcessingByProcessingTypeAndStatus(url).subscribe(data => {
           this.productProcessingList = data;
-          console.log("data is: ", this.productProcessingList);
-        },error => {
+        }, error => {
           console.log(error);
         });
       }
@@ -61,8 +56,8 @@ export class SearchProcessingComponent implements OnInit {
   }
 
   getSelectedProductList(processingList: any[]) {
-      this.selectedProcessingList = processingList;
-      console.log("selected list in serach: ", this.selectedProcessingList)
+    this.selectedProcessingList = processingList;
+    console.log('selected list in serach: ', this.selectedProcessingList);
   }
 
 }

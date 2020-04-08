@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductHardness } from 'src/app/shared/Models/product.model.';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
@@ -11,14 +11,12 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreateHardnessComponent implements OnInit {
 
-  productHardnessFormGroup : FormGroup;
-  productHardnessList : ProductHardness[];
-  constructor(private productHardness:StaticDataService,private _commonService : CommonService) { 
-    this.productHardnessFormGroup =new FormGroup({
-      id : new FormControl(""),
-    productHardness : new FormControl("",Validators.required),
-    description : new FormControl("",Validators.required),
-    parentId : new FormControl("",Validators.required)
+  productHardnessFormGroup: FormGroup;
+  productHardnessList: ProductHardness[];
+  constructor(private productHardness: StaticDataService, private commonService: CommonService) {
+    this.productHardnessFormGroup = new FormGroup({
+      productHardness: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
   }
 
@@ -26,28 +24,29 @@ export class CreateHardnessComponent implements OnInit {
     this.getHardness();
   }
 
-  getHardness(){
-    this.productHardness.getAllHardness().subscribe(data=>{
+  getHardness() {
+    this.productHardness.getAllHardness().subscribe(data => {
       this.productHardnessList = data;
       console.log(this.productHardness);
     });
   }
 
-  saveHardness(){
-    if(this.productHardnessFormGroup.valid){
-      this._commonService.saveProductHardness(this.productHardnessFormGroup.value).subscribe(res=>{
+  saveHardness() {
+    if (this.productHardnessFormGroup.valid) {
+      this.commonService.saveProductHardness(this.productHardnessFormGroup.value).subscribe(res => {
         this.productHardnessList.push(res);
+        this.productHardnessFormGroup.reset();
         this.productHardness.saveProductHardness(this.productHardnessList);
       });
-    }else{
-      console.log("ALl fields are necessary")
+    } else {
+      console.log('ALl fields are necessary');
     }
   }
 
-  deleteHardness(productHardness : ProductHardness){
-    this._commonService.deleteProductHardness(productHardness.id.toString()).subscribe(res=>{
+  deleteHardness(productHardness: ProductHardness) {
+    this.commonService.deleteProductHardness(productHardness.id.toString()).subscribe(res => {
       this.productHardnessList = this.productHardnessList.filter(element => {
-        return element!=productHardness
+        return element !== productHardness;
       });
       this.productHardness.saveProductHardness(this.productHardnessList);
     });

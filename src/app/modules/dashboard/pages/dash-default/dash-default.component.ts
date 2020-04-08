@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { SupportChartData1} from './chart/support-chart-data-1';
-import { SupportChartData2} from './chart/support-chart-data-2';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/shared/Models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
+import { PowerCardChart1 } from './chart/power-card-chart-1';
+import { PowerCardChart2 } from './chart/power-card-chart-2';
 import { SeoChart1 } from './chart/seo-chart-1';
 import { SeoChart2 } from './chart/seo-chart-2';
 import { SeoChart3 } from './chart/seo-chart-3';
-import { PowerCardChart1 } from './chart/power-card-chart-1';
-import { PowerCardChart2 } from './chart/power-card-chart-2';
-import { UserService } from "src/app/shared/services/user.service";
-import { ToastrService } from "ngx-toastr";
-import { User } from "src/app/shared/Models/user.model";
+import { SupportChartData1 } from './chart/support-chart-data-1';
+import { SupportChartData2 } from './chart/support-chart-data-2';
 
 @Component({
-  selector: "app-dash-default",
-  templateUrl: "./dash-default.component.html",
-  styleUrls: ["./dash-default.component.scss"]
+  selector: 'app-dash-default',
+  templateUrl: './dash-default.component.html',
+  styleUrls: ['./dash-default.component.scss']
 })
 export class DashDefaultComponent implements OnInit {
- 
+
 
   public supportChartData1: any;
   public supportChartData2: any;
@@ -29,62 +29,62 @@ export class DashDefaultComponent implements OnInit {
 
   public userList: User[] = [];
 
-  public latestUserList : User[]=[];
+  public latestUserList: User[] = [];
 
-  //variable for customer
-  public totalCustomerCount :number = 0;
+  // variable for customer
+  public totalCustomerCount = 0;
 
-  public approvedCustomerCount :number = 0;
+  public approvedCustomerCount = 0;
 
-  public pendingCustomerCount :number = 0;
+  public pendingCustomerCount = 0;
 
-  public rejectedCustomerCount :number = 0;
+  public rejectedCustomerCount = 0;
 
 
-  //variable for Supplier
-    public totalSupplierCount :number = 0;
+  // variable for Supplier
+  public totalSupplierCount = 0;
 
-  public approvedSupplierCount :number = 0;
+  public approvedSupplierCount = 0;
 
-  public pendingSupplierCount :number = 0;
+  public pendingSupplierCount = 0;
 
-  public rejectedSupplierCount :number = 0;
+  public rejectedSupplierCount = 0;
 
   // variable for Contractor
 
-  public totalContractorCount :number = 0;
+  public totalContractorCount = 0;
 
-  public approvedContractorCount :number = 0;
+  public approvedContractorCount = 0;
 
-  public pendingContractorCount :number = 0;
+  public pendingContractorCount = 0;
 
-  public rejectedContractorCount :number = 0;
+  public rejectedContractorCount = 0;
 
   // variable for Agent
- public totalAgentCount :number = 0;
+  public totalAgentCount = 0;
 
-  public approvedAgentCount :number = 0;
+  public approvedAgentCount = 0;
 
-  public pendingAgentCount :number = 0;
+  public pendingAgentCount = 0;
 
-  public rejectedAgentCount :number = 0;
+  public rejectedAgentCount = 0;
 
 
-  public CUSTOMER = "CUSTOMER";
+  public CUSTOMER = 'CUSTOMER';
 
-  public SUPPLIER = "SUPPLIER";
+  public SUPPLIER = 'SUPPLIER';
 
-  public CONTRACTOR = "CONTRACTOR";
+  public CONTRACTOR = 'CONTRACTOR';
 
-  public AGENT = "AGENT";
+  public AGENT = 'AGENT';
 
-   public TRANSPORTER = "TRANSPORTER";
+  public TRANSPORTER = 'TRANSPORTER';
 
-  public APPROVED = "APPROVED";
+  public APPROVED = 'APPROVED';
 
-  public REJECTED = "REJECTED";
+  public REJECTED = 'REJECTED';
 
-  public PENDING = "PENDING";
+  public PENDING = 'PENDING';
 
   constructor(
     private userService: UserService,
@@ -104,103 +104,91 @@ export class DashDefaultComponent implements OnInit {
   }
 
   getAllUsers() {
-    let url = "/users/getAllUsers";
+    const url = '/users/getAllUsers';
     this.userService.getAllUsersForDashboard(url).subscribe(
       data => {
         this.userList = data;
-        console.log(this.userList)
-       if(this.userList && this.userList.length>0)
-        {
-        //customer section start
-        this.totalCustomerCount = this.userList.filter(user => {
-          return user.userRole == this.CUSTOMER;
-        }).length;
+        if (this.userList && this.userList.length > 0) {
+          this.totalCustomerCount = this.userList.filter(user => {
+            return user.userRole === this.CUSTOMER;
+          }).length;
 
-        this.approvedCustomerCount = this.userList.filter(user => {
-          return user.userRole == this.CUSTOMER && user.status == this.APPROVED;
-        }).length;
+          this.approvedCustomerCount = this.userList.filter(user => {
+            return user.userRole === this.CUSTOMER && user.status === this.APPROVED;
+          }).length;
 
-        this.pendingCustomerCount = this.userList.filter(user => {
-          return user.userRole == this.CUSTOMER && user.status == this.PENDING;
-        }).length;
+          this.pendingCustomerCount = this.userList.filter(user => {
+            return user.userRole === this.CUSTOMER && user.status === this.PENDING;
+          }).length;
 
-        this.rejectedCustomerCount = this.userList.filter(user => {
-          return user.userRole == this.CUSTOMER && user.status == this.REJECTED;
-        }).length;
-        //customer section end
+          this.rejectedCustomerCount = this.userList.filter(user => {
+            return user.userRole === this.CUSTOMER && user.status === this.REJECTED;
+          }).length;
+          // customer section end
 
 
-                //Supplier section start
-        this.totalSupplierCount = this.userList.filter(user => {
-          return user.userRole == this.SUPPLIER;
-        }).length;
+          // Supplier section start
+          this.totalSupplierCount = this.userList.filter(user => {
+            return user.userRole === this.SUPPLIER;
+          }).length;
 
-        this.approvedSupplierCount = this.userList.filter(user => {
-          return user.userRole == this.SUPPLIER && user.status == this.APPROVED;
-        }).length;
+          this.approvedSupplierCount = this.userList.filter(user => {
+            return user.userRole === this.SUPPLIER && user.status === this.APPROVED;
+          }).length;
 
-        this.pendingSupplierCount = this.userList.filter(user => {
-          return user.userRole == this.SUPPLIER && user.status == this.PENDING;
-        }).length;
+          this.pendingSupplierCount = this.userList.filter(user => {
+            return user.userRole === this.SUPPLIER && user.status === this.PENDING;
+          }).length;
 
-        this.rejectedSupplierCount = this.userList.filter(user => {
-          return user.userRole == this.SUPPLIER && user.status == this.REJECTED;
-        }).length;
-        //Supplier section end
-
-
-              //Contractor section start
-        this.totalContractorCount = this.userList.filter(user => {
-          return user.userRole == this.CONTRACTOR;
-        }).length;
-
-        this.approvedContractorCount = this.userList.filter(user => {
-          return user.userRole == this.CONTRACTOR && user.status == this.APPROVED;
-        }).length;
-
-        this.pendingContractorCount = this.userList.filter(user => {
-          return user.userRole == this.CONTRACTOR && user.status == this.PENDING;
-        }).length;
-
-        this.rejectedContractorCount = this.userList.filter(user => {
-          return user.userRole == this.CONTRACTOR && user.status == this.REJECTED;
-        }).length;
-        //Contractor section end
+          this.rejectedSupplierCount = this.userList.filter(user => {
+            return user.userRole === this.SUPPLIER && user.status === this.REJECTED;
+          }).length;
+          // Supplier section end
 
 
-           //Agent section start
-        this.totalAgentCount = this.userList.filter(user => {
-          return user.userRole == this.AGENT;
-        }).length;
+          // Contractor section start
+          this.totalContractorCount = this.userList.filter(user => {
+            return user.userRole === this.CONTRACTOR;
+          }).length;
 
-        this.approvedAgentCount = this.userList.filter(user => {
-          return user.userRole == this.AGENT && user.status == this.APPROVED;
-        }).length;
+          this.approvedContractorCount = this.userList.filter(user => {
+            return user.userRole === this.CONTRACTOR && user.status === this.APPROVED;
+          }).length;
 
-        this.pendingAgentCount = this.userList.filter(user => {
-          return user.userRole == this.AGENT && user.status == this.PENDING;
-        }).length;
+          this.pendingContractorCount = this.userList.filter(user => {
+            return user.userRole === this.CONTRACTOR && user.status === this.PENDING;
+          }).length;
 
-        this.rejectedAgentCount = this.userList.filter(user => {
-          return user.userRole == this.AGENT && user.status == this.REJECTED;
-        }).length;
-        //Agent section end
+          this.rejectedContractorCount = this.userList.filter(user => {
+            return user.userRole === this.CONTRACTOR && user.status === this.REJECTED;
+          }).length;
+          // Contractor section end
+          // Agent section start
+          this.totalAgentCount = this.userList.filter(user => {
+            return user.userRole === this.AGENT;
+          }).length;
 
+          this.approvedAgentCount = this.userList.filter(user => {
+            return user.userRole === this.AGENT && user.status === this.APPROVED;
+          }).length;
 
-        
+          this.pendingAgentCount = this.userList.filter(user => {
+            return user.userRole === this.AGENT && user.status === this.PENDING;
+          }).length;
 
-        
+          this.rejectedAgentCount = this.userList.filter(user => {
+            return user.userRole === this.AGENT && user.status === this.REJECTED;
+          }).length;
 
-
-        this.totalContractorCount = this.userList.filter(user => {
-          return user.userRole == this.CONTRACTOR;
-        }).length;
+          this.totalContractorCount = this.userList.filter(user => {
+            return user.userRole === this.CONTRACTOR;
+          }).length;
 
         }
 
       },
-      error => {
-        this.toastrService.error("Something went wrong");
+      () => {
+        this.toastrService.error('Something went wrong');
       }
     );
   }

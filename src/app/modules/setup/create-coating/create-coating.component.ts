@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductCoating } from 'src/app/shared/Models/product.model.';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ProductSurfaceCoating, ProductCoating } from 'src/app/shared/Models/product.model.';
 import { CommonService } from 'src/app/shared/services/http/commonService';
 
 @Component({
@@ -11,15 +11,13 @@ import { CommonService } from 'src/app/shared/services/http/commonService';
 })
 export class CreateCoatingComponent implements OnInit {
 
-  productCoatingFormGroup : FormGroup;
-  productCoatingList : ProductCoating[];
+  productCoatingFormGroup: FormGroup;
+  productCoatingList: ProductCoating[];
 
-  constructor(private productCoating : StaticDataService,private _commonService:CommonService) { 
+  constructor(private productCoating: StaticDataService, private commonService: CommonService) {
     this.productCoatingFormGroup = new FormGroup({
-      id : new FormControl("",Validators.required),
-      productCoating : new FormControl("",Validators.required),
-      description : new FormControl("",Validators.required)
-      
+      productCoating: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
   }
 
@@ -27,18 +25,16 @@ export class CreateCoatingComponent implements OnInit {
     this.getCoating();
   }
 
-  getCoating(){
-    this.productCoating.getAllProductCoating().subscribe(data=>{
+  getCoating() {
+    this.productCoating.getAllProductCoating().subscribe(data => {
       this.productCoatingList = data;
     });
   }
 
-  saveCoating(){
-    console.log(this.productCoatingFormGroup);
-    if(this.productCoatingFormGroup.valid) {
-     // this.productTypeForm.reset();
-      this._commonService.saveProductCoatiing(this.productCoatingFormGroup.value).subscribe(res=>{
-        console.log(res);
+  saveCoating() {
+    if (this.productCoatingFormGroup.valid) {
+      this.commonService.saveProductCoatiing(this.productCoatingFormGroup.value).subscribe(res => {
+        this.productCoatingFormGroup.reset();
         this.productCoatingList.push(res);
         this.productCoating.saveProductCoating(this.productCoatingList);
       });
@@ -47,10 +43,10 @@ export class CreateCoatingComponent implements OnInit {
     }
   }
 
-  deleteCoating(productCoating : ProductCoating){
-    this._commonService.deleteProductCoatiing(productCoating.id.toString()).subscribe(res=>{
+  deleteCoating(productCoating: ProductCoating) {
+    this.commonService.deleteProductCoatiing(productCoating.id.toString()).subscribe(res => {
       this.productCoatingList = this.productCoatingList.filter(element => {
-        return element!=productCoating
+        return element !== productCoating;
       });
       this.productCoating.saveProductCoating(this.productCoatingList);
     });

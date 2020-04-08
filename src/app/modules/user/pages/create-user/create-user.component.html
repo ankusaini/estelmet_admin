@@ -1,13 +1,11 @@
 <app-card cardTitle="Add New User" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-    <wizard-step stepTitle="Personal Detail" navigationSymbol="1" >
+    <wizard-step stepTitle="Personal Detail" navigationSymbol="1">
       <div class="row">
         <div class="col-sm-12">
           <h5>Personal Details</h5>
           <hr />
-          <app-personal-details (imageData)="getImageData($event)"
-            (prsonalData)="getPersonData($event)"
-          ></app-personal-details>
+          <app-personal-details (prsonalData)="getPersonData($event)"></app-personal-details>
         </div>
       </div>
     </wizard-step>
@@ -16,30 +14,24 @@
         <div class="col-sm-12">
           <h5>Business Details</h5>
           <hr />
-          <app-company-details
-            (company_details)="companyDetailData($event)"
-          ></app-company-details>
+          <app-company-details (companyDetails)="companyDetailData($event)"></app-company-details>
         </div>
       </div>
     </wizard-step>
     <wizard-step stepTitle="Key Person Detail" navigationSymbol="3">
-     <div class="row">
-       <div class="col-sm-12">
-         <h5>Key Person Details</h5>
-         <app-keyperson-details
-            (key_person)="keyPersonData($event)"
-          ></app-keyperson-details>
-       </div>
-     </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Key Person Details</h5>
+          <app-keyperson-details (keyPerson)="keyPersonData($event)"></app-keyperson-details>
+        </div>
+      </div>
     </wizard-step>
     <wizard-step stepTitle="Trade Details" navigationSymbol="4">
       <div class="row">
         <div class="col-sm-12">
           <h5>Trade Details</h5>
           <hr />
-          <app-trade-details
-            (trade_detail)="tradeData($event)"
-          ></app-trade-details>
+          <app-trade-details (tradeDetail)="tradeData($event)"></app-trade-details>
         </div>
       </div>
     </wizard-step>
@@ -48,9 +40,7 @@
         <div class="col-sm-12">
           <h5>Finished</h5>
           <hr />
-          <app-terms-conditions
-            (readyToUpdate)="final_submit($event)"
-          ></app-terms-conditions>
+          <app-terms-conditions (readyToUpdate)="finalSubmit()"></app-terms-conditions>
         </div>
       </div>
     </wizard-step>

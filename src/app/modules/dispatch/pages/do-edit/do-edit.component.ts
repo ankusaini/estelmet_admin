@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IAlbum, Lightbox, LightboxConfig, LightboxEvent } from 'ngx-lightbox';
-import { Subscription } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
-import { DispatchService } from '../../services/dispatch.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { IAlbum, Lightbox, LightboxConfig, LightboxEvent } from 'ngx-lightbox';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { ResponseP } from 'src/app/shared/Models/RequestResponse';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { DispatchService } from '../../services/dispatch.service';
 @Component({
   selector: 'app-do-edit',
   templateUrl: './do-edit.component.html',
@@ -40,13 +40,13 @@ export class DoEditComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(
-          private lightbox: Lightbox, 
-          private lightboxEvent: LightboxEvent, 
-          private lighboxConfig: LightboxConfig,
-          private toastr: ToastrService,
-          private dispatchService: DispatchService,
-          private route: ActivatedRoute
-          ) {
+    private lightbox: Lightbox,
+    private lightboxEvent: LightboxEvent,
+    private lighboxConfig: LightboxConfig,
+    private toastr: ToastrService,
+    private dispatchService: DispatchService,
+    private route: ActivatedRoute
+  ) {
     this.activeTab = 'home';
 
     this.editProfile = false;
@@ -66,10 +66,8 @@ export class DoEditComponent implements OnInit {
     this.routerSubscription = this.route.url.subscribe(
       params => {
         this.doId = this.route.snapshot.params.id;
-        console.log(this.doId);
-
-        if(this.doId) {
-          let url = "/sales/getDeliveryOrderById/224";
+        if (this.doId) {
+          const url = '/sales/getDeliveryOrderById/224';
           this.dispatchService.findRequstObjectById(url).subscribe(
             data => {
               this.response = data;
@@ -78,7 +76,7 @@ export class DoEditComponent implements OnInit {
             }, error => {
               console.log(error);
             }
-          )
+          );
         }
 
       }, error => {
@@ -88,9 +86,9 @@ export class DoEditComponent implements OnInit {
 
   createInvoiceDetailForm() {
     this.invoiceDetailsForm = new FormGroup({
-      deliveryOrderType: new FormControl("SALES_OFFER_LOT"),
+      deliveryOrderType: new FormControl('SALES_OFFER_LOT'),
       sourceCompanyId: new FormControl(this.response.deliveryOrder.sourceCompanyId, [Validators.required]),
-      status: new FormControl("PENDING"),
+      status: new FormControl('PENDING'),
       sourceWarehouseId: new FormControl(this.response.deliveryOrder.sourceWarehouseId, [Validators.required]),
       customerId: new FormControl(this.response.deliveryOrder.customerId, [Validators.required]),
       invoiceNetWeight: new FormControl(this.response.deliveryOrder.invoiceNetWeight, [Validators.required]),
@@ -110,14 +108,16 @@ export class DoEditComponent implements OnInit {
   createTransportDetailsForm() {
     this.transportDetailsForm = new FormGroup({
       transportId: new FormControl(this.response.deliveryOrder.transportId, [Validators.required]),
-       transportRecieptNo: new FormControl(this.response.deliveryOrder.transportRecieptNo, [Validators.required]),
-      containerNumber: new FormControl(this.response.deliveryOrder.dLicence, [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
+      transportRecieptNo: new FormControl(this.response.deliveryOrder.transportRecieptNo, [Validators.required]),
+      containerNumber: new FormControl(this.response.deliveryOrder.dLicence,
+        [Validators.required, CustomValidator.alphanumericAndProductSymbolValidation]),
       grossWt: new FormControl(this.response.deliveryOrder.grossWeight, [CustomValidator.compondValueValidate]),
       netWt: new FormControl(this.response.deliveryOrder.netWeight, [CustomValidator.compondValueValidate]),
-       lorryNumber: new FormControl(this.response.deliveryOrder.vehicleNo, [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
-        driverName: new FormControl(this.response.deliveryOrder.driverName),
-        licenceNumber: new FormControl(this.response.deliveryOrder.dLicence, [ CustomValidator.alphanumericSpecialCharacterValidate])
-      });
+      lorryNumber: new FormControl(this.response.deliveryOrder.vehicleNo,
+        [Validators.required, CustomValidator.alphanumericSpecialCharacterValidate]),
+      driverName: new FormControl(this.response.deliveryOrder.driverName),
+      licenceNumber: new FormControl(this.response.deliveryOrder.dLicence, [CustomValidator.alphanumericSpecialCharacterValidate])
+    });
   }
 
   get f() {
@@ -129,18 +129,16 @@ export class DoEditComponent implements OnInit {
   }
 
   saveInvoiceDetails() {
-    if(this.invoiceDetailsForm.valid) {
-      console.log(this.invoiceDetailsForm.value);
+    if (this.invoiceDetailsForm.valid) {
     } else {
-      this.toastr.error("Error! invalid Details!");
+      this.toastr.error('Error! invalid Details!');
     }
   }
 
   saveTransportDetails() {
-    if(this.transportDetailsForm.valid) {
-      console.log(this.transportDetailsForm.value);
+    if (this.transportDetailsForm.valid) {
     } else {
-      this.toastr.error("Error! Invalid Details.");
+      this.toastr.error('Error! Invalid Details.');
     }
   }
 

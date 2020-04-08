@@ -1,7 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Purchase } from 'src/app/shared/Models/purchase.model';
-import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
+import { Purchase } from 'src/app/shared/Models/purchase.model';
 
 @Component({
   selector: 'app-po-list',
@@ -22,13 +22,12 @@ export class PoListComponent implements OnInit {
   }
 
   getAllPurchaseByTypeAndStatus(type, status) {
-    let url = '/purchase/getAllPurchaseByTypeAndStatus/' + type + '/' + status;
-    console.log('url', url)
+    const url = '/purchase/getAllPurchaseByTypeAndStatus/' + type + '/' + status;
     this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
       data => {
-        console.log('data', data)
+        console.log('data', data);
         this.poList = data.purchaseList;
-        console.log('data', this.poList)
+        console.log('data', this.poList);
       },
       error => { }
     );
@@ -36,7 +35,7 @@ export class PoListComponent implements OnInit {
 
   getSelectedPO(mr) {
     this.selectedPO = mr;
-    console.log('selected', mr)
+    console.log('selected', mr);
     this.selectedPOData.emit(this.selectedPO);
   }
 }

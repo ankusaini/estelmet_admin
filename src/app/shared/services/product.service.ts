@@ -1,25 +1,17 @@
-import { Observable } from 'rxjs/internal/Observable';
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
 import { Router } from '@angular/router';
-import {
-  ProductCategory,
-  ProductShape,
-  ProductClass,
-  ProductCoating,
-  ProductDefect,
-  ProductOrigin,
-  ProductOiling,
-  ProductSurfaceCoating,
-  ProductAnnealing,
-  ProductFinish,
-  ProductTemper,
-  ProductHardness,
-  ProductPackaging,
-  ProductType
-} from 'src/app/shared/Models/product.model.';
+import { Observable } from 'rxjs/internal/Observable';
 import { Company } from 'src/app/shared/Models/company.model.';
+import {
+  ProductAnnealing, ProductCategory, ProductClass, ProductCoating,
+  ProductDefect, ProductFinish, ProductHardness, ProductOiling,
+  ProductOrigin, ProductPackaging, ProductShape, ProductSurfaceCoating,
+  ProductTemper, ProductType
+} from 'src/app/shared/Models/product.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
+import { ApiService } from './api.service';
+import { MachineDetail } from '../Models/machineDetails.model';
+import { WeighingCompany } from '../Models/weighingCompany.model';
 
 
 @Injectable({
@@ -27,11 +19,11 @@ import { Warehouse } from 'src/app/shared/Models/warehouse';
 })
 export class ProductService {
 
-  constructor(private _apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   getProductCategory(url: string): Observable<ProductCategory[]> {
     return new Observable<ProductCategory[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
         console.log(res);
       });
@@ -39,10 +31,9 @@ export class ProductService {
   }
 
   setProductType(productType: ProductType): Observable<ProductType[]> {
-    const path = 'http://13.233.151.89:8020/estelmet/inventory/productClassification/setProductType';
-    console.log('url is', path);
+    const path = '/inventory/productClassification/setProductType';
     return new Observable<ProductType[]>(obs => {
-      this._apiService.post(path, productType).subscribe(res => {
+      this.apiService.post(path, productType).subscribe(res => {
         obs.next(res);
       });
     });
@@ -50,7 +41,7 @@ export class ProductService {
 
   getProductShape(url: string): Observable<ProductShape[]> {
     return new Observable<ProductShape[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -58,7 +49,7 @@ export class ProductService {
 
   getAllCompany(url: string): Observable<Company[]> {
     return new Observable<Company[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -66,7 +57,7 @@ export class ProductService {
 
   getAllWarehouse(url: string): Observable<Warehouse[]> {
     return new Observable<Warehouse[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -74,7 +65,7 @@ export class ProductService {
 
   getAllWarehouseByCompanyId(url: string): Observable<Warehouse[]> {
     return new Observable<Warehouse[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -82,7 +73,7 @@ export class ProductService {
 
   getProductType(url: string): Observable<ProductType[]> {
     return new Observable<ProductType[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -90,7 +81,7 @@ export class ProductService {
 
   getProductCoating(url: string): Observable<ProductCoating[]> {
     return new Observable<ProductCoating[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -98,7 +89,7 @@ export class ProductService {
 
   getProductDefect(url: string): Observable<ProductDefect[]> {
     return new Observable<ProductDefect[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -106,7 +97,7 @@ export class ProductService {
 
   getProductOrigin(url: string): Observable<ProductOrigin[]> {
     return new Observable<ProductOrigin[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -114,7 +105,7 @@ export class ProductService {
 
   getProductOiling(url: string): Observable<ProductOiling[]> {
     return new Observable<ProductOiling[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -122,7 +113,7 @@ export class ProductService {
 
   getProductSurfaceCoating(url: string): Observable<ProductSurfaceCoating[]> {
     return new Observable<ProductSurfaceCoating[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -130,7 +121,7 @@ export class ProductService {
 
   getProductAnnealing(url: string): Observable<ProductAnnealing[]> {
     return new Observable<ProductAnnealing[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -138,7 +129,7 @@ export class ProductService {
 
   getProductFinish(url: string): Observable<ProductFinish[]> {
     return new Observable<ProductFinish[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -146,7 +137,7 @@ export class ProductService {
 
   getProductTemper(url: string): Observable<ProductTemper[]> {
     return new Observable<ProductTemper[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -154,7 +145,7 @@ export class ProductService {
 
   getProductHardness(url: string): Observable<ProductHardness[]> {
     return new Observable<ProductHardness[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -162,7 +153,7 @@ export class ProductService {
 
   getProductPackaging(url: string): Observable<ProductPackaging[]> {
     return new Observable<ProductPackaging[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -170,7 +161,7 @@ export class ProductService {
 
   getProductClass(url: string): Observable<ProductClass[]> {
     return new Observable<ProductClass[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });
@@ -178,7 +169,23 @@ export class ProductService {
 
   getAllPurchaseByTypeAndStatus(url: string): Observable<ProductClass[]> {
     return new Observable<ProductClass[]>(obs => {
-      this._apiService.get(url).subscribe(res => {
+      this.apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  getMachineDetail(url: string): Observable<MachineDetail[]> {
+    return new Observable<MachineDetail[]>(obs => {
+      this.apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  getWeighingCompany(url: string): Observable<WeighingCompany[]> {
+    return new Observable<WeighingCompany[]>(obs => {
+      this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });

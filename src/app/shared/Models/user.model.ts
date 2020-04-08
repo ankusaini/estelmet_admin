@@ -1,9 +1,9 @@
 // personal detail
 export interface User extends UserDetail {
-
 }
+
 export interface UserDetail {
-    id?: String;
+    id?: string;
     username?: string;
     userDetialId?: string;
     firstName?: string;
