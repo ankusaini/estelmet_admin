@@ -25,7 +25,11 @@
     <div class="form-group row">
       <label class="col-sm-3 col-form-label font-weight-bolder">User Id</label>
       <div class="col-sm-9">
-        {{ selectedUser.userDetialId }}
+        <span *ngIf="selectedUser.userRole == 'SUPPLIER'">{{ Ids.SUPPLIER+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'CUSTOMER'">{{ Ids.CUSTOMER+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'AGENT'">{{ Ids.AGENT+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'CONTRACTOR'">{{ Ids.CONTRACTOR+ '-' +selectedUser.userDetialId }}</span>
+        <span *ngIf="selectedUser.userRole == 'TRANSPORTER'">{{ Ids.TRANSPORTER+ '-' +selectedUser.userDetialId }}</span>
       </div>
     </div>
     <div class="form-group row">
