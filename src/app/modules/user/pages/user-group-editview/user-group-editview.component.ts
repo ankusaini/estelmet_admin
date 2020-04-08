@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { User, UserGroup } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-user-group-editview',
   templateUrl: './user-group-editview.component.html',
@@ -40,6 +41,7 @@ export class UserGroupEditviewComponent implements OnInit {
     private route: ActivatedRoute,
     private userDataService: UserDataService,
     private userService: UserService,
+    private toastr: ToastrService,
     private router: Router
   ) {
     this.routerSubscription = this.route.url.subscribe(params => {
@@ -106,8 +108,9 @@ export class UserGroupEditviewComponent implements OnInit {
     this.selectedUserGroup.user = data;
     const path = '/users/group/createUserGroup';
     console.log('path', path);
-    this.userService.updateUserGroup(path, this.selectedUserGroup).subscribe(data => {
+    this.userService.createUserGroup(path, this.selectedUserGroup).subscribe(data => {
       console.log('user group created', data);
+      this.toastr.success("User updated successfully!");
       this.router.navigate(['/users/editGroup', this.selectedUserGroup.userGroupId]);
     }, error => {
 

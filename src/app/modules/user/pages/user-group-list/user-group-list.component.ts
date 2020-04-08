@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserGroup } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-user-group-list',
@@ -17,9 +18,12 @@ export class UserGroupListComponent implements OnInit {
     private router: Router,
     private toastrService: ToastrService) {
     this.basicSwal();
+    this.Ids = ids;
   }
   public userGroupList: any[] = [];
   public selectedUserGroupList: UserGroup[] = [];
+  public selectedRole: string ='';
+  public Ids: any;
 
   ngOnInit() { }
   basicSwal() {
@@ -35,6 +39,8 @@ export class UserGroupListComponent implements OnInit {
       },
       inputPlaceholder: 'Select Group Type',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -47,7 +53,8 @@ export class UserGroupListComponent implements OnInit {
         });
       }
     }).then(selectedRole => {
-      if (selectedRole !== '') {
+      if (selectedRole.value) {
+        this.selectedRole = selectedRole.value;
         console.log('selected role', selectedRole);
         const url =
           '/users/group/getAllUserGroupByUserRoleAndStatus?userRole=' +
@@ -61,6 +68,9 @@ export class UserGroupListComponent implements OnInit {
           },
           error => { }
         );
+      } else if(selectedRole.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Purchase } from '../../Models/purchase.model';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { ToastrService } from 'ngx-toastr';
+import { ids } from '../../Models/ids.model';
 
 @Component({
   selector: 'app-purchasr-list-full-details',
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PurchasrListFullDetailsComponent implements OnInit {
   @Input('tabSelected') selectedTab: string;
+  public Ids: any;
 
   purchaseData: any;
   // list coming from parent selected tab
@@ -20,7 +22,9 @@ export class PurchasrListFullDetailsComponent implements OnInit {
 
   public addedPurchaseList: Purchase[] = [];
 
-  constructor(private purchaseService: PurchaseService, private toastrService: ToastrService) { }
+  constructor(private purchaseService: PurchaseService, private toastrService: ToastrService) {
+    this.Ids = ids;
+   }
 
   ngOnInit() {
     console.log('in purchaseList ' + this.selectedTab);

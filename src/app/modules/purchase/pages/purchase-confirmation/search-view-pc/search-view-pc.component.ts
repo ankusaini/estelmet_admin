@@ -3,6 +3,7 @@ import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-search-view-pc',
@@ -13,9 +14,11 @@ export class SearchViewPcComponent implements OnInit {
   public purchaseData: any;
   public purchaseList: Purchase[];
   public selectedPurchaseList: Purchase[]=[];
-
+  public Ids: any;
   constructor(private purchaseService: PurchaseService,
-              private router: Router,private toastrService:ToastrService ) { }
+              private router: Router,private toastrService:ToastrService ) { 
+                this.Ids = ids;
+              }
 
   ngOnInit() {
     let url = "/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/APPROVED";

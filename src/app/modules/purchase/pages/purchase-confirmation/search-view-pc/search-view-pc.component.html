@@ -22,13 +22,13 @@
           <tbody>
             <tr *ngFor="let purchase of purchaseList; let i = index">
               <td>{{i+1}}</td>
-              <td (click)="routerToPcEdit(purchase.id)">PC-{{purchase.id}}</td>
+              <td (click)="routerToPcEdit(purchase.id)">{{Ids.PURCHASE_CONFIRMATION + '-' + purchase.id}}</td>
               <td>{{purchase.title}}</td>
               <td>{{purchase.productCategory}}</td>
               <td>{{purchase.productShape}}</td>
-              <td>COM-{{purchase.sourceCompanyId}}</td>
-              <td>WAR-{{purchase.sourceWarehouseId}}</td>
-              <td>SU-{{purchase.supplierId}}</td>
+              <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+              <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
+              <td>{{Ids.SUPPLIER + '-' + purchase.supplierId}}</td>
               <td>{{purchase.grossWt}}</td>
               <td>{{purchase.netWt}}</td>
               <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>
@@ -65,13 +65,13 @@
           <tbody>
             <tr *ngFor="let purchase of selectedPurchaseList; let i = index">
               <td>{{i+1}}</td>
-              <td>PC-{{purchase.id}}</td>
+              <td>{{Ids.PURCHASE_CONFIRMATION + '-' + purchase.id}}</td>
               <td>{{purchase.title}}</td>
               <td>{{purchase.productCategory}}</td>
               <td>{{purchase.productShape}}</td>
-              <td>COM-{{purchase.sourceCompanyId}}</td>
-              <td>WAR-{{purchase.sourceWarehouseId}}</td>
-              <td>SU-{{purchase.supplierId}}</td>
+              <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                    <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
+                    <td>{{Ids.SUPPLIER + '-' + purchase.supplierId}}</td>
               <td>{{purchase.grossWt}}</td>
               <td>{{purchase.netWt}}</td>
               <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>

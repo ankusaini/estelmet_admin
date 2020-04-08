@@ -30,12 +30,12 @@
                     <tr *ngFor="let grn of pendingList; let i = index">
                       <td><label class="badge badge-warning">{{grn.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>GRN-{{grn.grnId}}</td>
-                      <td>LOT-{{grn.purchaseId}}</td>
+                      <td>{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
+                      <td>{{Ids.LOT + '-' + grn.purchaseId}}</td>
                       <td>{{grn.grnType}}</td>
                       <td>{{grn.status}}</td>
-                      <td>COM-{{grn.sourceCompanyId}}</td>
-                      <td>WAR-{{grn.sourceWarehouseId}}</td>
+                      <td>{{Ids.COMPANY + '-' + grn.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + grn.sourceWarehouseId}}</td>
                       <td>{{grn.grossWeight}}</td>
                       <td>{{grn.netWeight}}</td>
                       <td>{{grn.createdDate | date: 'medium'}}</td>
@@ -82,12 +82,12 @@
                     <tr *ngFor="let grn of approvedList; let i = index">
                       <td><label class="badge badge-success">{{grn.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>GRN-{{grn.grnId}}</td>
-                      <td>LOT-{{grn.purchaseId}}</td>
+                      <td>{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
+                      <td>{{Ids.LOT + '-' + grn.purchaseId}}</td>
                       <td>{{grn.grnType}}</td>
                       <td>{{grn.status}}</td>
-                      <td>COM-{{grn.sourceCompanyId}}</td>
-                      <td>WAR-{{grn.sourceWarehouseId}}</td>
+                      <td>{{Ids.COMPANY + '-' + grn.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + grn.sourceWarehouseId}}</td>
                       <td>{{grn.grossWeight}}</td>
                       <td>{{grn.netWeight}}</td>
                       <td>{{grn.createdDate | date: 'medium'}}</td>
@@ -134,12 +134,12 @@
                     <tr *ngFor="let grn of rejectedList; let i = index">
                       <td><label class="badge badge-danger">{{grn.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>GRN-{{grn.grnId}}</td>
-                      <td>LOT-{{grn.purchaseId}}</td>
+                      <td>{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
+                      <td>{{Ids.LOT + '-' + grn.purchaseId}}</td>
                       <td>{{grn.grnType}}</td>
                       <td>{{grn.status}}</td>
-                      <td>COM-{{grn.sourceCompanyId}}</td>
-                      <td>WAR-{{grn.sourceWarehouseId}}</td>
+                      <td>{{Ids.COMPANY + '-' + grn.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + grn.sourceWarehouseId}}</td>
                       <td>{{grn.grossWeight}}</td>
                       <td>{{grn.netWeight}}</td>
                       <td>{{grn.createdDate | date: 'medium'}}</td>
@@ -201,12 +201,12 @@
               <tr href="kdkd" *ngFor="let grn of selectedGrnList;let i = index">
                   <td><label class="badge badge-danger">{{grn?.status}}</label></td>
                   <td>{{i+1}}</td>
-                  <td>GRN-{{grn?.grnId}}</td>
-                  <td>LOT-{{grn?.purchaseId}}</td>
-                  <td>{{grn?.grnType}}</td>
-                  <td>{{grn?.status}}</td>
-                  <td>COM-{{grn?.sourceCompanyId}}</td>
-                  <td>WAR-{{grn?.sourceWarehouseId}}</td>
+                  <td>{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
+                  <td>{{Ids.LOT + '-' + grn.purchaseId}}</td>
+                  <td>{{grn.grnType}}</td>
+                  <td>{{grn.status}}</td>
+                  <td>{{Ids.COMPANY + '-' + grn.sourceCompanyId}}</td>
+                  <td>{{Ids.WAREHOUSE + '-' + grn.sourceWarehouseId}}</td>
                   <td>{{grn?.grossWeight}}</td>
                   <td>{{grn.netWeight}}</td>
                   <td>{{grn?.createdDate | date: 'medium'}}</td>

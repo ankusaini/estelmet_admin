@@ -3,6 +3,7 @@ import { PurchaseService } from "src/app/modules/purchase/services/purchase.serv
 import { ResponseP } from "src/app/shared/Models/RequestResponse";
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { Router } from "@angular/router";
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: "app-view-mr",
@@ -10,10 +11,12 @@ import { Router } from "@angular/router";
   styleUrls: ["./view-mr.component.scss"]
 })
 export class ViewMRComponent implements OnInit {
- public mrList: Purchase[]=[];
+ public mrList: Purchase[];
 public selectedMrList: Purchase[]=[];
+public Ids: any;
   constructor(private purchaseService: PurchaseService,private router:Router) {
     this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
+    this.Ids = ids;
   }
 
   ngOnInit() {}
