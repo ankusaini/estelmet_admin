@@ -1,6 +1,6 @@
 <app-card cardTitle="Add New User" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-    <wizard-step stepTitle="Create MR" navigationSymbol="1">
+    <wizard-step [stepTitle]="myTitle" navigationSymbol="1">
       <!-- <app-create-mr-id></app-create-mr-id> -->
       <form [formGroup]="mrPurchase" (ngSubmit)="createMrSubmit()">
         <div class="row">
@@ -75,7 +75,7 @@
           <div class="col-sm-12 centered-content">
             <div class="btn-group mt-10">
               <!--  -->
-              <button [disabled]="mrPurchase.status != 'VALID'" type="submit" class="btn btn-primary btn-sm"
+              <button (click)="setTitle()" [disabled]="mrPurchase.status != 'VALID'" type="submit" class="btn btn-primary btn-sm"
                 uiSref="work" nextStep>Continue</button>
             </div>
           </div>`
