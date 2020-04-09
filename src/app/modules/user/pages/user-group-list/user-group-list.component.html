@@ -23,11 +23,11 @@
                <tr href="kdkd" *ngFor="let userGroup of userGroupList;let i = index">
               <td>{{i+1}}</td>
               <!-- <td>{{userGroup.userGroupId}}</td> -->
-              <td *ngIf="selectedRole === 'CUSTOMER'">{{Ids.CUSTOMER_GROUP + '-' + userGroup.userGroupId}}</td>
-              <td *ngIf="selectedRole === 'SUPPLIER'">{{Ids.SUPPLIER_GROUP + '-' + userGroup.userGroupId}}</td>
-              <td *ngIf="selectedRole === 'AGENT'">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
-              <td *ngIf="selectedRole === 'CONTRACTOR'">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
-              <td *ngIf="selectedRole === 'TRANSPORTER'">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
+              <td *ngIf="selectedRole === 'CUSTOMER'" (click)="navigateToEditView(userGroup)">{{Ids.CUSTOMER_GROUP + '-' + userGroup.userGroupId}}</td>
+              <td *ngIf="selectedRole === 'SUPPLIER'" (click)="navigateToEditView(userGroup)">{{Ids.SUPPLIER_GROUP + '-' + userGroup.userGroupId}}</td>
+              <td *ngIf="selectedRole === 'AGENT'" (click)="navigateToEditView(userGroup)">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
+              <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="navigateToEditView(userGroup)">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
+              <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="navigateToEditView(userGroup)">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
               <td>{{userGroup.userGroupName}}</td>
               <td>{{userGroup.userRole}}</td>
               <td>{{userGroup.productType}}</td>

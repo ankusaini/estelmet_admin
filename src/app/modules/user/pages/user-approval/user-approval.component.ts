@@ -5,6 +5,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
 import { Router } from '@angular/router';
+import { UserDataService } from 'src/app/shared/services/data/userData.service';
 @Component({
   selector: 'app-user-approval',
   templateUrl: './user-approval.component.html',
@@ -25,6 +26,7 @@ export class UserApprovalComponent implements OnInit {
 
   constructor(private userService: UserService,
     private router: Router,
+    public dataService : UserDataService,
     private toastrService: ToastrService) {
       this.Ids = ids;
     this.basicSwal();
@@ -171,6 +173,13 @@ export class UserApprovalComponent implements OnInit {
         );
       }
     }
+  }
+
+  goToView(user: User) {
+    this.dataService.add(user).subscribe(() => {
+      // this.router.navigateByUrl('/users/find?userId='+ user.id);
+      this.router.navigate(['/users/profile', user.userDetialId]);
+    });
   }
 
   removeUser(user: UserDetail) {

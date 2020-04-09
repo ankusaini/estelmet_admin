@@ -177,4 +177,10 @@ export class GroupApprovalComponent implements OnInit {
       }
     }
   }
+
+  navigateToEditView(userGroup) {
+    this.router.navigate(['/users/editGroup',userGroup.userGroupId]);
+    // const url = '/users/editGroup/' + userGroupId;
+    // this.router.navigateByUrl(url);
+  }
 }

@@ -21,7 +21,7 @@
               <th>Temper</th>
               <th>Monthly Requirement Wt.</th>
               <th>Remarks</th>
-              <th>Action</th>
+              <th *ngIf="selectedUser?.userProductPreference?.length > 1">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -37,10 +37,10 @@
               <td>{{ item.temperMin }}-{{ item.temperMax }}</td>
               <td>{{ item.monthlyRequirement ? item.monthlyRequirement + 'mt' : '-' }}</td>
               <td>No remarks</td>
-              <td>
-                <button type="button" class="btn btn-icon btn-success"><i
-                    class="feather icon-check-circle"></i></button>
-                <button type="button" class="btn btn-icon btn-danger"><i
+              <td *ngIf="selectedUser?.userProductPreference?.length > 1">
+                <!-- <button type="button" class="btn btn-icon btn-success"><i
+                    class="feather icon-check-circle"></i></button> -->
+                <button type="button" class="btn btn-icon btn-danger" (click)="removePrefrence(item)"><i
                     class="feather icon-trash-2"></i></button>&nbsp;
               </td>
             </tr>
@@ -60,7 +60,7 @@
               >{{ item?.productType }}</option>
             </select>
             <small *ngIf="f.productType.value == '' && (f.productType.dirty || f.productType.touched )" id="passwordHelpBlock" class="form-text text-muted"
-        >This field is required.</small>
+            >This field is required.</small>
           </div>
           <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
           <div class="col-sm-3">
