@@ -63,4 +63,33 @@ export class PurchaseService {
       })
     })
   }
+
+  public getPurchaseOrderByPo(purchaseOderId)
+  {
+   let url= '/purchase/getPurchaseOrderByPo?purchaseOderId='+purchaseOderId;
+   return new Observable<any>(obs => {
+    this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      })
+    })
+  }
+   public getPurchaseOrderByUser(supplierId)
+  {
+   let url= '/purchase/getPurchaseOrderByUser?supplierId='+supplierId;
+   return new Observable<any>(obs => {
+    this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      })
+    })
+  }
+
+  public savePurchaseOrder(purchaseId,userId,productId,price)
+  {
+    let url= '/purchase/savePurchaseOrder?purchaseId='+purchaseId+'&userId='+userId+'&productId'+productId+'&price='+price;
+   return new Observable<any>(obs => {
+    this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      })
+    })
+  }
 }
