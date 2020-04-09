@@ -28,7 +28,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
   public limit = 15;
-  public offset = 0;
+  public offset = 1;
   public selectedRole= '';
 
   constructor(
