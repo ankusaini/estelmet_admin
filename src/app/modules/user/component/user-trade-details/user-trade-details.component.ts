@@ -124,6 +124,7 @@ export class UserTradeDetailsComponent implements OnInit {
     // this.tradeDetails.reset();
     // this.resetForm();
     this.createForm();
+    this.editProfile = false;
   }
 
   // resetForm() {

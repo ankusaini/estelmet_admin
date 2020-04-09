@@ -52,8 +52,8 @@
             <thead>
               <tr>
                   <th>Sr. No.</th>
-                  <th>MR Id</th>
-                  <th>MR Title</th>
+                  <th>PO Id</th>
+                  <th>PO Title</th>
                   <th>Category</th>
                   <th>Shape</th>
                   <th>Company Id</th>
@@ -65,7 +65,7 @@
             <tbody>
               <tr  *ngFor="let mr of selectedPOList;let i = index">
               <td>{{i+1}}</td>
-              <td >{{mr.id}}</td>
+              <td >PO-{{mr.id}}</td>
               <td>{{mr.title}}</td>
               <td>{{mr.productCategory}}</td>
               <td>{{mr.productShape}}</td>

@@ -4,6 +4,7 @@ import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { ids } from 'src/app/shared/Models/ids.model';
 
 
 @Component({
@@ -14,11 +15,14 @@ import { ToastrService } from "ngx-toastr";
 export class PcApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
   public request : RequestP={};
+  public Ids: any;
   public selectedPuchaseList: Purchase[] = [];
   constructor(
             private purchaseService: PurchaseService,
             private router:Router,
-            private toastrService:ToastrService) { }
+            private toastrService:ToastrService) {
+              this.Ids = ids;
+             }
 
   ngOnInit() {
   }

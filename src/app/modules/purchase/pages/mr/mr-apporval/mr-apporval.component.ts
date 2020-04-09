@@ -3,6 +3,7 @@ import { PurchaseService } from "src/app/modules/purchase/services/purchase.serv
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { ToastrService } from "ngx-toastr";
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: "app-mr-apporval",
@@ -11,8 +12,11 @@ import { ToastrService } from "ngx-toastr";
 })
 export class MrApporvalComponent implements OnInit {
   selectedTab: string='PENDING';
+  public Ids: any;
 
-  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) {}
+  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) {
+    this.Ids = ids;
+  }
  public request : RequestP={};
   public pendingMrList: Purchase[];
 
@@ -95,7 +99,16 @@ export class MrApporvalComponent implements OnInit {
          this.request.purchase=this.selectedMrList[i];
         this.purchaseService.updateRequestObject(path,this.request).subscribe(
           data => {
-           
+
+            this.pendingMrList = undefined;
+            this.rejectedMrList = undefined;
+            this.approvedMrList = undefined;
+
+            this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
+            this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
+            this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
+            this.selectedMrList = [];
+            this.toastr.success("Record successfully saved");
           
           },
           error => {
@@ -104,11 +117,7 @@ export class MrApporvalComponent implements OnInit {
         );
         
       }
-      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "PENDING");
-      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
-      this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
-      this.selectedMrList = [];
-      this.toastr.success("Record successfully saved");
+      
     }
   }
 

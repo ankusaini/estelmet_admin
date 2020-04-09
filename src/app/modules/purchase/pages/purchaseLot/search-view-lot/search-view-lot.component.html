@@ -24,14 +24,14 @@
             <tbody>
               <tr *ngFor="let purchase of purchaseList; let i = index">
                 <td>{{i+1}}</td>
-                <td (click)="navigateToEdit(purchase.id)" >LOT-{{purchase.id}}</td>
-                <td>LOT-{{purchase.title}}</td>
+                <td (click)="navigateToEdit(purchase.id)" >{{Ids.LOT + '-' + purchase.id}}</td>
+                <td>{{purchase.title}}</td>
                 <td>{{purchase.lotType}}</td>
                 <td>{{purchase.status}}</td>
                 <td>{{purchase.productCategory}}</td>
                 <td>{{purchase.productShape}}</td>
-                <td>COM-{{purchase.sourceCompanyId}}</td>
-                <td>WAR-{{purchase.sourceWarehouseId}}</td>
+                <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
                 <td>{{purchase.grossWt}}</td>
                 <td>{{purchase.netWt}}</td>
                 <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>
@@ -74,14 +74,14 @@
             <tbody>
               <tr *ngFor="let purchase of selectedPurchaseList; let i = index">
                 <td>{{i+1}}</td>
-                <td>LOT-{{purchase.id}}</td>
-                <td>LOT-{{purchase.title}}</td>
+                <td>{{Ids.LOT + '-' + purchase.id}}</td>
+                <td>{{purchase.title}}</td>
                 <td>{{purchase.lotType}}</td>
                 <td>{{purchase.status}}</td>
                 <td>{{purchase.productCategory}}</td>
                 <td>{{purchase.productShape}}</td>
-                <td>COM-{{purchase.sourceCompanyId}}</td>
-                <td>WAR-{{purchase.sourceWarehouseId}}</td>
+                <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
                 <td>{{purchase.grossWt}}</td>
                 <td>{{purchase.netWt}}</td>
                 <td>{{purchase.purchaseHistory[0].createdDate | date: 'medium'}}</td>

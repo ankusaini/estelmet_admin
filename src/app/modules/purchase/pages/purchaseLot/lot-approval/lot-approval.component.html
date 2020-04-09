@@ -32,14 +32,14 @@
                     <tr *ngFor="let purchase of pendingList; let i = index">
                       <td><label class="badge badge-warning">{{purchase?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>LOT-{{purchase?.id}}</td>
+                      <td>{{Ids.LOT + '-' + purchase?.id}}</td>
                       <td>{{purchase?.lotType}}</td>
-                      <td>LOT-{{purchase?.title}}</td>
+                      <td>{{purchase?.title}}</td>
                       <td>{{purchase?.productCategory}}</td>
                       <td>{{purchase?.productShape}}</td>
-                      <td>COM-{{purchase?.sourceCompanyId}}</td>
-                      <td>WAR-{{purchase?.sourceWarehouseId}}</td>
-                      <td>SU-{{purchase?.supplierId}}</td>
+                      <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
+                      <td>{{Ids.SUPPLIER + '-' + purchase.supplierId}}</td>
                       <td>{{purchase?.grossWt}}</td>
                       <td>{{purchase?.netWt}}</td>
                       <td>{{purchase?.purchaseHistory[0]?.createdDate | date: 'medium'}}</td>
@@ -88,14 +88,14 @@
                     <tr *ngFor="let purchase of approvedList; let i = index">
                       <td><label class="badge badge-success">{{purchase?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>LOT-{{purchase?.id}}</td>
+                      <td>{{Ids.LOT + '-' + purchase?.id}}</td>
                       <td>{{purchase?.lotType}}</td>
-                      <td>LOT-{{purchase?.title}}</td>
+                      <td>{{purchase?.title}}</td>
                       <td>{{purchase?.productCategory}}</td>
                       <td>{{purchase?.productShape}}</td>
-                      <td>COM-{{purchase?.sourceCompanyId}}</td>
-                      <td>WAR-{{purchase?.sourceWarehouseId}}</td>
-                      <td>SU-{{purchase?.supplierId}}</td>
+                      <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
+                      <td>{{Ids.SUPPLIER + '-' + purchase.supplierId}}</td>
                       <td>{{purchase?.grossWt}}</td>
                       <td>{{purchase?.netWt}}</td>
                       <td>{{purchase?.purchaseHistory[0]?.createdDate | date: 'medium'}}</td>
@@ -144,14 +144,14 @@
                     <tr *ngFor="let purchase of rejectedList; let i = index">
                       <td><label class="badge badge-danger">{{purchase?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>LOT-{{purchase?.id}}</td>
+                      <td>{{Ids.LOT + '-' + purchase?.id}}</td>
                       <td>{{purchase?.lotType}}</td>
-                      <td>LOT-{{purchase?.title}}</td>
+                      <td>{{purchase?.title}}</td>
                       <td>{{purchase?.productCategory}}</td>
                       <td>{{purchase?.productShape}}</td>
-                      <td>COM-{{purchase?.sourceCompanyId}}</td>
-                      <td>WAR-{{purchase?.sourceWarehouseId}}</td>
-                      <td>SU-{{purchase?.supplierId}}</td>
+                      <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                    <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
+                    <td>{{Ids.SUPPLIER + '-' + purchase.supplierId}}</td>
                       <td>{{purchase?.grossWt}}</td>
                       <td>{{purchase?.netWt}}</td>
                       <td>{{purchase?.purchaseHistory[0]?.createdDate | date: 'medium'}}</td>
@@ -210,14 +210,14 @@
                          <tr *ngFor="let purchase of selectedLotList; let i = index">
                       <td><label class="badge badge-danger">{{purchase?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>LOT-{{purchase?.id}}</td>
+                      <td>{{Ids.LOT + '-' + purchase?.id}}</td>
                       <td>{{purchase?.lotType}}</td>
-                      <td>LOT-{{purchase?.title}}</td>
+                      <td>{{purchase?.title}}</td>
                       <td>{{purchase?.productCategory}}</td>
                       <td>{{purchase?.productShape}}</td>
-                      <td>COM-{{purchase?.sourceCompanyId}}</td>
-                      <td>WAR-{{purchase?.sourceWarehouseId}}</td>
-                      <td>SU-{{purchase?.supplierId}}</td>
+                      <td>{{Ids.COMPANY + '-' + purchase.sourceCompanyId}}</td>
+                    <td>{{Ids.WAREHOUSE + '-' + purchase.sourceWarehouseId}}</td>
+                    <td>{{Ids.SUPPLIER + '-' + purchase.supplierId}}</td>
                       <td>{{purchase?.grossWt}}</td>
                       <td>{{purchase?.netWt}}</td>
                       <td>{{purchase?.purchaseHistory[0]?.createdDate | date: 'medium'}}</td>

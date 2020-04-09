@@ -3,6 +3,7 @@ import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { ToastrService } from "ngx-toastr";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-lot-approval',
@@ -11,6 +12,7 @@ import { RequestP } from "src/app/shared/Models/RequestResponse";
 })
 export class LotApprovalComponent implements OnInit {
   selectedTab: string = "PENDING";
+  public Ids: any;
   pendingData: any;
   approvedData: any;
   rejectedData: any;
@@ -20,7 +22,9 @@ export class LotApprovalComponent implements OnInit {
 public request : RequestP={};
   public selectedLotList : Purchase[]=[];
 
-  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) { }
+  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) { 
+    this.Ids = ids;
+  }
 
   ngOnInit() {
    

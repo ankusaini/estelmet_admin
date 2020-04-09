@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Router } from '@angular/router';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-search-view-lot',
@@ -12,10 +13,13 @@ export class SearchViewLotComponent implements OnInit {
   public purchaseData: any;
   public purchaseList: Purchase[];
   public selectedPurchaseList: Purchase[];
+  public Ids: any;
 
 
   constructor(private purchaseService: PurchaseService,
-              private router: Router) { }
+              private router: Router) {
+                this.Ids = ids;
+               }
 
   ngOnInit() {
     let url = "/purchase/getAllPurchaseByTypeAndStatus/LOT/APPROVED";
