@@ -68,7 +68,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">UG Id</label>
               <div class="col-sm-3">
-                {{selectedUserGroup?.userGroupId}}
+                <span *ngIf="selectedUserGroup?.userRole === 'CUSTOMER'" >{{Ids.CUSTOMER_GROUP + '-' + selectedUserGroup?.userGroupId}}</span>
+                <span *ngIf="selectedUserGroup?.userRole === 'SUPPLIER'" >{{Ids.SUPPLIER_GROUP + '-' + selectedUserGroup?.userGroupId}}</span>
+                <span *ngIf="selectedUserGroup?.userRole === 'AGENT'" >{{Ids.AGENT_GROUP + '-' + selectedUserGroup?.userGroupId}}</span>
+                <span *ngIf="selectedUserGroup?.userRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR_GROUP + '-' + selectedUserGroup?.userGroupId}}</span>
+                <span *ngIf="selectedUserGroup?.userRole === 'TRANSPORTER'" >{{Ids.TRANSPORTER_GROUP + '-' + selectedUserGroup?.userGroupId}}</span>
+                <!-- {{selectedUserGroup?.userGroupId}} -->
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">CUG Title</label>
               <div class="col-sm-3">
@@ -168,7 +173,11 @@
                 <tbody>
                   <tr href="kdkd" *ngFor="let user of userGroupList;let i = index">
                     <td>{{i+1}}</td>
-                    <td>{{user.userDetialId}}</td>
+                    <td *ngIf="user.userRole === 'CUSTOMER'" (click)="goToView(user)">{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="user.userRole === 'SUPPLIER'" (click)="goToView(user)">{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="user.userRole === 'AGENT'" (click)="goToView(user)">{{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="user.userRole === 'CONTRACTOR'" (click)="goToView(user)">{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="user.userRole === 'TRANSPORTER'" (click)="goToView(user)">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}}</td>
                     <td>{{user.mobile}}</td>

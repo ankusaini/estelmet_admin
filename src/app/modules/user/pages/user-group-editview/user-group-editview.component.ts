@@ -6,6 +6,7 @@ import { User, UserGroup } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { ids } from 'src/app/shared/Models/ids.model';
 @Component({
   selector: 'app-user-group-editview',
   templateUrl: './user-group-editview.component.html',
@@ -33,6 +34,7 @@ export class UserGroupEditviewComponent implements OnInit {
   public albums: Array<IAlbum>;
   private subscription: Subscription;
   routerSubscription: any;
+  public Ids: any;  
 
   constructor(
     private lightbox: Lightbox,
@@ -44,6 +46,7 @@ export class UserGroupEditviewComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
   ) {
+    this.Ids = ids;
     this.routerSubscription = this.route.url.subscribe(params => {
       this.groupId = this.route.snapshot.params.groupId;
       if (this.groupId) {
@@ -100,6 +103,13 @@ export class UserGroupEditviewComponent implements OnInit {
         this.editProfile = !this.editProfile;
       });
     }
+  }
+
+  goToView(user: User) {
+    this.userDataService.add(user).subscribe(() => {
+      // this.router.navigateByUrl('/users/find?userId='+ user.id);
+      this.router.navigate(['/users/profile', user.userDetialId]);
+    });
   }
 
   updateGroup(data) {

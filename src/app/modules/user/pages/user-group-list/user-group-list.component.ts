@@ -91,9 +91,9 @@ export class UserGroupListComponent implements OnInit {
     }
   }
 
-  navigateToEditView(userGroupId) {
-    // this.router.navigate(['/users/profile',user.id]);
-    const url = '/users/editGroup/' + userGroupId;
-    this.router.navigateByUrl(url);
+  navigateToEditView(userGroup) {
+    this.router.navigate(['/users/editGroup',userGroup.userGroupId]);
+    // const url = '/users/editGroup/' + userGroupId;
+    // this.router.navigateByUrl(url);
   }
 }

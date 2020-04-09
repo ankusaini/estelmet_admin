@@ -155,6 +155,10 @@ export class UserTradeDetailsComponent implements OnInit {
     })
   }
 
+  removePrefrence(item) {
+    let index : number = this.selectedUser.userProductPreference.indexOf(item);
+    this.selectedUser.userProductPreference.splice(index,1);
+  }
   // get f(): FormArray {
 	// 	return this.keyPersonDetails.get('details') as FormArray;
   // }
