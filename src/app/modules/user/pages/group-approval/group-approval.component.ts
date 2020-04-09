@@ -3,6 +3,8 @@ import { ToastrService } from 'ngx-toastr';
 import { UserGroup } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
+import { ids } from 'src/app/shared/Models/ids.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-group-approval',
   templateUrl: './group-approval.component.html',
@@ -14,11 +16,15 @@ export class GroupApprovalComponent implements OnInit {
   public pendingUserGroupList: UserGroup[];
   public approvedUserGroupList: UserGroup[];
   public rejectedUserGroupList: UserGroup[];
-
+  public Ids: any;
+  // public selectedRole: string ='';
   public selectedUserGroupList: UserGroup[] = [];
 
-  constructor(private userService: UserService, private toastrService: ToastrService) {
+  constructor(private userService: UserService,
+    private router: Router,
+     private toastrService: ToastrService) {
     this.basicSwal();
+    this.Ids = ids;
   }
 
   basicSwal() {
@@ -34,6 +40,8 @@ export class GroupApprovalComponent implements OnInit {
       },
       inputPlaceholder: 'Select Group Type',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -46,11 +54,14 @@ export class GroupApprovalComponent implements OnInit {
         });
       }
     }).then(selectedRole => {
-      if (selectedRole !== '') {
+      if (selectedRole.value) {
         this.selectedUserType = selectedRole.value;
         this.getPendingUserGroupList(selectedRole.value);
         this.getApprovedUserGroupList(selectedRole.value);
         this.getRejectedUserGroupList(selectedRole.value);
+      } else if(selectedRole.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }

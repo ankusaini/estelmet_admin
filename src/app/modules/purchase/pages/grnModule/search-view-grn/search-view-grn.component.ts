@@ -3,6 +3,7 @@ import { Grn } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-search-view-grn',
@@ -13,10 +14,13 @@ export class SearchViewGrnComponent implements OnInit {
   grnData: any;
   grnList: Grn[];
   selectedGrnList: Grn[] =[]; 
+  public Ids: any;
 
 
   constructor(private purchaseService: PurchaseService,
-              private router: Router,private toastr:ToastrService) { }
+              private router: Router,private toastr:ToastrService) { 
+                this.Ids = ids;
+              }
 
   ngOnInit() {
     let url = "/purchase/getAllGrn";

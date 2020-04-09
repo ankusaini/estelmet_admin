@@ -3,6 +3,7 @@ import { Grn } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { ToastrService } from "ngx-toastr";
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class GrnApprovalComponent implements OnInit {
   pendingData: any;
   approvedData: any;
   rejectedData: any;
+  public Ids: any;
   public pendingList : Grn[];
   public approvedList : Grn[];
   public rejectedList : Grn[];
@@ -22,7 +24,9 @@ export class GrnApprovalComponent implements OnInit {
   public selectedGrnList: Grn[]= [];
 
   constructor(private purchaseService: PurchaseService,
-              private toastr:ToastrService) { }
+              private toastr:ToastrService) {
+                this.Ids =ids;
+               }
 
   ngOnInit() {
    this.getAllGrnByStatus("PENDING");

@@ -31,7 +31,11 @@
                   <tr href="kdkd" *ngFor="let userGroup of pendingUserGroupList;let i = index">
                     <td><label class="badge badge-warning">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CUSTOMER'">{{Ids.CUSTOMER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'SUPPLIER'">{{Ids.SUPPLIER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'AGENT'">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CONTRACTOR'">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'TRANSPORTER'">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
                     <td>{{userGroup.productType}}</td>
                     <td>{{userGroup.productCategory}}</td>
@@ -80,7 +84,11 @@
                   <tr href="kdkd" *ngFor="let userGroup of approvedUserGroupList;let i = index">
                     <td><label class="badge badge-success">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CUSTOMER'">{{Ids.CUSTOMER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'SUPPLIER'">{{Ids.SUPPLIER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'AGENT'">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CONTRACTOR'">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'TRANSPORTER'">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
                     <td>{{userGroup.productType}}</td>
                     <td>{{userGroup.productCategory}}</td>
@@ -130,7 +138,11 @@
                   <tr href="kdkd" *ngFor="let userGroup of rejectedUserGroupList;let i = index">
                     <td><label class="badge badge-danger">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CUSTOMER'">{{Ids.CUSTOMER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'SUPPLIER'">{{Ids.SUPPLIER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'AGENT'">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CONTRACTOR'">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'TRANSPORTER'">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
                     <td>{{userGroup.productType}}</td>
                     <td>{{userGroup.productCategory}}</td>
@@ -192,7 +204,11 @@
                          <tr href="kdkd" *ngFor="let userGroup of selectedUserGroupList;let i = index">
                           <td><label class="badge badge-default">{{userGroup.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td>{{userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CUSTOMER'">{{Ids.CUSTOMER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'SUPPLIER'">{{Ids.SUPPLIER_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'AGENT'">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'CONTRACTOR'">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
+                    <td *ngIf="selectedUserType === 'TRANSPORTER'">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
                     <td>{{userGroup.userGroupName}}</td>
                     <td>{{userGroup.productType}}</td>
                     <td>{{userGroup.productCategory}}</td>
