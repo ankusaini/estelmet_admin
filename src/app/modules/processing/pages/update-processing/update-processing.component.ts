@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
+import { Router } from '@angular/router';
+import { WizardComponent } from 'ng2-archwizard/dist';
 
 @Component({
   selector: 'app-update-processing',
@@ -8,12 +10,15 @@ import { ProcessingService } from '../../service/processing.service';
   styleUrls: ['./update-processing.component.css']
 })
 export class UpdateProcessingComponent implements OnInit {
+  @ViewChild('wizard', {static: false}) wizard: WizardComponent;
   public processingType: string = "";
   public processingList: any[];
   public processingIdList: any[];
   public selectedProcessingId: any;
 
-  constructor(private processingService: ProcessingService) { }
+  constructor(
+    private router: Router,
+    private processingService: ProcessingService) { }
 
   ngOnInit() {
     this.basicSwal();
@@ -29,6 +34,8 @@ export class UpdateProcessingComponent implements OnInit {
       },
       inputPlaceholder: '-Select-',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Select',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -41,7 +48,7 @@ export class UpdateProcessingComponent implements OnInit {
         });
       }
     }).then(processingType => {
-      if(processingType !== "") {
+      if(processingType.value) {
         this.processingType = processingType.value.toString().toUpperCase();
         console.log(this.processingType);
         let url = "/inventory/productProcessing/getAllProductProcessingByProcessingTypeAndStatus/"+ this.processingType +"/APPROVED";
@@ -51,6 +58,9 @@ export class UpdateProcessingComponent implements OnInit {
           this.processingIdList = this.processingList.map(processing => processing.productProcessingId);
           console.log(this.processingIdList);
         });
+      } else if(processingType.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }
@@ -59,6 +69,7 @@ export class UpdateProcessingComponent implements OnInit {
     console.log(id);
     this.selectedProcessingId = id;
     console.log(this.selectedProcessingId);
+    this.wizard.navigation.goToNextStep();
   }
 
 

@@ -1,5 +1,5 @@
 export interface MachineDetail {
-    id: string;
+    machineDetailId: string;
     machineName: string;
     machineType: string;
     description: string;

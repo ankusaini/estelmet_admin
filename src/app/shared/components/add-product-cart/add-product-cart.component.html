@@ -34,8 +34,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr href="kdkd" *ngFor="let product of productList;let i = index">
-              <td (click)="navigateToEdit(product.productId)">{{i+1}}</td>
+              <tr (click)="navigateToEdit(product.productId)" href="kdkd" *ngFor="let product of productList;let i = index">
+              <td >{{i+1}}</td>
               <!-- <td>P-{{product.productId}}</td> -->
               <td>{{product.productType?.productType}}</td>
               <td>{{product.productCategory?.productCategory}}</td>
@@ -46,7 +46,7 @@
               <td>{{product.lengthMin}}-{{product.lengthMax}}</td>
               <td>{{product.temperMin?.productTemper}}-{{product.temperMax?.productTemper}}</td>
               <td>{{product.hardnessMin?.productHardness}}-{{product.hardnessMax?.productHardness}}</td>
-              <td>{{product.height}}</td>
+              <td>{{product.heigth}}</td>
               <td>{{product.productCoating?.productCoating}}</td>
                <td>{{product.productDefect?.productDefect}}</td>
                <td>{{product.productOrigin?.productOrigin}}</td>

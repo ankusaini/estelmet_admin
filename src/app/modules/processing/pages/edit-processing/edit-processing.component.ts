@@ -92,6 +92,7 @@ export class EditProcessingComponent implements OnInit {
         const url = '/inventory/productProcessing/find/' + this.processingId;
         this.processingService.findProductById(url).subscribe(data => {
           this.processingData = data;
+          console.log(this.processingData);
           this.productList = this.processingData.productList;
 
           // form initate
@@ -137,7 +138,7 @@ export class EditProcessingComponent implements OnInit {
     const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineDetailList = data;
-      this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.id);
+      this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.machineDetailId);
     }, error => {
       console.log(error);
     });

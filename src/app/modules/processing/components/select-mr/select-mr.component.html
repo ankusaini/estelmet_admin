@@ -43,7 +43,7 @@
                       class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
                       <select class="form-control" formControlName="contractorId" (change)="setContractorName($event.target.value)" name="validation-warId">
-                      <option *ngFor="let id of contractorIdList" [value]="id">CON-{{id}}</option>
+                      <option *ngFor="let id of contractorIdList" [value]="id">{{Ids.CONTRACTOR + '-' +id}}</option>
                     </select>
                     <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
                     id="validation-warId-error"
@@ -90,7 +90,7 @@
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-3">
                     <select class="form-control" formControlName="companyId" (change)="setCompanyName($event.target.value)" name="validation-warId">
-                    <option *ngFor="let id of companyIdList" [value]="id">COM-{{id}}</option>
+                    <option *ngFor="let id of companyIdList" [value]="id">{{Ids.COMPANY + '-' +id}}</option>
                   </select>
                   <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
                   id="validation-warId-error"
@@ -111,7 +111,7 @@
                 class="asterik_sign">*</small></label>
             <div class="col-sm-3">
                 <select class="form-control" formControlName="warehouseId" (change)="setwarehouseName($event.target.value)"  name="validation-warId">
-                <option *ngFor="let id of warehouseIdList" [value]="id" >WAR-{{id}}</option>
+                <option *ngFor="let id of warehouseIdList" [value]="id" >{{Ids.WAREHOUSE + '-' +id}}</option>
               </select>
               <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
               id="validation-warId-error"
@@ -158,7 +158,7 @@
 
       <div class="row form-group">
         <div class="col-md-12">
-          <button type="submit" class="btn btn-primary btn-sm" [disabled]="!selectMrIdForm.valid" nextStep>Next</button>
+          <button type="submit" class="btn btn-primary btn-sm" >Next</button>
           
         </div>
       </div>

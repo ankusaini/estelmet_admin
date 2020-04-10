@@ -35,6 +35,7 @@ export class AddProductComponent implements OnInit {
     const url = '/purchase/getAllGrnByStatus/PENDING';
     this.inventoryService.getAllGrnByStatus(url).subscribe(data => {
       this.grnList = data.grnList;
+      console.log(this.grnList);
     });
   }
 
@@ -52,6 +53,8 @@ export class AddProductComponent implements OnInit {
       },
       inputPlaceholder: 'Select Product Type',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Select',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -64,8 +67,11 @@ export class AddProductComponent implements OnInit {
         });
       }
     }).then(selectedType => {
-      if (selectedType !== '') {
+      if (selectedType.value) {
         this.selectedProductType = selectedType.value;
+      } else if(selectedType.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }
@@ -77,13 +83,14 @@ export class AddProductComponent implements OnInit {
   }
 
   getProductData(productData) {
+    console.log(productData);
     this.productList.push(productData);
   }
 
   sendForApproval() {
     if (this.productList.length > 0) {
 
-      this.productList.forEach( x => x.warehouse = { id :Number(this.selectedGrn.selectedWarehouseId)});
+      this.productList.forEach( x => x.warehouse = {id: Number(this.selectedGrn.sourceWarehouseId)});
 
       this.requestObj.grn = this.selectedGrn;
       this.requestObj.productList = this.productList;

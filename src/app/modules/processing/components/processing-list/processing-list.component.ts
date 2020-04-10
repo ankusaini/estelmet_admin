@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-processing-list',
@@ -9,10 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProcessingListComponent implements OnInit {
   @Input() productProcessingList: any[];
   @Input() cart = false;
+  @Input() processingType: string;
   public selectedProcessingList: any[] = [];
+  public Ids: any;
   @Output() selectedList: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) { 
+    this.Ids = ids;
+  }
 
   ngOnInit() {
 

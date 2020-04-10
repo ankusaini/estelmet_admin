@@ -17,17 +17,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let processing of productProcessingList; let i = index">
+              <tr (click)="navigateToEdit(processing.productProcessingId)" *ngFor="let processing of productProcessingList; let i = index">
                 <td>{{i+1}}</td>
-                <td (click)="navigateToEdit(processing.productProcessingId)">MSP-{{processing?.productProcessingId}}</td>
+                <td *ngIf="processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + processing?.productProcessingId}}</td>
+                <td *ngIf="processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + processing?.productProcessingId}}</td>
+                <td *ngIf="processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + processing?.productProcessingId}}</td>
                 <td>{{processing?.processingType}}</td>
                 <td>{{processing?.jobWorkType}}</td>
                 <td>{{processing?.productCategory?.productCategory}}</td>
                 <!-- <td>MWC</td> -->
-                <td>CNT-{{processing?.contractorId}}</td>
-                <td>COM-{{processing?.companyId}}</td>
-                <td>WAR-{{processing?.warehouseId}}</td>
-                <td>MAC-{{processing?.machineDetailId}}</td>
+                <td>{{Ids.CONTRACTOR + '-' + processing?.contractorId}}</td>
+                <td>{{Ids.COMPANY + '-' + processing?.companyId}}</td>
+                <td>{{Ids.WAREHOUSE + '-' + processing?.warehouseId}}</td>
+                <td>MD-{{processing?.machineDetailId}}</td>
                 <td>{{processing?.createdDate | date: 'medium'}}</td>
                 <td>
                   <button *ngIf="!cart" (click)="addToProcessingList(processing)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>

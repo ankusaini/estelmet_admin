@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-processing',
@@ -13,7 +14,8 @@ export class SearchProcessingComponent implements OnInit {
   public productProcessingList: any[];
 
 
-  constructor(private processingService: ProcessingService) { }
+  constructor(private processingService: ProcessingService,
+    private router: Router) { }
 
   ngOnInit() {
     this.basicSwal();
@@ -30,6 +32,8 @@ export class SearchProcessingComponent implements OnInit {
       },
       inputPlaceholder: '-Select-',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -42,7 +46,7 @@ export class SearchProcessingComponent implements OnInit {
         });
       }
     }).then(processingType => {
-      if (processingType !== '') {
+      if (processingType.value) {
         this.processingType = processingType.value.toString().toUpperCase();
         const url = '/inventory/productProcessing/getAllProductProcessingByProcessingTypeAndStatus/' + this.processingType + '/APPROVED';
         this.processingService.getAllProductProcessingByProcessingTypeAndStatus(url).subscribe(data => {
@@ -50,6 +54,9 @@ export class SearchProcessingComponent implements OnInit {
         }, error => {
           console.log(error);
         });
+      }  else if(processingType.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
 

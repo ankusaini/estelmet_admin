@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Grn, LotType } from 'src/app/shared/Models/purchase.model';
 import { InventoryService } from '../../service/inventory.service';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-select-grn',
@@ -15,9 +16,10 @@ export class SelectGrnComponent implements OnInit, OnChanges {
   @Input() grnList: Grn[];
   grnIdList: any[] = [];
   grnIdForm: FormGroup;
+  public Ids: any;
 
   constructor(private inventoryService: InventoryService, private toastr: ToastrService) {
-
+    this.Ids = ids;
   }
 
   ngOnInit() {

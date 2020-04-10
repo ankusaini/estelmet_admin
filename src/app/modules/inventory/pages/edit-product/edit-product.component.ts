@@ -91,6 +91,7 @@ export class EditProductComponent implements OnInit {
         const url = '/inventory/find/' + this.productId;
         this.inventoryService.findRequstObjectById(url).subscribe(data => {
           this.productResponse = data;
+          console.log(this.productResponse);
 
           this.productIdForm = new FormGroup({
             productId: new FormControl(this.productResponse.productId, [Validators.required]),
@@ -112,16 +113,16 @@ export class EditProductComponent implements OnInit {
             widthMax: new FormControl(this.productResponse.widthMax, [Validators.required]),
             lengthMin: new FormControl(this.productResponse.lengthMin, [Validators.required]),
             lengthMax: new FormControl(this.productResponse.lengthMax, [Validators.required]),
-            temperMin: new FormControl(this.productResponse.temperMin, [Validators.required]),
-            temperMax: new FormControl(this.productResponse.temperMax, [Validators.required]),
+            temperMin: new FormControl(this.productResponse.temperMin.productTemper, [Validators.required]),
+            temperMax: new FormControl(this.productResponse.temperMax.productTemper, [Validators.required]),
             productHardness: new FormControl(this.productResponse.hardnessMax.productHardness, [Validators.required]),
-            productCoating: new FormControl(this.productResponse.productCoating, [Validators.required]),
-            productDefect: new FormControl(this.productResponse.productDefect, [Validators.required]),
-            productOrigin: new FormControl(this.productResponse.productOrigin, [Validators.required]),
-            productOiling: new FormControl(this.productResponse.productOiling, [Validators.required]),
-            productSurfaceCoating: new FormControl(this.productResponse.productSurfaceCoating, [Validators.required]),
-            productAnnealing: new FormControl(this.productResponse.productAnnealing, [Validators.required]),
-            productFinish: new FormControl(this.productResponse.productFinish, [Validators.required]),
+            productCoating: new FormControl(this.productResponse.productCoating.productCoating, [Validators.required]),
+            productDefect: new FormControl(this.productResponse.productDefect.productDefect, [Validators.required]),
+            productOrigin: new FormControl(this.productResponse.productOrigin.productOrigin, [Validators.required]),
+            productOiling: new FormControl(this.productResponse.productOiling.productOiling, [Validators.required]),
+            productSurfaceCoating: new FormControl(this.productResponse.productSurfaceCoating.productSurfaceCoating, [Validators.required]),
+            productAnnealing: new FormControl(this.productResponse.productAnnealing.productAnnealing, [Validators.required]),
+            productFinish: new FormControl(this.productResponse.productFinish.productFinish, [Validators.required]),
             gwt: new FormControl(this.productResponse.gwt, [Validators.required]),
             nwt: new FormControl(this.productResponse.nwt, [Validators.required]),
             remarks: new FormControl('')
@@ -147,6 +148,7 @@ export class EditProductComponent implements OnInit {
     this.staticData.getProductType().subscribe(data => {
       this.productTypeList = data.map(typeObj => typeObj.productType)
         .filter(typeObj => typeObj !== null);
+        console.log(this.productTypeList);
     });
 
     this.staticData.getProductClass().subscribe(data => {
