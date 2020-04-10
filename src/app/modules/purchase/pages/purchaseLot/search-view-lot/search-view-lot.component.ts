@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { Router } from '@angular/router';
 import { ids } from 'src/app/shared/Models/ids.model';
+
+import * as xlsx from 'xlsx';
+import * as jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
+
+
+
 
 @Component({
   selector: 'app-search-view-lot',
@@ -14,6 +22,7 @@ export class SearchViewLotComponent implements OnInit {
   public purchaseList: Purchase[];
   public selectedPurchaseList: Purchase[];
   public Ids: any;
+  @ViewChild('epltable', { static: false }) epltable: ElementRef;
 
 
   constructor(private purchaseService: PurchaseService,
@@ -51,4 +60,71 @@ export class SearchViewLotComponent implements OnInit {
     this.router.navigateByUrl("purchase/lotEdit/" + id);
   }
 
+  
+  exportToExcel() {
+    const ws: xlsx.WorkSheet =
+    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'User.xlsx');
+    // console.log("fnc")
+   }
+
+
+   exportToPDF()
+   {
+
+     var node = document.getElementById('contentToConvert');
+console.log('node',node);
+              var img;
+              var filename;
+              var newImage;
+
+
+              domtoimage.toPng(node, { bgcolor: '#fff' })
+
+                .then(function(dataUrl) {
+
+                  img = new Image();
+                  img.src = dataUrl;
+                  newImage = img.src;
+
+                  img.onload = function(){
+
+                  var pdfWidth = img.width;
+                  var pdfHeight = img.height;
+
+                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+                    var doc;
+
+                    if(pdfWidth > pdfHeight)
+                    {
+                      doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    else
+                    {
+                      doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+                    }
+
+
+                    var width = doc.internal.pageSize.getWidth();
+                    var height = doc.internal.pageSize.getHeight();
+
+
+                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    filename = 'User' + '.pdf';
+                    doc.save(filename);
+
+                  };
+
+
+                })
+                .catch(function(error) {
+
+                 // Error Handling
+
+                });
+
+   }
 }

@@ -7,9 +7,12 @@ import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
-import * as jspdf from 'jspdf'; 
+// import * as jspdf from 'jspdf'; 
+// import * as jsPDF from 'jspdf';
+import * as xlsx from 'xlsx';
+import * as jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
-// import * as xlsx from 'xlsx';
 
 @Component({
   selector: 'app-users-list',
@@ -19,6 +22,7 @@ import html2canvas from 'html2canvas';
 export class UsersListComponent implements OnInit, AfterViewInit {
 
   @ViewChild('epltable', { static: false }) epltable: ElementRef;
+
   public userList: any;
   dtExportButtonOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -132,29 +136,75 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   }
 
   exportToExcel() {
-    // const ws: xlsx.WorkSheet =
-    // xlsx.utils.table_to_sheet(this.epltable.nativeElement);
-    // const wb: xlsx.WorkBook = xlsx.utils.book_new();
-    // xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
-    // xlsx.writeFile(wb, 'epltable.xlsx');
-    console.log("fnc")
+    const ws: xlsx.WorkSheet =
+    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'User.xlsx');
+    // console.log("fnc")
+   }
 
-    var data = document.getElementById('contentToConvert');
-    html2canvas(data).then(canvas => {
-    // Few necessary setting options
-    var imgWidth = 208;
-    var pageHeight = 295;
-    var imgHeight = canvas.height * imgWidth / canvas.width;
-    var heightLeft = imgHeight;
-    
-    const contentDataURL = canvas.toDataURL('image/png')
-    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-    var position = 0;
-    pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-    pdf.save('MYPdf.pdf'); // Generated PDF
-    });
+
+   exportToPDF()
+   {
+     console.log("pdf")
+
+
+     var node = document.getElementById('contentToConvert');
+console.log('node',node);
+              var img;
+              var filename;
+              var newImage;
+
+
+              domtoimage.toPng(node, { bgcolor: '#fff' })
+
+                .then(function(dataUrl) {
+
+                  img = new Image();
+                  img.src = dataUrl;
+                  newImage = img.src;
+
+                  img.onload = function(){
+
+                  var pdfWidth = img.width;
+                  var pdfHeight = img.height;
+
+                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+                    var doc;
+
+                    if(pdfWidth > pdfHeight)
+                    {
+                      doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    else
+                    {
+                      doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+                    }
+
+
+                    var width = doc.internal.pageSize.getWidth();
+                    var height = doc.internal.pageSize.getHeight();
+
+
+                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    filename = 'User' + '.pdf';
+                    doc.save(filename);
+
+                  };
+
+
+                })
+                .catch(function(error) {
+
+                 // Error Handling
+
+                });
 
    }
+
+
    print() {
     window.print();
   }

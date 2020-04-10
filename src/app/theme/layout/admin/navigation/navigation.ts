@@ -506,20 +506,20 @@ const NavigationItems = [
           //   url: '/processing/editProcessing',
           //   target: false,
           // },
-          {
-            id: 'COProcessing',
-            title: 'CO to Processing',
-            type: 'item',
-            url: '/processing/convertCOProcessing',
-            target: false,
-          },
-          {
-            id: 'MergeProduct',
-            title: 'Merge Product',
-            type: 'item',
-            url: '/processing/mergeProduct',
-            target: false,
-          }
+          // {
+          //   id: 'COProcessing',
+          //   title: 'CO to Processing',
+          //   type: 'item',
+          //   url: '/processing/convertCOProcessing',
+          //   target: false,
+          // },
+          // {
+          //   id: 'MergeProduct',
+          //   title: 'Merge Product',
+          //   type: 'item',
+          //   url: '/processing/mergeProduct',
+          //   target: false,
+          // }
         ]
       },
     ]
@@ -529,42 +529,42 @@ const NavigationItems = [
     title: 'Sales',
     type: 'group',
     children: [
-      {
-        id: 'salesLead',
-        title: 'Sales Lead',
-        type: 'collapse',
-        icon: 'feather icon-shopping-cart',
-        children: [
-          {
-            id: 'createSalesLead',
-            title: 'Create Sales lead',
-            type: 'item',
-            url: '/salesLead/createSalesLead',
-            target: false,
-          },
-          {
-            id: 'searchSalesLead',
-            title: 'Search Sales lead',
-            type: 'item',
-            url: '/salesLead/searchSalesLead',
-            target: false,
-          },
-          {
-            id: 'OverviewSalesLead',
-            title: 'Sales lead Overview',
-            type: 'item',
-            url: '/salesLead/slOverview',
-            target: false,
-          },
-          {
-            id: 'EditSalesLead',
-            title: 'Edit Sales lead',
-            type: 'item',
-            url: '/salesLead/editSl',
-            target: false,
-          }
-        ]
-      },
+      // {
+      //   id: 'salesLead',
+      //   title: 'Sales Lead',
+      //   type: 'collapse',
+      //   icon: 'feather icon-shopping-cart',
+      //   children: [
+          // {
+          //   id: 'createSalesLead',
+          //   title: 'Create Sales lead',
+          //   type: 'item',
+          //   url: '/salesLead/createSalesLead',
+          //   target: false,
+          // },
+          // {
+          //   id: 'searchSalesLead',
+          //   title: 'Search Sales lead',
+          //   type: 'item',
+          //   url: '/salesLead/searchSalesLead',
+          //   target: false,
+          // },
+          // {
+          //   id: 'OverviewSalesLead',
+          //   title: 'Sales lead Overview',
+          //   type: 'item',
+          //   url: '/salesLead/slOverview',
+          //   target: false,
+          // },
+          // {
+          //   id: 'EditSalesLead',
+          //   title: 'Edit Sales lead',
+          //   type: 'item',
+          //   url: '/salesLead/editSl',
+          //   target: false,
+          // }
+      //   ]
+      // },
       {
         id: 'salesTab',
         title: 'Sales',

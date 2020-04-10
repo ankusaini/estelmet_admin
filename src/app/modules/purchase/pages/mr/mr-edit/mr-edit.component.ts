@@ -113,10 +113,11 @@ export class MrEditComponent implements OnInit {
       this.request.productList = this.productList;
 
       this.request.purchase = this.mrResponse.purchase;
+      // this.request.purchase.status='PENDING'
 
       console.log("request object is ", this.request);
-      // let path = "/purchase/updatePurchaseWithProduct";
-        let path = "/purchase/updatePurchase";
+       let path = "/purchase/updatePurchaseWithProduct";
+       // let path = "/purchase/updatePurchase";
       this.purchaseService.updateRequestObject(path, this.request).subscribe(
         data => {
           alert("Mr Updated");

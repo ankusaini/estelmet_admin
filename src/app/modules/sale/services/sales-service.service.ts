@@ -22,6 +22,16 @@ export class SalesServiceService {
         });
     }
 
+    public getAllSalesByTypeAndStatusCheck(type,status): Observable<any> {
+          let url="/sales/getAllSalesByTypeAndStatus/"+type+"/"+status;
+
+        return new Observable<any>( obs => {
+            this._apiService.get(url).subscribe( res => {
+                obs.next(res);
+            })
+        });
+    }
+
     public updateRequestObject(url,requestObj:RequestP):Observable<ResponseP>
   {
     return new Observable<ResponseP>(obs=>{

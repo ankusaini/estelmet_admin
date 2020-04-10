@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserGroup } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
+import * as xlsx from 'xlsx';
+import * as jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-user-group-list',
@@ -24,6 +29,8 @@ export class UserGroupListComponent implements OnInit {
   public selectedUserGroupList: UserGroup[] = [];
   public selectedRole: string ='';
   public Ids: any;
+
+    @ViewChild('epltable', { static: false }) epltable: ElementRef;
 
   ngOnInit() { }
   basicSwal() {
@@ -96,4 +103,73 @@ export class UserGroupListComponent implements OnInit {
     // const url = '/users/editGroup/' + userGroupId;
     // this.router.navigateByUrl(url);
   }
+
+  
+  exportToExcel() {
+    const ws: xlsx.WorkSheet =
+    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'User Group.xlsx');
+    // console.log("fnc")
+   }
+
+
+   exportToPDF()
+   {
+
+     var node = document.getElementById('contentToConvertList');
+console.log('node',node);
+              var img;
+              var filename;
+              var newImage;
+
+
+              domtoimage.toPng(node, { bgcolor: '#fff' })
+
+                .then(function(dataUrl) {
+
+                  img = new Image();
+                  img.src = dataUrl;
+                  newImage = img.src;
+
+                  img.onload = function(){
+
+                  var pdfWidth = img.width;
+                  var pdfHeight = img.height;
+
+                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+                    var doc;
+
+                    if(pdfWidth > pdfHeight)
+                    {
+                      doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    else
+                    {
+                      doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+                    }
+
+
+                    var width = doc.internal.pageSize.getWidth();
+                    var height = doc.internal.pageSize.getHeight();
+
+
+                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    filename = 'User Group' + '.pdf';
+                    doc.save(filename);
+
+                  };
+
+
+                })
+                .catch(function(error) {
+
+                 // Error Handling
+
+                });
+
+   }
+
 }
