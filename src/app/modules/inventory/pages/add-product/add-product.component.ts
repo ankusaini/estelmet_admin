@@ -90,11 +90,7 @@ export class AddProductComponent implements OnInit {
   sendForApproval() {
     if (this.productList.length > 0) {
 
-<<<<<<< HEAD
-      this.productList.forEach( x => x.warehouse = {id: Number(this.selectedGrn.sourceWarehouseId)});
-=======
       this.productList.forEach( x => x.warehouse = { id :Number(this.selectedGrn.sourceWarehouseId)});
->>>>>>> 6f4e17ad4b8c0400ca01513dae71b92029500d7c
 
       this.requestObj.grn = this.selectedGrn;
       this.requestObj.productList = this.productList;
