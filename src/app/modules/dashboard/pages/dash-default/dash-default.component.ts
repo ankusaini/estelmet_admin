@@ -100,96 +100,123 @@ export class DashDefaultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllUsers();
+    this.getCountByUserRole('CUSTOMER');
+     this.getCountByUserRole('SUPPLIER');
+      this.getCountByUserRole('TRANSPORTER');
+       this.getCountByUserRole('AGENT');
   }
 
-  getAllUsers() {
-    const url = '/users/getAllUsers';
-    this.userService.getAllUsersForDashboard(url).subscribe(
-      data => {
-        this.userList = data;
-        if (this.userList && this.userList.length > 0) {
-          this.totalCustomerCount = this.userList.filter(user => {
-            return user.userRole === this.CUSTOMER;
-          }).length;
-
-          this.approvedCustomerCount = this.userList.filter(user => {
-            return user.userRole === this.CUSTOMER && user.status === this.APPROVED;
-          }).length;
-
-          this.pendingCustomerCount = this.userList.filter(user => {
-            return user.userRole === this.CUSTOMER && user.status === this.PENDING;
-          }).length;
-
-          this.rejectedCustomerCount = this.userList.filter(user => {
-            return user.userRole === this.CUSTOMER && user.status === this.REJECTED;
-          }).length;
-          // customer section end
-
-
-          // Supplier section start
-          this.totalSupplierCount = this.userList.filter(user => {
-            return user.userRole === this.SUPPLIER;
-          }).length;
-
-          this.approvedSupplierCount = this.userList.filter(user => {
-            return user.userRole === this.SUPPLIER && user.status === this.APPROVED;
-          }).length;
-
-          this.pendingSupplierCount = this.userList.filter(user => {
-            return user.userRole === this.SUPPLIER && user.status === this.PENDING;
-          }).length;
-
-          this.rejectedSupplierCount = this.userList.filter(user => {
-            return user.userRole === this.SUPPLIER && user.status === this.REJECTED;
-          }).length;
-          // Supplier section end
-
-
-          // Contractor section start
-          this.totalContractorCount = this.userList.filter(user => {
-            return user.userRole === this.CONTRACTOR;
-          }).length;
-
-          this.approvedContractorCount = this.userList.filter(user => {
-            return user.userRole === this.CONTRACTOR && user.status === this.APPROVED;
-          }).length;
-
-          this.pendingContractorCount = this.userList.filter(user => {
-            return user.userRole === this.CONTRACTOR && user.status === this.PENDING;
-          }).length;
-
-          this.rejectedContractorCount = this.userList.filter(user => {
-            return user.userRole === this.CONTRACTOR && user.status === this.REJECTED;
-          }).length;
-          // Contractor section end
-          // Agent section start
-          this.totalAgentCount = this.userList.filter(user => {
-            return user.userRole === this.AGENT;
-          }).length;
-
-          this.approvedAgentCount = this.userList.filter(user => {
-            return user.userRole === this.AGENT && user.status === this.APPROVED;
-          }).length;
-
-          this.pendingAgentCount = this.userList.filter(user => {
-            return user.userRole === this.AGENT && user.status === this.PENDING;
-          }).length;
-
-          this.rejectedAgentCount = this.userList.filter(user => {
-            return user.userRole === this.AGENT && user.status === this.REJECTED;
-          }).length;
-
-          this.totalContractorCount = this.userList.filter(user => {
-            return user.userRole === this.CONTRACTOR;
-          }).length;
-
-        }
-
-      },
-      () => {
-        this.toastrService.error('Something went wrong');
-      }
-    );
+  getCountByUserRole(role) {
+    this.userService.getCountByUserRole(role).subscribe(data => {
+      if(role=='CUSTOMER')
+      this.totalCustomerCount=data.data;
+      if(role=='SUPPLIER')
+      this.totalSupplierCount=data.data;
+      if(role=='TRANSPORTER')
+      this.totalContractorCount=data.data;
+      if(role=='AGENT')
+      this.totalAgentCount=data.data;
+    }, error => {
+      console.log("erorr");
+    })
   }
+
+  getAllUserByRole(role)
+  {
+
+  }
+
+  getAllUserByRoleAndStatus(role,status)
+  {
+    
+  }
+  // getAllUsers() {
+  //   const url = '/users/getAllUsers';
+  //   this.userService.getAllUsersForDashboard(url).subscribe(
+  //     data => {
+  //       this.userList = data;
+  //       if (this.userList && this.userList.length > 0) {
+  //         this.totalCustomerCount = this.userList.filter(user => {
+  //           return user.userRole === this.CUSTOMER;
+  //         }).length;
+
+  //         this.approvedCustomerCount = this.userList.filter(user => {
+  //           return user.userRole === this.CUSTOMER && user.status === this.APPROVED;
+  //         }).length;
+
+  //         this.pendingCustomerCount = this.userList.filter(user => {
+  //           return user.userRole === this.CUSTOMER && user.status === this.PENDING;
+  //         }).length;
+
+  //         this.rejectedCustomerCount = this.userList.filter(user => {
+  //           return user.userRole === this.CUSTOMER && user.status === this.REJECTED;
+  //         }).length;
+  //         // customer section end
+
+
+  //         // Supplier section start
+  //         this.totalSupplierCount = this.userList.filter(user => {
+  //           return user.userRole === this.SUPPLIER;
+  //         }).length;
+
+  //         this.approvedSupplierCount = this.userList.filter(user => {
+  //           return user.userRole === this.SUPPLIER && user.status === this.APPROVED;
+  //         }).length;
+
+  //         this.pendingSupplierCount = this.userList.filter(user => {
+  //           return user.userRole === this.SUPPLIER && user.status === this.PENDING;
+  //         }).length;
+
+  //         this.rejectedSupplierCount = this.userList.filter(user => {
+  //           return user.userRole === this.SUPPLIER && user.status === this.REJECTED;
+  //         }).length;
+  //         // Supplier section end
+
+
+  //         // Contractor section start
+  //         this.totalContractorCount = this.userList.filter(user => {
+  //           return user.userRole === this.CONTRACTOR;
+  //         }).length;
+
+  //         this.approvedContractorCount = this.userList.filter(user => {
+  //           return user.userRole === this.CONTRACTOR && user.status === this.APPROVED;
+  //         }).length;
+
+  //         this.pendingContractorCount = this.userList.filter(user => {
+  //           return user.userRole === this.CONTRACTOR && user.status === this.PENDING;
+  //         }).length;
+
+  //         this.rejectedContractorCount = this.userList.filter(user => {
+  //           return user.userRole === this.CONTRACTOR && user.status === this.REJECTED;
+  //         }).length;
+  //         // Contractor section end
+  //         // Agent section start
+  //         this.totalAgentCount = this.userList.filter(user => {
+  //           return user.userRole === this.AGENT;
+  //         }).length;
+
+  //         this.approvedAgentCount = this.userList.filter(user => {
+  //           return user.userRole === this.AGENT && user.status === this.APPROVED;
+  //         }).length;
+
+  //         this.pendingAgentCount = this.userList.filter(user => {
+  //           return user.userRole === this.AGENT && user.status === this.PENDING;
+  //         }).length;
+
+  //         this.rejectedAgentCount = this.userList.filter(user => {
+  //           return user.userRole === this.AGENT && user.status === this.REJECTED;
+  //         }).length;
+
+  //         this.totalContractorCount = this.userList.filter(user => {
+  //           return user.userRole === this.CONTRACTOR;
+  //         }).length;
+
+  //       }
+
+  //     },
+  //     () => {
+  //       this.toastrService.error('Something went wrong');
+  //     }
+  //   );
+  // }
 }

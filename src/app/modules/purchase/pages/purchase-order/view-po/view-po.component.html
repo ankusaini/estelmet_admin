@@ -6,7 +6,7 @@
           <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
-                <th>Sr. No.</th>
+                <th >Sr. No.</th>
                 <th>PO Id</th>
                 <th>PO Title</th>
                 <th>Category</th>
@@ -18,15 +18,15 @@
               </tr>
             </thead>
             <tbody>
-               <tr  *ngFor="let mr of poList;let i = index">
-              <td (click)="routeToEditMr(mr.id)">{{i+1}}</td>
+               <tr (click)="routeToEditMr(mr.id)" *ngFor="let mr of poList;let i = index">
+              <td >{{i+1}}</td>
               <td >PO-{{mr.id}}</td>
-              <td>{{mr.title}}</td>
-              <td>{{mr.productCategory}}</td>
-              <td>{{mr.productShape}}</td>
-              <td>{{mr.sourceCompanyId}}</td>
-              <td>{{mr.sourceWarehouseId}}</td>
-              <td>{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+              <td >{{mr.title}}</td>
+              <td >{{mr.productCategory}}</td>
+              <td >{{mr.productShape}}</td>
+              <td >{{mr.sourceCompanyId}}</td>
+              <td >{{mr.sourceWarehouseId}}</td>
+              <td >{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
               <td>
                   <span class="badge badge-light-success">{{mr.status}}</span>
                   <div class="overlay-edit">

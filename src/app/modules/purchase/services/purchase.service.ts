@@ -16,7 +16,7 @@ export class PurchaseService {
   {
     return new Observable<ResponseP>(obs=>{
       this._apiService.post(path,requestObj).subscribe(res=>{
-        obs.next(res);
+        obs.next(res.body);
       });
     });
   }

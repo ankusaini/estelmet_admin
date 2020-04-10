@@ -91,9 +91,11 @@ export class TransportDetailsComponent implements OnInit {
         //   this.supplierId.push(supplier['id']);
         // }
         if (this.supplierList && this.supplierList.length > 0) {
+          console.log("supplierList",this.supplierList)
           this.supplierIdList = this.supplierList.map(
             supplierObj => supplierObj.userDetialId
           );
+           console.log("supplierIdList",this.supplierIdList)
         }
       },
       error => {

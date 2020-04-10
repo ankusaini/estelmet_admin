@@ -72,7 +72,9 @@ export class CreateLotComponent implements OnInit {
         JOB_WORK_OTHER: "Job Work Other"
       },
       inputPlaceholder: "Select LOT Type",
+      showCancelButton: true,
       allowOutsideClick: false,
+       cancelButtonText: 'Cancel',
       confirmButtonText: "Select",
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -85,8 +87,13 @@ export class CreateLotComponent implements OnInit {
         });
       }
     }).then(selectedType => {
+      if (selectedType.value) {
       this.selectedLotType = selectedType.value;
-     
+      }
+    else if(selectedType.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
+      }
     });
   }
 
@@ -101,8 +108,9 @@ export class CreateLotComponent implements OnInit {
    console.log("request",this.requestObj)
     this.purchaseService.saveRequestObject(path, this.requestObj).subscribe(
       data => {
-        this.toastr.success("Record saved successfully");
-        this.router.navigateByUrl("/purchase/lotApproval");
+        let generateId=data.purchase.id;
+        this.toastr.success("Record saved successfully.Generated Id:"+generateId);
+        this.router.navigateByUrl("/purchase/lotEdit/"+generateId);
       },
       error => {
         console.log("error is", error);

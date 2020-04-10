@@ -20,9 +20,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let grn of grnList; let i = index">
+              <tr (click)="navigateToEdit(grn.grnId)" *ngFor="let grn of grnList; let i = index">
                 <td>{{i+1}}</td>
-                <td (click)="navigateToEdit(grn.grnId)">{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
+                <td >{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
                 <td>{{Ids.LOT + '-' + grn.purchaseId}}</td>
                 <td>{{grn.grnType}}</td>
                 <td>{{grn.status}}</td>

@@ -18,8 +18,8 @@
               </tr>
             </thead>
             <tbody>
-               <tr  *ngFor="let mr of mrList;let i = index">
-              <td (click)="routeToEditMr(mr.id)">{{i+1}}</td>
+               <tr (click)="routeToEditMr(mr.id)"  *ngFor="let mr of mrList;let i = index">
+              <td >{{i+1}}</td>
               <td >{{Ids.MATERIAL_REQUIREMENT + '-' + mr.id}}</td>
               <td>{{mr.title}}</td>
               <td>{{mr.productCategory}}</td>

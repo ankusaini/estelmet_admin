@@ -69,6 +69,8 @@ export class CreateGrnComponent implements OnInit {
       inputPlaceholder: 'Select GRN Type',
       allowOutsideClick: false,
       confirmButtonText: 'Select',
+       showCancelButton: true,
+       cancelButtonText: 'Cancel',
       inputValidator: value=> {
         // tslint:disable-next-line: only-arrow-functions
         return new Promise(function(resolve, reject) {
@@ -80,6 +82,8 @@ export class CreateGrnComponent implements OnInit {
         });
       }
     }).then(val => {
+      if(val.value)
+        {
       this.selecteValue = val.value;
       this.getSelectedRole(this.selecteValue);
       console.log(val);
@@ -87,6 +91,11 @@ export class CreateGrnComponent implements OnInit {
       this.getAllSuppliar();
       this.getAllTransporter();
       this.getAllCompany();
+        }
+    else if(val.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
+      }
     });
   }
 

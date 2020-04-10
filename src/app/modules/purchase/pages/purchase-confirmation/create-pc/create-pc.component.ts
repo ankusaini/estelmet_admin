@@ -95,8 +95,10 @@ public component='pc';
     let path= "/purchase/updatePurchaseHistory";
     this.purchaseService.updateRequestObject(path, this.requestObj).subscribe( data => {
       // alert("saved")
-      this.toastr.success("Record saved successfully")
-      this.router.navigateByUrl("/purchase/pcApproval");  
+      console.log(data);
+      let generateId=data.purchase.id;
+      this.toastr.success("Record saved successfully. Generated Id:"+generateId)
+      this.router.navigateByUrl("/purchase/pcEdit/"+generateId);  
     }, error => {
       console.log(error);
     });
