@@ -7,6 +7,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { Status } from "src/app/shared/Models/product.model.";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-lot-with-pc',
@@ -23,7 +24,7 @@ export class CreateLotWithPcComponent implements OnInit {
   public selectedPurchase: Purchase;
   public requestp:RequestP={};
   formInput: FormInput;
-  constructor(private purchaseService: PurchaseService,private toastr:ToastrService) {
+  constructor(private purchaseService: PurchaseService,private toastr:ToastrService,private router: Router) {
     this.isSubmit = false;
    // this.basicSwal();
    }
@@ -69,7 +70,8 @@ export class CreateLotWithPcComponent implements OnInit {
                 this.requestp.purchase=this.selectedPurchase
              let url='/purchase/updatePurchaseHistory';
              this.purchaseService.updateRequestObject(url,this.requestp).subscribe(data=>{
-                this.toastr.success("Lot creates with id",data.purchase.id)
+                this.toastr.success("Lot creates with id . Generated Id:"+data.purchase.id)
+                this.router.navigateByUrl("/purchase/lotEdit/"+data.purchase.id);
              },error=>{
 
              })

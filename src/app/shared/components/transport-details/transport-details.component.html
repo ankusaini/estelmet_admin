@@ -6,7 +6,7 @@
             <label for="validationCustom02">Transporter Id</label>
             <select #transporterID class="form-control" name="validation-companyName" formControlName="transportId">
                 <option value="" disabled>Select Transporter Id</option>
-                <option *ngFor="let item of transportList; let i=index" [value]="item.id">TP-{{ item.userDetialId}}</option>
+                <option *ngFor="let item of transportList; let i=index" [value]="item.userDetialId">TP-{{ item.userDetialId}}</option>
                 <!-- put here fetch data and passed it to the parent component, -->
             </select>
             <small *ngIf="f.transportId.value == '' && (f.transportId.dirty || f.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -18,7 +18,7 @@
             <label for="validationCustom02">Supplier Id</label>
             <select class="form-control" name="validation-companyName" formControlName="supplierId">
                 <option value="" disabled>Select Supplier Id</option>
-                <option *ngFor="let id of supplierIdList; let i=index" [value]="id">SU-{{userDetialId}}</option>
+                <option *ngFor="let item of supplierList; let i=index" [value]="item.userDetialId">SU-{{ item.userDetialId}}</option>
 
             </select>
             <small *ngIf="f.supplierId.value == '' && (f.supplierId.dirty || f.supplierId.touched )" id="passwordHelpBlock" class="form-text text-muted"

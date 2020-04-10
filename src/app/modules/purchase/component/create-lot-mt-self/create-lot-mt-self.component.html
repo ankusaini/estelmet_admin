@@ -132,6 +132,7 @@
               <thead>
                 <tr>
                   <th>Sr. No.</th>
+                  <th>Product Id</th>
                   <th>Type</th>
                   <th>Category</th>
                   <th>Shape</th>
@@ -160,6 +161,7 @@
             <tbody>
               <tr href="kdkd" *ngFor="let product of productList;let i = index">
               <td >{{i+1}}</td>
+              <td >{{product.productId}}</td>
               <td>{{product.productType?.productType}}</td>
               <td>{{product.productCategory?.productCategory}}</td>
               <td>{{product.productShape?.productShape}}</td>

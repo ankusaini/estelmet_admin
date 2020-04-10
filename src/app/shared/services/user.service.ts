@@ -32,6 +32,17 @@ export class UserService {
     });
   }
 
+  
+getCountByUserRole(role)
+{
+  let url='/users/countByUserRole?userRole='+role;
+    return new Observable<any>(obs => {
+      this.apiService.get(url).subscribe(res => {
+        obs.next(res);
+      });
+    });
+}
+
   getAllUsersForDashboard(url): Observable<User[]> {
     return new Observable<User[]>(obs => {
       this.apiService.get(url).subscribe(res => {

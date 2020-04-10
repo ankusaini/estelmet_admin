@@ -8,7 +8,7 @@
               <tr>
                 <!-- <th><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="customCheck1"><label class="custom-control-label" for="customCheck1"></label></div></th> -->
                 <th>Sr. No.</th>
-                <!-- <th>Product Id</th> -->
+                 <th *ngIf="component=='inventory'">Product Id</th> 
                 <th>Type</th>
                 <th>Category</th>
                 <th>Shape</th>
@@ -36,7 +36,7 @@
             <tbody>
               <tr href="kdkd" *ngFor="let product of productList;let i = index">
               <td (click)="navigateToEdit(product.productId)">{{i+1}}</td>
-              <!-- <td>P-{{product.productId}}</td> -->
+               <td *ngIf="component=='inventory'">P-{{product.productId}}</td> 
               <td>{{product.productType?.productType}}</td>
               <td>{{product.productCategory?.productCategory}}</td>
               <td>{{product.productShape?.productShape}}</td>

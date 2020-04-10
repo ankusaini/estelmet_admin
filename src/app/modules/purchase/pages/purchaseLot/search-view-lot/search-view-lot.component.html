@@ -22,9 +22,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let purchase of purchaseList; let i = index">
+              <tr (click)="navigateToEdit(purchase.id)" *ngFor="let purchase of purchaseList; let i = index">
                 <td>{{i+1}}</td>
-                <td (click)="navigateToEdit(purchase.id)" >{{Ids.LOT + '-' + purchase.id}}</td>
+                <td >{{Ids.LOT + '-' + purchase.id}}</td>
                 <td>{{purchase.title}}</td>
                 <td>{{purchase.lotType}}</td>
                 <td>{{purchase.status}}</td>
