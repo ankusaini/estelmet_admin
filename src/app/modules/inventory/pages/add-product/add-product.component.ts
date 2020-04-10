@@ -72,6 +72,7 @@ export class AddProductComponent implements OnInit {
 
   getSelectedGrnId(grnId) {
     this.selectedGrn = grnId;
+    console.log('selected grn',this.selectedGrn);
     this.wizard.navigation.goToNextStep();
   }
 
@@ -81,6 +82,9 @@ export class AddProductComponent implements OnInit {
 
   sendForApproval() {
     if (this.productList.length > 0) {
+
+      this.productList.forEach( x => x.warehouse = { id :Number(this.selectedGrn.selectedWarehouseId)});
+
       this.requestObj.grn = this.selectedGrn;
       this.requestObj.productList = this.productList;
       const url = '/purchase/updateGrnWithProduct';

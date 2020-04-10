@@ -41,12 +41,16 @@
               </div>
           </div>
         </div>
-       
+       <div class="row">
+         <h5 class="m-t-20">Your Select MR Id :{{selectedMrId}}</h5>
+        <hr/>
+       </div>
+
         <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
             <!-- <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp; -->
             <!-- [disabled]="!selectedMr"  -->
-            <button type="button" class="btn btn-primary btn-sm"   (click)="submitSelectMrId()">Next</button>
+            <button *ngIf="component=='pc'" type="button" class="btn btn-primary btn-sm"   (click)="submitSelectMrId()">Next</button>
           </div>
         </div>
     

@@ -59,10 +59,13 @@ export class SelectGrnComponent implements OnInit, OnChanges {
 
   saveGrnId() {
     if (this.grnIdForm.valid) {
+      console.log("list",this.grnList);
+      console.log("form",this.grnIdForm.value)
       const grn = this.grnList.filter(obj => {
-        return obj.grnId === this.grnIdForm.controls.grnId.value;
+        return obj.grnId == this.grnIdForm.controls.grnId.value;
       });
-      if (grn) {
+      console.log("grns selectec",grn);
+            if (grn && grn.length>0) {
         this.selectedGrnId.emit(grn[0]);
       }
     } else {

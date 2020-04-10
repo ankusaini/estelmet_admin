@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CreatePoComponent implements OnInit {
 public request : RequestP={};
+public component='po';
   public selectedMr: Purchase;
   constructor(private purchaseService: PurchaseService,
               private toastr: ToastrService,
@@ -24,9 +25,12 @@ public request : RequestP={};
     this.selectedMr = data;
     this.selectedMr.status = Status.APPROVED; 
     this.selectedMr.type = PurchaseType.PURCHASE_ORDER
+    console.log('data',this.selectedMr);
   }
 
    savePORecord() {
+     if(this.selectedMr)
+      {
     this.request.purchase = this.selectedMr;
     console.log("request is: ", this.request.purchase);
     let path= "/purchase/updatePurchase";
@@ -37,6 +41,10 @@ public request : RequestP={};
     }, error => {
       console.log(error);
     });
-    
+      }
+  else
+    {
+      this.toastr.warning("Please select MR Id");
+    }
   }
 }

@@ -7,13 +7,13 @@
           <div class="col-sm-3">
             <select [value]="selectedName.value" #selectedId class="form-control" formControlName="supplierId">
               <option value>Select id</option>
-              <option [value] = "item.id" *ngFor="let item of suppliarList">{{ item.id }}</option>
+              <option [value] = "item.userDetialId" *ngFor="let item of suppliarList">{{ item.userDetialId }}</option>
             </select>
           </div>
           <div class="col-sm-5">
             <select #selectedName [value]="selectedId.value" class="form-control" name="validation-pcId" formControlName="supplierId">
               <option value>Name</option>
-              <option [value] = "item.id" *ngFor="let item of suppliarList">{{ item.firstName }}</option>
+              <option [value] = "item.userDetialId" *ngFor="let item of suppliarList">{{ item.firstName }}</option>
             </select>
             <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
           </div>

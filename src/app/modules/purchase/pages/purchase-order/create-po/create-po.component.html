@@ -1,7 +1,7 @@
 <app-card cardTitle="Create Purchase Confirmation" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select MR Id" navigationSymbol="1">
-        <app-mr-list (selectedMrData)="getSelectedMr($event)"></app-mr-list>                                                                                                                                                                                                     
+        <app-mr-list [component]="component" (selectedMrData)="getSelectedMr($event)"></app-mr-list>                                                                                                                                                                                                     
     <div class="col-sm-12 centered-content m-t-20">
           <div class="btn-group mt-10">
           

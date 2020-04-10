@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Purchase } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MrListComponent implements OnInit {
   public mrList: Purchase[];
+  public selectedMrId:any;
   public selectedMr: Purchase;
+  @Input() component:any;
+  
   @Output() selectedMrData: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private purchaseService: PurchaseService, private router: Router, private toastService: ToastrService) {
@@ -19,6 +22,7 @@ export class MrListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("component is",this.component);
   }
 
   getAllPurchaseByTypeAndStatus(type, status) {
@@ -45,6 +49,15 @@ export class MrListComponent implements OnInit {
 
   getSelectedMr(mr) {
     this.selectedMr = mr;
+    this.selectedMrId='MR-'+mr.id;
+    if(this.component=='po')
+      {
+        if (this.selectedMr) {
+      this.selectedMrData.emit(this.selectedMr);
+    } else {
+      this.toastService.warning('Select Mr Id!');
+    }
+      }
     console.log('selected', mr);
   }
 }

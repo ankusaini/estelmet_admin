@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 export class CreatePcComponent implements OnInit {
 @ViewChild("wizard", {static: true}) wizard: WizardComponent;
 
+public component='pc';
   showData: boolean;
   public requestObj : RequestP={};
   public productList: Product[];
