@@ -196,8 +196,8 @@
               <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
               <div class="col-sm-3">
                 <div class="row">
-                  <div class="col-md-6">{{productResponse?.temperMin}}</div>
-                  <div class="col-md-6">{{productResponse?.temperMax}}</div>
+                  <div class="col-md-6">{{productResponse?.temperMin?.productTemper}}</div>
+                  <div class="col-md-6">{{productResponse?.temperMax?.productTemper}}</div>
                 </div>
               </div>
             </div>
@@ -208,38 +208,38 @@
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
               <div class="col-sm-3">
-                {{productResponse?.productCoating}}
+                {{productResponse?.productCoating?.productCoating}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Defect</label>
               <div class="col-sm-3">
-                {{productResponse?.productDefect}}
+                {{productResponse?.productDefect?.productDefect}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Origin</label>
               <div class="col-sm-3">
-                {{productResponse?.productOrigin}}
+                {{productResponse?.productOrigin?.productOrigin}}
               </div>
             </div>
             <!--  -->
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Oiling</label>
               <div class="col-sm-3">
-                {{productResponse?.productOrigin}}
+                {{productResponse?.productOiling?.productOiling}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Surface</label>
               <div class="col-sm-3">
-                {{productResponse?.productSurfaceCoating}}
+                {{productResponse?.productSurfaceCoating?.productSurfaceCoating}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Annealing</label>
               <div class="col-sm-3">
-                {{productResponse?.productAnnealing}}
+                {{productResponse?.productAnnealing?.productAnnealing}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Finish</label>
               <div class="col-sm-3">
-                {{productResponse?.productFinish}}
+                {{productResponse?.productFinish?.productFinish}}
               </div>
             </div>
             <div class="form-group row">
@@ -266,7 +266,7 @@
                 <div class="col-sm-3">
                   <select class="form-control" formControlName="productType" id="exampleFormControlSelect1">
                     <option 
-                      *ngFor="let type of ProductTypeList"
+                      *ngFor="let type of productTypeList"
                       [value]="type">{{type}}</option>
                   </select>
                 </div>

@@ -2,11 +2,13 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
-import { User } from 'src/app/shared/Models/user.model';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ProcessingService } from '../../service/processing.service';
+import { ids } from 'src/app/shared/Models/ids.model';
+import { UserDetail } from 'src/app/shared/Models/user.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-select-mr',
@@ -19,8 +21,9 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   warehouseData: Warehouse[];
   machineData: MachineDetail[];
-  contractorData: User[];
+  contractorData: UserDetail[];
   companyData: Company[];
+  public Ids: any;
 
   productCategoryList: any[];
   companyList: any[];
@@ -43,7 +46,10 @@ export class SelectMrComponent implements OnInit, OnChanges {
   constructor(
     private staticData: StaticDataService,
     private processingService: ProcessingService,
-    private userService: UserService) { }
+    private toastr: ToastrService,
+    private userService: UserService) {
+      this.Ids = ids;
+     }
 
   ngOnInit() {
     this.staticData.getAllProductCategory().subscribe(data => {
@@ -77,7 +83,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
       this.machineData = data;
       this.machineDetailList = data.map(machine => machine.machineName)
         .filter(machine => machine !== null);
-      this.machineDetailIdList = data.map(machine => machine.id)
+      this.machineDetailIdList = data.map(machine => machine.machineDetailId)
         .filter(machine => machine !== null);
     });
 
@@ -85,6 +91,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
     this.userService.getAllUserByUserNameAndCompany('CONTRACTOR','APPROVED').subscribe(data => {
       this.contractorData = data;
+
       this.contractorList = data.map(contarctor => contarctor.firstName)
         .filter(contarctor => contarctor !== null);
       this.contractorIdList = data.map(contarctor => contarctor.userDetialId)
@@ -112,7 +119,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setContractorName(id) {
     this.contractorData.find(contractor => {
-      if (contractor.id === id) {
+      if (contractor.userDetialId == id) {
         this.selectMrIdForm.patchValue({
           contractorFirstName: contractor.firstName
         });
@@ -122,7 +129,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setMachineName(id) {
     this.machineData.find(machine => {
-      if (machine.id === id) {
+      if (machine.machineDetailId == id) {
         // alert(name);
         this.selectMrIdForm.patchValue({
           machineName: machine.machineName
@@ -133,8 +140,9 @@ export class SelectMrComponent implements OnInit, OnChanges {
   }
 
   setCompanyName(id) {
+    console.log(id);
     this.companyData.find(company => {
-      if (company.id === id) {
+      if (company.id == id) {
         this.selectMrIdForm.patchValue({
           companyName: company.name
         });
@@ -144,7 +152,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setwarehouseName(id) {
     this.warehouseData.find(warehouse => {
-      if (warehouse.id === id) {
+      if (warehouse.id == id) {
         this.selectMrIdForm.patchValue({
           warehouseName: warehouse.name
         });
@@ -156,7 +164,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     this.contractorData.find(contractor => {
       if (contractor.firstName === name) {
         this.selectMrIdForm.patchValue({
-          contractorId: contractor.id
+          contractorId: contractor.userDetialId
         });
       }
     });
@@ -166,7 +174,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     this.machineData.find(machine => {
       if (machine.machineName === name) {
         this.selectMrIdForm.patchValue({
-          machineDetailId: machine.id
+          machineDetailId: machine.machineDetailId
         });
       }
     });
@@ -193,7 +201,11 @@ export class SelectMrComponent implements OnInit, OnChanges {
   }
 
   submitSelectMrId() {
-    this.selectMrData.emit(this.selectMrIdForm.value);
+    if(this.selectMrIdForm.valid) {
+      this.selectMrData.emit(this.selectMrIdForm.value);
+    } else {
+      this.toastr.error("Invalid Details!");
+    }
   }
 
 }

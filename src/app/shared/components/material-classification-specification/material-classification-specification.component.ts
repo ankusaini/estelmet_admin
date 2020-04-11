@@ -42,15 +42,7 @@ function MaxthicknessConfirming(c: AbstractControl): any {
   }
 }
 
-function MaxtemperConfirming(c: AbstractControl): any {
-  if (!c.parent || !c) { return; }
-  const minTemper = (c.parent.get('productTemperMin'));
-  const maxTemper = (c.parent.get('productTemperMax'));
-  if (!maxTemper || !minTemper) { return; }
-  if (maxTemper.value < minTemper.value) {
-    return { invalid: true };
-  }
-}
+
 @Component({
   selector: 'app-material-classification-specification',
   templateUrl: './material-classification-specification.component.html',
@@ -116,45 +108,45 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
       // productType:new FormGroup({
 
       productType: new FormGroup({
-        id: new FormControl(''),
+        id: new FormControl('', [Validators.required]),
         productType: new FormControl('', [Validators.required])
       }),
       productCategory: new FormGroup({
-        id: new FormControl(''),
+        id: new FormControl('', [Validators.required]),
         productCategory: new FormControl('', [Validators.required])
       }),
       productShape: new FormGroup({
-        id: new FormControl(''),
+        id: new FormControl('', [Validators.required]),
         productShape: new FormControl('', [Validators.required])
       }),
       productClass: new FormGroup({
-        id: new FormControl(''),
+        id: new FormControl('', [Validators.required]),
         productClass: new FormControl('', [Validators.required])
       }),
-      thicknessMin: new FormControl(''),
-      thicknessMax: new FormControl('', [CustomValidator.compondValueValidate, MaxthicknessConfirming]),
-      widthMin: new FormControl(''),
-      widthMax: new FormControl('', [MaxwidthConfirming, CustomValidator.compondValueValidate]),
-      lengthMin: new FormControl(''),
-      lengthMax: new FormControl('', [MaxlengthConfirming, CustomValidator.compondValueValidate]),
+      thicknessMin: new FormControl('', [Validators.required]),
+      thicknessMax: new FormControl('', [CustomValidator.compondValueValidate, Validators.required, MaxthicknessConfirming]),
+      widthMin: new FormControl('', [Validators.required]),
+      widthMax: new FormControl('', [MaxwidthConfirming, Validators.required, CustomValidator.compondValueValidate]),
+      lengthMin: new FormControl('', [Validators.required]),
+      lengthMax: new FormControl('', [MaxlengthConfirming, Validators.required, CustomValidator.compondValueValidate]),
       hardnessMin: new FormGroup({
-        id: new FormControl(''),
-        productHardness: new FormControl('')
+        id: new FormControl('', [Validators.required]),
+        productHardness: new FormControl('', [Validators.required])
       }),
       hardnessMax: new FormGroup({
-        id: new FormControl(''),
-        productHardness: new FormControl('')
+        id: new FormControl('', [Validators.required]),
+        productHardness: new FormControl('', [Validators.required,])
       }),
       temperMin: new FormGroup({
-        id: new FormControl(''),
-        productTemper: new FormControl('')
+        id: new FormControl('', [Validators.required]),
+        productTemper: new FormControl('', [Validators.required])
       }),
       temperMax: new FormGroup({
-        id: new FormControl(''),
-        productTemper: new FormControl('')
+        id: new FormControl('', [Validators.required]),
+        productTemper: new FormControl('', [Validators.required])
       }),
 
-      heigth: new FormControl('', [CustomValidator.compondValueValidate]),
+      heigth: new FormControl('', [CustomValidator.compondValueValidate, Validators.required]),
       productCoating: new FormGroup({
         id: new FormControl(''),
         productCoating: new FormControl('')
@@ -187,8 +179,8 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
         id: new FormControl(''),
         productPackaging: new FormControl('')
       }),
-      gwt: new FormControl('', [CustomValidator.compondValueValidate]),
-      nwt: new FormControl('', [CustomValidator.compondValueValidate]),
+      gwt: new FormControl('', [CustomValidator.compondValueValidate, Validators.required]),
+      nwt: new FormControl('', [CustomValidator.compondValueValidate, Validators.required]),
       remarks: new FormControl(''),
       status: new FormControl('PENDING'),
       gpId: new FormControl(''),
@@ -332,5 +324,10 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
 
   get f() {
     return this.productForm.controls;
+  }
+
+  get f2()
+  {
+    return this.productForm.controls.productShape as FormGroup;
   }
 }

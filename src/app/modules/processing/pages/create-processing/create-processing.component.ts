@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Processing } from 'src/app/shared/Models/processing.model';
@@ -6,6 +6,7 @@ import { Product, ProductCategory } from 'src/app/shared/Models/product.model.';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
+import { WizardComponent } from 'ng2-archwizard/dist';
 
 @Component({
   selector: 'app-create-processing',
@@ -13,6 +14,8 @@ import { ProcessingService } from '../../service/processing.service';
   styleUrls: ['./create-processing.component.css']
 })
 export class CreateProcessingComponent implements OnInit {
+  @ViewChild('wizard', {static: false}) wizard: WizardComponent;
+
   showGroup = true;
   public isSubmit: boolean;
   processingType = '';
@@ -55,6 +58,8 @@ export class CreateProcessingComponent implements OnInit {
       },
       inputPlaceholder: '-Select-',
       allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
       confirmButtonText: 'Create',
       inputValidator(value) {
         // tslint:disable-next-line: only-arrow-functions
@@ -67,8 +72,11 @@ export class CreateProcessingComponent implements OnInit {
         });
       }
     }).then(processingType => {
-      if (processingType !== '') {
-        this.processingType = processingType.value.toString().toUpperCase();
+      if (processingType.value) {
+        this .processingType = processingType.value.toString().toUpperCase();
+      } else if(processingType.dismiss === Swal.DismissReason.cancel){
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
       }
     });
   }
@@ -90,6 +98,7 @@ export class CreateProcessingComponent implements OnInit {
     if (selectedPC) {
       this.processing.productCategory = selectedPC[0];
     }
+    this.wizard.navigation.goToNextStep();
   }
 
   getSelectedProductList(selectedProductList) {

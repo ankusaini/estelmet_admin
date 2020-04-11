@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ProcessingService } from '../../service/processing.service';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 @Component({
   selector: 'app-processing-approval',
@@ -12,10 +13,12 @@ export class ProcessingApprovalComponent implements OnInit {
   public pendingProductList: any[];
   public approvedProductList: any[];
   public rejectedProductList: any[];
+  public Ids: any;
 
   public selectedProductList: any[] = [];
 
   constructor(private processingService: ProcessingService, private toastr: ToastrService) {
+    this.Ids = ids;
   }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class ProcessingApprovalComponent implements OnInit {
       this.processingService.getAllProductProcessingByStatus(pendingUrl)
         .subscribe(data => {
           this.pendingProductList = data;
+          console.log(this.pendingProductList);
         },
           error => {
             console.log(error);
@@ -96,15 +100,17 @@ export class ProcessingApprovalComponent implements OnInit {
       for (let i = 0; i < this.selectedProductList.length; i++) {
         this.selectedProductList[i].status = status;
         this.processingService.updateProcessing(path, this.selectedProductList[i]).subscribe(
-          () => {
+          res => {
             this.selectedProductList = [];
+            this.toastr.success('Record successfully saved');
             this.getAllProcessingByTypeAndStatus('PENDING');
             this.getAllProcessingByTypeAndStatus('APPROVED');
             this.getAllProcessingByTypeAndStatus('REJECTED');
-          },
+          }, error => {
+            console.log(error);
+          }
         );
       }
-      this.toastr.success('Record successfully saved');
     }
   }
 }

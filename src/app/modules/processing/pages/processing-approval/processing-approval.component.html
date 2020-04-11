@@ -28,7 +28,9 @@
                     <tr *ngFor="let product of pendingProductList; let i= index">
                       <td><label class="badge badge-warning">{{product?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>{{product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + product?.productProcessingId}}</td>
                       <td>{{product?.jobWorkType}}</td>
                       <td>{{product?.productCategory?.productCategory}}</td>
                       <td>COM-{{product?.companyId}}</td>
@@ -75,7 +77,9 @@
                     <tr *ngFor="let product of approvedProductList; let i = index">
                       <td><label class="badge badge-success">{{product?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + product?.productProcessingId}}</td>
                       <td>{{product?.jobWorkType}}</td>
                       <td>{{product?.productCategory?.productCategory}}</td>
                       <td>COM-{{product?.companyId}}</td>
@@ -122,7 +126,9 @@
                     <tr *ngFor="let product of rejectedProductList; let i= index">
                       <td><label class="badge badge-danger">{{product?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + product?.productProcessingId}}</td>
                       <td>{{product?.jobWorkType}}</td>
                       <td>{{product?.productCategory?.productCategory}}</td>
                       <td>COM-{{product?.companyId}}</td>
@@ -176,7 +182,9 @@
                <tr  *ngFor="let product of selectedProductList;let i = index">
                <td><label class="badge badge-danger">{{product?.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>MSP-{{product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + product?.productProcessingId}}</td>
+                      <td *ngIf="product.processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + product?.productProcessingId}}</td>
                       <td>{{product?.jobWorkType}}</td>
                       <td>{{product?.productCategory?.productCategory}}</td>
                       <td>COM-{{product?.companyId}}</td>

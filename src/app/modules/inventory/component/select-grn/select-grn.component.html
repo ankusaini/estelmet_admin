@@ -9,7 +9,7 @@
                       <option 
                         *ngFor="let grn of grnIdList;"
                         [value]="grn.grnId"  >
-                        {{grn.grnId}}
+                        {{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}
                       </option>
                       <!-- <option value="1">GRN-#91</option>
                       <option value="2">GRN-#0899</option>

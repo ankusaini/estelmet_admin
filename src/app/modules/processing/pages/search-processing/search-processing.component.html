@@ -9,6 +9,7 @@
       <app-card [hidHeader]="false" cardTitle="Search & Select Processing Id " [options]="false"
         cardClass="user-profile-list">
         <app-processing-list
+          [processingType]="processingType" 
           [productProcessingList]="productProcessingList"
           (selectedList)="getSelectedProductList($event)"> 
         </app-processing-list>
