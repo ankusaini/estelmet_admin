@@ -66,7 +66,7 @@ export class SearchViewLotComponent implements OnInit {
     xlsx.utils.table_to_sheet(this.epltable.nativeElement);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
-    xlsx.writeFile(wb, 'User.xlsx');
+    xlsx.writeFile(wb, 'Lot.xlsx');
     // console.log("fnc")
    }
 
@@ -113,7 +113,7 @@ console.log('node',node);
 
 
                     doc.addImage(newImage, 'PNG',  10, 10, width, height);
-                    filename = 'User' + '.pdf';
+                    filename = 'Lot' + '.pdf';
                     doc.save(filename);
 
                   };
