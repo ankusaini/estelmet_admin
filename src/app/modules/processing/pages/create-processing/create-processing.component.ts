@@ -115,8 +115,9 @@ export class CreateProcessingComponent implements OnInit {
       this.processing.processingType = this.processingType;
       const url = '/inventory/productProcessing/addProductProcessing';
       this.processingService.addProcessing(url, this.processing).subscribe(data => {
-        this.toastr.success('Record saved successfully');
-        this.router.navigateByUrl('/processing/processingApproval');
+        console.log("Data",data.productProcessingId)
+        this.toastr.success('Record saved successfully.Generated Id:'+data.productProcessingId);
+        this.router.navigateByUrl('/processing/editProcessing/'+data.productProcessingId);
       }, error => {
         this.toastr.warning('something went wrong');
       });

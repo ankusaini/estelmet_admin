@@ -105,7 +105,7 @@ export class CreateAuctionIdComponent implements OnInit {
 
   selectedCompany(value: number) {
     const data = this.companyList.filter(element => {
-      return element.id === value;
+      return element.id == value;
     });
     this.selectedComapny = data[0];
   }
@@ -117,13 +117,13 @@ export class CreateAuctionIdComponent implements OnInit {
   generateAoId() {
     if (this.salesDto.value.productCategory && this.salesDto.value.productShape) {
       this.categoryList.map(category => {
-        if (category.id === this.salesDto.value.productCategory) {
+        if (category.id == this.salesDto.value.productCategory) {
           this.selectedCategory = category.productCategory;
         }
       });
 
       this.shapeList.map(shape => {
-        if (shape.id === this.salesDto.value.productShape) {
+        if (shape.id == this.salesDto.value.productShape) {
           this.selectedShape = shape.productShape;
         }
       });

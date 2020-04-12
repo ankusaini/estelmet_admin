@@ -2,8 +2,8 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & Select MR Id " [options]="false"
         cardClass="user-profile-list">
-        <div #epltable  *ngIf="mrList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" datatable class="table table-striped table-bordered table-hover">
+        <div   *ngIf="mrList" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table  datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -18,15 +18,15 @@
               </tr>
             </thead>
             <tbody>
-               <tr (click)="routeToEditMr(mr.id)"  *ngFor="let mr of mrList;let i = index">
-              <td >{{i+1}}</td>
-              <td >{{Ids.MATERIAL_REQUIREMENT + '-' + mr.id}}</td>
-              <td>{{mr.title}}</td>
-              <td>{{mr.productCategory}}</td>
-              <td>{{mr.productShape}}</td>
-              <td>{{mr.sourceCompanyId}}</td>
-              <td>{{mr.sourceWarehouseId}}</td>
-              <td>{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+               <tr *ngFor="let mr of mrList;let i = index">
+              <td (click)="routeToEditMr(mr.id)"  >{{i+1}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{Ids.MATERIAL_REQUIREMENT + '-' + mr.id}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.title}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.productCategory}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.productShape}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.sourceCompanyId}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.sourceWarehouseId}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
               <td>
                   <span class="badge badge-light-success">{{mr.status}}</span>
                   <div class="overlay-edit">
@@ -47,8 +47,8 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Above Selected MR Id" [options]="false"
         cardClass="user-profile-list">
-        <div class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table  class="table table-striped table-bordered table-hover">
+        <div #epltable class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table id="contentToConvert" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                   <th>Sr. No.</th>

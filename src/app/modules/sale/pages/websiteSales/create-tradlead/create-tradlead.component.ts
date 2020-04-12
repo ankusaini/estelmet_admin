@@ -90,8 +90,9 @@ export class CreateTradleadComponent implements OnInit {
     let url = "/sales/createSales";
     this.salesService.saveRequestObject(url, this.request).subscribe(
       data => {
-        this.toastr.success("Record saved successfully!");
-        this.router.navigateByUrl("/sales/searchTradlead");
+        let salesId=data.sales.id;
+        this.toastr.success("Record saved successfully");
+        this.router.navigateByUrl("/sales/tlEdit/"+salesId);
       }, error => {
         console.log(error);
       }

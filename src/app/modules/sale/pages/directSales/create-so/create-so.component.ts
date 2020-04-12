@@ -97,8 +97,9 @@ export class CreateSoComponent implements OnInit {
     let url = "/sales/createSales";
     this.salesService.saveRequestObject(url, this.request).subscribe(
       data => {
-        this.toastr.success("Record saved successfully!");
-        this.router.navigateByUrl("/sales/soApproval");
+        let salesId=data.sales.id;
+        this.toastr.success("Record saved successfully");
+        this.router.navigateByUrl("/sales/soEdit/"+salesId);
       }, error => {
         console.log(error);
       }

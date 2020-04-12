@@ -76,7 +76,7 @@ export class ProcessingService {
   {
     return new Observable<Processing>(obs=>{
       this.apiService.post(path,requestObj).subscribe(res=>{
-        obs.next(res);
+        obs.next(res.body);
       });
     });
   }

@@ -79,8 +79,9 @@ export class CreateScComponent implements OnInit {
     let url = "/sales/updateSalesWithProduct";
     this.salesService.updateRequestObject(url, this.request).subscribe(
       data => {
+        let salesId=data.sales.id
         this.toastr.success("Record saved successfully!");
-        this.router.navigateByUrl("/sales/scApproval");
+        this.router.navigateByUrl("/sales/scEdit/"+salesId);
       }, error => {
         console.log(error);
       }
