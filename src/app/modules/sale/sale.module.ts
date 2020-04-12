@@ -33,6 +33,8 @@ import { OtherDetailsComponent } from './components/other-details/other-details.
 import { CreateAuctionComponent } from './pages/websiteSales/create-auction/create-auction.component';
 import { SearchAuctionComponent } from './pages/websiteSales/search-auction/search-auction.component';
 import { CreateAuctionIdComponent } from './components/create-auction-id/create-auction-id.component';
+import { SoOverviewComponent } from './pages/directSales/so-overview/so-overview.component';
+import { ScOverviewComponent } from './pages/salesConfirmation/sc-overview/sc-overview.component';
 
 
 
@@ -63,6 +65,7 @@ import { CreateAuctionIdComponent } from './components/create-auction-id/create-
     SoApprovalComponent,
     CreateSoComponent,
     CreateSoIdComponent,
+    SoOverviewComponent,
     SelectProductComponent,
     CreateTradleadComponent,
     CreateSoIdTradeleadComponent,
@@ -78,7 +81,8 @@ import { CreateAuctionIdComponent } from './components/create-auction-id/create-
     OtherDetailsComponent,
     CreateAuctionComponent,
     SearchAuctionComponent,
-    CreateAuctionIdComponent
+    CreateAuctionIdComponent,
+    ScOverviewComponent
   ]
 })
 export class SaleModule { }

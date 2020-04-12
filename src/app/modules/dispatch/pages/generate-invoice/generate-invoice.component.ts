@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { FormInput } from 'src/app/demo/sales/customer-order/customer-order-form-model';
 
 @Component({
   selector: 'app-generate-invoice',
@@ -7,30 +6,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./generate-invoice.component.css']
 })
 export class GenerateInvoiceComponent implements OnInit {
-  // showGroup = true;
-  // public isSubmit: boolean;
-  // formInput: FormInput;
-  // public maskIP = [/\d/, '.', /\d/, /\d/];
+  showGroup = true;
+  public isSubmit: boolean;
+  formInput = {
+    customerId: '',
+    companyId: '',
+    lotType: '',
+    warId: '',
+    category: '',
+    shape: '',
+    netwt: '',
+    grosswt: ''
+};
+  public maskIP = [/\d/, '.', /\d/, /\d/];
   constructor() {
-    // this.isSubmit = false;
+    this.isSubmit = false;
    }
   ngOnInit() {
-    // this.formInput = {
-    //   customerId: '',
-    //   companyId: '',
-    //   lotType: '',
-    //   warId: '',
-    //   category: '',
-    //   shape: '',
-    //   grosswt: '',
-    //   netwt: '',
-    // };
+    this.formInput = {
+      customerId: '',
+      companyId: '',
+      lotType: '',
+      warId: '',
+      category: '',
+      shape: '',
+      grosswt: '',
+      netwt: '',
+    };
   }
-  // save(form: any) {
-  //   if (!form.valid) {
-  //     this.isSubmit = true;
-  //     return;
-  //   }
-  //   alert('success');
-  // }
+  save(form: any) {
+    if (!form.valid) {
+      this.isSubmit = true;
+      return;
+    }
+    alert('success');
+  }
 }

@@ -13,6 +13,7 @@ import { GenerateInvoiceComponent } from "src/app/modules/dispatch/pages/generat
 import { DoEditComponent } from "src/app/modules/dispatch/pages/do-edit/do-edit.component";
 import { SiOverviewComponent } from "src/app/modules/dispatch/pages/si-overview/si-overview.component";
 import { EditSiComponent } from "src/app/modules/dispatch/pages/edit-si/edit-si.component";
+import { LoadingSlipOverviewComponent } from './pages/loading-slip-overview/loading-slip-overview.component';
 
 
 
@@ -50,10 +51,10 @@ const routes: Routes = [
         path: 'doApproval',
         component: DoApprovalComponent,
     },
-    // {
-    //     path: 'loadSlipOverview',
-    //     component: LoadingSlipOverviewComponent,
-    // },
+    {
+        path: 'loadSlipOverview',
+        component: LoadingSlipOverviewComponent,
+    },
     {
         path: 'generateInvoice',
         component: GenerateInvoiceComponent,

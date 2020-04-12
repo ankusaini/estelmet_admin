@@ -31,6 +31,8 @@ import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.componen
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
 import { SearchViewLotComponent } from './pages/purchaseLot/search-view-lot/search-view-lot.component';
 import { PurchaseRoutingModule } from './purchase.routing';
+import { LotOverviewComponent } from './pages/purchaseLot/lot-overview/lot-overview.component';
+import { GrnOverviewComponent } from './pages/grnModule/grn-overview/grn-overview.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { PurchaseRoutingModule } from './purchase.routing';
      CreateGrnComponent,
     SupplierComponent,
     PcOverviewComponent,
-    ViewMRComponent
+    ViewMRComponent,
+    LotOverviewComponent,
+    GrnOverviewComponent
       ],
   imports: [
     CommonModule,

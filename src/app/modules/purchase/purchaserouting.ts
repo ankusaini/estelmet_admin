@@ -4,6 +4,7 @@ import { CreateMRComponent } from 'src/app/modules/purchase/pages/mr/create-mr/c
 import { MrApporvalComponent } from 'src/app/modules/purchase/pages/mr/mr-apporval/mr-apporval.component';
 import { MrEditComponent } from 'src/app/modules/purchase/pages/mr/mr-edit/mr-edit.component';
 import { ViewMRComponent } from 'src/app/modules/purchase/pages/mr/view-mr/view-mr.component';
+import { LotOverviewComponent } from './pages/purchaseLot/lot-overview/lot-overview.component';
 
 const routes: Routes = [
 
@@ -87,10 +88,10 @@ const routes: Routes = [
   //     path: 'pcApproval',
   //     component: PcApprovalComponent
   //   },
-  //   {
-  //     path: 'lotOverview',
-  //     component: LotOverviewComponent
-  //   },
+    {
+      path: 'lotOverview',
+      component: LotOverviewComponent
+    },
   //   {
   //     path: 'lotApproval',
   //     component: LotApprovalComponent

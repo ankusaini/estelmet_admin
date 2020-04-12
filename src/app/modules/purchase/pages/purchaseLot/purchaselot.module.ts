@@ -15,6 +15,7 @@ import { CreateLotWithPcComponent } from "src/app/modules/purchase/component/cre
 
 
 
+
 @NgModule({
   declarations: [CreateLotComponent,CreateLotMtSelfComponent,CreateLotWithPcComponent,CreateLotWithoutPcComponent ],
   imports: [
