@@ -45,7 +45,7 @@ export class CreateMachineDetailComponent implements OnInit {
   }
 
   deleteType(machineDetail: MachineDetail) {
-    this.commonService.deleteProductType(machineDetail.id.toString()).subscribe(res => {
+    this.commonService.deleteProductType(machineDetail.machineDetailId.toString()).subscribe(res => {
       this.machineList = this.machineList.filter(element => {
         return element !== machineDetail;
       });

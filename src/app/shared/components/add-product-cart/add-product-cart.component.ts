@@ -1,8 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { InventoryService } from 'src/app/modules/inventory/service/inventory.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import * as xlsx from 'xlsx';
+import * as jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-add-product-cart',
@@ -13,6 +17,7 @@ export class AddProductCartComponent implements OnInit, OnChanges {
   @Input() productList: Product[] = [];
   @Input() component: any = '';
   // selectedList: Product[] = [];
+  @ViewChild('epltable', { static: false }) epltable: ElementRef;
 
   // @Input() selectedTab : string;
 
@@ -56,4 +61,58 @@ export class AddProductCartComponent implements OnInit, OnChanges {
       this.router.navigateByUrl('/inventory/editProduct/' + productId);
     }
   }
+
+
+  
+  exportToExcelChild() {
+    const ws: xlsx.WorkSheet =
+    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'Products.xlsx');
+    // console.log("fnc")
+   }
+
+
+   exportToPDFChild()
+   {
+
+     var node = document.getElementById('contentToConvert');
+console.log('node',node);
+              var img;
+              var filename;
+              var newImage;
+              domtoimage.toPng(node, { bgcolor: '#fff' })
+                .then(function(dataUrl) {
+                  img = new Image();
+                  img.src = dataUrl;
+                  newImage = img.src;
+
+                  img.onload = function(){
+                  var pdfWidth = img.width;
+                  var pdfHeight = img.height;
+                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+                    var doc;
+                    if(pdfWidth > pdfHeight)
+                    {
+                      doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    else
+                    {
+                      doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    var width = doc.internal.pageSize.getWidth();
+                    var height = doc.internal.pageSize.getHeight();
+                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    filename = 'Product' + '.pdf';
+                    doc.save(filename);
+                  };
+                })
+                .catch(function(error) {
+
+                });
+
+   }
+
+
 }
