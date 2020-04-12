@@ -37,21 +37,22 @@
             </div>
           </div>
           <div class="col-md-4">
-            <h1 class="f-22 f-w-700">PURCHASE CONFIRMATION</h1>
-            <p class="f-16 f-w-600 m-b-5 text-muted">PC Id : <span class="text-primary">PC-#0282</span></p>
+            <h1 class="f-22 f-w-700">GOODS RECEIPT NOTE</h1>
+            <p class="f-16 f-w-600 m-b-5 text-muted">GRN Id : <span class="text-primary">GRN-#0282</span></p>
+            <p class="f-16 f-w-600 m-b-5 text-muted">GRN Type : <span class="text-dark">WITHOUT_PC</span>
             <p class="f-16 f-w-600 m-b-5 text-muted">Material Description : <span class="text-dark">Cold Rolled</span>
             </p>
             <div class="barcode">
               <img src="../../../../../assets/images/barcode.svg">
               <img src="../../../../../assets/images/barcode.svg">
-              <small class="text-muted">PC-#0282</small>
+              <small class="text-muted">GRN-#0282</small>
             </div>
           </div>
         </div>
         <div class="card-body">
           <div class="row invoive-info">
             <div class="col-md-5 col-xs-12 invoice-client-info">
-              <h6>Client Information :</h6>
+              <h6>User Information :</h6>
               <table class="table table-responsive invoice-table invoice-order table-borderless">
                   <tbody>
                     <tr>
@@ -59,19 +60,29 @@
                       <td><a routerLink="">SU-01</a>, OPTIMUM STEELS MUMBAI</td>
                     </tr>
                     <tr>
-                      <th>Transporter Id :</th>
-                      <td>
-                          <a routerLink="">TP-86</a>, SHRI YADAV TRANSPORT
-                      </td>
-                    </tr>
-                    <tr>
+                        <th>Address :</th>
+                        <td>G/28 Mumbai Taluja MIDC</td>
+                      </tr>
+                      <tr>
+                          <th>GST :</th>
+                          <td>JKLDK893H34348</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile :</th>
+                            <td>+91-987187477</td>
+                          </tr>
+                          <tr>
+                              <th>Email :</th>
+                              <td>info@gmail.com</td>
+                            </tr>
+                    <!-- <tr>
                       <th>Vehicle No :</th>
                       <td>DL 01 AS 9289</td>
                     </tr>
                     <tr>
                       <th>Container No. :</th>
                       <td>F45D00L9289</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
             </div>
@@ -86,7 +97,7 @@
                   <tr>
                     <th>Status :</th>
                     <td>
-                      <span class="badge badge-warning">Pending</span>
+                      <span class="badge badge-success">Approved</span>
                     </td>
                   </tr>
                   <tr>
@@ -167,7 +178,7 @@
                       <td>Matt</td>
                       <td>2.12</td>
                       <td>-</td>
-                      <td class="text-danger">Temp</td>
+                      <td class="text-danger">SOLD_OUT</td>
                     </tr>
                     <tr>
                       <td>2.</td>
@@ -182,7 +193,7 @@
                       <td>Matt</td>
                       <td>2.12</td>
                       <td>-</td>
-                      <td class="text-danger">Temp</td>
+                      <td class="text-danger">SOLD_OUT</td>
                     </tr>
                     <tr>
                       <td>3.</td>
@@ -197,7 +208,7 @@
                       <td>Matt</td>
                       <td>2.12</td>
                       <td>-</td>
-                      <td class="text-danger">Temp</td>
+                      <td class="text-success">ACTIVE</td>
                     </tr>
                     <tr>
                       <td>4.</td>
@@ -212,7 +223,7 @@
                       <td>Matt</td>
                       <td>2.12</td>
                       <td>-</td>
-                      <td class="text-danger">Temp</td>
+                      <td class="text-success">ACTIVE</td>
                     </tr>
                     <tr>
                       <td>5.</td>
@@ -227,7 +238,7 @@
                       <td>Matt</td>
                       <td>2.12</td>
                       <td>-</td>
-                      <td class="text-danger">Temp</td>
+                      <td class="text-danger">SOLD_OUT</td>
                     </tr>
                     <tr>
                       <td>6.</td>
@@ -242,13 +253,47 @@
                       <td>Matt</td>
                       <td>2.12</td>
                       <td>-</td>
-                      <td class="text-danger">Temp</td>
+                      <td class="text-danger">SOLD_OUT</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+          <hr/>
+          <div class="row invoive-info">
+              <div class="col-md-5 col-xs-12 invoice-client-info">
+                <h6>Transport Details :</h6>
+                <table class="table table-responsive invoice-table invoice-order table-borderless">
+                    <tbody>
+                    <tr>
+                        <th>Transporter Id :</th>
+                        <td>
+                            <a routerLink="">TP-86</a>, SHRI YADAV TRANSPORT
+                        </td>
+                      </tr>
+                      <tr>
+                          <th>Driver Name :</th>
+                          <td>Mahesh Singh</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile :</th>
+                            <td>9871758774</td>
+                          </tr>
+                      <tr>
+                        <th>Vehicle No :</th>
+                        <td>DL 01 AS 9289</td>
+                      </tr>
+                      <tr>
+                        <th>Container No. :</th>
+                        <td>F45D00L9289</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          
+            
+            </div>
           <hr />
           <div class="row">
             <div class="col-sm-6">

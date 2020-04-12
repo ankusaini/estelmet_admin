@@ -20,6 +20,9 @@ import { SearchViewPcComponent } from './pages/purchase-confirmation/search-view
 import { EditLotComponent } from './pages/purchaseLot/edit-lot/edit-lot.component';
 import { LotApprovalComponent } from './pages/purchaseLot/lot-approval/lot-approval.component';
 import { SearchViewLotComponent } from './pages/purchaseLot/search-view-lot/search-view-lot.component';
+import { PcOverviewComponent } from './pages/purchase-confirmation/pc-overview/pc-overview.component';
+import { LotOverviewComponent } from './pages/purchaseLot/lot-overview/lot-overview.component';
+import { GrnOverviewComponent } from './pages/grnModule/grn-overview/grn-overview.component';
 
 const routes: Routes = [
 
@@ -70,10 +73,10 @@ const routes: Routes = [
     path: 'searchPc',
     component: SearchViewPcComponent
   },
-  //   {
-  //     path: 'pcOverview',
-  //     component: PcOverviewComponent
-  //   },
+    {
+      path: 'pcOverview',
+      component: PcOverviewComponent
+    },
   //   {
   //     path: 'lotWithPc',
   //     component: CreateLotWithPcComponent
@@ -82,10 +85,10 @@ const routes: Routes = [
   //     path: 'lotWithoutPc',
   //     component: CreateLotWithoutPcComponent
   //   },
-  //   {
-  //     path: 'lotMt',
-  //     component: CreateLotMtSelfComponent
-  //   },
+    {
+      path: 'lotOverview',
+      component: LotOverviewComponent
+    },
   {
     path: 'searchLot',
     component: SearchViewLotComponent
@@ -93,6 +96,10 @@ const routes: Routes = [
   {
     path: 'grnLot',
     component: CreateGrnComponent
+  },
+  {
+    path: 'grnOverview',
+    component: GrnOverviewComponent
   },
   //   {
   //     path: 'grnTransport',
@@ -118,10 +125,6 @@ const routes: Routes = [
     path: 'pcApproval',
     component: PcApprovalComponent
   },
-  //   {
-  //     path: 'lotOverview',
-  //     component: LotOverviewComponent
-  //   },
 
   {
     path: 'lotWithPc',
