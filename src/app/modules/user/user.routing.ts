@@ -8,6 +8,7 @@ import { UserGroupListComponent } from 'src/app/modules/user/pages/user-group-li
 import { UsersListComponent } from 'src/app/modules/user/pages/users-list/users-list.component';
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { GroupOverviewComponent } from './pages/group-overview/group-overview.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,10 @@ const routes: Routes = [
     path: 'editGroup/:groupId',
     component: UserGroupEditviewComponent
   },
-
+  {
+    path: 'groupOverview',
+    component: GroupOverviewComponent
+  },
 
   // children: [
   //   {

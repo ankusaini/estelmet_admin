@@ -29,6 +29,7 @@ import { UserGroupEditviewComponent } from './pages/user-group-editview/user-gro
 import { UserGroupListComponent } from './pages/user-group-list/user-group-list.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserRoutingModule } from './user.routing';
+import { GroupOverviewComponent } from './pages/group-overview/group-overview.component';
 
 
 @NgModule({
@@ -51,7 +52,9 @@ import { UserRoutingModule } from './user.routing';
     UserProfileComponent,
     UserTradeDetailsComponent,
     UserBuisnessComponent,
-    UserApprovalComponent
+    UserApprovalComponent,
+    GroupOverviewComponent,
+    
   ],
   imports: [
     CommonModule,

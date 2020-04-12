@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-12">
       <!-- <button (click)="basicSwal()"></button> -->
-      <app-card [hidHeader]="false" cardTitle="Search & Select Processing Id " [options]="false"
+      <app-card #epltable [hidHeader]="false" cardTitle="Search & Select Processing Id " [options]="false"
         cardClass="user-profile-list">
         <app-processing-list
           [processingType]="processingType" 
@@ -31,7 +31,6 @@
   
     </div>
   </div>
-  <button type="submit" class="btn btn-primary active">CSV</button>&nbsp;
-  <button type="submit" class="btn btn-success active">Export</button>&nbsp;
-  <button type="submit" class="btn btn-danger active">Print</button>&nbsp;
-  <button type="submit" class="btn btn-warning active">Copy</button>&nbsp;
+<button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
+<!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
+<button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;

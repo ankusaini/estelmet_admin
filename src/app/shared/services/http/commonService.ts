@@ -275,7 +275,7 @@ export class CommonService {
     });
   }
 
-  deleteProductType(data: string): Observable<boolean> {
+  deleteProductType(data): Observable<boolean> {
     return new Observable(obs => {
       this.apiService
         .delete('/inventory/productClassification/deleteProductType/' + data)

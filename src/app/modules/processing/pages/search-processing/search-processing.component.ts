@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
 import { Router } from '@angular/router';
+
+import * as xlsx from 'xlsx';
+import * as jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
+import { ProcessingListComponent } from "src/app/modules/processing/components/processing-list/processing-list.component";
+
 
 @Component({
   selector: 'app-search-processing',
@@ -12,6 +19,7 @@ export class SearchProcessingComponent implements OnInit {
   public processingType: string;
   public selectedProcessingList: any[];
   public productProcessingList: any[];
+  @ViewChild(ProcessingListComponent, { static: false }) child: ProcessingListComponent;
 
 
   constructor(private processingService: ProcessingService,
@@ -66,5 +74,17 @@ export class SearchProcessingComponent implements OnInit {
     this.selectedProcessingList = processingList;
     console.log('selected list in serach: ', this.selectedProcessingList);
   }
+
+exportToExcel()
+{
+this.child.exportToExcelChild();
+}
+  
+
+exportToPDF()
+{
+this.child.exportToPDFChild();
+}
+
 
 }

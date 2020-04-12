@@ -7,7 +7,6 @@
 <app-add-product-cart 
     [productList]="selectedProductList">
 </app-add-product-cart>
-<button type="submit" class="btn btn-primary active">CSV</button>&nbsp;
-<button type="submit" class="btn btn-success active">Export</button>&nbsp;
-<button type="submit" class="btn btn-danger active">Print</button>&nbsp;
-<button type="submit" class="btn btn-warning active">Copy</button>&nbsp;
+<button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
+<!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
+<button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;

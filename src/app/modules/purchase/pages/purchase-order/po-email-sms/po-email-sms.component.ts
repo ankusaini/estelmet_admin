@@ -98,4 +98,5 @@ export class PoEmailSmsComponent implements OnInit {
       })
       }
   }
+  closeModel() {}
 }

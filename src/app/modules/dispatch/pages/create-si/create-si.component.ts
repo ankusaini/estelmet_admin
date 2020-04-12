@@ -18,6 +18,7 @@ export class CreateSiComponent implements OnInit {
   SelectLsForm: FormGroup;
   selectedDoId: any;
 
+  selectedInvoiceId:any;
   constructor(
     private dispatchService: DispatchService,
     private toastr: ToastrService,
@@ -45,6 +46,7 @@ export class CreateSiComponent implements OnInit {
   addSelectedId(data) {
     if (data) {
       this.selectedSale = data;
+      this.selectedInvoiceId='SC-'+data.id;
     }
   }
 
@@ -61,7 +63,7 @@ export class CreateSiComponent implements OnInit {
 
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.warning('select Id');
+      this.toastr.warning('Please Select  Sales Invoice Id');
     }
   }
 
