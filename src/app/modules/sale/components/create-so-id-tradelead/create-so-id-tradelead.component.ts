@@ -102,7 +102,7 @@ export class CreateSoIdTradeleadComponent implements OnInit {
 
   selectedCompany(value: number) {
     const data = this.companyList.filter(element => {
-      return element.id === value;
+      return element.id == value;
     });
     this.selected_comapny = data[0];
   }
@@ -114,13 +114,13 @@ export class CreateSoIdTradeleadComponent implements OnInit {
   generateTlId() {
     if (this.salesDto.value.productCategory && this.salesDto.value.productShape) {
       this.categoryList.map(category => {
-        if (category.id === this.salesDto.value.productCategory) {
+        if (category.id == this.salesDto.value.productCategory) {
           this.selectedCategory = category.productCategory;
         }
       });
 
       this.shapeList.map(shape => {
-        if (shape.id === this.salesDto.value.productShape) {
+        if (shape.id == this.salesDto.value.productShape) {
           this.selectedShape = shape.productShape;
         }
       });
@@ -128,6 +128,8 @@ export class CreateSoIdTradeleadComponent implements OnInit {
       this.salesDto.value.title = this.selectedCategory + '-' + this.selectedShape;
       this.generatedTlId = this.salesDto.value.title;
       console.log(this.salesDto.value.title);
+    } else { 
+      this.toastr.warning("Please select shape and category!");
     }
   }
 

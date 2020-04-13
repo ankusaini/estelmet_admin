@@ -30,14 +30,14 @@
                     <tr *ngFor="let sale of pendingList; let i=index">
                       <td><label class="badge badge-warning">{{sale.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>SCL-{{sale.id}}</td>
+                      <td>{{Ids.SALES_CONFIRMATION + '-' + sale.id}}</td>
                       <td>{{sale.type}}</td>
                       <td>{{sale.productCategory}}</td>
                       <td>{{sale.productShape}}</td>
                       <!-- <td>COM-{{sale.sourceCompanyId}}</td> -->
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
-                      <td>CU-{{sale.customerId}}</td>
-                      <td>TP-{{sale.transportId}}</td>
+                      <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
+                      <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
                       <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
                       <!-- <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
@@ -84,14 +84,14 @@
                     <tr *ngFor="let sale of approvedList; let i= index">
                       <td><label class="badge badge-success">{{sale.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>SCL-{{sale.id}}</td>
+                      <td>{{Ids.SALES_CONFIRMATION + '-' + sale.id}}</td>
                       <td>{{sale.type}}</td>
                       <td>{{sale.productCategory}}</td>
                       <td>{{sale.productShape}}</td>
                       <!-- <td>COM-{{sale.sourceCompanyId}}</td> -->
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
-                      <td>CU-{{sale.customerId}}</td>
-                      <td>TP-{{sale.transportId}}</td>
+                      <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
+                      <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
                       <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
                       <!-- <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
@@ -137,14 +137,14 @@
                     <tr *ngFor="let sale of rejectedList; let i= index">
                       <td><label class="badge badge-danger">{{sale.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>SCL-{{sale.id}}</td>
+                      <td>{{Ids.SALES_CONFIRMATION + '-' + sale.id}}</td>
                       <td>{{sale.type}}</td>
                       <td>{{sale.productCategory}}</td>
                       <td>{{sale.productShape}}</td>
                       <!-- <td>COM-{{sale.sourceCompanyId}}</td> -->
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
-                      <td>CU-{{sale.customerId}}</td>
-                      <td>TP-{{sale.transportId}}</td>
+                      <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
+                      <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
                       <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
                       <!-- <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
@@ -176,37 +176,36 @@
             <thead>
               <tr>
                 <!-- <th>Status</th> -->
-                <th>Sr. No.</th>
-                <th>SO Id</th>
-                <th>SO Title</th>
-                <th>Category</th>
-                <th>Shape</th>
-                <th>Company Id</th>
-                <th>Warehouse Id</th>
-                <!-- <th>Customer Id</th> -->
-                <!-- <th>Gross Wt.</th> -->
-                <!-- <th>Net Wt.</th> -->
-                <th>Date of Creation</th>
-                <!-- <th>Last Modified Date</th> -->
-                <!-- <th>Created By</th> -->
-                <!-- <th>Last Modified By</th> -->
-                <th>Action</th>
+                <th>Status</th>
+                      <th>Sr. No.</th>
+                      <th>SC Id</th>
+                      <th>SC Type</th>
+                      <th>Category</th>
+                      <th>Shape</th>
+                      <!-- <th>Company Id</th> -->
+                      <!-- <th>Warehouse Id</th> -->
+                      <th>Customer Id</th>
+                      <th>Transporter Id</th>
+                      <th>Date of Creation</th>
+                      <!-- <th>Last Modified Date</th> -->
+                      <!-- <th>Created By</th> -->
+                      <!-- <th>Last Modified By</th> -->
+                      <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <tr href="kdkd" *ngFor="let sale of selectedSalesList;let i = index">
                 <!-- <td><label class="badge badge-danger">{{sale.status}}</label></td> -->
                 <td>{{i+1}}</td>
-                <td>SOL-{{sale.id}}</td>
-                <td>{{sale.type}}</td>
-                <td>{{sale.productCategory}}</td>
-                <td>{{sale.productShape}}</td>
-                <td>COM-{{sale.sourceCompanyId}}</td>
-                <td>WAR-{{sale.sourceWarehouseId}}</td>
-                <!-- <td>CU-{{sale.customerId}}</td> -->
-                <!-- <td>{{sale.grossWt}}</td> -->
-                <!-- <td>{{sale.netWt}}</td> -->
-                <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td>
+                      <td>{{Ids.SALES_CONFIRMATION + '-' + sale.id}}</td>
+                      <td>{{sale.type}}</td>
+                      <td>{{sale.productCategory}}</td>
+                      <td>{{sale.productShape}}</td>
+                      <!-- <td>COM-{{sale.sourceCompanyId}}</td> -->
+                      <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
+                      <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
+                      <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
+                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
                 <!-- <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td> -->
                 <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
                 <!-- <td>{{sale.salesHistory[0].lastModifiedBy}}</td> -->

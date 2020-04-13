@@ -2,12 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SalesServiceService } from '../../../services/sales-service.service';
 import { Sales } from 'src/app/shared/Models/sales.model';
 import { ToastrService } from 'ngx-toastr';
-
-
 import * as xlsx from 'xlsx';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 
 @Component({
@@ -21,12 +20,15 @@ export class SearchAuctionComponent implements OnInit {
 
   public dataList : any;
   public salesList: Sales[];
-  public selectedSalesList: Sales[] =[];
+  // public selectedSalesList: Sales[] =[];
+  public Ids: any;
   
   constructor(
     private salesService: SalesServiceService,
     private toastr: ToastrService
-  ) { }
+  ) {
+    this.Ids = ids;
+   }
 
   ngOnInit() {
     let url= "/sales/getAllSalesByTypeAndStatus/AUCTION_LOT/APPROVED"
@@ -42,21 +44,22 @@ export class SearchAuctionComponent implements OnInit {
     );
   }
 
-  addToSelectedList(sale: Sales) {
-    const index: number = this.selectedSalesList.indexOf(sale);
-    if (index == -1) {
-      this.selectedSalesList.push(sale);
-    } else {
-      this.toastr.warning("record already added!");
-    }
-  }
+  // addToSelectedList(sale: Sales) {
+  //   const index: number = this.selectedSalesList.indexOf(sale);
+  //   if (index == -1) {
+  //     this.selectedSalesList.push(sale);
+  //   } else {
+  //     this.toastr.warning("record already added!");
+  //   }
+  // }
 
-  removeFromSelectedList(sale: Sales) {
-    const index: number = this.selectedSalesList.indexOf(sale);
-    if (index !== -1) {
-      this.selectedSalesList.splice(index, 1);
-    }
-  }
+  // removeFromSelectedList(sale: Sales) {
+  //   const index: number = this.selectedSalesList.indexOf(sale);
+  //   if (index !== -1) {
+  //     this.selectedSalesList.splice(index, 1);
+  //   }
+  // }
+
  exportToExcel() {
     const ws: xlsx.WorkSheet =
     xlsx.utils.table_to_sheet(this.epltable.nativeElement);

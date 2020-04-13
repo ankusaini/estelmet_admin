@@ -20,12 +20,12 @@
             <tbody>
               <tr (click)="routerToSoEdit(sale.id)" *ngFor="let sale of salesList; let i=index">
                 <td>{{i+1}}</td>
-                <td >SOL-{{sale.id}}</td>
+                <td >{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
                 <td>{{sale.type}}</td>
                 <td>{{sale.productCategory}}</td>
                 <td>{{sale.productShape}}</td>
-                <td>{{sale.sourceCompanyId}}</td>
-                <td>{{sale.sourceWarehouseId}}</td>
+                <td>{{Ids.COMPANY + '-' + sale.sourceCompanyId}}</td>
+                <td>{{Ids.WAREHOUSE + '-' + sale.sourceWarehouseId}}</td>
                 <td>{{sale.salesHistory[0].createdDate | date:'medium'}}</td>
                 <td><button type="button" (click)="addToSelectedList(sale)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
               </tr>  
@@ -35,7 +35,7 @@
       </app-card>
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Selected Sales Offer LOT/s" [options]="false"
         cardClass="user-profile-list">
@@ -78,7 +78,7 @@
       </app-card>
   
     </div>
-  </div>
+  </div> -->
 <button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
 <!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
 <button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;
