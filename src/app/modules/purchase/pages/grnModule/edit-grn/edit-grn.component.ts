@@ -71,8 +71,8 @@ export class EditGrnComponent implements OnInit {
         this.grnId = this.route.snapshot.params.id;
         console.log("id: ", this.grnId);
         if(this.grnId) {
-          let url = "/purchase/getGrnById/" + this.grnId;
-          this.purchaseService.findRequstObjectById(url).subscribe(
+          // let url = "/purchase/getGrnById/" + this.grnId;
+          this.purchaseService.getGrnById(this.grnId).subscribe(
             data => {
               this.response = data;
               this.grnData = data.grn;
@@ -114,8 +114,8 @@ export class EditGrnComponent implements OnInit {
       this.request.grn = this.grnData;
       this.request.productList = [];
 
-      let url = "/purchase/createGrn";
-      this.purchaseService.saveRequestObject(url, this.request).subscribe(
+      // let url = "/purchase/createGrn";
+      this.purchaseService.createGrn( this.request).subscribe(
         data => {
           this.toastr.success("Record update successfully!");
         }, error => {
@@ -153,8 +153,8 @@ export class EditGrnComponent implements OnInit {
 
       this.request.grn = this.grnData;
       this.request.productList = [];
-      let url = "/purchase/createGrn";
-      this.purchaseService.saveRequestObject(url, this.request).subscribe(
+      // let url = "/purchase/createGrn";
+      this.purchaseService.createGrn( this.request).subscribe(
         data => {
           this.toastr.success("Record update successfully!");
         }, error => {
@@ -187,8 +187,8 @@ export class EditGrnComponent implements OnInit {
 
       this.request.grn = this.grnData;
       this.request.productList = [];
-      let url = "/purchase/createGrn";
-      this.purchaseService.saveRequestObject(url, this.request).subscribe(
+      // let url = "/purchase/createGrn";
+      this.purchaseService.createGrn(this.request).subscribe(
         data => {
           this.toastr.success("Record update successfully!");
         }, error => {

@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PurchaseService } from '../../../services/purchase.service';
-import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { Purchase, PurchaseType } from 'src/app/shared/Models/purchase.model';
 import { Router } from '@angular/router';
 import { ids } from 'src/app/shared/Models/ids.model';
+import { Status } from 'src/app/shared/Models/user.model';
 
 import * as xlsx from 'xlsx';
 import * as jsPDF from 'jspdf';
@@ -31,8 +32,8 @@ export class SearchViewLotComponent implements OnInit {
                }
 
   ngOnInit() {
-    let url = "/purchase/getAllPurchaseByTypeAndStatus/LOT/APPROVED";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(data => {
+    // let url = "/purchase/getAllPurchaseByTypeAndStatus/LOT/APPROVED";
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.APPROVED).subscribe(data => {
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;
       console.log("List is: " + this.purchaseList);

@@ -22,8 +22,8 @@ export class PoListComponent implements OnInit {
   }
 
   getAllPurchaseByTypeAndStatus(type, status) {
-    const url = '/purchase/getAllPurchaseByTypeAndStatus/' + type + '/' + status;
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
+    // const url = '/purchase/getAllPurchaseByTypeAndStatus/' + type + '/' + status;
+    this.purchaseService.getAllPurchaseByTypeAndStatus(type, status).subscribe(
       data => {
         console.log('data', data);
         this.poList = data.purchaseList;

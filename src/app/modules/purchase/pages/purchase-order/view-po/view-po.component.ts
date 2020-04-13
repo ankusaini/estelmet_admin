@@ -25,9 +25,9 @@ public selectedPOList: Purchase[]=[];
   ngOnInit() {}
 
   getAllPurchaseByTypeAndStatus(type, status) {
-    let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
-    console.log("url",url)
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
+    // let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
+    // console.log("url",url)
+    this.purchaseService.getAllPurchaseByTypeAndStatus(type, status).subscribe(
       data => {
         
         this.poList = data.purchaseList;

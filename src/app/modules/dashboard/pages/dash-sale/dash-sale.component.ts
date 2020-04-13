@@ -47,7 +47,7 @@ export class DashSaleComponent implements OnInit {
 
 
   getAllPurchase() {
-    const url = '/purchase/getAllPurchase';
+ const url = '/purchase/getAllPurchase';
     this.sharedService.getAllResponse(url).subscribe(data => {
       if (data && data.purchaseList) {
         this.purchaseList = data.purchaseList;

@@ -104,8 +104,7 @@ export class UserProfileComponent implements OnInit {
       this.isKeyPersonValid === 'valid' &&
       this.isTradeValid === 'valid') {
       console.log(this.selectedUser);
-      const path = '/users/updateUser';
-      this.userService.updateUser(path,this.selectedUser).subscribe(
+      this.userService.updateUser(this.selectedUser).subscribe(
         data => {
           this.toastrService.success('User updated successfully!');
         }, error => {

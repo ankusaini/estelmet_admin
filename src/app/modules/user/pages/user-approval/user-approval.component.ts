@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { User, UserDetail } from 'src/app/shared/Models/user.model';
+import { User, UserDetail, Status } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
@@ -75,7 +75,7 @@ export class UserApprovalComponent implements OnInit {
 
   getPendingUserList(selectedRole) {
 
-    this.userService.getAllUserByUserRoleAndStatus(selectedRole,'PENDING',this.limit,this.offset).subscribe(
+    this.userService.getAllUserByUserRoleAndStatus(selectedRole,Status.PENDING,this.limit,this.offset).subscribe(
       data => {
         this.pendingUserList = data;
         console.log(this.pendingUserList);
@@ -139,7 +139,7 @@ export class UserApprovalComponent implements OnInit {
     if (this.selectedUserList.length === 0) {
       this.toastrService.warning('Select at least one product!');
     } else {
-      const path = '/users/updateUser';
+      
       // let idList = this.selectedUserList.map(user => {
       //   return user.userDetialId;
       // });
@@ -153,7 +153,7 @@ export class UserApprovalComponent implements OnInit {
       for (let i = 0; i < this.selectedUserList.length; i++) {
         this.selectedUserList[i].status = status;
 
-        this.userService.updateUser(path, this.selectedUserList[i]).subscribe(
+        this.userService.updateUser(this.selectedUserList[i]).subscribe(
           // this.userService.updateUser(path).subscribe(
           data => {
             this.toastrService.success('Selected User(s) status changes successfully!');

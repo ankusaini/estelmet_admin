@@ -93,8 +93,8 @@ export class PcEditComponent implements OnInit {
       console.log("id: ", this.pcId);
 
       if (this.pcId) {
-        let url = "/purchase/find/" + this.pcId;
-        this.purchaseService.findRequstObjectById(url).subscribe(
+        // let url = "/purchase/find/" + this.pcId;
+        this.purchaseService.findPurchase(this.pcId).subscribe(
           data => {
             this.pcResponse = data;
             this.purchaseData = data.purchase;
@@ -283,8 +283,8 @@ export class PcEditComponent implements OnInit {
 
       this.request.purchase = this.purchaseData;
       this.request.productList = this.productList;
-      let url = "/purchase/updatePurchaseWithProduct";
-      this.purchaseService.updateRequestObject(url, this.request).subscribe(
+      // let url = "/purchase/updatePurchaseWithProduct";
+      this.purchaseService.updatePurchaseWithProduct( this.request).subscribe(
         data => {
           this.toastr.success("Record update successfully!");
         }, error => {

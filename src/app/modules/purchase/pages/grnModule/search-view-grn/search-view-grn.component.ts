@@ -32,8 +32,8 @@ export class SearchViewGrnComponent implements OnInit {
               }
 
   ngOnInit() {
-    let url = "/purchase/getAllGrn";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(data => {
+    // let url = "/purchase/getAllGrn";
+    this.purchaseService.getAllGrn().subscribe(data => {
       this.grnData = data;
       this.grnList = this.grnData.grnList;
       console.log("list is: "+ this.grnList);

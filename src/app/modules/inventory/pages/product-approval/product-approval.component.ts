@@ -62,9 +62,9 @@ export class ProductApprovalComponent implements OnInit {
     if (this.selectedProductList.length === 0) {
       this.toastr.warning('select at least one record');
     } else {
-      const path = '/inventory/updateProduct';
+      // const path = '/inventory/updateProduct';
       this.selectedProductList.forEach(product => product.status = status);
-      this.inventoryService.updateProduct(path, this.selectedProductList).subscribe(
+      this.inventoryService.updateProduct(this.selectedProductList).subscribe(
         () => {
           this.toastr.success('Record(s) successfully updated');
           this.selectedProductList = [];

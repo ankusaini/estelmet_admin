@@ -85,9 +85,7 @@ export class CreateUserGroupComponent implements OnInit {
       this.userGroupForm.value.user.push(element);
 
     });
-    const path = '/users/group/createUserGroup';
-    console.log('path', path);
-    this.userService.createUserGroup(path, this.userGroupForm.value).subscribe(data => {
+    this.userService.createUserGroup(this.userGroupForm.value).subscribe(data => {
       console.log('user group created', data);
       this.router.navigate(['/users/editGroup', data.userGroupId]);
     }, error => {

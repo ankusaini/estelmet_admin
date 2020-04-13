@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Purchase } from '../../Models/purchase.model';
+import { Purchase, PurchaseType } from '../../Models/purchase.model';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { ToastrService } from 'ngx-toastr';
 import { ids } from '../../Models/ids.model';
@@ -27,9 +27,9 @@ export class PurchasrListFullDetailsComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log('in purchaseList ' + this.selectedTab);
-    const url = '/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/' + this.selectedTab;
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(data => {
+    // console.log('in purchaseList ' + this.selectedTab);
+    // const url = '/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/' + this.selectedTab;
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.PURCHASE_CONFIRMATION, this.selectedTab).subscribe(data => {
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;
       console.log('purchaseList ' + this.purchaseList);

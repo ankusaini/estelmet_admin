@@ -33,9 +33,9 @@ export class MrApporvalComponent implements OnInit {
   }
 
   getAllPurchaseByTypeAndStatus(type, status) {
-    let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
-    console.log("url", url);
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
+    // let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
+    // console.log("url", url);
+    this.purchaseService.getAllPurchaseByTypeAndStatus(type, status).subscribe(
       data => {
         if (status == "PENDING") {
           this.pendingMrList = data.purchaseList;
@@ -92,12 +92,12 @@ export class MrApporvalComponent implements OnInit {
     if (this.selectedMrList.length == 0) {
       this.toastr.warning("select at least one record");
     } else {
-      let path = "/purchase/updatePurchase";
+      // let path = "/purchase/updatePurchase";
 
       for (let i = 0; i < this.selectedMrList.length; i++) {
         this.selectedMrList[i].status = status;
          this.request.purchase=this.selectedMrList[i];
-        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+        this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
 
             this.pendingMrList = undefined;
