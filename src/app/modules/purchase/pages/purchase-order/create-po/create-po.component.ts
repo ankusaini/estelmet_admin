@@ -33,8 +33,8 @@ public component='po';
       {
     this.request.purchase = this.selectedMr;
     console.log("request is: ", this.request.purchase);
-    let path= "/purchase/updatePurchase";
-    this.purchaseService.updateRequestObject(path, this.request).subscribe( data => {
+    // let path= "/purchase/updatePurchase";
+    this.purchaseService.updatePurchase( this.request).subscribe( data => {
       // alert("saved");
       this.toastr.success("Record saved successfully!");
       this.router.navigateByUrl("/purchase/pcApproval");  

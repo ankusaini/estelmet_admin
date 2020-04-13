@@ -50,8 +50,7 @@ export class UserGroupEditviewComponent implements OnInit {
     this.routerSubscription = this.route.url.subscribe(params => {
       this.groupId = this.route.snapshot.params.groupId;
       if (this.groupId) {
-        const url = '/users/group/find?userGroupId=' + this.groupId;
-        this.userService.findUserGroupById(url).subscribe(
+        this.userService.findUserGroupById(this.groupId).subscribe(
           data => {
             this.selectedUserGroup = data;
             this.userGroupList = data.user;
@@ -116,9 +115,8 @@ export class UserGroupEditviewComponent implements OnInit {
     console.log(data);
     this.selectedUserGroup.user = [];
     this.selectedUserGroup.user = data;
-    const path = '/users/group/createUserGroup';
-    console.log('path', path);
-    this.userService.createUserGroup(path, this.selectedUserGroup).subscribe(data => {
+    
+    this.userService.createUserGroup(this.selectedUserGroup).subscribe(data => {
       console.log('user group created', data);
       this.toastr.success("User updated successfully!");
       this.router.navigate(['/users/editGroup', this.selectedUserGroup.userGroupId]);

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { Purchase, PurchaseType } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { ToastrService } from "ngx-toastr";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { ids } from 'src/app/shared/Models/ids.model';
+import { Status } from 'src/app/shared/Models/user.model';
 
 @Component({
   selector: 'app-lot-approval',
@@ -29,9 +30,9 @@ public request : RequestP={};
   ngOnInit() {
    
 
-   this.getAllPurchaseByTypeAndStatus("LOT", "PENDING");
-    this.getAllPurchaseByTypeAndStatus("LOT", "APPROVED");
-    this.getAllPurchaseByTypeAndStatus("LOT", "REJECTED");
+   this.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.PENDING);
+    this.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.APPROVED);
+    this.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.REJECTED);
 
     
   }
@@ -40,8 +41,9 @@ public request : RequestP={};
   {
 if(status=='REJECETED')
   {
-let rejectedUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/REJECTED";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(rejectedUrl).subscribe( data => {
+// let rejectedUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/REJECTED";
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.REJECTED)
+    .subscribe( data => {
       this.rejectedData = data;
         this.rejectedList = this.rejectedData.purchaseList;
     }, 
@@ -53,8 +55,8 @@ let rejectedUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/REJECTED";
 
 if(status=='PENDING')
   {
- let pendingUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/PENDING";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(pendingUrl)
+//  let pendingUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/PENDING";
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.PENDING)
     .subscribe( data => {
       this.pendingData = data;
         this.pendingList = this.pendingData.purchaseList;
@@ -68,8 +70,8 @@ if(status=='PENDING')
   if(status=='APPROVED')
     {
 
-  let approvedUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/APPROVED";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(approvedUrl).subscribe( data => {
+  // let approvedUrl="/purchase/getAllPurchaseByTypeAndStatus/LOT/APPROVED";
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.LOT, Status.APPROVED).subscribe( data => {
       this.approvedData = data;
         this.approvedList = this.approvedData.purchaseList;
         console.log("Your Data is "+this.approvedList);
@@ -120,12 +122,12 @@ if(status=='PENDING')
     if (this.selectedLotList.length == 0) {
      this.toastr.warning("Please select atleast one record");
     } else {
-      let path = "/purchase/updatePurchase";
+      // let path = "/purchase/updatePurchase";
 
       for (let i = 0; i < this.selectedLotList.length; i++) {
         this.selectedLotList[i].status = status;
          this.request.purchase=this.selectedLotList[i];
-        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+        this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
            
       this.getAllPurchaseByTypeAndStatus("LOT", "PENDING");

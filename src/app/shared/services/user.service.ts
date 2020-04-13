@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { User, UserGroup, UserMini } from 'src/app/shared/Models/user.model';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { ApiUrl } from './apiContant';
 
 @Injectable({
   providedIn: 'root'
@@ -11,37 +12,40 @@ export class UserService {
 
   constructor(private apiService: ApiService) { }
 
-  getAllUserByUserRoleAndStatus(selectedUserType,status,limit,offset): Observable<User[]> {
-    let url =
-      "/users/getAllUsersByUserRoleAndStatus?userRole=" + selectedUserType + "&status="+status+"&limit="+limit+"&offset="+offset;
-      
+  getAllUserByUserRoleAndStatus(userRole, status, limit, offset): Observable<User[]> {
+    const params: HttpParams = new HttpParams()
+      .set('userRole', userRole)
+      .set('status', status)
+      .set('limit', limit)
+      .set('offset', offset);
     return new Observable<User[]>(obs => {
-      this.apiService.get(url).subscribe(res => {
+      this.apiService.get(ApiUrl.getAllUsersByUserRoleAndStatus, params).subscribe(res => {
         obs.next(res.data);
       });
     });
   }
 
-  getAllUserByUserNameAndCompany(userRole,status): Observable<UserMini[]>
-  {
-    let url = '/users/getAllUsersNameAndComapny?userRole='+userRole+'&status='+status;
+  getAllUserByUserNameAndCompany(userRole, status): Observable<UserMini[]> {
+    const params: HttpParams = new HttpParams()
+      .set('userRole', userRole)
+      .set('status', status);
     return new Observable<UserMini[]>(obs => {
-      this.apiService.get(url).subscribe(res => {
+      this.apiService.get(ApiUrl.getAllUsersNameAndComapny, params).subscribe(res => {
         obs.next(res.data);
       });
     });
   }
 
-  
-getCountByUserRole(role)
-{
-  let url='/users/countByUserRole?userRole='+role;
+
+  getCountByUserRole(role) {
+    const params: HttpParams = new HttpParams()
+      .set('userRole', role);
     return new Observable<any>(obs => {
-      this.apiService.get(url).subscribe(res => {
+      this.apiService.get(ApiUrl.countByUserRole, params).subscribe(res => {
         obs.next(res);
       });
     });
-}
+  }
 
   getAllUsersForDashboard(url): Observable<User[]> {
     return new Observable<User[]>(obs => {
@@ -51,26 +55,33 @@ getCountByUserRole(role)
     });
   }
 
-  getAllUserByUserGroupRoleAndStatus(url): Observable<UserGroup[]> {
+  getAllUserByUserGroupRoleAndStatus(role, status, limit, offset ): Observable<UserGroup[]> {
+    const params: HttpParams = new HttpParams()
+    .set('userRole', role)
+    .set('status', status)
+    .set('limit', limit)
+    .set('offset', offset);
     return new Observable<UserGroup[]>(obs => {
-      this.apiService.get(url).subscribe(res => {
+      this.apiService.get(ApiUrl.getAllUserGroupByUserRoleAndStatus, params).subscribe(res => {
         obs.next(res.data);
       });
     });
   }
 
-  findUserGroupById(url): Observable<UserGroup> {
+  findUserGroupById(userGroupId): Observable<UserGroup> {
+    const params: HttpParams = new HttpParams()
+    .set('userGroupId', userGroupId);
     return new Observable<UserGroup>(obs => {
-      this.apiService.get(url).subscribe(res => {
+      this.apiService.get(ApiUrl.findUserGroupById, params).subscribe(res => {
         console.log(res);
         obs.next(res.data);
       });
     });
   }
 
-  createUserGroup(url, data): Observable<UserGroup> {
+  createUserGroup(body): Observable<UserGroup> {
     return new Observable<UserGroup>(obs => {
-      this.apiService.post(url, data).subscribe(res => {
+      this.apiService.post(ApiUrl.createUserGroup, body).subscribe(res => {
         console.log(res);
         obs.next(res.body.data);
       });
@@ -79,33 +90,35 @@ getCountByUserRole(role)
 
   saveUser(data): Observable<User> {
     return new Observable<User>(obs => {
-      this.apiService.post('/users/createUser', data).subscribe(res => {
+      this.apiService.post(ApiUrl.createUser, data).subscribe(res => {
         console.log(res);
         obs.next(res.body);
       });
     });
   }
 
-  updateUser(path, body) {
+  updateUser(body) {
     return new Observable<User>(obs => {
-      this.apiService.put(path, body).subscribe(res => {
+      this.apiService.put(ApiUrl.updateUser, body).subscribe(res => {
         obs.next(res.body);
       });
     });
   }
 
-  updateUserGroup(path, body) {
+  updateUserGroup( body) {
     return new Observable<UserGroup>(obs => {
-      this.apiService.put(path, body).subscribe(res => {
+      this.apiService.put(ApiUrl.updateUserInGroup, body).subscribe(res => {
         obs.next(res.body);
       });
     });
   }
-  // this.router.navigateByUrl('/users/find?userId='+ user.id);
 
-  getUserById(userId: number) {
+
+  getUserById(userId) {
+    const params: HttpParams = new HttpParams()
+    .set('userId', userId);
     return new Observable<User>(obs => {
-      this.apiService.get('/users/find?userId=' + userId).subscribe(res => {
+      this.apiService.get(ApiUrl.getUserById, params).subscribe(res => {
         obs.next(res.data);
       });
     });
@@ -113,8 +126,8 @@ getCountByUserRole(role)
 
   sendOTP(mobile: string, email: string) {
     const params: HttpParams = new HttpParams()
-    .set('number', mobile)
-    .set('email', email);
+      .set('number', mobile)
+      .set('email', email);
     return new Observable<any>(obs => {
       this.apiService.get(`/common/sendOtp`, params).subscribe(res => {
         obs.next(res);
@@ -124,7 +137,7 @@ getCountByUserRole(role)
 
   existsByEmailId(email: string) {
     const params: HttpParams = new HttpParams()
-    .set('email', email);
+      .set('email', email);
     return new Observable<any>(obs => {
       this.apiService.get(`/common/existsByEmailId`, params).subscribe(res => {
         obs.next(res);
@@ -134,8 +147,8 @@ getCountByUserRole(role)
 
   verifyOtp(mobile, otp) {
     const params: HttpParams = new HttpParams()
-    .set('number', mobile)
-    .set('otp', otp);
+      .set('number', mobile)
+      .set('otp', otp);
     return new Observable<any>(obs => {
       this.apiService.get('/common/verifyOtp', params).subscribe(res => {
         obs.next(res);

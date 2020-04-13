@@ -94,9 +94,9 @@ export class AddProductComponent implements OnInit {
 
       this.requestObj.grn = this.selectedGrn;
       this.requestObj.productList = this.productList;
-      const url = '/purchase/updateGrnWithProduct';
+      // const url = '/purchase/updateGrnWithProduct';
 
-      this.purchaseService.saveRequestObject(url, this.requestObj).subscribe(data => {
+      this.purchaseService.updateGrnWithProduct(this.requestObj).subscribe(data => {
         this.toastr.success('Record saved successfully');
         this.router.navigateByUrl('/inventory/productApproval');
 

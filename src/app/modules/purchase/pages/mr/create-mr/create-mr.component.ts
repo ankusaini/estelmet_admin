@@ -99,8 +99,8 @@ export class CreateMRComponent implements OnInit {
       this.productList.forEach(x => x.warehouse = this.selectedWarehouse);
       this.request.productList = this.productList;
       this.request.purchase = this.mrPurchase.value;
-      const path = '/purchase/createPurchase';
-      this.purchaseService.saveRequestObject(path, this.request).subscribe(data => {
+      // const path = '/purchase/createPurchase';
+      this.purchaseService.createPurchase( this.request).subscribe(data => {
          let generatedMrId=data.purchase.id;
          console.log("Genetat",data.purchase.id);
         this.toastr.success('Record saved successfully, Generated MR Id:'+generatedMrId);

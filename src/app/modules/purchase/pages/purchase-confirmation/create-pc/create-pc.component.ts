@@ -52,8 +52,8 @@ public component='pc';
 
   getProductList(id) {
     
-    let url = "/purchase/find/" + id;
-    this.purchaseService.findRequstObjectById(url).subscribe(
+    // let url = "/purchase/find/" + id;
+    this.purchaseService.findPurchase(id).subscribe(
       data => {
         this.productList = data.productList;
         this.showData = true;
@@ -92,8 +92,8 @@ public component='pc';
   savePcRecord() {
     this.requestObj.purchase = this.selectedMr;
     console.log("request is: ", this.requestObj.purchase);
-    let path= "/purchase/updatePurchaseHistory";
-    this.purchaseService.updateRequestObject(path, this.requestObj).subscribe( data => {
+    // let path= "/purchase/updatePurchaseHistory";
+    this.purchaseService.updatePurchaseHistory( this.requestObj).subscribe( data => {
       // alert("saved")
       console.log(data);
       let generateId=data.purchase.id;

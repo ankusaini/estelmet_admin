@@ -8,6 +8,7 @@ import { ToastrService } from "ngx-toastr";
 import { Status } from "src/app/shared/Models/product.model.";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { Router } from '@angular/router';
+import { STATUS } from '@iplab/ngx-file-upload/lib/helpers/control.class';
 
 @Component({
   selector: 'app-create-lot-with-pc',
@@ -40,8 +41,7 @@ export class CreateLotWithPcComponent implements OnInit {
   } 
  getPurchaseConfirmation()
  {
-    let url = "/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/APPROVED";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe( data =>{
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.PURCHASE_CONFIRMATION, Status.APPROVED).subscribe( data =>{
       console.log("Your Data is: " , data);
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;
@@ -68,8 +68,8 @@ export class CreateLotWithPcComponent implements OnInit {
             this.selectedPurchase.status=Status.PENDING;
              this.selectedPurchase.type=PurchaseType.LOT;
                 this.requestp.purchase=this.selectedPurchase
-             let url='/purchase/updatePurchaseHistory';
-             this.purchaseService.updateRequestObject(url,this.requestp).subscribe(data=>{
+            //  let url='/purchase/updatePurchaseHistory';
+             this.purchaseService.updatePurchaseHistory(this.requestp).subscribe(data=>{
                 this.toastr.success("Lot creates with id . Generated Id:"+data.purchase.id)
                 this.router.navigateByUrl("/purchase/lotEdit/"+data.purchase.id);
              },error=>{

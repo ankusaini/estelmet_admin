@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { ApiService } from 'src/app/shared/services/api.service';
+import { ApiUrl } from 'src/app/shared/services/apiContant';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,12 @@ export class InventoryService {
     });
   }
 
-  public updateProduct(path,productList):Observable<any>
+  
+
+  public updateProduct(productList):Observable<any>
   {
     return new Observable<any>(obs=>{
-      this.apiService.put(path,productList).subscribe(res=>{
+      this.apiService.put(ApiUrl.updateProduct, productList).subscribe(res=>{
         obs.next(res);
       });
     });

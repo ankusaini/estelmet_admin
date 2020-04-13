@@ -26,9 +26,9 @@ export class MrListComponent implements OnInit {
   }
 
   getAllPurchaseByTypeAndStatus(type, status) {
-    const url = '/purchase/getAllPurchaseByTypeAndStatus/' + type + '/' + status;
-    console.log('url', url);
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
+    // const url = '/purchase/getAllPurchaseByTypeAndStatus/' + type + '/' + status;
+    // console.log('url', url);
+    this.purchaseService.getAllPurchaseByTypeAndStatus(type, status).subscribe(
       data => {
         console.log('data', data);
         this.mrList = data.purchaseList;

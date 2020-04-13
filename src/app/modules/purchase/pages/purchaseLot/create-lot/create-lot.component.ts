@@ -104,9 +104,9 @@ export class CreateLotComponent implements OnInit {
   getPurchaseData(data:Purchase) {
     this.requestObj.purchase = data;
     this.requestObj.productList = [];
-    let path = "/purchase/createPurchase";
+    // let path = "/purchase/createPurchase";
    console.log("request",this.requestObj)
-    this.purchaseService.saveRequestObject(path, this.requestObj).subscribe(
+    this.purchaseService.createPurchase( this.requestObj).subscribe(
       data => {
         let generateId=data.purchase.id;
         this.toastr.success("Record saved successfully.Generated Id:"+generateId);
@@ -122,9 +122,9 @@ export class CreateLotComponent implements OnInit {
   {
     this.requestObj = data;
     console.log("data ius",data);
-      let path = "/purchase/createMaterialTransfer";
+      // let path = "/purchase/createMaterialTransfer";
    
-    this.purchaseService.saveRequestObject(path, this.requestObj).subscribe(
+    this.purchaseService.createMaterialTransfer( this.requestObj).subscribe(
       data => {
         this.toastr.success("Record saved successfully");
         this.router.navigateByUrl("/purchase/lotApproval");
