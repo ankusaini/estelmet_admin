@@ -68,6 +68,9 @@ export class ProductApprovalComponent implements OnInit {
         () => {
           this.toastr.success('Record(s) successfully updated');
           this.selectedProductList = [];
+          this.rejectedProductList = undefined;
+          this.pendingProductList = undefined;
+          this.approvedProductList = undefined;
           this.getProductByStatus('PENDING');
           this.getProductByStatus('APPROVED');
           this.getProductByStatus('REJECTED');

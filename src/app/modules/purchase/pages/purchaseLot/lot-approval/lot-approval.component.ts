@@ -129,7 +129,9 @@ if(status=='PENDING')
          this.request.purchase=this.selectedLotList[i];
         this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
-           
+           this.rejectedList=undefined;
+              this.pendingList=undefined;
+              this.approvedList=undefined;
       this.getAllPurchaseByTypeAndStatus("LOT", "PENDING");
     this.getAllPurchaseByTypeAndStatus("LOT", "APPROVED");
     this.getAllPurchaseByTypeAndStatus("LOT", "REJECTED");

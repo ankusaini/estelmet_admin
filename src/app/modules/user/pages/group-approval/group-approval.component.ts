@@ -156,6 +156,9 @@ export class GroupApprovalComponent implements OnInit {
               console.log('user group created', data);
               this.toastrService.success('Selected User(s) status changes successfully!');
               this.selectedUserGroupList = [];
+              this.rejectedUserGroupList=undefined;
+              this.pendingUserGroupList=undefined;
+              this.approvedUserGroupList=undefined;
               this.getPendingUserGroupList(this.selectedUserType);
               this.getApprovedUserGroupList(this.selectedUserType);
               this.getRejectedUserGroupList(this.selectedUserType);

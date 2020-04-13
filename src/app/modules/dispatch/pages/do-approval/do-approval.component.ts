@@ -95,6 +95,9 @@ export class DoApprovalComponent implements OnInit {
         this.request.deliveryOrder = delivery;
         this.dispatchService.updateRequestObject(path, this.request).subscribe(
           () => {
+            this.rejecetdDeliveryOrderlist=undefined;
+              this.pendingDeliveryOrderlist=undefined;
+              this.approvedDeliveryOrderlist=undefined;
             this.getDOByStatus('APPROVED');
             this.getDOByStatus('PENDING');
             this.getDOByStatus('REJECTED');

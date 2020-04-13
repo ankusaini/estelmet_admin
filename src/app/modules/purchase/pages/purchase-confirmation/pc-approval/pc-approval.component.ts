@@ -77,6 +77,7 @@ export class PcApprovalComponent implements OnInit {
   };
              this.selectedTab = "PENDING";
         this.selectedPuchaseList=[];
+       
           },
           error => {}
         );

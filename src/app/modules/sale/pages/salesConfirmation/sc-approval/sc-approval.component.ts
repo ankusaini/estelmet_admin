@@ -124,7 +124,9 @@ export class ScApprovalComponent implements OnInit {
          this.request.sales=this.selectedSalesList[i];
         this.salesService.updateRequestObject(path, this.request).subscribe(
           data => {
-            
+            this.rejectedList=undefined;
+              this.pendingList=undefined;
+              this.approvedList=undefined;
             this.getPendingList();
             this.getApprovedList();
             this.getRejectedList(); 
