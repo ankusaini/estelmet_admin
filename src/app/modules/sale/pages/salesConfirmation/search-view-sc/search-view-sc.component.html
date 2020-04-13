@@ -18,15 +18,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr (click)="routerToScEdit(data.id)" *ngFor="let data of salesList; let i=index">
-                <td>{{i+1}}</td>
-                <td >SCL-{{data.id}}</td>
-                <td>{{data.type}}</td>
-                <td>{{data.productCategory}}</td>
-                <td>{{data.productShape}}</td>
-                <td>CU-{{data.customerId}}</td>
-                <td>TR-{{data.transportId}}</td>
-                <td>{{data.salesHistory[0].createdDate | date: 'medium'}}</td>
+              <tr  *ngFor="let data of salesList; let i=index">
+                <td (click)="routerToScEdit(data.id)">{{i+1}}</td>
+                <td (click)="routerToScEdit(data.id)">SCL-{{data.id}}</td>
+                <td (click)="routerToScEdit(data.id)">{{data.type}}</td>
+                <td (click)="routerToScEdit(data.id)">{{data.productCategory}}</td>
+                <td (click)="routerToScEdit(data.id)">{{data.productShape}}</td>
+                <td (click)="routerToScEdit(data.id)">CU-{{data.customerId}}</td>
+                <td (click)="routerToScEdit(data.id)">TR-{{data.transportId}}</td>
+                <td (click)="routerToScEdit(data.id)">{{data.salesHistory[0].createdDate | date: 'medium'}}</td>
                 <td><button type="button" (click)="addToSelectedList(data)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
               </tr> 
             </tbody>

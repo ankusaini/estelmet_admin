@@ -19,17 +19,17 @@
               </tr>                  
             </thead>
             <tbody>
-                <tr (click)="navigateToEdit(delivery.deliveryOrderId)" *ngFor="let delivery of deliveryOrderlist ;let i = index">
-                  <td>{{i+1}}.</td>
-                  <td >DO-{{delivery.deliveryOrderId}}</td>
-                  <td>{{delivery.deliveryOrderType}}</td>
-                  <td>CU-{{delivery.customerId}}</td>
-                  <td>TU-{{delivery.transportId}}</td>
-                  <td>{{delivery.sourceCompanyId}}</td>
-                  <td>{{delivery.sourceWarehouseId}}</td>
-                  <td>{{delivery.invoiceGrossWeight}}</td>
-                  <td>{{delivery.invoiceNetWeight}}</td>
-                  <td>{{delivery.createdDate | date:'medium'}}</td>
+                <tr  *ngFor="let delivery of deliveryOrderlist ;let i = index">
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{i+1}}.</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)" >DO-{{delivery.deliveryOrderId}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{delivery.deliveryOrderType}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">CU-{{delivery.customerId}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">TU-{{delivery.transportId}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{delivery.sourceCompanyId}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{delivery.sourceWarehouseId}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{delivery.invoiceGrossWeight}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{delivery.invoiceNetWeight}}</td>
+                  <td (click)="navigateToEdit(delivery.deliveryOrderId)">{{delivery.createdDate | date:'medium'}}</td>
                 <td><button type="button" (click)="addDeliveryOrder(delivery)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
               </tr>
             </tbody>
