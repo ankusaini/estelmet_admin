@@ -2,6 +2,7 @@ import {Component, Input, NgZone, OnInit} from '@angular/core';
 import {NavigationItem} from '../../navigation';
 import {NextConfig} from '../../../../../../app-config';
 import {Location} from '@angular/common';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-nav-item',
@@ -13,7 +14,7 @@ export class NavItemComponent implements OnInit {
   public nextConfig: any;
   public themeLayout: string;
 
-  constructor(private location: Location) {
+  constructor(private location: Location,private permissionsService:NgxPermissionsService) {
     this.nextConfig = NextConfig.config;
     this.themeLayout = this.nextConfig['layout'];
   }

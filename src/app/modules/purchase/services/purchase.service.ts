@@ -173,4 +173,13 @@ export class PurchaseService {
       })
     })
   }
+
+      // For all purchase,sales,grn etc
+    getAllResponse(url): Observable<any> {
+        return new Observable<any>(obs => {
+            this._apiService.get(url).subscribe(res => {
+                obs.next(res);
+            });
+        });
+    }
 }

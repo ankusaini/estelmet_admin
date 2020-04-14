@@ -37,12 +37,12 @@ export class UserService {
   }
 
 
-  getCountByUserRole(role) {
-    const params: HttpParams = new HttpParams()
-      .set('userRole', role);
+  getCountByUserRole() {
+    // const params: HttpParams = new HttpParams()
+    //   .set('userRole', role);
     return new Observable<any>(obs => {
-      this.apiService.get(ApiUrl.countByUserRole, params).subscribe(res => {
-        obs.next(res);
+      this.apiService.get(ApiUrl.countByUserRole).subscribe(res => {
+        obs.next(res.data);
       });
     });
   }

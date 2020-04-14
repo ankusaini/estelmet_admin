@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { User } from '../../Models/user.model';
 import { JwtService } from '../login/jwt.service';
 import { UserLoginService } from '../login/userLogin.service';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthGuardService implements CanActivate {
     private router: Router,
     private userService: UserLoginService,
     private _jwtService: JwtService,
+    private permissionsService: NgxPermissionsService
 
   ) {
     // this.data.currentStatus.subscribe(login => this.loginStatus = login);
@@ -44,6 +46,8 @@ export class AuthGuardService implements CanActivate {
     //   return false;
     // }
     if (this._jwtService.getToken()) {
+      this.user= JSON.parse(this.userService.getUser());
+      this.permissionsService.loadPermissions(this.user.roles);
       return true;
     } else {
       console.log('auth guard');

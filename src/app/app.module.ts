@@ -23,6 +23,7 @@ import { NavigationComponent } from './theme/layout/admin/navigation/navigation.
 import { AuthComponent } from './theme/layout/auth/auth.component';
 import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
 import { SharedModule } from './theme/shared/shared.module';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SharedModule } from './theme/shared/shared.module';
     NgbButtonsModule,
     NgbTabsetModule,
     NgbModalModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
     CookieService,

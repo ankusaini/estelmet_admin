@@ -39,6 +39,7 @@ export class UserSelectionComponent implements OnInit {
     this.userDataService.group$.subscribe(data=>{
       console.log(data);
       this.selectedUserList = data.user;
+
       this.getAllUserByUserRoleAndStatus(data.userRole);
     })
   }
@@ -62,13 +63,16 @@ export class UserSelectionComponent implements OnInit {
     );
   }
 
-  selectUser(user: User) {
+  selectUser(user) {
+  console.log(this.selectedUserList);
     const index: number = this.selectedUserList.indexOf(user);
+    console.log(index);
     if (index == -1) {
       this.selectedUserList.push(user);
     } else {
-      this.toastService.warning("Product already added!");
+      this.toastService.warning("User already added!");
     }
+     console.log(this.selectedUserList);
   }
   removeUser(user) {
     const index: number = this.selectedUserList.indexOf(user);

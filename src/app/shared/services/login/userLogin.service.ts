@@ -87,7 +87,7 @@ export class UserLoginService {
         console.log('login res', data.headers.get('authorization'));
         this.setAuth(data.headers.get('authorization'));
         // this.getUserById(data.headers.get('ID'));
-        return data;
+        return data.body;
       }
       ));
   }

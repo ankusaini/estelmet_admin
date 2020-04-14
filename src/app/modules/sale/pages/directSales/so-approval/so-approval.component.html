@@ -231,6 +231,9 @@
 
 
       <button type="submit" (click)="changeStatusOfSelectedSales('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'" class="btn btn-success active">Approve</button>&nbsp;
+                <div  *ngxPermissionsOnly="['SALES_DELETE_PRIVILEGE']">
+
       <button type="submit" (click)="changeStatusOfSelectedSales('REJECTED')"  *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" class="btn btn-danger active">Reject</button>&nbsp;
+                </div>
     </div>
   </div>

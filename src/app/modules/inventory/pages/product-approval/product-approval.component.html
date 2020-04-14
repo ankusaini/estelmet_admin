@@ -34,7 +34,10 @@
     </app-card>
     <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>
     <button type="submit" (click)="changeStatusOfProduct('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'" class="btn btn-success active">Approve</button>&nbsp;
+          <div  *ngxPermissionsOnly="['INVENTORY_DELETE_PRIVILEGE']">
+
     <button type="submit" (click)="changeStatusOfProduct('REJECTED')" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" class="btn btn-danger active">Reject</button>&nbsp;
+          </div>
   </div>
 </div>
 

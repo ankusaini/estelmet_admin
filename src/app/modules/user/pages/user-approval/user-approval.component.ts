@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
 import { Router } from '@angular/router';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
+import { NgxPermissionsService } from "ngx-permissions";
 @Component({
   selector: 'app-user-approval',
   templateUrl: './user-approval.component.html',
@@ -27,7 +28,7 @@ export class UserApprovalComponent implements OnInit {
   constructor(private userService: UserService,
     private router: Router,
     public dataService : UserDataService,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,private permissionsService:NgxPermissionsService) {
       this.Ids = ids;
     this.basicSwal();
   }
@@ -71,7 +72,9 @@ export class UserApprovalComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    console.log("permsiss",this.permissionsService.getPermissions())
+  }
 
   getPendingUserList(selectedRole) {
 
