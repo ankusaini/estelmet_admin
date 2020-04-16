@@ -2,8 +2,8 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & Select GRN Id " [options]="false"
         cardClass="user-profile-list">
-        <div #epltable *ngIf="grnList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" datatable class="table table-striped table-bordered table-hover">
+        <div  *ngIf="grnList" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -20,17 +20,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr (click)="navigateToEdit(grn.grnId)" *ngFor="let grn of grnList; let i = index">
-                <td>{{i+1}}</td>
-                <td >{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
-                <td>{{Ids.LOT + '-' + grn.purchaseId}}</td>
-                <td>{{grn.grnType}}</td>
-                <td>{{grn.status}}</td>
-                <td>{{Ids.COMPANY + '-' + grn.sourceCompanyId}}</td>
-                <td>{{Ids.WAREHOUSE + '-' + grn.sourceWarehouseId}}</td>
-                <td>{{grn.grossWeight}}</td>
-                <td>{{grn.netWeight}}</td>
-                <td>{{grn.createdDate | date:'medium'}}</td>
+              <tr  *ngFor="let grn of grnList; let i = index">
+                <td (click)="navigateToEdit(grn.grnId)">{{i+1}}</td>
+                <td (click)="navigateToEdit(grn.grnId)" >{{Ids.GOOD_RECIPT_NOTE + '-' + grn.grnId}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{Ids.LOT + '-' + grn.purchaseId}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{grn.grnType}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{grn.status}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{Ids.COMPANY + '-' + grn.sourceCompanyId}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{Ids.WAREHOUSE + '-' + grn.sourceWarehouseId}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{grn.grossWeight}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{grn.netWeight}}</td>
+                <td (click)="navigateToEdit(grn.grnId)">{{grn.createdDate | date:'medium'}}</td>
                 <td>
                   <button type="button" (click)="addToSelectedList(grn)" class="btn btn-icon btn-success" >
                     <i class="feather icon-plus"></i>
@@ -47,8 +47,8 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Above Selected GRN Id" [options]="false"
         cardClass="user-profile-list">
-        <div  *ngIf="selectedGrnList && selectedGrnList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table  datatable class="table table-striped table-bordered table-hover">
+        <div #epltable  *ngIf="selectedGrnList && selectedGrnList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table  id="contentToConvert"  datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                   <th>Sr. No.</th>

@@ -102,6 +102,9 @@ export class ProcessingApprovalComponent implements OnInit {
         this.processingService.updateProcessing(path, this.selectedProductList[i]).subscribe(
           res => {
             this.selectedProductList = [];
+            this.rejectedProductList=undefined;
+              this.pendingProductList=undefined;
+              this.approvedProductList=undefined;
             this.toastr.success('Record successfully saved');
             this.getAllProcessingByTypeAndStatus('PENDING');
             this.getAllProcessingByTypeAndStatus('APPROVED');

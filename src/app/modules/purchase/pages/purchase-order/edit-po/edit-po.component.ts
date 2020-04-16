@@ -51,8 +51,8 @@ export class EditPoComponent implements OnInit {
       this.mrId = this.route.snapshot.params.id;
 
       if (this.mrId) {
-        let url = "/purchase/find/" + this.mrId;
-        this.purchaseService.findRequstObjectById(url).subscribe(
+        // let url = "/purchase/find/" + this.mrId;
+        this.purchaseService.findPurchase(this.mrId).subscribe(
           data => {
             this.mrResponse = data;
             this.productList = data.productList;
@@ -124,8 +124,8 @@ export class EditPoComponent implements OnInit {
 
       console.log("request object is ", this.request);
       // let path = "/purchase/updatePurchaseWithProduct";
-        let path = "/purchase/updatePurchase";
-      this.purchaseService.updateRequestObject(path, this.request).subscribe(
+        // let path = "/purchase/updatePurchase";
+      this.purchaseService.updatePurchaseWithProduct( this.request).subscribe(
         data => {
           alert("Mr Updated");
           // let path1="/inventory/updateProduct/";

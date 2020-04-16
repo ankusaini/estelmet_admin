@@ -30,9 +30,9 @@ public Ids: any;
   ngOnInit() {}
 
   getAllPurchaseByTypeAndStatus(type, status) {
-    let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
-    console.log("url",url)
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe(
+    // let url = "/purchase/getAllPurchaseByTypeAndStatus/" + type + "/" + status;
+    // console.log("url",url)
+    this.purchaseService.getAllPurchaseByTypeAndStatus(type, status).subscribe(
       data => {
         console.log("data",data)
         this.mrList = data.purchaseList;

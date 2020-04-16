@@ -32,14 +32,6 @@
     </wizard-step>
     <wizard-step stepTitle="Select Product" navigationSymbol="2">
       <app-add-product-cart [productList]="productList" [component]="'dispatch'"></app-add-product-cart>
-      <div class="col-sm-12 centered-content">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-          <button type="submit" class="btn btn-primary btn-sm" uiSref="work" nextStep>Continue</button>
-        </div>
-      </div>
-    </wizard-step>
-    <wizard-step stepTitle="Search & Select SC Lot ID" navigationSymbol="3">
       <form [formGroup]="productIdForm" (ngSubmit)="submitProductId()" class="editForm" novalidate>
         <div class="row">
           <div class="col-md-8">
@@ -52,16 +44,26 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Load Product</button>
+        <button type="submit"  class="btn btn-primary">Load Product</button>
       </form>
+      <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-success btn-sm" (click)="saveRecord()">Submit</button>
+        </div>
+      </div>
+    </wizard-step>
+    <!-- <wizard-step stepTitle="Search & Select SC Lot ID" navigationSymbol="3">
+      
       <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
           <button type="button" class="btn btn-primary btn-sm" nextStep>Continue</button>
         </div>
       </div>
-    </wizard-step>
-    <wizard-step stepTitle="View Product" navigationSymbol="4">
+    </wizard-step> -->
+    <!-- <wizard-step stepTitle="View Product" navigationSymbol="4">
       <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>
       <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
@@ -69,6 +71,6 @@
           <button type="button" class="btn btn-success btn-sm" (click)="saveRecord()">Submit</button>
         </div>
       </div>
-    </wizard-step>
+    </wizard-step> -->
   </wizard>
 </app-card>

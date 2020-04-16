@@ -2,6 +2,8 @@ import {Component, Input, NgZone, OnInit} from '@angular/core';
 import {NavigationItem} from '../../navigation';
 import {Location} from '@angular/common';
 import {NextConfig} from '../../../../../../app-config';
+import { NgxPermissionsService } from 'ngx-permissions';
+
 
 @Component({
   selector: 'app-nav-group',
@@ -14,12 +16,13 @@ export class NavGroupComponent implements OnInit {
   @Input() activeId: any;
   public nextConfig: any;
 
-  constructor(private zone: NgZone, private location: Location) {
+  constructor(private zone: NgZone, private location: Location,private permissionsService:NgxPermissionsService) {
     this.nextConfig = NextConfig.config;
   }
 
   ngOnInit() {
     // at reload time active and trigger link
+    console.log("permission are",this.permissionsService.getPermissions());
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
       current_url = this.location['_baseHref'] + this.location.path();

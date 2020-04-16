@@ -37,7 +37,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
   // customerCompany : any[];
   priorityList: any =
     {
-      IMMIDIATE: 'Immidiate',
+      IMMEDIATE: 'Immediate',
       ONE_DAY: 'Within One Day', TWO_DAY: 'Within Two Day', THREE_DAY: 'Within Three Day', MORE_THEN_THREE_DAY: 'More Than Three Day'
     };
 

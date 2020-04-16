@@ -10,20 +10,22 @@ export class PurchaseService {
 
     constructor(private apiService: ApiService) { }
 
-    getAllPurchaseByTypeAndStatus(url): Observable<any> {
-        return new Observable<any>(obs => {
-            this.apiService.get(url).subscribe(res => {
-                obs.next(res);
-            });
-        });
-    }
+    // getAllPurchaseByTypeAndStatus(url): Observable<any> {
+    //     return new Observable<any>(obs => {
+    //         this.apiService.get(url).subscribe(res => {
+    //             obs.next(res);
+    //         });
+    //     });
+    // }
+
 
     // For all purchase,sales,grn etc
-    getAllResponse(url): Observable<ResponseP> {
-        return new Observable<any>(obs => {
-            this.apiService.get(url).subscribe(res => {
-                obs.next(res);
-            });
-        });
-    }
+    // getAllResponse(url): Observable<any> {
+    //     return new Observable<any>(obs => {
+    //         this.apiService.get(url).subscribe(res => {
+    //             obs.next(res);
+    //         });
+    //     });
+    // }
+    
 }

@@ -100,10 +100,12 @@ export class CreateSoIdComponent implements OnInit {
   }
 
   selectedCompany(value: number) {
+    console.log("Value",value)
     const data = this.companyList.filter(element => {
       return element.id == value;
     });
     this.selected_comapny = data[0];
+    console.log("selected company",this.selected_comapny)
   }
 
   getSelectedWarehouse(event) {
@@ -112,6 +114,8 @@ export class CreateSoIdComponent implements OnInit {
 
   generateSoId() {
     if (this.salesDto.value.productCategory && this.salesDto.value.productShape) {
+      console.log(this.categoryList);
+      console.log(this.shapeList);
       this.categoryList.map(category => {
         if (category.id == this.salesDto.value.productCategory) {
           this.selectedCategory = category.productCategory;

@@ -86,7 +86,7 @@ export class SalesServiceService {
   {
     return new Observable<ResponseP>(obs=>{
       this._apiService.post(url,requestObj).subscribe(res=>{
-        obs.next(res);
+        obs.next(res.body);
       });
     });
   }

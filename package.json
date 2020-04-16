@@ -70,6 +70,7 @@
     "ngx-lightbox": "^2.1.2",
     "ngx-owl-carousel-o": "^1.2.0",
     "ngx-perfect-scrollbar": "^8.0.0",
+    "ngx-permissions": "^7.0.3",
     "ngx-toaster": "^1.0.1",
     "ngx-toastr": "^11.3.3",
     "nouislider": "^14.1.1",

@@ -28,13 +28,13 @@
               <td *ngIf="selectedRole === 'AGENT'" (click)="navigateToEditView(userGroup)">{{Ids.AGENT_GROUP + '-' + userGroup.userGroupId}}</td>
               <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="navigateToEditView(userGroup)">{{Ids.CONTRACTOR_GROUP + '-' + userGroup.userGroupId}}</td>
               <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="navigateToEditView(userGroup)">{{Ids.TRANSPORTER_GROUP + '-' + userGroup.userGroupId}}</td>
-              <td>{{userGroup.userGroupName}}</td>
-              <td>{{userGroup.userRole}}</td>
-              <td>{{userGroup.productType}}</td>
-              <td>{{userGroup.productCategory}}</td>
-              <td>{{userGroup.thicknessMin}}-{{userGroup.thicknessMax}}</td>
-              <td>{{userGroup.user.length}}</td>
-              <td>
+              <td (click)="navigateToEditView(userGroup)" >{{userGroup.userGroupName}}</td>
+              <td (click)="navigateToEditView(userGroup)">{{userGroup.userRole}}</td>
+              <td (click)="navigateToEditView(userGroup)">{{userGroup.productType}}</td>
+              <td (click)="navigateToEditView(userGroup)">{{userGroup.productCategory}}</td>
+              <td (click)="navigateToEditView(userGroup)">{{userGroup.thicknessMin}}-{{userGroup.thicknessMax}}</td>
+              <td (click)="navigateToEditView(userGroup)">{{userGroup.user.length}}</td>
+              <td (click)="navigateToEditView(userGroup)">
                 <span class="badge badge-light-success">{{userGroup.status}}</span>
                 <div class="overlay-edit">
                   <!-- (click)="addUserGroup(userGroup)"  -->

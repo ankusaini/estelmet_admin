@@ -12,6 +12,7 @@ export class SelectCustomerOrderIdComponent implements OnInit {
   public salesList: Sales[];
   @Output() outputSelected: EventEmitter<any> = new EventEmitter<any>();
   public selectedProduct: Sales;
+  public selectedId:any;
 
   constructor(private salesservice: SalesServiceService,
               private toastr: ToastrService) { }
@@ -29,6 +30,7 @@ export class SelectCustomerOrderIdComponent implements OnInit {
 
   selectProduct(sale: Sales) {
     this.selectedProduct = sale;
+    this.selectedId=sale.id;
     console.log(sale);
   }
 

@@ -9,15 +9,24 @@ import { UsersListComponent } from 'src/app/modules/user/pages/users-list/users-
 import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { GroupOverviewComponent } from './pages/group-overview/group-overview.component';
+import { NgxPermissionsGuard } from "ngx-permissions";
 
 const routes: Routes = [
   {
     path: 'createUser',
-    component: CreateUserComponent
+    component: CreateUserComponent,
+    canActivate: [NgxPermissionsGuard],
+    data:{
+      permissions:
+      {
+        only:['','']
+      }
+    }
   },
   {
     path: 'profile/:id',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate: [NgxPermissionsGuard]
     // loadChildren: () => import('./pages/user-profile/user-profile.module').then(module => module.UserProfileModule)
   },
   {

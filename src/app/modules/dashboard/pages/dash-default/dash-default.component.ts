@@ -9,6 +9,7 @@ import { SeoChart2 } from './chart/seo-chart-2';
 import { SeoChart3 } from './chart/seo-chart-3';
 import { SupportChartData1 } from './chart/support-chart-data-1';
 import { SupportChartData2 } from './chart/support-chart-data-2';
+import { ids } from "src/app/shared/Models/ids.model";
 
 @Component({
   selector: 'app-dash-default',
@@ -16,6 +17,7 @@ import { SupportChartData2 } from './chart/support-chart-data-2';
   styleUrls: ['./dash-default.component.scss']
 })
 export class DashDefaultComponent implements OnInit {
+  selectedRole: any='CUSTOMER';
 
 
   public supportChartData1: any;
@@ -86,6 +88,13 @@ export class DashDefaultComponent implements OnInit {
 
   public PENDING = 'PENDING';
 
+  public Ids: any;
+
+
+
+  public limit = 15;
+  public offset = 1;
+
   constructor(
     private userService: UserService,
     private toastrService: ToastrService
@@ -97,38 +106,66 @@ export class DashDefaultComponent implements OnInit {
     this.seoChartData3 = SeoChart3.seoChartData;
     this.powerCardChartData1 = PowerCardChart1.powerCardChartData;
     this.powerCardChartData2 = PowerCardChart2.powerCardChartData;
+    this.Ids = ids;
   }
 
   ngOnInit() {
     this.getCountByUserRole('CUSTOMER');
-     this.getCountByUserRole('SUPPLIER');
-      this.getCountByUserRole('TRANSPORTER');
-       this.getCountByUserRole('AGENT');
+    this.getAllUserByRoleAndStatus('CUSTOMER','PENDING')
   }
 
   getCountByUserRole(role) {
-    this.userService.getCountByUserRole(role).subscribe(data => {
-      if(role=='CUSTOMER')
-      this.totalCustomerCount=data.data;
-      if(role=='SUPPLIER')
-      this.totalSupplierCount=data.data;
-      if(role=='TRANSPORTER')
-      this.totalContractorCount=data.data;
-      if(role=='AGENT')
-      this.totalAgentCount=data.data;
+    this.userService.getCountByUserRole().subscribe(data => {
+      console.log(data);
+      this.approvedSupplierCount = data.SUPPLIER_APPROVED;
+      this.rejectedSupplierCount = data.SUPPLIER_REJECTED;
+      this.pendingSupplierCount = data.SUPPLIER_PENDING;
+
+      this.approvedContractorCount = data.CONTRACTOR_APPROVED;
+      this.rejectedContractorCount = data.CONTRACTOR_REJECTED;
+      this.pendingContractorCount = data.CONTRACTOR_PENDING;
+
+      this.approvedCustomerCount = data.CUSTOMER_APPROVED;
+      this.rejectedCustomerCount = data.CUSTOMER_REJECTED;
+      this.pendingCustomerCount = data.CUSTOMER_PENDING;
+
+      this.approvedAgentCount = data.AGENT_APPROVED;
+      this.rejectedAgentCount = data.AGENT_REJECTED;
+      this.pendingAgentCount = data.AGENT_PENDING;
+
+
+      this.totalCustomerCount = this.approvedCustomerCount +
+        this.rejectedCustomerCount +
+        this.pendingCustomerCount;
+
+        this.totalAgentCount=this.approvedAgentCount +  this.rejectedAgentCount +
+      this.pendingAgentCount ;
+
+      this.totalContractorCount= this.approvedContractorCount +
+      this.rejectedContractorCount +
+      this.pendingContractorCount ;
+
+      this.totalSupplierCount=this.approvedSupplierCount +
+      this.rejectedSupplierCount +
+      this.pendingSupplierCount;
+
     }, error => {
       console.log("erorr");
     })
   }
 
-  getAllUserByRole(role)
-  {
+  getAllUserByRole(role) {
 
   }
 
-  getAllUserByRoleAndStatus(role,status)
-  {
-    
+  getAllUserByRoleAndStatus(role, status) {
+    this.selectedRole = role;
+    this.userService.getAllUserByUserRoleAndStatus(role, status, this.limit, this.offset).subscribe(
+      data => {
+        this.userList = data;
+      },
+      error => { }
+    );
   }
   // getAllUsers() {
   //   const url = '/users/getAllUsers';

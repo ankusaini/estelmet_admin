@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { UserGroup } from 'src/app/shared/Models/user.model';
+import { UserGroup, Status } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
@@ -17,6 +17,8 @@ export class GroupApprovalComponent implements OnInit {
   public approvedUserGroupList: UserGroup[];
   public rejectedUserGroupList: UserGroup[];
   public Ids: any;
+  limit = 10;
+  offset = 1;
   // public selectedRole: string ='';
   public selectedUserGroupList: UserGroup[] = [];
 
@@ -69,10 +71,8 @@ export class GroupApprovalComponent implements OnInit {
   ngOnInit() { }
 
   getPendingUserGroupList(selectedRole) {
-    const url =
-      '/users/group/getAllUserGroupByUserRoleAndStatus?userRole=' + selectedRole + '&status=PENDING&limit=10&offset=1';
 
-    this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
+    this.userService.getAllUserByUserGroupRoleAndStatus(selectedRole, Status.PENDING, this.limit, this.offset ).subscribe(
       data => {
         this.pendingUserGroupList = data;
       },
@@ -81,10 +81,7 @@ export class GroupApprovalComponent implements OnInit {
   }
 
   getApprovedUserGroupList(selectedRole) {
-    const url =
-      '/users/group/getAllUserGroupByUserRoleAndStatus?userRole=' + selectedRole + '&status=APPROVED&limit=10&offset=1';
-
-    this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
+      this.userService.getAllUserByUserGroupRoleAndStatus(selectedRole, Status.APPROVED, this.limit, this.offset ).subscribe(
       data => {
         this.approvedUserGroupList = data;
       },
@@ -93,10 +90,7 @@ export class GroupApprovalComponent implements OnInit {
   }
 
   getRejectedUserGroupList(selectedRole) {
-    const url =
-      '/users/group/getAllUserGroupByUserRoleAndStatus?userRole=' + selectedRole + '&status=REJECTED&limit=10&offset=1';
-
-    this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
+      this.userService.getAllUserByUserGroupRoleAndStatus(selectedRole, Status.REJECTED, this.limit, this.offset ).subscribe(
       data => {
         this.rejectedUserGroupList = data;
         console.log('user group list', this.rejectedUserGroupList);
@@ -139,8 +133,7 @@ export class GroupApprovalComponent implements OnInit {
     if (this.selectedUserGroupList.length === 0) {
       this.toastrService.warning('Select at least one product!');
     } else {
-      const path = '/users/group/updateUserInGroup';
-      console.log('path', path);
+      
       for (let i = 0; i < this.selectedUserGroupList.length; i++) {
         this.selectedUserGroupList[i].status = status;
 
@@ -157,12 +150,15 @@ export class GroupApprovalComponent implements OnInit {
 
 
         this.userService
-          .updateUserGroup(path, this.selectedUserGroupList[i])
+          .updateUserGroup( this.selectedUserGroupList[i])
           .subscribe(
             data => {
               console.log('user group created', data);
               this.toastrService.success('Selected User(s) status changes successfully!');
               this.selectedUserGroupList = [];
+              this.rejectedUserGroupList=undefined;
+              this.pendingUserGroupList=undefined;
+              this.approvedUserGroupList=undefined;
               this.getPendingUserGroupList(this.selectedUserType);
               this.getApprovedUserGroupList(this.selectedUserType);
               this.getRejectedUserGroupList(this.selectedUserType);

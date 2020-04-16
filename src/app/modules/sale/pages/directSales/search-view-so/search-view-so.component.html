@@ -2,8 +2,8 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & View Sales Offer" [options]="false"
         cardClass="user-profile-list">
-        <div #epltable *ngIf="salesList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" datatable class="table table-striped table-bordered table-hover">
+        <div  *ngIf="salesList" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table  datatable class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -18,15 +18,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr (click)="routerToSoEdit(sale.id)" *ngFor="let sale of salesList; let i=index">
-                <td>{{i+1}}</td>
-                <td >{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
-                <td>{{sale.type}}</td>
-                <td>{{sale.productCategory}}</td>
-                <td>{{sale.productShape}}</td>
-                <td>{{Ids.COMPANY + '-' + sale.sourceCompanyId}}</td>
-                <td>{{Ids.WAREHOUSE + '-' + sale.sourceWarehouseId}}</td>
-                <td>{{sale.salesHistory[0].createdDate | date:'medium'}}</td>
+              <tr  *ngFor="let sale of salesList; let i=index">
+                <td (click)="routerToSoEdit(sale.id)">{{i+1}}</td>
+                <td (click)="routerToSoEdit(sale.id)" >{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
+                <td (click)="routerToSoEdit(sale.id)">{{sale.type}}</td>
+                <td (click)="routerToSoEdit(sale.id)">{{sale.productCategory}}</td>
+                <td (click)="routerToSoEdit(sale.id)">{{sale.productShape}}</td>
+                <td (click)="routerToSoEdit(sale.id)">{{sale.sourceCompanyId}}</td>
+                <td (click)="routerToSoEdit(sale.id)">{{sale.sourceWarehouseId}}</td>
+                <td (click)="routerToSoEdit(sale.id)">{{sale.salesHistory[0].createdDate | date:'medium'}}</td>
                 <td><button type="button" (click)="addToSelectedList(sale)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
               </tr>  
             </tbody>
@@ -39,8 +39,8 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Selected Sales Offer LOT/s" [options]="false"
         cardClass="user-profile-list">
-        <div *ngIf="selectedSalesList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table class="table table-striped table-bordered table-hover">
+        <div  #epltable *ngIf="selectedSalesList" class="dt-responsive table-responsive" cardClass="card-datatable">
+          <table id="contentToConvert" class="table table-striped table-bordered table-hover">
             <thead>
               <tr>
                   <th>Sr. No.</th>

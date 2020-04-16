@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UserGroup } from 'src/app/shared/Models/user.model';
+import { UserGroup, Status } from 'src/app/shared/Models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
 import { ids } from 'src/app/shared/Models/ids.model';
@@ -24,11 +24,14 @@ export class UserGroupListComponent implements OnInit {
     private toastrService: ToastrService) {
     this.basicSwal();
     this.Ids = ids;
+
   }
   public userGroupList: any[] = [];
   public selectedUserGroupList: UserGroup[] = [];
   public selectedRole: string ='';
   public Ids: any;
+  limit = 10;
+  offset = 1;
 
     @ViewChild('epltable', { static: false }) epltable: ElementRef;
 
@@ -62,16 +65,10 @@ export class UserGroupListComponent implements OnInit {
     }).then(selectedRole => {
       if (selectedRole.value) {
         this.selectedRole = selectedRole.value;
-        console.log('selected role', selectedRole);
-        const url =
-          '/users/group/getAllUserGroupByUserRoleAndStatus?userRole=' +
-          selectedRole.value +
-          '&status=APPROVED&limit=10&offset=1';
-
-        this.userService.getAllUserByUserGroupRoleAndStatus(url).subscribe(
+        console.log('------------------',selectedRole.value);
+          this.userService.getAllUserByUserGroupRoleAndStatus(selectedRole.value, Status.APPROVED, this.limit, this.offset ).subscribe(
           data => {
             this.userGroupList = data;
-            console.log('user group list', this.userGroupList);
           },
           error => { }
         );

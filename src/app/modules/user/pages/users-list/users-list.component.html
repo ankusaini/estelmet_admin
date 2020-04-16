@@ -25,19 +25,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr (click)="goToView(user)" href="kdkd" *ngFor="let user of userList;let i = index">
+            <tr href="kdkd" *ngFor="let user of userList;let i = index">
               <td>{{i+1}}</td>
-              <td *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'TRANSPORTER'">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
-              <td>{{user.userRole}}</td>
-              <td>{{user.firstName}}</td>
-              <td>{{user.mobile}}</td>
-              <td>{{user.emailId}}</td>
-              <td>{{user.businessDetails[0]?.companyName}}</td>
-              <td>
+              <td (click)="goToView(user)"  *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)"  *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)"  *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)"  *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)"  *ngIf="selectedRole === 'TRANSPORTER'">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)"  >{{user.userRole}}</td>
+              <td (click)="goToView(user)" >{{user.firstName}}</td>
+              <td (click)="goToView(user)" >{{user.mobile}}</td>
+              <td (click)="goToView(user)" >{{user.emailId}}</td>
+              <td (click)="goToView(user)" >{{user.businessDetails[0]?.companyName}}</td>
+              <td (click)="goToView(user)">
                 <span class="badge badge-light-success">{{user.status}}</span>
                 <div class="overlay-edit">
                   <button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>

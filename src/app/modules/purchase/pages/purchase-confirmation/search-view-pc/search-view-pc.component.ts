@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Purchase } from 'src/app/shared/Models/purchase.model';
+import { Purchase, PurchaseType } from 'src/app/shared/Models/purchase.model';
 import { PurchaseService } from '../../../services/purchase.service';
 import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
 import { ids } from 'src/app/shared/Models/ids.model';
 import * as xlsx from 'xlsx';
+import { Status } from 'src/app/shared/Models/user.model';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
@@ -30,7 +31,7 @@ export class SearchViewPcComponent implements OnInit {
 
   ngOnInit() {
     let url = "/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/APPROVED";
-    this.purchaseService.getAllPurchaseByTypeAndStatus(url).subscribe( data =>{
+    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.PURCHASE_CONFIRMATION, Status.APPROVED).subscribe( data =>{
       console.log("Your Data is: " + data);
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;

@@ -8,6 +8,7 @@ export interface NavigationItem {
   icon?: string;
   hidden?: boolean;
   url?: string;
+  permissions?:string[];
   classes?: string;
   exactMatch?: boolean;
   external?: boolean;
@@ -75,6 +76,7 @@ const NavigationItems = [
     title: 'Users',
     type: 'group',
     icon: 'feather icon-layout',
+    permissions:['USER_CREATE_PRIVILEGE','USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'user',
@@ -106,6 +108,7 @@ const NavigationItems = [
           {
             id: 'approvalUser',
             title: 'User Approval',
+            permissions:['USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
             type: 'item',
             url: '/users/userApproval',
             target: false,
@@ -143,6 +146,7 @@ const NavigationItems = [
           {
             id: 'approvalGroup',
             title: 'Group Approval',
+            permissions:['USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
             type: 'item',
             url: '/users/groupApproval',
             target: false,
@@ -165,6 +169,7 @@ const NavigationItems = [
     title: 'Purchase',
     type: 'group',
     icon: 'feather icon-layout',
+    permissions:['PURCHASE_CREATE_PRIVILEGE','PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'materialRequirement',
@@ -197,6 +202,7 @@ const NavigationItems = [
             id: 'mrApproval',
             title: 'MR Approval',
             type: 'item',
+            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
             url: '/purchase/mrApproval',
             target: false,
           },
@@ -290,6 +296,7 @@ const NavigationItems = [
             id: 'pcApproval',
             title: 'PC Approval',
             type: 'item',
+            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
             url: '/purchase/pcApproval',
             target: false,
           },
@@ -347,7 +354,9 @@ const NavigationItems = [
             id: 'lotApproval',
             title: 'LOT Approval',
             type: 'item',
-            url: '/purchase/lotApproval',
+            url: '/purchase/lotApproval',  
+            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+
             target: false,
           },
           // {
@@ -404,6 +413,7 @@ const NavigationItems = [
             title: 'GRN Approval',
             type: 'item',
             url: '/purchase/grnApproval',
+            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
             target: false,
           },
           // {
@@ -421,6 +431,7 @@ const NavigationItems = [
     id: 'inventoryHeading',
     title: 'Inventory',
     type: 'group',
+    permissions:['INVENTORY_CREATE_PRIVILEGE','INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'inventory',
@@ -454,6 +465,8 @@ const NavigationItems = [
             title: 'Product Approval',
             type: 'item',
             url: '/inventory/productApproval',
+            permissions:['INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
+
             target: false,
           },
           // {
@@ -504,6 +517,7 @@ const NavigationItems = [
             title: 'Processing Approval',
             type: 'item',
             url: '/processing/processingApproval',
+            permissions:['INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
             target: false,
           },
           // {
@@ -535,6 +549,7 @@ const NavigationItems = [
     id: 'salesHeading',
     title: 'Sales',
     type: 'group',
+    permissions:['SALES_CREATE_PRIVILEGE','SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
     children: [
       // {
       //   id: 'salesLead',
@@ -577,6 +592,7 @@ const NavigationItems = [
         title: 'Sales',
         type: 'collapse',
         icon: 'feather icon-shopping-cart',
+        
         children: [
           {
             id: 'directSales',
@@ -627,6 +643,7 @@ const NavigationItems = [
                     id: 'approvalSo',
                     title: 'SO Approval',
                     type: 'item',
+                    permissions:['SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
                     url: '/sales/soApproval',
                     target: false,
                   },
@@ -795,6 +812,8 @@ const NavigationItems = [
                 id: 'approvalSalesConfirmation',
                 title: 'SC Approval',
                 type: 'item',
+                permissions:['SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
+
                 url: '/sales/scApproval',
                 target: false,
               },
@@ -866,6 +885,8 @@ const NavigationItems = [
                 id: 'approvalDeliveryOrder',
                 title: 'DO Approval',
                 type: 'item',
+                permissions:['SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
+
                 url: '/dispatch/doApproval',
                 target: false,
               },
@@ -928,6 +949,7 @@ const NavigationItems = [
     id: 'setup',
     title: 'Setup',
     type: 'group',
+    permissions:['WEBSITE_CREATE_PRIVILEGE','WEBSITE_DELETE_PRIVILEGE','WEBSITE_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'superAdmin',

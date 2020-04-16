@@ -4,6 +4,7 @@ import { PurchaseService } from '../../../services/purchase.service';
 import { ToastrService } from "ngx-toastr";
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { ids } from 'src/app/shared/Models/ids.model';
+import { Status } from 'src/app/shared/Models/user.model';
 
 
 @Component({
@@ -37,8 +38,8 @@ export class GrnApprovalComponent implements OnInit {
 
   getAllGrnByStatus(status) {
     if(status=='PENDING') {
-      let pendingUrl="/purchase/getAllGrnByStatus/PENDING";
-      this.purchaseService.getAllGrnByStatus(pendingUrl)
+      // let pendingUrl="/purchase/getAllGrnByStatus/PENDING";
+      this.purchaseService.getAllGrnByStatus(Status.PENDING)
       .subscribe( data => {
         this.pendingData = data;
           this.pendingList = this.pendingData.grnList;
@@ -49,8 +50,8 @@ export class GrnApprovalComponent implements OnInit {
       });
     }
     if(status=='APPROVED') {
-      let approvedUrl="/purchase/getAllGrnByStatus/APPROVED";
-      this.purchaseService.getAllGrnByStatus(approvedUrl).subscribe( data => {
+      // let approvedUrl="/purchase/getAllGrnByStatus/APPROVED";
+      this.purchaseService.getAllGrnByStatus(Status.APPROVED).subscribe( data => {
         this.approvedData = data;
           this.approvedList = this.approvedData.grnList;
           console.log("Your Data is "+this.approvedList);
@@ -60,8 +61,8 @@ export class GrnApprovalComponent implements OnInit {
       });
     }
     if(status=='REJECETED') {
-      let rejectedUrl="/purchase/getAllGrnByStatus/REJECTED";
-      this.purchaseService.getAllGrnByStatus(rejectedUrl).subscribe( data => {
+      // let rejectedUrl="/purchase/getAllGrnByStatus/REJECTED";
+      this.purchaseService.getAllGrnByStatus(Status.REJECTED).subscribe( data => {
         this.rejectedData = data;
           this.rejectedList = this.rejectedData.grnList;
           console.log("Your Data is "+this.rejectedList);
@@ -116,13 +117,16 @@ export class GrnApprovalComponent implements OnInit {
     else {
       // incomplete url and request body
 
-       let path = "/purchase/updatePurchase";
+      //  let path = "/purchase/updateGrn";
    
         for (let i = 0; i < this.selectedGrnList.length; i++) {
         this.selectedGrnList[i].status = status;
          this.request.grn=this.selectedGrnList[i];
-        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+        this.purchaseService.createGrn(this.request).subscribe(
           data => {
+            this.rejectedList=undefined;
+              this.pendingList=undefined;
+              this.approvedList=undefined;
            this.getAllGrnByStatus("PENDING");
              this.getAllGrnByStatus("APPROVED");
              this.getAllGrnByStatus("REJECETED");

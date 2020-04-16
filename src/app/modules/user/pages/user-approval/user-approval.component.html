@@ -248,8 +248,9 @@
   <div class="btn-group mt-10">
     <button (click)="changeStatusOfSelectedUser('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'"
       type="button" class="btn btn-success active">Approve</button>&nbsp;
+      <div  *ngxPermissionsOnly="['USER_DELETE_PRIVILEGE']">
     <button (click)="changeStatusOfSelectedUser('REJECTED')" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'"
       type="button" class="btn btn-danger active">Reject</button>&nbsp;
-
+      </div>
   </div>
 </div>

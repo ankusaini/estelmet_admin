@@ -213,7 +213,9 @@
 <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
            <button (click)="changeStatusOfSelectedProcessing('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'" type="button" class="btn btn-success active">Approve</button>&nbsp;
-    <button (click)="changeStatusOfSelectedProcessing('REJECTED')" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" type="button" class="btn btn-danger active">Reject</button>&nbsp;
- 
+                <div  *ngxPermissionsOnly="['INVENTORY_DELETE_PRIVILEGE']">
+
+           <button (click)="changeStatusOfSelectedProcessing('REJECTED')" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" type="button" class="btn btn-danger active">Reject</button>&nbsp;
+                </div>
     </div>
 </div>

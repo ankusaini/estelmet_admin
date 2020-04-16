@@ -64,12 +64,12 @@ export class PcApprovalComponent implements OnInit {
     if (this.selectedPuchaseList.length == 0) {
       this.toastrService.warning("Select at least one!");
     } else {
-      let path = "/purchase/updatePurchase";
+      // let path = "/purchase/updatePurchase";
 
       for (let i = 0; i < this.selectedPuchaseList.length; i++) {
         this.selectedPuchaseList[i].status = status;
          this.request.purchase=this.selectedPuchaseList[i];
-        this.purchaseService.updateRequestObject(path,this.request).subscribe(
+        this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
             
              this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -77,6 +77,7 @@ export class PcApprovalComponent implements OnInit {
   };
              this.selectedTab = "PENDING";
         this.selectedPuchaseList=[];
+       
           },
           error => {}
         );
