@@ -119,18 +119,22 @@ export class CreateSoIdComponent implements OnInit {
       this.categoryList.map(category => {
         if (category.id == this.salesDto.value.productCategory) {
           this.selectedCategory = category.productCategory;
+          console.log(this.selectedCategory);
         }
       });
 
       this.shapeList.map(shape => {
         if (shape.id == this.salesDto.value.productShape) {
           this.selectedShape = shape.productShape;
+          console.log(this.selectedShape);
         }
       });
       console.log('Category is' + this.selectedCategory + this.selectedShape);
       this.salesDto.value.title = this.selectedCategory + '-' + this.selectedShape;
       this.generatedSoId = this.salesDto.value.title;
       console.log(this.salesDto.value.title);
+    }else {
+      this.toastr.warning("Please Select Category and Shape!");
     }
     // this.request.sales = this.salesDto.value;
     // console.log(this.request);

@@ -7,6 +7,7 @@ import * as xlsx from 'xlsx';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 
 @Component({
@@ -19,11 +20,14 @@ export class SearchViewScComponent implements OnInit {
 
   public dataList: any;
   salesList: Sales[];
-  public selectedSalesList: Sales[] = [];
+  public Ids: any;
+  // public selectedSalesList: Sales[] = [];
 
   constructor(private salesService: SalesServiceService,
             private router: Router,
-            private toastrService: ToastrService) { }
+            private toastrService: ToastrService) {
+              this.Ids = ids;
+             }
 
   ngOnInit() {
     let url="/sales/getAllSalesByTypeAndStatus/SALES_CONFIRMATION/APPROVED";
@@ -36,21 +40,21 @@ export class SearchViewScComponent implements OnInit {
     );
   }
 
-  addToSelectedList(sale: Sales) {
-    const index: number = this.selectedSalesList.indexOf(sale);
-    if (index == -1) {
-      this.selectedSalesList.push(sale);
-    } else {
-      this.toastrService.warning("record already added!");
-    }
-  }
+  // addToSelectedList(sale: Sales) {
+  //   const index: number = this.selectedSalesList.indexOf(sale);
+  //   if (index == -1) {
+  //     this.selectedSalesList.push(sale);
+  //   } else {
+  //     this.toastrService.warning("record already added!");
+  //   }
+  // }
 
-  removeFromSelectedList(sale: Sales) {
-    const index: number = this.selectedSalesList.indexOf(sale);
-    if (index !== -1) {
-      this.selectedSalesList.splice(index, 1);
-    }
-  }
+  // removeFromSelectedList(sale: Sales) {
+  //   const index: number = this.selectedSalesList.indexOf(sale);
+  //   if (index !== -1) {
+  //     this.selectedSalesList.splice(index, 1);
+  //   }
+  // }
 
   routerToScEdit(id) {
     this.router.navigateByUrl("/sales/scEdit/"+id);

@@ -129,6 +129,8 @@ export class CreateAuctionIdComponent implements OnInit {
       });
       this.salesDto.value.title = this.selectedCategory + '-' + this.selectedShape;
       this.generatedAoId = this.salesDto.value.title;
+    } else { 
+      this.toastr.warning("Please select shape and category!");
     }
   }
 

@@ -31,12 +31,12 @@
                     <tr *ngFor="let sale of pendingList; let i=index">
                       <td><label class="badge badge-warning">{{sale.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>SOL-{{sale.id}}</td>
+                      <td>{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
                       <td>{{sale.type}}</td>
                       <td>{{sale.productCategory}}</td>
                       <td>{{sale.productShape}}</td>
-                      <td>COM-{{sale.sourceCompanyId}}</td>
-                      <td>WAR-{{sale.sourceWarehouseId}}</td>
+                      <td>{{Ids.COMPANY + '-' + sale.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + sale.sourceWarehouseId}}</td>
                       <!-- <td>CU-{{sale.customerId}}</td> -->
                       <!-- <td>{{sale.grossWt}}</td> -->
                       <!-- <td>{{sale.netWt}}</td> -->
@@ -86,12 +86,12 @@
                     <tr *ngFor="let sale of approvedList; let i= index">
                       <td><label class="badge badge-success">{{sale.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>SOL-{{sale.id}}</td>
+                      <td>{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
                       <td>{{sale.type}}</td>
                       <td>{{sale.productCategory}}</td>
                       <td>{{sale.productShape}}</td>
-                      <td>COM-{{sale.sourceCompanyId}}</td>
-                      <td>WAR-{{sale.sourceWarehouseId}}</td>
+                      <td>{{Ids.COMPANY + '-' + sale.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + sale.sourceWarehouseId}}</td>
                       <!-- <td>CU-{{sale.customerId}}</td> -->
                       <!-- <td>{{sale.grossWt}}</td> -->
                       <!-- <td>{{sale.netWt}}</td> -->
@@ -141,12 +141,12 @@
                     <tr *ngFor="let sale of rejectedList; let i= index">
                       <td><label class="badge badge-danger">{{sale.status}}</label></td>
                       <td>{{i+1}}</td>
-                      <td>SOL-{{sale.id}}</td>
+                      <td>{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
                       <td>{{sale.type}}</td>
                       <td>{{sale.productCategory}}</td>
                       <td>{{sale.productShape}}</td>
-                      <td>COM-{{sale.sourceCompanyId}}</td>
-                      <td>WAR-{{sale.sourceWarehouseId}}</td>
+                      <td>{{Ids.COMPANY + '-' + sale.sourceCompanyId}}</td>
+                      <td>{{Ids.WAREHOUSE + '-' + sale.sourceWarehouseId}}</td>
                       <!-- <td>CU-{{sale.customerId}}</td> -->
                       <!-- <td>{{sale.grossWt}}</td> -->
                       <!-- <td>{{sale.netWt}}</td> -->
@@ -202,12 +202,12 @@
               <tr href="kdkd" *ngFor="let sale of selectedSalesList;let i = index">
                 <!-- <td><label class="badge badge-danger">{{sale.status}}</label></td> -->
                 <td>{{i+1}}</td>
-                <td>SOL-{{sale.id}}</td>
+                <td>{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
                 <td>{{sale.type}}</td>
                 <td>{{sale.productCategory}}</td>
                 <td>{{sale.productShape}}</td>
-                <td>COM-{{sale.sourceCompanyId}}</td>
-                <td>WAR-{{sale.sourceWarehouseId}}</td>
+                <td>{{Ids.COMPANY + '-' + sale.sourceCompanyId}}</td>
+                <td>{{Ids.WAREHOUSE + '-' + sale.sourceWarehouseId}}</td>
                 <!-- <td>CU-{{sale.customerId}}</td> -->
                 <!-- <td>{{sale.grossWt}}</td> -->
                 <!-- <td>{{sale.netWt}}</td> -->

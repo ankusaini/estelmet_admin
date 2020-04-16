@@ -8,7 +8,7 @@ function MaxwidthConfirming(c: AbstractControl): any {
   const minWidth = (c.parent.get("widthMin"));
   const maxWidth = (c.parent.get("widthMax"));
   if(!maxWidth || ! minWidth) return;
-  if(maxWidth.value < minWidth.value) {
+  if(Number(maxWidth.value) < Number(minWidth.value)) {
     return { invalid: true};
   } 
 }
@@ -18,7 +18,7 @@ function MaxthicknessConfirming(c: AbstractControl): any {
   const minThickness = (c.parent.get("thicknessMin"));
   const maxThickness = (c.parent.get("thicknessMax"));
   if(!maxThickness || ! minThickness) return;
-  if(maxThickness.value < minThickness.value) {
+  if(Number(maxThickness.value) < Number(minThickness.value)) {
     return { invalid: true};
   } 
 }

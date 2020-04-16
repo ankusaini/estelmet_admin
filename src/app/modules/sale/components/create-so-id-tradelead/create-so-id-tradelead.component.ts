@@ -128,6 +128,8 @@ export class CreateSoIdTradeleadComponent implements OnInit {
       this.salesDto.value.title = this.selectedCategory + '-' + this.selectedShape;
       this.generatedTlId = this.salesDto.value.title;
       console.log(this.salesDto.value.title);
+    } else { 
+      this.toastr.warning("Please select shape and category!");
     }
   }
 

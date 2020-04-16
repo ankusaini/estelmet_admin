@@ -3,6 +3,7 @@ import { Sales } from 'src/app/shared/Models/sales.model';
 import { SalesServiceService } from '../../../services/sales-service.service';
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { ToastrService } from 'ngx-toastr';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 
 @Component({
@@ -21,10 +22,13 @@ export class ScApprovalComponent implements OnInit {
   public rejectedList : Sales[];
   public selectedSalesList: Sales[] = [];
   public request : RequestP ={};
+  public Ids: any;
 
 
   constructor(private salesService: SalesServiceService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService) {
+                this.Ids= ids;
+               }
 
   ngOnInit() {
    

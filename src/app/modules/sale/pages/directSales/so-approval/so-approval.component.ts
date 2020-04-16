@@ -5,6 +5,7 @@ import { SalesServiceService } from '../../../services/sales-service.service';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ids } from 'src/app/shared/Models/ids.model';
 
 
 @Component({
@@ -22,11 +23,14 @@ export class SoApprovalComponent implements OnInit {
   public rejectedList : Sales[];
   selectedSalesList: Sales[] = [];
   public request : RequestP ={};
+  public Ids: any;
 
 
   constructor(private salesService: SalesServiceService,
     private toastr: ToastrService,
-    private router: Router) { }
+    private router: Router) {
+      this.Ids = ids;
+     }
 
   ngOnInit() {
     this.getPendingList();

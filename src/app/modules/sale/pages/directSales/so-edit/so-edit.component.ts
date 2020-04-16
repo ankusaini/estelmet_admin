@@ -16,7 +16,7 @@ function MaxlengthConfirming(c: AbstractControl): any {
   const minLength = (c.parent.get("lengthMin"));
   const maxLength = (c.parent.get("lengthMax"));
   if(!maxLength || ! minLength) return;
-  if(maxLength.value < minLength.value) {
+  if(Number(maxLength.value) < Number(minLength.value)) {
     return { invalid: true};
   } 
 }
@@ -26,7 +26,7 @@ function MaxwidthConfirming(c: AbstractControl): any {
   const minWidth = (c.parent.get("widthMin"));
   const maxWidth = (c.parent.get("widthMax"));
   if(!maxWidth || ! minWidth) return;
-  if(maxWidth.value < minWidth.value) {
+  if(Number(maxWidth.value) < Number(minWidth.value)) {
     return { invalid: true};
   } 
 }
@@ -36,7 +36,7 @@ function MaxthicknessConfirming(c: AbstractControl): any {
   const minThickness = (c.parent.get("thicknessMin"));
   const maxThickness = (c.parent.get("thicknessMax"));
   if(!maxThickness || ! minThickness) return;
-  if(maxThickness.value < minThickness.value) {
+  if(Number(maxThickness.value) < Number(minThickness.value)) {
     return { invalid: true};
   } 
 }
@@ -46,7 +46,7 @@ function MaxtemperConfirming(c: AbstractControl): any {
   const minTemper = (c.parent.get("productTemperMin"));
   const maxTemper = (c.parent.get("productTemperMax"));
   if(!maxTemper || ! minTemper) return;
-  if(maxTemper.value < minTemper.value) {
+  if(Number(maxTemper.value) < Number(minTemper.value)) {
     return { invalid: true};
   } 
 }

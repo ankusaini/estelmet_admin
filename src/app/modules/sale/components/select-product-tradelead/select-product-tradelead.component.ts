@@ -22,6 +22,7 @@ export class SelectProductTradeleadComponent implements OnInit {
     this.salesService.getAllProductByProductStageAndStatus(url).subscribe(
       data => {
         this.productList = data;
+        console.log(this.productList);
       }
     )
   }

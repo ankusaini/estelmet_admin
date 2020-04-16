@@ -29,11 +29,12 @@
             <label for="exampleFormControlSelect1"
                 >Warehouse Name <small class="asterik_sign">*</small>
             </label>
+            <!-- [ngClass]="{'is-invalid': false}"    [disabled]="!selected_company" -->
             <select 
+                
                 class="form-control" 
                 name="validation-warehouse"
                 (change)="getSelectedWarehouse($event)"
-                [ngClass]="{'is-invalid': false}"
                 formControlName="warehouseName"
                 required >
               <option value="" disabled>Select Warehouse</option>

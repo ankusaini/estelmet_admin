@@ -18,7 +18,7 @@
             <tbody>
               <tr *ngFor="let data of salesList; let i= index">
                 <td>{{i+1}}</td>
-                <td>AO-{{data.id}}</td>
+                <td>{{Ids.AUCTION_OFFER_LOT + '-' + data.id}}</td>
                 <td>{{data.type}}</td>
                 <td>{{data.productCategory}}</td>
                 <td>{{data.productShape}}</td>
@@ -31,7 +31,7 @@
       </app-card>
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Selected Auction Offer LOT" [options]="false"
         cardClass="user-profile-list">
@@ -51,7 +51,7 @@
             <tbody>
               <tr *ngFor="let data of selectedSalesList; let i= index">
                 <td>{{i+1}}</td>
-                <td>AO-{{data.id}}</td>
+                <td>{{Ids.AUCTION_OFFER_LOT + '-' + data.id}}</td>
                 <td>{{data.type}}</td>
                 <td>{{data.productCategory}}</td>
                 <td>{{data.productShape}}</td>
@@ -70,7 +70,7 @@
       </app-card>
   
     </div>
-  </div>
+  </div> -->
 <button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
 <!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
 <button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;

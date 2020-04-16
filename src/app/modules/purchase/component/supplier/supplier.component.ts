@@ -70,8 +70,8 @@ export class SupplierComponent implements OnInit {
     materialDescription: new FormControl('', [Validators.minLength(2)]),
     materialNetWeightslip: new FormControl(''),
     containerNumber: new FormControl(''),
-    grossWeight: new FormControl('', [Validators.required]),
-    netWeight: new FormControl('', [Validators.required]),
+    grossWeight: new FormControl(''),
+    netWeight: new FormControl(''),
     coilsBundles: new FormControl(''),
     weighingSlipNo: new FormControl(''),
     sourceCompanyId: new FormControl(''),
@@ -92,8 +92,10 @@ export class SupplierComponent implements OnInit {
   }
 
   submitSupplier() {
+    console.log(this.grnForm);
     if(this.grnForm.valid) {
         this.supplierData.emit(this.grnForm.value);
+        
     } else {
       this.toastr.error("Error! Invalid details.");
     }
