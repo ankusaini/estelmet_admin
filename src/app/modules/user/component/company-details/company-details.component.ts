@@ -56,6 +56,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.countryList = csc.getAllCountries();
   }
   getAllState(countryId) {
+    console.log(countryId);
     this.stateList = csc.getStatesOfCountry(countryId);
   }
   getAllCity(stateId) {
