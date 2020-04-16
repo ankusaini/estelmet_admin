@@ -29,13 +29,17 @@ export class PurchasrListFullDetailsComponent implements OnInit {
   ngOnInit() {
     // console.log('in purchaseList ' + this.selectedTab);
     // const url = '/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/' + this.selectedTab;
-    this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.PURCHASE_CONFIRMATION, this.selectedTab).subscribe(data => {
+   this.getData();
+  }
+
+  getData()
+  {
+     this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.PURCHASE_CONFIRMATION, this.selectedTab).subscribe(data => {
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;
       console.log('purchaseList ' + this.purchaseList);
     });
   }
-
   // emitting on every add so that parent can show the list
   addPurchaseToList(purchase) {
     // check if already added

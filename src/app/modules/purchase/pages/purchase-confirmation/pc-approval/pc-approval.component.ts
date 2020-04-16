@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Purchase } from "src/app/shared/Models/purchase.model";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { ids } from 'src/app/shared/Models/ids.model';
+import { PurchasrListFullDetailsComponent } from "src/app/shared/components/purchasr-list-full-details/purchasr-list-full-details.component";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class PcApprovalComponent implements OnInit {
               this.Ids = ids;
              }
 
+  @ViewChild(PurchasrListFullDetailsComponent,{static:false}) child:PurchasrListFullDetailsComponent;
   ngOnInit() {
   }
 
@@ -75,7 +77,8 @@ export class PcApprovalComponent implements OnInit {
              this.router.routeReuseStrategy.shouldReuseRoute = function () {
     return false;
   };
-             this.selectedTab = "PENDING";
+  this.child.getData();
+             //this.selectedTab = "PENDING";
         this.selectedPuchaseList=[];
        
           },

@@ -71,10 +71,10 @@ export enum Status {
 
 
 export interface ProductCategory {
-  id: number;
-  productCategory: string;
-  description: string;
-  parentId: string;
+  id?: number;
+  productCategory?: string;
+  description?: string;
+  parentId?: string;
 
 }
 

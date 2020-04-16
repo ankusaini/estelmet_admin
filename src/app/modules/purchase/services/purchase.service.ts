@@ -3,6 +3,7 @@ import { RequestP, ResponseP } from "src/app/shared/Models/RequestResponse";
 import { Observable } from "rxjs";
 import { ApiService } from "src/app/shared/services/api.service";
 import { ApiUrl } from 'src/app/shared/services/apiContant';
+import { ProductCategory } from "src/app/shared/Models/product.model.";
 
 @Injectable({
   providedIn: 'root'
@@ -178,6 +179,17 @@ export class PurchaseService {
     getAllResponse(url): Observable<any> {
         return new Observable<any>(obs => {
             this._apiService.get(url).subscribe(res => {
+                obs.next(res);
+            });
+        });
+    }
+
+    getAllProductsForDashboard(category)
+    {
+      let url ="/inventory/dashboard";
+     
+       return new Observable<any>(obs => {
+            this._apiService.post(url,category).subscribe(res => {
                 obs.next(res);
             });
         });

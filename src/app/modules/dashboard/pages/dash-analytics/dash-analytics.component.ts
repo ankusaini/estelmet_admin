@@ -8,144 +8,126 @@ import {SeoChart1} from './chart/seo-chart-1';
 import {SeoChart2} from './chart/seo-chart-2';
 import {SeoChart3} from './chart/seo-chart-3';
 import { ApexChartService } from "src/app/theme/shared/components/chart/apex-chart/apex-chart.service";
+import { SalesServiceService } from "src/app/modules/sale/services/sales-service.service";
+import { Sales } from "src/app/shared/Models/sales.model";
+import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
+import { ids } from "src/app/shared/Models/ids.model";
 
 @Component({
   selector: 'app-dash-analytics',
   templateUrl: './dash-analytics.component.html',
   styleUrls: ['./dash-analytics.component.scss']
 })
-export class DashAnalyticsComponent implements OnInit, OnDestroy {
-  public amountProcessedChartData: any;
-  public amountSpentChartData: any;
-  public profitProcessedChartData: any;
-  public seoAnalyticsChartData: any;
-  public trafficChartData: any;
-  public seoChartData1: any;
-  public seoChartData2: any;
-  public seoChartData3: any;
+export class DashAnalyticsComponent implements OnInit {
+   selectedType: any = 'SALES_OFFER_LOT';
+  public salesList: Sales[];
 
-  public lastDate: number;
-  public siteVisitorCAC: any;
-  public data: any;
 
-  public intervalSub: any;
-  public intervalMain: any;
 
-  constructor(public apexEvent: ApexChartService) {
-    this.amountProcessedChartData = AmountProcessed.analyticsChartData;
-    this.amountSpentChartData = AmountSpent.analyticsChartData;
-    this.profitProcessedChartData = ProfitProcessed.analyticsChartData;
-    this.seoAnalyticsChartData = SeoAnalytics1.analyticsChartData;
-    this.trafficChartData = TrafficChart1.analyticsChartData;
-    this.seoChartData1 = SeoChart1.analyticsChartData;
-    this.seoChartData2 = SeoChart2.analyticsChartData;
-    this.seoChartData3 = SeoChart3.analyticsChartData;
+  public Ids: any;
 
-    this.lastDate = 0;
-    this.data = [];
+  // MR -SO
+  public totalSOCount = 0;
 
-    this.getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {min: 10, max: 90});
-    this.siteVisitorCAC = {
-      chart: {
-        height: 300,
-        type: 'area',
-        animations: {
-          enabled: true,
-          easing: 'linear',
-          dynamicAnimation: {
-            speed: 2000
-          }
-        },
-        toolbar: {
-          show: false
-        },
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: 'smooth'
-      },
-      series: [{
-        name: 'active Users :',
-        data: this.data
-      }],
-      colors: ['#ff5252'],
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shadeIntensity: 1,
-          type: 'horizontal',
-          opacityFrom: 0.8,
-          opacityTo: 0,
-          stops: [0, 100]
-        }
-      },
-      markers: {
-        size: 0
-      },
-      xaxis: {
-        type: 'datetime',
-        range: 777600000,
-      },
-      yaxis: {
-        max: 100
-      },
-      legend: {
-        show: false
-      },
-    };
+  public totalSOCountWt = 0;
+
+  public approvedSOCount = 0;
+
+  public pendingSOCount = 0;
+
+  public rejectedSOCount = 0;
+
+
+  // variable for PO - SC
+  public totalSCCount = 0;
+
+  public totalSCCountWt = 0;
+
+  public approvedSCCount = 0;
+
+  public pendingSCCount = 0;
+
+  public rejectedSCCount = 0;
+
+
+  //PC DO
+  public totalDOCount = 0;
+  public totalDOCountWt = 0;
+  public approvedDOCount = 0;
+
+  public pendingDOCount = 0;
+
+  public rejectedDOCount = 0;
+
+  // variable for PURCHASE PL -TL
+  public totalTLCount = 0;
+  public totalTLCountWt = 0;
+  public approvedTLCount = 0;
+
+  public pendingTLCount = 0;
+
+  public rejectedTLCount = 0;
+
+
+
+  constructor(private salesService: SalesServiceService,private sharedService: PurchaseService,) {
+    this.Ids=ids;
   }
 
   ngOnInit() {
-    this.intervalSub = setInterval(() => {
-      this.getNewSeries(this.lastDate, {min: 10, max: 90});
-      this.apexEvent.eventChangeSeriesData();
-    }, 2000);
-
-    this.intervalMain = setInterval(() => {
-      this.resetData();
-      this.apexEvent.eventChangeSeriesData();
-    }, 60000);
+      this.getAllSales();
+      this.getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','APPROVED')
 
   }
 
-  ngOnDestroy() {
-    if (this.intervalSub) {
-      clearInterval(this.intervalSub);
-    }
-    if (this.intervalMain) {
-      clearInterval(this.intervalMain);
-    }
-  }
+  getAllSales()
+  {
 
-  getDayWiseTimeSeries(baseval, count, yrange) {
-    let i = 0;
-    while (i < count) {
-      const x = baseval;
-      const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    const url = '/sales/dashboard';
+    this.sharedService.getAllResponse(url).subscribe(data => {
+      console.log(data.data)
+       this.approvedTLCount = data.data.TRADE_LEAD_LOT_APPROVED_COUNT;
+      this.rejectedTLCount = data.data.TRADE_LEAD_LOT_REJECTED_COUNT;
+      this.pendingTLCount = data.data.TRADE_LEAD_LOT_PENDING_COUNT;
 
-      this.data.push({x, y});
-      this.lastDate = baseval;
-      baseval += 86400000;
-      i++;
-    }
-  }
+      this.approvedDOCount = data.data.DELIVERY_ORDER_APPROVED_COUNT;
+      this.rejectedDOCount = data.data.DELIVERY_ORDER_REJECTED_COUNT;
+      this.pendingDOCount = data.data.DELIVERY_ORDER_PENDING_COUNT;
 
-  resetData() {
-    this.data = this.data.slice(this.data.length - 10, this.data.length);
-  }
+      this.approvedSCCount = data.data.SALES_CONFIRMATION_APPROVED_COUNT;
+      this.rejectedSCCount = data.data.SALES_CONFIRMATION_REJECTED_COUNT;
+      this.pendingSCCount = data.data.SALES_CONFIRMATION_PENDING_COUNT;
 
-  getNewSeries(baseval, yrange) {
-    const newDate = baseval + 86400000;
-    this.lastDate = newDate;
-    this.data.push({
-      x: newDate,
-      y: Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
+      this.approvedSOCount = data.data.SALES_OFFER_LOT_APPROVED_COUNT;
+      this.rejectedSOCount = data.data.SALES_OFFER_LOT_REJECTED_COUNT;
+      this.pendingSOCount = data.data.SALES_OFFER_LOT_PENDING_COUNT;
+
+      //keys being changed on every deloy for dashboard
+      // this.totalSOCount = (data.data.SalesType.SALES_OFFER_LOT_PENDING[0][0] + data.data.SALES_OFFER_LOT_APPROVED[0][0] + data.data.SALES_OFFER_LOT_REJECTED[0][0]);
+      // this.totalSOCountWt = (Number(data.data.SALES_OFFER_LOT_PENDING[0][1]) + Number(data.data.SALES_OFFER_LOT_APPROVED[0][1]) +Number(data.data.SALES_OFFER_LOT_REJECTED[0][1]));
+
+      // // console.log(this.totalSOCountWt);
+     //  this.totalDOCount = (data.data.DELIVERY_ORDER_PENDING[0][0] + data.data.DELIVERY_ORDER_APPROVED[0][0] + data.data.DELIVERY_ORDER_REJECTED[0][0]);
+      //   this.totalDOCountWt = (Number(data.data.DELIVERY_ORDER_PENDING[0][1]) + Number(data.data.DELIVERY_ORDER_APPROVED[0][1]) + Number(data.data.DELIVERY_ORDER_REJECTED[0][1]));
+    
+       //  this.totalTLCount = (data.data.TRADE_LEAD_LOT_PENDING[0][0] + data.data.TRADE_LEAD_LOT_APPROVED[0][0] + data.data.TRADE_LEAD_LOT_REJECTED[0][0]);
+      //         this.totalTLCountWt = (Number(data.data.TRADE_LEAD_LOT_PENDING[0][1]) + Number(data.data.TRADE_LEAD_LOT_APPROVED[0][1]) + Number(data.data.TRADE_LEAD_LOT_REJECTED[0][1]));
+
+
     });
   }
+
+  getAllSalesByTypeAndStatusCheck(type,status)
+  {
+    this.selectedType=type;
+     this.salesService.getAllSalesByTypeAndStatusCheck(type,status).subscribe(data => {
+      this.salesList= data.salesList;
+      },
+      error => { 
+        console.log(error);
+      }
+    );
+  }
+  
 
 }
