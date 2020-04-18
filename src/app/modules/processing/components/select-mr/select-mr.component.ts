@@ -81,9 +81,10 @@ export class SelectMrComponent implements OnInit, OnChanges {
     const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineData = data;
+      console.log("machine data",this.machineData);
       this.machineDetailList = data.map(machine => machine.machineName)
         .filter(machine => machine !== null);
-      this.machineDetailIdList = data.map(machine => machine.machineDetailId)
+      this.machineDetailIdList = data.map(machine => machine.id)
         .filter(machine => machine !== null);
     });
 
@@ -174,7 +175,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     this.machineData.find(machine => {
       if (machine.machineName === name) {
         this.selectMrIdForm.patchValue({
-          machineDetailId: machine.machineDetailId
+          machineDetailId: machine.id
         });
       }
     });
