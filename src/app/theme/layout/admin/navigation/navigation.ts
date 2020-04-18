@@ -51,12 +51,12 @@ const NavigationItems = [
         type: 'item',
         url: '/dashboard/crm'
       },
-      {
-        id: 'processDash',
-        title: 'Processing',
-        type: 'item',
-        url: '/dashboard/project'
-      },
+      // {
+      //   id: 'processDash',
+      //   title: 'Processing',
+      //   type: 'item',
+      //   url: '/dashboard/project'
+      // },
       {
         id: 'salesDash',
         title: 'Sales',
@@ -242,13 +242,13 @@ const NavigationItems = [
             url: '/purchase/viewPO',
             target: false,
           },
-          {
-            id: 'PurchaseLink',
-            title: ' Send Purchase Quotation',
-            type: 'item',
-            url: '/purchase/purchaseLink',
-            target: false,
-          },
+          // {
+          //   id: 'PurchaseLink',
+          //   title: ' Send Purchase Quotation',
+          //   type: 'item',
+          //   url: '/purchase/purchaseLink',
+          //   target: false,
+          // },
           {
             id: 'PoOverview',
             title: ' Purchase Order Overview',

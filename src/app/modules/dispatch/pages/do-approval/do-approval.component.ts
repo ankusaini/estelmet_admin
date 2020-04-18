@@ -39,13 +39,13 @@ export class DoApprovalComponent implements OnInit {
     this.dispatchService.getAllDeliveryOrderByStatus(url).subscribe(
       data => {
         this.datalist = data;
-        if (status === 'PENDING') {
+        if (status == 'PENDING') {
           this.pendingDeliveryOrderlist = this.datalist.deliveryOrderList;
         }
-        if (status === 'APPROVED') {
+        if (status == 'APPROVED') {
           this.approvedDeliveryOrderlist = this.datalist.deliveryOrderList;
         }
-        if (status === 'REJECTED') {
+        if (status == 'REJECTED') {
           this.rejecetdDeliveryOrderlist = this.datalist.deliveryOrderList;
         }
       },
@@ -55,13 +55,13 @@ export class DoApprovalComponent implements OnInit {
 
   onTabChange(tab) {
 
-    if (tab && tab.nextId === 'rejectedTab') {
+    if (tab && tab.nextId == 'rejectedTab') {
       this.selectedTab = 'REJECTED';
     }
-    if (tab && tab.nextId === 'pendingTab') {
+    if (tab && tab.nextId == 'pendingTab') {
       this.selectedTab = 'PENDING';
     }
-    if (tab && tab.nextId === 'approvedTab') {
+    if (tab && tab.nextId == 'approvedTab') {
       this.selectedTab = 'APPROVED';
     }
     this.selectdeliveryOrderList = [];

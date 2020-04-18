@@ -16,10 +16,10 @@ const routes: Routes = [
     path: 'createUser',
     component: CreateUserComponent,
     canActivate: [NgxPermissionsGuard],
-    data:{
+    data: {
       permissions:
       {
-        only:['','']
+        only: ['USER_CREATE_PRIVILEGE', 'USER_DELETE_PRIVILEGE', 'USER_UPDATE_PRIVILEGE']
       }
     }
   },

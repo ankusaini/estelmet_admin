@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.loginForm.status === 'VALID') {
+    if (this.loginForm.status == 'VALID') {
       this.userLoginService.attemptAuth(this.loginForm.value).subscribe(user => {
         if (Object.keys(user)) {
           console.log(user.roles);

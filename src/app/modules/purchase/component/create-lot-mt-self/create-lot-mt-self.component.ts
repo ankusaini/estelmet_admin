@@ -133,7 +133,7 @@ export class CreateLotMtSelfComponent implements OnInit {
   }
   selectedSourceCompany(value: number) {
     const data = this.sourceCompanyList.filter(element => {
-      return element.id === value;
+      return element.id == value;
     });
     this.selectedSourceCmpy = data[0];
     this.cd.detectChanges();
@@ -145,7 +145,7 @@ export class CreateLotMtSelfComponent implements OnInit {
 
   selectedDestinationCompany(value: number) {
     const data = this.destinationCompanyList.filter(element => {
-      return element.id === value;
+      return element.id == value;
     });
     this.selectedDestinationCmp = data[0];
     this.cd.detectChanges();
