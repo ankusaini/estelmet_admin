@@ -52,7 +52,7 @@ export class CreateDeliveryOrderComponent implements OnInit {
   getLoadingId(id) {
     if (id !== '') {
       const data = this.salesLotList.filter(obj => {
-        return obj.id === id;
+        return obj.id == id;
       });
       if (data) {
         this.deliveryOrderList = data[0].deliveryOrder;

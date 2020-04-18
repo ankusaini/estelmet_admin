@@ -77,7 +77,7 @@ export class InvoiceDetailsComponent implements OnInit {
 
   selectedCompany(value: number) {
     const data = this.companyList.filter(element => {
-      return element.id === value;
+      return element.id == value;
     });
     this.selectedCmp = data[0];
     // this._cd.detectChanges();

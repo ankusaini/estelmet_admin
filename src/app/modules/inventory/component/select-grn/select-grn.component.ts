@@ -31,27 +31,27 @@ export class SelectGrnComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     this.grnIdList = [];
-    if (this.grntype === 'withoutPurchaseInvoice') {
+    if (this.grntype == 'withoutPurchaseInvoice') {
       this.grnList.filter(obj => {
-        if (obj.grnType === LotType.WITHOUT_PC) {
+        if (obj.grnType == LotType.WITHOUT_PC) {
           this.grnIdList.push(obj);
         }
       });
-    } else if (this.grntype === 'PURCHASE_INVOICE') {
+    } else if (this.grntype == 'PURCHASE_INVOICE') {
       this.grnList.filter(obj => {
-        if (obj.grnType === LotType.WITH_PC) {
+        if (obj.grnType == LotType.WITH_PC) {
           this.grnIdList.push(obj);
         }
       });
-    } else if (this.grntype === 'jobWorkChalan') {
+    } else if (this.grntype == 'jobWorkChalan') {
       this.grnList.filter(obj => {
-        if (obj.grnType === LotType.JOB_WORK_OTHER) {
+        if (obj.grnType == LotType.JOB_WORK_OTHER) {
           this.grnIdList.push(obj);
         }
       });
-    } else if (this.grntype === 'materialTransfer') {
+    } else if (this.grntype == 'materialTransfer') {
       this.grnList.filter(obj => {
-        if (obj.grnType === LotType.MATERIAL_TRANSFER) {
+        if (obj.grnType == LotType.MATERIAL_TRANSFER) {
           this.grnIdList.push(obj);
         }
       });

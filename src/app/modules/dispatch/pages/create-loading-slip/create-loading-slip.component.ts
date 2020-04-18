@@ -82,19 +82,19 @@ export class CreateLoadingSlipComponent implements OnInit {
     let index = -2;
     let selectedproduct;
     this.productList.forEach(product => {
-      if (product.productId === id) {
+      if (product.productId == id) {
         index = this.selectedProductList.indexOf(product);
         selectedproduct = product;
       }
     });
     const productindex = this.productList.indexOf(selectedproduct);
-    if (index === -1 && productindex !== -1) {
+    if (index == -1 && productindex != -1) {
       this.selectedProductList.push(selectedproduct);
     }
     if (index !== -1 && productindex !== -1) {
       this.toastr.warning('Product already added');
     }
-    if (index === -2) {
+    if (index == -2) {
       this.toastr.warning('Product not found in product list!');
     }
     this.createProductIdForm();

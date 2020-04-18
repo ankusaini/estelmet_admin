@@ -1,18 +1,18 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RequestP, ResponseP } from "src/app/shared/Models/RequestResponse";
-import { Observable } from "rxjs";
-import { ApiService } from "src/app/shared/services/api.service";
+import { Observable } from 'rxjs';
+import { RequestP, ResponseP } from 'src/app/shared/Models/RequestResponse';
+import { ApiService } from 'src/app/shared/services/api.service';
 import { ApiUrl } from 'src/app/shared/services/apiContant';
-import { ProductCategory } from "src/app/shared/Models/product.model.";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PurchaseService {
 
-  constructor(private _apiService:ApiService) { }
+  constructor(private apiService: ApiService) { }
 
-  
+
 
   //   public saveRequestObject(requestObj:RequestP):Observable<ResponseP>
   // {
@@ -23,37 +23,33 @@ export class PurchaseService {
   //   });
   // }
 
-  public updateGrnWithProduct(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.post(ApiUrl.updateGrnWithProduct, requestObj).subscribe(res=>{
+  public updateGrnWithProduct(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.post(ApiUrl.updateGrnWithProduct, requestObj).subscribe(res => {
         obs.next(res.body);
       });
     });
   }
 
-  public createGrn(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.post(ApiUrl.createGrn , requestObj).subscribe(res=>{
+  public createGrn(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.post(ApiUrl.createGrn, requestObj).subscribe(res => {
         obs.next(res.body);
       });
     });
   }
 
-  public createMaterialTransfer(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.post(ApiUrl.createMaterialTransfer ,requestObj).subscribe(res=>{
+  public createMaterialTransfer(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.post(ApiUrl.createMaterialTransfer, requestObj).subscribe(res => {
         obs.next(res.body);
       });
     });
   }
 
-  public createPurchase(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.post(ApiUrl.createPurchase, requestObj).subscribe(res=>{
+  public createPurchase(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.post(ApiUrl.createPurchase, requestObj).subscribe(res => {
         obs.next(res.body);
       });
     });
@@ -68,28 +64,25 @@ export class PurchaseService {
   //   });
   // }
 
-  public updatePurchase(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.put(ApiUrl.updatePurchase, requestObj).subscribe(res=>{
+  public updatePurchase(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.put(ApiUrl.updatePurchase, requestObj).subscribe(res => {
         obs.next(res);
       });
     });
   }
 
-  public updatePurchaseWithProduct(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.put(ApiUrl.updatePurchaseWithProduct, requestObj).subscribe(res=>{
+  public updatePurchaseWithProduct(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.put(ApiUrl.updatePurchaseWithProduct, requestObj).subscribe(res => {
         obs.next(res);
       });
     });
   }
 
-  public updatePurchaseHistory(requestObj:RequestP):Observable<ResponseP>
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.put(ApiUrl.updatePurchaseHistory, requestObj).subscribe(res=>{
+  public updatePurchaseHistory(requestObj: RequestP): Observable<ResponseP> {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.put(ApiUrl.updatePurchaseHistory, requestObj).subscribe(res => {
         obs.next(res);
       });
     });
@@ -104,19 +97,17 @@ export class PurchaseService {
   //   });
   // } getGrnById
 
-  public getGrnById(grnId)
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.get(ApiUrl.getGrnById+ "/" +grnId).subscribe(res=>{
+  public getGrnById(grnId) {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.get(ApiUrl.getGrnById + '/' + grnId).subscribe(res => {
         obs.next(res);
       });
     });
   }
 
-  public findPurchase(purchaseId)
-  {
-    return new Observable<ResponseP>(obs=>{
-      this._apiService.get(ApiUrl.findPurchase+ "/" +purchaseId).subscribe(res=>{
+  public findPurchase(purchaseId) {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.get(ApiUrl.findPurchase + '/' + purchaseId).subscribe(res => {
         obs.next(res);
       });
     });
@@ -124,7 +115,15 @@ export class PurchaseService {
 
   public getAllPurchaseByTypeAndStatus(purchaseType, status) {
     return new Observable<ResponseP>(obs => {
-      this._apiService.get(ApiUrl.getAllPurchaseByTypeAndStatus + "/" + purchaseType + "/" + status).subscribe(res => {
+      this.apiService.get(ApiUrl.getAllPurchaseByTypeAndStatus + '/' + purchaseType + '/' + status).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  public getAllPurchaseByLotTypeAndStatus(purchaseType, status) {
+    return new Observable<ResponseP>(obs => {
+      this.apiService.get(ApiUrl.getAllPurchaseByLotTypeAndStatus + '/' + purchaseType + '/' + status).subscribe(res => {
         obs.next(res);
       });
     });
@@ -132,66 +131,64 @@ export class PurchaseService {
 
   public getAllGrn() {
     return new Observable<any>(obs => {
-      this._apiService.get(ApiUrl.getAllGrn).subscribe(res => {
+      this.apiService.get(ApiUrl.getAllGrn).subscribe(res => {
         obs.next(res);
-      })
-    })
+      });
+    });
   }
 
   public getAllGrnByStatus(status) {
     return new Observable<any>(obs => {
-      this._apiService.get(ApiUrl.getAllGrnByStatus+ '/' + status).subscribe(res => {
+      this.apiService.get(ApiUrl.getAllGrnByStatus + '/' + status).subscribe(res => {
         obs.next(res);
-      })
-    })
+      });
+    });
   }
 
-  public getPurchaseOrderByPo(purchaseOderId)
-  {
-  //  let url= '/purchase/getPurchaseOrderByPo?purchaseOderId='+purchaseOderId;
-   return new Observable<any>(obs => {
-    this._apiService.get(ApiUrl.getPurchaseOrderByPo+ "/" +purchaseOderId).subscribe(res => {
+  public getPurchaseOrderByPo(purchaseOderId) {
+    const params: HttpParams = new HttpParams()
+      .set('purchaseOderId', purchaseOderId);
+    //  let url= '/purchase/getPurchaseOrderByPo?purchaseOderId='+purchaseOderId;
+    return new Observable<any>(obs => {
+      this.apiService.get(ApiUrl.getPurchaseOrderByPo, params).subscribe(res => {
         obs.next(res);
-      })
-    })
+      });
+    });
   }
-   public getPurchaseOrderByUser(supplierId)
-  {
-  //  let url= '/purchase/getPurchaseOrderByUser?supplierId='+supplierId;
-   return new Observable<any>(obs => {
-    this._apiService.get(ApiUrl.getPurchaseOrderByUser+ "/" + supplierId).subscribe(res => {
+  public getPurchaseOrderByUser(supplierId) {
+    const params: HttpParams = new HttpParams()
+      .set('supplierId', supplierId);
+    //  let url= '/purchase/getPurchaseOrderByUser?supplierId='+supplierId;
+    return new Observable<any>(obs => {
+      this.apiService.get(ApiUrl.getPurchaseOrderByUser, params).subscribe(res => {
         obs.next(res);
-      })
-    })
+      });
+    });
   }
 
-  public savePurchaseOrder(purchaseId,userId,productId,price)
-  {
+  public savePurchaseOrder(purchaseId, userId, productId, price) {
     // let url= '/purchase/savePurchaseOrder?purchaseId='+purchaseId+'&userId='+userId+'&productId'+productId+'&price='+price;
-   return new Observable<any>(obs => {
-    this._apiService.get(ApiUrl.savePurchaseOrder+ "/" +purchaseId+ "/" +userId+ "/" +productId+ "/" +price).subscribe(res => {
+    return new Observable<any>(obs => {
+      this.apiService.get(ApiUrl.savePurchaseOrder + '/' + purchaseId + '/' + userId + '/' + productId + '/' + price).subscribe(res => {
         obs.next(res);
-      })
-    })
+      });
+    });
   }
 
-      // For all purchase,sales,grn etc
-    getAllResponse(url): Observable<any> {
-        return new Observable<any>(obs => {
-            this._apiService.get(url).subscribe(res => {
-                obs.next(res);
-            });
-        });
-    }
+  // For all purchase,sales,grn etc
+  getAllResponse(url): Observable<any> {
+    return new Observable<any>(obs => {
+      this.apiService.get(url).subscribe(res => {
+        obs.next(res.data);
+      });
+    });
+  }
 
-    getAllProductsForDashboard(category)
-    {
-      let url ="/inventory/dashboard";
-     
-       return new Observable<any>(obs => {
-            this._apiService.post(url,category).subscribe(res => {
-                obs.next(res);
-            });
-        });
-    }
+  getAllProductsForDashboard(category) {
+    return new Observable<any>(obs => {
+      this.apiService.post('/inventory/dashboard', category).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
 }

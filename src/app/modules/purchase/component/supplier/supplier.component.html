@@ -75,13 +75,13 @@
           <div class="col-sm-3">
             <select [value]="selectedWarehouseName.value" #selectedWarehouseId class="form-control" formControlName="destinationWarehouseId">
               <option value>Id</option>
-              <option [value]="item.id" *ngFor="let item of selected_comapny.warehouse">{{ item.id }}</option>
+              <option [value]="item.id" *ngFor="let item of allWarehouse">{{ item.id }}</option>
             </select>
           </div>
           <div class="col-sm-5">
             <select #selectedWarehouseName [value]="selectedWarehouseId.value" class="form-control" name="validation-pcId" formControlName="destinationWarehouseId">
               <option value> Name</option>
-              <option [value]="item.id" *ngFor="let item of selected_comapny.warehouse">{{ item.name }}</option>
+              <option [value]="item.id" *ngFor="let item of allWarehouse">{{ item.name }}</option>
             </select>
             <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
           </div>

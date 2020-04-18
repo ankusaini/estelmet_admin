@@ -15,7 +15,7 @@
           >
         </select>
          </fieldset>
-         <small *ngIf="f.productType.controls.id.value === '' && (f.productType.controls.id.dirty || f.productType.controls.id.touched)"
+         <small *ngIf="f.productType['controls']['id'].value === '' && (f.productType['controls']['id'].dirty || f.productType['controls']['id'].touched)"
          id="passwordHelpBlock" class="form-text text-muted">Type should be
                   required.</small> 
          <!-- <label *ngIf="f.productType.controls.id.value === '' && (productForm.productType.controls.id.dirty || productForm.productType.controls.id.touched)" id="validation-type-error"
@@ -34,7 +34,7 @@
             <option *ngFor="let item of productCategoryList" [value]="item?.id">{{ item?.productCategory }}</option>
           </select>
         </fieldset>
-        <small *ngIf="f.productCategory.controls.id.value === '' && (f.productCategory.controls.id.dirty || f.productCategory.controls.id.touched)"
+        <small *ngIf="f.productCategory['controls']['id'].value === '' && (f.productCategory['controls']['id'].dirty || f.productCategory['controls']['id'].touched)"
         id="passwordHelpBlock" class="form-text text-muted">Category should be required.</small>
       </div>
     </div>
@@ -48,7 +48,7 @@
             <option *ngFor="let item of productShapeList" [value]="item?.id">{{ item?.productShape }}</option>
           </select>
         </fieldset>
-        <small *ngIf="f.productShape.controls.id.value == '' && (f.productShape.controls.id.dirty || f.productShape.controls.id.touched)" id="passwordHelpBlock" class="form-text text-muted">Shape should be
+        <small *ngIf="f.productShape['controls']['id'].value == '' && (f.productShape['controls']['id'].dirty || f.productShape['controls']['id'].touched)" id="passwordHelpBlock" class="form-text text-muted">Shape should be
                   required.</small>
       </div>
     </div>
@@ -62,7 +62,7 @@
             <option *ngFor="let item of productClassList" [value]="item?.id">{{ item?.productClass }}</option>
           </select>
         </fieldset>
-        <small *ngIf="f.productClass.controls.id.value === '' && (f.productClass.controls.id.dirty || f.productClass.controls.id.touched)" 
+        <small *ngIf="f.productClass['controls']['id'].value === '' && (f.productClass['controls']['id'].dirty || f.productClass['controls']['id'].touched)" 
         id="passwordHelpBlock" class="form-text text-muted">Class should be
                   required.</small>
       </div>
@@ -156,7 +156,7 @@
                 <option *ngFor="let item of productHarndessList" [value]="item?.id">{{ item?.description }}</option>
               </select>
             </fieldset>
-            <small *ngIf="f.hardnessMin.controls.id.value === '' && (f.hardnessMin.controls.id.dirty || f.hardnessMin.controls.id.touched)"
+            <small *ngIf="f.hardnessMin['controls']['id'].value === '' && (f.hardnessMin['controls']['id'].dirty || f.hardnessMin['controls']['id'].touched)"
             id="passwordHelpBlock" class="form-text text-muted">Minimum Hardness should be
                      required.</small>
           </div>
@@ -167,7 +167,7 @@
              <option value='' disabled>Select</option>
                 <option *ngFor="let item of productHarndessList" [value]="item?.id">{{ item?.description }}</option>
               </select>
-              <small *ngIf="f.hardnessMax.controls.id.value === '' && (f.hardnessMax.controls.id.dirty || f.hardnessMax.controls.id.touched)"
+              <small *ngIf="f.hardnessMax['controls']['id'].value === '' && (f.hardnessMax['controls']['id'].dirty || f.hardnessMax['controls']['id'].touched)"
               id="passwordHelpBlock" class="form-text text-muted">Maximum Hardness should be
                        required.</small>
             </fieldset>
@@ -188,7 +188,7 @@
                 <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}</option>
               </select>
             </fieldset>
-            <small *ngIf="f.temperMin.controls.id.value === '' && (f.temperMin.controls.id.dirty || f.temperMin.controls.id.touched)"
+            <small *ngIf="f.temperMin['controls']['id'].value === '' && (f.temperMin['controls']['id'].dirty || f.temperMin['controls']['id'].touched)"
             id="passwordHelpBlock" class="form-text text-muted">Minimum Temper should be
                      required.</small>
           </div>
@@ -201,7 +201,7 @@
                 <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}</option>
               </select>
             </fieldset>
-            <small *ngIf="f.temperMax.controls.id.value === '' && (f.temperMax.controls.id.dirty || f.temperMax.controls.id.touched)"
+            <small *ngIf="f.temperMax['controls']['id'].value === '' && (f.temperMax['controls']['id'].dirty || f.temperMax['controls']['id'].touched)"
             id="passwordHelpBlock" class="form-text text-muted">Maximum Temper should be
                      required.</small>
           </div>

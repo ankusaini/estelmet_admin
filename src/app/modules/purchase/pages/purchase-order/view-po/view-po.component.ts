@@ -57,7 +57,7 @@ public selectedPOList: Purchase[]=[];
 
   routeToEditMr(id)
   {
-    this.router.navigateByUrl("/purchase/editPQ/"+id);
+    this.router.navigateByUrl("/purchase/pcOverview/"+id);
   }
 
 

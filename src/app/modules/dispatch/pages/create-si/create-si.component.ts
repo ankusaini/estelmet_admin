@@ -54,7 +54,7 @@ export class CreateSiComponent implements OnInit {
     if (this.selectedSale) {
       const id = this.selectedSale.id;
       const data = this.salesList.filter(obj => {
-        return obj.id === id;
+        return obj.id == id;
       });
       if (data) {
         this.deliveryOrderList = data[0].deliveryOrder;
