@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 import { Grn } from 'src/app/shared/Models/purchase.model';
 import { Product } from 'src/app/shared/Models/product.model.';
+import { Status } from 'src/app/shared/Models/user.model';
 
 @Component({
   selector: 'app-edit-grn',
@@ -110,7 +111,7 @@ export class EditGrnComponent implements OnInit {
       this.grnData.coilsBundles = this.InvoiceDetailsForm.value.coilsBundles;
       this.grnData.invoiceGrossWeight = this.InvoiceDetailsForm.value.invoiceGrossWeight;
       this.grnData.invoiceNetWeight = this.InvoiceDetailsForm.value.invoiceNetWeight;
-
+      this.grnData.status = Status.PENDING;
       this.request.grn = this.grnData;
       this.request.productList = [];
 
@@ -150,7 +151,7 @@ export class EditGrnComponent implements OnInit {
       this.grnData.grossWeight = this.transportDetailsForm.value.grossWeight;
       this.grnData.netWeight = this.transportDetailsForm.value.netWeight;
       this.grnData.driverName = this.transportDetailsForm.value.driverName;
-
+      this.grnData.status = Status.PENDING;
       this.request.grn = this.grnData;
       this.request.productList = [];
       // let url = "/purchase/createGrn";
@@ -184,7 +185,7 @@ export class EditGrnComponent implements OnInit {
       this.grnData.vehicleTareWeight = this.weighDetailsForm.value.vehicleTareWeight;
       this.grnData.materialNetWeightslip = this.weighDetailsForm.value.materialNetWeightslip;
       this.grnData.location = this.weighDetailsForm.value.location;
-
+      this.grnData.status = Status.PENDING;
       this.request.grn = this.grnData;
       this.request.productList = [];
       // let url = "/purchase/createGrn";

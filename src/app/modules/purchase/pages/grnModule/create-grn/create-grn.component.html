@@ -16,11 +16,11 @@
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-3 col-form-label mt-2">Purchase LOT Id <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
-                    <select class="form-control" formControlName="lotId">
+                    <select class="form-control" formControlName="purchaseId">
                         <option value='' disabled>Select LOT Id</option>
                         <option [value]="item.id" *ngFor="let item of lot_details.purchaseList">{{ item.id }}</option>
                       </select>
-                      <small *ngIf="f.lotId.value == '' && (f.lotId.dirty || f.lotId.touched )" id="passwordHelpBlock" class="form-text text-muted"
+                      <small *ngIf="f.purchaseId.value == '' && (f.purchaseId.dirty || f.purchaseId.touched )" id="passwordHelpBlock" class="form-text text-muted"
                           >This field is required.</small>
                       <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
                       
