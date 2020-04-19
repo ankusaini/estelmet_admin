@@ -83,7 +83,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
       this.machineData = data;
       this.machineDetailList = data.map(machine => machine.machineName)
         .filter(machine => machine !== null);
-      this.machineDetailIdList = data.map(machine => machine.machineDetailId)
+      this.machineDetailIdList = data.map(machine => machine.id)
         .filter(machine => machine !== null);
     });
 
@@ -129,7 +129,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setMachineName(id) {
     this.machineData.find(machine => {
-      if (machine.machineDetailId == id) {
+      if (machine.id == id) {
         // alert(name);
         this.selectMrIdForm.patchValue({
           machineName: machine.machineName
@@ -174,7 +174,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     this.machineData.find(machine => {
       if (machine.machineName === name) {
         this.selectMrIdForm.patchValue({
-          machineDetailId: machine.machineDetailId
+          machineDetailId: machine.id
         });
       }
     });
@@ -201,6 +201,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
   }
 
   submitSelectMrId() {
+    console.log(this.selectMrIdForm.value);
     if(this.selectMrIdForm.valid) {
       this.selectMrData.emit(this.selectMrIdForm.value);
     } else {
