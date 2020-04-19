@@ -81,6 +81,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineData = data;
+      console.log("machine data",this.machineData);
       this.machineDetailList = data.map(machine => machine.machineName)
         .filter(machine => machine !== null);
       this.machineDetailIdList = data.map(machine => machine.id)

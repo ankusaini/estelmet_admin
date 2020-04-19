@@ -16,6 +16,8 @@ import { SearchAuctionComponent } from './pages/websiteSales/search-auction/sear
 import { CreateAuctionComponent } from './pages/websiteSales/create-auction/create-auction.component';
 import { SoOverviewComponent } from './pages/directSales/so-overview/so-overview.component';
 import { ScOverviewComponent } from './pages/salesConfirmation/sc-overview/sc-overview.component';
+import { CustomerOrderComponent } from './pages/customer-order/customer-order.component';
+import { SearchViewCOComponent } from './components/search-view-co/search-view-co.component';
 
 
 const routes: Routes= [
@@ -78,6 +80,14 @@ const routes: Routes= [
     {
         path: 'scOverview',
         component: ScOverviewComponent
+    },
+    {
+        path: 'createCO',
+        component: CustomerOrderComponent
+    },
+    {
+        path: 'coView',
+        component: SearchViewCOComponent
     }
 
 ];

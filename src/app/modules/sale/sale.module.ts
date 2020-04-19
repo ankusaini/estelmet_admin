@@ -35,6 +35,8 @@ import { SearchAuctionComponent } from './pages/websiteSales/search-auction/sear
 import { CreateAuctionIdComponent } from './components/create-auction-id/create-auction-id.component';
 import { SoOverviewComponent } from './pages/directSales/so-overview/so-overview.component';
 import { ScOverviewComponent } from './pages/salesConfirmation/sc-overview/sc-overview.component';
+import { CustomerOrderComponent } from './pages/customer-order/customer-order.component';
+import { SearchViewCOComponent } from './components/search-view-co/search-view-co.component';
 
 
 
@@ -82,7 +84,9 @@ import { ScOverviewComponent } from './pages/salesConfirmation/sc-overview/sc-ov
     CreateAuctionComponent,
     SearchAuctionComponent,
     CreateAuctionIdComponent,
-    ScOverviewComponent
+    ScOverviewComponent,
+    CustomerOrderComponent,
+    SearchViewCOComponent
   ]
 })
 export class SaleModule { }
