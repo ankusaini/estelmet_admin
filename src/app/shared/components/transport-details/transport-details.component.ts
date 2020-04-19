@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
-import { User, UserMini } from '../../Models/user.model';
+import { UserMini } from '../../Models/user.model';
 import { UserService } from '../../services/user.service';
 
 @Injectable()
@@ -81,8 +81,8 @@ export class TransportDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-   
-    this.userService.getAllUserByUserNameAndCompany('SUPPLIER','APPROVED').subscribe(
+
+    this.userService.getAllUserByUserNameAndCompany('SUPPLIER', 'APPROVED').subscribe(
       data => {
         console.log('Data is: ', data);
         this.supplierList = data;
@@ -91,11 +91,11 @@ export class TransportDetailsComponent implements OnInit {
         //   this.supplierId.push(supplier['id']);
         // }
         if (this.supplierList && this.supplierList.length > 0) {
-          console.log("supplierList",this.supplierList)
+          console.log("supplierList", this.supplierList)
           this.supplierIdList = this.supplierList.map(
             supplierObj => supplierObj.userDetialId
           );
-           console.log("supplierIdList",this.supplierIdList)
+          console.log("supplierIdList", this.supplierIdList)
         }
       },
       error => {
@@ -104,7 +104,7 @@ export class TransportDetailsComponent implements OnInit {
     );
 
 
-     this.userService.getAllUserByUserNameAndCompany('TRANSPORTER','APPROVED').subscribe(
+    this.userService.getAllUserByUserNameAndCompany('TRANSPORTER', 'APPROVED').subscribe(
       data => {
         console.log('Data is: ', data);
         this.transportList = data;
@@ -130,8 +130,8 @@ export class TransportDetailsComponent implements OnInit {
     // Called after ngOnInit when the component's or directive's content has been initialized.
     // Add 'implements AfterContentInit' to the class.
     console.log(this.process);
-    if (this.process === 'purchaseInvoice' ||
-      this.process === 'materialTransfer' || this.process === 'jobWorkChalan' || this.process === 'withoutPurchaseInvoice') {
+    if (this.process == 'purchaseInvoice' ||
+      this.process == 'materialTransfer' || this.process == 'jobWorkChalan' || this.process == 'withoutPurchaseInvoice') {
       this.transportDetails.addControl('transportRecieptNo', new FormControl(''));
       this.transportDetails.addControl('driverName', new FormControl(''));
 
@@ -147,7 +147,7 @@ export class TransportDetailsComponent implements OnInit {
 
   addTransportDetails() {
     if (this.transportDetails.valid) {
-      console.log('data is: ', this.transportDetails.value);
+      console.log(' transporter data is: ', this.transportDetails.value);
       this.transportData.emit(this.transportDetails.value);
     } else {
       this.toastr.error('Error! Invalid Details');
@@ -159,6 +159,3 @@ export class TransportDetailsComponent implements OnInit {
     return this.transportDetails.controls;
   }
 }
-
-
-

@@ -65,9 +65,9 @@ export class SupplierComponent implements OnInit {
     if (this.process == 'purchaseInvoice' || this.process == 'withoutPurchaseInvoice') {
 
       this.grnForm.addControl('invoiceNo', new FormControl('', [Validators.required]));
-      this.grnForm.addControl('invoiceDate', new FormControl('', [Validators.required]));
-      this.grnForm.addControl('invoiceGrossWeight', new FormControl('', [Validators.required]));
-      this.grnForm.addControl('invoiceNetWeight', new FormControl('', [Validators.required]));
+      // this.grnForm.addControl('invoiceDate', new FormControl('', [Validators.required]));
+      // this.grnForm.addControl('invoiceGrossWeight', new FormControl(''));
+      // this.grnForm.addControl('invoiceNetWeight', new FormControl(''));
 
     } else if (this.process == 'jobWorkChalan') {
 

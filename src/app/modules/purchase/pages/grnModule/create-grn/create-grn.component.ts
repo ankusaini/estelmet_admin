@@ -100,7 +100,7 @@ export class CreateGrnComponent implements OnInit {
 
   ngOnInit() {
     this.lotIdForm = new FormGroup({
-      lotId: new FormControl('', [Validators.required])
+      purchaseId: new FormControl('', [Validators.required])
     });
   }
 
@@ -139,7 +139,7 @@ export class CreateGrnComponent implements OnInit {
         this.getAllTransporter();
         this.getAllCompany();
       }
-      else if (val.dismiss === Swal.DismissReason.cancel) {
+      else if (val.dismiss == Swal.DismissReason.cancel) {
         console.log('dismiss Called');
         this.router.navigate(['/dashboard/default']);
       }
@@ -147,11 +147,11 @@ export class CreateGrnComponent implements OnInit {
   }
 
   getSelectedRole(role) {
-    if (role === 'withoutPurchaseInvoice') {
+    if (role == 'withoutPurchaseInvoice') {
       this.selectedRole = LotType.WITHOUT_PC;
-    } else if (role === 'purchaseInvoice') {
+    } else if (role == 'purchaseInvoice') {
       this.selectedRole = LotType.WITH_PC;
-    } else if (role === 'jobWorkChalan') {
+    } else if (role == 'jobWorkChalan') {
       this.selectedRole = LotType.JOB_WORK_OTHER;
     } else {
       this.selectedRole = LotType.JOB_WORK_SELF;
@@ -233,8 +233,9 @@ export class CreateGrnComponent implements OnInit {
     this.grnForm.get('grnType').patchValue(this.selectedRole);
     console.log(this.grnForm.value);
   }
-
+  
   submit() {
+    this.grnForm.get('purchaseId').patchValue(this.lotIdForm.get('purchaseId').value);
     this.dataToSend.grn = this.grnForm.value;
     this.dataToSend.productList = [];
     this.purchaseService.createGrn(this.dataToSend).subscribe(res => {
