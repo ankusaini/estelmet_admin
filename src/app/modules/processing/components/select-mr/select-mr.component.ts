@@ -130,7 +130,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   setMachineName(id) {
     this.machineData.find(machine => {
-      if (machine.machineDetailId == id) {
+      if (machine.id == id) {
         // alert(name);
         this.selectMrIdForm.patchValue({
           machineName: machine.machineName

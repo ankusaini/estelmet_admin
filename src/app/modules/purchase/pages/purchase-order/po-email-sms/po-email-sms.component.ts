@@ -5,6 +5,7 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 import { User, UserMini } from "src/app/shared/Models/user.model";
 import { UserService } from "src/app/shared/services/user.service";
 import { UserRole, Status } from '../../../../../shared/Models/user.model';
+import { FormGroup } from "@angular/forms/forms";
 
 @Component({
   selector: 'app-po-email-sms',
@@ -24,8 +25,12 @@ export class PoEmailSmsComponent implements OnInit {
   public productId: any;
   public userId: any;
   public price: any;
-  @ViewChild('openModelRef', { static: false }) openModelRef: ElementRef;
+  @ViewChild('myModel', { static: false }) myModel;
 
+
+  savePurchaseForm= new FormGroup({
+    
+  });
 
   ngOnInit() {
     // this.getAllUserByUserRoleAndStatus('APPROVED', 'SUPPLIER');
@@ -61,7 +66,6 @@ export class PoEmailSmsComponent implements OnInit {
 
 
   // getAllUserByUserRoleAndStatus(status, userType) {
-
   //   this.userService.getAllUserByUserRoleAndStatus(status, userType, this.limit, this.offset).subscribe(
   //     data => {
   //       this.userList = data;
@@ -73,12 +77,14 @@ export class PoEmailSmsComponent implements OnInit {
 
 
   openModal() {
+    console.log("called")
+    this.myModel.nativeElement.className='modal fade show';
     this.userService.getAllUserByUserNameAndCompany(UserRole.SUPPLIER, Status.APPROVED).subscribe(data => {
       this.supplierDrowDownList = data;
     }, error => {
 
     });
-    this.openModelRef.nativeElement.click();
+    //this.openModelRef.nativeElement.click();
   }
 
   savePurchaseOrder(purchaseId, userId, productId, price) {
@@ -92,5 +98,8 @@ export class PoEmailSmsComponent implements OnInit {
       })
     }
   }
-  closeModel() { }
+
+  closeModel() { 
+     this.myModel.nativeElement.className = 'modal hide';
+  }
 }

@@ -754,34 +754,34 @@ const NavigationItems = [
               },
             ]
           },
-          // {
-          //   id: 'customerOrder',
-          //   title: 'Customer Order (CO)',
-          //   type: 'collapse',
-          //   children: [
-          //     {
-          //       id: 'createCustomerOrder',
-          //       title: 'Create CO LOT Id',
-          //       type: 'item',
-          //       url: '/sales/createCO',
-          //       target: false,
-          //     },
-          //     {
-          //       id: 'SearchCustomerOrder',
-          //       title: 'Search & View CO LOT',
-          //       type: 'item',
-          //       url: '/sales/searchCo',
-          //       target: false,
-          //     },
-          //     {
-          //       id: 'overviewCustomerOrder',
-          //       title: 'CO LOT Overview',
-          //       type: 'item',
-          //       url: '/layout/fixed',
-          //       target: false,
-          //     },
-          //   ]
-          // },
+          {
+            id: 'customerOrder',
+            title: 'Customer Order (CO)',
+            type: 'collapse',
+            children: [
+              {
+                id: 'createCustomerOrder',
+                title: 'Create CO LOT Id',
+                type: 'item',
+                url: '/sales/createCO',
+                target: false,
+              },
+              {
+                id: 'SearchCustomerOrder',
+                title: 'Search & View CO LOT',
+                type: 'item',
+                url: '/sales/searchCo',
+                target: false,
+              },
+              // {
+              //   id: 'overviewCustomerOrder',
+              //   title: 'CO LOT Overview',
+              //   type: 'item',
+              //   url: '/layout/fixed',
+              //   target: false,
+              // },
+            ]
+          },
           {
             id: 'salesConfirmation',
             title: 'Sales Confirmation (SC)',
