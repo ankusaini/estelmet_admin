@@ -19,7 +19,7 @@ export class SearchViewSoComponent implements OnInit {
 
   public dataList: any;
   public salesList: Sales[];
-  // public selectedSalesList: Sales[] = [];
+  public selectedSalesList: Sales[] = [];
   @ViewChild('epltable', { static: false }) epltable: ElementRef;
   public Ids: any;
 
@@ -43,21 +43,21 @@ export class SearchViewSoComponent implements OnInit {
     );
   }
 
-  // addToSelectedList(sale: Sales) {
-  //   const index: number = this.selectedSalesList.indexOf(sale);
-  //   if (index == -1) {
-  //     this.selectedSalesList.push(sale);
-  //   } else {
-  //     this.toastrService.warning("record already added!");
-  //   }
-  // }
+  addToSelectedList(sale: Sales) {
+    const index: number = this.selectedSalesList.indexOf(sale);
+    if (index == -1) {
+      this.selectedSalesList.push(sale);
+    } else {
+      this.toastrService.warning("record already added!");
+    }
+  }
 
-  // removeFromSelectedList(sale: Sales) {
-  //   const index: number = this.selectedSalesList.indexOf(sale);
-  //   if (index !== -1) {
-  //     this.selectedSalesList.splice(index, 1);
-  //   }
-  // }
+  removeFromSelectedList(sale: Sales) {
+    const index: number = this.selectedSalesList.indexOf(sale);
+    if (index !== -1) {
+      this.selectedSalesList.splice(index, 1);
+    }
+  }
 
   routerToSoEdit(id) {
     this.router.navigateByUrl("/sales/soEdit/"+id);

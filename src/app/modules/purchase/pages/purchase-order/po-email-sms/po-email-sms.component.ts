@@ -5,7 +5,7 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 import { User, UserMini } from "src/app/shared/Models/user.model";
 import { UserService } from "src/app/shared/services/user.service";
 import { UserRole, Status } from '../../../../../shared/Models/user.model';
-import { FormGroup } from "@angular/forms/forms";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-po-email-sms',

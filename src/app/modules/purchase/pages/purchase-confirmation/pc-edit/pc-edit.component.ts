@@ -302,6 +302,7 @@ export class PcEditComponent implements OnInit {
     this.selectedProduct = data;
     this.productList.push(this.selectedProduct);
     this.selectedProduct = null;
+    this.editProfile = false;
   }
 
   saveProductList() {

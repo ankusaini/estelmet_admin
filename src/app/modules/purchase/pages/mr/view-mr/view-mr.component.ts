@@ -8,6 +8,7 @@ import * as xlsx from 'xlsx';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,9 @@ export class ViewMRComponent implements OnInit {
  public mrList: Purchase[];
 public selectedMrList: Purchase[]=[];
 public Ids: any;
-  constructor(private purchaseService: PurchaseService,private router:Router) {
+  constructor(private purchaseService: PurchaseService,
+    private toastr: ToastrService,
+    private router:Router) {
     this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "APPROVED");
     this.Ids = ids;
   }
@@ -48,7 +51,7 @@ public Ids: any;
     if (index == -1) {
       this.selectedMrList.push(mr);
     } else {
-      alert("already added");
+      this.toastr.warning("Already added!");
     }
   }
 

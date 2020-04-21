@@ -5,6 +5,7 @@ import { Company } from 'src/app/shared/Models/company.model.';
 import { ProductCategory, ProductShape } from 'src/app/shared/Models/product.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { SalesServiceService } from '../../services/sales-service.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 
 @Component({
   selector: 'app-create-so-id-tradelead',
@@ -20,7 +21,7 @@ export class CreateSoIdTradeleadComponent implements OnInit {
   public shapeList: ProductShape[];
   public selectedWarehouse: Warehouse;
   public selected_comapny: Company;
-
+  public StaticWarehouseList: Warehouse[];
   generatedTlId = '';
   tlIdForm: FormGroup;
   selectedCategory: any;
@@ -39,6 +40,7 @@ export class CreateSoIdTradeleadComponent implements OnInit {
   });
 
   constructor(private salesService: SalesServiceService,
+    private productService: StaticDataService,
               private toastr: ToastrService) { }
 
 
@@ -66,15 +68,8 @@ export class CreateSoIdTradeleadComponent implements OnInit {
   }
 
   getCompanyList() {
-    const url = '/inventory/getAllCompany';
-    this.salesService.getAllCompany(url).subscribe(
-      data => {
-        this.companyList = data;
-        console.log(this.companyList);
-      }, error => {
-        console.log(error);
-      }
-    );
+    this.productService.getAllCompany().subscribe(data => this.companyList = data);
+      this.productService.getAllwarehouse().subscribe(data => this.StaticWarehouseList = data);
   }
 
   getCategoryList() {
@@ -101,10 +96,9 @@ export class CreateSoIdTradeleadComponent implements OnInit {
   }
 
   selectedCompany(value: number) {
-    const data = this.companyList.filter(element => {
-      return element.id == value;
-    });
+    const data = this.companyList.filter(x => Number(x.id) === Number(value));
     this.selected_comapny = data[0];
+    this.warehouseList = this.StaticWarehouseList.filter(x => Number(x.companyId) === Number(value));
   }
 
   getSelectedWarehouse(event) {

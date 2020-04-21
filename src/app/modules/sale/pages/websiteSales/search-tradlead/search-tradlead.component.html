@@ -16,13 +16,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr (click)="routerToTeadeLeadEdit(data.id)" *ngFor="let data of salesList; let i= index">
-                <td>{{i+1}}</td>
-                <td >{{Ids.TRADE_LEAD_LOT + '-' + data.id}}</td>
-                <td>{{data.type}}</td>
-                <td>{{data.productCategory}}</td>
-                <td>{{data.productShape}}</td>
-                <td>{{data.salesHistory[0].createdDate | date:'medium'}}</td>
+              <tr  *ngFor="let data of salesList; let i= index">
+                <td (click)="routerToTeadeLeadEdit(data.id)">{{i+1}}</td>
+                <td (click)="routerToTeadeLeadEdit(data.id)">{{Ids.TRADE_LEAD_LOT + '-' + data.id}}</td>
+                <td (click)="routerToTeadeLeadEdit(data.id)">{{data.type}}</td>
+                <td (click)="routerToTeadeLeadEdit(data.id)">{{data.productCategory}}</td>
+                <td (click)="routerToTeadeLeadEdit(data.id)">{{data.productShape}}</td>
+                <td (click)="routerToTeadeLeadEdit(data.id)">{{data.salesHistory[0].createdDate | date:'medium'}}</td>
                 <td><button type="button" (click)="addToSelectedList(data)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
               </tr>
             </tbody>
@@ -31,7 +31,7 @@
       </app-card>
     </div>
   </div>
-  <!-- <div class="row">
+  <div class="row">
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="View Selected TradeLead" [options]="false"
         cardClass="user-profile-list">
@@ -70,7 +70,7 @@
       </app-card>
   
     </div>
-  </div> -->
+  </div>
 <button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
 <!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
 <button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;
