@@ -87,7 +87,6 @@ export class CreateScComponent implements OnInit {
       }
     );
     
-    this.wizard.navigation.reset();
   }
 
 }

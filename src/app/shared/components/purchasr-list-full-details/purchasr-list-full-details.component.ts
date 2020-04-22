@@ -30,14 +30,16 @@ export class PurchasrListFullDetailsComponent implements OnInit {
     // console.log('in purchaseList ' + this.selectedTab);
     // const url = '/purchase/getAllPurchaseByTypeAndStatus/PURCHASE_CONFIRMATION/' + this.selectedTab;
    this.getData();
+   this.addedPurchaseList = [];
   }
 
   getData()
   {
+    this.addedPurchaseList = [];
      this.purchaseService.getAllPurchaseByTypeAndStatus(PurchaseType.PURCHASE_CONFIRMATION, this.selectedTab).subscribe(data => {
       this.purchaseData = data;
       this.purchaseList = this.purchaseData.purchaseList;
-      console.log('purchaseList ' + this.purchaseList);
+      console.log('purchaseList ', this.purchaseList);
     });
   }
   // emitting on every add so that parent can show the list
@@ -47,6 +49,7 @@ export class PurchasrListFullDetailsComponent implements OnInit {
     if (index === -1) {
       this.addedPurchaseList.push(purchase);
       this.selectedPurchaseData.emit(this.addedPurchaseList);
+      console.log(this.addedPurchaseList);
     } else {
       this.toastrService.warning('record already added');
     }

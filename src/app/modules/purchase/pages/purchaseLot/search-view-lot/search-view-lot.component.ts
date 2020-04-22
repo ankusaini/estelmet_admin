@@ -9,6 +9,7 @@ import * as xlsx from 'xlsx';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -27,6 +28,7 @@ export class SearchViewLotComponent implements OnInit {
 
 
   constructor(private purchaseService: PurchaseService,
+    private toastr: ToastrService,
               private router: Router) {
                 this.Ids = ids;
                }
@@ -46,7 +48,7 @@ export class SearchViewLotComponent implements OnInit {
     if (index == -1) {
       this.selectedPurchaseList.push(purchase);
     } else {
-      alert("already added");
+      this.toastr.warning("Already added!")
     }
   }
 

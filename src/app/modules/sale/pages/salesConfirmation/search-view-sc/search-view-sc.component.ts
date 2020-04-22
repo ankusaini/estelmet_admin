@@ -21,7 +21,7 @@ export class SearchViewScComponent implements OnInit {
   public dataList: any;
   salesList: Sales[];
   public Ids: any;
-  // public selectedSalesList: Sales[] = [];
+  public selectedSalesList: Sales[] = [];
 
   constructor(private salesService: SalesServiceService,
             private router: Router,
@@ -40,21 +40,21 @@ export class SearchViewScComponent implements OnInit {
     );
   }
 
-  // addToSelectedList(sale: Sales) {
-  //   const index: number = this.selectedSalesList.indexOf(sale);
-  //   if (index == -1) {
-  //     this.selectedSalesList.push(sale);
-  //   } else {
-  //     this.toastrService.warning("record already added!");
-  //   }
-  // }
+  addToSelectedList(sale: Sales) {
+    const index: number = this.selectedSalesList.indexOf(sale);
+    if (index == -1) {
+      this.selectedSalesList.push(sale);
+    } else {
+      this.toastrService.warning("record already added!");
+    }
+  }
 
-  // removeFromSelectedList(sale: Sales) {
-  //   const index: number = this.selectedSalesList.indexOf(sale);
-  //   if (index !== -1) {
-  //     this.selectedSalesList.splice(index, 1);
-  //   }
-  // }
+  removeFromSelectedList(sale: Sales) {
+    const index: number = this.selectedSalesList.indexOf(sale);
+    if (index !== -1) {
+      this.selectedSalesList.splice(index, 1);
+    }
+  }
 
   routerToScEdit(id) {
     this.router.navigateByUrl("/sales/scEdit/"+id);

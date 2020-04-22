@@ -27,6 +27,7 @@ export class PcApprovalComponent implements OnInit {
 
   @ViewChild(PurchasrListFullDetailsComponent,{static:false}) child:PurchasrListFullDetailsComponent;
   ngOnInit() {
+    this.selectedPuchaseList = [];
   }
 
     onTabChange(tab) {
@@ -49,6 +50,7 @@ export class PcApprovalComponent implements OnInit {
   getPurchaseData(data)
   {
     this.selectedPuchaseList=data;
+    console.log(this.selectedPuchaseList);
   }
 
 
@@ -73,14 +75,14 @@ export class PcApprovalComponent implements OnInit {
          this.request.purchase=this.selectedPuchaseList[i];
         this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
-            
-             this.router.routeReuseStrategy.shouldReuseRoute = function () {
-    return false;
-  };
-  this.child.getData();
-             //this.selectedTab = "PENDING";
-        this.selectedPuchaseList=[];
-       
+            this.selectedPuchaseList=[];
+            console.log(this.selectedPuchaseList);
+          //   this.router.routeReuseStrategy.shouldReuseRoute = function () {
+          //   return false;
+          // };
+          this.child.getData();
+          //this.selectedTab = "PENDING";
+              
           },
           error => {}
         );

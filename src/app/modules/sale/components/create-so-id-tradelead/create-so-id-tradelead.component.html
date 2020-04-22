@@ -36,7 +36,7 @@
               formControlName="warehouseName"
               required >
               <option value="" disabled>Select Warehouse</option>
-              <option *ngFor="let warehouse of selected_comapny.warehouse" [value]="warehouse?.id">{{warehouse?.name}}</option>
+              <option *ngFor="let warehouse of warehouseList" [value]="warehouse?.id">{{warehouse?.name}}</option>
             </select>
             <small *ngIf="!f.warehouseName.valid && (f.warehouseName.dirty || f.warehouseName.touched)"
               id="validation-warehouseName-error"
