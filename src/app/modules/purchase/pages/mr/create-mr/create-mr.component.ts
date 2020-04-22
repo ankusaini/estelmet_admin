@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ import { Product, ProductCategory, ProductShape } from 'src/app/shared/Models/pr
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
+import { WizardComponent } from 'ng2-archwizard/dist';
 @Component({
   selector: 'app-create-mr',
   templateUrl: './create-mr.component.html',
@@ -15,6 +16,7 @@ import { StaticDataService } from 'src/app/shared/services/data/staticData.servi
 })
 export class CreateMRComponent implements OnInit {
 
+  @ViewChild('wizard', {static: false}) wizard: WizardComponent;
   public request: RequestP = {};
   public companyList: Company[] = [];
   public selectedComapny: Company;
@@ -55,6 +57,7 @@ export class CreateMRComponent implements OnInit {
 
   createMrSubmit() {
     console.log(this.mrPurchase);
+    
   }
   getAllCompany() {
     this.productService.getAllCompany().subscribe(data => this.companyList = data);
@@ -116,9 +119,14 @@ export class CreateMRComponent implements OnInit {
 
   setTitle()
   {
-    let myValue=this.mrPurchase.controls.productCategory.value+' - '+this.mrPurchase.controls.productShape.value;
-    this.mrPurchase.controls.title.patchValue(myValue);
-    this.myTitle=myValue;
-    console.log(myValue)
+    if(this.mrPurchase.valid) {
+      let myValue=this.mrPurchase.controls.productCategory.value+' - '+this.mrPurchase.controls.productShape.value;
+      this.mrPurchase.controls.title.patchValue(myValue);
+      this.myTitle=myValue;
+      console.log(myValue);
+      this.wizard.navigation.goToNextStep();
+    } else {
+      this.toastr.error("Invalid Details!");
+    }
   }
 }

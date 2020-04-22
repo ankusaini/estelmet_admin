@@ -5,6 +5,7 @@ import { Company } from 'src/app/shared/Models/company.model.';
 import { ProductCategory, ProductShape } from 'src/app/shared/Models/product.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { SalesServiceService } from '../../services/sales-service.service';
+import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 // import { RequestP } from 'src/app/shared/Models/RequestResponse';
 
 @Component({
@@ -21,6 +22,7 @@ export class CreateSoIdComponent implements OnInit {
   public shapeList: ProductShape[];
   public selectedWarehouse: Warehouse;
   public selected_comapny: Company;
+  public StaticWarehouseList: Warehouse[];
   generatedSoId = '';
   soIdForm: FormGroup;
   selectedCategory: any;
@@ -39,6 +41,7 @@ export class CreateSoIdComponent implements OnInit {
   });
 
   constructor(private salesService: SalesServiceService,
+    private productService: StaticDataService,
               private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -64,17 +67,10 @@ export class CreateSoIdComponent implements OnInit {
     }
   }
 
-  getCompanyList() {
-    const url = '/inventory/getAllCompany';
-    this.salesService.getAllCompany(url).subscribe(
-      data => {
-        this.companyList = data;
-        console.log(this.companyList);
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
+    getCompanyList() {
+      this.productService.getAllCompany().subscribe(data => this.companyList = data);
+      this.productService.getAllwarehouse().subscribe(data => this.StaticWarehouseList = data);
+    }
 
   getCategoryList() {
     const url = '/inventory/productClassification/getProductCategory';
@@ -99,13 +95,19 @@ export class CreateSoIdComponent implements OnInit {
     );
   }
 
+  // selectedCompany(value: number) {
+  //   console.log("Value",value)
+  //   const data = this.companyList.filter(element => {
+  //     return element.id == value;
+  //   });
+  //   this.selected_comapny = data[0];
+  //   console.log("selected company",this.selected_comapny)
+  // }
+
   selectedCompany(value: number) {
-    console.log("Value",value)
-    const data = this.companyList.filter(element => {
-      return element.id == value;
-    });
+    const data = this.companyList.filter(x => Number(x.id) === Number(value));
     this.selected_comapny = data[0];
-    console.log("selected company",this.selected_comapny)
+    this.warehouseList = this.StaticWarehouseList.filter(x => Number(x.companyId) === Number(value));
   }
 
   getSelectedWarehouse(event) {

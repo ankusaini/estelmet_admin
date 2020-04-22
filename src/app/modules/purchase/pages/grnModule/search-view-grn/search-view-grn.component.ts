@@ -48,7 +48,7 @@ export class SearchViewGrnComponent implements OnInit {
     if (index === -1) {
       this.selectedGrnList.push(grn);
     } else {
-      alert("already added");
+      this.toastr.warning("Already added!")
     }
   }
 

@@ -21,7 +21,7 @@ export class CreateAuctionIdComponent implements OnInit {
   public shapeList: ProductShape[];
   public selectedWarehouse: Warehouse;
   public selectedComapny: Company;
-
+  public StaticWarehouseList: Warehouse[];
   generatedAoId = '';
   AoIdForm: FormGroup;
   selectedCategory: any;
@@ -42,6 +42,7 @@ export class CreateAuctionIdComponent implements OnInit {
   constructor(
     private salesService: SalesServiceService,
     private toastr: ToastrService,
+    private productService: StaticDataService,
     private commonService: StaticDataService) { }
 
 
@@ -69,15 +70,8 @@ export class CreateAuctionIdComponent implements OnInit {
   }
 
   getCompanyList() {
-    const url = '/inventory/getAllCompany';
-    this.salesService.getAllCompany(url).subscribe(
-      data => {
-        this.companyList = data;
-        console.log(this.companyList);
-      }, error => {
-        console.log(error);
-      }
-    );
+    this.productService.getAllCompany().subscribe(data => this.companyList = data);
+      this.productService.getAllwarehouse().subscribe(data => this.StaticWarehouseList = data);
   }
 
   getCategoryList() {
@@ -103,11 +97,17 @@ export class CreateAuctionIdComponent implements OnInit {
     );
   }
 
+  // selectedCompany(value: number) {
+  //   const data = this.companyList.filter(element => {
+  //     return element.id == value;
+  //   });
+  //   this.selectedComapny = data[0];
+  // }
+
   selectedCompany(value: number) {
-    const data = this.companyList.filter(element => {
-      return element.id == value;
-    });
+    const data = this.companyList.filter(x => Number(x.id) === Number(value));
     this.selectedComapny = data[0];
+    this.warehouseList = this.StaticWarehouseList.filter(x => Number(x.companyId) === Number(value));
   }
 
   getSelectedWarehouse(event) {
