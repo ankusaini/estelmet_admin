@@ -31,7 +31,7 @@ export class CustomerOrderComponent implements OnInit {
     customerOrderDate : new FormControl('', [Validators.required]),
     customerOrderValidity : new FormControl('', [Validators.required]),
     // 
-    SalesOfferId: new FormControl('', [Validators.required]),
+    salesId: new FormControl('', [Validators.required]),
     // 
     gstInvoice : new FormControl('', [Validators.required]),
     loadingUnloadingCharges : new FormControl('', [Validators.required]),
@@ -57,8 +57,6 @@ export class CustomerOrderComponent implements OnInit {
     
   }
 
-  
-
   getSelectedDetailsId(data) {
     console.log(data);
     this.wizard.navigation.goToNextStep();
@@ -72,9 +70,12 @@ export class CustomerOrderComponent implements OnInit {
     console.log(this.customerOrderForm);
   }
 
-  getSelectedOfferId(data) {
+  getSelectedOfferId(data: string) {
+    data.toString();
     this.wizard.navigation.goToNextStep();
-    this.customerOrderForm.value.SalesOfferId = data;
+    this.customerOrderForm.patchValue({
+      salesId: data
+    })
   }
 
   getOtherDetails(data) {

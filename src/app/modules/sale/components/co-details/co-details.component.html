@@ -4,6 +4,8 @@
           <div class="form-group">
             <label for="validationCustom02">Customer Order No.</label>
             <input type="text" formControlName="customerOrderNo" class="form-control" placeholder="Enter Order">
+            <small *ngIf="f.customerOrderNo.value == '' && (f.customerOrderNo.dirty || f.customerOrderNo.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
         <div class="col-md-1"></div>
@@ -11,6 +13,8 @@
           <div class="form-group">
             <label for="validationCustom02">Date</label>
             <input type="date" formControlName="customerOrderDate" class="form-control" placeholder="">
+            <small *ngIf="f.customerOrderDate.value == '' && (f.customerOrderDate.dirty || f.customerOrderDate.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
       </div>
@@ -20,6 +24,8 @@
           <div class="form-group">
             <label for="validationCustom02">Validity</label>
             <input type="date" formControlName="customerOrderValidity" class="form-control" placeholder="">
+            <small *ngIf="f.customerOrderValidity.value == '' && (f.customerOrderValidity.dirty || f.customerOrderValidity.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
           </div>
           <div class="col-md-1"></div>

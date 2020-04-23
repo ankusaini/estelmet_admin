@@ -18,6 +18,11 @@ export interface CustomerOrder {
     packagingCharges ?: string;
     deliveryCharges ?: string;
     anyOtherCharges ?: string;
+    salesId?: string;
+    contactPersonName?: string;
+    contactPersonNumber?: string;
+    contactPersonWNumber?: string;
+    contactPersonEmail?: string;
     modeofPayment ?: string;
     paymentTerms ?: string;
     creditLimit ?: string;

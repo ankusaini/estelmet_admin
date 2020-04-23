@@ -6,6 +6,9 @@
             <label for="validationCustom02">1. GST applicable of Invoice Value</label>
             <input type="text" formControlName="gstInvoice" class="form-control" placeholder="">
             <small class="form-text text-muted">% Extra</small>
+            <small *ngIf="f.gstInvoice.value == '' && (f.gstInvoice.dirty || f.gstInvoice.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            
           </div>
         </div>
         <div class="col-md-3">
@@ -13,6 +16,10 @@
             <label for="validationCustom02">2. Loading & Unloading Charges</label>
             <input formControlName="loadingUnloadingCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
+            <small *ngIf="f.loadingUnloadingCharges.value == '' && (f.loadingUnloadingCharges.dirty || f.loadingUnloadingCharges.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.loadingUnloadingCharges.value !== '' && f.loadingUnloadingCharges.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">This Field accepts only numeric and .</small>
           </div>
         </div>
         <div class="col-md-3">
@@ -20,6 +27,10 @@
             <label for="validationCustom02">3. Packaging Charges</label>
             <input  formControlName="packagingCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
+            <small *ngIf="f.packagingCharges.value == '' && (f.packagingCharges.dirty || f.packagingCharges.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.packagingCharges.value !== '' && f.packagingCharges.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">This Field accepts only numeric and .</small>
           </div>
         </div>
         <div class="col-md-3">
@@ -27,6 +38,10 @@
             <label for="validationCustom02">4. Delivery Charges</label>
             <input formControlName="deliveryCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
+            <small *ngIf="f.deliveryCharges.value == '' && (f.deliveryCharges.dirty || f.deliveryCharges.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.deliveryCharges.value !== '' && f.deliveryCharges.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">This Field accepts only numeric and .</small>
           </div>
         </div>
         <div class="col-md-3">
@@ -34,6 +49,10 @@
             <label for="validationCustom02">5. Any Other Charges</label>
             <input formControlName="anyOtherCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
+            <small *ngIf="f.anyOtherCharges.value == '' && (f.anyOtherCharges.dirty || f.anyOtherCharges.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.anyOtherCharges.value !== '' && f.anyOtherCharges.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">This Field accepts only numeric and .</small>
           </div>
         </div>
       </div>
@@ -43,114 +62,75 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">Contact Person Name</label>
-            <input type="text" class="form-control" placeholder="Enter Name">
+            <input type="text" formControlName="contactPersonName" class="form-control" placeholder="Enter Name">
+            <small *ngIf="f.contactPersonName.value == '' && (f.contactPersonName.dirty || f.contactPersonName.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.contactPersonName.value !== '' && f.contactPersonName.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">Name should have minimum length of 3 alphabets.</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">Mobile Number</label>
-            <input type="text" class="form-control" placeholder="Enter Mobile">
+            <input type="text" formControlName="contactPersonNumber"  class="form-control" placeholder="Enter Mobile">
+            <small *ngIf="f.contactPersonNumber.value == '' && (f.contactPersonNumber.dirty || f.contactPersonNumber.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.contactPersonNumber.value !== '' && f.contactPersonNumber.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">Mobile number should be of 10 or 13 digits.</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">Whatsapp Number</label>
-            <input type="text" class="form-control" placeholder="Enter Whatsapp">
+            <input type="text" formControlName="contactPersonWNumber" class="form-control" placeholder="Enter Whatsapp">
+            <small *ngIf="f.contactPersonWNumber.value == '' && (f.contactPersonWNumber.dirty || f.contactPersonWNumber.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.contactPersonWNumber.value !== '' && f.contactPersonWNumber.invalid  " id="passwordHelpBlock"
+            class="form-text text-muted">Mobile number should be of 10 or 13 digits.</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">E-mail</label>
-            <input type="email" class="form-control" placeholder="Enter Email">
+            <input type="email" formControlName="contactPersonEmail" class="form-control" placeholder="Enter Email">
+            <small *ngIf="f.contactPersonEmail.value == '' && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
       </div>
     </app-card>
-    <app-card cardTitle="Transport Details" [options]="false">
+    <app-card cardTitle="Payment Details" [options]="false">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="form-group">
-            <label for="validationCustom02">Transporter Id</label>
-            <select class="form-control" name="validation-companyName">
-              <option value>Select Transporter Id</option>
-            </select>
+            <label for="validationCustom02">Mode of Payment</label>
+            <input type="text" formControlName="modeofPayment" class="form-control" placeholder="">
+            <small *ngIf="f.modeofPayment.value == '' && (f.modeofPayment.dirty || f.modeofPayment.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="form-group">
-            <label for="validationCustom02">Transport Reciept</label>
-            <input type="text" class="form-control" placeholder="Enter Reciept">
+            <label for="validationCustom02">Payment Terms</label>
+            <input type="text" formControlName="paymentTerms"  class="form-control" placeholder="">
+            <small *ngIf="f.paymentTerms.value == '' && (f.paymentTerms.dirty || f.paymentTerms.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="form-group">
-            <label for="validationCustom02">Vehicle Number</label>
-            <input type="text" class="form-control" placeholder="Enter Vehicle">
+            <label for="validationCustom02">Credit Limit</label>
+            <input type="text" formControlName="creditLimit" class="form-control" placeholder="">
+            <small *ngIf="f.creditLimit.value == '' && (f.creditLimit.dirty || f.creditLimit.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="form-group">
-            <label for="validationCustom02">Container No.</label>
-            <input type="email" class="form-control" placeholder="Enter Container">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Source Gross Wt.</label>
-            <input type="email" class="form-control" placeholder="Enter Gross Wt.">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Source Net Wt.</label>
-            <input type="email" class="form-control" placeholder="Enter Net Wt.">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Driver Name</label>
-            <input type="text" class="form-control" placeholder="Enter Driver">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Driver Mobile</label>
-            <input type="text" class="form-control" placeholder="Enter Mobile">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Licence Number</label>
-            <input type="text" class="form-control" placeholder="Enter Licence">
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Mode</label>
-            <select class="form-control" name="validation-companyName">
-              <option value>Select Mode</option>
-              <option value="1">Road</option>
-              <option value="2">Train</option>
-              <option value="3">Air</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Delivery </label>
-            <select class="form-control" name="validation-companyName">
-              <option value>Select Delivery</option>
-              <option value="1">Our Warehouse</option>
-              <option value="2">Customer Warehouse</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="validationCustom02">Any Other</label>
-            <input type="email" class="form-control" placeholder="Other">
+            <label for="validationCustom02">Current Outstanding</label>
+            <input type="text" formControlName="currentOutstanding" class="form-control" placeholder="">
+            <small *ngIf="f.currentOutstanding.value == '' && (f.currentOutstanding.dirty || f.currentOutstanding.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
           </div>
         </div>
       </div>
