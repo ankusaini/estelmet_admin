@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
 import { Router } from '@angular/router';
 import { WizardComponent } from 'ng2-archwizard/dist';
+import { Product } from 'src/app/shared/Models/product.model.';
 
 @Component({
   selector: 'app-update-processing',
@@ -15,6 +16,7 @@ export class UpdateProcessingComponent implements OnInit {
   public processingList: any[];
   public processingIdList: any[];
   public selectedProcessingId: any;
+  public selectedProductList: Product[] = [];
 
   constructor(
     private router: Router,
@@ -73,4 +75,13 @@ export class UpdateProcessingComponent implements OnInit {
   }
 
 
+  getProductData(data) {
+    console.log(data);
+    this.selectedProductList.push(data);
+    console.log(this.selectedProductList);
+  }
+
+  submitProcessing() {
+    console.log(this.selectedProductList);
+  }
 }

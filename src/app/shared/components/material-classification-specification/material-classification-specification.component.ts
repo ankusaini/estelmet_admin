@@ -100,7 +100,13 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
       this.productForm.removeControl('warehouse');
 
     }
-  }
+
+    if(this.component === 'processing') {
+      // this.productForm.removeControl("heigth");
+      this.productForm.addControl("lengthToBeCut", new FormControl('', [Validators.required]));
+    }
+
+   }
 
   createForm() {
     this.productForm = new FormGroup({

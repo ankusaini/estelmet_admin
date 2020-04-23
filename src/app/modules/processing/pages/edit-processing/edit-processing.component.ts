@@ -22,18 +22,18 @@ export class EditProcessingComponent implements OnInit {
   public machineDetailList: MachineDetail[];
   public machineDetailIdList: any[];
 
-  public productCategoryList: any[];
-  public productShapeList: any[];
-  public productTypeList: any[];
-  public productClassList: any[];
-  public productHardnessList: any[];
-  public productDefectList: any[];
-  public productOilingList: any[];
-  public productAnnealingList: any[];
-  public productCoatingList: any[];
-  public productOriginList: any[];
-  public productSurfaceList: any[];
-  public productFinishList: any[];
+  // public productCategoryList: any[];
+  // public productShapeList: any[];
+  // public productTypeList: any[];
+  // public productClassList: any[];
+  // public productHardnessList: any[];
+  // public productDefectList: any[];
+  // public productOilingList: any[];
+  // public productAnnealingList: any[];
+  // public productCoatingList: any[];
+  // public productOriginList: any[];
+  // public productSurfaceList: any[];
+  // public productFinishList: any[];
 
 
   public activeTab: string;
@@ -105,32 +105,32 @@ export class EditProcessingComponent implements OnInit {
             warehouseId: new FormControl('WAR-' + this.processingData.warehouseId, [Validators.required])
           });
 
-          this.productDetails = new FormGroup({
-            productType: new FormControl('', [Validators.required]),
-            productCategory: new FormControl('', [Validators.required]),
-            productShape: new FormControl('', [Validators.required]),
-            productClass: new FormControl('', [Validators.required]),
-            thicknessMin: new FormControl('', [Validators.required]),
-            thicknessMax: new FormControl('', [Validators.required]),
-            widthMin: new FormControl('', [Validators.required]),
-            widthMax: new FormControl('', [Validators.required]),
-            lengthMin: new FormControl('', [Validators.required]),
-            lengthMax: new FormControl('', [Validators.required]),
-            temperMin: new FormControl('', [Validators.required]),
-            temperMax: new FormControl('', [Validators.required]),
-            productHardness: new FormControl('', [Validators.required]),
-            productCoating: new FormControl('', [Validators.required]),
-            productDefect: new FormControl('', [Validators.required]),
-            productOrigin: new FormControl('', [Validators.required]),
-            productOiling: new FormControl('', [Validators.required]),
-            productSurfaceCoating: new FormControl('', [Validators.required]),
-            productAnnealing: new FormControl('', [Validators.required]),
-            productFinish: new FormControl('', [Validators.required]),
-            gwt: new FormControl('', [Validators.required]),
-            nwt: new FormControl('', [Validators.required]),
-            lengthToBeCut: new FormControl(''),
-            remarks: new FormControl('')
-          });
+          // this.productDetails = new FormGroup({
+          //   productType: new FormControl('', [Validators.required]),
+          //   productCategory: new FormControl('', [Validators.required]),
+          //   productShape: new FormControl('', [Validators.required]),
+          //   productClass: new FormControl('', [Validators.required]),
+          //   thicknessMin: new FormControl('', [Validators.required]),
+          //   thicknessMax: new FormControl('', [Validators.required]),
+          //   widthMin: new FormControl('', [Validators.required]),
+          //   widthMax: new FormControl('', [Validators.required]),
+          //   lengthMin: new FormControl('', [Validators.required]),
+          //   lengthMax: new FormControl('', [Validators.required]),
+          //   temperMin: new FormControl('', [Validators.required]),
+          //   temperMax: new FormControl('', [Validators.required]),
+          //   productHardness: new FormControl('', [Validators.required]),
+          //   productCoating: new FormControl('', [Validators.required]),
+          //   productDefect: new FormControl('', [Validators.required]),
+          //   productOrigin: new FormControl('', [Validators.required]),
+          //   productOiling: new FormControl('', [Validators.required]),
+          //   productSurfaceCoating: new FormControl('', [Validators.required]),
+          //   productAnnealing: new FormControl('', [Validators.required]),
+          //   productFinish: new FormControl('', [Validators.required]),
+          //   gwt: new FormControl('', [Validators.required]),
+          //   nwt: new FormControl('', [Validators.required]),
+          //   lengthToBeCut: new FormControl(''),
+          //   remarks: new FormControl('')
+          // });
         });
       }
     });
@@ -138,89 +138,98 @@ export class EditProcessingComponent implements OnInit {
     const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineDetailList = data;
-      this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.machineDetailId);
+      console.log(this.machineDetailList);
+      this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.id);
+      console.log(this.machineDetailIdList);
     }, error => {
       console.log(error);
     });
 
-    this.staticData.getAllProductCategory().subscribe(data => {
-      this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
-        .filter(categoryObj => categoryObj !== null);
-    });
+  //   this.staticData.getAllProductCategory().subscribe(data => {
+  //     this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
+  //       .filter(categoryObj => categoryObj !== null);
+  //   });
 
-    this.staticData.getProductShape().subscribe(data => {
-      this.productShapeList = data.map(shapeObj => shapeObj.productShape)
-        .filter(shapeObj => shapeObj !== null);
-    });
+  //   this.staticData.getProductShape().subscribe(data => {
+  //     this.productShapeList = data.map(shapeObj => shapeObj.productShape)
+  //       .filter(shapeObj => shapeObj !== null);
+  //   });
 
-    this.staticData.getProductType().subscribe(data => {
-      this.productTypeList = data.map(typeObj => typeObj.productType)
-        .filter(typeObj => typeObj !== null);
-    });
+  //   this.staticData.getProductType().subscribe(data => {
+  //     this.productTypeList = data.map(typeObj => typeObj.productType)
+  //       .filter(typeObj => typeObj !== null);
+  //   });
 
-    this.staticData.getProductClass().subscribe(data => {
-      this.productClassList = data.map(classObj => classObj.productClass)
-        .filter(classObj => classObj !== null);
-    });
+  //   this.staticData.getProductClass().subscribe(data => {
+  //     this.productClassList = data.map(classObj => classObj.productClass)
+  //       .filter(classObj => classObj !== null);
+  //   });
 
-    this.staticData.getAllHardness().subscribe(data => {
-      this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
-        .filter(hardnessObj => hardnessObj !== null);
-    });
+  //   this.staticData.getAllHardness().subscribe(data => {
+  //     this.productHardnessList = data.map(hardnessObj => hardnessObj.productHardness)
+  //       .filter(hardnessObj => hardnessObj !== null);
+  //   });
 
-    this.staticData.getAllProductCoating().subscribe(data => {
-      this.productCoatingList = data.map(coatingObj => coatingObj.productCoating)
-        .filter(coatingObj => coatingObj !== null);
-    });
+  //   this.staticData.getAllProductCoating().subscribe(data => {
+  //     this.productCoatingList = data.map(coatingObj => coatingObj.productCoating)
+  //       .filter(coatingObj => coatingObj !== null);
+  //   });
 
-    this.staticData.getAllDefect().subscribe(data => {
-      this.productDefectList = data.map(defectObj => defectObj.productDefect)
-        .filter(defectObj => defectObj !== null);
-    });
+  //   this.staticData.getAllDefect().subscribe(data => {
+  //     this.productDefectList = data.map(defectObj => defectObj.productDefect)
+  //       .filter(defectObj => defectObj !== null);
+  //   });
 
-    this.staticData.getAllOrigin().subscribe(data => {
-      this.productOriginList = data.map(originObj => originObj.productOrigin)
-        .filter(originObj => originObj !== null);
-    });
+  //   this.staticData.getAllOrigin().subscribe(data => {
+  //     this.productOriginList = data.map(originObj => originObj.productOrigin)
+  //       .filter(originObj => originObj !== null);
+  //   });
 
 
-    this.staticData.getAllSurface().subscribe(data => {
-      this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
-        .filter(surfaceObj => surfaceObj !== null);
-    });
+  //   this.staticData.getAllSurface().subscribe(data => {
+  //     this.productSurfaceList = data.map(surfaceObj => surfaceObj.productSurfaceCoating)
+  //       .filter(surfaceObj => surfaceObj !== null);
+  //   });
 
-    this.staticData.getAllAnnealing().subscribe(data => {
-      this.productAnnealingList = data.map(annealingObj => annealingObj.productAnnealing)
-        .filter(annealingObj => annealingObj !== null);
-    });
+  //   this.staticData.getAllAnnealing().subscribe(data => {
+  //     this.productAnnealingList = data.map(annealingObj => annealingObj.productAnnealing)
+  //       .filter(annealingObj => annealingObj !== null);
+  //   });
 
-    this.staticData.getAllFinish().subscribe(data => {
-      this.productFinishList = data.map(finishObj => finishObj.productFinish)
-        .filter(finishObj => finishObj !== null);
-    });
+  //   this.staticData.getAllFinish().subscribe(data => {
+  //     this.productFinishList = data.map(finishObj => finishObj.productFinish)
+  //       .filter(finishObj => finishObj !== null);
+  //   });
 
-    this.staticData.getAllProductOiling().subscribe(data => {
-      this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
-        .filter(oilingObj => oilingObj !== null);
-    });
+  //   this.staticData.getAllProductOiling().subscribe(data => {
+  //     this.productOilingList = data.map(oilingObj => oilingObj.productOiling)
+  //       .filter(oilingObj => oilingObj !== null);
+  //   });
+  // }
+
+  // open(index: number): void {
+  //   this.subscription = this.lightboxEvent.lightboxEvent$.subscribe((event: IEvent) => this._onReceivedEvent(event));
+  //   this.lightbox.open(this.albums, index, { wrapAround: true, showImageNumberLabel: true });
+  // }
+
+  // private _onReceivedEvent(event: IEvent): void {
+  //   if (event.id === LIGHTBOX_EVENT.CLOSE) {
+  //     this.subscription.unsubscribe();
+  //   }
   }
 
-  open(index: number): void {
-    this.subscription = this.lightboxEvent.lightboxEvent$.subscribe((event: IEvent) => this._onReceivedEvent(event));
-    this.lightbox.open(this.albums, index, { wrapAround: true, showImageNumberLabel: true });
-  }
-
-  private _onReceivedEvent(event: IEvent): void {
-    if (event.id === LIGHTBOX_EVENT.CLOSE) {
-      this.subscription.unsubscribe();
-    }
-  }
-
-  submitProductDetails() {
-    console.log(this.productDetails.value);
-  }
+  // submitProductDetails() {
+  //   console.log(this.productDetails.value);
+  // }
 
   submitProcessingDetails() {
     console.log(this.processingDetails.value);
+  }
+
+  getProductData(data) {
+    console.log(data);
+    this.productList.push(data);
+    console.log(this.productList);
+    this.editProfile = false; 
   }
 }
