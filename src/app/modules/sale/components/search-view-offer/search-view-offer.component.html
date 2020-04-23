@@ -1,0 +1,42 @@
+<div class="dt-responsive table-responsive" cardClass="card-datatable">
+    <table datatable class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>SO Id</th>
+          <th>SO Type</th>
+          <th>Category</th>
+          <th>Shape</th>
+          <th>Company Id</th>
+          <th>Warehouse Id</th>
+          <th>Date of Creation</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of salesList; let i=index">
+          <td>{{i+1}}</td>
+          <td>{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
+          <td>{{sale.type}}</td>
+          <td>{{sale.productCategory}}</td>
+          <td>{{sale.productShape}}</td>
+          <td>{{sale.sourceCompanyId}}</td>
+          <td>{{sale.sourceWarehouseId}}</td>
+          <td>{{sale.salesHistory[0].createdDate | date:'medium'}}</td>
+          <td><button type="button" (click)="getSelectedId(sale)" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4><b>Select Sales Offer Id - </b> {{selectedId}}</h4> 
+    </div>
+  </div>
+
+  <div class="col-sm-12 centered-content m-t-20">
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+      <button type="button" (click)="submitId()" class="btn btn-primary btn-sm" >Continue</button>
+    </div>
+  </div>

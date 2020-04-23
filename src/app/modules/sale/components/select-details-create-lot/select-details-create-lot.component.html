@@ -1,0 +1,134 @@
+<form [formGroup]="selectDetailsForm" (ngSubmit)="submitForm()">
+  <div class="row">
+    <div class="col-md-5">
+      <h5>Customer Company Detail</h5>
+      <hr>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+            class="asterik_sign">*</small></label>
+        <div class="col-sm-3">
+          <select [value]="selectedName1.value" #selectedId1 class="form-control" name="validation-customerId">
+            <option value=''>Id</option>
+            <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.id }}</option>
+          </select>
+        </div>
+        <div class="col-sm-5">
+          <select #selectedName1  [value]="selectedId1.value" class="form-control" formControlName="buyerCompanyName" name="validation-pcId">
+            <option value> Name</option>
+            <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
+          </select>
+          <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <h5>Own Company Detail</h5>
+      <hr>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+            class="asterik_sign">*</small></label>
+        <div class="col-sm-3">
+          <select [value]="selectedName2.value" #selectedId2 class="form-control" name="validation-companyId">
+            <option value>Id</option>
+            <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.id }}</option>
+          </select>
+          
+        </div>
+        <div class="col-sm-5">
+          <select #selectedName2  [value]="selectedId2.value"  class="form-control" formControlName="sellerCompanyName" name="validation-pcId">
+            <option value> Name</option>
+            <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
+          </select>
+          <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Address</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="buyerAddress" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Address</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="sellerAddress"  placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pincode</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="buyerStateCode"  placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pincode</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="sellerStateCode"  placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">City</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="buyerPANNo"  placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">City</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="sellerPANNo"  placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">GST</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="buyerGSTNo"  placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">GST</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="sellerGSTNo"  placeholder="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 centered-content">
+    <div class="btn-group mt-10">
+      <button type="submit" class="btn btn-primary btn-sm" uiSref="work" 
+        >Continue</button>
+    </div>
+  </div>
+
+</form>

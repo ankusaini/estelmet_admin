@@ -86,7 +86,7 @@ const routes: Routes= [
         component: CustomerOrderComponent
     },
     {
-        path: 'coView',
+        path: 'searchCo',
         component: SearchViewCOComponent
     }
 

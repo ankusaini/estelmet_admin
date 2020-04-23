@@ -1,38 +1,38 @@
-<form #validationForm="ngForm" class="editForm" novalidate>
+<form [formGroup]="otherDetails" class="editForm" novalidate (ngSubmit)="submitDetails()">
     <app-card cardTitle="Terms & Condition Of Sales" [options]="false">
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">1. GST applicable of Invoice Value</label>
-            <input type="text" class="form-control" placeholder="">
+            <input type="text" formControlName="gstInvoice" class="form-control" placeholder="">
             <small class="form-text text-muted">% Extra</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">2. Loading & Unloading Charges</label>
-            <input type="text" class="form-control" placeholder="">
+            <input formControlName="loadingUnloadingCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">3. Packaging Charges</label>
-            <input type="text" class="form-control" placeholder="">
+            <input  formControlName="packagingCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">4. Delivery Charges</label>
-            <input type="text" class="form-control" placeholder="">
+            <input formControlName="deliveryCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
           </div>
         </div>
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">5. Any Other Charges</label>
-            <input type="text" class="form-control" placeholder="">
+            <input formControlName="anyOtherCharges" type="text" class="form-control" placeholder="">
             <small class="form-text text-muted">PMT Extra</small>
           </div>
         </div>
@@ -155,10 +155,11 @@
         </div>
       </div>
     </app-card>
-  </form>
   <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-success btn-sm">Submit</button>
+      <button type="submit"  class="btn btn-success btn-sm">Submit</button>
     </div>
   </div>
+</form>
+
