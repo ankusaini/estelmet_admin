@@ -366,6 +366,12 @@
     </div>
 
   </div>
+  <div *ngIf="component === 'processing'" class="form-group row">
+    <div class="col-sm-9">
+      <label >Length to Cut (mm)<small class="asterik_sign">*</small></label>
+      <input type="text" class="form-control" placeholder="enter length to be cut" formControlName="lengthToBeCut">
+    </div>
+  </div>
   <button  type="submit" class="btn btn-primary" uiSref="work">Add
     More</button>
 </form>

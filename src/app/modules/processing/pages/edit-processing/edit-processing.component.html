@@ -54,13 +54,13 @@
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
             <h5 class="mb-0">Processing Details</h5>
             <button type="button"
-              (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
+              (click)="this.editProfile = !this.editProfile; this.editProfileIcon = this.editProfile ? 'icon-x': 'icon-edit';"
               class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
               aria-expanded="false" aria-controls="pro-det-edit-1">
               <i class="feather" [ngClass]="editProfileIcon"></i>
             </button>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">MSP Id</label>
               <div class="col-sm-3">
@@ -93,7 +93,7 @@
               </div>
             </div>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
             <form [formGroup]="processingDetails" (ngSubmit)="submitProcessingDetails()">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">MSP Id</label>
@@ -115,7 +115,7 @@
                 <div class="col-sm-3">
                   <select class="form-control" id="exampleFormControlSelect2" formControlName="jobWorkType">
                     <option value="JOB_WORK_SELF">Job Work Self</option>
-                    <option value="Job_ Work_Other">Job Work Other</option>
+                    <option value="JOB_WORK_OTHER">Job Work Other</option>
                   </select>
                 </div>
                 <label class="col-sm-3 col-form-label font-weight-bolder"> Machine Id</label>
@@ -155,13 +155,13 @@
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
             <h5 class="mb-0">Product Details</h5>
             <button type="button"
-            (click)="this.editProfile2 = !this.editProfile2; this.editProfileIcon = this.editProfile2 ? 'icon-x': 'icon-edit';"
+            (click)="this.editProfile = !this.editProfile; this.editProfileIcon = this.editProfile ? 'icon-x': 'icon-edit';"
             class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
             aria-expanded="false" aria-controls="pro-det-edit-1">
             <i class="feather" [ngClass]="editProfileIcon"></i>
           </button>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile2">
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
             <div *ngIf="productList" class="dt-responsive table-responsive" cardClass="card-datatable">
               <table datatable class="table table-striped table-bordered table-hover">
                 <thead>
@@ -228,9 +228,13 @@
               </table>
             </div>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile2">
+          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
 
-            <form [formGroup]="productDetails" (ngSubmit)="submitProductDetails()">
+            <app-material-classification-specification [component]="'processing'" (productData)="getProductData($event)">
+
+            </app-material-classification-specification>
+
+            <!-- <form [formGroup]="productDetails" (ngSubmit)="submitProductDetails()">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Type</label>
                 <div class="col-sm-3">
@@ -334,7 +338,7 @@
                   </select>
                 </div>
               </div>
-              <!--  -->
+              
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Oiling</label>
                 <div class="col-sm-3">
@@ -399,7 +403,7 @@
                   <button type="submit" [disabled]="!productDetails.valid" class="btn btn-primary">Save</button>&nbsp;
                 </div>
               </div>
-            </form>
+            </form> -->
           </app-card>
         </div>
       </div>

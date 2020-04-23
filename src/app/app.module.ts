@@ -27,6 +27,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import {
   NavSearchProductComponent
 } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search-product/nav-search-product.component';
+import { ShareModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    ShareModule,
     NgbDropdownModule,
     HttpClientModule,
     NgbTooltipModule,

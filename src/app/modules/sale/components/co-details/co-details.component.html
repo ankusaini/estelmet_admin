@@ -1,0 +1,41 @@
+<form [formGroup]="coDetails" class="editForm" novalidate (ngSubmit)="submitCoDetails()">
+    <div class="row">
+      <div class="col-md-5">
+          <div class="form-group">
+            <label for="validationCustom02">Customer Order No.</label>
+            <input type="text" formControlName="customerOrderNo" class="form-control" placeholder="Enter Order">
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="validationCustom02">Date</label>
+            <input type="date" formControlName="customerOrderDate" class="form-control" placeholder="">
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="validationCustom02">Validity</label>
+            <input type="date" formControlName="customerOrderValidity" class="form-control" placeholder="">
+          </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="validationCustom02">Upload Photo</label>
+              <input type="file" class="form-control" />
+            </div>
+          </div>
+        </div>
+
+  <div class="col-sm-12 centered-content m-t-20">
+    <div class="btn-group mt-10">
+      <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary btn-sm" >Continue</button>
+    </div>
+  </div>
+</form>
+

@@ -37,6 +37,9 @@ import { SoOverviewComponent } from './pages/directSales/so-overview/so-overview
 import { ScOverviewComponent } from './pages/salesConfirmation/sc-overview/sc-overview.component';
 import { CustomerOrderComponent } from './pages/customer-order/customer-order.component';
 import { SearchViewCOComponent } from './components/search-view-co/search-view-co.component';
+import { SelectDetailsCreateLotComponent } from './components/select-details-create-lot/select-details-create-lot.component';
+import { CoDetailsComponent } from './components/co-details/co-details.component';
+import { SearchViewOfferComponent } from './components/search-view-offer/search-view-offer.component';
 
 
 
@@ -86,7 +89,10 @@ import { SearchViewCOComponent } from './components/search-view-co/search-view-c
     CreateAuctionIdComponent,
     ScOverviewComponent,
     CustomerOrderComponent,
-    SearchViewCOComponent
+    SearchViewCOComponent,
+    SelectDetailsCreateLotComponent,
+    CoDetailsComponent,
+    SearchViewOfferComponent
   ]
 })
 export class SaleModule { }

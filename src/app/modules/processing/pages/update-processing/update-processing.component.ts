@@ -3,6 +3,9 @@ import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
 import { Router } from '@angular/router';
 import { WizardComponent } from 'ng2-archwizard/dist';
+import { Product } from 'src/app/shared/Models/product.model.';
+import { ToastrService } from 'ngx-toastr';
+import { Processing } from 'src/app/shared/Models/processing.model';
 
 @Component({
   selector: 'app-update-processing',
@@ -15,9 +18,12 @@ export class UpdateProcessingComponent implements OnInit {
   public processingList: any[];
   public processingIdList: any[];
   public selectedProcessingId: any;
+  public selectedProductList: Product[] = [];
+  private processing: Processing = undefined;
 
   constructor(
     private router: Router,
+    private toastr: ToastrService,
     private processingService: ProcessingService) { }
 
   ngOnInit() {
@@ -73,4 +79,33 @@ export class UpdateProcessingComponent implements OnInit {
   }
 
 
+  getProductData(data) {
+    console.log(data);
+    this.selectedProductList.push(data);
+    console.log(this.selectedProductList);
+  }
+
+  submitProcessing() {
+    if(this.selectedProductList.length > 0) {
+      alert("working");
+      console.log(this.selectedProductList);
+      // console.log(this.processing.productList);
+      this.processing.productList = [];
+      // this.selectedProductList.forEach(ele => {
+      //   this.processing.productList.push(ele);
+      // });
+      this.processing.productList = this.selectedProductList;
+      this.processing.processingType = this.processingType;
+      const url = '/inventory/productProcessing/updateProcessing';
+      this.processingService.updateProcessing(url, this.processing).subscribe(data => {
+        // console.log("Data",data.productProcessingId)
+        this.toastr.success('Record updated successfully.Generated Id:'+data.productProcessingId);
+        // this.router.navigateByUrl('/processing/editProcessing/'+data.productProcessingId);
+      }, error => {
+        this.toastr.warning('something went wrong');
+      });
+    } else {
+      this.toastr.error("Please select at least one product!");
+    }
+  }
 }

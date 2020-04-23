@@ -28,5 +28,6 @@ export enum ids {
     CONTRACTOR = 'CT',
     CONTRACTOR_GROUP = 'CTG',
     EMPLOYEE = 'EMP',
-    LOADING_SLIP = 'LOAD'
+    LOADING_SLIP = 'LOAD',
+    CUSTOMER_ORDER = 'CO'
 }

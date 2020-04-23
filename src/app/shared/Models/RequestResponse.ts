@@ -7,6 +7,7 @@ import {
   Invoice,
   DeliveryOrder
 } from 'src/app/shared/Models/sales.model';
+import { CustomerOrder } from './customer-order.model';
 
 // export class Request {
 //   purchase: Purchase;
@@ -28,16 +29,19 @@ export interface RequestP {
   purchase?: Purchase;
   grn?: Grn;
   sales?: Sales;
+  customerOrder?: CustomerOrder;
   deliveryOrder?: DeliveryOrder;
   invoice?: Invoice;
   productList?: Product[];
-
+  warehouse?: Warehouse;
 }
 
 export interface ResponseP {
   purchase: Purchase;
   grn: Grn;
   sales: Sales;
+  customerOrder: CustomerOrder;
+  customerOrderList: CustomerOrder[];
   deliveryOrder: DeliveryOrder;
   invoice: Invoice;
   purchaseList: Purchase[];
