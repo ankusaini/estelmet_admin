@@ -202,6 +202,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
   }
 
   submitSelectMrId() {
+    console.log(this.selectMrIdForm.value);
     if(this.selectMrIdForm.valid) {
       this.selectMrData.emit(this.selectMrIdForm.value);
     } else {

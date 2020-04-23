@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild } from '@angular/core';
-import { NavigationItem } from '../navigation';
-import { NextConfig } from '../../../../../app-config';
 import { Location } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Output, ViewChild } from '@angular/core';
+import { NextConfig } from '../../../../../app-config';
+import { User } from '../../../../../shared/Models/user.model';
+import { UserService } from '../../../../../shared/services/authgaurd/user.service';
+import { NavigationItem } from '../navigation';
 
 @Component({
   selector: 'app-nav-content',
@@ -9,6 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./nav-content.component.scss']
 })
 export class NavContentComponent implements OnInit, AfterViewInit {
+  public user: User;
   public nextConfig: any;
   public navigation: any;
   public prevDisabled: string;
@@ -24,7 +27,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarContent', {static: false}) navbarContent: ElementRef;
   @ViewChild('navbarWrapper', {static: false}) navbarWrapper: ElementRef;
 
-  constructor(public nav: NavigationItem, private zone: NgZone, private location: Location) {
+  constructor(public nav: NavigationItem, private zone: NgZone, private location: Location, private userService: UserService) {
     this.nextConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
 
@@ -38,6 +41,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.user = this.userService.getUser();
     if (this.windowWidth < 992) {
       this.nextConfig['layout'] = 'vertical';
       setTimeout(() => {
@@ -146,4 +150,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
     }
   }
 
+  logout() {
+    this.userService.logout();
+  }
 }

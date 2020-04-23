@@ -6,7 +6,8 @@
     th {
         border-top: 1px solid $theme-border;
         white-space: nowrap;
-        padding: 1.05rem 0.75rem;
+        padding: 0.6rem 0.75rem;
+        text-align: center;
     }
 
     thead th {
@@ -14,7 +15,8 @@
         font-size: 13px;
         color: $theme-heading-color;
         background: $theme-background;
-        text-transform: uppercase;
+        text-transform: capitalize;
+        text-align: center;
     }
 
     tbody + tbody {

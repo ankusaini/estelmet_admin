@@ -9,9 +9,10 @@ import {
   ProductTemper, ProductType
 } from 'src/app/shared/Models/product.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
-import { ApiService } from './api.service';
 import { MachineDetail } from '../Models/machineDetails.model';
+import { Product } from '../Models/product.model.';
 import { WeighingCompany } from '../Models/weighingCompany.model';
+import { ApiService } from './api.service';
 
 
 @Injectable({
@@ -187,6 +188,14 @@ export class ProductService {
     return new Observable<WeighingCompany[]>(obs => {
       this.apiService.get(url).subscribe(res => {
         obs.next(res);
+      });
+    });
+  }
+
+  getSearchFilter(body): Observable<Product[]> {
+    return new Observable<Product[]>(obs => {
+      this.apiService.post('/inventory/searchFilter', body).subscribe(res => {
+        obs.next(res.body);
       });
     });
   }

@@ -138,9 +138,7 @@ export class EditProcessingComponent implements OnInit {
     const machineUrl = '/inventory/getAllMachineDetail';
     this.processingService.getMachineDetails(machineUrl).subscribe(data => {
       this.machineDetailList = data;
-      console.log(this.machineDetailList);
       this.machineDetailIdList = this.machineDetailList.map(machineObj => machineObj.id);
-      console.log(this.machineDetailIdList);
     }, error => {
       console.log(error);
     });

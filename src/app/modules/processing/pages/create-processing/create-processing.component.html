@@ -6,27 +6,17 @@
       [processingType]="processingType"
       (selectMrData)="getSelectMrData($event)">
     </app-select-mr>
-    <!-- <div class="row">
-      <div class="col-sm-12 text-center">
-        <button type="submit" class="btn btn-success" uiSref="work" (click)="save(validationForm)">Generate Procesing Id</button>
-      </div>
-    </div>  -->
-      <!-- <div class="col-sm-12 centered-content m-t-20">
-        <div class="btn-group mt-10">
-          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-          <button type="button" class="btn btn-primary btn-sm" nextStep>Next</button>
-        </div>
-      </div> -->
     </wizard-step>
     <wizard-step stepTitle="Select Product" navigationSymbol="2">
       <h5>Search & Select Product</h5>
       <hr/>
       <app-add-product-cart 
-      [productList]="ProductList" (selectedProductList)= getSelectedProductList($event)
-      [component]="'processing'"></app-add-product-cart>
+        [productList]="ProductList" 
+        (selectedProductList)= getSelectedProductList($event)
+        [component]="'processing'"></app-add-product-cart
+      >
       <div class="m-t-20">
         <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>
-        <!-- <app-add-product-cart></app-add-product-cart> -->
       </div>
       <div class="col-sm-12 centered-content">
         <div class="btn-group mt-10">
@@ -35,7 +25,5 @@
         </div>
       </div>
     </wizard-step>
-    
-    
   </wizard>
 </app-card>
