@@ -24,6 +24,9 @@ import { AuthComponent } from './theme/layout/auth/auth.component';
 import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-full-screen';
 import { SharedModule } from './theme/shared/shared.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import {
+  NavSearchProductComponent
+} from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search-product/nav-search-product.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     NavBarComponent,
     NavLeftComponent,
     NavSearchComponent,
+    NavSearchProductComponent,
     NavRightComponent,
     ConfigurationComponent,
     ToggleFullScreenDirective

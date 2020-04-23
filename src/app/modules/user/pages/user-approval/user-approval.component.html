@@ -1,22 +1,21 @@
 <div class="row">
   <div class="col-md-12">
     <app-card [hidHeader]="true" cardClass="tab-card">
-      <h5 class="mb-3">User Approval System</h5>
       <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
-        <ngb-tab title="Pending" id="pendingTab">
+        <ngb-tab title="Pending" id="pendingTab" style="background: red;">
           <ng-template ngbTabContent>
             <div *ngIf="pendingUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+              <table datatable class="table table-striped table-hover" style="width: 100%;">
                 <thead>
                   <tr>
                     <th>Status</th>
                     <th>Sr. No.</th>
-                    <th>User Id</th>
+                    <th>User ID</th>
                     <th>User Type</th>
                     <th>Name</th>
                     <th>Company Name</th>
                     <th>Mobile</th>
-                    <th>Email</th>
+                    <th>E-mail</th>
                     <th>Location</th>
                     <th>Date of Creation</th>
                     <th>Last Modified Date</th>
@@ -60,18 +59,18 @@
         </ngb-tab>
         <ngb-tab title="Approved" id="approvedTab">
           <ng-template ngbTabContent>
-            <div *ngIf="approvedUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <div *ngIf="approvedUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
+                  <table class="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>Status</th>
                     <th>Sr. No.</th>
-                    <th>User Id</th>
+                    <th>User ID</th>
                     <th>User Type</th>
                     <th>Name</th>
                     <th>Company Name</th>
                     <th>Mobile</th>
-                    <th>Email</th>
+                    <th>E-mail</th>
                     <th>Location</th>
                     <th>Date of Creation</th>
                     <th>Last Modified Date</th>
@@ -119,17 +118,17 @@
         <ngb-tab title="Rejected" id="rejectedTab">
           <ng-template ngbTabContent>
             <div *ngIf="rejectedUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+              <table datatable class="table table-striped table-hover" style="width: 100%;">
                 <thead>
                   <tr>
                     <th>Status</th>
                     <th>Sr. No.</th>
-                    <th>User Id</th>
+                    <th>User ID</th>
                     <th>User Type</th>
                     <th>Name</th>
                     <th>Company Name</th>
                     <th>Mobile</th>
-                    <th>Email</th>
+                    <th>E-mail</th>
                     <th>Location</th>
                     <th>Date of Creation</th>
                     <th>Last Modified Date</th>
@@ -187,20 +186,20 @@
 
 <div class="row">
   <div class="col-md-12">
-    <app-card [hidHeader]="false" cardTitle="Take action on above Selected Users" [options]="false"
+    <app-card [hidHeader]="false" cardTitle="Modify Selected User Status" [options]="false"
       cardClass="user-profile-list">
       <div class="dt-responsive table-responsive" cardClass="card-datatable">
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-hover">
           <thead>
             <tr>
               <th>Status</th>
               <th>Sr. No.</th>
-              <th>User Id</th>
+              <th>User ID</th>
               <th>User Type</th>
               <th>Name</th>
               <th>Company Name</th>
               <th>Mobile</th>
-              <th>Email</th>
+              <th>E-mail</th>
               <th>Location</th>
               <th>Date of Creation</th>
               <th>Last Modified Date</th>
@@ -247,10 +246,10 @@
 <div class="col-sm-12 centered-content m-t-20">
   <div class="btn-group mt-10">
     <button (click)="changeStatusOfSelectedUser('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'"
-      type="button" class="btn btn-success active">Approve</button>&nbsp;
+      type="button" class="btn btn-success active excelBtn">Approve</button>&nbsp;
       <div  *ngxPermissionsOnly="['USER_DELETE_PRIVILEGE']">
     <button (click)="changeStatusOfSelectedUser('REJECTED')" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'"
-      type="button" class="btn btn-danger active">Reject</button>&nbsp;
+      type="button" class="btn btn-danger active pdfBtn">Reject</button>&nbsp;
       </div>
   </div>
 </div>

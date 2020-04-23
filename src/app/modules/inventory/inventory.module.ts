@@ -25,6 +25,7 @@ import {
   NgbTooltipModule,
   NgbCarouselModule
 } from "@ng-bootstrap/ng-bootstrap";
+import { ReportComponent } from './pages/report/report.component';
 
 
 
@@ -32,7 +33,7 @@ import {
   declarations: [AddProductComponent, SelectGrnComponent,
     // MaterialClassificationSpecificationComponent,
     // AddProductCartComponent,
-     EditProductComponent, ProductApprovalComponent, ProductOverviewComponent, SearchViewProductComponent],
+     EditProductComponent, ProductApprovalComponent, ProductOverviewComponent, SearchViewProductComponent, ReportComponent],
   imports: [
   CommonModule,
     InventoryRoutingModule,

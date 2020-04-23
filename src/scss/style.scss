@@ -106,3 +106,107 @@ File: style.css
       display: block;
   }
 }
+.bg-clr-head1 {
+  background: #E0FEFE;
+}
+.clr-red {
+  color: #FF756D;
+}
+.swal2-title {
+  font-size: 18px !important;
+}
+.swal2-select {
+  font-size: 15px !important;
+}
+.swal2-styled.swal2-confirm {
+  font-size: 14px !important;
+  background: #2DA3AD !important;
+  border: 1px solid #2DA3AD !important;
+}
+.swal2-styled.swal2-cancel {
+  font-size: 14px !important;
+  background: #555966 !important;
+  border: 1px solid #555966 !important;
+}
+.swal2-checkbox, .swal2-file, .swal2-input, .swal2-radio, .swal2-select, .swal2-textarea {
+  margin: 10px auto !important;
+}
+.table th, .table td {
+  padding: 0.3rem 0.75rem !important;
+  vertical-align: inherit !important;
+}
+.table th {
+  font-size: 13px !important;
+  padding: 0.5rem 0.75rem !important;
+}
+.table td {
+  font-size: 12px !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background: none !important;
+}
+ul.nav.nav-pills li:nth-child(1) {
+background: #FFDE53 !important;
+border-radius: 5px !important;
+font-size: 13px !important;
+margin-right: 10px;
+}
+ul.nav.nav-pills li:nth-child(2) {
+  background: #85DE77 !important;
+  border-radius: 5px !important;
+  font-size: 13px !important;
+  margin-right: 10px;
+  }
+  ul.nav.nav-pills li:nth-child(3) {
+    background: #FF756D !important;
+    border-radius: 5px !important;
+    font-size: 13px !important;
+    }
+    ul.nav.nav-pills li a {
+      color:#000 !important;
+    }
+.btn.btn-icon {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: 12px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0.2em 0.7em !important;
+}
+.brdr1 {
+  border: 1px solid #C3C5D3;
+}
+.excelBtn {
+  background: #85DE77 !important;
+  border: 1px solid #85DE77 !important;
+}
+.printBtn {
+  background: #0EC9FF !important;
+  border: 1px solid #0EC9FF !important;
+}
+.pdfBtn {
+  background: #FF756D !important;
+  border: 1px solid #FF756D !important;
+}
+.copyBtn {
+  background: #FFDE53 !important;
+  border: 1px solid #FFDE53 !important;
+}
+.saveBtn {
+  background: #D996F6 !important;
+  border: 1px solid #D996F6 !important;
+}
+.changeBtn {
+  background: #F1C27D !important;
+  border: 1px solid #F1C27D  !important;
+}
+.updateBtn {
+  background: #5C9C4B !important;
+  border: 1px solid #5C9C4B  !important;
+}
+.db {
+  display: block;
+}
+.lc {
+  text-transform: lowercase;
+}

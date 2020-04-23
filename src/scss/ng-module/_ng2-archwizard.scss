@@ -12,7 +12,7 @@
   .wizard-steps {
     border-radius: 5px;
     border: 1px solid $theme-border;
-    padding: 20px;
+    padding: 10px;
   }
 
   ul.steps-indicator li:after {
@@ -71,4 +71,23 @@
   .horizontal ul.steps-indicator {
     padding: 50px 0 7px 0 !important;
   }
+}
+.horizontal ul.steps-indicator li div a {
+  text-transform: capitalize !important;
+}
+
+
+.horizontal.large-empty-symbols ul.steps-indicator li:after {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+}
+.arc-wizard .large-empty-symbols ul.steps-indicator li.current:after, .arc-wizard .large-empty-symbols ul.steps-indicator li.editing:after {
+  border: none !important;
+  background: #85DE77 !important;
+  color: #fff !important;
+}
+.horizontal.large-empty-symbols ul.steps-indicator li:not(:last-child):before {
+  top: -30px !important;
+  left: calc(50% + 21px) !important;
 }
