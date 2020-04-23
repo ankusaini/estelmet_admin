@@ -210,3 +210,24 @@ export enum PriorityLevel {
   THREE_DAY = 'THREE_DAY',
   MORE_THEN_THREE_DAY = 'MORE_THEN_THREE_DAY'
 }
+
+export class ProductFilter {
+  status: string;
+  productStage: string;
+  offset: number;
+  limit: number;
+  thicknessMin: string;
+  thicknessMax: string;
+  widthMin: string;
+  widthMax: string;
+  lengthMin: string;
+  lengthMax: string;
+  productCategory: string;
+  productClass: string;
+  productShape: string;
+  productTemper: string;
+  productFinish: string;
+  productCoating: string;
+  lessThanNtWt: string;
+  greaterThanNtWt: string;
+}

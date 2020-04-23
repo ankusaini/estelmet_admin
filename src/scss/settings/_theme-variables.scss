@@ -29,7 +29,7 @@
 */
 $header-height: 50px;
 // $Menu-width: 250px;
-$Menu-width: 230px;
+$Menu-width: 190px;
 $Menu-collapsed-width: 70px;
 
 // color list for build layouts
@@ -88,9 +88,9 @@ $color-active-color: #4680ff, #ff5252, #536dfe ,#00bcd4,$dark-color;
 $color-title-name: blue, red, purple, info, dark;
 $color-title-color: #4680ff, #ff5252, #536dfe ,#00bcd4,$dark-color;
 
-$theme-font-family: 'Open Sans', sans-serif;
+$theme-font-family: 'roboto';
 $theme-font-size: 14px;
-$theme-background: #ecf0f5;
+$theme-background: #fff;
 $theme-font-color: #373a3c;
 $theme-heading-color: #37474f;
 
@@ -100,7 +100,7 @@ $color-bt-name: primary,danger,success,warning,info,purple;
 $color-bt-color: $primary-color,$danger-color,$success-color ,$warning-color ,$info-color,$purple-color;
 
 // form-control variables
-$form-bg: #ecf0f5;
+$form-bg: #fff;
 
 // social color variables
 $social-name: facebook,twitter,dribbble,pinterest,youtube,googleplus,instagram,viber,behance,dropbox,linkedin;

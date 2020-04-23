@@ -36,9 +36,9 @@ export class UserService {
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (this.jwtService.getToken()) {
-      this.apiService.get('/user')
+      this.apiService.get('/getLoggedInUser')
         .subscribe(
-          data => this.setAuth(data.user),
+          data => this.setAuth(data.data),
           err => this.purgeAuth()
         );
     } else {
@@ -111,8 +111,8 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
-  getUser(): string {
-    return window.localStorage['user'];
+  getUser(): User {
+    return JSON.parse(window.localStorage.getItem('user'));
   }
 
   destroyUser() {

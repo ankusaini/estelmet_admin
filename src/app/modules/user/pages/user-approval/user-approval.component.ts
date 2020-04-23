@@ -35,7 +35,7 @@ export class UserApprovalComponent implements OnInit {
 
   basicSwal() {
     Swal.fire({
-      title: 'Select User Type',
+      title: 'User Approval',
       input: 'select',
       inputOptions: {
         CUSTOMER: 'Customer',
@@ -45,6 +45,7 @@ export class UserApprovalComponent implements OnInit {
         TRANSPORTER: 'Transporter '
       },
       inputPlaceholder: 'Select User Type',
+      width:'300px',
       allowOutsideClick: false,
       showCancelButton: true,
       cancelButtonText: 'Cancel',
@@ -134,13 +135,13 @@ export class UserApprovalComponent implements OnInit {
     if (index === -1) {
       this.selectedUserList.push(user);
     } else {
-      this.toastrService.warning('Product already added!');
+      this.toastrService.warning('User already added!');
     }
   }
 
   changeStatusOfSelectedUser(status) {
     if (this.selectedUserList.length === 0) {
-      this.toastrService.warning('Select at least one product!');
+      this.toastrService.warning('Select at least one user!');
     } else {
       
       // let idList = this.selectedUserList.map(user => {

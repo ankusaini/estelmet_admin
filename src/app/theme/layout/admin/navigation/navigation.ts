@@ -31,7 +31,6 @@ const NavigationItems = [
     id: 'dashboard',
     title: 'Dashboard',
     type: 'collapse',
-    icon: 'feather icon-home',
     children: [
       {
         id: 'userDash',
@@ -75,14 +74,12 @@ const NavigationItems = [
     id: 'userTitle',
     title: 'Users',
     type: 'group',
-    icon: 'feather icon-layout',
     permissions:['USER_CREATE_PRIVILEGE','USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'user',
         title: 'Users',
         type: 'collapse',
-        icon: 'feather icon-user',
         children: [
           {
             id: 'CreateUser',
@@ -120,7 +117,6 @@ const NavigationItems = [
         id: 'groupUser',
         title: 'Users Group',
         type: 'collapse',
-        icon: 'feather icon-users',
         children: [
           {
             id: 'CreateUserGroup',
@@ -168,13 +164,11 @@ const NavigationItems = [
     id: 'purchaseHead',
     title: 'Purchase',
     type: 'group',
-    icon: 'feather icon-layout',
     permissions:['PURCHASE_CREATE_PRIVILEGE','PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'materialRequirement',
-        title: 'Material Requirement',
-        icon: 'feather icon-layers',
+        title: 'Mat. Req.',
         type: 'collapse',
         children: [
           {
@@ -218,7 +212,6 @@ const NavigationItems = [
       {
         id: 'purchaseOrder',
         title: 'Purchase Order',
-        icon: 'feather icon-file-text',
         type: 'collapse',
         children: [
           {
@@ -267,8 +260,7 @@ const NavigationItems = [
       },
       {
         id: 'purchaseConfirmation',
-        title: 'Purchase Confirmation',
-        icon: 'feather icon-thumbs-up',
+        title: 'Purchase Conf.',
         type: 'collapse',
         children: [
           {
@@ -312,7 +304,6 @@ const NavigationItems = [
       {
         id: 'purchaseLot',
         title: 'Purchase Lot',
-        icon: 'feather icon-box',
         type: 'collapse',
         children: [
           {
@@ -371,7 +362,6 @@ const NavigationItems = [
       {
         id: 'grnModule',
         title: 'GRN Module',
-        icon: 'feather icon-command',
         type: 'collapse',
         children: [
           {
@@ -437,7 +427,6 @@ const NavigationItems = [
         id: 'inventory',
         title: 'Inventory',
         type: 'collapse',
-        icon: 'feather icon-grid',
         children: [
           {
             id: 'addProduct',
@@ -469,6 +458,13 @@ const NavigationItems = [
 
             target: false,
           },
+          {
+            id: 'reportInventory',
+            title: 'Inventory Report',
+            type: 'item',
+            url: '/inventory/report',
+            target: false,
+          },
           // {
           //   id: 'EditProduct',
           //   title: 'Edit Product',
@@ -482,7 +478,6 @@ const NavigationItems = [
         id: 'processing',
         title: 'Processing',
         type: 'collapse',
-        icon: 'feather icon-sliders',
         children: [
           {
             id: 'createProcessing',
@@ -591,7 +586,6 @@ const NavigationItems = [
         id: 'salesTab',
         title: 'Sales',
         type: 'collapse',
-        icon: 'feather icon-shopping-cart',
         
         children: [
           {
@@ -853,7 +847,6 @@ const NavigationItems = [
         id: 'dispatch',
         title: 'Dispatch',
         type: 'collapse',
-        icon: 'feather icon-copy',
         children: [
           {
             id: 'load',
@@ -976,7 +969,6 @@ const NavigationItems = [
         id: 'superAdmin',
         title: 'Super Admin',
         type: 'collapse',
-        icon: 'feather icon-user-check',
         children: [
           {
             id: 'addPrice',
@@ -998,7 +990,6 @@ const NavigationItems = [
         id: 'setupTab',
         title: 'Setup',
         type: 'collapse',
-        icon: 'feather icon-settings',
         children: [
           {
             id: 'createCompany',

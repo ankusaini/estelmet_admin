@@ -1784,7 +1784,7 @@
     position: relative;
     display: block;
     padding: 25px;
-    margin-top: 140px;
+    margin-top: 45px;
 }
 
 .pcoded-main-container {
@@ -3506,8 +3506,8 @@ body.box-layout {
 // ==================================================================
 
 .form-control {
-    border: none;
-    border-bottom: 1px solid #6c757d;
+    border: 1px solid #bfbfbf;
+    height: calc(1.5em + 0.8rem + 2px);
     background: no-repeat center bottom, center calc(100% - 1px);
     background-size: 0 100%, 100% 100%;
     transition: background 0s ease-out;

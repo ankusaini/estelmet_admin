@@ -51,17 +51,18 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   // return new Observable<any>(obs=>{
     basicSwal() {
       Swal.fire({
-        title: 'Filter Search!',
+        title: 'Search & View User',
         input: 'select',
         inputOptions: {
-          CUSTOMER: 'CUSTOMER',
-          SUPPLIER: 'SUPPLIER',
-          AGENT: 'AGENT',
-          CONTRACTOR: 'CONTRACTOR',
-          TRANSPORTER: 'TRANSPORTER'
+          CUSTOMER: 'Customer',
+          SUPPLIER: 'Supplier',
+          AGENT: 'Agent',
+          CONTRACTOR: 'Contractor',
+          TRANSPORTER: 'Transporter'
         },
-  
+        
         inputPlaceholder: 'Select User Type',
+        width:'300px',
         allowOutsideClick: false,
         showCancelButton: true,
         cancelButtonText: 'Cancel',
