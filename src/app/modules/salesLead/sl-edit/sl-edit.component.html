@@ -10,7 +10,7 @@
     <div class="user-about-block m-0">
       <div class="row">
         <div class="col-md-4 mt-md-4">
-          <h3 class="f-24">Edit Sales Lead</h3>
+          <h3 class="f-18">Edit Sales Lead</h3>
           <p class="m-b-5 text-dark f-w-600">SL Id : <span class="text-muted">SL-782,</span> <span
               class="f-w-600 text-success"> Approved</span></p>
           <p class="m-b-5 text-dark f-w-600">SL Title : <span class="text-muted">SL-CR-MWC</span></p>
@@ -51,38 +51,42 @@
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
         aria-labelledby="home-tab">
         <div class="merge-card">
-          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">SL Details</h5>
-            <button type="button"
+          <div class="row">
+            <div class="col-md-12">
+             <div style="float:right;margin: 20px 0px;">
+              <button type="button"
               (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
-              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
-              aria-expanded="false" aria-controls="pro-det-edit-1">
+              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse"
+              data-target=".pro-det-edit" aria-expanded="false" aria-controls="pro-det-edit-1">
               <i class="feather" [ngClass]="editProfileIcon"></i>
             </button>
-          </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
+             </div>
+            </div>
+          </div>
+          <app-card [hidHeader]="false" cardTitle="SL Details" blockClass="border-top pro-det-edit collapse show"
+            *ngIf="!editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">SL Id</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1"> 
                 SL-922
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">SL Title</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 SL-CR-MWC
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 Shri Vinayak Steel
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 GP Global Steel
               </div>
             </div>
           </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
+          <app-card [hidHeader]="false" cardTitle="SL Details" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">SL Id</label>
               <div class="col-sm-3">
@@ -122,16 +126,16 @@
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
             <h5 class="mb-0">Product Details</h5>
             <button type="button"
-            (click)="this.editProfile2 = !this.editProfile2; this.editProfileIcon = this.editProfile2 ? 'icon-x': 'icon-edit';"
-            class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
-            aria-expanded="false" aria-controls="pro-det-edit-1">
-            <i class="feather" [ngClass]="editProfileIcon"></i>
-          </button>
+              (click)="this.editProfile2 = !this.editProfile2; this.editProfileIcon = this.editProfile2 ? 'icon-x': 'icon-edit';"
+              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+              aria-expanded="false" aria-controls="pro-det-edit-1">
+              <i class="feather" [ngClass]="editProfileIcon"></i>
+            </button>
 
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile2">
             <div class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover">
+              <table datatable class="table table-striped table-xs table-hover">
                 <thead>
                   <tr>
                     <th>Sr. No.</th>
@@ -239,8 +243,8 @@
 </div>
 <!-- profile body end -->
 <div class="row">
-  <div class="col-md-12 text-center">
-    <button type="submit" class="btn btn-danger active">Export PDF</button>&nbsp;
-    <button type="submit" class="btn btn-success active">Print</button>&nbsp;
+  <div class="col-md-12 text-center"> 
+    <button type="submit" class="btn btn-danger active printBtn" (click)="print()"><i  class="feather icon-printer"></i> Print</button>&nbsp;
+    <button type="submit" class="btn btn-danger active pdfBtn" (click)="exportToPDF()"><i  class="feather icon-file"></i> PDF</button>&nbsp;
   </div>
 </div>

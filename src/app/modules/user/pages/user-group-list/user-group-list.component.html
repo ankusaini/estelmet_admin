@@ -1,11 +1,16 @@
 <div class="row">
+  <div class="col-sm-12">
+    <button type='button' (click)="basicSwal()" class="btn btn-primary btn-sm changeBtn"
+      style="margin: 45px 0px 10px;float:right;">Change User Group Type</button>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-12">
     <div class="row">
-    <button type='button' (click)="basicSwal()">Change User Group</button>
     </div>
-      <app-card [hidHeader]="true" cardTitle="Search & Select Customer/s "  cardClass="user-profile-list">
+      <app-card [hidHeader]="false" cardTitle="Search & View User Group"  cardClass="user-profile-list">
         <div #epltable *ngIf="userGroupList && userGroupList?.length > 0" class="dt-responsive table-responsive" cardClass="card-datatable"> 
-          <table datatable id="contentToConvertList" class="table table-striped table-bordered table-hover">
+          <table datatable id="contentToConvertList" class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -49,50 +54,8 @@
       </app-card>
   </div>
 </div>
-<!-- <div class="row">
-    <div class="col-md-12">
-              <app-card [hidHeader]="false" cardTitle="View Above Selected Customer/s" [options]="false" cardClass="user-profile-list">
-                <div class="dt-responsive table-responsive" cardClass="card-datatable"> 
-                  <table datatable  class="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                          <th>Sr. No.</th>
-                          <th>Group ID</th>
-                          <th>Group Title</th>
-                          <th>Group Type</th>
-                          <th>Type</th>
-                          <th>Category</th>
-                          <th>Thick. Range</th>
-                          <th>Total Users</th>
-                          <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                       <tr href="kdkd" *ngFor="let userGroup of selectedUserGroupList;let i = index">
-              <td>{{i+1}}</td>
-              <td>{{userGroup.userGroupId}}</td>
-              <td>{{userGroup.userGroupName}}</td>
-              <td>{{userGroup.userRole}}</td>
-              <td>{{userGroup.productType}}</td>
-              <td>{{userGroup.productCategory}}</td>
-              <td>{{userGroup.minThickness}}-{{userGroup.maxThickness}}</td>
-              <td>{{userGroup.user.length}}</td>
-              <td>
-                <span class="badge badge-light-success">{{userGroup.status}}</span>
-                <div class="overlay-edit">
-                    <button type="button" (click)="removeSelectedUserd(userGroup)" class="btn btn-icon btn-danger" ><i class="feather icon-trash-2"></i></button>
-
-                </div>
-              </td>
-            </tr> 
-                    </tbody>
-                  </table>
-                </div>
-              </app-card>
-
-            
-    </div>
-  </div> -->
-<button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
-<!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
-<button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;
+  <button type="submit" class="btn btn-success active excelBtn" (click)="exportToExcel()"><i  class="feather icon-menu"></i> Excel</button>&nbsp;
+  <!-- <button type="submit" class="btn btn-danger active printBtn" (click)="print()"><i  class="feather icon-printer"></i> Print</button>&nbsp; -->
+  <button type="submit" class="btn btn-danger active pdfBtn" (click)="exportToPDF()"><i  class="feather icon-file"></i> PDF</button>&nbsp;
+  <button type="submit" class="btn btn-warning active copyBtn"><i  class="feather icon-copy"></i> Copy</button>&nbsp;
+ 

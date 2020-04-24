@@ -1,12 +1,12 @@
 <div class="merge-card">
-    <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
-
-      <h5 class="bg-clr-head1 p-10 m-b-0">Product Details</h5>
+  <div class="row">
+    <div class="col-md-12 m-t-10 m-b-10">
       <button type="button" (click)="this.editProfile = !this.editProfile;"
-        class="btn btn-primary btn-sm rounded m-0 float-right">{{editProfile? 'Back' : 'Add More'}}</button>
-
-    </app-card>
-    <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
+      class="btn btn-primary btn-sm rounded m-t-10 float-right">{{editProfile? 'Back' : 'Add More'}}</button>
+    </div>
+  </div>
+    <app-card [hidHeader]="false" cardTitle="Trade Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
+    
       <div class="dt-responsive table-responsive" cardClass="card-datatable">
         <table datatable class="table table-striped  table-hover">
           <thead>
@@ -20,7 +20,7 @@
               <th>Width Range <span class="db lc">(mm)</span></th>
               <th>Length Range <span class="db lc">(mm)</span></th>
               <th>Temper</th>
-              <th>Mon. Req. <span class="db ">(Mts.)</span></th>
+              <th>Monthly Reqd. <span class="db ">(Mts.)</span></th>
               <th>Remarks</th>
               <th *ngIf="selectedUser?.userProductPreference?.length > 1">Action</th>
             </tr>
@@ -49,7 +49,7 @@
         </table>
       </div>
     </app-card>
-    <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
+    <app-card [hidHeader]="false" cardTitle="Trade Details" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
       <form [formGroup]="tradeDetails">
         <div class="form-group row">
           <label class="col-sm-3 col-form-label font-weight-bolder">Type</label>

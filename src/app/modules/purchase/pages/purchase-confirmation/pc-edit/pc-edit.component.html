@@ -10,7 +10,7 @@
     <div class="user-about-block m-0">
       <div class="row">
         <div class="col-md-4 mt-md-4">
-          <h3 class="f-24">Edit Purchase Confirmation</h3>
+          <h3 class="f-18">Edit Purchase Confirmation</h3>
           <p class="m-b-5 text-dark f-w-600">PC Id : <span class="text-muted">PC-{{pcResponse?.purchase?.id}}</span> <span
               class="f-w-600 text-success"> {{pcResponse?.purchase?.status}}</span></p>
           <p class="m-b-5 text-dark f-w-600">PC Title : <span class="text-muted">{{pcResponse?.purchase?.title}}</span></p>
@@ -20,18 +20,18 @@
             <li class="nav-item">
               <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'home'}"
                 (click)="this.activeTab = 'home'" id="home-tab" data-toggle="tab" href="javascript:" role="tab"
-                aria-controls="home" aria-selected="true"><i class="feather icon-home mr-2"></i>PC Details</a>
+                aria-controls="home" aria-selected="true"><i class="feather icon-home mr-2"></i><span class="f-16 f-w-600">PC Details</span></a> 
             </li>
             <li class="nav-item">
               <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'profile'}"
                 (click)="this.activeTab = 'profile'" id="profile-tab" data-toggle="tab" href="javascript:" role="tab"
-                aria-controls="profile" aria-selected="false"><i class="feather icon-user mr-2"></i>Product Details</a>
+                aria-controls="profile" aria-selected="false"><i class="feather icon-user mr-2"></i><span class="f-16 f-w-600">Product Details</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'contact'}"
                 (click)="this.activeTab = 'contact'" id="contact-tab" data-toggle="tab" href="javascript:" role="tab"
-                aria-controls="contact" aria-selected="false"><i class="feather icon-phone mr-2"></i>Transport
-                Details</a>
+                aria-controls="contact" aria-selected="false"><i class="feather icon-phone mr-2"></i><span class="f-16 f-w-600">Transport
+                Details</span></a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'gallery'}"
@@ -52,38 +52,35 @@
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
         aria-labelledby="home-tab">
         <div class="merge-card">
-          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">PC Details</h5>
             <!-- <button type="button"
               (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
               class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
               aria-expanded="false" aria-controls="pro-det-edit-1">
               <i class="feather" [ngClass]="editProfileIcon"></i>
             </button> -->
-          </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
+          <app-card [hidHeader]="false" cardTitle="PC Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.productCategory}}
               </div>
             </div>
 
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Shape</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.productShape}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.company?.name}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
-              <div class="col-sm-9">
+              <div class="col-sm-9 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.warehouse?.name}}
               </div>
             </div>
@@ -149,14 +146,15 @@
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
         aria-labelledby="profile-tab">
         <div class="merge-card">
-          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Product Details</h5>
-            <button type="button" (click)="this.editProfile = !this.editProfile;"
-              class="btn btn-primary btn-sm rounded m-0 float-right">Add More</button>
-          </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile" >
+          <app-card [hidHeader]="false" cardTitle="Product Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile" >
+            <div class="row">
+              <div class="col-md-12">
+                <button type="button" (click)="this.editProfile = !this.editProfile;"
+                class="btn btn-primary btn-sm rounded m-t-10 float-right">Add More</button>
+              </div>
+            </div>
             <div  class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table *ngIf="productList" datatable class="table table-striped table-bordered table-hover">
+              <table *ngIf="productList" datatable class="table table-striped table-xs table-hover">
                 <thead>
                   <tr>
                     <th>Sr. No.</th>
@@ -219,7 +217,7 @@
                 </tbody>
               </table>
             </div><br>
-            <button type="submit" class="btn btn-primary" uiSref="work" (click)="saveProductList()">Save</button>
+            <!-- <button type="submit" class="btn btn-primary" uiSref="work" (click)="saveProductList()">Save</button> -->
 
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
@@ -456,60 +454,61 @@
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'contact'}" id="contact" role="tabpanel"
         aria-labelledby="contact-tab">
         <div class="merge-card">
-          <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Transport Details</h5>
-            <button type="button"
-              (click)="this.editProfile3 = !this.editProfile3; this.editProfileIcon = this.editProfile3 ? 'icon-x': 'icon-edit';"
-              class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
-              aria-expanded="false" aria-controls="pro-det-edit-3">
-              <i class="feather" [ngClass]="editProfileIcon"></i>
-            </button>
-          </app-card>
-          <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile3">
+          <app-card [hidHeader]="false" cardTitle="Transport Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile3">
+            <div class="row">
+              <div class="col-md-12">
+                <button type="button"
+                (click)="this.editProfile3 = !this.editProfile3; this.editProfileIcon = this.editProfile3 ? 'icon-x': 'icon-edit';"
+                class="btn btn-primary btn-sm rounded m-t-10 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+                aria-expanded="false" aria-controls="pro-det-edit-3">
+                <i class="feather" [ngClass]="editProfileIcon"></i>
+              </button>
+              </div>
+            </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 SU-{{pcResponse?.purchase?.supplierId}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 TP-{{pcResponse?.purchase?.transportId}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Expected Delivery</label>
-              <div class="col-sm-3">
-                {{pcResponse?.purchase?.expectedDate | date: 'medium'}}
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
+                {{pcResponse?.purchase?.expectedDate | date: 'short'}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Net Weight </label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.netWt}} Mt.
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.grossWt}} Mt.
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Container Number</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.containerNumber}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Material Description </label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.materialDescription}}
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">No. of Coils/Bundles </label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.coilsBundle}}
               </div>
             </div>
             <div class="form-group row">
              
               <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 {{pcResponse?.purchase?.lorryNumber}}
               </div>
             </div>

@@ -12,7 +12,7 @@
   <div class="col-md-12">
     <app-card [hidHeader]="false" cardTitle="Search & Select Supplier Id" [options]="false" cardClass="user-profile-list">
       <div *ngIf="supplierList && supplierList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-        <table datatable class="table table-striped table-bordered table-hover">
+        <table datatable class="table table-striped table-xs table-hover">
           <thead>
             <tr>
               <th>Sr No.</th> 
@@ -51,7 +51,7 @@
     <div class="col-md-12">
         <app-card  [hidHeader]="false" cardTitle="View Above Selected Supplier/s" [options]="false" cardClass="user-profile-list">
             <div *ngIf="selectedSupplierList && selectedSupplierList.length >0" class="dt-responsive table-responsive" cardClass="card-datatable">
-               <table datatable class="table table-striped table-bordered table-hover">
+               <table datatable class="table table-striped table-xs table-hover">
           <thead>
             <tr>
               <th>Sr No.</th> 

@@ -1,70 +1,154 @@
 <div class="row">
   <div class="col-sm-12">
-    <button type='button' (click)="basicSwal()" class="btn btn-primary btn-sm changeBtn"
-      style="margin: 45px 0px 10px;float:right;">Change User Type</button>
+    <div style="margin: 45px 0px 10px;float:right;">
+    <button type='button' (click)="basicSwal()" class="btn btn-primary btn-sm changeBtn">Change User Type</button>&nbsp;
+      <button type='button' (click)="exampleModalCenter.show()"
+      data-toggle="modal" class="btn btn-primary btn-sm createBtn">Product Filter</button>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-sm-12">
-
-    <app-card [hidHeader]="true" cardClass="user-profile-list">
-      <div class="dt-responsive table-responsive" *ngIf="userList" cardClass="card-datatable" #epltable>
-        <!-- datatable [dtOptions]="dtExportButtonOptions" -->
-        <table  datatable id="contentToConvert"  [dtOptions]="dtExportButtonOptions" class="table table-striped table-bordered table-hover" >
+    <app-card [hidHeader]="false" cardTitle="Search & View User" cardClass="user-profile-list">
+      <div class="dt-responsive table-responsive" cardClass="card-datatable" *ngIf="userList" #epltable>
+        <table datatable class="table table-striped table-hover" style="width: 100%;">
           <thead>
             <tr>
-              <th>Sr. No.</th>v
+              <th>Sr. No.</th>
               <th>User ID</th>
-              <th>UserType</th>
-              <th>User Name</th>
               <th>Mobile</th>
-              <th>Email</th>
+              <th>E-mail</th>
               <th>Company Name</th>
+              <th>KP One</th>
+              <th>KP Two</th>
               <th>Status</th>
-
             </tr>
           </thead>
           <tbody>
             <tr href="kdkd" *ngFor="let user of userList;let i = index">
               <td>{{i+1}}</td>
-              <td (click)="goToView(user)"  *ngIf="selectedRole === 'CUSTOMER'" >{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
-              <td (click)="goToView(user)"  *ngIf="selectedRole === 'SUPPLIER'" >{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
-              <td (click)="goToView(user)"  *ngIf="selectedRole === 'AGENT'" >{{Ids.AGENT + '-' + user.userDetialId}}</td>
-              <td (click)="goToView(user)"  *ngIf="selectedRole === 'CONTRACTOR'" >{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
-              <td (click)="goToView(user)"  *ngIf="selectedRole === 'TRANSPORTER'">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
-              <td (click)="goToView(user)"  >{{user.userRole}}</td>
-              <td (click)="goToView(user)" >{{user.firstName}}</td>
-              <td (click)="goToView(user)" >{{user.mobile}}</td>
-              <td (click)="goToView(user)" >{{user.emailId}}</td>
-              <td (click)="goToView(user)" >{{user.businessDetails[0]?.companyName}}</td>
+              <td (click)="goToView(user)" *ngIf="selectedRole === 'CUSTOMER'">
+                {{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)" *ngIf="selectedRole === 'SUPPLIER'">
+                {{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)" *ngIf="selectedRole === 'AGENT'">{{Ids.AGENT + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)" *ngIf="selectedRole === 'CONTRACTOR'">
+                {{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)" *ngIf="selectedRole === 'TRANSPORTER'">
+                {{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
+              <td (click)="goToView(user)">+91-{{user.mobile}}</td>
+              <td (click)="goToView(user)">{{user.emailId}}</td>
+              <td (click)="goToView(user)">{{user.businessDetails[0]?.companyName}}</td>
+              <td (click)="goToView(user)">{{user.keyPerson[0].name}}</td>
+              <td (click)="goToView(user)">{{user.keyPerson[1].name}}</td>
               <td (click)="goToView(user)">
-                <span class="badge badge-light-success">{{user.status}}</span>
+                <span class="badge badge-success clr-blk">{{user.status}}</span>
                 <div class="overlay-edit">
                   <button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                   <!-- <button type="button" class="btn btn-icon btn-danger" ><i class="feather icon-trash-2"></i></button> -->
                 </div>
               </td>
             </tr>
-
-
           </tbody>
-          <!-- <tfoot>
-            <tr>
-              <th><input type="text" placeholder="S.No." name="search-userType" class="form-control" /></th>
-              <th><input type="text" placeholder="User Id" name="search-userType" class="form-control" /></th>
-              <th><input type="text" placeholder="User Type" name="search-userType" class="form-control" /></th>
-              <th><input type="text" placeholder="User Name" name="search-userType" class="form-control" /></th>
-              <th><input type="text" placeholder="Mobile" name="search-userType" class="form-control" /></th>
-              <th><input type="text" placeholder="Email" name="search-userType" class="form-control" /></th>
-              <th><input type="text" placeholder="Company" name="search-userType" class="form-control" /></th>
-            </tr>
-            </tfoot>  -->
         </table>
       </div>
     </app-card>
   </div>
 </div>
-<button type="submit" class="btn btn-success active excelBtn" (click)="exportToExcel()">Excel</button>&nbsp;
-<button type="submit" class="btn btn-danger active printBtn" (click)="print()">Print</button>&nbsp;
-<button type="submit" class="btn btn-danger active pdfBtn" (click)="exportToPDF()">PDF</button>&nbsp;
-<button type="submit" class="btn btn-warning active copyBtn">Copy</button>&nbsp;
+<button type="submit" class="btn btn-success active excelBtn" (click)="exportToExcel()"><i
+    class="feather icon-menu"></i> Excel</button>&nbsp;
+<button type="submit" class="btn btn-danger active printBtn" (click)="print()"><i class="feather icon-printer"></i>
+  Print</button>&nbsp;
+<button type="submit" class="btn btn-danger active pdfBtn" (click)="exportToPDF()"><i class="feather icon-file"></i>
+  PDF</button>&nbsp;
+<button type="submit" class="btn btn-warning active copyBtn"><i class="feather icon-copy"></i> Copy</button>&nbsp;
+
+
+<app-ui-modal #exampleModalCenter dialogClass="modal-dialog-centered" [dialogClass]="'modal-xl'">
+  <div class="app-modal-header">
+    <h5 class="modal-title">Product Filter</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close"
+      (click)="exampleModalCenter.hide()"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="app-modal-body"> 
+    <div class="row">
+      <div class="col-md-2" style="margin-bottom:20px;">
+        <label class="f-12" for="exampleFormControlSelect1">Type <small class="asterik_sign">*</small></label>
+        <select class="form-control">
+          <option value="0" disabled>Type</option>
+          <option >Type 1</option>
+          <option >Type 2</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="f-12" for="exampleFormControlSelect1">Category <small class="asterik_sign">*</small></label>
+        <select class="form-control">
+          <option value="0" disabled>Category</option>
+          <option >Type 1</option>
+          <option >Type 2</option>
+        </select>
+      </div>
+      <div class="col-md-2" style="margin-bottom:20px;">
+        <label class="f-12" for="exampleFormControlSelect1">Shape <small class="asterik_sign">*</small></label>
+        <select class="form-control">
+          <option value="0" disabled>Shape</option>
+          <option >Type 1</option>
+          <option >Type 2</option>
+        </select>
+      </div>
+      <div class="col-md-2" style="margin-bottom:20px;">
+        <label class="f-12" for="exampleFormControlSelect1">Class <small class="asterik_sign">*</small></label>
+        <select class="form-control">
+          <option value="0" disabled>Class</option>
+          <option >Type 1</option>
+          <option >Type 2</option>
+        </select>
+      </div>
+      <div class="col-md-2" style="margin-bottom:20px;">
+        <label class="f-12" for="exampleFormControlSelect1">Temper <small class="asterik_sign">*</small></label>
+        <select class="form-control">
+          <option value="0" disabled>Temper</option>
+          <option >Type 1</option>
+          <option >Type 2</option>
+        </select>
+      </div>
+      <div class="col-md-2" style="margin-bottom:20px;">
+        <label class="f-12" for="exampleFormControlSelect1">Blank <small class="asterik_sign">*</small></label>
+        <select class="form-control">
+          <option value="0" disabled>Blank</option>
+          <option >Type 1</option>
+          <option >Type 2</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="f-12" for="exampleFormControlSelect1">Thickness Range <small class="asterik_sign">*</small></label>
+        <div class="row">
+          <div class="col-md-6"><input type="text" placeholder="Min" class="form-control"></div>
+          <div class="col-md-6"><input type="text" placeholder="Max" class="form-control"></div>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin-bottom:20px;">
+        <label class="f-12" for="exampleFormControlSelect1">Width Range <small class="asterik_sign">*</small></label>
+        <div class="row">
+          <div class="col-md-6"><input type="text" placeholder="Min" class="form-control"></div>
+          <div class="col-md-6"><input type="text" placeholder="Max" class="form-control"></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="f-12" for="exampleFormControlSelect1">Length Range <small class="asterik_sign">*</small></label>
+        <div class="row">
+          <div class="col-md-6"><input type="text" placeholder="Min" class="form-control"></div>
+          <div class="col-md-6"><input type="text" placeholder="Max" class="form-control"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+      (click)="exampleModalCenter.hide()">Close</button>&nbsp;
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</app-ui-modal>

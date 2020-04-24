@@ -1,24 +1,18 @@
-<app-card cardTitle="Add New User" [options]="false">
+<app-card cardTitle="Create Material Requirement Id" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
     <wizard-step [stepTitle]="myTitle" navigationSymbol="1">
-      <!-- <app-create-mr-id></app-create-mr-id> -->
       <form [formGroup]="mrPurchase" (ngSubmit)="createMrSubmit()">
         <div class="row">
           <div class="col-sm-12">
-            <h5>Create Material Requirement Id</h5>
-            <hr>
             <div class="row">
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Company Name <small class="asterik_sign">*</small></label>
                   <select (change)="selectedCompany($event.target.value)" formControlName="sourceCompanyId"
                     class="form-control" name="validation-category" required>
+                    <option value='' disabled>Select</option>
                     <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
                   </select>
-                  <!-- <label *ngIf="!companyName.valid && (companyName.dirty || companyName.touched || isSubmit)"
-                    id="validation-companyName-error"
-                    class="error jquery-validation-error small form-text invalid-feedback">Company Name should be
-                    required.</label> -->
                 </div>
               </div>
               <div class="col-md-1"></div>
@@ -27,13 +21,10 @@
                   <label for="exampleFormControlSelect1">Warehouse Name <small class="asterik_sign">*</small></label>
                   <select (change)="getSelectedWarehouse($event.target.value)" formControlName="sourceWarehouseId"
                     class="form-control" name="validation-category" required>
+                    <option value='' disabled>Select</option>
                     <option *ngFor="let warehouse of warehouseList" [value]="warehouse?.id">
                       {{ warehouse?.name }}</option>
                   </select>
-                  <!-- <label *ngIf="!warehouse.valid && (warehouse.dirty || warehouse.touched || isSubmit)"
-                    id="validation-warehouse-error"
-                    class="error jquery-validation-error small form-text invalid-feedback">Warehouse should be
-                    required.</label> -->
                 </div>
               </div>
               <div *ngIf="!selectedComapny" class="col-md-5">
@@ -49,13 +40,10 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
                   <select formControlName="productCategory" class="form-control" name="validation-category" required>
+                    <option value='' disabled>Select</option>
                     <option *ngFor="let item of productCategoryList" [value]="item?.productCategory">
                       {{ item?.productCategory }}</option>
                   </select>
-                  <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)"
-                    id="validation-category-error"
-                    class="error jquery-validation-error small form-text invalid-feedback">Category should be
-                    required.</label> -->
                 </div>
               </div>
               <div class="col-md-1"></div>
@@ -63,11 +51,10 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
                   <select formControlName="productShape" class="form-control" name="validation-category" required>
+                    <option value='' disabled>Select</option>
                     <option *ngFor="let productShape of productShapeList" [value]="productShape?.productShape">
                       {{ productShape?.productShape }}</option>
                   </select>
-                  <!-- <label *ngIf="!shape.valid && (shape.dirty || shape.touched || isSubmit)" id="validation-shape-error"
-                    class="error jquery-validation-error small form-text invalid-feedback">Shape should be required.</label> -->
                 </div>
               </div>
             </div>
@@ -85,8 +72,7 @@
     <wizard-step stepTitle="Add Product" navigationSymbol="2">
       <app-material-classification-specification (productData)="getProductData($event)">
       </app-material-classification-specification>
-      <div class="m-t-20">
-        <!-- <app-add-product-cart></app-add-product-cart> -->
+      <div class="m-t-20"> 
         <app-add-product-cart [productList]="productList"></app-add-product-cart>
       </div>
       <div class="col-sm-12 centered-content m-t-20">

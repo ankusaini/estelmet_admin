@@ -38,7 +38,7 @@ export class UserGroupListComponent implements OnInit {
   ngOnInit() { }
   basicSwal() {
     Swal.fire({
-      title: 'Select Group Type',
+      title: 'Search & View User Group',
       input: 'select',
       inputOptions: {
         CUSTOMER: 'Customer Group',
@@ -49,6 +49,7 @@ export class UserGroupListComponent implements OnInit {
       },
       inputPlaceholder: 'Select Group Type',
       allowOutsideClick: false,
+      width:'300px',
       showCancelButton: true,
       cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',

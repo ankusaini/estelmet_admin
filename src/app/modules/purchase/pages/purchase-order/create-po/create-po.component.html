@@ -1,16 +1,6 @@
-<app-card cardTitle="Create Purchase Confirmation" [options]="false">
-    <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-      <wizard-step stepTitle="Select MR Id" navigationSymbol="1">
-        <app-mr-list [component]="component" (selectedMrData)="getSelectedMr($event)"></app-mr-list>                                                                                                                                                                                                     
-    <div class="col-sm-12 centered-content m-t-20">
-          <div class="btn-group mt-10">
-          
-            <button type="button" (click)="savePORecord()" class="btn btn-success btn-sm">Create PO</button>
-          </div>
-        </div>
-      </wizard-step>
-     
-      
-      
-    </wizard>
-  </app-card>
+<app-card cardTitle="Create Purchase Order" [options]="false">
+  <app-mr-list [component]="component" (selectedMrData)="getSelectedMr($event)"></app-mr-list>
+      <div class="btn-group">
+      <button type="button" (click)="savePORecord()" class="btn btn-success btn-sm createBtn">Create PO</button>
+    </div>
+</app-card>

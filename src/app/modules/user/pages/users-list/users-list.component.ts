@@ -33,15 +33,15 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   datatableElement: DataTableDirective;
   public limit = 15;
   public offset = 1;
-  public selectedRole= '';
+  public selectedRole = '';
 
   constructor(
     private userService: UserService,
     private router: Router,
     private dataService: UserDataService,
   ) {
-      this.Ids = ids;
-   }
+    this.Ids = ids;
+  }
 
   ngOnInit() {
     this.dtExportButtonOptions = this.userList;
@@ -49,55 +49,55 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   }
   // : Observable<any>
   // return new Observable<any>(obs=>{
-    basicSwal() {
-      Swal.fire({
-        title: 'Search & View User',
-        input: 'select',
-        inputOptions: {
-          CUSTOMER: 'Customer',
-          SUPPLIER: 'Supplier',
-          AGENT: 'Agent',
-          CONTRACTOR: 'Contractor',
-          TRANSPORTER: 'Transporter'
-        },
-        
-        inputPlaceholder: 'Select User Type',
-        width:'300px',
-        allowOutsideClick: false,
-        showCancelButton: true,
-        cancelButtonText: 'Cancel',
-        confirmButtonText: 'Search',
-        inputValidator: value => {
-          // tslint:disable-next-line: only-arrow-functions
-          return new Promise(function (resolve, reject) {
-            if (value !== '') {
-              resolve();
-            } else {
-              resolve('You need to select user type');
-            }
-          });
-        }
-      }).then(selectedRole => {
-        if (selectedRole.value) {
-          this.selectedRole = selectedRole.value;
-          console.log('selected role', selectedRole);
-          // const url =
-          //   '/users/getAllUsersByUserRoleAndStatus?userRole=' +
-          //   selectedRole.value +
-          //   '&status=APPROVED&limit=10&offset=1';
-  
-          this.userService.getAllUserByUserRoleAndStatus(selectedRole.value,'APPROVED',this.limit,this.offset).subscribe(
-            data => {
-              this.userList = data;
-            },
-            error => { }
-          );
-        } else if(selectedRole.dismiss === Swal.DismissReason.cancel){
-          console.log("dismiss Called");
-          this.router.navigate(['/dashboard/default']);
-        }
-      });
-    }
+  basicSwal() {
+    Swal.fire({
+      title: 'Search & View User',
+      input: 'select',
+      inputOptions: {
+        CUSTOMER: 'Customer',
+        SUPPLIER: 'Supplier',
+        AGENT: 'Agent',
+        CONTRACTOR: 'Contractor',
+        TRANSPORTER: 'Transporter'
+      },
+
+      inputPlaceholder: 'Select User Type',
+      width: '300px',
+      allowOutsideClick: false,
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Search',
+      inputValidator: value => {
+        // tslint:disable-next-line: only-arrow-functions
+        return new Promise(function (resolve, reject) {
+          if (value !== '') {
+            resolve();
+          } else {
+            resolve('You need to select user type');
+          }
+        });
+      }
+    }).then(selectedRole => {
+      if (selectedRole.value) {
+        this.selectedRole = selectedRole.value;
+        console.log('selected role', selectedRole);
+        // const url =
+        //   '/users/getAllUsersByUserRoleAndStatus?userRole=' +
+        //   selectedRole.value +
+        //   '&status=APPROVED&limit=10&offset=1';
+
+        this.userService.getAllUserByUserRoleAndStatus(selectedRole.value, 'APPROVED', this.limit, this.offset).subscribe(
+          data => {
+            this.userList = data;
+          },
+          error => { }
+        );
+      } else if (selectedRole.dismiss === Swal.DismissReason.cancel) {
+        console.log("dismiss Called");
+        this.router.navigate(['/dashboard/default']);
+      }
+    });
+  }
 
   goToView(user: User) {
     this.dataService.add(user).subscribe(() => {
@@ -138,75 +138,67 @@ export class UsersListComponent implements OnInit, AfterViewInit {
 
   exportToExcel() {
     const ws: xlsx.WorkSheet =
-    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+      xlsx.utils.table_to_sheet(this.epltable.nativeElement);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
     xlsx.writeFile(wb, 'User.xlsx');
     // console.log("fnc")
-   }
+  }
+
+  searchUserByProduct(body) {
+    this.userService.searchUserByProduct(body).subscribe(
+      data => this.userList = data.data
+    );
+  }
+
+  exportToPDF() {
+    var node = document.getElementById('contentToConvert');
+    console.log('node', node);
+    var img;
+    var filename;
+    var newImage;
+    domtoimage.toPng(node, { bgcolor: '#fff' })
+      .then(function (dataUrl) {
+        img = new Image();
+        img.src = dataUrl;
+        newImage = img.src;
+        img.onload = function () {
+          var pdfWidth = img.width;
+          var pdfHeight = img.height;
+
+          // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+          var doc;
+          if (pdfWidth > pdfHeight) {
+            doc = new jsPDF('l', 'px', [pdfWidth, pdfHeight]);
+          }
+          else {
+            doc = new jsPDF('p', 'px', [pdfWidth, pdfHeight]);
+          }
 
 
-   exportToPDF()
-   {
-     console.log("pdf")
+          var width = doc.internal.pageSize.getWidth();
+          var height = doc.internal.pageSize.getHeight();
 
 
-     var node = document.getElementById('contentToConvert');
-console.log('node',node);
-              var img;
-              var filename;
-              var newImage;
+          doc.addImage(newImage, 'PNG', 10, 10, width, height);
+          filename = 'User' + '.pdf';
+          doc.save(filename);
+
+        };
 
 
-              domtoimage.toPng(node, { bgcolor: '#fff' })
+      })
+      .catch(function (error) {
 
-                .then(function(dataUrl) {
+        // Error Handling
 
-                  img = new Image();
-                  img.src = dataUrl;
-                  newImage = img.src;
+      });
 
-                  img.onload = function(){
-
-                  var pdfWidth = img.width;
-                  var pdfHeight = img.height;
-
-                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
-
-                    var doc;
-
-                    if(pdfWidth > pdfHeight)
-                    {
-                      doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
-                    }
-                    else
-                    {
-                      doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
-                    }
+  }
 
 
-                    var width = doc.internal.pageSize.getWidth();
-                    var height = doc.internal.pageSize.getHeight();
-
-
-                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
-                    filename = 'User' + '.pdf';
-                    doc.save(filename);
-
-                  };
-
-
-                })
-                .catch(function(error) {
-
-                 // Error Handling
-
-                });
-
-   }
-
-
-   print() {
+  print() {
     window.print();
   }
 }

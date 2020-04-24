@@ -6,7 +6,7 @@
           <ngb-tab title="Pending" id="pendingTab" class="mb-3">
             <ng-template ngbTabContent>
               <div *ngIf="pendingList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <table datatable class="table table-striped table-xs table-hover" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>Status</th>
@@ -20,7 +20,7 @@
                       <th>Customer ID</th>
                       <th>Transporter ID</th>
                       <th>Date of Creation</th>
-                      <!-- <th>Last Modified Date</th> -->
+                      <!-- <th>Last Mod. Date</th> -->
                       <!-- <th>Created By</th> -->
                       <!-- <th>Last Modified By</th> -->
                       <th>Action</th>
@@ -38,8 +38,8 @@
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
                       <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
                       <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
-                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
-                      <!-- <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td> -->
+                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'short'}}</td>
+                      <!-- <td>{{sale.salesHistory[0].createdDate | date: 'short'}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].lastModifiedBy}}</td> -->
                       <td>
@@ -59,7 +59,7 @@
           <ngb-tab title="Approved" id="approvedTab">
             <ng-template ngbTabContent>
               <div *ngIf="approvedList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <table datatable class="table table-striped table-xs table-hover" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>Status</th>
@@ -74,7 +74,7 @@
                       <th>Transporter ID</th>
                       
                       <th>Date of Creation</th>
-                      <!-- <th>Last Modified Date</th> -->
+                      <!-- <th>Last Mod. Date</th> -->
                       <!-- <th>Created By</th> -->
                       <!-- <th>Last Modified By</th> -->
                       <th>Action</th>
@@ -92,8 +92,8 @@
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
                       <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
                       <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
-                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
-                      <!-- <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td> -->
+                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'short'}}</td>
+                      <!-- <td>{{sale.salesHistory[0].createdDate | date: 'short'}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].lastModifiedBy}}</td> -->
                       <td>
@@ -113,7 +113,7 @@
           <ngb-tab title="Rejected" id="rejectedTab">
             <ng-template ngbTabContent>
               <div *ngIf="rejectedList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <table datatable class="table table-striped table-xs table-hover" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>Status</th>
@@ -127,7 +127,7 @@
                       <th>Customer ID</th>
                       <th>Transporter ID</th>
                       <th>Date of Creation</th>
-                      <!-- <th>Last Modified Date</th> -->
+                      <!-- <th>Last Mod. Date</th> -->
                       <!-- <th>Created By</th> -->
                       <!-- <th>Last Modified By</th> -->
                       <th>Action</th>
@@ -145,8 +145,8 @@
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
                       <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
                       <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
-                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
-                      <!-- <td>{{sale.salesHistory[0].createdDate | date: 'medium'}}</td> -->
+                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'short'}}</td>
+                      <!-- <td>{{sale.salesHistory[0].createdDate | date: 'short'}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
                       <!-- <td>{{sale.salesHistory[0].lastModifiedBy}}</td> -->
                       <td>
@@ -172,7 +172,7 @@
       <app-card [hidHeader]="false" cardTitle="Product Basket Cart" [options]="false"
         cardClass="user-profile-list">
         <div *ngIf="selectedSalesList && selectedSalesList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table  class="table table-striped table-bordered table-hover">
+          <table  class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <!-- <th>Status</th> -->
@@ -187,7 +187,7 @@
                       <th>Customer ID</th>
                       <th>Transporter ID</th>
                       <th>Date of Creation</th>
-                      <!-- <th>Last Modified Date</th> -->
+                      <!-- <th>Last Mod. Date</th> -->
                       <!-- <th>Created By</th> -->
                       <!-- <th>Last Modified By</th> -->
                       <th>Action</th>
@@ -205,8 +205,8 @@
                       <!-- <td>WAR-{{sale.sourceWarehouseId}}</td> -->
                       <td>{{Ids.CUSTOMER + '-' + sale.customerId}}</td>
                       <td>{{Ids.TRANSPORTER + '-' + sale.transportId}}</td>
-                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td>
-                <!-- <td>{{sale.salesHistory[0].lastModifiedDate | date: 'medium'}}</td> -->
+                      <td>{{sale.salesHistory[0].lastModifiedDate | date: 'short'}}</td>
+                <!-- <td>{{sale.salesHistory[0].lastModifiedDate | date: 'short'}}</td> -->
                 <!-- <td>{{sale.salesHistory[0].createdBy}}</td> -->
                 <!-- <td>{{sale.salesHistory[0].lastModifiedBy}}</td> -->
                 <td>

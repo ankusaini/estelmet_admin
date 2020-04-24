@@ -9,13 +9,13 @@
         <div class="col-sm-3">
           <select [value]="selectedName1.value" #selectedId1 class="form-control" name="validation-customerId">
             <option value=''>Id</option>
-            <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.id }}</option>
+            <option *ngFor="let item of userMini" [value]="item?.userDetialId">{{ item?.userDetialId }}</option>
           </select>
         </div>
         <div class="col-sm-5">
           <select #selectedName1  [value]="selectedId1.value" class="form-control" formControlName="buyerCompanyName" name="validation-pcId">
             <option value> Name</option>
-            <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
+            <option *ngFor="let item of userMini" [value]="item?.userDetialId">{{ item?.companyName }}</option>
           </select>
           <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
           <small *ngIf="f.buyerCompanyName.value == '' && (f.buyerCompanyName.dirty || f.buyerCompanyName.touched )"

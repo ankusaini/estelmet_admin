@@ -1,5 +1,6 @@
+<app-card [hidHeader]="true"  cardClass="user-profile-list">
 <div #epltable  *ngIf="productProcessingList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" datatable class="table table-striped table-bordered table-hover">
+          <table id="contentToConvert" datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -30,7 +31,7 @@
                 <td>{{Ids.COMPANY + '-' + processing?.companyId}}</td>
                 <td>{{Ids.WAREHOUSE + '-' + processing?.warehouseId}}</td>
                 <td>MD-{{processing?.machineDetailId}}</td>
-                <td>{{processing?.createdDate | date: 'medium'}}</td>
+                <td>{{processing?.createdDate | date: 'short'}}</td>
                 <td>
                   <button *ngIf="!cart" (click)="addToProcessingList(processing)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                   <button *ngIf="cart" (click)="removeFromProcessingList(processing)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-minus"></i></button></td>
@@ -38,3 +39,4 @@
             </tbody>
           </table>
         </div>
+      </app-card>

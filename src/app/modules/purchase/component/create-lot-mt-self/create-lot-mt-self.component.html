@@ -5,15 +5,15 @@
           <div class="row">
             <div class="col-md-5">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Source Company <small
+               <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Source Company ID<small
                     class="asterik_sign">*</small></label>
-                <div class="col-sm-3">
+                <div class="col-sm-3 m-t-10 p-t-5 ">
                   <select [value]="selectedName1.value" (change)="selectedSourceCompany(selectedId1.value)" #selectedId1 formControlName="sourceCompanyId" class="form-control" name="validation-category" required>
                   <option value> Id</option>
                   <option  *ngFor="let item of sourceCompanyList"    [value]="item?.id"    >{{ item?.id }}</option>
                   </select>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5 m-t-10 p-t-5 ">
                   <select #selectedName1 [value]="selectedId1.value"  formControlName="sourceCompanyId"  (change)="selectedSourceCompany(selectedId2.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option  *ngFor="let item of sourceCompanyList"    [value]="item?.id"    >{{ item?.name }}</option>
@@ -25,18 +25,18 @@
             <div class="col-md-1"></div>
             <div class="col-md-5">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Destination Company <small
+               <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Destination Company ID<small
                     class="asterik_sign">*</small></label>
-                <div class="col-sm-3">
+                <div class="col-sm-3 m-t-10 p-t-5 ">
                    <select [value]="selectedName2.value" (change)="selectedDestinationCompany(selectedId2.value)" #selectedId2 formControlName="destinationCompanyId" class="form-control" name="validation-category" required>
                   <option value> Id</option>
                   <option  *ngFor="let item of destinationCompanyList"    [value]="item?.id"    >{{ item?.id }}</option>
                   </select>
-                  <!-- <label *ngIf="!companyId.valid && (companyId.dirty || companyId.touched || isSubmit)"
+                  <!--<label  *ngIf="!companyId.valid && (companyId.dirty || companyId.touched || isSubmit)"
                     id="validation-companyId-error"
                     class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5 m-t-10 p-t-5 ">
                   <select #selectedName2 [value]="selectedId2.value"  formControlName="destinationCompanyId"  (change)="selectedCompany(selectedId2.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option  *ngFor="let item of destinationCompanyList"    [value]="item?.id"    >{{ item?.name }}</option>
@@ -51,15 +51,15 @@
           <div class="row">
             <div *ngIf="selectedSourceCmpy" class="col-md-5">
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Source Warehouse Id <small
+             <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Source Warehouse Id <small
                   class="asterik_sign">*</small></label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 ">
                 <select [value]="selectedWarehouseName.value" formControlName='sourceWarehouseId' #selectedWarehouseId class="form-control">
                   <option value>Id</option>
                   <option [value]="item.id" *ngFor="let item of selectedSourceCmpy.warehouse">{{ item.id }}</option>
                 </select>
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5 m-t-10 p-t-5 ">
                 <select #selectedWarehouseName formControlName='sourceWarehouseId' [value]="selectedWarehouseId.value" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option [value]="item.id" *ngFor="let item of selectedSourceCmpy.warehouse">{{ item.name }}</option>
@@ -71,15 +71,15 @@
             <div class="col-md-1"></div>
             <div *ngIf="selectedDestinationCmp" class="col-md-5">
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Destination Warehouse Id <small
+             <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Destination Warehouse Id <small
                   class="asterik_sign">*</small></label>
-              <div class="col-sm-3">
+              <div class="col-sm-3 m-t-10 p-t-5 ">
                 <select [value]="selectedWarehouseName2.value" formControlName='destinationWarehouseId' #selectedWarehouseId2 class="form-control">
                   <option value>Id</option>
                   <option [value]="item.id" *ngFor="let item of selectedDestinationCmp.warehouse">{{ item.id }}</option>
                 </select>
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5 m-t-10 p-t-5 ">
                 <select #selectedWarehouseName2 formControlName='destinationWarehouseId' [value]="selectedWarehouseId2.value" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option [value]="item.id" *ngFor="let item of selectedDestinationCmp.warehouse">{{ item.name }}</option>
@@ -93,26 +93,28 @@
           <div class="row">
             <div class="col-md-5">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Category<small
+               <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Product Category<small
                     class="asterik_sign">*</small></label>
-                <div class="col-sm-8">
+                <div class="col-sm-8 m-t-10 p-t-5 ">
                    <select formControlName="productCategory" class="form-control" name="validation-category" required>
-                  <option  *ngFor="let item of productCategoryList"    [value]="item?.productCategory"    >{{ item?.productCategory }}</option>
+                    <option value='' disabled>Select</option>
+                    <option  *ngFor="let item of productCategoryList"    [value]="item?.productCategory"    >{{ item?.productCategory }}</option>
                   </select>
-                  <!-- <label *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)" id="validation-category-error" class="error jquery-validation-error small form-text invalid-feedback">Product Category should be required.</label> -->
+                  <!--<label  *ngIf="!category.valid && (category.dirty || category.touched || isSubmit)" id="validation-category-error" class="error jquery-validation-error small form-text invalid-feedback">Product Category should be required.</label> -->
                 </div>
               </div>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-5">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Product Shape <small
+               <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Product Shape <small
                     class="asterik_sign">*</small></label>
-                <div class="col-sm-8">
+                <div class="col-sm-8 m-t-10 p-t-5 ">
                     <select formControlName="productShape" class="form-control" name="validation-category" required>
-                  <option  *ngFor="let productShape of productShapeList"    [value]="productShape?.productShape"    >{{ productShape?.productShape }}</option>
+                      <option value='' disabled>Select</option>
+                      <option  *ngFor="let productShape of productShapeList"    [value]="productShape?.productShape"    >{{ productShape?.productShape }}</option>
                   </select>
-                  <!-- <label *ngIf="!shape.valid && (shape.dirty || shape.touched || isSubmit)" id="validation-shape-error" class="error jquery-validation-error small form-text invalid-feedback">Product Shape should be required.</label> -->
+                  <!--<label  *ngIf="!shape.valid && (shape.dirty || shape.touched || isSubmit)" id="validation-shape-error" class="error jquery-validation-error small form-text invalid-feedback">Product Shape should be required.</label> -->
                 </div>
               </div>
             </div>
@@ -128,7 +130,7 @@
         <app-card [hidHeader]="false" cardTitle="Search & Select Products To Be Transfer" [options]="false"
           cardClass="user-profile-list">
           <div class="dt-responsive table-responsive" cardClass="card-datatable">
-            <table datatable class="table table-striped table-bordered table-hover">
+            <table datatable class="table table-striped table-xs table-hover">
               <thead>
                 <tr>
                   <th>Sr. No.</th>
@@ -211,7 +213,7 @@
           <app-card [hidHeader]="false" cardTitle="View Above Created Product/s" [options]="false"
             cardClass="user-profile-list">
             <div class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover">
+              <table datatable class="table table-striped table-xs table-hover">
                 <thead>
                   <tr>
                     <th>Sr. No.</th>

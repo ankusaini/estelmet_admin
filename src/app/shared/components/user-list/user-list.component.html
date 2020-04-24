@@ -2,35 +2,33 @@
     <div class="col-md-12">
         <app-card [hidHeader]="false" cardTitle="Search & Select Customer/s " [options]="false" cardClass="user-profile-list">
             <div *ngIf="userList2" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover">
+                <table datatable class="table table-striped table-xs table-hover">
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
                             <th>User ID</th>
-                            <th>UserType</th>
-                            <th>User Name</th>
+                            <th>Company Name</th>
                             <th>Mobile</th>
                             <th>Email</th>
-                            <th>Company Name</th>
+                            <th>KP One</th>
+                            <th>KP Two</th>
                             <th>Status</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of userList2; let i = index">
                             <td>{{i+1}}</td>
                             <td>{{user.id}}</td>
-                            <td>{{user.userRole}}</td>
-                            <td>{{user.firstName}}</td>
+                            <td>{{user.userDetail.companyName}}</td>
                             <td>{{user.mobile}}</td>
                             <td>{{user.email}}</td>
-                            <td>{{user.userDetail.companyName}}</td>
+                            <td>{{user.keyPerson[0].name}}</td>
+                            <td>{{user.keyPerson[1].name}}</td>
                             <td>
                                 <span class="badge badge-light-success">{{user.status}}</span>
                                 <div class="overlay-edit">
                                     <button (click)="selectUser(user)" type="button" class="btn btn-icon btn-success"><i
                       class="feather icon-check-circle"></i></button>
-
                                 </div>
                             </td>
                         </tr>
@@ -50,16 +48,16 @@
         <!-- *ngIf="selectedUserList && selectedUserList.length >0" -->
         <app-card  [hidHeader]="false" cardTitle="View Above Selected Customer/s" [options]="false" cardClass="user-profile-list">
             <div class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover">
+                <table datatable class="table table-striped table-xs table-hover">
                     <thead>
                       <tr>
                         <th>Sr. No.</th>
                         <th>User ID</th>
-                        <th>UserType</th>
-                        <th>User Name</th>
                         <th>Mobile</th>
                         <th>Email</th>
                         <th>Company Name</th>
+                        <th>KP One</th>
+                        <th>KP Two</th>
                         <th>Status</th>
                       </tr>
                     </thead>
@@ -67,11 +65,11 @@
                         <tr href="kdkd" *ngFor="let user of selectedUserList;let i = index">
                             <td>{{i+1}}</td>
                             <td>{{user.id}}</td>
-                            <td>{{user.userRole}}</td>
-                            <td>{{user.firstName}}</td>
                             <td>{{user.mobile}}</td>
                             <td>{{user.email}}</td>
                             <td>{{user.userDetail.companyName}}</td>
+                            <td>{{user.keyPerson[0].name}}</td>
+                            <td>{{user.keyPerson[1].name}}</td>
                             <td>
                                 <span class="badge badge-light-success">{{user.status}}</span>
                                 <div class="overlay-edit">

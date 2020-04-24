@@ -58,6 +58,7 @@ export class CreateProcessingComponent implements OnInit {
       },
       inputPlaceholder: '-Select-',
       allowOutsideClick: false,
+      width:'300px',
       showCancelButton: true,
       cancelButtonText: 'Cancel',
       confirmButtonText: 'Create',

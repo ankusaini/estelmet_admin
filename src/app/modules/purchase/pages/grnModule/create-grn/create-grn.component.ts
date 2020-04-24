@@ -116,6 +116,7 @@ export class CreateGrnComponent implements OnInit {
       },
       inputPlaceholder: 'Select GRN Type',
       allowOutsideClick: false,
+      width:'300px',
       confirmButtonText: 'Select',
       showCancelButton: true,
       cancelButtonText: 'Cancel',
@@ -125,7 +126,7 @@ export class CreateGrnComponent implements OnInit {
           if (value !== '') {
             resolve();
           } else {
-            resolve('You need to select Product Type');
+            resolve('Please Select Product Type');
           }
         });
       }

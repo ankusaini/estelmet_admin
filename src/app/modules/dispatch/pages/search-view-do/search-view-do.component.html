@@ -2,7 +2,7 @@
     <div class="col-md-12">
       <app-card [hidHeader]="false" cardTitle="Search & View Delivery Order" [options]="false" cardClass="user-profile-list">
         <div #epltable *ngIf="deliveryOrderlist && deliveryOrderlist.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" datatable class="table table-striped table-bordered table-hover">
+          <table id="contentToConvert" datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -43,7 +43,7 @@
       <app-card [hidHeader]="false" cardTitle="View Selected Delivery Order Lots" [options]="false"
         cardClass="user-profile-list">
         <div *ngIf="selectdeliveryOrder && selectdeliveryOrder.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table datatable class="table table-striped table-bordered table-hover">
+          <table datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>

@@ -107,7 +107,7 @@ File: style.css
   }
 }
 .bg-clr-head1 {
-  background: #E0FEFE;
+  background: #ced4da;
 }
 .clr-red {
   color: #FF756D;
@@ -132,12 +132,18 @@ File: style.css
   margin: 10px auto !important;
 }
 .table th, .table td {
-  padding: 0.3rem 0.75rem !important;
+  padding: 0.4rem 0.75rem !important;
   vertical-align: inherit !important;
 }
 .table th {
   font-size: 13px !important;
   padding: 0.5rem 0.75rem !important;
+}
+.table.dataTable[class*="table-"] thead th {
+  background-color: #ced4da !important;
+}
+.clr-blk {
+  color:#000;
 }
 .table td {
   font-size: 12px !important;
@@ -161,9 +167,17 @@ ul.nav.nav-pills li:nth-child(2) {
     background: #FF756D !important;
     border-radius: 5px !important;
     font-size: 13px !important;
+
     }
     ul.nav.nav-pills li a {
       color:#000 !important;
+      font-weight: bold !important;
+    }
+    .user-profile .profile-tabs .nav-item .nav-link:after {
+      background:#5C9C4B !important;
+    }
+    .nav-tabs .nav-link {
+      background-image: none !important;
     }
 .btn.btn-icon {
   width: 30px !important;
@@ -177,36 +191,59 @@ ul.nav.nav-pills li:nth-child(2) {
   border: 1px solid #C3C5D3;
 }
 .excelBtn {
-  background: #85DE77 !important;
-  border: 1px solid #85DE77 !important;
+  background: #9ccc65 !important;
+  border: 1px solid #9ccc65 !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .printBtn {
   background: #0EC9FF !important;
   border: 1px solid #0EC9FF !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .pdfBtn {
   background: #FF756D !important;
   border: 1px solid #FF756D !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .copyBtn {
   background: #FFDE53 !important;
   border: 1px solid #FFDE53 !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .saveBtn {
   background: #D996F6 !important;
   border: 1px solid #D996F6 !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .changeBtn {
   background: #F1C27D !important;
   border: 1px solid #F1C27D  !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .updateBtn {
   background: #5C9C4B !important;
   border: 1px solid #5C9C4B  !important;
+  font-weight: bold !important;
+  color:#000 !important;
+}
+.createBtn {
+  background: #24C2DC !important;
+  border: 1px solid #24C2DC  !important;
+  font-weight: bold !important;
+  color:#000 !important;
 }
 .db {
   display: block;
 }
 .lc {
   text-transform: lowercase;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background: none;
 }

@@ -95,7 +95,7 @@
       <div class="photo_upload">
         <form>
           <file-upload name="files" fileslimit="1"></file-upload>
-          <small class="p-l-5 clr-red">Image size should not be greater than 5Mb</small>
+          <small class="p-l-5">Image size should not be greater than 5Mb</small>
           <div class="text-center m-t-20 m-b-20">
           </div>
         </form>
@@ -121,7 +121,7 @@
         Resend OTP
       </button>
     </div>
-    <div class="btn-group mt-10" *ngIf="markAsComplete">
+    <div class="btn-group mt-10">
       <button (click)="personalDetailSubmit()" type="submit" class="btn btn-primary btn-sm" uiSref="work">
         Continue
       </button>

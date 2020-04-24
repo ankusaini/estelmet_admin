@@ -9,6 +9,7 @@ export const ApiUrl = {
     createUser: '/users/createUser',
     updateUserInGroup: '/users/group/updateUserInGroup',
     getUserById: '/users/find',
+    searchUserByProduct: 'users/searchUserByProduct',
 
 
     /*---------------------purchase-------------------*/

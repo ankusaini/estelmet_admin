@@ -54,6 +54,7 @@ export class AddProductComponent implements OnInit {
       inputPlaceholder: 'Select Product Type',
       allowOutsideClick: false,
       showCancelButton: true,
+      width:'300px',
       cancelButtonText: 'Cancel',
       confirmButtonText: 'Select',
       inputValidator(value) {
