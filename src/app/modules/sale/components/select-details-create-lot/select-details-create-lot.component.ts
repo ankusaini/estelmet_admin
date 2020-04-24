@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
 
 @Component({
   selector: 'app-select-details-create-lot',
@@ -12,7 +13,7 @@ import { CustomValidator } from 'src/app/Validators/custom-validator';
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class SelectDetailsCreateLotComponent implements OnInit {
-
+  @Input() custumerOrderData: CustomerOrder;
   public selectDetailsForm : FormGroup;
   @Output() selectedDetailsId : EventEmitter<any> = new EventEmitter<any>();
   public companyList: Company[] = [];
@@ -25,6 +26,19 @@ export class SelectDetailsCreateLotComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.getAllCompany();
+    if(this.custumerOrderData) {
+      this.selectDetailsForm.patchValue(this.custumerOrderData);
+      console.log(this.selectDetailsForm);
+    }
+  }
+
+  ngOnChanges() {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    if(this.custumerOrderData) {
+      this.selectDetailsForm.patchValue(this.custumerOrderData);
+      console.log(this.selectDetailsForm);
+    }
   }
 
   getAllCompany() {

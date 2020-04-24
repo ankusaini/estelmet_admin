@@ -1,22 +1,33 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
 
 @Component({
   selector: 'app-other-details',
   templateUrl: './other-details.component.html',
-  styleUrls: ['./other-details.component.scss']
+  styleUrls: ['./other-details.component.scss'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class OtherDetailsComponent implements OnInit {
+export class OtherDetailsComponent implements OnInit, OnChanges {
 
   public otherDetails: FormGroup;
   @Output() outputOtherDetails: EventEmitter<any> = new EventEmitter<any>();
+  @Input() custumerOrderData: CustomerOrder;
 
   constructor(private toastr: ToastrService ) { }
 
   ngOnInit() {
     this.createForm();
+    if(this.custumerOrderData) {
+      this.otherDetails.patchValue(this.custumerOrderData);
+    }
+  }
+  ngOnChanges() {
+    if(this.custumerOrderData) {
+      this.otherDetails.patchValue(this.custumerOrderData);
+    }
   }
 
   createForm() {

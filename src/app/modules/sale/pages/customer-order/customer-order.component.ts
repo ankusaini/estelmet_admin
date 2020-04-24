@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { SalesServiceService } from '../../services/sales-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
 
 @Component({
   selector: 'app-customer-order',
@@ -48,12 +50,36 @@ export class CustomerOrderComponent implements OnInit {
     contactPersonNumber : new FormControl('', [Validators.required]),
     contactPersonWNumber: new FormControl('', [Validators.required]),
     contactPersonEmail: new FormControl('', [Validators.required]),
-  })
+  });
+  private subscription: any;
+  public coId: any;
+  public custumerOrderData: CustomerOrder; 
+  public isEdit: boolean = false;
 
-  constructor(private salesService: SalesServiceService, private toastr: ToastrService) {
+  constructor(private salesService: SalesServiceService,
+    private router: Router,
+    private route: ActivatedRoute,
+     private toastr: ToastrService) {
    }
 
   ngOnInit() {
+
+    this.subscription = this.route.url.subscribe( params => {
+      this.coId = this.route.snapshot.params.id;
+      if(this.coId) {
+        console.log(this.coId);
+        this.isEdit = true;
+        this.salesService.getCustomerOrder(this.coId).subscribe( res => {
+          console.log(res);
+          this.custumerOrderData = res;
+          // this.customerOrderForm.patchValue(res);
+          console.log(this.custumerOrderData);
+        });
+        
+      } else {
+        // console.log("!!!");
+      }
+    })
     
   }
 
@@ -89,7 +115,13 @@ export class CustomerOrderComponent implements OnInit {
     this.request.customerOrder = this.customerOrderForm.value;
     this.salesService.createCustomerOrder(this.request).subscribe( res => {
       console.log(res);
-      this.toastr.success("Customer Order successfully created!");
+      if(this.isEdit) {
+        this.toastr.success("Customer Order updated successfully!");
+      } else {
+        this.toastr.success("Customer Order created successfully!");
+      }
+      let id = res.body.customerOrder.customerOrderId;
+      this.router.navigateByUrl('/sales/editCo/' + id);
     }, error => {
       console.log(error);
     })

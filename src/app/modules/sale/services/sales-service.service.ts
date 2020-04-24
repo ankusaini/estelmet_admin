@@ -127,6 +127,24 @@ export class SalesServiceService {
     })
   }
 
+  getCustomerOrder(id): Observable<CustomerOrder> {
+    let url = '/sales/getCustomerOrder/' + id; 
+    return new Observable<CustomerOrder>( obs => {
+      this._apiService.get(url).subscribe( res => {
+        obs.next(res.customerOrder);
+      }, error => {
+        console.log(error);
+      });
+    })
+  }
 
+  getProductBySalesId(id): Observable<any> {
+    let url = '/inventory/sales/' + id;
+    return new Observable<any>( obs => {
+      this._apiService.get(url).subscribe(res => {
+        obs.next(res);
+      })
+    });
+  }
 
 }
