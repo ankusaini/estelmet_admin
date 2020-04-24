@@ -5,7 +5,9 @@ import { Purchase } from "src/app/shared/Models/purchase.model";
 import { User, UserMini } from "src/app/shared/Models/user.model";
 import { UserService } from "src/app/shared/services/user.service";
 import { UserRole, Status } from '../../../../../shared/Models/user.model';
-import { FormGroup } from "@angular/forms";
+import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { ids } from 'src/app/shared/Models/ids.model';
+import { Product } from 'src/app/shared/Models/product.model.';
 
 @Component({
   selector: 'app-po-email-sms',
@@ -14,23 +16,30 @@ import { FormGroup } from "@angular/forms";
 })
 export class PoEmailSmsComponent implements OnInit {
 
-  constructor(private userService: UserService, private toastrService: ToastrService, private purchaseServic: PurchaseService) { }
+  constructor(private userService: UserService, 
+    private toastrService: ToastrService,
+     private purchaseServic: PurchaseService) { 
+       this.Ids = ids;
+     }
   public userList: User[];
   public selectedPO: Purchase;
   public supplierList: any[] = [];
   public selectedSupplierList: any[] = [];
   public supplierDrowDownList: UserMini[];
+  public productList: Product[] = [];
   public limit = 15;
   public offset = 1;
   public productId: any;
   public userId: any;
   public price: any;
+  public Ids: any;
   @ViewChild('myModel', { static: false }) myModel;
-
-
-  savePurchaseForm= new FormGroup({
-    
+  public addPriceForm: FormGroup = new FormGroup({
+    supplierId: new FormControl('', [Validators.required]),
+    productId: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required])
   });
+  public selectedPurchaseId: any;
 
   ngOnInit() {
     // this.getAllUserByUserRoleAndStatus('APPROVED', 'SUPPLIER');
@@ -49,14 +58,19 @@ export class PoEmailSmsComponent implements OnInit {
     this.selectedPO = data;
     if (this.selectedPO) {
       this.getPurchaseOrderByPo(this.selectedPO.id);
+       
     }
 
     console.log("selected  po is", this.selectedPO);
   }
 
   getPurchaseOrderByPo(purchaseOderId) {
+    this.selectedPurchaseId = purchaseOderId;
     this.purchaseServic.getPurchaseOrderByPo(purchaseOderId).subscribe(data => {
       this.supplierList = data.data;
+      if(data.productList) {
+      this.productList = data.productList;
+      }
       console.log("data fis", data);
     }, error => {
 
@@ -84,7 +98,20 @@ export class PoEmailSmsComponent implements OnInit {
     }, error => {
 
     });
+    
     //this.openModelRef.nativeElement.click();
+  }
+
+  submitForm() {
+    console.log(this.addPriceForm.value);
+    if(this.addPriceForm.valid) {
+      this.savePurchaseOrder(this.selectedPurchaseId,
+        this.addPriceForm.value.supplierId,
+        this.addPriceForm.value.productId,
+        this.addPriceForm.value.price);
+    } else {
+      this.toastrService.error("Invalid Details!");
+    }
   }
 
   savePurchaseOrder(purchaseId, userId, productId, price) {
