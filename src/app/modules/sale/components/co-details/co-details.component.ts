@@ -34,4 +34,8 @@ export class CoDetailsComponent implements OnInit {
     }
   }
 
+  get f() {
+    return this.coDetails.controls;
+  }
+
 }

@@ -1,7 +1,6 @@
 <app-card cardTitle="Generate Sales Offer Id" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select Details To Create Lot ID" navigationSymbol="1">
-      this.selectedDetailsId.emit(this.selectDetailsForm);
       <app-select-details-create-lot (selectedDetailsId)="getSelectedDetailsId($event)"></app-select-details-create-lot>
       </wizard-step>
       <wizard-step stepTitle="Customer Order Details" navigationSymbol="2">
@@ -182,3 +181,4 @@
       <button type="button" class="btn btn-success btn-sm">Submit</button>
     </div>
   </div> -->
+  

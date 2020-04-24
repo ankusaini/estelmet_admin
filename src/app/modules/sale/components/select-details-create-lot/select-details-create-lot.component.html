@@ -18,6 +18,8 @@
             <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
           </select>
           <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+          <small *ngIf="f.buyerCompanyName.value == '' && (f.buyerCompanyName.dirty || f.buyerCompanyName.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
@@ -41,6 +43,8 @@
             <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
           </select>
           <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+          <small *ngIf="f.sellerCompanyName.value == '' && (f.sellerCompanyName.dirty || f.sellerCompanyName.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
@@ -51,6 +55,8 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Address</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="buyerAddress" placeholder="">
+          <small *ngIf="f.buyerAddress.value == '' && (f.buyerAddress.dirty || f.buyerAddress.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
@@ -60,6 +66,8 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Address</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="sellerAddress"  placeholder="">
+          <small *ngIf="f.sellerAddress.value == '' && (f.sellerAddress.dirty || f.sellerAddress.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
@@ -71,6 +79,10 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pincode</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="buyerStateCode"  placeholder="">
+          <small *ngIf="f.buyerStateCode.value == '' && (f.buyerStateCode.dirty || f.buyerStateCode.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.buyerStateCode.value !== '' && f.buyerStateCode.invalid" id="passwordHelpBlock"
+            class="form-text text-muted">Pin Code should be in 6 digits.</small>
         </div>
       </div>
     </div>
@@ -80,6 +92,10 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pincode</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="sellerStateCode"  placeholder="">
+          <small *ngIf="f.sellerStateCode.value == '' && (f.sellerStateCode.dirty || f.sellerStateCode.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            <small *ngIf="f.sellerStateCode.value !== '' && f.sellerStateCode.invalid" id="passwordHelpBlock"
+            class="form-text text-muted">Pin Code should be in 6 digits.</small>
         </div>
       </div>
     </div>
@@ -88,18 +104,22 @@
   <div class="row">
     <div class="col-md-5">
       <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">City</label>
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pan No.</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="buyerPANNo"  placeholder="">
+          <small *ngIf="f.buyerPANNo.value == '' && (f.buyerPANNo.dirty || f.buyerPANNo.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
     <div class="col-md-1"></div>
     <div class="col-md-5">
       <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">City</label>
+        <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Pan No.</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="sellerPANNo"  placeholder="">
+          <small *ngIf="f.sellerPANNo.value == '' && (f.sellerPANNo.dirty || f.sellerPANNo.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
@@ -111,6 +131,8 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">GST</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="buyerGSTNo"  placeholder="">
+          <small *ngIf="f.buyerGSTNo.value == '' && (f.buyerGSTNo.dirty || f.buyerGSTNo.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
@@ -120,6 +142,8 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">GST</label>
         <div class="col-sm-8">
           <input type="text" class="form-control" formControlName="sellerGSTNo"  placeholder="">
+          <small *ngIf="f.sellerGSTNo.value == '' && (f.sellerGSTNo.dirty || f.sellerGSTNo.touched )"
+            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
         </div>
       </div>
     </div>
