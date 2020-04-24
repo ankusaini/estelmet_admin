@@ -98,16 +98,24 @@
       <label for="validationCustom02">Temper Range <small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 mb-3"> 
-                 <input formControlName="temperMin" type="text" class="form-control" placeholder="Min" />
-          <small *ngIf="f.temperMin.value == '' && (f.temperMin.dirty || f.temperMin.touched )" id="passwordHelpBlock"
-            class="form-text text-muted">This field is required.</small>
+          <select formControlName="temperMin" class="form-control" id="exampleFormControlSelect1">
+            <option value="">Select Temper</option>
+            <option *ngFor="let item of productTemporList" [value]="item?.productTemper">{{ item?.productTemper }}
+            </option>
+          </select>
+          <!-- <small *ngIf="f.temperMin.value == '' && (f.temperMin.dirty || f.temperMin.touched )" id="passwordHelpBlock"
+            class="form-text text-muted">This field is required.</small> -->
         </div>
         <div class="col-md-6 mb-3">
-          <input formControlName="temperMax" type="text" class="form-control" placeholder="Max" />
-          <small *ngIf="f.temperMax.value == '' && (f.temperMax.dirty || f.temperMax.touched )" id="passwordHelpBlock"
+          <select formControlName="temperMax" class="form-control" id="exampleFormControlSelect1">
+            <option value="">Select Temper</option>
+            <option *ngFor="let item of productTemporList" [value]="item?.productTemper">{{ item?.productTemper }}
+            </option>
+          </select>
+          <!-- <small *ngIf="f.temperMax.value == '' && (f.temperMax.dirty || f.temperMax.touched )" id="passwordHelpBlock"
             class="form-text text-muted">This field is required.</small>
           <small *ngIf="f.temperMax.value !== '' && !f.temperMax.valid " id="passwordHelpBlock"
-            class="form-text text-muted">Maximum temper should be greater than minimum temper.</small>
+            class="form-text text-muted">Maximum temper should be greater than minimum temper.</small> -->
         </div>
       </div>
     </div>
@@ -129,7 +137,7 @@
   <div class="form-row">
     <app-card [hidHeader]="true" cardClass="user-profile-list" style="width:100%">
       <div class="dt-responsive table-responsive" cardClass="card-datatable">
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-xs table-hover">
           <thead>
             <tr>
               <th>Sr. No.</th>

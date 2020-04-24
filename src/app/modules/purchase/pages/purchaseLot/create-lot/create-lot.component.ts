@@ -73,6 +73,7 @@ export class CreateLotComponent implements OnInit {
       },
       inputPlaceholder: "Select LOT Type",
       showCancelButton: true,
+      width:'300px',
       allowOutsideClick: false,
        cancelButtonText: 'Cancel',
       confirmButtonText: "Select",

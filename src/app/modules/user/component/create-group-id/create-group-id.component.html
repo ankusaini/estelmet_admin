@@ -4,6 +4,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Product Type <small class="asterik_sign">*</small></label>
         <select formControlName="productType" class="form-control" name="validation-type" required>
+          <option value='' disabled>Select</option>
           <option *ngFor="let item of productTypeList" [value]="item?.productType">{{ item?.productType }}</option>
         </select>
         <small *ngIf="f.productType.value == '' && (f.productType.dirty || f.productType.touched )"
@@ -16,6 +17,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
         <select formControlName="productCategory" class="form-control" name="validation-category" required>
+          <option value='' disabled>Select</option>
           <option *ngFor="let item of productCategoryList" [value]="item?.productCategory">{{ item?.productCategory }}
           </option>
         </select>
@@ -52,7 +54,7 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">User Group Type <small class="asterik_sign">*</small></label>
         <select formControlName="userRole" class="form-control" name="validation-groupType">
-          <option value="0" disabled>Select User</option>
+          <option value="" disabled>Select User Group</option>
           <option value="CUSTOMER">Customer Group</option>
           <option value="SUPPLIER">Supplier Group</option>
           <option value="AGENT">Agent Group</option>

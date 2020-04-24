@@ -4,6 +4,7 @@
       <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
         <ngb-tab title="Pending" id="pendingTab" style="background: red;">
           <ng-template ngbTabContent>
+            <app-card [hidHeader]="true"  cardClass="user-profile-list">
             <div *ngIf="pendingUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
               <table datatable class="table table-striped table-hover" style="width: 100%;">
                 <thead>
@@ -18,7 +19,7 @@
                     <th>E-mail</th>
                     <th>Location</th>
                     <th>Date of Creation</th>
-                    <th>Last Modified Date</th>
+                    <th>Last Mod. Date</th>
                     <!-- <th>Created By</th>
                     <th>Last Modified By</th> -->
                     <th>Action</th>
@@ -28,20 +29,25 @@
                   <tr href="kdkd" *ngFor="let user of pendingUserList;let i = index">
                     <td><label class="badge badge-warning">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">{{Ids.AGENT + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">
+                      {{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">
+                      {{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">
+                      {{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">
+                      {{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">
+                      {{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user.businessDetails[0]?.companyName}}</td>
-                    <td>{{user.mobile}}</td>
+                    <td>+91-{{user.mobile}}</td>
                     <td>{{user.emailId}}</td>
                     <td>{{user.businessDetails[0]?.address1}}</td>
-                    <td>{{user.createdDate | date: 'medium'}}</td>
+                    <td>{{user.createdDate | date: 'short'}}</td>
                     <!-- <td>{{user.createdBy}}</td> -->
-                    <td>{{user.lastModifiedDate | date: 'medium' }}</td>
+                    <td>{{user.lastModifiedDate | date: 'short' }}</td>
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
@@ -55,12 +61,14 @@
                 </tbody>
               </table>
             </div>
+            </app-card>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Approved" id="approvedTab">
           <ng-template ngbTabContent>
-                <div *ngIf="approvedUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                  <table class="table table-striped table-hover">
+            <app-card [hidHeader]="true"  cardClass="user-profile-list">
+            <div *ngIf="approvedUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
+              <table datatable class="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>Status</th>
@@ -73,7 +81,7 @@
                     <th>E-mail</th>
                     <th>Location</th>
                     <th>Date of Creation</th>
-                    <th>Last Modified Date</th>
+                    <th>Last Mod. Date</th>
                     <th>
                       Action
                     </th>
@@ -85,20 +93,25 @@
                   <tr href="kdkd" *ngFor="let user of approvedUserList;let i = index">
                     <td><label class="badge badge-success">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">{{Ids.AGENT + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">
+                      {{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">
+                      {{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">
+                      {{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">
+                      {{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">
+                      {{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user.businessDetails[0]?.companyName}}</td>
-                    <td>{{user.mobile}}</td>
+                    <td>+91-{{user.mobile}}</td>
                     <td>{{user.emailId}}</td>
                     <td>{{user.businessDetails[0]?.address1}}</td>
-                    <td>{{user.createdDate | date: 'medium'}}</td>
+                    <td>{{user.createdDate | date: 'short'}}</td>
                     <!-- <td>{{user.createdBy}}</td> -->
-                    <td>{{user.lastModifiedDate | date: 'medium'}}</td>
+                    <td>{{user.lastModifiedDate | date: 'short'}}</td>
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
@@ -113,10 +126,13 @@
                 </tbody>
               </table>
             </div>
+</app-card>
+
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Rejected" id="rejectedTab">
           <ng-template ngbTabContent>
+            <app-card [hidHeader]="true"  cardClass="user-profile-list">
             <div *ngIf="rejectedUserList" class="dt-responsive table-responsive" cardClass="card-datatable">
               <table datatable class="table table-striped table-hover" style="width: 100%;">
                 <thead>
@@ -131,7 +147,7 @@
                     <th>E-mail</th>
                     <th>Location</th>
                     <th>Date of Creation</th>
-                    <th>Last Modified Date</th>
+                    <th>Last Mod. Date</th>
                     <th>
                       Action
                     </th>
@@ -143,20 +159,25 @@
                   <tr href="kdkd" *ngFor="let user of rejectedUserList;let i = index">
                     <td><label class="badge badge-danger">{{user.status}}</label></td>
                     <td>{{i+1}}</td>
-                    <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">{{Ids.AGENT + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
-                    <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">
+                      {{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">
+                      {{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">
+                      {{Ids.AGENT + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">
+                      {{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+                    <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">
+                      {{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
                     <td>{{user.userRole}}</td>
                     <td>{{user.firstName}} {{user.lastName}}</td>
                     <td>{{user.businessDetails[0]?.companyName}}</td>
-                    <td>{{user.mobile}}</td>
+                    <td>+91-{{user.mobile}}</td>
                     <td>{{user.emailId}}</td>
                     <td>{{user.businessDetails[0]?.address1}}</td>
-                    <td>{{user.createdDate | date: 'medium'}}</td>
+                    <td>{{user.createdDate | date: 'short'}}</td>
                     <!-- <td>{{user.createdBy}}</td> -->
-                    <td>{{user.lastModifiedDate | date: 'medium'}}</td>
+                    <td>{{user.lastModifiedDate | date: 'short'}}</td>
                     <!-- <td>{{user.lastModifiedBy}}</td> -->
                     <td>
 
@@ -170,6 +191,7 @@
                 </tbody>
               </table>
             </div>
+            </app-card>
           </ng-template>
         </ngb-tab>
 
@@ -202,7 +224,7 @@
               <th>E-mail</th>
               <th>Location</th>
               <th>Date of Creation</th>
-              <th>Last Modified Date</th>
+              <th>Last Mod. Date</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -210,15 +232,19 @@
             <tr href="kdkd" *ngFor="let user of selectedUserList;let i = index">
               <td><label class="badge badge-default">{{user.status}}</label></td>
               <td>{{i+1}}</td>
-              <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">{{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">{{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'CUSTOMER'" (click)="goToView(user)">
+                {{Ids.CUSTOMER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'SUPPLIER'" (click)="goToView(user)">
+                {{Ids.SUPPLIER + '-' + user.userDetialId}}</td>
               <td *ngIf="selectedRole === 'AGENT'" (click)="goToView(user)">{{Ids.AGENT + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">{{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
-              <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">{{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'CONTRACTOR'" (click)="goToView(user)">
+                {{Ids.CONTRACTOR + '-' + user.userDetialId}}</td>
+              <td *ngIf="selectedRole === 'TRANSPORTER'" (click)="goToView(user)">
+                {{Ids.TRANSPORTER + '-' + user.userDetialId}}</td>
               <td>{{user.userRole}}</td>
               <td>{{user.firstName}} {{user.lastName}}</td>
               <td>{{user.businessDetails[0]?.companyName}}</td>
-              <td>{{user.mobile}}</td>
+              <td>+91-{{user.mobile}}</td>
               <td>{{user.emailId}}</td>
               <td>{{user.businessDetails[0]?.address1}}</td>
               <td>{{user.createdDate | date:"medium"}}</td>
@@ -247,9 +273,10 @@
   <div class="btn-group mt-10">
     <button (click)="changeStatusOfSelectedUser('APPROVED')" *ngIf="selectedTab=='PENDING' || selectedTab =='REJECTED'"
       type="button" class="btn btn-success active excelBtn">Approve</button>&nbsp;
-      <div  *ngxPermissionsOnly="['USER_DELETE_PRIVILEGE']">
-    <button (click)="changeStatusOfSelectedUser('REJECTED')" *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'"
-      type="button" class="btn btn-danger active pdfBtn">Reject</button>&nbsp;
-      </div>
+    <div *ngxPermissionsOnly="['USER_DELETE_PRIVILEGE']">
+      <button (click)="changeStatusOfSelectedUser('REJECTED')"
+        *ngIf="selectedTab=='PENDING' || selectedTab =='APPROVED'" type="button"
+        class="btn btn-danger active pdfBtn">Reject</button>&nbsp;
+    </div>
   </div>
 </div>

@@ -3,7 +3,7 @@
       <app-card [hidHeader]="false" cardTitle="Search & View Auction Offer LOT" [options]="false"
         cardClass="user-profile-list">
         <div #epltable *ngIf="salesList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" datatable class="table table-striped table-bordered table-hover">
+          <table id="contentToConvert" datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -36,7 +36,7 @@
       <app-card [hidHeader]="false" cardTitle="View Selected Auction Offer LOT" [options]="false"
         cardClass="user-profile-list">
         <div *ngIf="selectedSalesList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table  class="table table-striped table-bordered table-hover">
+          <table  class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                   <th>Sr. No.</th>

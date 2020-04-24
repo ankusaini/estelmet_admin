@@ -3511,6 +3511,7 @@ body.box-layout {
     background: no-repeat center bottom, center calc(100% - 1px);
     background-size: 0 100%, 100% 100%;
     transition: background 0s ease-out;
+    padding-top: 7px;
 
     &:focus {
         border-bottom-color: transparent;
@@ -3525,7 +3526,8 @@ body.box-layout {
     position: relative;
 
     .form-control {
-        padding-left: 0;
+        padding-left: 10px;
+        padding-top: 7px;
         padding-right: 0;
     }
 

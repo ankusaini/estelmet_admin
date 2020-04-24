@@ -2,39 +2,32 @@
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select MR Id" navigationSymbol="1">
         <app-mr-list [component]="component" (selectedMrData)="getSelectedMr($event)"></app-mr-list>                                                                                                                                                                                                     
-       
-       
-        <!-- <div class="col-sm-12 centered-content m-t-20">
-          <div class="btn-group mt-10">
-            <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm" nextStep>Next</button>
-          </div>
-        </div> -->
       </wizard-step>
       <wizard-step stepTitle="Generate PC Id" navigationSymbol="2">
-        <h5>Products Under Above Selected MR Id </h5>
+        <h5 class="bg-clr-head1 p-10 f-14">Products Under Above Selected MR Id</h5> 
         <hr/>
         <div *ngIf="showData">
-       <app-add-product-cart [productList]="productList"></app-add-product-cart>
+        <app-add-product-cart [productList]="productList"></app-add-product-cart>
         </div>
-        <h5 class="m-t-20">Generate PC Id </h5>
+        <h5 class="bg-clr-head1 p-10 f-14">Generate PC Id</h5> 
         <hr/>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label mt-2">Material Req. Id</label>
-                    <div class="col-sm-3">
+                    <!-- <label for="inputEmail3" class="col-sm-2 col-form-label mt-2">Material Req. Id</label>
+                    <div class="col-sm-4 m-t-10 p-t-5">
                         <input type="text" [(ngModel)]="selectedMrId" class="form-control" id="inputEmail3" placeholder="" disabled>
-                    </div>
+                    </div> -->
+                    <div class="col-sm-2"><button type="submit"  (click)="generatePcId()" class="btn btn-success primary btn-sm m-t-10">Generate PC Id</button></div>
+                    <div class="col-sm-4 m-t-10 p-t-5 brdr1">#{{generatedPcId}}</div>
                 </div>
             </div>
         </div>
-        <button type="submit"  (click)="generatePcId()" class="btn btn-success primary btn-sm">Generate PC Id</button>
-        <label>Your PC id is :{{generatedPcId}}</label>
+        
         <div class="col-sm-12 centered-content">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-sm" (click)="submitGeneratedPcId()">Continue</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="submitGeneratedPcId()">Next <i  class="feather icon-arrow-right"></i></button>
           </div>
         </div>
       </wizard-step>
@@ -42,9 +35,6 @@
         <h5>Enter Transport Details </h5>
         <hr/>
         <app-transport-details (transportData)="getTransportData($event)"></app-transport-details>
-        
       </wizard-step>
-      <!-- (click)="savePcRecord()" -->
-      
     </wizard>
   </app-card>

@@ -3,7 +3,7 @@
       <app-card [hidHeader]="false" cardTitle="Search & Select MR Id " [options]="false"
         cardClass="user-profile-list">
         <div   *ngIf="mrList" class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table  datatable class="table table-striped table-bordered table-hover">
+          <table  datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -26,7 +26,7 @@
               <td (click)="routeToEditMr(mr.id)"  >{{mr.productShape}}</td>
               <td (click)="routeToEditMr(mr.id)"  >{{mr.sourceCompanyId}}</td>
               <td (click)="routeToEditMr(mr.id)"  >{{mr.sourceWarehouseId}}</td>
-              <td (click)="routeToEditMr(mr.id)"  >{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+              <td (click)="routeToEditMr(mr.id)"  >{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
               <td>
                   <span class="badge badge-light-success">{{mr.status}}</span>
                   <div class="overlay-edit">
@@ -48,7 +48,7 @@
       <app-card [hidHeader]="false" cardTitle="View Above Selected MR Id" [options]="false"
         cardClass="user-profile-list">
         <div #epltable class="dt-responsive table-responsive" cardClass="card-datatable">
-          <table id="contentToConvert" class="table table-striped table-bordered table-hover">
+          <table id="contentToConvert" class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                   <th>Sr. No.</th>
@@ -71,7 +71,7 @@
               <td>{{mr.productShape}}</td>
               <td>{{mr.sourceCompanyId}}</td>
               <td>{{mr.sourceWarehouseId}}</td>
-              <td>{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+              <td>{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
               <td>
                   <span class="badge badge-light-success">{{mr.status}}</span>
                   <div class="overlay-edit">
@@ -88,6 +88,7 @@
   
     </div>
   </div>
-<button type="submit" class="btn btn-success active" (click)="exportToExcel()">Excel</button>&nbsp;
-<!-- <button type="submit" class="btn btn-danger active" (click)="print()">Print</button>&nbsp; -->
-<button type="submit" class="btn btn-danger active" (click)="exportToPDF()">PDF</button>&nbsp;
+  <button type="submit" class="btn btn-success active excelBtn" (click)="exportToExcel()"><i  class="feather icon-menu"></i> Excel</button>&nbsp;
+  <button type="submit" class="btn btn-danger active printBtn"><i  class="feather icon-printer"></i> Print</button>&nbsp;
+  <button type="submit" class="btn btn-danger active pdfBtn" (click)="exportToPDF()"><i  class="feather icon-file"></i> PDF</button>&nbsp;
+  <button type="submit" class="btn btn-warning active copyBtn"><i  class="feather icon-copy"></i> Copy</button>&nbsp;

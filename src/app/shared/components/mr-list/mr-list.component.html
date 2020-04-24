@@ -1,9 +1,10 @@
-        <h5>Search & Select MR Id </h5>
+        <h5 class="bg-clr-head1 p-10 f-14">Search & Select MR Id</h5> 
         <hr/>
         <div class="row">
           <div class="col-md-12">
+            <app-card [hidHeader]="true"  cardClass="user-profile-list">
               <div *ngIf="mrList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover">
+                <table datatable class="table table-striped table-hover">
                   <thead>
                     <tr>
                       <th>Sr. No.</th>
@@ -26,7 +27,7 @@
                       <td>{{mr.productShape}}</td>
                       <td>COM-{{mr.sourceCompanyId}}</td>
                       <td>WAR-{{mr.sourceWarehouseId}}</td>
-                      <td>{{mr.purchaseHistory[0].createdDate | date: 'medium'}}</td>
+                      <td>{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
                       <td>
                         <!-- <span class="badge badge-light-success">{{mr.status}}</span> -->
                         <div class="overlay-edit">
@@ -34,23 +35,23 @@
                         </div>
                       </td>
                      </tr> 
-                    
-        
                   </tbody>
                 </table>
               </div>
+            </app-card>
           </div>
         </div>
        <div class="row">
-         <h5 class="m-t-20">Your Select MR Id :{{selectedMrId}}</h5>
+         <div class="col-md-12">
+           <h5 class="m-t-20 bg-clr-head1 f-14 p-10">Your Select MR ID. : {{selectedMrId}}</h5>
+         </div>
         <hr/>
        </div>
-
-        <div class="col-sm-12 centered-content m-t-20">
-          <div class="btn-group mt-10">
+        <div class="col-sm-12 centered-content">
+          <div class="btn-group">
             <!-- <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp; -->
             <!-- [disabled]="!selectedMr"  -->
-            <button *ngIf="component=='pc'" type="button" class="btn btn-primary btn-sm"   (click)="submitSelectMrId()">Next</button>
+            <button *ngIf="component=='pc'" type="button" class="btn btn-primary btn-sm"   (click)="submitSelectMrId()">Next <i  class="feather icon-arrow-right"></i></button>
           </div>
         </div>
     

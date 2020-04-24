@@ -36,6 +36,15 @@ export class UserService {
     });
   }
 
+  searchUserByProduct(body) {
+    // const params: HttpParams = new HttpParams()
+    //   .set('userRole', role);
+    return new Observable<any>(obs => {
+      this.apiService.post(ApiUrl.countByUserRole, body).subscribe(res => {
+        obs.next(res.data);
+      });
+    });
+  }
 
   getCountByUserRole() {
     // const params: HttpParams = new HttpParams()

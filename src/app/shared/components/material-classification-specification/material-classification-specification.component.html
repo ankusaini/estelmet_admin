@@ -1,10 +1,10 @@
 <form [formGroup]="productForm" class="editForm" (ngSubmit)="productFormOnSubmit()" novalidate>
-  <h5>Material Classification</h5>
+  <h5 class="bg-clr-head1 p-10 f-14">Material Classification</h5>
   <hr>
   <div class="row">
     <div class="col-md-3 col-xs-6">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Product Type <small class="asterik_sign">*</small></label>
+        <label class="f-12" for="exampleFormControlSelect1">Product Type <small class="asterik_sign">*</small></label>
          <fieldset formGroupName="productType"> 
            <select (change)="setValue($event,'productType')" formControlName="id" class="form-control" id="exampleFormControlSelect1"> 
              <option value='' disabled>Select</option>
@@ -16,9 +16,9 @@
         </select>
          </fieldset>
          <small *ngIf="f.productType['controls']['id'].value === '' && (f.productType['controls']['id'].dirty || f.productType['controls']['id'].touched)"
-         id="passwordHelpBlock" class="form-text text-muted">Type should be
+         id="passwordHelpBlock" class="form-text text-danger">Type should be
                   required.</small> 
-         <!-- <label *ngIf="f.productType.controls.id.value === '' && (productForm.productType.controls.id.dirty || productForm.productType.controls.id.touched)" id="validation-type-error"
+         <!-- <label class="f-12" *ngIf="f.productType.controls.id.value === '' && (productForm.productType.controls.id.dirty || productForm.productType.controls.id.touched)" id="validation-type-error"
                   class="error jquery-validation-error small form-text ">Product Type should be
                   required.</label> -->
         
@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-3 col-xs-6">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
+        <label class="f-12" for="exampleFormControlSelect1">Product Category <small class="asterik_sign">*</small></label>
         <fieldset formGroupName="productCategory">
           <select (change)="setValue($event,'productCategory')" formControlName="id" class="form-control"
             id="exampleFormControlSelect1">
@@ -35,12 +35,12 @@
           </select>
         </fieldset>
         <small *ngIf="f.productCategory['controls']['id'].value === '' && (f.productCategory['controls']['id'].dirty || f.productCategory['controls']['id'].touched)"
-        id="passwordHelpBlock" class="form-text text-muted">Category should be required.</small>
+        id="passwordHelpBlock" class="form-text text-danger">Category should be required.</small>
       </div>
     </div>
     <div class="col-md-3 col-xs-6">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
+        <label class="f-12" for="exampleFormControlSelect1">Product Shape <small class="asterik_sign">*</small></label>
         <fieldset formGroupName="productShape">
           <select (change)="setValue($event,'productShape')" formControlName="id" class="form-control"
             id="exampleFormControlSelect1">
@@ -48,13 +48,13 @@
             <option *ngFor="let item of productShapeList" [value]="item?.id">{{ item?.productShape }}</option>
           </select>
         </fieldset>
-        <small *ngIf="f.productShape['controls']['id'].value == '' && (f.productShape['controls']['id'].dirty || f.productShape['controls']['id'].touched)" id="passwordHelpBlock" class="form-text text-muted">Shape should be
+        <small *ngIf="f.productShape['controls']['id'].value == '' && (f.productShape['controls']['id'].dirty || f.productShape['controls']['id'].touched)" id="passwordHelpBlock" class="form-text text-danger">Shape should be
                   required.</small>
       </div>
     </div>
     <div class="col-md-3 col-xs-6">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Product Class <small class="asterik_sign">*</small></label>
+        <label class="f-12" for="exampleFormControlSelect1">Product Class <small class="asterik_sign">*</small></label>
         <fieldset formGroupName="productClass">
           <select (change)="setValue($event,'productClass')" formControlName="id" class="form-control"
             id="exampleFormControlSelect1">
@@ -63,32 +63,32 @@
           </select>
         </fieldset>
         <small *ngIf="f.productClass['controls']['id'].value === '' && (f.productClass['controls']['id'].dirty || f.productClass['controls']['id'].touched)" 
-        id="passwordHelpBlock" class="form-text text-muted">Class should be
+        id="passwordHelpBlock" class="form-text text-danger">Class should be
                   required.</small>
       </div>
     </div>
   </div>
-  <h5>Material Specification</h5>
+  <h5 class="bg-clr-head1 p-10 f-14">Material Specification</h5>
   <hr>
   <div class="row">
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Thickness Range<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="validationCustom02">Thickness Range<small class="asterik_sign">*</small></label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="thicknessMin" type="text" class="form-control">
+            <input formControlName="thicknessMin" type="text" class="form-control" placeholder="Min">
             <small class="form-text text-muted">(mm)</small>
-            <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.touched || f.thicknessMin.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+            <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.touched || f.thicknessMin.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="thicknessMax" type="text" class="form-control">
+            <input formControlName="thicknessMax" type="text" class="form-control" placeholder="Max">
             <small class="form-text text-muted">(mm)</small>
-            <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-danger"
             >Maximum thickness should be greater than minimum thickness.</small
           >
-          <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.touched || f.thicknessMax.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+          <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.touched || f.thicknessMax.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
@@ -97,22 +97,22 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Width Range<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="validationCustom02">Width Range<small class="asterik_sign">*</small></label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="widthMin" type="text" class="form-control">
+            <input formControlName="widthMin" type="text" class="form-control" placeholder="Min">
             <small class="form-text text-muted">(mm)</small>
-            <small *ngIf="f.widthMin.value == '' && (f.widthMin.touched || f.widthMin.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+            <small *ngIf="f.widthMin.value == '' && (f.widthMin.touched || f.widthMin.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="widthMax" type="text" class="form-control">
+            <input formControlName="widthMax" type="text" class="form-control" placeholder="Max">
             <small class="form-text text-muted">(mm)</small>
-            <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock" class="form-text text-danger"
             >Maximum width should be greater than minimum width.</small
           >
-          <small *ngIf="f.widthMax.value == '' && (f.widthMax.touched || f.widthMax.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+          <small *ngIf="f.widthMax.value == '' && (f.widthMax.touched || f.widthMax.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
@@ -121,22 +121,22 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Length Range<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="validationCustom02">Length Range<small class="asterik_sign">*</small></label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="lengthMin" type="text" class="form-control">
+            <input formControlName="lengthMin" type="text" class="form-control" placeholder="Min">
             <small class="form-text text-muted">(mm)</small>
-            <small *ngIf="f.lengthMin.value == '' && (f.lengthMin.touched || f.lengthMin.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+            <small *ngIf="f.lengthMin.value == '' && (f.lengthMin.touched || f.lengthMin.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
-            <input formControlName="lengthMax" type="text" class="form-control">
+            <input formControlName="lengthMax" type="text" class="form-control" placeholder="Max">
             <small class="form-text text-muted">(mm)</small>
-            <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock" class="form-text text-muted"
+            <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock" class="form-text text-danger"
             >Maximum length should be greater than minimum length.</small
           >
-          <small *ngIf="f.lengthMax.value == '' && (f.lengthMax.touched || f.lengthMax.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+          <small *ngIf="f.lengthMax.value == '' && (f.lengthMax.touched || f.lengthMax.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
@@ -145,30 +145,30 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Hardness Range<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="validationCustom02">Hardness Range<small class="asterik_sign">*</small></label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
             <fieldset formGroupName="hardnessMin">
 
               <select (change)="setValueTwoField($event,'hardnessMin','productHardness')" formControlName="id"
                 class="form-control" id="exampleFormControlSelect1">
-             <option value='' disabled>Select</option>
+             <option value='' disabled>Min</option>
                 <option *ngFor="let item of productHarndessList" [value]="item?.id">{{ item?.description }}</option>
               </select>
             </fieldset>
             <small *ngIf="f.hardnessMin['controls']['id'].value === '' && (f.hardnessMin['controls']['id'].dirty || f.hardnessMin['controls']['id'].touched)"
-            id="passwordHelpBlock" class="form-text text-muted">Minimum Hardness should be
+            id="passwordHelpBlock" class="form-text text-danger">Minimum Hardness should be
                      required.</small>
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
             <fieldset formGroupName="hardnessMax">
               <select (change)="setValueTwoField($event,'hardnessMax','productHardness')" formControlName="id"
                 class="form-control" id="exampleFormControlSelect1">
-             <option value='' disabled>Select</option>
+             <option value='' disabled>Max</option>
                 <option *ngFor="let item of productHarndessList" [value]="item?.id">{{ item?.description }}</option>
               </select>
               <small *ngIf="f.hardnessMax['controls']['id'].value === '' && (f.hardnessMax['controls']['id'].dirty || f.hardnessMax['controls']['id'].touched)"
-              id="passwordHelpBlock" class="form-text text-muted">Maximum Hardness should be
+              id="passwordHelpBlock" class="form-text text-danger">Maximum Hardness should be
                        required.</small>
             </fieldset>
           </div>
@@ -177,19 +177,19 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Temper Range<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="validationCustom02">Temper Range<small class="asterik_sign">*</small></label>
         <div class="row">
           <div class="col-md-6 col-xs-6 mb-3">
             <fieldset formGroupName="temperMin">
 
               <select (change)="setValueTwoField($event,'temperMin','productTemper')" formControlName="id"
                 class="form-control" id="exampleFormControlSelect1">
-             <option value='' disabled>Select</option>
+             <option value='' disabled>Min</option>
                 <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}</option>
               </select>
             </fieldset>
             <small *ngIf="f.temperMin['controls']['id'].value === '' && (f.temperMin['controls']['id'].dirty || f.temperMin['controls']['id'].touched)"
-            id="passwordHelpBlock" class="form-text text-muted">Minimum Temper should be
+            id="passwordHelpBlock" class="form-text text-danger">Minimum Temper should be
                      required.</small>
           </div>
           <div class="col-md-6 col-xs-6 mb-3">
@@ -197,12 +197,12 @@
 
               <select (change)="setValueTwoField($event,'temperMax','productTemper')" formControlName="id"
                 class="form-control" id="exampleFormControlSelect1">
-             <option value='' disabled>Select</option>
+             <option value='' disabled>Max</option>
                 <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}</option>
               </select>
             </fieldset>
             <small *ngIf="f.temperMax['controls']['id'].value === '' && (f.temperMax['controls']['id'].dirty || f.temperMax['controls']['id'].touched)"
-            id="passwordHelpBlock" class="form-text text-muted">Maximum Temper should be
+            id="passwordHelpBlock" class="form-text text-danger">Maximum Temper should be
                      required.</small>
           </div>
         </div>
@@ -210,12 +210,12 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Height<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="validationCustom02">Height<small class="asterik_sign">*</small></label>
         <input formControlName="heigth" type="text" class="form-control" placeholder="000">
         <small class="form-text text-muted">(mm)</small>
-        <small *ngIf="f.heigth.value !== '' && !f.heigth.valid " id="passwordHelpBlock" class="form-text text-muted"
+        <small *ngIf="f.heigth.value !== '' && !f.heigth.valid " id="passwordHelpBlock" class="form-text text-danger"
                 >This field only accepts numbers and this symbol:.</small>
-                <small *ngIf="f.heigth.value == '' && (f.heigth.touched || f.heigth.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+                <small *ngIf="f.heigth.value == '' && (f.heigth.touched || f.heigth.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
       </div>
@@ -225,7 +225,7 @@
   <div class="row mt-3">
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Coating</label>
+        <label class="f-12" for="exampleFormControlSelect1">Coating</label>
         <fieldset formGroupName="productCoating">
 
           <select (change)="setValue($event,'productCoating')" formControlName="id" class="form-control"
@@ -238,7 +238,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Defect</label>
+        <label class="f-12" for="exampleFormControlSelect1">Defect</label>
         <fieldset formGroupName="productDefect">
           <select (change)="setValue($event,'productDefect')" formControlName="id" class="form-control"
             id="exampleFormControlSelect1">
@@ -251,7 +251,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Origin</label>
+        <label class="f-12" for="exampleFormControlSelect1">Origin</label>
         <fieldset formGroupName="productOrigin">
 
           <select (change)="setValue($event,'productOrigin')" formControlName="id" class="form-control"
@@ -265,7 +265,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label>Oiling</label>
+        <label class="f-12">Oiling</label>
         <fieldset formGroupName="productOiling">
 
           <select (change)="setValue($event,'productOiling')" formControlName="id" class="form-control"
@@ -278,7 +278,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Surface</label>
+        <label class="f-12" for="exampleFormControlSelect1">Surface</label>
         <fieldset formGroupName="productSurfaceCoating">
 
           <select (change)="setValue($event,'productSurfaceCoating')" formControlName="id" class="form-control"
@@ -292,7 +292,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Annealing</label>
+        <label class="f-12" for="exampleFormControlSelect1">Annealing</label>
         <fieldset formGroupName="productAnnealing">
 
           <select (change)="setValue($event,'productAnnealing')" formControlName="id" class="form-control"
@@ -309,7 +309,7 @@
   <div class="row mt-3">
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Finish</label>
+        <label class="f-12" for="exampleFormControlSelect1">Finish</label>
         <fieldset formGroupName="productFinish">
 
           <select (change)="setValue($event,'productFinish')" formControlName="id" class="form-control"
@@ -322,7 +322,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Packaging</label>
+        <label class="f-12" for="exampleFormControlSelect1">Packaging</label>
         <fieldset formGroupName="productPackaging">
 
           <select (change)="setValue($event,'productPackaging')" formControlName="id" class="form-control"
@@ -336,31 +336,31 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Gross Wt.<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="exampleFormControlSelect1">Gross Wt.<small class="asterik_sign">*</small></label>
         <input formControlName="gwt" type="text" class="form-control">
         <small class="form-text text-muted">(mt.)</small>
-        <small *ngIf="f.gwt.value !== '' && !f.gwt.valid " id="passwordHelpBlock" class="form-text text-muted"
+        <small *ngIf="f.gwt.value !== '' && !f.gwt.valid " id="passwordHelpBlock" class="form-text text-danger"
                 >This field only accepts numbers and this symbol:.</small>
-                <small *ngIf="f.gwt.value == '' && (f.gwt.touched || f.gwt.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+                <small *ngIf="f.gwt.value == '' && (f.gwt.touched || f.gwt.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
       </div>
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Net Wt.<small class="asterik_sign">*</small></label>
+        <label class="f-12" for="exampleFormControlSelect1">Net Wt.<small class="asterik_sign">*</small></label>
         <input formControlName="nwt" type="text" class="form-control">
         <small class="form-text text-muted">(mt.)</small>
-        <small *ngIf="f.nwt.value !== '' && !f.nwt.valid " id="passwordHelpBlock" class="form-text text-muted"
+        <small *ngIf="f.nwt.value !== '' && !f.nwt.valid " id="passwordHelpBlock" class="form-text text-danger"
                 >This field only accepts numbers and this symbol:.</small>
-                <small *ngIf="f.nwt.value == '' && (f.nwt.touched || f.nwt.dirty)" id="passwordHelpBlock" class="form-text text-muted"
+                <small *ngIf="f.nwt.value == '' && (f.nwt.touched || f.nwt.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Other Remarks</label>
+        <label class="f-12" for="exampleFormControlSelect1">Other Remarks</label>
         <textarea formControlName="remarks" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
       </div>
     </div>

@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { StaticDataService } from 'src/app/shared/services/data/static-data.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
+import { UserMini, UserRole, Status } from '../../../../shared/Models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
 
 @Component({
@@ -17,9 +19,12 @@ export class SelectDetailsCreateLotComponent implements OnInit {
   public selectDetailsForm : FormGroup;
   @Output() selectedDetailsId : EventEmitter<any> = new EventEmitter<any>();
   public companyList: Company[] = [];
+  public userMini: UserMini[] = [];
 
-  constructor(private toastr: ToastrService,
-    private staticData: StaticDataService
+  constructor(
+    private toastr: ToastrService,
+    private staticData: StaticDataService,
+    private userService: UserService
     ) {
    }
 
@@ -43,9 +48,11 @@ export class SelectDetailsCreateLotComponent implements OnInit {
 
   getAllCompany() {
     this.staticData.getAllCompany().subscribe(data => {
-      console.log("company data"+data)
       this.companyList = data;
     });
+    this.userService.getAllUserByUserNameAndCompany(UserRole.CUSTOMER, Status.APPROVED).subscribe(
+      data => this.userMini =  data
+    );
   }
 
   createForm() {

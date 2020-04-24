@@ -172,7 +172,7 @@ export class CreateUserComponent implements OnInit {
     this.userService.saveUser(this.userDto).subscribe(data => {
       this.userDataService.add(data);
       this.wizard.navigation.reset();
-      this.router.navigate(['/users/profile', data.id]);
+      this.router.navigate(['/users/profile/'+ data.id]);
       this.toastrService.success('Your account created successfully!');
     }, error => {
       console.log(error);

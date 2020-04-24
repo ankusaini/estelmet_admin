@@ -5,8 +5,9 @@
         <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
           <ngb-tab title="Pending" id="pendingTab" class="mb-3">
             <ng-template ngbTabContent>
+              <app-card [hidHeader]="true"  cardClass="user-profile-list">
               <div *ngIf="pendingProductList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <table datatable class="table table-striped table-xs table-hover" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>Status</th>
@@ -18,7 +19,7 @@
                       <th>Warehouse ID</th>
                       <th>Machine ID</th>
                       <th>Date of Creation</th>
-                      <th>Last Modified Date</th>
+                      <th>Last Mod. Date</th>
                        <th>Action</th>
                       <!-- th>Created By</th>
                       <th>Last Modified By</th> -->
@@ -36,8 +37,8 @@
                       <td>COM-{{product?.companyId}}</td>
                       <td>WAR-{{product?.warehouseId}}</td>
                       <td>M-{{product?.machineDetailId}}</td>
-                      <td>{{product?.createdDate | date: 'medium'}}</td>
-                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdDate | date: 'short'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'short'}}</td>
                        <td>
                   <div class="overlay-edit">
                     <button (click)="addProductToList(product)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
@@ -50,12 +51,14 @@
                   </tbody>
                 </table>
               </div>
+            </app-card>
             </ng-template>
           </ngb-tab>
           <ngb-tab title="Approved" id="approvedTab">
             <ng-template ngbTabContent>
+              <app-card [hidHeader]="true"  cardClass="user-profile-list">
               <div *ngIf="approvedProductList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <table datatable class="table table-striped table-xs table-hover" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>Status</th>
@@ -67,7 +70,7 @@
                       <th>Warehouse ID</th>
                       <th>Machine ID</th>
                       <th>Date of Creation</th>
-                      <th>Last Modified Date</th>
+                      <th>Last Mod. Date</th>
                        <th>Action</th>
                       <!-- <th>Created By</th>
                       <th>Last Modified By</th> -->
@@ -85,8 +88,8 @@
                       <td>COM-{{product?.companyId}}</td>
                       <td>WAR-{{product?.warehouseId}}</td>
                       <td>M-{{product?.machineDetailId}}</td>
-                      <td>{{product?.createdDate | date: 'medium'}}</td>
-                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdDate | date: 'short'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'short'}}</td>
                       <!-- <td>{{product?.createdBy}}</td>
                       <td>{{product?.lastModifiedBy}}</td> -->
                        <td>
@@ -99,12 +102,14 @@
                   </tbody>
                 </table>
               </div>
+            </app-card>
             </ng-template>
           </ngb-tab>
           <ngb-tab title="Rejected" id="rejectedTab">
             <ng-template ngbTabContent>
+              <app-card [hidHeader]="true"  cardClass="user-profile-list">
               <div *ngIf="rejectedProductList" class="dt-responsive table-responsive" cardClass="card-datatable">
-                <table datatable class="table table-striped table-bordered table-hover" style="width: 100%;">
+                <table datatable class="table table-striped table-xs table-hover" style="width: 100%;">
                   <thead>
                     <tr>
                       <th>Status</th>
@@ -116,7 +121,7 @@
                       <th>Warehouse ID</th>
                       <th>Machine ID</th>
                       <th>Date of Creation</th>
-                      <th>Last Modified Date</th>
+                      <th>Last Mod. Date</th>
                        <th>Action</th>
                       <!-- <th>Created By</th>
                       <th>Last Modified By</th> -->
@@ -134,8 +139,8 @@
                       <td>COM-{{product?.companyId}}</td>
                       <td>WAR-{{product?.warehouseId}}</td>
                       <td>M-{{product?.machineDetailId}}</td>
-                      <td>{{product?.createdDate | date: 'medium'}}</td>
-                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdDate | date: 'short'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'short'}}</td>
                       <!-- <td>{{product?.createdBy}}</td>
                       <td>{{product?.lastModifiedBy}}</td> -->
                        <td>
@@ -148,6 +153,7 @@
                   </tbody>
                 </table>
               </div>
+            </app-card>
             </ng-template>
           </ngb-tab>
   
@@ -162,7 +168,7 @@
     <div class="col-md-12">
         <app-card [hidHeader]="false" cardTitle="Take action on above Selected Processing" [options]="false" cardClass="user-profile-list">
             <div  *ngIf="selectedProductList && selectedProductList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-                 <table datatable class="table table-striped table-bordered table-hover">
+                 <table datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                     <th>Status</th>
@@ -174,7 +180,7 @@
                       <th>Warehouse ID</th>
                       <th>Machine ID</th>
                       <th>Date of Creation</th>
-                      <th>Last Modified Date</th>
+                      <th>Last Mod. Date</th>
                        <th>Action</th>
               </tr>
             </thead>
@@ -190,8 +196,8 @@
                       <td>COM-{{product?.companyId}}</td>
                       <td>WAR-{{product?.warehouseId}}</td>
                       <td>M-{{product?.machineDetailId}}</td>
-                      <td>{{product?.createdDate | date: 'medium'}}</td>
-                      <td>{{product?.lastModifiedDate | date: 'medium'}}</td>
+                      <td>{{product?.createdDate | date: 'short'}}</td>
+                      <td>{{product?.lastModifiedDate | date: 'short'}}</td>
               <td>
                   <div class="overlay-edit">
                     <button (click)="removeSelectedProduct(product)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-trash"></i></button>

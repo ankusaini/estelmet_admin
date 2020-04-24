@@ -42,6 +42,7 @@ export class GroupApprovalComponent implements OnInit {
       },
       inputPlaceholder: 'Select Group Type',
       allowOutsideClick: false,
+      width:'300px',
       showCancelButton: true,
       cancelButtonText: 'Cancel',
       confirmButtonText: 'Search',

@@ -6,7 +6,7 @@
         <ngb-tab title="Pending" id="pendingTab" class="mb-3">
           <ng-template ngbTabContent>
             <div *ngIf="pendingDeliveryOrderlist && pendingDeliveryOrderlist.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-             <table datatable class="table table-striped table-bordered table-hover">
+             <table datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -44,7 +44,7 @@
         <ngb-tab title="Approved" id="approvedTab">
           <ng-template ngbTabContent>
             <div *ngIf="approvedDeliveryOrderlist && approvedDeliveryOrderlist.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-              <table datatable class="table table-striped table-bordered table-hover">
+              <table datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -82,7 +82,7 @@
         <ngb-tab title="Rejected" id="rejectedTab">
           <ng-template ngbTabContent>
             <div  *ngIf="rejecetdDeliveryOrderlist && rejecetdDeliveryOrderlist.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-               <table datatable class="table table-striped table-bordered table-hover">
+               <table datatable class="table table-striped table-xs table-hover">
             <thead>
               <tr>
                 <th>Sr. No.</th>
@@ -131,7 +131,7 @@
     <div class="col-md-12">
         <app-card [hidHeader]="false" cardTitle="Take action on above Selected Deliver Order" [options]="false" cardClass="user-profile-list">
             <div  *ngIf="selectdeliveryOrderList && selectdeliveryOrderList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
-                 <table datatable class="table table-striped table-bordered table-hover">
+                 <table datatable class="table table-striped table-xs table-hover">
            <thead>
               <tr>
                 <th>Sr. No.</th>

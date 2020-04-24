@@ -26,6 +26,7 @@ export class UserBuisnessComponent implements OnInit {
 
   ngOnInit() {
     if(this.selectedUser) {
+      console.log(this.selectedUser);
       this.buisnessDetailForm = this._fb.group({
         companyName : new FormControl(this.selectedUser.businessDetails[0].companyName,[Validators.required, Validators.minLength(3)]),
         address1 : new FormControl(this.selectedUser.businessDetails[0].address1,[Validators.required,  CustomValidator.addressValidation]),
@@ -49,7 +50,7 @@ export class UserBuisnessComponent implements OnInit {
       this.selectedUser.businessDetails[0].address2 = this.buisnessDetailForm.value.address2;
       this.selectedUser.businessDetails[0].city = this.buisnessDetailForm.value.city;
       this.selectedUser.businessDetails[0].state = this.buisnessDetailForm.value.state;
-      this.selectedUser.businessDetails[0].pinCode = this.buisnessDetailForm.value.pinCode;
+      this.selectedUser.businessDetails[0].pinCode = this.buisnessDetailForm.value.pincode;
       this.selectedUser.businessDetails[0].gst = this.buisnessDetailForm.value.gst;
       this.selectedUser.businessDetails[0].businessEmail = this.buisnessDetailForm.value.emailBusiness;
       this.selectedUser.businessDetails[0].mobile = this.buisnessDetailForm.value.mobile1;

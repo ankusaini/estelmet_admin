@@ -63,8 +63,8 @@ export class TradeDetailsComponent implements OnInit {
     productClass: new FormControl('', [Validators.required]),
     thicknessMin: new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
     thicknessMax: new FormControl('', [Validators.required, CustomValidator.compondValueValidate, MaxthicknessConfirming]),
-    temperMin: new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
-    temperMax: new FormControl('', [Validators.required, CustomValidator.compondValueValidate, MaxtemperConfirming]),
+    temperMin: new FormControl('', [Validators.required]),
+    temperMax: new FormControl('', [Validators.required]),
     lengthMin: new FormControl('', [CustomValidator.compondValueValidate]),
     lengthMax: new FormControl('', [CustomValidator.compondValueValidate, MaxlengthConfirming]),
     widthMin: new FormControl('', [CustomValidator.compondValueValidate]),
@@ -88,6 +88,7 @@ export class TradeDetailsComponent implements OnInit {
     this.getProductClass();
     this.getProductType();
     this.getProductShape();
+    this.getProductTempor();
   }
 
   tradeDetailsFormOnSubmit() {

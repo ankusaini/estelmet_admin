@@ -8,6 +8,7 @@ import {
   DeliveryOrder
 } from 'src/app/shared/Models/sales.model';
 import { CustomerOrder } from './customer-order.model';
+import { SalesLead } from './salesLead.model';
 
 // export class Request {
 //   purchase: Purchase;
@@ -29,6 +30,7 @@ export interface RequestP {
   purchase?: Purchase;
   grn?: Grn;
   sales?: Sales;
+  salesLead?: SalesLead;
   customerOrder?: CustomerOrder;
   deliveryOrder?: DeliveryOrder;
   invoice?: Invoice;
@@ -40,6 +42,8 @@ export interface ResponseP {
   purchase: Purchase;
   grn: Grn;
   sales: Sales;
+  salesLead: SalesLead;
+  salesLeadList: SalesLead[];
   customerOrder: CustomerOrder;
   customerOrderList: CustomerOrder[];
   deliveryOrder: DeliveryOrder;

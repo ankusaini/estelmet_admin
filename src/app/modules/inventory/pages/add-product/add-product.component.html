@@ -1,4 +1,8 @@
-<button class="btn btn-success" (click)="basicSwal()">Choose Another Type </button>
+<div class="row">
+  <div class="col-md-12"> 
+    <button class="btn btn-success btn-sm changeBtn" (click)="basicSwal()" style="margin: 45px 0px 10px;float:right;">Choose Another Type </button>
+  </div>
+</div>
 
 <app-card cardTitle="Add Product" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
