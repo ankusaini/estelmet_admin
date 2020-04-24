@@ -1,21 +1,32 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
 
 @Component({
   selector: 'app-co-details',
   templateUrl: './co-details.component.html',
-  styleUrls: ['./co-details.component.scss']
+  styleUrls: ['./co-details.component.scss'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class CoDetailsComponent implements OnInit {
+export class CoDetailsComponent implements OnInit, OnChanges {
 
   public coDetails: FormGroup;
   @Output() coData: EventEmitter<any> = new EventEmitter<any>();
-
+  @Input() custumerOrderData: CustomerOrder;
   constructor(private toastr: ToastrService) { }
 
   ngOnInit() {
     this.createForm();
+    if(this.custumerOrderData) {
+      this.coDetails.patchValue(this.custumerOrderData);
+    }
+  }
+
+  ngOnChanges() {
+    if(this.custumerOrderData) {
+      this.coDetails.patchValue(this.custumerOrderData);
+    }
   }
 
   createForm() {

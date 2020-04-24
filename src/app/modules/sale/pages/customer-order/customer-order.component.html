@@ -1,16 +1,22 @@
 <app-card cardTitle="Generate Sales Offer Id" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
       <wizard-step stepTitle="Select Details To Create Lot ID" navigationSymbol="1">
-      <app-select-details-create-lot (selectedDetailsId)="getSelectedDetailsId($event)"></app-select-details-create-lot>
+      <app-select-details-create-lot [custumerOrderData] = "custumerOrderData"
+      (selectedDetailsId)="getSelectedDetailsId($event)"
+      >
+      </app-select-details-create-lot>
       </wizard-step>
       <wizard-step stepTitle="Customer Order Details" navigationSymbol="2">
-        <app-co-details (coData)="getCoData($event)"></app-co-details>
+        <app-co-details [custumerOrderData] = "custumerOrderData"
+        (coData)="getCoData($event)"></app-co-details>
       </wizard-step>
       <wizard-step stepTitle="Search & View Sales Offer" navigationSymbol="3">
-        <app-search-view-offer (outputSelectedId)="getSelectedOfferId($event)"></app-search-view-offer>
+        <app-search-view-offer [custumerOrderData] = "custumerOrderData"
+        (outputSelectedId)="getSelectedOfferId($event)"></app-search-view-offer>
       </wizard-step>
       <wizard-step stepTitle="Other Details" navigationSymbol="4">
-        <app-other-details (outputOtherDetails)="getOtherDetails($event)"></app-other-details>
+        <app-other-details [custumerOrderData] = "custumerOrderData"
+        (outputOtherDetails)="getOtherDetails($event)"></app-other-details>
       </wizard-step>
     </wizard>
   </app-card>

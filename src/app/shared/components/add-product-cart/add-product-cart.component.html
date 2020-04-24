@@ -30,7 +30,7 @@
                 <th>Gross Wt.</th>
                 <th>Net Wt.</th>
                 <th>Remarks</th>
-                <th *ngIf= "component !== 'dispatch'">Action</th>
+                <th *ngIf= "component !== 'dispatch'" >Action</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@
                     <i class="feather icon-check-circle"></i>
                   </button>
                   <button 
-                    [hidden]="!(component === '')"
+                    [hidden]="!(component === '') || component === 'co'"
                     (click)="deleteProduct(product)" 
                     type="button" 
                     class="btn btn-icon btn-danger" >

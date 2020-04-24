@@ -7,6 +7,8 @@ import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { ProcessingService } from '../../service/processing.service';
+import { ToastrService } from 'ngx-toastr';
+import { Processing } from 'src/app/shared/Models/processing.model';
 @Component({
   selector: 'app-edit-processing',
   templateUrl: './edit-processing.component.html',
@@ -15,7 +17,7 @@ import { ProcessingService } from '../../service/processing.service';
 export class EditProcessingComponent implements OnInit {
   public processingId: any;
   routerSubscription: any;
-  public processingData: any;
+  public processingData: Processing;
   public productList: Product[];
   processingDetails: FormGroup;
   productDetails: FormGroup;
@@ -57,6 +59,7 @@ export class EditProcessingComponent implements OnInit {
     private lightboxEvent: LightboxEvent,
     private lighboxConfig: LightboxConfig,
     private route: ActivatedRoute,
+    private toastr: ToastrService,
     private processingService: ProcessingService,
     private staticData: StaticDataService
   ) {
@@ -220,9 +223,15 @@ export class EditProcessingComponent implements OnInit {
   //   console.log(this.productDetails.value);
   // }
 
-  submitProcessingDetails() {
-    console.log(this.processingDetails.value);
-  }
+  // submitProcessingDetails() {
+  //   if(this.processingDetails.valid) {
+  //     this.processingData.jobWorkType = this.processingDetails.value.jobWorkType;
+  //     this.processingData.machineDetailId = this.processingDetails.value.machineDetailId;
+
+  //   } else {
+  //     this.toastr.error("Invalid Details!");
+  //   }
+  // }
 
   getProductData(data) {
     console.log(data);
@@ -230,4 +239,24 @@ export class EditProcessingComponent implements OnInit {
     console.log(this.productList);
     this.editProfile = false; 
   }
+
+  updateProcessing() {
+    if(this.processingDetails.valid) {
+      console.log(this.processingData);
+    this.processingData.jobWorkType = this.processingDetails.value.jobWorkType;
+    this.processingData.machineDetailId = this.processingDetails.value.machineDetailId;
+    this.processingData.productList = this.productList;
+    // let url = '/processing/updateProcessing';
+    let url = '/inventory/productProcessing/updateProcessing';
+    this.processingService.updateProcessing(url, this.processingData).subscribe( res => {
+      console.log(res);
+      this.toastr.success("Update Successfully!");
+    }, error => {
+      console.log(error);
+    })
+    } else {
+      this.toastr.error("Invalid Details!");
+    }
+  }
+
 }

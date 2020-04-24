@@ -88,6 +88,10 @@ const routes: Routes= [
     {
         path: 'searchCo',
         component: SearchViewCOComponent
+    },
+    {
+        path: 'editCo/:id',
+        component: CustomerOrderComponent
     }
 
 ];

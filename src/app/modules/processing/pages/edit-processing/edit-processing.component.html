@@ -94,7 +94,7 @@
             </div>
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
-            <form [formGroup]="processingDetails" (ngSubmit)="submitProcessingDetails()">
+            <form [formGroup]="processingDetails">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">MSP Id</label>
                 <div class="col-sm-3">
@@ -142,7 +142,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label"></label>
                 <div class="col-sm-9">
-                  <button type="submit" [disabled]="!processingDetails.valid" class="btn btn-primary">Save</button>
+                  <!-- <button type="submit" [disabled]="!processingDetails.valid" class="btn btn-primary">Save</button> -->
                 </div>
               </div>
             </form>
@@ -413,7 +413,8 @@
 <!-- profile body end -->
 <div class="row">
   <div class="col-md-12 text-center">
-      <button type="submit" class="btn btn-danger active">Export PDF</button>&nbsp;
-      <button type="submit" class="btn btn-success active">Print</button>&nbsp;
+      <button type="button" class="btn btn-danger active">Export PDF</button>&nbsp;
+      <button type="button" class="btn btn-success active">Print</button>&nbsp;
+      <button type="button" (click)="updateProcessing()" class="btn btn-info active">Update</button>&nbsp;
   </div>
 </div>
