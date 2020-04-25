@@ -19,7 +19,7 @@ export class EditProductComponent implements OnInit {
   public activeTab: string;
   public editProfile1: boolean;
   public editProfile2: boolean;
-
+  public price = 'NA';
   public editProfile: boolean;
   public editProfileIcon: string;
 
@@ -91,8 +91,9 @@ export class EditProductComponent implements OnInit {
         const url = '/inventory/find/' + this.productId;
         this.inventoryService.findRequstObjectById(url).subscribe(data => {
           this.productResponse = data;
-          console.log(this.productResponse);
-
+          this.inventoryService.calculatePrice(data).subscribe(
+            p => this.price = p
+          );
           this.productIdForm = new FormGroup({
             productId: new FormControl(this.productResponse.productId, [Validators.required]),
             title: new FormControl(this.productResponse.title, [Validators.required]),

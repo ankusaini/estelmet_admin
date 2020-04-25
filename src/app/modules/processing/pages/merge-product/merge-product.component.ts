@@ -15,6 +15,7 @@ export class MergeProductComponent implements OnInit {
 
     @ViewChild('wizard', {static: false}) wizard: WizardComponent;
 
+    selectedProductType;
   constructor(private inventoryService: InventoryService, private toastr: ToastrService,
   private processingService: ProcessingService) { }
 

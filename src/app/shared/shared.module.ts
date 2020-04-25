@@ -18,6 +18,7 @@ import { TransportDetailsComponent } from './components/transport-details/transp
 import { TransporterDoComponent } from './components/transporter-do/transporter-do.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { NgxPermissionsModule } from "ngx-permissions";
+import { FileUploadModule } from '@iplab/ngx-file-upload';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NgxPermissionsModule } from "ngx-permissions";
     TextMaskModule,
     ArchwizardModule,
     NgbDatepickerModule,
-    DataTablesModule
+    DataTablesModule,
+    FileUploadModule,
   ],
   exports: [
     MaterialClassificationSpecificationComponent,

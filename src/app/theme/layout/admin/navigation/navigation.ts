@@ -136,13 +136,13 @@ const NavigationItems = [
             url: '/users/searchGroup',
             target: false,
           },
-          {
-            id: 'overviewGroup',
-            title: 'Overview Group',
-            type: 'item',
-            url: '/users/groupOverview',
-            target: false,
-          },
+          // {
+          //   id: 'overviewGroup',
+          //   title: 'Overview Group',
+          //   type: 'item',
+          //   url: '/users/groupOverview',
+          //   target: false,
+          // },
           {
             id: 'approvalGroup',
             title: 'Group Approval',
@@ -189,13 +189,13 @@ const NavigationItems = [
             url: '/purchase/searchViewMr',
             target: false,
           },
-          {
-            id: 'mrOverview',
-            title: 'MR Overview',
-            type: 'item',
-            url: '/purchase/pcOverview', 
-            target: false,
-          },
+          // {
+          //   id: 'mrOverview',
+          //   title: 'MR Overview',
+          //   type: 'item',
+          //   url: '/purchase/pcOverview', 
+          //   target: false,
+          // },
           {
             id: 'mrApproval',
             title: 'MR Approval',
@@ -246,13 +246,13 @@ const NavigationItems = [
           //   url: '/purchase/purchaseLink',
           //   target: false,
           // },
-          {
-            id: 'PoOverview',
-            title: ' PO Overview',
-            type: 'item',
-            url: '/purchase/pcOverview',
-            target: false,
-          },
+          // {
+          //   id: 'PoOverview',
+          //   title: ' PO Overview',
+          //   type: 'item',
+          //   url: '/purchase/pcOverview',
+          //   target: false,
+          // },
           // {
           //   id: 'PurchaseEdit',
           //   title: ' Edit Purchase Quotation',
@@ -281,13 +281,13 @@ const NavigationItems = [
             url: '/purchase/searchPc',
             target: false,
           },
-          {
-            id: 'pcOverview',
-            title: 'PC Overview',
-            type: 'item',
-            url: '/purchase/pcOverview',
-            target: false,
-          },
+          // {
+          //   id: 'pcOverview',
+          //   title: 'PC Overview',
+          //   type: 'item',
+          //   url: '/purchase/pcOverview',
+          //   target: false,
+          // },
           {
             id: 'pcApproval',
             title: 'PC Approval',
@@ -338,13 +338,13 @@ const NavigationItems = [
             url: '/purchase/searchLot',
             target: false,
           },
-          {
-            id: 'lotOverview',
-            title: 'LOT Overview',
-            type: 'item',
-            url: '/purchase/lotOverview',
-            target: false,
-          },
+          // {
+          //   id: 'lotOverview',
+          //   title: 'LOT Overview',
+          //   type: 'item',
+          //   url: '/purchase/lotOverview',
+          //   target: false,
+          // },
           {
             id: 'lotApproval',
             title: 'LOT Approval',
@@ -395,13 +395,13 @@ const NavigationItems = [
             url: '/purchase/searchGrn',
             target: false,
           },
-          {
-            id: 'grnOverview',
-            title: 'GRN Overview',
-            type: 'item',
-            url: '/purchase/grnOverview',
-            target: false,
-          },
+          // {
+          //   id: 'grnOverview',
+          //   title: 'GRN Overview',
+          //   type: 'item',
+          //   url: '/purchase/grnOverview',
+          //   target: false,
+          // },
           {
             id: 'grnApproval',
             title: 'GRN Approval',
@@ -446,13 +446,13 @@ const NavigationItems = [
             url: '/inventory/searchProduct',
             target: false,
           },
-          {
-            id: 'overviewProduct',
-            title: 'Product Overview',
-            type: 'item',
-            url: '/inventory/productOverview',
-            target: false,
-          },
+          // {
+          //   id: 'overviewProduct',
+          //   title: 'Product Overview',
+          //   type: 'item',
+          //   url: '/inventory/productOverview',
+          //   target: false,
+          // },
           {
             id: 'approvalProduct',
             title: 'Product Approval',
@@ -504,13 +504,13 @@ const NavigationItems = [
             url: '/processing/searchProcessing',
             target: false,
           },
-          {
-            id: 'processingOverview',
-            title: 'Processing Overview',
-            type: 'item',
-            url: '/processing/processingOverview',
-            target: false,
-          },
+          // {
+          //   id: 'processingOverview',
+          //   title: 'Processing Overview',
+          //   type: 'item',
+          //   url: '/processing/processingOverview',
+          //   target: false,
+          // },
           {
             id: 'approvalProcessing',
             title: 'Processing Approval',
@@ -569,13 +569,13 @@ const NavigationItems = [
             url: '/salesLead/searchSalesLead',
             target: false,
           },
-          {
-            id: 'OverviewSalesLead',
-            title: 'Sales lead Overview',
-            type: 'item',
-            url: '/salesLead/slOverview',
-            target: false,
-          },
+          // {
+          //   id: 'OverviewSalesLead',
+          //   title: 'Sales lead Overview',
+          //   type: 'item',
+          //   url: '/salesLead/slOverview',
+          //   target: false,
+          // },
           {
             id: 'EditSalesLead',
             title: 'Edit Sales lead',
@@ -629,13 +629,13 @@ const NavigationItems = [
                   //   url: '/sales/sendSO',
                   //   target: false,
                   // },
-                  {
-                    id: 'soOverviewTab',
-                    title: 'SO Overview',
-                    type: 'item',
-                    url: '/sales/soOverview',
-                    target: false,
-                  },
+                  // {
+                  //   id: 'soOverviewTab',
+                  //   title: 'SO Overview',
+                  //   type: 'item',
+                  //   url: '/sales/soOverview',
+                  //   target: false,
+                  // },
                   {
                     id: 'approvalSo',
                     title: 'SO Approval',
@@ -739,14 +739,14 @@ const NavigationItems = [
                     url: '/sales/sendAuctionOffer',
                     target: false,
                   },
-                  {
-                    id: 'overviewAuctionOffer',
-                    title: 'Auction Overview',
-                    type: 'item',
-                    // url: '/layout/static',
-                    url: '/sales/overviewAuction',
-                    target: false,
-                  }
+                  // {
+                  //   id: 'overviewAuctionOffer',
+                  //   title: 'Auction Overview',
+                  //   type: 'item',
+                  //   // url: '/layout/static',
+                  //   url: '/sales/overviewAuction',
+                  //   target: false,
+                  // }
                 ]
               },
             ]
@@ -798,13 +798,13 @@ const NavigationItems = [
                 url: '/sales/searchSc',
                 target: false,
               },
-              {
-                id: 'overviewSalesConfirmation',
-                title: 'SC Overview',
-                type: 'item',
-                url: '/sales/scOverview',
-                target: false,
-              },
+              // {
+              //   id: 'overviewSalesConfirmation',
+              //   title: 'SC Overview',
+              //   type: 'item',
+              //   url: '/sales/scOverview',
+              //   target: false,
+              // },
               {
                 id: 'approvalSalesConfirmation',
                 title: 'SC Approval',
@@ -835,13 +835,13 @@ const NavigationItems = [
                 url: '/sales/createCO',
                 target: false,
               },
-              {
-                id: 'customerOrderView',
-                title: 'Search Customer Order',
-                type: 'item',
-                url: '/sales/coView',
-                target: false,
-              }
+              // {
+              //   id: 'customerOrderView',
+              //   title: 'Search Customer Order',
+              //   type: 'item',
+              //   url: '/sales/coView',
+              //   target: false,
+              // }
             ]
           }
         ]
@@ -935,13 +935,13 @@ const NavigationItems = [
                 url: '/dispatch/searchSi',
                 target: false,
               },
-              {
-                id: 'overviewSalesInvoice',
-                title: 'SI Overview',
-                type: 'item',
-                url: '/dispatch/siOverview',
-                target: false,
-              },
+              // {
+              //   id: 'overviewSalesInvoice',
+              //   title: 'SI Overview',
+              //   type: 'item',
+              //   url: '/dispatch/siOverview',
+              //   target: false,
+              // },
               {
                 id: 'generateInvoice',
                 title: 'Invoice',

@@ -1,12 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import {
-  ProductAnnealing, ProductCategory, ProductClass, ProductCoating,
-  ProductDefect, ProductFinish, ProductHardness, ProductOiling,
-  ProductOrigin, ProductPackaging, ProductShape, ProductStage,
-  ProductSurfaceCoating, ProductTemper, ProductType
-} from 'src/app/shared/Models/product.model.';
+import { ProductAnnealing, ProductCategory, ProductClass, ProductCoating, ProductDefect, ProductFinish, ProductHardness, ProductOiling, ProductOrigin, ProductPackaging, ProductShape, ProductStage, ProductSurfaceCoating, ProductTemper, ProductType } from 'src/app/shared/Models/product.model.';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { CustomValidator } from 'src/app/Validators/custom-validator';
 import { Warehouse } from '../../Models/warehouse';
@@ -56,7 +51,10 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   @Output() productData: EventEmitter<any> = new EventEmitter<any>();
   selectedGrnType: string;
   warehouse: Warehouse = null;
-
+  public mask = [/\d/, /\d/,  '.', /\d/, /\d/,]
+  public mask2 = [/\d/, /\d/,/\d/,  '.', /\d/, ]
+  public mask3 = [/\d/, /\d/,  '.', /\d/, ]
+  public mask4 = [/\d/, /\d/,/\d/,  ',', /\d/,/\d/, ',', /\d/,]
   productClassList: ProductClass[];
   productCategoryList: ProductCategory[];
   productTypeList: ProductType[];
@@ -73,7 +71,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   productAnnealingList: ProductAnnealing[];
   productFinishList: ProductFinish[];
   productPackagingList: ProductPackaging[];
-
+  range = true;
   public productForm: FormGroup;
 
   ngOnInit() {
@@ -101,12 +99,12 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
 
     }
 
-    if(this.component === 'processing') {
+    if (this.component === 'processing') {
       // this.productForm.removeControl("heigth");
       this.productForm.addControl("lengthToBeCut", new FormControl('', [Validators.required]));
     }
 
-   }
+  }
 
   createForm() {
     this.productForm = new FormGroup({
@@ -294,7 +292,26 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   }
 
   productFormOnSubmit() {
-    console.log(this.productForm);
+    const thick = this.productForm.get('thicknessMax').value == ''
+      ? this.productForm.get('thicknessMin').value : this.productForm.get('thicknessMax').value;
+    this.productForm.get('thicknessMax').patchValue(thick);
+
+    const width = this.productForm.get('widthMax').value == ''
+      ? this.productForm.get('widthMin').value : this.productForm.get('widthMax').value;
+    this.productForm.get('widthMax').patchValue(width);
+
+    const length = this.productForm.get('lengthMax').value == ''
+      ? this.productForm.get('lengthMin').value : this.productForm.get('lengthMax').value;
+    this.productForm.get('lengthMax').patchValue(length);
+
+    const hardness = this.productForm.get('hardnessMax').get('id').value == ''
+      ? this.productForm.get('hardnessMin').value : this.productForm.get('hardnessMax').value;
+    this.productForm.get('hardnessMax').patchValue(hardness);
+
+    const temper = this.productForm.get('temperMax').get('id').value == ''
+      ? this.productForm.get('temperMin').value : this.productForm.get('temperMax').value;
+    this.productForm.get('temperMax').patchValue(temper);
+    console.log('final data - ',this.productForm.value);
     if (this.productForm.invalid) {
       // alert("form invalid");
       this.toastr.error('Error! Invalid details.');

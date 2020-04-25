@@ -263,6 +263,17 @@ ul.nav.nav-pills li:nth-child(2) {
   .pop-search {
     margin-top: 30px;
   }
+  .photo_upload {
+    width: 100% !important;
+}
+.upload-input {
+    top: 44% !important;
+    left: 39% !important;
+    font-size: 12px !important;
+}
+.uploadPhoto {
+    height: 160px;
+}
   @media screen and (max-width: 420px) {
     .dash:after {
       left: 11.3em;
