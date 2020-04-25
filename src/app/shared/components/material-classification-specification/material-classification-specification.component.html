@@ -73,16 +73,16 @@
   <div class="row">
     <div class="col-md-2">
       <div class="form-group">
-        <label class="f-12" for="validationCustom02">Thickness Range<small class="asterik_sign">*</small></label>
+        <label class="f-12 dash" for="validationCustom02">Thickness Range<small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <input formControlName="thicknessMin" type="text" class="form-control" placeholder="Min">
             <small class="form-text text-muted">(mm)</small>
             <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.touched || f.thicknessMin.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <input formControlName="thicknessMax" type="text" class="form-control" placeholder="Max">
             <small class="form-text text-muted">(mm)</small>
             <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock" class="form-text text-danger"
@@ -97,16 +97,16 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label class="f-12" for="validationCustom02">Width Range<small class="asterik_sign">*</small></label>
+        <label class="f-12 dash" for="validationCustom02">Width Range<small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <input formControlName="widthMin" type="text" class="form-control" placeholder="Min">
             <small class="form-text text-muted">(mm)</small>
             <small *ngIf="f.widthMin.value == '' && (f.widthMin.touched || f.widthMin.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <input formControlName="widthMax" type="text" class="form-control" placeholder="Max">
             <small class="form-text text-muted">(mm)</small>
             <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock" class="form-text text-danger"
@@ -121,16 +121,16 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label class="f-12" for="validationCustom02">Length Range<small class="asterik_sign">*</small></label>
+        <label class="f-12 dash" for="validationCustom02">Length Range<small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <input formControlName="lengthMin" type="text" class="form-control" placeholder="Min">
             <small class="form-text text-muted">(mm)</small>
             <small *ngIf="f.lengthMin.value == '' && (f.lengthMin.touched || f.lengthMin.dirty)" id="passwordHelpBlock" class="form-text text-danger"
             >This Field is required.</small
           >
           </div>
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <input formControlName="lengthMax" type="text" class="form-control" placeholder="Max">
             <small class="form-text text-muted">(mm)</small>
             <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock" class="form-text text-danger"
@@ -145,9 +145,9 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label class="f-12" for="validationCustom02">Hardness Range<small class="asterik_sign">*</small></label>
+        <label class="f-12 dash" for="validationCustom02">Hardness Range<small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <fieldset formGroupName="hardnessMin">
 
               <select (change)="setValueTwoField($event,'hardnessMin','productHardness')" formControlName="id"
@@ -160,7 +160,7 @@
             id="passwordHelpBlock" class="form-text text-danger">Minimum Hardness should be
                      required.</small>
           </div>
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <fieldset formGroupName="hardnessMax">
               <select (change)="setValueTwoField($event,'hardnessMax','productHardness')" formControlName="id"
                 class="form-control" id="exampleFormControlSelect1">
@@ -177,9 +177,9 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <label class="f-12" for="validationCustom02">Temper Range<small class="asterik_sign">*</small></label>
+        <label class="f-12 dash" for="validationCustom02">Temper Range<small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <fieldset formGroupName="temperMin">
 
               <select (change)="setValueTwoField($event,'temperMin','productTemper')" formControlName="id"
@@ -192,7 +192,7 @@
             id="passwordHelpBlock" class="form-text text-danger">Minimum Temper should be
                      required.</small>
           </div>
-          <div class="col-md-6 col-xs-6 mb-3">
+          <div class="col-md-6 col-6 mb-3">
             <fieldset formGroupName="temperMax">
 
               <select (change)="setValueTwoField($event,'temperMax','productTemper')" formControlName="id"

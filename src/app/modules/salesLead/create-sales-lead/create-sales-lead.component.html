@@ -7,17 +7,17 @@
         <div class="row">
           <div class="col-md-8">
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+              <label for="inputEmail3" class="col-sm-3 col-form-label mt-2 f-12">Select Company Id <small
                   class="asterik_sign">*</small></label>
-              <div class="col-sm-3">
+              <div class="col-sm-2 m-t-10 p-t-5 ">
                 <select [value]="selectedName1.value" #selectedId1 class="form-control" name="validation-customerId">
-                  <option value=''>Id</option>
+                  <option value='' disabled>Select</option>
                   <option *ngFor="let item of userMini" [value]="item?.userDetialId">{{ item?.userDetialId }}</option>
                 </select>
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5 m-t-10 p-t-5 ">
                 <select #selectedName1  [value]="selectedId1.value" class="form-control" formControlName="buyerCompanyName" name="validation-pcId">
-                  <option value> Name</option>
+                  <option value='' disabled>Select</option>
                   <option *ngFor="let item of userMini" [value]="item?.userDetialId">{{ item?.companyName }}</option>
                 </select>
                 <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
@@ -130,8 +130,8 @@
       <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           <button type="submit" class="btn btn-secondary active" previousStep><i  class="feather icon-arrow-left"></i> Back</button>&nbsp;
-<button type="submit" class="btn btn-danger active printBtn" (click)="print()"><i  class="feather icon-printer"></i> Print</button>&nbsp;
-<button type="submit" class="btn btn-danger active excelBtn" (click)="exportToPDF()"><i  class="feather icon-file"></i> Send for Approval</button>&nbsp;
+<button type="submit" class="btn btn-danger active printBtn"><i  class="feather icon-printer"></i> Print</button>&nbsp;
+<button type="submit" class="btn btn-danger active excelBtn"><i  class="feather icon-file"></i> Send for Approval</button>&nbsp;
         </div>
       </div>
     </wizard-step>

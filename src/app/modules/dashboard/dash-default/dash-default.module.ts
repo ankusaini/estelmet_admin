@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashDefaultRoutingModule } from './dash-default-routing.module';
 import { DashDefaultComponent } from './dash-default.component';
 import {SharedModule} from '../../../theme/shared/shared.module';
+import { NgbPopoverModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import {SharedModule} from '../../../theme/shared/shared.module';
   imports: [
     CommonModule,
     DashDefaultRoutingModule,
-    SharedModule
+    SharedModule,
+    NgbTooltipModule,
+    NgbPopoverModule
   ]
 })
 export class DashDefaultModule { }

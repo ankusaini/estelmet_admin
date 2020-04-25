@@ -9,6 +9,8 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddPriceComponent } from './add-price/add-price.component';
 import { CustomerCreditLimitComponent } from './customer-credit-limit/customer-credit-limit.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { ChangeRoleComponent } from './change-role/change-role.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { CustomerCreditLimitComponent } from './customer-credit-limit/customer-c
   ],
   declarations: [
     AddPriceComponent,
-    CustomerCreditLimitComponent
+    CustomerCreditLimitComponent,
+    AddEmployeeComponent,
+    ChangeRoleComponent
   ]
 })
 export class SuperModule { }
