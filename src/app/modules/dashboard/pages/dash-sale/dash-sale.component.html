@@ -157,7 +157,7 @@
           <tbody>
             <tr *ngFor="let mr of purchaseList;let i = index">
               <td>{{i+1}}</td>
-              <td *ngIf="selectedType=='MATERIAL_REQUIREMENT'">{{Ids.MATERIAL_REQUIREMENT + '-' + mr.id}}</td>
+              <td *ngIf="selectedType=='MATERIAL_REQURIMENT'">{{Ids.MATERIAL_REQUIREMENT + '-' + mr.id}}</td>
               <td *ngIf="selectedType=='PURCHASE_CONFIRMATION'">{{Ids.PURCHASE_CONFIRMATION + '-' + mr.id}}</td>
               <td *ngIf="selectedType=='LOT'">{{Ids.LOT + '-' + mr.id}}</td>
               <td *ngIf="selectedType=='PURCHASE_ORDER'">PO-{{mr.id}}</td>

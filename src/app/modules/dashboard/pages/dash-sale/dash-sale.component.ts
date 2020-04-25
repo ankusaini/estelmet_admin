@@ -18,7 +18,7 @@ import { ids } from "src/app/shared/Models/ids.model";
   styleUrls: ['./dash-sale.component.scss']
 })
 export class DashSaleComponent implements OnInit {
-  selectedType: any = 'MATERIAL_REQUIREMENT';
+  selectedType: any = 'MATERIAL_REQURIMENT';
   public seoChartData1: any;
   public seoChartData2: any;
   public seoChartData3: any;
@@ -126,8 +126,8 @@ export class DashSaleComponent implements OnInit {
         this.totalPLCount = (data.LOT_PENDING[0][0] + data.LOT_APPROVED[0][0] + data.LOT_REJECTED[0][0]);
         this.totalPLCountWt = (Number(data.LOT_PENDING[0][1]) + Number(data.LOT_APPROVED[0][1]) + Number(data.LOT_REJECTED[0][1]));
 
-//        this.totalPOCount= (data.PURCHASE_ORDER_PENDING[0][0]+data.PURCHASE_ORDER_APPROVED[0][0]+data.PURCHASE_ORDER_REJECTED[0][0]);
-  //      this.totalPOCountWt= (data.PURCHASE_ORDER_PENDING[0][1]+data.PURCHASE_ORDER_APPROVED[0][1]+data.PURCHASE_ORDER_REJECTED[0][1]);
+       this.totalPOCount= (data.PURCHASE_ORDER_PENDING[0][0]+data.PURCHASE_ORDER_APPROVED[0][0]+data.PURCHASE_ORDER_REJECTED[0][0]);
+       this.totalPOCountWt= (data.PURCHASE_ORDER_PENDING[0][1]+data.PURCHASE_ORDER_APPROVED[0][1]+data.PURCHASE_ORDER_REJECTED[0][1]);
 
       console.log(this.totalMRCount);
 

@@ -13,6 +13,7 @@
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Customer Order Id <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
                     <select [(ngModel)]="selectedCo" class="form-control">
+                      <option value="" disabled>Select CO Id</option>
                         <!-- <option value="" selected>Select CO</option> -->
                         <option *ngFor="let co of customerOrderList" [value]="co.salesId" >CO-{{co.customerOrderId}}</option>
                       </select>
@@ -49,7 +50,7 @@
 
     <wizard-step stepTitle="Create Processing" navigationSymbol="3">
      <app-select-mr
-      [processingType]="processingType"
+      [processingType]="processingType" [showDropDown]="'true'"
       (selectMrData)="getSelectMrData($event)">
     </app-select-mr>
     </wizard-step>

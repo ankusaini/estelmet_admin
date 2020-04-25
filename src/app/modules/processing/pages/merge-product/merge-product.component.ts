@@ -20,7 +20,7 @@ export class MergeProductComponent implements OnInit {
 
   productList: Product[];
   selectedProductList: Product[];
-    private processing: Processing=undefined;
+    public processing: Processing;
 
   
   ngOnInit() {
@@ -80,11 +80,12 @@ export class MergeProductComponent implements OnInit {
   {
 
      if(this.selectedProductList.length > 0) {
-      this.processing.productList = [];
+        this.processing={};
       this.processing.productList = this.selectedProductList;
       // this.processing.processingType = this.processingType;
       const url = '/inventory/productProcessing/updateProcessing';
       this.processingService.updateProcessing(url, this.processing).subscribe(data => {
+        console.log("merged",data);
         this.toastr.success('Product merged successfully');
       }, error => {
         this.toastr.warning('something went wrong');

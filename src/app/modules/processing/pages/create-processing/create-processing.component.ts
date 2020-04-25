@@ -74,7 +74,7 @@ export class CreateProcessingComponent implements OnInit {
       }
     }).then(processingType => {
       if (processingType.value) {
-        this .processingType = processingType.value.toString().toUpperCase();
+        this.processingType = processingType.value.toString().toUpperCase();
       } else if(processingType.dismiss === Swal.DismissReason.cancel){
         console.log("dismiss Called");
         this.router.navigate(['/dashboard/default']);

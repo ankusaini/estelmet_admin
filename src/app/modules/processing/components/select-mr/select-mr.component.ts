@@ -17,6 +17,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SelectMrComponent implements OnInit, OnChanges {
   @Input() processingType: string;
+  @Input() showDropDown: string="";
+  
   @Output() selectMrData: EventEmitter<any> = new EventEmitter<any>();
 
   warehouseData: Warehouse[];
@@ -34,6 +36,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
   machineDetailIdList: any[];
   contractorList: any[];
   contractorIdList: any[];
+  processingTypes:any[]=['SHEARING','BLANKING','ASSORTING'];
   // customerCompany : any[];
   priorityList: any =
     {
@@ -42,6 +45,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     };
 
   selectMrIdForm: FormGroup;
+
 
   constructor(
     private staticData: StaticDataService,
@@ -52,6 +56,8 @@ export class SelectMrComponent implements OnInit, OnChanges {
      }
 
   ngOnInit() {
+    console.log(this.showDropDown);
+   
     this.staticData.getAllProductCategory().subscribe(data => {
 
       this.productCategoryList = data.map(categoryObj => categoryObj.productCategory)
@@ -111,8 +117,15 @@ export class SelectMrComponent implements OnInit, OnChanges {
       warehouseId: new FormControl('', [Validators.required]),
       warehouseName: new FormControl('', [Validators.required]),
       priorityLevel: new FormControl('', [Validators.required]),
+      
       // customerCompanyId: new FormControl("")
     });
+
+     if(this.showDropDown=='true')
+      {
+        console.log("from co to pro");
+        this.selectMrIdForm.addControl('processingType',new FormControl('', [Validators.required]));
+      }
   }
 
   ngOnChanges() {

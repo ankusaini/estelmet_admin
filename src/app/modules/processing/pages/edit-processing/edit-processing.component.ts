@@ -235,6 +235,10 @@ export class EditProcessingComponent implements OnInit {
 
   getProductData(data) {
     console.log(data);
+    //setting warehouse of Processing in newly added product
+    data.warehouse={
+      id:this.processingData.warehouseId
+    }
     this.productList.push(data);
     console.log(this.productList);
     this.editProfile = false; 
