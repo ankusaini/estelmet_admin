@@ -117,20 +117,74 @@ export class DashSaleComponent implements OnInit {
       this.rejectedMRCount = data.MATERIAL_REQURIMENT_REJECTED_COUNT;
       this.pendingMRCount = data.MATERIAL_REQURIMENT_PENDING_COUNT;
 
-      this.totalMRCount = (data.MATERIAL_REQURIMENT_PENDING[0][0] + data.MATERIAL_REQURIMENT_APPROVED[0][0] + data.MATERIAL_REQURIMENT_REJECTED[0][0]);
-      this.totalMRCountWt = (Number(data.MATERIAL_REQURIMENT_PENDING[0][1]) + Number(data.MATERIAL_REQURIMENT_APPROVED[0][1]) +Number(data.MATERIAL_REQURIMENT_REJECTED[0][1]));
+      if(data.MATERIAL_REQURIMENT_PENDING && data.MATERIAL_REQURIMENT_PENDING.length>0 )
+        {
+          this.totalMRCount += data.MATERIAL_REQURIMENT_PENDING[0][0];
+          this.totalMRCountWt += Number(data.MATERIAL_REQURIMENT_PENDING[0][1]); 
+        }
+      if(data.MATERIAL_REQURIMENT_APPROVED && data.MATERIAL_REQURIMENT_APPROVED.length>0)
+        {
+           this.totalMRCount += data.MATERIAL_REQURIMENT_APPROVED[0][0];
+           this.totalMRCountWt += Number(data.MATERIAL_REQURIMENT_APPROVED[0][1]);
+        }
+      if(data.MATERIAL_REQURIMENT_REJECTED && data.MATERIAL_REQURIMENT_REJECTED.length>0)
+        {
+          this.totalMRCount += data.MATERIAL_REQURIMENT_REJECTED[0][0];
+          this.totalMRCountWt += Number(data.MATERIAL_REQURIMENT_REJECTED[0][1]);
+        }
 
-      this.totalPCCount = (data.PURCHASE_CONFIRMATION_PENDING[0][0] + data.PURCHASE_CONFIRMATION_APPROVED[0][0] + data.PURCHASE_CONFIRMATION_REJECTED[0][0]);
-        this.totalPCCountWt = (Number(data.PURCHASE_CONFIRMATION_PENDING[0][1]) + Number(data.PURCHASE_CONFIRMATION_APPROVED[0][1]) + Number(data.PURCHASE_CONFIRMATION_REJECTED[0][1]));
-    
-        this.totalPLCount = (data.LOT_PENDING[0][0] + data.LOT_APPROVED[0][0] + data.LOT_REJECTED[0][0]);
-        this.totalPLCountWt = (Number(data.LOT_PENDING[0][1]) + Number(data.LOT_APPROVED[0][1]) + Number(data.LOT_REJECTED[0][1]));
+       if(data.PURCHASE_ORDER_PENDING && data.PURCHASE_ORDER_PENDING.length>0)
+        {
+          this.totalPOCount += data.PURCHASE_ORDER_PENDING[0][0];
+          this.totalPOCountWt += Number(data.PURCHASE_ORDER_PENDING[0][1]); 
+        }
+      if(data.PURCHASE_ORDER_APPROVED && data.PURCHASE_ORDER_APPROVED.length>0)
+        {
+           this.totalPOCount += data.PURCHASE_ORDER_APPROVED[0][0];
+           this.totalPOCountWt += Number(data.PURCHASE_ORDER_APPROVED[0][1]);
+        }
+      if(data.PURCHASE_ORDER_REJECTED && data.PURCHASE_ORDER_REJECTED.length>0)
+        {
+          this.totalPOCount += data.PURCHASE_ORDER_REJECTED[0][0];
+          this.totalPOCountWt += Number(data.PURCHASE_ORDER_REJECTED[0][1]);
+        }
 
-       this.totalPOCount= (data.PURCHASE_ORDER_PENDING[0][0]+data.PURCHASE_ORDER_APPROVED[0][0]+data.PURCHASE_ORDER_REJECTED[0][0]);
-       this.totalPOCountWt= (data.PURCHASE_ORDER_PENDING[0][1]+data.PURCHASE_ORDER_APPROVED[0][1]+data.PURCHASE_ORDER_REJECTED[0][1]);
 
-      console.log(this.totalMRCount);
 
+         if(data.PURCHASE_CONFIRMATION_PENDING && data.PURCHASE_CONFIRMATION_PENDING.length>0)
+        {
+          this.totalPCCount += data.PURCHASE_CONFIRMATION_PENDING[0][0];
+          this.totalPCCountWt += Number(data.PURCHASE_CONFIRMATION_PENDING[0][1]); 
+        }
+      if(data.PURCHASE_CONFIRMATION_APPROVED && data.PURCHASE_CONFIRMATION_APPROVED.length>0)
+        {
+           this.totalPCCount += data.PURCHASE_CONFIRMATION_APPROVED[0][0];
+           this.totalPCCountWt += Number(data.PURCHASE_CONFIRMATION_APPROVED[0][1]);
+        }
+      if(data.PURCHASE_CONFIRMATION_REJECTED && data.PURCHASE_CONFIRMATION_REJECTED.length>0)
+        {
+          this.totalPCCount += data.PURCHASE_CONFIRMATION_REJECTED[0][0];
+          this.totalPCCountWt += Number(data.PURCHASE_CONFIRMATION_REJECTED[0][1]);
+        }
+
+
+         if(data.LOT_PENDING && data.LOT_PENDING.length>0)
+        {
+          this.totalPLCount += data.LOT_PENDING[0][0];
+          this.totalPLCountWt += Number(data.LOT_PENDING[0][1]); 
+        }
+      if(data.LOT_APPROVED && data.LOT_APPROVED.length>0)
+        {
+           this.totalPLCount += data.LOT_APPROVED[0][0];
+           this.totalPLCountWt += Number(data.LOT_APPROVED[0][1]);
+        }
+      if(data.LOT_REJECTED && data.LOT_REJECTED.length>0)
+        {
+          this.totalPLCount += data.LOT_REJECTED[0][0];
+          this.totalPLCountWt += Number(data.LOT_REJECTED[0][1]);
+        }
+
+        
     }, error => {
       this.toastrService.error('Something Went Wrong');
     });

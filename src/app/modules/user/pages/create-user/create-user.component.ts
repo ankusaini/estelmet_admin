@@ -16,6 +16,7 @@ import { BusinessDetails, ProductStage } from './../../../../shared/Models/user.
 })
 
 export class CreateUserComponent implements OnInit {
+  selectedRole: any='CUSTOMER';
   @ViewChild('wizard', { static: true }) wizard: WizardComponent;
   showGroup = true;
   public isSubmit: boolean;
@@ -172,11 +173,18 @@ export class CreateUserComponent implements OnInit {
     this.userService.saveUser(this.userDto).subscribe(data => {
       this.userDataService.add(data);
       this.wizard.navigation.reset();
-      this.router.navigate(['/users/profile/'+ data.id]);
+      console.log(data);
+      this.router.navigate(['/users/profile/'+ data.data]);
       this.toastrService.success('Your account created successfully!');
     }, error => {
       console.log(error);
     });
   }
 
+
+  getSelectedRole(data)
+  {
+    this.selectedRole=data;
+    console.log("role",this.selectedRole)
+  }
 }

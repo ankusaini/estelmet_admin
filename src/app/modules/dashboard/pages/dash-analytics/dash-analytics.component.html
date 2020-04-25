@@ -8,8 +8,8 @@
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
-                <li>Total No. of Products <span>121</span></li>
-                <li>Products Net Wt. <span>1621 Mt.</span></li>
+                <li>Total No. of Products <span>{{totalSOCount}}</span></li>
+                <li>Products Net Wt. <span>{{totalSOCountWt | number : '1.2-2'}} Mt.</span></li>
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Product Approvals <span><a style="color:#f69600"> 0 </a> &nbsp;|&nbsp; <a style="color:#4CAF50"> 0 </a> &nbsp;|&nbsp; <a style="color:crimson"> 0 </a></span></li> -->
@@ -18,16 +18,16 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col-md-4">
-                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','APPROVED')" class="m-0 f-14 text-white">{{approvedSOCount}}</h5>
+              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','APPROVED')"  class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{approvedSOCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Registered</span> 
               </div>
-              <div class="col-md-4">
-                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','PENDING')" class="m-0 f-14 text-white">{{pendingSOCount}}</h5>
+              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','PENDING')" class="col-md-4">
+                <h5  class="m-0 f-14 text-white">{{pendingSOCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Pending</span>
               </div>
-              <div class="col-md-4">
-                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','REJECTED')" class="m-0 f-14 text-white">{{rejectedSOCount}}</h5>
+              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','REJECTED')" class="col-md-4">
+                <h5  class="m-0 f-14 text-white">{{rejectedSOCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Rejected</span>
               </div>
             </div>
@@ -39,8 +39,8 @@
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
-                <li>Total No. of Products <span>121</span></li>
-                <li>Products Net Wt. <span>1621 Mt.</span></li>
+                <li>Total No. of Products <span>{{totalSCCount}}</span></li>
+                <li>Products Net Wt. <span>{{totalSCCountWt | number : '1.2-2'}} Mt.</span></li>
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Product Approvals <span><a style="color:#f69600"> 0 </a> &nbsp;|&nbsp; <a style="color:#4CAF50"> 0 </a> &nbsp;|&nbsp; <a style="color:crimson"> 0 </a></span></li> -->
@@ -71,8 +71,8 @@
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
-                <li>Total No. of Products <span>121</span></li>
-                <li>Products Net Wt. <span>1621 Mt.</span></li>
+                <li>Total No. of Products <span>{{totalDOCount}}</span></li>
+                <li>Products Net Wt. <span>{{totalDOCountWt| number : '1.2-2'}} Mt.</span></li>
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Product Approvals <span><a style="color:#f69600"> 0 </a> &nbsp;|&nbsp; <a style="color:#4CAF50"> 0 </a> &nbsp;|&nbsp; <a style="color:crimson"> 0 </a></span></li> -->
@@ -102,8 +102,8 @@
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
-                <li>Total No. of Products <span>121</span></li>
-                <li>Products Net Wt. <span>1621 Mt.</span></li>
+                <li>Total No. of Products <span>{{totalTLCount}}</span></li>
+                <li>Products Net Wt. <span>{{totalTLCountWt| number : '1.2-2'}} Mt.</span></li>
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Number of Coils <span>22</span></li> --> 
                 <!-- <li>Product Approvals <span><a style="color:#f69600"> 0 </a> &nbsp;|&nbsp; <a style="color:#4CAF50"> 0 </a> &nbsp;|&nbsp; <a style="color:crimson"> 0 </a></span></li> -->

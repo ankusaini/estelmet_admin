@@ -5,13 +5,13 @@
         <div class="col-md-12 mb-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">User Type <small class="asterik_sign">*</small></label>
-            <select formControlName="userRole" class="form-control" name="validation-userType"
+            <select formControlName="userRole" (change)="getSelectedUser($event.target.value)" class="form-control" name="validation-userType"
               id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': false }" required>
               <option value>Select User type</option>
               <option value="CUSTOMER">Customer</option>
               <option value="SUPPLIER">Supplier</option>
               <option value="AGENT">Agent</option>
-              <option value="TRANSPORTED">Transporter</option>
+              <option value="TRANSPORTER">Transporter</option>
               <option value="CONTRACTOR">Contractor</option>
             </select>
             <small *ngIf="f.userRole.value.length==0 && (f.userRole.dirty || f.userRole.touched )"

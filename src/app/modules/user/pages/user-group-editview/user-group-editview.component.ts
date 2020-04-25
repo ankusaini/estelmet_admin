@@ -15,6 +15,7 @@ import { ids } from 'src/app/shared/Models/ids.model';
 export class UserGroupEditviewComponent implements OnInit {
   groupId: any;
   public selectedUserGroup: UserGroup;
+  public selectedRole:any;
   public doNotShowBack: any = 'doNotShowBack';
   public selectedUserType: any;
   public userGroupList: User[];
@@ -53,6 +54,8 @@ export class UserGroupEditviewComponent implements OnInit {
         this.userService.findUserGroupById(this.groupId).subscribe(
           data => {
             this.selectedUserGroup = data;
+            console.log(data);
+            this.selectedRole=data.userRole;
             this.userGroupList = data.user;
           },
           error => {

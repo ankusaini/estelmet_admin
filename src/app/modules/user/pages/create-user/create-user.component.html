@@ -5,7 +5,7 @@
         <div class="col-sm-12">
           <h5 class="bg-clr-head1 p-10">Personal Detail</h5>
           <hr />
-          <app-personal-details (prsonalData)="getPersonData($event)"></app-personal-details>
+          <app-personal-details (selectedRole)="getSelectedRole($event)" (prsonalData)="getPersonData($event)"></app-personal-details>
         </div>
       </div>
     </wizard-step>
@@ -26,7 +26,7 @@
         </div>
       </div>
     </wizard-step>
-    <wizard-step stepTitle="Trade Details" navigationSymbol="4">
+    <wizard-step *ngIf="selectedRole=='CUSTOMER' || selectedRole=='SUPPLIER' " stepTitle="Trade Details" navigationSymbol="4">
       <div class="row">
         <div class="col-sm-12">
           <h5>Trade Details Fill your Business Requirement</h5>

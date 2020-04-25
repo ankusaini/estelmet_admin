@@ -85,33 +85,90 @@ export class DashAnalyticsComponent implements OnInit {
 
     const url = '/sales/dashboard';
     this.sharedService.getAllResponse(url).subscribe(data => {
-      console.log(data.data)
-       this.approvedTLCount = data.data.TRADE_LEAD_LOT_APPROVED_COUNT;
-      this.rejectedTLCount = data.data.TRADE_LEAD_LOT_REJECTED_COUNT;
-      this.pendingTLCount = data.data.TRADE_LEAD_LOT_PENDING_COUNT;
+      console.log(data)
+       this.approvedTLCount = data.TRADE_LEAD_LOT_APPROVED_COUNT;
+      this.rejectedTLCount = data.TRADE_LEAD_LOT_REJECTED_COUNT;
+      this.pendingTLCount = data.TRADE_LEAD_LOT_PENDING_COUNT;
 
-      this.approvedDOCount = data.data.DELIVERY_ORDER_APPROVED_COUNT;
-      this.rejectedDOCount = data.data.DELIVERY_ORDER_REJECTED_COUNT;
-      this.pendingDOCount = data.data.DELIVERY_ORDER_PENDING_COUNT;
+      this.approvedDOCount = data.DELIVERY_ORDER_APPROVED_COUNT;
+      this.rejectedDOCount = data.DELIVERY_ORDER_REJECTED_COUNT;
+      this.pendingDOCount = data.DELIVERY_ORDER_PENDING_COUNT;
 
-      this.approvedSCCount = data.data.SALES_CONFIRMATION_APPROVED_COUNT;
-      this.rejectedSCCount = data.data.SALES_CONFIRMATION_REJECTED_COUNT;
-      this.pendingSCCount = data.data.SALES_CONFIRMATION_PENDING_COUNT;
+      this.approvedSCCount = data.SALES_CONFIRMATION_APPROVED_COUNT;
+      this.rejectedSCCount = data.SALES_CONFIRMATION_REJECTED_COUNT;
+      this.pendingSCCount = data.SALES_CONFIRMATION_PENDING_COUNT;
 
-      this.approvedSOCount = data.data.SALES_OFFER_LOT_APPROVED_COUNT;
-      this.rejectedSOCount = data.data.SALES_OFFER_LOT_REJECTED_COUNT;
-      this.pendingSOCount = data.data.SALES_OFFER_LOT_PENDING_COUNT;
+      this.approvedSOCount = data.SALES_OFFER_LOT_APPROVED_COUNT;
+      this.rejectedSOCount = data.SALES_OFFER_LOT_REJECTED_COUNT;
+      this.pendingSOCount = data.SALES_OFFER_LOT_PENDING_COUNT;
 
       //keys being changed on every deloy for dashboard
-      // this.totalSOCount = (data.data.SalesType.SALES_OFFER_LOT_PENDING[0][0] + data.data.SALES_OFFER_LOT_APPROVED[0][0] + data.data.SALES_OFFER_LOT_REJECTED[0][0]);
-      // this.totalSOCountWt = (Number(data.data.SALES_OFFER_LOT_PENDING[0][1]) + Number(data.data.SALES_OFFER_LOT_APPROVED[0][1]) +Number(data.data.SALES_OFFER_LOT_REJECTED[0][1]));
+        // if(data.SALES_OFFER_LOT_PENDING && data.SALES_OFFER_LOT_PENDING.length>0)
+        //   {
+        //     this.totalSOCount += data.SALES_OFFER_LOT_PENDING[0][0];
+        //     this.totalSOCountWt += Number(data.SALES_OFFER_LOT_PENDING[0][1]);
+        //   }
+        //   if(data.SALES_OFFER_LOT_APPROVED && data.SALES_OFFER_LOT_APPROVED.length>0)
+        //   {
+        //     this.totalSOCount += data.SALES_OFFER_LOT_APPROVED[0][0];
+        //     this.totalSOCountWt += Number(data.SALES_OFFER_LOT_APPROVED[0][1]);
+        //   }
+        //   if(data.SALES_OFFER_LOT_REJECTED && data.SALES_OFFER_LOT_REJECTED.length>0)
+        //   {
+        //     this.totalSOCount += data.SALES_OFFER_LOT_REJECTED[0][0];
+        //     this.totalSOCountWt += Number(data.SALES_OFFER_LOT_REJECTED[0][1]);
+        //   }
 
-      // // console.log(this.totalSOCountWt);
-     //  this.totalDOCount = (data.data.DELIVERY_ORDER_PENDING[0][0] + data.data.DELIVERY_ORDER_APPROVED[0][0] + data.data.DELIVERY_ORDER_REJECTED[0][0]);
-      //   this.totalDOCountWt = (Number(data.data.DELIVERY_ORDER_PENDING[0][1]) + Number(data.data.DELIVERY_ORDER_APPROVED[0][1]) + Number(data.data.DELIVERY_ORDER_REJECTED[0][1]));
-    
-       //  this.totalTLCount = (data.data.TRADE_LEAD_LOT_PENDING[0][0] + data.data.TRADE_LEAD_LOT_APPROVED[0][0] + data.data.TRADE_LEAD_LOT_REJECTED[0][0]);
-      //         this.totalTLCountWt = (Number(data.data.TRADE_LEAD_LOT_PENDING[0][1]) + Number(data.data.TRADE_LEAD_LOT_APPROVED[0][1]) + Number(data.data.TRADE_LEAD_LOT_REJECTED[0][1]));
+          if(data.DELIVERY_ORDER_PENDING && data.DELIVERY_ORDER_PENDING.length>0)
+          {
+            this.totalDOCount += data.DELIVERY_ORDER_PENDING[0][0];
+            this.totalDOCountWt += Number(data.DELIVERY_ORDER_PENDING[0][1]);
+          }
+          if(data.DELIVERY_ORDER_APPROVED && data.DELIVERY_ORDER_APPROVED.length>0)
+          {
+            this.totalDOCount += data.DELIVERY_ORDER_APPROVED[0][0];
+            this.totalDOCountWt += Number(data.DELIVERY_ORDER_APPROVED[0][1]);
+          }
+          if(data.DELIVERY_ORDER_REJECTED && data.DELIVERY_ORDER_REJECTED.length>0)
+          {
+            this.totalDOCount += data.DELIVERY_ORDER_REJECTED[0][0];
+            this.totalDOCountWt += Number(data.DELIVERY_ORDER_REJECTED[0][1]);
+          }
+
+          if(data.TRADE_LEAD_LOT_PENDING && data.TRADE_LEAD_LOT_PENDING.length>0)
+          {
+            this.totalTLCount += data.TRADE_LEAD_LOT_PENDING[0][0];
+            this.totalTLCountWt += Number(data.TRADE_LEAD_LOT_PENDING[0][1]);
+          }
+          if(data.TRADE_LEAD_LOT_APPROVED && data.TRADE_LEAD_LOT_APPROVED.length>0)
+          {
+            this.totalTLCount += data.TRADE_LEAD_LOT_APPROVED[0][0];
+            this.totalTLCountWt += Number(data.TRADE_LEAD_LOT_APPROVED[0][1]);
+          }
+          if(data.TRADE_LEAD_LOT_REJECTED && data.TRADE_LEAD_LOT_REJECTED.length>0)
+          {
+            this.totalTLCount += data.TRADE_LEAD_LOT_REJECTED[0][0];
+            this.totalTLCountWt += Number(data.TRADE_LEAD_LOT_REJECTED[0][1]);
+          }
+
+
+          if(data.SALES_CONFIRMATION_PENDING && data.SALES_CONFIRMATION_PENDING.length>0)
+          {
+            this.totalSCCount += data.SALES_CONFIRMATION_PENDING[0][0];
+            this.totalSCCountWt += Number(data.SALES_CONFIRMATION_PENDING[0][1]);
+          }
+          if(data.SALES_CONFIRMATION_APPROVED && data.SALES_CONFIRMATION_APPROVED.length>0)
+          {
+            this.totalSCCount += data.SALES_CONFIRMATION_APPROVED[0][0];
+            this.totalSCCountWt += Number(data.SALES_CONFIRMATION_APPROVED[0][1]);
+          }
+          if(data.SALES_CONFIRMATION_REJECTED && data.SALES_CONFIRMATION_REJECTED.length>0)
+          {
+            this.totalSCCount += data.SALES_CONFIRMATION_REJECTED[0][0];
+            this.totalSCCountWt += Number(data.SALES_CONFIRMATION_REJECTED[0][1]);
+          }
+
+
 
 
     });

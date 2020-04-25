@@ -231,7 +231,7 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   }
 
 
-  print() {
-    window.print();
-  }
+  // print() {
+  //   window.print();
+  // }
 }

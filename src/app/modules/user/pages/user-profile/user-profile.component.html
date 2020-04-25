@@ -19,7 +19,7 @@
                 (click)="this.activeTab = 'contact'" id="contact-tab" data-toggle="tab" href="javascript:" role="tab"
                 aria-controls="contact" aria-selected="false"><i class="feather icon-phone mr-2"></i><span class="f-16 f-w-600">Key Person</span></a>
             </li>
-            <li class="nav-item" style="background: #86CEFA;">
+            <li  *ngIf="selectedUser.userRole=='CUSTOMER' || selectedUser.userRole=='SUPPLIER' " class="nav-item" style="background: #86CEFA;">
               <a class="nav-link text-reset" [ngClass]="{'active': this.activeTab === 'gallery'}"
                 (click)="this.activeTab = 'gallery'" id="gallery-tab" data-toggle="tab" href="javascript:" role="tab"
                 aria-controls="gallery" aria-selected="false"><i class="feather icon-image mr-2"></i><span class="f-16 f-w-600">Trade</span></a>
@@ -49,7 +49,7 @@
         <app-user-key-person [selectedUser]="selectedUser" (check)="checkKeyPerson($event)"></app-user-key-person>
       
       </div>
-      <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
+      <div *ngIf="selectedUser.userRole=='CUSTOMER' || selectedUser.userRole=='SUPPLIER' " class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'gallery'}" id="gallery" role="tabpanel"
         aria-labelledby="gallery-tab">
         <app-user-trade-details [selectedUser]="selectedUser" (check)="checkTrade($event)"></app-user-trade-details>
       </div>

@@ -22,6 +22,7 @@ function passwordConfirming(c: AbstractControl): any {
 export class PersonalDetailsComponent implements OnInit {
 
   @Output() prsonalData: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectedRole :EventEmitter<any> = new EventEmitter<any>();
   bodyText: string;
   otp: number = null;
   enterOTP = false;
@@ -129,4 +130,10 @@ export class PersonalDetailsComponent implements OnInit {
     );
   }
 
+
+  getSelectedUser(event)
+  {
+    console.log(event);
+    this.selectedRole.emit(event);
+  }
 }

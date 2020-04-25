@@ -97,8 +97,8 @@ export class UserService {
     });
   }
 
-  saveUser(data): Observable<User> {
-    return new Observable<User>(obs => {
+  saveUser(data): Observable<any> {
+    return new Observable<any>(obs => {
       this.apiService.post(ApiUrl.createUser, data).subscribe(res => {
         console.log(res);
         obs.next(res.body);

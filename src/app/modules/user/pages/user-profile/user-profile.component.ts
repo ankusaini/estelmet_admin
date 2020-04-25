@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IAlbum, IEvent, Lightbox, LightboxConfig, LightboxEvent, LIGHTBOX_EVENT } from 'ngx-lightbox';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/shared/Models/user.model';
+import { User, UserRole } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ids } from 'src/app/shared/Models/ids.model';
@@ -14,6 +14,7 @@ import { ids } from 'src/app/shared/Models/ids.model';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  selectedRole: UserRole=UserRole.CUSTOMER;
   public activeTab: string;
   public Ids: any;
 
@@ -71,6 +72,7 @@ export class UserProfileComponent implements OnInit {
     });
     this.userDataService.items$.subscribe(data => {
       this.selectedUser = data;
+      console.log("Selected user",this.selectedUser);
       if (!Object.keys(this.selectedUser).length) {
         this.getUserById(this.id);
       } else {
@@ -119,6 +121,8 @@ export class UserProfileComponent implements OnInit {
   getUserById(id: number) {
     this.userService.getUserById(id).subscribe(res => {
       this.selectedUser = res;
+      this.selectedRole=res.userRole;
+      console.log("role",this.selectedRole)
       this.status = true;
     });
   }

@@ -18,15 +18,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col-md-4">
+              <div  (click)="getProduct(1,'APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedTPCount}}</h5>
                 <span class="btn btn-primary btn-sm shadow f-12">Registered</span> 
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(1,'PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingTPCount}}</h5>
                 <span class="btn btn-primary btn-sm shadow f-12">Pending</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(1,'REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedTPCount}}</h5>
                 <span class="btn btn-primary btn-sm shadow f-12">Rejected</span>
               </div>
@@ -49,15 +49,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col-md-4">
+              <div (click)="getProduct(2,'APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedTFCount}}</h5>
                 <span class="btn btn-success btn-sm shadow f-12">Registered</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(2,'PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingTFCount}}</h5>
                 <span class="btn btn-success btn-sm shadow f-12">Pending</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(2,'REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedTFCount}}</h5>
                 <span class="btn btn-success btn-sm shadow f-12">Rejected</span>
               </div>
@@ -81,15 +81,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col-md-4">
+              <div (click)="getProduct(3,'APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedGLCount}}</h5>
                 <span class="btn btn-danger btn-sm shadow f-12">Registered</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(3,'PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingGLCount}}</h5>
                 <span class="btn btn-danger btn-sm shadow f-12">Pending</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(3,'REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedGLCount}}</h5>
                 <span class="btn btn-danger btn-sm shadow f-12">Rejected</span>
               </div>
@@ -112,15 +112,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col-md-4">
+              <div (click)="getProduct(4,'APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedPCRCCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Registered</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(4,'PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingPCRCCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Pending</span>
               </div>
-              <div class="col-md-4">
+              <div (click)="getProduct(4,'REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedPCRCCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Rejected</span>
               </div>

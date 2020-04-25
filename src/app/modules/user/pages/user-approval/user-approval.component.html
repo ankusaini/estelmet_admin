@@ -1,4 +1,10 @@
 <div class="row">
+  <div class="col-sm-12">
+    <button type='button' (click)="basicSwal()" class="btn btn-primary btn-sm changeBtn"
+      style="margin: 45px 0px 10px;float:right;">Change User Type</button>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-12">
     <app-card [hidHeader]="true" cardClass="tab-card">
       <ngb-tabset (tabChange)="onTabChange($event)" type="pills">
