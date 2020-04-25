@@ -8,6 +8,7 @@ import { DashProjectComponent } from "src/app/modules/dashboard/pages/dash-proje
 import { DashAnalyticsComponent } from "src/app/modules/dashboard/pages/dash-analytics/dash-analytics.component";import { SharedModule } from "src/app/theme/shared/shared.module";
 import { ShareModule } from "src/app/shared/shared.module";
 import { DashProcessingComponent } from "../dashboard/pages/dash-processing/dash-processing.component";
+import { NgbPopoverModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -24,7 +25,9 @@ import { DashProcessingComponent } from "../dashboard/pages/dash-processing/dash
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    ShareModule
+    ShareModule,
+    NgbTooltipModule,
+    NgbPopoverModule
   ]
 })
 export class DashboardModule { }

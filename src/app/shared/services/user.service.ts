@@ -40,8 +40,8 @@ export class UserService {
     // const params: HttpParams = new HttpParams()
     //   .set('userRole', role);
     return new Observable<any>(obs => {
-      this.apiService.post(ApiUrl.countByUserRole, body).subscribe(res => {
-        obs.next(res.data);
+      this.apiService.post(ApiUrl.searchUserByProduct, body).subscribe(res => {
+        obs.next(res.body);
       });
     });
   }

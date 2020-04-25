@@ -136,7 +136,13 @@ export interface UserProductPreference {
 }
 
 export enum ProductStage {
-    CART, WISHLIST, ORDER, PRODUCT_PREFERENCE, SALES, PURCHASE, REQUEST_QUOTATION
+    CART = 'CART',
+    WISHLIST = 'WISHLIST',
+    ORDER = 'ORDER',
+    PRODUCT_PREFERENCE = 'PRODUCT_PREFERENCE',
+    SALES = 'SALES',
+    PURCHASE = 'PURCHASE',
+    REQUEST_QUOTATION = 'REQUEST_QUOTATION'
 }
 export interface SecurityQuestion {
     securityQuestionId?: string;
@@ -176,9 +182,8 @@ export interface Roles {
     description?: string;
 }
 
-export interface UserMini
-{
+export interface UserMini {
     userDetialId?: string;
     firstName?: string;
-    companyName?: string;   
+    companyName?: string;
 }

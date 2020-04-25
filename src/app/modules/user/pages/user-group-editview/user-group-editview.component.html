@@ -44,13 +44,17 @@
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'home'}" id="home" role="tabpanel"
         aria-labelledby="home-tab">
         <div class="merge-card">
-          <app-card [hidHeader]="false" cardTitle="User Group Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
-            <!-- <button type="button"
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button"
             (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
-            class="btn btn-primary btn-sm rounded m-t-10 float-right" data-toggle="collapse" data-target=".pro-det-edit"
+            class="btn btn-primary btn-sm rounded m-t-10 m-b-10 float-right" data-toggle="collapse" data-target=".pro-det-edit"
             aria-expanded="false" aria-controls="pro-det-edit-1">
             <i class="feather" [ngClass]="editProfileIcon"></i>
-          </button> -->
+          </button>
+          </div>
+        </div>
+            <app-card [hidHeader]="false" cardTitle="User Group Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Group ID</label>
               <div class="col-sm-3 m-t-10 p-t-5 brdr1">
@@ -76,19 +80,71 @@
                 {{selectedUserGroup?.thicknessMin}} - {{selectedUserGroup?.thicknessMax}}
               </div>
             </div>
+                     <!-- <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
+                GP Global Steel
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
+              <div class="col-sm-3 m-t-10 p-t-5 brdr1">
+                WAR-92, L24/L25 Taloja MIDC
+              </div>
+            </div> -->
           </app-card>
+            <!-- <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">CUG Id</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="exampleFormControlSelect1" disabled>
+                  <option value>CUG-922</option>
+                </select>
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">CUG Title</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="exampleFormControlSelect1" disabled>
+                  <option value>CUG-CR-MWC</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Category</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="" class="form-control" disabled value="Cold Rolled">
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Thickness Range (mm)</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="" class="form-control"  value="1.22 - 2.14">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Company</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="GP Global Steel" class="form-control" disabled>
+              </div>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Warehouse</label>
+              <div class="col-sm-3">
+                <input type="text" placeholder="WAR-92, L24/L25 Taloja MIDC" class="form-control" disabled>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label"></label>
+              <div class="col-sm-9">
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </app-card> -->
         </div>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': this.activeTab === 'profile'}" id="profile" role="tabpanel"
         aria-labelledby="profile-tab">
         <div class="merge-card">
+          <div class="row">
+            <div class="col-md-12">
+             <button type="button" (click)="getUserType()" class="btn btn-primary btn-sm rounded m-t-10 m-b-10 float-right">Add
+               More</button>
+            </div>
+          </div>
           <app-card [hidHeader]="false" cardTitle="User Details" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
-           <div class="row">
-             <div class="col-md-12">
-              <button type="button" (click)="getUserType()" class="btn btn-primary btn-sm rounded m-t-10 m-b-10 float-right">Add
-                More</button>
-             </div>
-           </div>
             <div class="dt-responsive table-responsive" cardClass="card-datatable">
               <table datatable class="table table-striped table-xs table-hover">
                 <thead>

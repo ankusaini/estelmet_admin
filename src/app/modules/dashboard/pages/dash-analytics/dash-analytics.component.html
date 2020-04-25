@@ -18,17 +18,17 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col p-1">
-                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','APPROVED')" class="m-0 text-white">{{approvedSOCount}}</h5>
-                <span>Registered</span>
+              <div class="col-md-4">
+                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','APPROVED')" class="m-0 f-14 text-white">{{approvedSOCount}}</h5>
+                <span class="btn btn-warning btn-sm shadow f-12">Registered</span> 
               </div>
-              <div class="col p-1">
-                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','PENDING')" class="m-0 text-white">{{pendingSOCount}}</h5>
-                <span>Pending</span>
+              <div class="col-md-4">
+                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','PENDING')" class="m-0 f-14 text-white">{{pendingSOCount}}</h5>
+                <span class="btn btn-warning btn-sm shadow f-12">Pending</span>
               </div>
-              <div class="col p-1">
-                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','REJECTED')" class="m-0 text-white">{{rejectedSOCount}}</h5>
-                <span>Rejected</span>
+              <div class="col-md-4">
+                <h5 (click)="getAllSalesByTypeAndStatusCheck('SALES_OFFER_LOT','REJECTED')" class="m-0 f-14 text-white">{{rejectedSOCount}}</h5>
+                <span class="btn btn-warning btn-sm shadow f-12">Rejected</span>
               </div>
             </div>
           </div>
@@ -49,17 +49,17 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_CONFIRMATION','APPROVED')" class="col p-1">
-                <h5 class="m-0 text-white">{{approvedSCCount}}</h5>
-                <span>Registered</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_CONFIRMATION','APPROVED')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{approvedSCCount}}</h5>
+                <span class="btn btn-success btn-sm shadow f-12">Registered</span>
               </div>
-              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_CONFIRMATION','PENDING')" class="col p-1">
-                <h5 class="m-0 text-white">{{pendingSCCount}}</h5>
-                <span>Pending</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_CONFIRMATION','PENDING')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{pendingSCCount}}</h5>
+                <span class="btn btn-success btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_CONFIRMATION','REJECTED')" class="col p-1">
-                <h5 class="m-0 text-white">{{rejectedSCCount}}</h5>
-                <span>Rejected</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('SALES_CONFIRMATION','REJECTED')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{rejectedSCCount}}</h5>
+                <span class="btn btn-success btn-sm shadow f-12">Rejected</span>
               </div>
             </div>
           </div>
@@ -81,17 +81,17 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div (click)="getAllSalesByTypeAndStatusCheck('DELIVERY_ORDER','APPROVED')" class="col p-1">
-                <h5 class="m-0 text-white">{{approvedDOCount}}</h5>
-                <span>Registered</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('DELIVERY_ORDER','APPROVED')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{approvedDOCount}}</h5>
+                <span class="btn btn-danger btn-sm shadow f-12">Registered</span>
               </div>
-              <div (click)="getAllSalesByTypeAndStatusCheck('DELIVERY_ORDER','PENDING')" class="col p-1">
-                <h5 class="m-0 text-white">{{pendingDOCount}}</h5>
-                <span>Pending</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('DELIVERY_ORDER','PENDING')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{pendingDOCount}}</h5>
+                <span class="btn btn-danger btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getAllSalesByTypeAndStatusCheck('DELIVERY_ORDER','REJECTED')" class="col p-1">
-                <h5 class="m-0 text-white">{{rejectedDOCount}}</h5>
-                <span>Rejected</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('DELIVERY_ORDER','REJECTED')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{rejectedDOCount}}</h5>
+                <span class="btn btn-danger btn-sm shadow f-12">Rejected</span>
               </div>
             </div>
           </div>
@@ -112,17 +112,17 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div (click)="getAllSalesByTypeAndStatusCheck('TRADE_LEAD_LOT','APPROVED')" class="col p-1">
-                <h5 class="m-0 text-white">{{approvedTLCount}}</h5>
-                <span>Registered</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('TRADE_LEAD_LOT','APPROVED')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{approvedTLCount}}</h5>
+                <span class="btn btn-primary btn-sm shadow f-12">Registered</span>
               </div>
-              <div (click)="getAllSalesByTypeAndStatusCheck('TRADE_LEAD_LOT','PENDING')" class="col p-1">
-                <h5 class="m-0 text-white">{{pendingTLCount}}</h5>
-                <span>Pending</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('TRADE_LEAD_LOT','PENDING')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{pendingTLCount}}</h5>
+                <span class="btn btn-primary btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getAllSalesByTypeAndStatusCheck('TRADE_LEAD_LOT','REJECTED')" class="col p-1">
-                <h5 class="m-0 text-white">{{rejectedTLCount}}</h5>
-                <span>Rejected</span>
+              <div (click)="getAllSalesByTypeAndStatusCheck('TRADE_LEAD_LOT','REJECTED')" class="col-md-4">
+                <h5 class="m-0 f-14 text-white">{{rejectedTLCount}}</h5>
+                <span class="btn btn-primary btn-sm shadow f-12">Rejected</span>
               </div>
             </div>
           </div>

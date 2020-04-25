@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
-import { User } from 'src/app/shared/Models/user.model';
+import { User, Status, ProductStage } from 'src/app/shared/Models/user.model';
 import { UserDataService } from 'src/app/shared/services/data/userData.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import Swal from 'sweetalert2';
@@ -13,6 +13,8 @@ import * as xlsx from 'xlsx';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 import html2canvas from 'html2canvas';
+import { ProductFilter, ProductType, ProductCategory, ProductShape, ProductClass, ProductTemper } from '../../../../shared/Models/product.model.';
+import { StaticDataService } from '../../../../shared/services/data/staticData.service';
 
 @Component({
   selector: 'app-users-list',
@@ -28,6 +30,31 @@ export class UsersListComponent implements OnInit, AfterViewInit {
   dtTrigger: Subject<any> = new Subject();
   dtRouterLinkOptions: any = {};
   public Ids: any;
+  productFilter: ProductFilter = {
+    limit: 15,
+    offset: 1,
+    status: '',
+    productStage: ProductStage.PRODUCT_PREFERENCE.toString(),
+    thicknessMin: '',
+    thicknessMax: '',
+    widthMin: '',
+    widthMax: '',
+    lengthMin: '',
+    lengthMax: '',
+    productCategory: '',
+    productClass: '',
+    productShape: '',
+    productTemper: '',
+    productFinish: '',
+    productCoating: '',
+    lessThanNtWt: '',
+    greaterThanNtWt: ''
+  };
+  productType: ProductType[] = [];
+  productCategory: ProductCategory[] = [];
+  productShape: ProductShape[] = [];
+  productClass: ProductClass[] = [];
+  productTemper: ProductTemper[] = [];
 
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
@@ -39,11 +66,17 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     private router: Router,
     private dataService: UserDataService,
+    private staticDataService: StaticDataService
   ) {
     this.Ids = ids;
   }
 
   ngOnInit() {
+    this.staticDataService.getProductType().subscribe(data => this.productType = data);
+    this.staticDataService.getAllProductCategory().subscribe(data => this.productCategory = data);
+    this.staticDataService.getProductShape().subscribe(data => this.productShape = data);
+    this.staticDataService.getProductClass().subscribe(data => this.productClass = data);
+    this.staticDataService.getProductTempor().subscribe(data => this.productTemper = data);
     this.dtExportButtonOptions = this.userList;
     this.basicSwal();
   }
@@ -145,8 +178,8 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     // console.log("fnc")
   }
 
-  searchUserByProduct(body) {
-    this.userService.searchUserByProduct(body).subscribe(
+  searchUserByProduct() {
+    this.userService.searchUserByProduct(this.productFilter).subscribe(
       data => this.userList = data.data
     );
   }

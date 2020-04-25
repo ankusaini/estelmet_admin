@@ -61,7 +61,6 @@
   Print</button>&nbsp;
 <button type="submit" class="btn btn-danger active pdfBtn" (click)="exportToPDF()"><i class="feather icon-file"></i>
   PDF</button>&nbsp;
-<button type="submit" class="btn btn-warning active copyBtn"><i class="feather icon-copy"></i> Copy</button>&nbsp;
 
 
 <app-ui-modal #exampleModalCenter dialogClass="modal-dialog-centered" [dialogClass]="'modal-xl'">
@@ -74,71 +73,71 @@
     <div class="row">
       <div class="col-md-2" style="margin-bottom:20px;">
         <label class="f-12" for="exampleFormControlSelect1">Type <small class="asterik_sign">*</small></label>
-        <select class="form-control">
-          <option value="0" disabled>Type</option>
-          <option >Type 1</option>
-          <option >Type 2</option>
+        <select class="form-control" [(ngModel)]="productFilter.productCategory">
+          <option value='' disabled>Type</option>
+          <option *ngFor="let item of productType" [ngValue]="item?.id">{{ item?.productType }}</option>
         </select>
       </div>
       <div class="col-md-2">
         <label class="f-12" for="exampleFormControlSelect1">Category <small class="asterik_sign">*</small></label>
-        <select class="form-control">
-          <option value="0" disabled>Category</option>
-          <option >Type 1</option>
-          <option >Type 2</option>
+        <select class="form-control" [(ngModel)]="productFilter.productCategory">
+          <option value='' disabled>Category</option>
+          <option *ngFor="let item of productCategory" [ngValue]="item?.id">{{ item?.productCategory }}</option>
         </select>
       </div>
       <div class="col-md-2" style="margin-bottom:20px;">
         <label class="f-12" for="exampleFormControlSelect1">Shape <small class="asterik_sign">*</small></label>
-        <select class="form-control">
-          <option value="0" disabled>Shape</option>
-          <option >Type 1</option>
-          <option >Type 2</option>
+        <select class="form-control" [(ngModel)]="productFilter.productShape">
+          <option value='' disabled>Shape</option>
+          <option *ngFor="let item of productShape" [ngValue]="item?.id">{{ item?.productShape }}</option>
         </select>
       </div>
       <div class="col-md-2" style="margin-bottom:20px;">
         <label class="f-12" for="exampleFormControlSelect1">Class <small class="asterik_sign">*</small></label>
-        <select class="form-control">
-          <option value="0" disabled>Class</option>
-          <option >Type 1</option>
-          <option >Type 2</option>
+        <select class="form-control" [(ngModel)]="productFilter.productClass">
+          <option value='' disabled>Class</option>
+          <option *ngFor="let item of productClass" [ngValue]="item?.id">{{ item?.productClass }}</option>
         </select>
       </div>
       <div class="col-md-2" style="margin-bottom:20px;">
         <label class="f-12" for="exampleFormControlSelect1">Temper <small class="asterik_sign">*</small></label>
-        <select class="form-control">
-          <option value="0" disabled>Temper</option>
-          <option >Type 1</option>
-          <option >Type 2</option>
+        <select class="form-control" [(ngModel)]="productFilter.productTemper">
+          <option value='' disabled>Temper</option>
+          <option *ngFor="let item of productTemper" [ngValue]="item?.id">{{ item?.productTemper }}</option>
         </select>
       </div>
       <div class="col-md-2" style="margin-bottom:20px;">
-        <label class="f-12" for="exampleFormControlSelect1">Blank <small class="asterik_sign">*</small></label>
-        <select class="form-control">
-          <option value="0" disabled>Blank</option>
-          <option >Type 1</option>
-          <option >Type 2</option>
+        <label class="f-12" for="exampleFormControlSelect1">Product<small class="asterik_sign">*</small></label>
+        <select class="form-control" [(ngModel)]="productFilter.productStage">
+          <option value='' disabled>Product</option>
+          <option value='CART'>CART</option>
+          <option value='WISHLIST'>WISHLIST</option>
+          <option value='ORDER'>ORDER</option>
+          <option value='PRODUCT_PREFERENCE'>PRODUCT_PREFERENCE</option>
+          <option value='SALES'>SALES</option>
+          <option value='PURCHASE'>PURCHASE</option>
+          <option value='REQUEST_QUOTATION'>REQUEST_QUOTATION</option>
         </select>
       </div>
       <div class="col-md-4">
         <label class="f-12" for="exampleFormControlSelect1">Thickness Range <small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Min" class="form-control"></div>
-          <div class="col-md-6"><input type="text" placeholder="Max" class="form-control"></div>
+          <div class="col-md-6"><input type="text" placeholder="Thk. Min" class="form-control" [(ngModel)]="productFilter.thicknessMin"></div>
+          <div class="col-md-6"><input type="text" placeholder="Thk. Max" class="form-control" [(ngModel)]="productFilter.thicknessMax"></div>
         </div>
       </div>
       <div class="col-md-4" style="margin-bottom:20px;">
         <label class="f-12" for="exampleFormControlSelect1">Width Range <small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Min" class="form-control"></div>
-          <div class="col-md-6"><input type="text" placeholder="Max" class="form-control"></div>
+          <div class="col-md-6"><input type="text" placeholder="Width Min" class="form-control" [(ngModel)]="productFilter.widthMin"></div>
+          <div class="col-md-6"><input type="text" placeholder="Width Max" class="form-control" [(ngModel)]="productFilter.widthMax"></div>
         </div>
       </div>
       <div class="col-md-4">
         <label class="f-12" for="exampleFormControlSelect1">Length Range <small class="asterik_sign">*</small></label>
         <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Min" class="form-control"></div>
-          <div class="col-md-6"><input type="text" placeholder="Max" class="form-control"></div>
+          <div class="col-md-6"><input type="text" placeholder="Length Min" class="form-control" [(ngModel)]="productFilter.lengthMin"></div>
+          <div class="col-md-6"><input type="text" placeholder="Length Max" class="form-control" [(ngModel)]="productFilter.lengthMax"></div>
         </div>
       </div>
     </div>
@@ -149,6 +148,6 @@
   <div class="app-modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal"
       (click)="exampleModalCenter.hide()">Close</button>&nbsp;
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn btn-primary" (click)="searchUserByProduct(); exampleModalCenter.hide()">Save changes</button>
   </div>
 </app-ui-modal>
