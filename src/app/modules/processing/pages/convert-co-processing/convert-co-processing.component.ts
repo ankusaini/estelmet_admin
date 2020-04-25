@@ -17,7 +17,8 @@ import { Router } from "@angular/router";
 export class ConvertCoProcessingComponent implements OnInit {
 
   @ViewChild("wizard", { static: false }) wizard: WizardComponent;
-  public selectedCo: any='';
+  public selectedCo: any;
+  processingType;
   public customerOrderList: CustomerOrder[];
   private processing: Processing;
   public ProductList: Product[];

@@ -3,10 +3,9 @@
     <button class="btn btn-success btn-sm changeBtn" (click)="basicSwal()" style="margin: 45px 0px 10px;float:right;">Choose Another Type </button>
   </div>
 </div>
-
 <app-card cardTitle="Add Product" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-    <wizard-step stepTitle="Select GRN Id" navigationSymbol="1">
+    <wizard-step stepTitle="Select GRN ID" navigationSymbol="1">
       <app-select-grn (selectedGrnId)="getSelectedGrnId($event)" [grntype]="selectedProductType" [grnList]="grnList"></app-select-grn>
       <!-- <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
@@ -15,7 +14,7 @@
         </div>
       </div> -->
     </wizard-step>
-    <wizard-step stepTitle="Add Product" navigationSymbol="1">
+    <wizard-step stepTitle="Add Product" navigationSymbol="2">
     <app-material-classification-specification (productData)="getProductData($event)" [grntype]="selectedProductType"></app-material-classification-specification>
       <div class="m-t-20">
         <app-add-product-cart [productList]="productList"></app-add-product-cart>
@@ -23,7 +22,7 @@
       <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-          <button type="button" (click)="sendForApproval()"class="btn btn-success btn-sm">Send for Approval</button>
+          <button type="button" (click)="sendForApproval()"class="btn btn-success btn-sm excelBtn">Send for Approval</button>
         </div>
       </div>
     </wizard-step>

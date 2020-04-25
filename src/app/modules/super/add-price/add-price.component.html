@@ -1,14 +1,20 @@
 <div class="row">
   <div class="col-md-12">
     <app-card cardTitle="Add Price" [options]="false">
-      <form #validationForm="ngForm" class="editForm" novalidate>
+      <form #validationForm="ngForm" class="editForm" novalidate [formGroup]="priceForm" (ngSubmit)="priceOnSubmit()">
         <div class="row">
           <div class="col-md-2">
             <div class="form-group">
-              <label for="validationCustom02">Category</label>
-              <select class="form-control">
-              <option value>Select</option>
-            </select>
+              <label class="f-12" for="exampleFormControlSelect1">Product Category <small
+                  class="asterik_sign">*</small></label>
+              <fieldset formGroupName="productCategory">
+                <select (change)="setValue($event,'productCategory')" formControlName="id" class="form-control"
+                  id="exampleFormControlSelect1">
+                  <option value='' disabled>Select</option>
+                  <option *ngFor="let item of productCategoryList" [value]="item?.id">{{ item?.productCategory }}
+                  </option>
+                </select>
+              </fieldset>
             </div>
           </div>
           <div class="col-md-2">
@@ -16,11 +22,11 @@
               <label for="validationCustom02">Thickness Range</label>
               <div class="row">
                 <div class="col-md-6">
-                  <input type="text" [textMask]="{mask: maskIP}" class="form-control" placeholder="Min">
+                  <input type="text" class="form-control" placeholder="Min" formControlName="thicknessMin">
                   <small class="form-text text-muted">(mm)</small>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" [textMask]="{mask: maskIP}" class="form-control" placeholder="Max">
+                  <input type="text" class="form-control" placeholder="Max" formControlName="thicknessMax">
                   <small class="form-text text-muted">(mm)</small>
                 </div>
               </div>
@@ -31,11 +37,11 @@
               <label for="validationCustom02">Width Range</label>
               <div class="row">
                 <div class="col-md-6">
-                  <input type="text"  class="form-control" placeholder="Min">
+                  <input type="text" class="form-control" placeholder="Min" formControlName="widthMin">
                   <small class="form-text text-muted">(mm)</small>
                 </div>
                 <div class="col-md-6">
-                  <input type="text"  class="form-control" placeholder="Max">
+                  <input type="text" class="form-control" placeholder="Max" formControlName="widthMax">
                   <small class="form-text text-muted">(mm)</small>
                 </div>
               </div>
@@ -43,48 +49,62 @@
           </div>
           <div class="col-md-2">
             <div class="form-group">
-              <label for="validationCustom02">Temper Range</label>
+              <label class="f-12 dash" for="validationCustom02">Temper Range<small
+                  class="asterik_sign">*</small></label>
               <div class="row">
-                <div class="col-md-6">
-                  <select class="form-control">
-                    <option value>Min</option>
-                  </select>
+                <div class="col-md-6 col-6 mb-3">
+                  <fieldset formGroupName="temperMin">
+                    <select (change)="setValueTwoField($event,'temperMin','productTemper')" formControlName="id"
+                      class="form-control" id="exampleFormControlSelect1">
+                      <option value='' disabled>Min</option>
+                      <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}
+                      </option>
+                    </select>
+                  </fieldset>
                 </div>
-                <div class="col-md-6">
-                  <select class="form-control">
-                    <option value>Max</option>
-                  </select>
+                <div class="col-md-6 col-6 mb-3">
+                  <fieldset formGroupName="temperMax">
+                    <select (change)="setValueTwoField($event,'temperMax','productTemper')" formControlName="id"
+                      class="form-control" id="exampleFormControlSelect1">
+                      <option value='' disabled>Max</option>
+                      <option *ngFor="let item of productTemperList" [value]="item?.id">{{ item?.productTemper }}
+                      </option>
+                    </select>
+                  </fieldset>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
-              <label for="validationCustom02">Coating</label>
-              <select class="form-control">
-              <option value>Select</option>
-            </select>
+              <label class="f-12" for="exampleFormControlSelect1">Coating</label>
+              <fieldset formGroupName="productCoating">
+                <select (change)="setValue($event,'productCoating')" formControlName="id" class="form-control"
+                  id="exampleFormControlSelect1">
+                  <option value='' disabled>Select</option>
+                  <option *ngFor="let item of productCoatingList" [value]="item?.id">{{ item?.productCoating }}</option>
+                </select>
+              </fieldset>
             </div>
           </div>
           <div class="col-md-2">
             <div class="form-group">
               <label for="validationCustom02">Price</label>
-              <input type="text" class="form-control" placeholder="Enter Price">
+              <input type="text" class="form-control" placeholder="Enter Price" formControlName="price">
               <small class="form-text text-muted">(/mt.)</small>
             </div>
           </div>
         </div>
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary active btn-sm">Add More</button>
+        </div>
       </form>
-     <div class="text-right">
-      <button type="submit" class="btn btn-primary active btn-sm">Add More</button>
-     </div>
     </app-card>
-    <app-card [hidHeader]="false" cardTitle="View Price List" [options]="false"
-    cardClass="user-profile-list">
-    <div class="dt-responsive table-responsive" cardClass="card-datatable">
-      <table datatable class="table table-striped table-xs table-hover text-center">
-        <thead>
-          <tr>
+    <app-card [hidHeader]="false" cardTitle="View Price List" [options]="false" cardClass="user-profile-list">
+      <div class="dt-responsive table-responsive" cardClass="card-datatable">
+        <table datatable class="table table-striped table-xs table-hover text-center">
+          <thead>
+            <tr>
               <th>Sr. No.</th>
               <th>Thickness <span class="d-block">(mm)</span></th>
               <th>Width <span class="d-block">(mm)</span></th>
@@ -93,26 +113,25 @@
               <th>Category</th>
               <th>Price <span class="d-block">(/mt.)</span></th>
               <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-              <td>1.</td>
-              <td>1.22 - 2.45</td>
-              <td>800 - 1100</td>
-              <td>T2 - T4</td>
-              <td>Matt</td>
-              <td>CR</td>
-              <td>54</td>
-            <td>
-               <button type="button" class="btn btn-icon btn-success btn-sm"><i class="feather icon-edit"></i></button>&nbsp;
-              <button type="button" class="btn btn-icon btn-danger btn-sm" ><i class="feather icon-trash-2"></i></button>
-              
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </app-card>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of priceList; index as i">
+              <td>{{ i + 1}}</td>
+              <td>{{ item.thicknessMin + '-' + item.thicknessMax }}</td>
+              <td>{{ item.widthMin + '-' + item.widthMax }}</td>
+              <td>{{ item.temperMin.productTemper + '-' + item.temperMax.productTemper }}</td>
+              <td>{{item.productCoating.productCoating }}</td>
+              <td>{{ item.productCategory.productCategory }}</td>
+              <td>{{ item.price }}</td>
+              <td>
+                <button type="button" class="btn btn-icon btn-danger btn-sm"><i
+                    class="feather icon-trash-2" (click)="deletePrice(item.id)"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
   </div>
 </div>
