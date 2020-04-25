@@ -60,8 +60,6 @@ export class PoEmailSmsComponent implements OnInit {
       this.getPurchaseOrderByPo(this.selectedPO.id);
        
     }
-
-    console.log("selected  po is", this.selectedPO);
   }
 
   getPurchaseOrderByPo(purchaseOderId) {
@@ -91,15 +89,34 @@ export class PoEmailSmsComponent implements OnInit {
 
 
   openModal() {
-    console.log("called")
+     if (this.selectedPO) {
     this.myModel.nativeElement.className='modal fade show';
     this.userService.getAllUserByUserNameAndCompany(UserRole.SUPPLIER, Status.APPROVED).subscribe(data => {
       this.supplierDrowDownList = data;
+        this.getProductsList(this.selectedPO.id);
+
     }, error => {
 
     });
-    
+     }
+  else
+    {
+      this.toastrService.warning("Please select any PO");
+        }
     //this.openModelRef.nativeElement.click();
+  }
+
+  getProductsList(id)
+  {
+   this.purchaseServic.findPurchase(id).subscribe(
+          data => {
+            this.productList = data.productList;
+            console.log("now product ist",this.productList);
+          },
+          error => {
+            console.log("error");
+          }
+        );
   }
 
   submitForm() {
@@ -115,15 +132,14 @@ export class PoEmailSmsComponent implements OnInit {
   }
 
   savePurchaseOrder(purchaseId, userId, productId, price) {
-    if (this.selectedPO && this.userId && this.productId) {
-      this.purchaseServic.savePurchaseOrder(this.selectedPO.id, this.userId, this.productId, this.price).subscribe(data => {
+      this.purchaseServic.savePurchaseOrder(purchaseId, userId, productId, price).subscribe(data => {
         this.supplierList = data.data;
 
         this.toastrService.success("Record saved successfully", "Success");
       }, error => {
 
       })
-    }
+    
   }
 
   closeModel() { 

@@ -30,9 +30,9 @@
                     <td>{{mr.title}}</td>
                     <td>{{mr.productCategory}}</td>
                     <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
+                    <td>{{mr.sourceCompanyId}}</td>
+              <td>{{mr.sourceWarehouseId}}</td>
+              <td>{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
                     <td>
                       <div class="overlay-edit">
                         <button (click)="addMrToList(mr)" type="button" class="btn btn-icon btn-success"><i
@@ -73,9 +73,9 @@
                     <td>{{mr.title}}</td>
                     <td>{{mr.productCategory}}</td>
                     <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
+                    <td>{{mr.sourceCompanyId}}</td>
+              <td>{{mr.sourceWarehouseId}}</td>
+              <td>{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
                     <td>
                       <div class="overlay-edit">
                         <button (click)="addMrToList(mr)" type="button" class="btn btn-icon btn-success"><i
@@ -116,9 +116,9 @@
                     <td>{{mr.title}}</td>
                     <td>{{mr.productCategory}}</td>
                     <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
-                    <td>{{mr.productShape}}</td>
+                   <td>{{mr.sourceCompanyId}}</td>
+              <td>{{mr.sourceWarehouseId}}</td>
+              <td>{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
                     <td>
                       <div class="overlay-edit">
                         <button (click)="addMrToList(mr)" type="button" class="btn btn-icon btn-success"><i
@@ -162,9 +162,9 @@
               <td>{{mr.title}}</td>
               <td>{{mr.productCategory}}</td>
               <td>{{mr.productShape}}</td>
-              <td>{{mr.productShape}}</td>
-              <td>{{mr.productShape}}</td>
-              <td>{{mr.productShape}}</td>
+              <td>{{mr.sourceCompanyId}}</td>
+              <td>{{mr.sourceWarehouseId}}</td>
+              <td>{{mr.purchaseHistory[0].createdDate | date: 'short'}}</td>
               <td>
                 <span class="badge" [ngClass]="{'badge-warning': (mr.status == 'PENDING'),
                                     'badge-success': (mr.status == 'APPROVED'),

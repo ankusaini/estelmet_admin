@@ -39,6 +39,7 @@ export class MrApporvalComponent implements OnInit {
       data => {
         if (status == "PENDING") {
           this.pendingMrList = data.purchaseList;
+          console.log(this.pendingMrList);
         }
         if (status == "APPROVED") {
           this.approvedMrList = data.purchaseList;
