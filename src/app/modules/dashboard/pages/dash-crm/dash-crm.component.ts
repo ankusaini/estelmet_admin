@@ -6,7 +6,9 @@ import {MonthlyProfit3} from './chart/monthly-profit-3';
 import {ClientMap1} from './chart/client-map-1';
 import {ClientMap3} from './chart/client-map-3';
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
-import { ProductCategory } from "src/app/shared/Models/product.model.";
+import { ProductCategory, ProductFilter, ProductStage, Product } from "src/app/shared/Models/product.model.";
+import { ProductService } from "src/app/shared/services/product.service";
+import { Status } from "src/app/shared/Models/user.model";
 
 @Component({
   selector: 'app-dash-crm',
@@ -15,6 +17,7 @@ import { ProductCategory } from "src/app/shared/Models/product.model.";
 })
 export class DashCrmComponent implements OnInit {
 
+  productList: Product[];
 
 
   public totalTPCount = 0;
@@ -46,7 +49,29 @@ export class DashCrmComponent implements OnInit {
   public pendingPCRCCount = 0;
   public rejectedPCRCCount = 0;
 
-  constructor(private sharedService: PurchaseService) {
+
+  productFilter: ProductFilter = {
+    limit: 10,
+    offset: 1,
+    status: Status.APPROVED.toString(),
+    productStage: ProductStage.ACTIVE.toString(),
+    thicknessMin: '',
+    thicknessMax: '',
+    widthMin: '',
+    widthMax: '',
+    lengthMin: '',
+    lengthMax: '',
+    productCategory: '',
+    productClass: '',
+    productShape: '',
+    productTemper: '',
+    productFinish: '',
+    productCoating: '',
+    lessThanNtWt: '',
+    greaterThanNtWt: ''
+  };
+  
+  constructor(private sharedService: PurchaseService,private productService: ProductService) {
 
   }
 
@@ -116,4 +141,18 @@ export class DashCrmComponent implements OnInit {
        console.log("err");
      });
    }
+
+
+
+     getProduct(id,status) {
+       this.productFilter.productCategory=id;
+       this.productFilter.status=status;
+    this.productService.getSearchFilter(this.productFilter).subscribe(
+      (data) => {
+        console.log("Data based on cat id",data);
+        this.productList = data;
+        console.log(data);
+      }
+    );
+  }
 }

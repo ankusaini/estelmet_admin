@@ -5,10 +5,9 @@ import { Purchase, LotType, PurchaseType } from "src/app/shared/Models/purchase.
 import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { Status } from "src/app/shared/Models/product.model.";
 import { RequestP } from "src/app/shared/Models/RequestResponse";
 import { Router } from '@angular/router';
-import { STATUS } from '@iplab/ngx-file-upload/lib/helpers/control.class';
+import { Status } from "src/app/shared/Models/user.model";
 
 @Component({
   selector: 'app-create-lot-with-pc',
@@ -65,7 +64,9 @@ export class CreateLotWithPcComponent implements OnInit {
               {
             this.selectedPurchase=data[0];
             this.selectedPurchase.lotType=LotType.WITH_PC;
+            
             this.selectedPurchase.status=Status.PENDING;
+
              this.selectedPurchase.type=PurchaseType.LOT;
                 this.requestp.purchase=this.selectedPurchase
             //  let url='/purchase/updatePurchaseHistory';

@@ -18,15 +18,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div class="col p-1">
+              <div (click)="getProduct(1,'APPROVED')" class="col p-1">
                 <h5 class="m-0 text-white">{{approvedTPCount}}</h5>
                 <span>Registered</span>
               </div>
-              <div class="col p-1">
+              <div (click)="getProduct(1,'PENDING')" class="col p-1">
                 <h5 class="m-0 text-white">{{pendingTPCount}}</h5>
                 <span>Pending</span>
               </div>
-              <div class="col p-1">
+              <div (click)="getProduct(1,'REJECTED')"class="col p-1">
                 <h5 class="m-0 text-white">{{rejectedTPCount}}</h5>
                 <span>Rejected</span>
               </div>
@@ -140,55 +140,26 @@
         <table class="table table-hover mb-0">
           <thead>
             <tr>
-              <th>User ID</th>
-              <th>Type</th>
-              <th>Name</th>
-              <th>Mobile</th>
-              <th>Company Name</th>
+              <th >Product ID</th> 
+                <th>Type</th>
+                <th>Category</th>
+                <th>Shape</th>
+                <th>Class</th>
+                <th>Thk. Range (mm)</th>
+                <th>Width Range</th>
+                <th>Length</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>CU-827</td>
-              <td>Customer</td>
-              <td>Kamal Gupta</td>
-              <td>9871874787</td>
-              <td>Gupta Steels</td>
-            </tr>
-            <tr>
-              <td>SU-455</td>
-              <td>Supplier</td>
-              <td>Bhagat Swami</td>
-              <td>9648578478</td>
-              <td>Shri Dev Steels</td>
-            </tr>
-            <tr>
-              <td>TR-027</td>
-              <td>Transporter</td>
-              <td>Raj Kundan</td>
-              <td>8860974787</td>
-              <td>Shri Transportation</td>
-            </tr>
-            <tr>
-              <td>CU-827</td>
-              <td>Customer</td>
-              <td>Uday Pingat</td>
-              <td>9871874787</td>
-              <td>Ferropack Industries</td>
-            </tr>
-            <tr>
-              <td>AG-343</td>
-              <td>Agent</td>
-              <td>Rakesh Mittal</td>
-              <td>9871874787</td>
-              <td>Royal Steel</td>
-            </tr>
-            <tr>
-              <td>TR-898</td>
-              <td>Transporter</td>
-              <td>Manish Singh</td>
-              <td>8860974787</td>
-              <td>Radha Transportation</td>
+            <tr  href="kdkd" *ngFor="let product of productList;let i = index">
+              <td>P-{{product.productId}}</td> 
+              <td>{{product.productType?.productType}}</td>
+              <td>{{product.productCategory?.productCategory}}</td>
+              <td>{{product.productShape?.productShape}}</td>
+              <td>{{product.productClass?.productClass}}</td>
+              <td>{{product.thicknessMin}}-{{product.thicknessMax}}</td>
+              <td>{{product.widthMin}}-{{product.widthMax}}</td>
+              <td>{{product.lengthMin}}-{{product.lengthMax}}</td>
             </tr>
           </tbody>
         </table>

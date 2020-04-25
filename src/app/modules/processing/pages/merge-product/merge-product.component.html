@@ -1,3 +1,36 @@
-<!-- <app-add-product-cart></app-add-product-cart> -->
-<!-- <app-add-product-cart></app-add-product-cart> -->
-<button type="submit" class="btn btn-success active">Merge</button>
+
+
+<app-card cardTitle="Add Product" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Select Product" navigationSymbol="1">
+      <app-add-product-cart 
+    [productList]="productList" 
+    [component]="'inventory'"
+    (selectedProductList)= getSelectedProductList($event)>
+</app-add-product-cart>
+
+<app-add-product-cart 
+    [productList]="selectedProductList">
+</app-add-product-cart>
+
+<div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" (click)="checkProduct()">Next</button>&nbsp;&nbsp;
+        </div>
+      </div>
+
+    </wizard-step>
+    <wizard-step stepTitle="Add Merged Product" navigationSymbol="1">
+    <app-material-classification-specification (productData)="getProductData($event)" [grntype]="selectedProductType"></app-material-classification-specification>
+      <div class="m-t-20">
+        <!-- <app-add-product-cart [productList]="productList"></app-add-product-cart> -->
+      </div>
+      <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" (click)="mergeProduct()"class="btn btn-success btn-sm">Merge Product</button>
+        </div>
+      </div>
+    </wizard-step>
+  </wizard>
+</app-card>

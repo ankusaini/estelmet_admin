@@ -22,6 +22,9 @@ export class AddProductCartComponent implements OnInit, OnChanges {
   // @Input() selectedTab : string;
 
   @Output() selectedProductList: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output() selectedId: EventEmitter<any> = new EventEmitter<any>();
+  
   setProductList: Product[] = [];
 
   constructor(
@@ -41,6 +44,7 @@ export class AddProductCartComponent implements OnInit, OnChanges {
     if (index === -1) {
       this.setProductList.push(product);
       this.selectedProductList.emit(this.setProductList);
+      this.selectedId.emit(product);
     } else {
       this.toastr.warning('Product already added');
     }

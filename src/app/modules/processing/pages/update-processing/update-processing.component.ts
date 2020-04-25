@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { ProcessingService } from '../../service/processing.service';
 import { Router } from '@angular/router';
 import { WizardComponent } from 'ng2-archwizard/dist';
-import { Product } from 'src/app/shared/Models/product.model.';
+import { Product, ProductStage, Status } from 'src/app/shared/Models/product.model.';
 import { ToastrService } from 'ngx-toastr';
 import { Processing } from 'src/app/shared/Models/processing.model';
 
@@ -19,7 +19,11 @@ export class UpdateProcessingComponent implements OnInit {
   public processingIdList: any[];
   public selectedProcessingId: any;
   public selectedProductList: Product[] = [];
-  private processing: Processing = undefined;
+  public processingProductList: Product[] = [];
+  private processing: Processing;
+  public myComp:any='processing';
+  public currentSelectedPRoduct: Product;
+
 
   constructor(
     private router: Router,
@@ -72,23 +76,36 @@ export class UpdateProcessingComponent implements OnInit {
   }
 
   getSelectedProcessingId(id) {
-    console.log(id);
     this.selectedProcessingId = id;
     console.log(this.selectedProcessingId);
+    console.log(this.processingList);
+    let selectedProcessing=this.processingList.filter(data =>  data.productProcessingId === this.selectedProcessingId);
+    console.log("selectec processing is",selectedProcessing);
+    //here selectedProceessing will come
+    this.processingProductList=this.processingList[0].productList;
     this.wizard.navigation.goToNextStep();
   }
 
 
   getProductData(data) {
-    console.log(data);
+    
     this.selectedProductList.push(data);
     console.log(this.selectedProductList);
   }
 
+  selectedProductId(product)
+  {
+    //processingPRoductList  me update krna hai
+    this.currentSelectedPRoduct=product;
+    this.currentSelectedPRoduct.productStage=ProductStage.REJECTED;
+    this.currentSelectedPRoduct.status=Status.PROCESSED;
+    console.log("Selected id",product);
+    //this is the selected id //set its status as rejected and processed
+    //jo new bnega usme ye id dalni hai
+    
+  }
   submitProcessing() {
     if(this.selectedProductList.length > 0) {
-      alert("working");
-      console.log(this.selectedProductList);
       // console.log(this.processing.productList);
       this.processing.productList = [];
       // this.selectedProductList.forEach(ele => {

@@ -6,6 +6,7 @@ import { RequestP, ResponseP } from 'src/app/shared/Models/RequestResponse';
 import { PurchaseService } from 'src/app/modules/purchase/services/purchase.service';
 import { Product } from 'src/app/shared/Models/product.model.';
 import { Status } from 'src/app/shared/Models/user.model';
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: 'app-mr-edit',
   templateUrl: './mr-edit.component.html',
@@ -38,7 +39,8 @@ export class MrEditComponent implements OnInit {
     private route: ActivatedRoute,
     private lightboxEvent: LightboxEvent,
     private lighboxConfig: LightboxConfig,
-    private purchaseService: PurchaseService
+    private purchaseService: PurchaseService,
+    private toastr:ToastrService
   ) {
     this.routerSubscription = this.route.url.subscribe(params => {
       this.mrId = this.route.snapshot.params.id;
@@ -98,13 +100,13 @@ export class MrEditComponent implements OnInit {
   getProductData(data) {
     this.productList.push(data);
     this.editProfile = !this.editProfile;
-    console.log('productList', this.productList);
   }
 
   updateMr() {
     console.log('productlist', this.productList);
     if (this.productList && this.productList.length === 0) {
-      alert('please save at least one record');
+      this.toastr.warning("Please save at least one record");
+      // alert('please save at least one record');
     } else {
       for (let index in this.productList) {
         this.productList[index].warehouse = this.mrResponse.warehouse;
@@ -115,12 +117,11 @@ export class MrEditComponent implements OnInit {
       this.request.purchase = this.mrResponse.purchase;
       // this.request.purchase.status='PENDING'
 
-      console.log('request object is ', this.request);
       // let path = "/purchase/updatePurchaseWithProduct";
       // let path = "/purchase/updatePurchase";
       this.purchaseService.updatePurchaseWithProduct(this.request).subscribe(
         data => {
-          alert('Mr Updated');
+          this.toastr.success("MR updated successfully");
           // let path1="/inventory/updateProduct/";
           // this.purchaseService.updateProduct(path1,this.productList)
         },

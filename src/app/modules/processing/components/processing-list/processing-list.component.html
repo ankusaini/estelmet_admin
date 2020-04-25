@@ -18,20 +18,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr (click)="navigateToEdit(processing.productProcessingId)" *ngFor="let processing of productProcessingList; let i = index">
-                <td>{{i+1}}</td>
-                <td *ngIf="processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + processing?.productProcessingId}}</td>
-                <td *ngIf="processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + processing?.productProcessingId}}</td>
-                <td *ngIf="processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + processing?.productProcessingId}}</td>
-                <td>{{processing?.processingType}}</td>
-                <td>{{processing?.jobWorkType}}</td>
-                <td>{{processing?.productCategory?.productCategory}}</td>
+              <tr  *ngFor="let processing of productProcessingList; let i = index">
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{i+1}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)" *ngIf="processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + processing?.productProcessingId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)" *ngIf="processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + processing?.productProcessingId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)" *ngIf="processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + processing?.productProcessingId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{processing?.processingType}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{processing?.jobWorkType}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{processing?.productCategory?.productCategory}}</td>
                 <!-- <td>MWC</td> -->
-                <td>{{Ids.CONTRACTOR + '-' + processing?.contractorId}}</td>
-                <td>{{Ids.COMPANY + '-' + processing?.companyId}}</td>
-                <td>{{Ids.WAREHOUSE + '-' + processing?.warehouseId}}</td>
-                <td>MD-{{processing?.machineDetailId}}</td>
-                <td>{{processing?.createdDate | date: 'short'}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{Ids.CONTRACTOR + '-' + processing?.contractorId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{Ids.COMPANY + '-' + processing?.companyId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{Ids.WAREHOUSE + '-' + processing?.warehouseId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">MD-{{processing?.machineDetailId}}</td>
+                <td (click)="navigateToEdit(processing.productProcessingId)">{{processing?.createdDate | date: 'short'}}</td>
                 <td>
                   <button *ngIf="!cart" (click)="addToProcessingList(processing)" type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
                   <button *ngIf="cart" (click)="removeFromProcessingList(processing)" type="button" class="btn btn-icon btn-danger"><i class="feather icon-minus"></i></button></td>

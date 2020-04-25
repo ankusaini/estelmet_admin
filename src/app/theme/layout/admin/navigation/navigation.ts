@@ -36,17 +36,20 @@ const NavigationItems = [
         id: 'userDash',
         title: 'Users',
         type: 'item',
+        permissions:['USER_CREATE_PRIVILEGE','USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
         url: '/dashboard/default'
       },
       {
         id: 'purchasDash',
         title: 'Purchase',
         type: 'item',
+        permissions:['PURCHASE_CREATE_PRIVILEGE','PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
         url: '/dashboard/sale'
       },
       {
         id: 'inventoryDash',
         title: 'Inventory',
+        permissions:['INVENTORY_CREATE_PRIVILEGE','INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
         type: 'item',
         url: '/dashboard/crm'
       },
@@ -59,6 +62,7 @@ const NavigationItems = [
       {
         id: 'salesDash',
         title: 'Sales',
+        permissions:['SALES_CREATE_PRIVILEGE','SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
         type: 'item',
         url: '/dashboard/analytics'
       },
@@ -522,20 +526,20 @@ const NavigationItems = [
           //   url: '/processing/editProcessing',
           //   target: false,
           // },
-          // {
-          //   id: 'COProcessing',
-          //   title: 'CO to Processing',
-          //   type: 'item',
-          //   url: '/processing/convertCOProcessing',
-          //   target: false,
-          // },
-          // {
-          //   id: 'MergeProduct',
-          //   title: 'Merge Product',
-          //   type: 'item',
-          //   url: '/processing/mergeProduct',
-          //   target: false,
-          // }
+          {
+            id: 'COProcessing',
+            title: 'CO to Processing',
+            type: 'item',
+            url: '/processing/convertCOProcessing',
+            target: false,
+          },
+          {
+            id: 'MergeProduct',
+            title: 'Merge Product',
+            type: 'item',
+            url: '/processing/mergeProduct',
+            target: false,
+          }
         ]
       },
     ]

@@ -1,24 +1,66 @@
-<div class="row">
+
+<app-card cardTitle="Convert CO to Processing" [options]="false">
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+
+    <wizard-step stepTitle="Select CO" navigationSymbol="1">
+      <div class="row">
     <div class="col-md-8">
       <app-card cardTitle="Select Customer Order ID" [options]="false">
-        <form #validationForm="ngForm" class="editForm" novalidate>
+        <!-- <form #validationForm="ngForm" class="editForm" novalidate> -->
           <div class="row">
             <div class="col-md-12">
               <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Customer Order Id <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
-                    <select class="form-control">
-                        <option value>Select CO Id</option>
-                        <option value="1">CO-#9021</option>
+                    <select [(ngModel)]="selectedCo" class="form-control">
+                        <!-- <option value="" selected>Select CO</option> -->
+                        <option *ngFor="let co of customerOrderList" [value]="co.salesId" >CO-{{co.customerOrderId}}</option>
                       </select>
-                      <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                      <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
                 </div>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" uiSref="work">Submit</button>
-        </form>
+          <button type="button" (click)="checkCo()" class="btn btn-primary" uiSref="work">Next</button>
+        <!-- </form> -->
       </app-card>
     </div>
   </div>
+    </wizard-step>
+
+    <wizard-step stepTitle="Select Product" navigationSymbol="2">
+      <h5>Search & Select Product</h5>
+      <hr/>
+      <app-add-product-cart 
+        [productList]="ProductList" 
+        (selectedProductList)= getSelectedProductList($event)
+        [component]="'processing'"></app-add-product-cart
+      >
+      <div class="m-t-20">
+        <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>
+      </div>
+      <div class="col-sm-12 centered-content">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" (click)="checkNextStep()"class="btn btn-success btn-sm" >Next</button>
+        </div>
+      </div>
+    </wizard-step>
+
+    <wizard-step stepTitle="Create Processing" navigationSymbol="3">
+     <app-select-mr
+      [processingType]="processingType"
+      (selectMrData)="getSelectMrData($event)">
+    </app-select-mr>
+    </wizard-step>
+
+  </wizard>
+</app-card>
+
+
+
+
+
+
+
   <!-- <app-add-product-cart></app-add-product-cart> -->

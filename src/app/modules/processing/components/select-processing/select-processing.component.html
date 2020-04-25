@@ -11,15 +11,15 @@
 
                   <select *ngIf="processingType === 'BLANKING'" class="form-control" formControlName="processingId">
                     <option value=''>Select</option>
-                    <option *ngFor="let id of processingIdList" [value]="id">MBP-{{Ids.MATERIAL_BLANKING + '-' + id}}</option>
+                    <option *ngFor="let id of processingIdList" [value]="id">{{Ids.MATERIAL_BLANKING + '-' + id}}</option>
                 </select>
 
                 <select *ngIf="processingType === 'ASSORTING'" class="form-control" formControlName="processingId">
                   <option value=''>Select</option>
-                  <option *ngFor="let id of processingIdList" [value]="id">MAP-{{Ids.MATERIAL_ASSORTING + '-' + id}}</option>
+                  <option *ngFor="let id of processingIdList" [value]="id">{{Ids.MATERIAL_ASSORTING + '-' + id}}</option>
               </select>
 
-                    <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small>
+                    <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
               </div>
             </div>
             

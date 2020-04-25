@@ -120,15 +120,14 @@ export class DashSaleComponent implements OnInit {
       this.totalMRCount = (data.MATERIAL_REQURIMENT_PENDING[0][0] + data.MATERIAL_REQURIMENT_APPROVED[0][0] + data.MATERIAL_REQURIMENT_REJECTED[0][0]);
       this.totalMRCountWt = (Number(data.MATERIAL_REQURIMENT_PENDING[0][1]) + Number(data.MATERIAL_REQURIMENT_APPROVED[0][1]) +Number(data.MATERIAL_REQURIMENT_REJECTED[0][1]));
 
-      console.log(this.totalMRCountWt);
       this.totalPCCount = (data.PURCHASE_CONFIRMATION_PENDING[0][0] + data.PURCHASE_CONFIRMATION_APPROVED[0][0] + data.PURCHASE_CONFIRMATION_REJECTED[0][0]);
         this.totalPCCountWt = (Number(data.PURCHASE_CONFIRMATION_PENDING[0][1]) + Number(data.PURCHASE_CONFIRMATION_APPROVED[0][1]) + Number(data.PURCHASE_CONFIRMATION_REJECTED[0][1]));
     
         this.totalPLCount = (data.LOT_PENDING[0][0] + data.LOT_APPROVED[0][0] + data.LOT_REJECTED[0][0]);
-              this.totalPLCountWt = (Number(data.LOT_PENDING[0][1]) + Number(data.LOT_APPROVED[0][1]) + Number(data.LOT_REJECTED[0][1]));
+        this.totalPLCountWt = (Number(data.LOT_PENDING[0][1]) + Number(data.LOT_APPROVED[0][1]) + Number(data.LOT_REJECTED[0][1]));
 
-      //  this.totalPOCount= (data.PURCHASE_ORDER_PENDING[0][0]+data.PURCHASE_ORDER_APPROVED[0][0]+data.PURCHASE_ORDER_REJECTED[0][0]);
-      //  this.totalPOCountWt= (data.PURCHASE_ORDER_PENDING[0][1]+data.PURCHASE_ORDER_APPROVED[0][1]+data.PURCHASE_ORDER_REJECTED[0][1]);
+//        this.totalPOCount= (data.PURCHASE_ORDER_PENDING[0][0]+data.PURCHASE_ORDER_APPROVED[0][0]+data.PURCHASE_ORDER_REJECTED[0][0]);
+  //      this.totalPOCountWt= (data.PURCHASE_ORDER_PENDING[0][1]+data.PURCHASE_ORDER_APPROVED[0][1]+data.PURCHASE_ORDER_REJECTED[0][1]);
 
       console.log(this.totalMRCount);
 

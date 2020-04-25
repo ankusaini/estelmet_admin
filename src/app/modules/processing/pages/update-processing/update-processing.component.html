@@ -15,9 +15,9 @@
       </div>
     </wizard-step>
     <wizard-step stepTitle="Add Product" navigationSymbol="2">
-      <!-- <div class="m-b-20">
-        <app-add-product-cart></app-add-product-cart>
-      </div> -->
+       <div class="m-b-20">
+        <app-add-product-cart (selectedId)="selectedProductId($event)" [component]="myComp" [productList]="processingProductList"></app-add-product-cart>
+      </div> 
      <app-material-classification-specification (productData)="getProductData($event)"></app-material-classification-specification>
       <div class="m-t-20">
         <app-add-product-cart [productList]="selectedProductList"></app-add-product-cart>

@@ -111,7 +111,7 @@ export class DashDefaultComponent implements OnInit {
 
   ngOnInit() {
     this.getCountByUserRole('CUSTOMER');
-    this.getAllUserByRoleAndStatus('CUSTOMER','PENDING')
+    this.getAllUserByRoleAndStatus('CUSTOMER','APPROVED')
   }
 
   getCountByUserRole(role) {

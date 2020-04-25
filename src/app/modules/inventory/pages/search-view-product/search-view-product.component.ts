@@ -19,8 +19,9 @@ export class SearchViewProductComponent implements OnInit {
   constructor(private inventoryService: InventoryService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    const url = '/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED';
-    // let url = "/inventory/getAllProductByStatus/PENDING";
+     const url = '/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED';
+    // const url = "/inventory/getAllProductByStatus/APPROVED";
+    
     this.inventoryService.getAllProductByProductStageAndStatus(url).subscribe(data => {
       this.productList = data;
     }, error => {

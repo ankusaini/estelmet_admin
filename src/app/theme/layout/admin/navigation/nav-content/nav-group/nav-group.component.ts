@@ -22,7 +22,7 @@ export class NavGroupComponent implements OnInit {
 
   ngOnInit() {
     // at reload time active and trigger link
-    console.log("permission are",this.permissionsService.getPermissions());
+    // console.log("permission are",this.permissionsService.getPermissions());
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
       current_url = this.location['_baseHref'] + this.location.path();
