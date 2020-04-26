@@ -44,7 +44,7 @@
               </div>
               <div class="col-sm-5 m-t-10 p-t-5">
                 <select #selectedName2 [value]="selectedId2.value" formControlName="sourceCompanyId"
-                  (change)="selectedCompany(selectedId2.value)" class="form-control" name="validation-pcId">
+                  (change)="selectedCompany(selectedName2.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.name }}</option>
 
@@ -81,7 +81,7 @@
                   <select formControlName="sourceWarehouseId" [value]="selectedWarehouseName.value" #selectedWarehouseId
                     class="form-control">
                     <option value>Id</option>
-                    <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.id }}</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.id }}</option>
                   </select>
                 </div>
                 <div class="col-sm-5 m-t-10 p-t-5">

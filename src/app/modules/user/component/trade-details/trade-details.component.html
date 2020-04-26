@@ -120,7 +120,7 @@
       </div>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationCustom02">Monthly Requirement (mt.) <small class="asterik_sign">*</small></label>
+      <label for="validationCustom02">Monthly Requirement (Mts.) <small class="asterik_sign">*</small></label>
       <input formControlName="monthlyRequirement" type="text" class="form-control" placeholder="" />
       <small *ngIf="f.monthlyRequirement.value == '' && (f.monthlyRequirement.dirty || f.monthlyRequirement.touched )"
         id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
@@ -135,9 +135,9 @@
   </div>
 
   <div class="form-row">
-    <app-card [hidHeader]="true" cardClass="user-profile-list" style="width:100%">
+    <app-card [hidHeader]="false" cardTitle="Product Basket" cardClass="user-profile-list" style="width:100%">
       <div class="dt-responsive table-responsive" cardClass="card-datatable">
-        <table class="table table-striped table-xs table-hover">
+        <table datatable class="table table-striped table-xs table-hover">
           <thead>
             <tr>
               <th>Sr. No.</th>
@@ -145,11 +145,11 @@
               <th>Category</th>
               <th>Shape</th>
               <th>Class</th>
-              <th>Thick.</th>
-              <th>Width</th>
-              <th>Length</th>
-              <th>Temper</th>
-              <th>Monthly Req.</th>
+              <th>Thick. Range </th>
+              <th>Width Range</th>
+              <th>Length Range</th>
+              <th>Temper Range</th>
+              <th>Mon. Reqd.</th>
               <th>Action</th>
             </tr>
           </thead>

@@ -11,6 +11,8 @@ import { AddPriceComponent } from './add-price/add-price.component';
 import { CustomerCreditLimitComponent } from './customer-credit-limit/customer-credit-limit.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ChangeRoleComponent } from './change-role/change-role.component';
+import { SelectModule } from 'ng-select';
+import {AngularDualListBoxModule} from 'angular-dual-listbox';
 
 @NgModule({
   imports: [
@@ -21,7 +23,9 @@ import { ChangeRoleComponent } from './change-role/change-role.component';
     TextMaskModule,
     ArchwizardModule,
     SharedModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    SelectModule,
+    AngularDualListBoxModule,
   ],
   declarations: [
     AddPriceComponent,

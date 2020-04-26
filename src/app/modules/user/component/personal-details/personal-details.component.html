@@ -54,8 +54,8 @@
 
         </div>
         <div class="col-md-6 mb-3">
-          <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
-          <input formControlName="email" type="email" id="validationCustom02" class="form-control" placeholder="Email"
+          <label for="validationCustom02">E-mail <small class="asterik_sign">*</small></label>
+          <input formControlName="email" type="email" id="validationCustom02" class="form-control" placeholder="E-mail"
             required (change)="checkEmail()"/>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           <small *ngIf="f.email.value.length==0 && (f.email.dirty || f.email.touched )" id="passwordHelpBlock"

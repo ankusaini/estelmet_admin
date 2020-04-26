@@ -51,10 +51,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   @Output() productData: EventEmitter<any> = new EventEmitter<any>();
   selectedGrnType: string;
   warehouse: Warehouse = null;
-  public mask = [/\d/, /\d/,  '.', /\d/, /\d/,]
-  public mask2 = [/\d/, /\d/,/\d/,  '.', /\d/, ]
-  public mask3 = [/\d/, /\d/,  '.', /\d/, ]
-  public mask4 = [/\d/, /\d/,/\d/,  ',', /\d/,/\d/, ',', /\d/,]
+ 
   productClassList: ProductClass[];
   productCategoryList: ProductCategory[];
   productTypeList: ProductType[];

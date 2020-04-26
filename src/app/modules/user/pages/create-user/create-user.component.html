@@ -12,7 +12,7 @@
     <wizard-step stepTitle="Business Details" navigationSymbol="2">
       <div class="row">
         <div class="col-sm-12">
-          <h5>Business Details</h5>
+          <h5 class="bg-clr-head1 p-10">Business Details</h5>
           <hr />
           <app-company-details (companyDetails)="companyDetailData($event)"></app-company-details>
         </div>
@@ -21,7 +21,8 @@
     <wizard-step stepTitle="Key Person Details" navigationSymbol="3">
       <div class="row">
         <div class="col-sm-12">
-          <h5>Key Person Details</h5>
+          <h5 class="bg-clr-head1 p-10">Key Person Details</h5>
+          <hr />
           <app-keyperson-details (keyPerson)="keyPersonData($event)"></app-keyperson-details>
         </div>
       </div>
@@ -29,7 +30,7 @@
     <wizard-step *ngIf="selectedRole=='CUSTOMER' || selectedRole=='SUPPLIER' " stepTitle="Trade Details" navigationSymbol="4">
       <div class="row">
         <div class="col-sm-12">
-          <h5>Trade Details Fill your Business Requirement</h5>
+          <h5 class="bg-clr-head1 p-10">Fill your Material Requirements</h5>
           <hr />
           <app-trade-details (tradeDetail)="tradeData($event)"></app-trade-details>
         </div>
@@ -38,7 +39,7 @@
     <wizard-step stepTitle="Terms & conditions" navigationSymbol="5">
       <div class="row">
         <div class="col-sm-12">
-          <h5>Finished</h5>
+          <h5 class="bg-clr-head1 p-10">Finished</h5>
           <hr />
           <app-terms-conditions (readyToUpdate)="finalSubmit()"></app-terms-conditions>
         </div>
