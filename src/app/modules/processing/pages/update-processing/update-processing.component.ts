@@ -79,23 +79,39 @@ export class UpdateProcessingComponent implements OnInit {
     this.selectedProcessingId = id;
     console.log(this.selectedProcessingId);
     console.log(this.processingList);
-    let selectedProcessing=this.processingList.filter(data =>  data.productProcessingId === this.selectedProcessingId);
-    console.log("selectec processing is",selectedProcessing);
+    let selectedProcessing=this.processingList.filter(data =>
+      { 
+        return data.productProcessingId == Number(this.selectedProcessingId.processingId)
+      });
     //here selectedProceessing will come
-    this.processingProductList=this.processingList[0].productList;
+    if(selectedProcessing && selectedProcessing.length>0)
+      {
+    this.processingProductList=selectedProcessing[0].productList;
     this.wizard.navigation.goToNextStep();
+      }
+  else
+    {
+      this.toastr.warning("No product in this processing");
+    }
   }
 
 
   getProductData(data) {
-    
+    if(this.currentSelectedPRoduct==undefined)
+      {
+        this.toastr.warning("Please select the product")
+      }
+      else
+        {
     this.selectedProductList.push(data);
+        }
     console.log(this.selectedProductList);
   }
 
   selectedProductId(product)
   {
     //processingPRoductList  me update krna hai
+    //get index of processingProductList
     this.currentSelectedPRoduct=product;
     this.currentSelectedPRoduct.productStage=ProductStage.REJECTED;
     this.currentSelectedPRoduct.status=Status.PROCESSED;

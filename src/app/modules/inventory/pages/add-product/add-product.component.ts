@@ -90,7 +90,7 @@ export class AddProductComponent implements OnInit {
 
   sendForApproval() {
     if (this.productList.length > 0) {
-
+      console.log(this.selectedGrn);
       this.productList.forEach( x => x.warehouse = { id :Number(this.selectedGrn.sourceWarehouseId)});
 
       this.requestObj.grn = this.selectedGrn;
@@ -99,7 +99,8 @@ export class AddProductComponent implements OnInit {
 
       this.purchaseService.updateGrnWithProduct(this.requestObj).subscribe(data => {
         this.toastr.success('Record saved successfully');
-        this.router.navigateByUrl('/inventory/productApproval');
+        console.log(data);
+        this.router.navigateByUrl('/inventory/editProduct/'+data.productList[0].productId);
 
       }, error => {
         console.log('error is', error);

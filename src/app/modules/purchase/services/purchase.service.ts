@@ -167,9 +167,11 @@ export class PurchaseService {
   }
 
   public savePurchaseOrder(purchaseId, userId, productId, price) {
-    // let url= '/purchase/savePurchaseOrder?purchaseId='+purchaseId+'&userId='+userId+'&productId'+productId+'&price='+price;
+    let url= '/purchase/savePurchaseOrder?purchaseId='+purchaseId+'&userId='+userId+'&productId='+productId+'&price='+price;
     return new Observable<any>(obs => {
-      this.apiService.get(ApiUrl.savePurchaseOrder + '/' + purchaseId + '/' + userId + '/' + productId + '/' + price).subscribe(res => {
+      // this.apiService.get(ApiUrl.savePurchaseOrder + '/' + purchaseId + '/' + userId + '/' + productId + '/' + price).subscribe(res => {
+        // obs.next(res);
+ this.apiService.get(url).subscribe(res => {
         obs.next(res);
       });
     });

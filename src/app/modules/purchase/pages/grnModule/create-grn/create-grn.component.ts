@@ -242,7 +242,7 @@ export class CreateGrnComponent implements OnInit {
     this.purchaseService.createGrn(this.dataToSend).subscribe(res => {
       console.log(res);
       this.toastr.success('Record saved successfully');
-      this.router.navigateByUrl('/purchase/grnApproval');
+      this.router.navigateByUrl('/purchase/grnEdit/'+res.grn.grnId);
     });
   }
 

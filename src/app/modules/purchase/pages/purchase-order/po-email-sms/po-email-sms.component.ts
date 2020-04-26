@@ -89,6 +89,7 @@ export class PoEmailSmsComponent implements OnInit {
 
 
   openModal() {
+    
      if (this.selectedPO) {
     this.myModel.nativeElement.className='modal fade show';
     this.userService.getAllUserByUserNameAndCompany(UserRole.SUPPLIER, Status.APPROVED).subscribe(data => {
@@ -133,9 +134,11 @@ export class PoEmailSmsComponent implements OnInit {
 
   savePurchaseOrder(purchaseId, userId, productId, price) {
       this.purchaseServic.savePurchaseOrder(purchaseId, userId, productId, price).subscribe(data => {
-        this.supplierList = data.data;
+        console.log("After save data is",data);
 
         this.toastrService.success("Record saved successfully", "Success");
+        this.closeModel();
+        this.getPurchaseOrderByPo(purchaseId);
       }, error => {
 
       })

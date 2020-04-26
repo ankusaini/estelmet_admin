@@ -189,7 +189,8 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
       status: new FormControl('PENDING'),
       gpId: new FormControl(''),
       productStage: new FormControl(''),
-      warehouse: new FormControl(this.warehouse)
+      warehouse: new FormControl(this.warehouse),
+      title:new FormControl('')
     });
 
   }
@@ -316,16 +317,37 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
       // alert("form invalid");
       this.toastr.error('Error! Invalid details.');
     } else {
-      // this.productForm.get('productStage').patchValue(this.selectedGrnType);
+      this.checkNonMandatoryValues('productCoating');
+      this.checkNonMandatoryValues('productDefect');
+      this.checkNonMandatoryValues('productOrigin');
+      this.checkNonMandatoryValues('productOiling');
+      this.checkNonMandatoryValues('productSurfaceCoating');
+      this.checkNonMandatoryValues('productAnnealing');
+      this.checkNonMandatoryValues('productFinish');
+      this.checkNonMandatoryValues('productPackaging');
+      let myval=this.productForm.controls['productType']['controls']['productType'].value +"-"+
+      this.productForm.controls['productCategory']['controls']['productCategory'].value;
+
+      this.productForm.controls.title.patchValue(myval);
       if (this.component === 'purchase') {
         this.productForm.get('productStage').patchValue(ProductStage.TEMP);
       } else {
         this.productForm.get('productStage').patchValue(ProductStage.JOB_WORK_OTHERS);
-      }
+      } 
       this.productData.emit(this.productForm.value);
       // this.resetForm();
       this.createForm();
     }
+  }
+
+  checkNonMandatoryValues(type)
+  {
+    
+    if(this.productForm.controls[type]['controls']['id'].value=='')
+      {
+        this.productForm.removeControl(type);
+        this.productForm.addControl(type,new FormControl(null));       
+      }
   }
 
   // resetForm() {

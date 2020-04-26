@@ -13,6 +13,66 @@
     [productList]="selectedProductList">
 </app-add-product-cart>
 
+<h5 class="bg-clr-head1 p-10 f-14">Select Details To Create Processing Id</h5>
+      <hr/>
+
+
+
+
+      <form [formGroup]="selectMrIdForm" (ngSubmit)="submitSelectMrId()" class="editForm" novalidate>
+        <div class="row">
+            <div class="col-md-5">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Job Work Type<small
+                    class="asterik_sign">*</small></label>
+                <div class="col-sm-8 m-t-10 p-t-5">
+                  <select class="form-control" name="validation-lotType" formControlName="jobWorkType">
+                    <option value="" disabled> Select </option>
+                    <option value="JOB_WORK_SELF">Job Work Self</option>
+                    <option value="JOB_WORK_OTHER">Job Work Other</option>
+                  </select>
+                  <!-- <label *ngIf="!lotType.valid && (lotType.dirty || lotType.touched || isSubmit)"
+                    id="validation-lotType-error"
+                    class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Category<small
+                        class="asterik_sign">*</small></label>
+                    <div class="col-sm-8 m-t-10 p-t-5">
+                      <select class="form-control" name="validation-lotType" formControlName="productCategory">
+                        <option value="" disabled> Select</option>
+                        <option *ngFor="let category of productCategoryList" [value]="category">{{category}}</option>
+                        <!-- <option value="2">Job Work Other</option> -->
+                      </select>
+                      <!-- <label *ngIf="!lotType.valid && (lotType.dirty || lotType.touched || isSubmit)"
+                        id="validation-lotType-error"
+                        class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div class="row">
+        <div class="col-md-5">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Priority Level<small
+                    class="asterik_sign">*</small></label>
+                <div class="col-sm-8 m-t-10 p-t-5">
+                  <select class="form-control" formControlName="priorityLevel" name="validation-pcId">
+                    <option value='' disabled>Select</option>
+                    <option *ngFor="let name of priorityList | keyvalue" [value]="name.key">{{name.value}}</option>
+                  </select>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-1"></div>
+        
+      </div>
+      </form>
 <div class="col-sm-12 centered-content m-t-20">
         <div class="btn-group mt-10">
           <button type="button" class="btn btn-secondary btn-sm" (click)="checkProduct()">Next</button>&nbsp;&nbsp;
