@@ -125,11 +125,11 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
         productClass: new FormControl('', [Validators.required])
       }),
       thicknessMin: new FormControl('', [Validators.required]),
-      thicknessMax: new FormControl('', [CustomValidator.compondValueValidate, Validators.required, MaxthicknessConfirming]),
+      thicknessMax: new FormControl('', [ Validators.required, MaxthicknessConfirming]),
       widthMin: new FormControl('', [Validators.required]),
-      widthMax: new FormControl('', [MaxwidthConfirming, Validators.required, CustomValidator.compondValueValidate]),
+      widthMax: new FormControl('', [MaxwidthConfirming, Validators.required, ]),
       lengthMin: new FormControl('', [Validators.required]),
-      lengthMax: new FormControl('', [MaxlengthConfirming, Validators.required, CustomValidator.compondValueValidate]),
+      lengthMax: new FormControl('', [MaxlengthConfirming, Validators.required, ]),
       hardnessMin: new FormGroup({
         id: new FormControl('', [Validators.required]),
         productHardness: new FormControl('', [Validators.required])
@@ -147,7 +147,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
         productTemper: new FormControl('', [Validators.required])
       }),
 
-      heigth: new FormControl('', [CustomValidator.compondValueValidate, Validators.required]),
+      heigth: new FormControl('', [ Validators.required]),
       productCoating: new FormGroup({
         id: new FormControl(''),
         productCoating: new FormControl('')
@@ -180,8 +180,8 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
         id: new FormControl(''),
         productPackaging: new FormControl('')
       }),
-      gwt: new FormControl('', [CustomValidator.compondValueValidate, Validators.required]),
-      nwt: new FormControl('', [CustomValidator.compondValueValidate, Validators.required]),
+      gwt: new FormControl('', [ Validators.required]),
+      nwt: new FormControl('', [ Validators.required]),
       remarks: new FormControl(''),
       status: new FormControl('PENDING'),
       gpId: new FormControl(''),
@@ -193,16 +193,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   }
 
   ngOnChanges() {
-    console.log(this.grntype);
-    // if(this.grntype === 'withoutPurchaseInvoice') {
-    //  this.selectedGrnType = 'WITHOUT_PC';
-    // } if(this.grntype === 'PURCHASE_INVOICE') {
-    //  this.selectedGrnType = 'WITH_PC';
-    // } if(this.grntype === 'jobWorkChalan') {
-    //  this.selectedGrnType = 'JOB_WORK_OTHER';
-    // } if(this.grntype === 'materialTransfer') {
-    //   this.selectedGrnType = 'MATERIAL_TRANSFER';
-    // }
+   
   }
 
   getProductHardness() {
@@ -310,6 +301,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
       ? this.productForm.get('temperMin').value : this.productForm.get('temperMax').value;
     this.productForm.get('temperMax').patchValue(temper);
     console.log('final data - ',this.productForm.value);
+    console.log(this.productForm);
     if (this.productForm.invalid) {
       // alert("form invalid");
       this.toastr.error('Error! Invalid details.');
