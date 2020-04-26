@@ -16,13 +16,13 @@ export class KeypersonDetailsComponent implements OnInit {
     keyPersonId1: new FormControl(''),
     keyPersonId2: new FormControl(''),
     fullName1: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    fullName2: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    fullName2: new FormControl(''),
     designation1: new FormControl('', [Validators.required]),
-    designation2: new FormControl('', [Validators.required]),
+    designation2: new FormControl(''),
     mobile1: new FormControl('', [Validators.required, CustomValidator.contactNumberValidation]),
-    mobile2: new FormControl('', [Validators.required, CustomValidator.contactNumberValidation]),
+    mobile2: new FormControl(''),
     email1: new FormControl('', [Validators.required, CustomValidator.emailValidation]),
-    email2: new FormControl('', [Validators.required, CustomValidator.emailValidation])
+    email2: new FormControl('')
   });
   constructor(private toastrService: ToastrService) { }
 

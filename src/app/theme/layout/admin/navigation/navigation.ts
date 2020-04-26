@@ -981,6 +981,20 @@ const NavigationItems = [
             target: false,
           },
           {
+            id: 'addEmployee',
+            title: 'Add Employee',
+            type: 'item',
+            url: '/super/addemployee',
+            target: false,
+          },
+          {
+            id: 'changeRole',
+            title: 'Change Role',
+            type: 'item',
+            url: '/super/changerole',
+            target: false,
+          },
+          {
             id: 'createCustomerCredit',
             title: 'Customer Credit Limit',
             type: 'item',

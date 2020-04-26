@@ -40,7 +40,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
    public selectedCmp: Company;
   public userList: any;
   public role: LotType;
-  //public warehouseList:Warehouse[] = [];
+  public warehouseList: Warehouse[] = [];
 
 
   showGroup = true;
@@ -133,7 +133,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
       return element.id == value
     })
     this.selectedCmp = data[0];
-    console.log(this.selectedCmp);
+    this.warehouseList = this._staticData.getAllWarehouseByCompanyId(this.selectedCmp.id);
     this._cd.detectChanges();
   }
  

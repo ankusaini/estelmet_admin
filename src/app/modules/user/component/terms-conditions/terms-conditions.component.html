@@ -1,12 +1,12 @@
 <div class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input"  (change)="onChange($event)"  id="customCheck1">
     <label class="custom-control-label" for="customCheck1">I agree for the <a routerLink="#"
-        target="_blank">Terms & Conditons</a></label>
+        target="_blank">Terms & Conditons</a> Of Use Of This Website</label>
 </div>
 <div class="col-sm-12 centered-content">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-success btn-sm" (click)="submit()">Finished</button>
+      <button type="button" class="btn btn-success btn-sm excelBtn" (click)="submit()">Finished</button>
     </div>
   </div>
   <!-- [disabled]="!agree" -->

@@ -123,13 +123,13 @@
       <label class="f-12 dash" for="validationCustom02">Thickness Range (mm) <small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 col-6 mb-3">
-          <input formControlName="thicknessMin" [textMask]="{mask: mask}" type="text" class="form-control" placeholder="Min">
+          <input formControlName="thicknessMin"  type="text" class="form-control" placeholder="Min">
           
           <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.touched || f.thicknessMin.dirty)"
             id="passwordHelpBlock" class="form-text text-danger">This Field is required.</small>
         </div>
         <div class="col-md-6 col-6 mb-3">
-          <input formControlName="thicknessMax" [textMask]="{mask: mask}" type="text" class="form-control" placeholder="Max">
+          <input formControlName="thicknessMax"  type="text" class="form-control" placeholder="Max">
         
           <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock"
             class="form-text text-danger">Maximum thickness should be greater than minimum thickness.</small>
@@ -144,13 +144,13 @@
       <label class="f-12 dash" for="validationCustom02">Width Range (mm) <small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 col-6 mb-3">
-          <input formControlName="widthMin" [textMask]="{mask: mask2}" type="text" class="form-control" placeholder="Min">
+          <input formControlName="widthMin"  type="text" class="form-control" placeholder="Min">
 
           <small *ngIf="f.widthMin.value == '' && (f.widthMin.touched || f.widthMin.dirty)" id="passwordHelpBlock"
             class="form-text text-danger">This Field is required.</small>
         </div>
         <div class="col-md-6 col-6 mb-3">
-          <input formControlName="widthMax" type="text" [textMask]="{mask: mask2}" class="form-control" placeholder="Max">
+          <input formControlName="widthMax" type="text"  class="form-control" placeholder="Max">
         
           <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock"
             class="form-text text-danger">Maximum width should be greater than minimum width.</small>
@@ -165,13 +165,13 @@
       <label class="f-12 dash" for="validationCustom02">Length Range (mm)<small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-6 col-6 mb-3">
-          <input formControlName="lengthMin" [textMask]="{mask: mask2}" type="text" class="form-control" placeholder="Min">
+          <input formControlName="lengthMin"  type="text" class="form-control" placeholder="Min">
          
           <small *ngIf="f.lengthMin.value == '' && (f.lengthMin.touched || f.lengthMin.dirty)" id="passwordHelpBlock"
             class="form-text text-danger">This Field is required.</small>
         </div>
         <div class="col-md-6 col-6 mb-3">
-          <input formControlName="lengthMax" [textMask]="{mask: mask2}" type="text" class="form-control" placeholder="Max">
+          <input formControlName="lengthMax"  type="text" class="form-control" placeholder="Max">
          
           <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock"
             class="form-text text-danger">Maximum length should be greater than minimum length.</small>
@@ -253,7 +253,7 @@
   <div class="col-md-4 m-b-0">
     <div class="form-group">
       <label class="f-12" for="validationCustom02">Height (mm)<small class="asterik_sign">*</small></label>
-      <input formControlName="heigth" type="text" [textMask]="{mask: mask3}" class="form-control" placeholder="00.0">
+      <input formControlName="heigth" type="text"  class="form-control" placeholder="00.0">
    
       <small *ngIf="f.heigth.value !== '' && !f.heigth.valid " id="passwordHelpBlock"
         class="form-text text-danger">This field only accepts numbers and this symbol:.</small>
@@ -269,7 +269,7 @@
       <label class="f-12" for="validationCustom02">Thickness (mm)<small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-12 col-12 mb-3">
-          <input formControlName="thicknessMin" [textMask]="{mask: mask}" type="text" class="form-control" placeholder="00.00">
+          <input formControlName="thicknessMin"  type="text" class="form-control" placeholder="00.00">
           <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.touched || f.thicknessMin.dirty)"
             id="passwordHelpBlock" class="form-text text-danger">This Field is required.</small>
         </div>
@@ -281,7 +281,7 @@
       <label class="f-12" for="validationCustom02">Width (mm)<small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-12 col-12 mb-3">
-          <input formControlName="widthMin" [textMask]="{mask: mask2}" type="text" class="form-control" placeholder="000.0">
+          <input formControlName="widthMin"  type="text" class="form-control" placeholder="000.0">
           <small *ngIf="f.widthMin.value == '' && (f.widthMin.touched || f.widthMin.dirty)" id="passwordHelpBlock"
             class="form-text text-danger">This Field is required.</small>
         </div>
@@ -293,7 +293,7 @@
       <label class="f-12" for="validationCustom02">Length (mm)<small class="asterik_sign">*</small></label>
       <div class="row">
         <div class="col-md-12 col-12 mb-3">
-          <input formControlName="lengthMin" [textMask]="{mask: mask2}" type="text" class="form-control" placeholder="000.0">
+          <input formControlName="lengthMin"  type="text" class="form-control" placeholder="000.0">
           <small *ngIf="f.lengthMin.value == '' && (f.lengthMin.touched || f.lengthMin.dirty)" id="passwordHelpBlock"
             class="form-text text-danger">This Field is required.</small>
         </div>
@@ -343,7 +343,7 @@
   <div class="col-md-4">
     <div class="form-group m-b-0">
       <label class="f-12" for="validationCustom02">Height (mm)<small class="asterik_sign">*</small></label>
-      <input formControlName="heigth" type="text" [textMask]="{mask: mask3}" class="form-control" placeholder="00.0">
+      <input formControlName="heigth" type="text"  class="form-control" placeholder="00.0">
       <small *ngIf="f.heigth.value !== '' && !f.heigth.valid " id="passwordHelpBlock"
         class="form-text text-danger">This
         field only accepts numbers and this symbol:.</small>
@@ -474,7 +474,7 @@
     <div class="col-md-2">
       <div class="form-group">
         <label class="f-12" for="exampleFormControlSelect1">Gross Wt. (Kg)<small class="asterik_sign">*</small></label>
-        <input formControlName="gwt" type="text" [textMask]="{mask: mask4}" class="form-control" placeholder="000,00,0">
+        <input formControlName="gwt" type="text"  class="form-control" placeholder="">
         
         <!-- <small *ngIf="f.gwt.value !== '' && !f.gwt.valid " id="passwordHelpBlock" class="form-text text-danger">This
           field only accepts numbers and this symbol:.</small> -->
@@ -485,7 +485,7 @@
     <div class="col-md-2">
       <div class="form-group">
         <label class="f-12" for="exampleFormControlSelect1">Net Wt. (Kg)<small class="asterik_sign">*</small></label>
-        <input formControlName="nwt" type="text" [textMask]="{mask: mask4}" class="form-control" placeholder="000,00,0">
+        <input formControlName="nwt" type="text"  class="form-control" placeholder="">
 <!--         
         <small *ngIf="f.nwt.value !== '' && !f.nwt.valid " id="passwordHelpBlock" class="form-text text-danger">This
           field only accepts numbers and this symbol:.</small> -->
