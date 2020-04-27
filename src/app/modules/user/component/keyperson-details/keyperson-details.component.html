@@ -28,12 +28,12 @@
           >This field only accepts 10 or 13 digits.</small>
         </div>
         <div class="col-md-12 mb-3">
-          <label for="validationCustom02">Email <small class="asterik_sign">*</small></label>
-          <input formControlName="email1"  type="email" class="form-control" placeholder="Email" >
+          <label for="validationCustom02">E-mail <small class="asterik_sign">*</small></label>
+          <input formControlName="email1"  type="email" class="form-control" placeholder="E-mail" >
           <small *ngIf="f.email1.value.length==0 && (f.email1.dirty || f.email1.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>
         <!-- <small *ngIf="f.email1.value.length>0 && f.email1.errors?.emailValidation " id="passwordHelpBlock" class="form-text text-muted"
-          >Please enter valid Email address.</small> -->
+          >Please enter valid E-mail address.</small> -->
         </div>
       </div>
     </div>
@@ -65,12 +65,12 @@
           >This field only accepts 10 or 13 digits.</small> -->
         </div>
         <div class="col-md-12 mb-3">
-          <label for="validationCustom02">Email</label>
-          <input formControlName="email2" type="email" class="form-control" placeholder="Email" >
+          <label for="validationCustom02">E-mail</label>
+          <input formControlName="email2" type="email" class="form-control" placeholder="E-mail" >
           <!-- <small *ngIf="f.email2.value.length==0 && (f.email2.dirty || f.email2.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
         <!-- <small *ngIf="f.email2.value.length>0 && f.email2.errors?.emailValidation " id="passwordHelpBlock" class="form-text text-muted"
-          >Please enter valid Email address.</small> -->
+          >Please enter valid E-mail address.</small> -->
         </div>
       </div>
     </div>
@@ -78,7 +78,7 @@
   <div class="col-sm-12 centered-content">
           <div class="btn-group mt-10">
             <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary btn-sm" (clicl)="keyPersonDetailSubmit()">Continue</button>
+            <button type="submit" class="btn btn-primary btn-sm printBtn" (clicl)="keyPersonDetailSubmit()">Next <i  class="feather icon-arrow-right f-w-600"></i></button>
           </div>
         </div>
 </form>

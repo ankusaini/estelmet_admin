@@ -199,4 +199,36 @@ export class ProductService {
       });
     });
   }
+
+  getCategoryProductsForDashboard(category) {
+    return new Observable<any>(obs => {
+      this.apiService.post('/inventory/dashboard', category).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  getShapeProductsForDashboard(pshape) {
+    return new Observable<any>(obs => {
+      this.apiService.post('/inventory/dashboard1', pshape).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  getClassProductsForDashboard(pclass) {
+    return new Observable<any>(obs => {
+      this.apiService.post('/inventory/dashboard2', pclass).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
+
+  getWarehouseProductsForDashboard(warehouse) {
+    return new Observable<any>(obs => {
+      this.apiService.post('/inventory/dashboard3', warehouse).subscribe(res => {
+        obs.next(res);
+      });
+    });
+  }
 }

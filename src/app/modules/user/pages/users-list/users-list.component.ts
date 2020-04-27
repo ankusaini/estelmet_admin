@@ -48,7 +48,8 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     productFinish: '',
     productCoating: '',
     lessThanNtWt: '',
-    greaterThanNtWt: ''
+    greaterThanNtWt: '',
+    warehouse: ''
   };
   productType: ProductType[] = [];
   productCategory: ProductCategory[] = [];

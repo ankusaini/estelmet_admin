@@ -11,8 +11,9 @@
         (coData)="getCoData($event)"></app-co-details>
       </wizard-step>
       <wizard-step stepTitle="Search & View Sales Offer" navigationSymbol="3">
-        <app-search-view-offer [custumerOrderData] = "custumerOrderData"
-        (outputSelectedId)="getSelectedOfferId($event)"></app-search-view-offer>
+        <!-- <app-search-view-offer [custumerOrderData] = "custumerOrderData"
+        (outputSelectedId)="getSelectedOfferId($event)"></app-search-view-offer> -->
+        <app-add-product-cart></app-add-product-cart>
       </wizard-step>
       <wizard-step stepTitle="Other Details" navigationSymbol="4">
         <app-other-details [custumerOrderData] = "custumerOrderData"
@@ -86,7 +87,7 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="validationCustom02">E-mail</label>
-            <input type="email" class="form-control" placeholder="Enter Email">
+            <input type="email" class="form-control" placeholder="Enter E-mail">
           </div>
         </div>
       </div>

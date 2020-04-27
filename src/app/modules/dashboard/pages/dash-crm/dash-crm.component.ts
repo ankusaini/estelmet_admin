@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {TotLeadChart} from './chart/tot-lead-chart';
-import {TotVendorChart} from './chart/tot-vendor-chart';
-import {TotInvoiceChart} from './chart/tot-invoice-chart';
-import {MonthlyProfit3} from './chart/monthly-profit-3';
-import {ClientMap1} from './chart/client-map-1';
-import {ClientMap3} from './chart/client-map-3';
-import { PurchaseService } from "src/app/modules/purchase/services/purchase.service";
-import { ProductCategory, ProductFilter, ProductStage, Product } from "src/app/shared/Models/product.model.";
-import { ProductService } from "src/app/shared/services/product.service";
-import { Status } from "src/app/shared/Models/user.model";
+import { Product, ProductCategory, ProductFilter, ProductStage } from 'src/app/shared/Models/product.model.';
+import { Status } from 'src/app/shared/Models/user.model';
+import { ProductService } from 'src/app/shared/services/product.service';
+import { ProductClass, ProductShape } from '../../../../shared/Models/product.model.';
+import { Warehouse } from '../../../../shared/Models/warehouse';
+import { StaticDataService } from '../../../../shared/services/data/staticData.service';
 
 @Component({
   selector: 'app-dash-crm',
@@ -19,13 +15,11 @@ export class DashCrmComponent implements OnInit {
 
   productList: Product[];
 
-
   public totalTPCount = 0;
   public totalTPCountWt = 0;
   public approvedTPCount = 0;
   public pendingTPCount = 0;
   public rejectedTPCount = 0;
-
 
   // variable for TF
   public totalTFCount = 0;
@@ -33,7 +27,6 @@ export class DashCrmComponent implements OnInit {
   public approvedTFCount = 0;
   public pendingTFCount = 0;
   public rejectedTFCount = 0;
-
 
   //PC
   public totalGLCount = 0;
@@ -48,8 +41,14 @@ export class DashCrmComponent implements OnInit {
   public approvedPCRCCount = 0;
   public pendingPCRCCount = 0;
   public rejectedPCRCCount = 0;
-
-
+  productCategory: ProductCategory[] = [];
+  selectedCategory: ProductCategory = { id: 1, productCategory: 'TP' };
+  productShape: ProductShape[] = [];
+  selectedShape: ProductShape = { id: 1, productShape: 'SLC' };
+  productClass: ProductClass[] = [];
+  selectedClass: ProductClass = { id: 2, productClass: '1B' };
+  warehouse: Warehouse[] = [];
+  selectedWarehouse: Warehouse = { id: 1, name: 'A-88' };
   productFilter: ProductFilter = {
     limit: 10,
     offset: 1,
@@ -68,90 +67,82 @@ export class DashCrmComponent implements OnInit {
     productFinish: '',
     productCoating: '',
     lessThanNtWt: '',
-    greaterThanNtWt: ''
+    greaterThanNtWt: '',
+    warehouse: ''
   };
-  
-  constructor(private sharedService: PurchaseService,private productService: ProductService) {
 
+  constructor(private productService: ProductService, private staticDataService: StaticDataService) {
   }
-
-  
 
   ngOnInit() {
-     let category :ProductCategory={
-        "id" : 1, "productCategory" : "tp"
-      }
-    this.getAllProduct(category,1);
-    let category2 :ProductCategory={
-        "id" : 2, "productCategory" : "tfs"
-      }
-    this.getAllProduct(category2,2);
-     let category3 :ProductCategory={
-        "id" : 3, "productCategory" : "gl"
-      }
-    this.getAllProduct(category3,3);
-    let category4 :ProductCategory={
-        "id" : 4, "productCategory" : "pcrc"
-      }
-    this.getAllProduct(category4,4);
-
+    this.staticDataService.getAllProductCategory().subscribe(data => this.productCategory = data);
+    this.staticDataService.getProductShape().subscribe(data => this.productShape = data);
+    this.staticDataService.getProductClass().subscribe(data => this.productClass = data);
+    this.staticDataService.getAllwarehouse().subscribe(data => this.warehouse = data);
+    this.getCategoryProduct();
+    this.getShapeProduct();
+    this.getClassProduct();
+    this.getWarehouseProduct();
   }
 
-   getAllProduct(category,id) {
-     console.log("calling")
-     
-     this.sharedService.getAllProductsForDashboard(category).subscribe(data=>{
-      console.log("data",data);
-      if(id == 1)
-        {
-          this.pendingTPCount= data.body.PENDING[0][0];
-          this.approvedTPCount=data.body.APPROVED[0][0];
-          this.rejectedTPCount=data.body.REJECTED[0][0];
-          this.totalTPCount=data.body.tp[0][0];
-          this.totalTPCountWt=data.body.tp[0][1];
-        }
+  getCategoryProduct() {
+    const name = this.selectedCategory.productCategory;
+    this.productService.getCategoryProductsForDashboard(this.selectedCategory).subscribe(data => {
+      this.pendingTPCount = data.body.PENDING[0][0];
+      this.approvedTPCount = data.body.APPROVED[0][0];
+      this.rejectedTPCount = data.body.REJECTED[0][0];
+      this.totalTPCount = data.body[name][0][0];
+      this.totalTPCountWt = data.body[name][0][1];
+    });
+  }
 
-        if(id == 2)
-        {
-          this.pendingTFCount= data.body.PENDING[0][0];
-          this.approvedTFCount=data.body.APPROVED[0][0];
-          this.rejectedTFCount=data.body.REJECTED[0][0];
-          this.totalTFCount=data.body.tfs[0][0];
-          this.totalTFCountWt=data.body.tfs[0][1];
-        }
+  getShapeProduct() {
+    const name = this.selectedShape.productShape;
+    this.productService.getShapeProductsForDashboard(this.selectedShape).subscribe(data => {
+      this.pendingTFCount = data.body.PENDING[0][0];
+      this.approvedTFCount = data.body.APPROVED[0][0];
+      this.rejectedTFCount = data.body.REJECTED[0][0];
+      this.totalTFCount = data.body[name][0][0];
+      this.totalTFCountWt = data.body[name][0][1];
+    });
+  }
 
-        if(id == 3)
-        {
-          this.pendingGLCount= data.body.PENDING[0][0];
-          this.approvedGLCount=data.body.APPROVED[0][0];
-          this.rejectedGLCount=data.body.REJECTED[0][0];
-          this.totalGLCount=data.body.gl[0][0];
-          this.totalGLCountWt=data.body.gl[0][1];
-        }
+  getClassProduct() {
+    const name = this.selectedClass.productClass;
+    this.productService.getClassProductsForDashboard(this.selectedClass).subscribe(data => {
+      this.pendingGLCount = data.body.PENDING[0][0];
+      this.approvedGLCount = data.body.APPROVED[0][0];
+      this.rejectedGLCount = data.body.REJECTED[0][0];
+      this.totalGLCount = data.body[name][0][0];
+      this.totalGLCountWt = data.body[name][0][1];
+    });
+  }
 
-        if(id == 4)
-        {
-          this.pendingPCRCCount= data.body.PENDING[0][0];
-          this.approvedPCRCCount=data.body.APPROVED[0][0];
-          this.rejectedPCRCCount=data.body.REJECTED[0][0];
-          this.totalPCRCCount=data.body.pcrc[0][0];
-          this.totalPCRCCountWt=data.body.pcrc[0][1];
-        }
-     },error=>{
-       console.log("err");
-     });
-   }
+  getWarehouseProduct() {
+    const name = this.selectedWarehouse.name;
+    this.productService.getWarehouseProductsForDashboard(this.selectedWarehouse).subscribe(data => {
+      this.pendingPCRCCount = data.body.PENDING[0][0];
+      this.approvedPCRCCount = data.body.APPROVED[0][0];
+      this.rejectedPCRCCount = data.body.REJECTED[0][0];
+      this.totalPCRCCount = data.body[name][0][0];
+      this.totalPCRCCountWt = data.body[name][0][1];
+    });
+  }
 
-
-
-     getProduct(id,status) {
-       this.productFilter.productCategory=id;
-       this.productFilter.status=status;
+  getProduct(id, status) {
+    if (id === 'category') {
+      this.productFilter.productCategory = this.selectedCategory.id.toString();
+    } else if (id === 'shape') {
+      this.productFilter.productShape = this.selectedShape.id.toString();
+    } else if (id === 'class') {
+      this.productFilter.productClass = this.selectedClass.id.toString();
+    } else if (id === 'warehouse') {
+      this.productFilter.warehouse = this.selectedWarehouse.id.toString();
+    }
+    this.productFilter.status = status;
     this.productService.getSearchFilter(this.productFilter).subscribe(
       (data) => {
-        console.log("Data based on cat id",data);
         this.productList = data;
-        console.log(data);
       }
     );
   }

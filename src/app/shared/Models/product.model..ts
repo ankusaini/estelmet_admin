@@ -83,8 +83,8 @@ export interface ProductCategory {
 export interface ProductShape {
   id: number;
   productShape: string;
-  description: string;
-  parentId: string;
+  description?: string;
+  parentId?: string;
 
 }
 
@@ -99,7 +99,7 @@ export interface ProductType {
 export interface ProductClass {
   id: number;
   productClass: string;
-  description: string;
+  description?: string;
 }
 
 
@@ -232,4 +232,5 @@ export class ProductFilter {
   productCoating: string;
   lessThanNtWt: string;
   greaterThanNtWt: string;
+  warehouse: string;
 }

@@ -1,6 +1,15 @@
 <form [formGroup]="companyDetailsForm" (submit)="companyDetailsSubmit()">
   <div class="form-row">
-    <div class="col-md-11 mb-3">
+    <div class="col-md-5 mb-3">
+      <label for="validationCustom02">Business Type<small class="asterik_sign">*</small></label>
+      <select  class="form-control" >
+        <option value="0" disabled class="f-w-600 clr-blk">Select</option>
+        <option >Manufacturing</option>
+        <option >Trading</option>
+      </select>
+    </div>
+    <div class="col-md-1 mb-3"></div>
+    <div class="col-md-5 mb-3">
       <label for="validationCustom02">Company Name <small class="asterik_sign">*</small></label>
       <input formControlName="companyName" type="text" class="form-control" placeholder="">
       <small *ngIf="f.companyName.value.length==0 && (f.companyName.dirty || f.companyName.touched )"
@@ -110,7 +119,7 @@
       <!-- <small *ngIf="f.emailBusiness.value.length==0 && (f.emailBusiness.dirty || f.emailBusiness.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>-->
       <!-- <small *ngIf="f.emailBusiness.value.length>0 && f.emailBusiness.errors?.emailValidation " id="passwordHelpBlock" class="form-text text-muted"
-          >Please enter valid Email address.</small> -->
+          >Please enter valid E-mail address.</small> -->
     </div>
   </div>
   <div class="form-row">
@@ -119,19 +128,19 @@
       <div class="row">
         <div class="col-md-4 mb-3">
           <input formControlName="annualTurnover1" type="text" class="form-control" placeholder="">
-          <small id="emailHelp" class="form-text text-muted">2016 - 2017 (in Lacs)</small>
+          <small id="emailHelp" class="form-text text-muted">2017 - 2018 (in Lacs)</small>
           <!-- <small *ngIf="f.annualTurnover1.value.length==0 && (f.annualTurnover1.dirty || f.annualTurnover1.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
         </div>
         <div class="col-md-4 mb-3">
           <input formControlName="annualTurnover2" type="text" class="form-control" placeholder="">
-          <small id="emailHelp" class="form-text text-muted">2017 - 2018 (in Lacs)</small>
+          <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
           <!-- <small *ngIf="f.annualTurnover2.value.length==0 && (f.annualTurnover2.dirty || f.annualTurnover2.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
         </div>
         <div class="col-md-4 mb-3">
           <input formControlName="annualTurnover3" type="text" class="form-control" placeholder="">
-          <small id="emailHelp" class="form-text text-muted">2018 - 2019 (in Lacs)</small>
+          <small id="emailHelp" class="form-text text-muted">2019 - 2020 (in Lacs)</small>
           <!-- <small *ngIf="f.annualTurnover3.value.length==0 && (f.annualTurnover3.dirty || f.annualTurnover3.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small> -->
         </div>
@@ -148,7 +157,7 @@
   <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="submit" class="btn btn-primary btn-sm">Continue</button>
+      <button type="submit" class="btn btn-primary btn-sm printBtn">Next <i  class="feather icon-arrow-right f-w-600"></i></button>
     </div>
   </div>
 </form>

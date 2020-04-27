@@ -1,98 +1,139 @@
-<a href="javascript:" (click)="exampleModalCenter.show()"
-data-toggle="modal" class="pop-search btn btn-danger btn-sm copyBtn"><i class="feather icon-search f-w-600" ></i> Search Product</a>
+<a href="javascript:" (click)="exampleModalCenter.show()" data-toggle="modal"
+  class="pop-search btn btn-danger btn-sm copyBtn"><i class="feather icon-search f-w-600"></i> Search Product</a>
 <div class="search-bar" *ngIf="isSearch" [style.display]="'block'">
   <input type="text" class="form-control border-0 shadow-none" placeholder="Search hear">
   <button type="button" class="close" aria-label="Close" (click)="isSearch = false">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-
-
-
 <app-ui-modal #exampleModalCenter dialogClass="modal-dialog-centered" [dialogClass]="'modal-lg'">
-  <div class="app-modal-header">
-    <h5 class="modal-title">Modal Title</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close"
-      (click)="exampleModalCenter.hide()"><span aria-hidden="true">&times;</span></button>
-  </div>
+  <!-- <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close"
+      (click)="exampleModalCenter.hide()"><span aria-hidden="true">&times;</span></button> -->
   <div class="app-modal-body">
+    <h5 class="bg-clr-head1 p-10 f-14">Search Product</h5>
     <div class="row">
-      <div class="col-md-3" style="margin-bottom:20px;">
-        <select class="form-control" [(ngModel)]="productFilter.productCategory">
-          <option value='' disabled>Category</option>
-          <option *ngFor="let item of productCategory" [ngValue]="item?.id">{{ item?.productCategory }}</option>
-        </select>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Type</label>
+          <select class="form-control">
+            <option value='' disabled>Select Type</option>
+            <option *ngFor="let item of productType" [ngValue]="item?.id">{{ item?.productType }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="">
+          <label class="f-12 m-b-0">Category</label>
+          <select class="form-control" [(ngModel)]="productFilter.productCategory">
+            <option value='' disabled>Select Category</option>
+            <option *ngFor="let item of productCategory" [ngValue]="item?.id">{{ item?.productCategory }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="">
+          <label class="f-12 m-b-0">Shape</label>
+          <select class="form-control" [(ngModel)]="productFilter.productShape">
+            <option value='' disabled>Select Shape</option>
+            <option *ngFor="let item of productShape" [ngValue]="item?.id">{{ item?.productShape }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="">
+          <label class="f-12 m-b-0">Class</label>
+          <select class="form-control" [(ngModel)]="productFilter.productClass">
+            <option value='' disabled>Select Class</option>
+            <option *ngFor="let item of productClass" [ngValue]="item?.id">{{ item?.productClass }}</option>
+          </select>
+        </div>
       </div>
       <div class="col-md-3">
-        <select class="form-control" [(ngModel)]="productFilter.productShape">
-          <option value='' disabled>Shape</option>
-          <option *ngFor="let item of productShape" [ngValue]="item?.id">{{ item?.productShape }}</option>
-        </select>
-      </div>
-      <div class="col-md-3" style="margin-bottom:20px;">
-        
-        <select class="form-control" [(ngModel)]="productFilter.productClass">
-          <option value='' disabled>Class</option>
-          <option *ngFor="let item of productClass" [ngValue]="item?.id">{{ item?.productClass }}</option>
-        </select>
-      </div>
-      <div class="col-md-3" style="margin-bottom:20px;">
-        <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Net Wt." class="form-control" [(ngModel)]="productFilter.lessThanNtWt"></div>
-          <div class="col-md-6"><input type="text" placeholder="Net Wt." class="form-control" [(ngModel)]="productFilter.greaterThanNtWt"></div>
+        <div class="form-group">
+          <label class="f-12 m-b-0 dash2">Thick. Range (mm)</label>
+          <div class="row">
+            <div class="col-md-6 col-6"><input type="text" placeholder="Min" class="form-control"
+                [(ngModel)]="productFilter.thicknessMin"></div>
+            <div class="col-md-6 col-6"><input type="text" placeholder="Max" class="form-control"
+                [(ngModel)]="productFilter.thicknessMax"></div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Thk. Min" class="form-control" [(ngModel)]="productFilter.thicknessMin"></div>
-          <div class="col-md-6"><input type="text" placeholder="Thk. Max" class="form-control" [(ngModel)]="productFilter.thicknessMax"></div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="f-12 m-b-0 dash2">Width Range (mm)</label>
+          <div class="row">
+            <div class="col-md-6 col-6"><input type="text" placeholder="Min" class="form-control"
+                [(ngModel)]="productFilter.widthMin"></div>
+            <div class="col-md-6 col-6"><input type="text" placeholder="Max" class="form-control"
+                [(ngModel)]="productFilter.widthMax"></div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4" style="margin-bottom:20px;">
-        <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Width Min" class="form-control" [(ngModel)]="productFilter.widthMin"></div>
-          <div class="col-md-6"><input type="text" placeholder="Width Max" class="form-control" [(ngModel)]="productFilter.widthMax"></div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="f-12 m-b-0 dash2">Length Range (mm)</label>
+          <div class="row">
+            <div class="col-md-6 col-6"><input type="text" placeholder="Min" class="form-control"
+                [(ngModel)]="productFilter.lengthMin"></div>
+            <div class="col-md-6 col-6"><input type="text" placeholder="Max" class="form-control"
+                [(ngModel)]="productFilter.lengthMax"></div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-md-6"><input type="text" placeholder="Length Min" class="form-control" [(ngModel)]="productFilter.lengthMin"></div>
-          <div class="col-md-6"><input type="text" placeholder="Length Max" class="form-control" [(ngModel)]="productFilter.lengthMax"></div>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-12"><span style="float:left;margin-bottom:10px;"><b>Select Temper</b></span></div>
-      <div class="col-md-2" style="margin-bottom:15px;text-align:left;" *ngFor="let item of productTemper">
-        <input type="checkbox" value="{{item.id}}" [(ngModel)]="item.checked"> {{item.productTemper}}
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="f-12 m-b-0 dash2">Net Wt.</label>
+          <div class="row">
+            <div class="col-md-6 col-6">
+              <input type="text" placeholder="Net Wt." class="form-control" [(ngModel)]="productFilter.lessThanNtWt">
+            </div>
+            <div class="col-md-6 col-6">
+              <input type="text" placeholder="Net Wt." class="form-control" [(ngModel)]="productFilter.greaterThanNtWt">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <hr />
-
-    <div class="row">
-      <div class="col-md-12"><span style="float:left;margin-bottom:10px;"><b>Select Coating</b></span></div>
-      <div class="col-md-2" style="margin-bottom:15px;text-align:left;" *ngFor="let item of productCoating">
-        <input type="checkbox"> {{ item.productCoating }}
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Temper</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption" bindLabel="key" bindValue="key" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
       </div>
-    </div>
-    <hr />
-
-    <div class="row">
-      <div class="col-md-12">
-        <span style="float:left;margin-bottom:10px;"><b>Select Finish</b></span>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Coating</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption2" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
       </div>
-      <div class="col-md-2" style="margin-bottom:15px;text-align:left;" *ngFor="let item of productFinish">
-        <input type="checkbox"> {{item.productFinish}}
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Finish</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption3" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Warehouse</label>
+          <select class="form-control" [(ngModel)]="productFilter.warehouse">
+            <option value='' disabled>Select Warehouse</option>
+            <option *ngFor="let item of warehouse" [ngValue]="item?.id">{{ item?.name }}</option>
+          </select>
+        </div>
       </div>
     </div>
 
   </div>
   <div class="app-modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-      (click)="exampleModalCenter.hide()">Close</button>
-    <button type="button" class="btn btn-primary"
-      (click)="getProduct(); exampleModalCenter.hide(); exampleModalCenter1.show()">Save changes</button>
+    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
+      (click)="exampleModalCenter.hide()">Close</button>&nbsp;
+    <button type="button" class="btn btn-primary excelBtn btn-sm"
+      (click)="getProduct(); exampleModalCenter.hide(); exampleModalCenter1.show()"><i
+        class="feather icon-search f-w-600"></i> Search Product</button>
   </div>
 </app-ui-modal>
 

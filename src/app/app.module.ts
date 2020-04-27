@@ -28,6 +28,7 @@ import {
   NavSearchProductComponent
 } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search-product/nav-search-product.component';
 import { ShareModule } from './shared/shared.module';
+import { SelectModule } from 'ng-select';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ShareModule } from './shared/shared.module';
     NgbTabsetModule,
     NgbModalModule,
     ToastrModule.forRoot(),
+    SelectModule,
     NgxPermissionsModule.forRoot()
   ],
   providers: [

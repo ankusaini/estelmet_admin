@@ -4,7 +4,11 @@
     <!-- <h3 class="mb-3">Inventory Details</h3> -->
     <div class="row">
       <div class="col-sm-3">
-        <app-card [hidHeader]="false"  cardTitle="Tin Plate" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-primary text-white">
+        <select class="form-control m-b-10" [(ngModel)]="selectedCategory" (change)="getCategoryProduct()">
+          <option value='' disabled>Select Category</option>
+          <option *ngFor="let item of productCategory" [ngValue]="item">{{ item?.productCategory }}</option>
+        </select>
+        <app-card [hidHeader]="false"  [cardTitle]="selectedCategory.productCategory" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-primary text-white">
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
@@ -18,15 +22,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div  (click)="getProduct(1,'APPROVED')" class="col-md-4">
+              <div  (click)="getProduct('category' ,'APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedTPCount}}</h5>
                 <span class="btn btn-primary btn-sm shadow f-12">Registered</span> 
               </div>
-              <div (click)="getProduct(1,'PENDING')" class="col-md-4">
+              <div (click)="getProduct('category','PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingTPCount}}</h5>
                 <span class="btn btn-primary btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getProduct(1,'REJECTED')" class="col-md-4">
+              <div (click)="getProduct('category','REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedTPCount}}</h5>
                 <span class="btn btn-primary btn-sm shadow f-12">Rejected</span>
               </div>
@@ -35,7 +39,11 @@
         </app-card>
       </div>
       <div class="col-sm-3">
-        <app-card [hidHeader]="false"  cardTitle="Tin Free" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-success text-white">
+        <select class="form-control m-b-10" [(ngModel)]="selectedShape" (change)="getShapeProduct()">
+          <option value='' disabled>Select Shape</option>
+          <option *ngFor="let item of productShape" [ngValue]="item?.id">{{ item?.productShape }}</option>
+        </select>
+        <app-card [hidHeader]="false"  [cardTitle]="selectedShape.productShape" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-success text-white">
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
@@ -49,15 +57,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div (click)="getProduct(2,'APPROVED')" class="col-md-4">
+              <div (click)="getProduct('shape','APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedTFCount}}</h5>
                 <span class="btn btn-success btn-sm shadow f-12">Registered</span>
               </div>
-              <div (click)="getProduct(2,'PENDING')" class="col-md-4">
+              <div (click)="getProduct('shape','PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingTFCount}}</h5>
                 <span class="btn btn-success btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getProduct(2,'REJECTED')" class="col-md-4">
+              <div (click)="getProduct('shape','REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedTFCount}}</h5>
                 <span class="btn btn-success btn-sm shadow f-12">Rejected</span>
               </div>
@@ -67,7 +75,11 @@
       </div>
 
       <div class="col-sm-3">
-        <app-card [hidHeader]="false"  cardTitle="Galvanize" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-danger text-white">
+        <select class="form-control m-b-10" [(ngModel)]="selectedClass" (change)="getClassProduct()">
+          <option value='' disabled>Select Class</option>
+          <option *ngFor="let item of productClass" [ngValue]="item?.id">{{ item?.productClass }}</option>
+        </select>
+        <app-card [hidHeader]="false"  [cardTitle]="selectedClass.productClass" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-danger text-white">
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
@@ -81,15 +93,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div (click)="getProduct(3,'APPROVED')" class="col-md-4">
+              <div (click)="getProduct('class','APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedGLCount}}</h5>
                 <span class="btn btn-danger btn-sm shadow f-12">Registered</span>
               </div>
-              <div (click)="getProduct(3,'PENDING')" class="col-md-4">
+              <div (click)="getProduct('class','PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingGLCount}}</h5>
                 <span class="btn btn-danger btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getProduct(3,'REJECTED')" class="col-md-4">
+              <div (click)="getProduct('class','REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedGLCount}}</h5>
                 <span class="btn btn-danger btn-sm shadow f-12">Rejected</span>
               </div>
@@ -98,7 +110,11 @@
         </app-card>
       </div>
       <div class="col-sm-3">
-        <app-card [hidHeader]="false"  cardTitle="PCRC" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-warning text-white">
+        <select class="form-control m-b-10" [(ngModel)]="selectedWarehouse" (change)="getWarehouseProduct()">
+          <option value='' disabled>Select Warehouse</option>
+          <option *ngFor="let item of warehouse" [ngValue]="item?.id">{{ item?.name }}</option>
+        </select>
+        <app-card [hidHeader]="false"  [cardTitle]="selectedWarehouse.name" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-warning text-white">
           <div class="p-10 pb-2 pt-0">
             <div class="mylist">
               <ul>
@@ -112,15 +128,15 @@
           </div>
           <div class="app-card-footer">
             <div class="row text-center"> 
-              <div (click)="getProduct(4,'APPROVED')" class="col-md-4">
+              <div (click)="getProduct('warehouse','APPROVED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{approvedPCRCCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Registered</span>
               </div>
-              <div (click)="getProduct(4,'PENDING')" class="col-md-4">
+              <div (click)="getProduct('warehouse','PENDING')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{pendingPCRCCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Pending</span>
               </div>
-              <div (click)="getProduct(4,'REJECTED')" class="col-md-4">
+              <div (click)="getProduct('warehouse','REJECTED')" class="col-md-4">
                 <h5 class="m-0 f-14 text-white">{{rejectedPCRCCount}}</h5>
                 <span class="btn btn-warning btn-sm shadow f-12">Rejected</span>
               </div>

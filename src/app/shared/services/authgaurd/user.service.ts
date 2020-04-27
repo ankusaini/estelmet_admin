@@ -101,6 +101,15 @@ export class UserService {
       ));
   }
 
+  signupEmployee(credentials) {
+    const route = '/signupEmployee';
+    return this.apiService.post(route, credentials).pipe(
+      map(data => {
+        return data.body;
+      }
+      ));
+  }
+
   // getUserById(userId) {
   //   this._commonService.getUserById(userId).subscribe((res)=>{
   //     console.log(res);
