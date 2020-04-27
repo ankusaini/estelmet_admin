@@ -127,14 +127,23 @@ export class CreateLotWithoutPcComponent implements OnInit {
     }
   }
 
-  selectedCompany(value : number) {
-    console.log("company",this.companyList)
+  selectedCompany(value) {
+    if(value!='')
+      {
     let data = this.companyList.filter(element=>{
       return element.id == value
     })
     this.selectedCmp = data[0];
+    console.log("company",this.selectedCmp)
     this.warehouseList = this._staticData.getAllWarehouseByCompanyId(this.selectedCmp.id);
+    console.log(this.warehouseList);
     this._cd.detectChanges();
+  }
+  else
+    {
+      this.selectedCmp=undefined;
+
+    }
   }
  
 }

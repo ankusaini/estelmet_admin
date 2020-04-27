@@ -88,7 +88,7 @@
                   <select #selectedWarehouseName formControlName="sourceWarehouseId" [value]="selectedWarehouseId.value"
                     class="form-control" name="validation-pcId">
                     <option value> Name</option>
-                    <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.name }}</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.name }}</option>
                   </select>
                   <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
                 </div>

@@ -127,8 +127,9 @@ export class CreateLotComponent implements OnInit {
    
     this.purchaseService.createMaterialTransfer( this.requestObj).subscribe(
       data => {
-        this.toastr.success("Record saved successfully");
-        this.router.navigateByUrl("/purchase/lotApproval");
+          let generateId=data.purchase.id;
+        this.toastr.success("Record saved successfully.Generated Id:"+generateId);
+        this.router.navigateByUrl("/purchase/lotEdit/"+generateId);
 
       },
       error => {

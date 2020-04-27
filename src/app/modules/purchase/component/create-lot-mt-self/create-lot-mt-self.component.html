@@ -14,7 +14,7 @@
                   </select>
                 </div>
                 <div class="col-sm-5 m-t-10 p-t-5 ">
-                  <select #selectedName1 [value]="selectedId1.value"  formControlName="sourceCompanyId"  (change)="selectedSourceCompany(selectedId2.value)" class="form-control" name="validation-pcId">
+                  <select #selectedName1 [value]="selectedId1.value"  formControlName="sourceCompanyId"  (change)="selectedSourceCompany(selectedId1.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option  *ngFor="let item of sourceCompanyList"    [value]="item?.id"    >{{ item?.name }}</option>
                 </select>
@@ -37,7 +37,7 @@
                     class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
                 </div>
                 <div class="col-sm-5 m-t-10 p-t-5 ">
-                  <select #selectedName2 [value]="selectedId2.value"  formControlName="destinationCompanyId"  (change)="selectedCompany(selectedId2.value)" class="form-control" name="validation-pcId">
+                  <select #selectedName2 [value]="selectedId2.value"  formControlName="destinationCompanyId"  (change)="selectedDestinationCompany(selectedId2.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option  *ngFor="let item of destinationCompanyList"    [value]="item?.id"    >{{ item?.name }}</option>
 
@@ -56,13 +56,13 @@
               <div class="col-sm-3 m-t-10 p-t-5 ">
                 <select [value]="selectedWarehouseName.value" formControlName='sourceWarehouseId' #selectedWarehouseId class="form-control">
                   <option value>Id</option>
-                  <option [value]="item.id" *ngFor="let item of selectedSourceCmpy.warehouse">{{ item.id }}</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.id }}</option>
                 </select>
               </div>
               <div class="col-sm-5 m-t-10 p-t-5 ">
                 <select #selectedWarehouseName formControlName='sourceWarehouseId' [value]="selectedWarehouseId.value" class="form-control" name="validation-pcId">
                   <option value> Name</option>
-                  <option [value]="item.id" *ngFor="let item of selectedSourceCmpy.warehouse">{{ item.name }}</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.name }}</option>
                 </select>
                 <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
               </div>
@@ -76,13 +76,13 @@
               <div class="col-sm-3 m-t-10 p-t-5 ">
                 <select [value]="selectedWarehouseName2.value" formControlName='destinationWarehouseId' #selectedWarehouseId2 class="form-control">
                   <option value>Id</option>
-                  <option [value]="item.id" *ngFor="let item of selectedDestinationCmp.warehouse">{{ item.id }}</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseListDest">{{ item.id }}</option>
                 </select>
               </div>
               <div class="col-sm-5 m-t-10 p-t-5 ">
                 <select #selectedWarehouseName2 formControlName='destinationWarehouseId' [value]="selectedWarehouseId2.value" class="form-control" name="validation-pcId">
                   <option value> Name</option>
-                  <option [value]="item.id" *ngFor="let item of selectedDestinationCmp.warehouse">{{ item.name }}</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseListDest">{{ item.name }}</option>
                 </select>
                 <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
               </div>

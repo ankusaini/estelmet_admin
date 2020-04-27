@@ -8,6 +8,7 @@ import { LotType } from 'src/app/shared/Models/purchase.model';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { StaticDataService } from 'src/app/shared/services/data/staticData.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Warehouse } from "src/app/shared/Models/warehouse";
 
 @Component({
   selector: 'app-create-lot-mt-self',
@@ -32,6 +33,9 @@ export class CreateLotMtSelfComponent implements OnInit {
   public selectedSourceCmpy: Company;
   public selectedDestinationCmp: Company;
   public role: LotType;
+  public warehouseList: Warehouse[] = [];
+   public warehouseListDest: Warehouse[] = [];
+  
 
 
 
@@ -78,7 +82,7 @@ export class CreateLotMtSelfComponent implements OnInit {
       this.role = LotType.MATERIAL_TRANSFER;
     } else {
       this.role = LotType.JOB_WORK_SELF;
-      this.lotWithoutPc.removeControl('sourceWarehouseId');
+      //this.lotWithoutPc.removeControl('sourceWarehouseId');
     }
     this.lotWithoutPc.get('lotType').patchValue(this.role);
   }
@@ -131,25 +135,42 @@ export class CreateLotMtSelfComponent implements OnInit {
       this.selectedProductList.splice(index, 1);
     }
   }
-  selectedSourceCompany(value: number) {
+
+  selectedSourceCompany(value) {
+    if(value!='')
+      {
     const data = this.sourceCompanyList.filter(element => {
       return element.id == value;
     });
     this.selectedSourceCmpy = data[0];
+        this.warehouseList = this.staticData.getAllWarehouseByCompanyId(this.selectedSourceCmpy.id);
+
     this.cd.detectChanges();
+      }
+  else
+    {
+      this.selectedSourceCmpy=undefined;
+    }
   }
 
-  selectedCompany(value) {
-    console.log(value);
-  }
+  
 
-  selectedDestinationCompany(value: number) {
+  selectedDestinationCompany(value) {
+    if(value!='')
+      {
     const data = this.destinationCompanyList.filter(element => {
       return element.id == value;
     });
     this.selectedDestinationCmp = data[0];
+    this.warehouseListDest = this.staticData.getAllWarehouseByCompanyId(this.selectedDestinationCmp.id);    
     this.cd.detectChanges();
+      }
+  else
+    {
+      this.selectedDestinationCmp=undefined;
+    }
   }
+
 
   sendForApproval() {
     if (this.lotWithoutPc.invalid) {
