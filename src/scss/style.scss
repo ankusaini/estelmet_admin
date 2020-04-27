@@ -260,6 +260,18 @@ ul.nav.nav-pills li:nth-child(2) {
       top: 3.5em;
       left: 5.8em;
   }
+  .dash2 {
+    position:relative;
+    }
+  .dash2:after {
+  position: absolute;
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #9a9999;
+    top: 5.5em;
+    left: 6.5em;
+  }
   .pop-search {
     margin-top: 30px;
   }
@@ -274,8 +286,11 @@ ul.nav.nav-pills li:nth-child(2) {
 .uploadPhoto {
     height: 160px;
 }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 420px) {   
     .dash:after {
       left: 11.3em;
   }
+  .dash2:after {
+    left: 12.8em;
+}
   }

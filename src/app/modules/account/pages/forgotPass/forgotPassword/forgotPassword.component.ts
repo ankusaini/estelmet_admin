@@ -41,11 +41,11 @@ export class ForgotPasswordComponent implements OnInit {
           this.enterOTP = true;
         },
         () => {
-          this.toastr.error('Enter Email and Mobile No.');
+          this.toastr.error('Enter E-mail and Mobile No.');
         }
       );
     } else {
-      this.toastr.error('Enter Email and Mobile No.');
+      this.toastr.error('Enter E-mail and Mobile No.');
     }
   }
 
@@ -67,7 +67,7 @@ export class ForgotPasswordComponent implements OnInit {
           this.toastr.success('Password successfully changed!');
           this.router.navigateByUrl('/account/login');
         }, error => {
-          this.toastr.error('Enter Email and Mobile No.');
+          this.toastr.error('Enter E-mail and Mobile No.');
         }
       );
     } else {

@@ -41,12 +41,12 @@ export class CompanyDetailsComponent implements OnInit {
         Validators.required,
         CustomValidator.pinCodeValidation
       ]),
-      mobile1: new FormControl('', [CustomValidator.contactNumberValidation]),
+      mobile1: new FormControl('', [Validators.required, CustomValidator.contactNumberValidation]),
       mobile2: new FormControl('', [CustomValidator.contactNumberValidation]),
       emailBusiness: new FormControl('', [CustomValidator.emailValidation]),
       annualTurnover1: new FormControl('', [CustomValidator.compondValueValidate]),
       annualTurnover2: new FormControl('', [CustomValidator.compondValueValidate]),
-      annualTurnover3: new FormControl('', [CustomValidator.compondValueValidate])
+      annualTurnover3: new FormControl('', [CustomValidator.compondValueValidate]) 
     });
 
   ngOnInit() {

@@ -13,7 +13,7 @@
           <th>Status</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody> 
         <tr *ngFor="let sale of salesList; let i=index">
           <td>{{i+1}}</td>
           <td>{{Ids.SALES_OFFER_LOT + '-' + sale.id}}</td>
@@ -41,6 +41,6 @@
   <div class="col-sm-12 centered-content m-t-20">
     <div class="btn-group mt-10">
       <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
-      <button type="button" (click)="submitId()" class="btn btn-primary btn-sm" >Continue</button>
+      <button type="button" (click)="submitId()" class="btn btn-primary btn-sm printBtn" >Next <i  class="feather icon-arrow-right f-w-600"></i></button>
     </div>
   </div>

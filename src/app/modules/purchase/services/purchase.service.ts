@@ -186,11 +186,4 @@ export class PurchaseService {
     });
   }
 
-  getAllProductsForDashboard(category) {
-    return new Observable<any>(obs => {
-      this.apiService.post('/inventory/dashboard', category).subscribe(res => {
-        obs.next(res);
-      });
-    });
-  }
 }

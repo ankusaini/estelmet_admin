@@ -124,7 +124,7 @@ export class PersonalDetailsComponent implements OnInit {
       data => {
         if (data.data) {
           this.userDTO.get('email').setValue('');
-          this.toastrService.error('Email Already Exists');
+          this.toastrService.error('E-mail Already Exists');
         }
       }
     );

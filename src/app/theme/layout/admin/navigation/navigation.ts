@@ -8,7 +8,7 @@ export interface NavigationItem {
   icon?: string;
   hidden?: boolean;
   url?: string;
-  permissions?:string[];
+  permissions?: string[];
   classes?: string;
   exactMatch?: boolean;
   external?: boolean;
@@ -36,20 +36,20 @@ const NavigationItems = [
         id: 'userDash',
         title: 'Users',
         type: 'item',
-        permissions:['USER_CREATE_PRIVILEGE','USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
+        permissions: ['USER_CREATE_PRIVILEGE', 'USER_DELETE_PRIVILEGE', 'USER_UPDATE_PRIVILEGE'],
         url: '/dashboard/default'
       },
       {
         id: 'purchasDash',
         title: 'Purchase',
         type: 'item',
-        permissions:['PURCHASE_CREATE_PRIVILEGE','PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+        permissions: ['PURCHASE_CREATE_PRIVILEGE', 'PURCHASE_DELETE_PRIVILEGE', 'PURCHASE_UPDATE_PRIVILEGE'],
         url: '/dashboard/sale'
       },
       {
         id: 'inventoryDash',
         title: 'Inventory',
-        permissions:['INVENTORY_CREATE_PRIVILEGE','INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
+        permissions: ['INVENTORY_CREATE_PRIVILEGE', 'INVENTORY_DELETE_PRIVILEGE', 'INVENTORY_UPDATE_PRIVILEGE'],
         type: 'item',
         url: '/dashboard/crm'
       },
@@ -62,7 +62,7 @@ const NavigationItems = [
       {
         id: 'salesDash',
         title: 'Sales',
-        permissions:['SALES_CREATE_PRIVILEGE','SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
+        permissions: ['SALES_CREATE_PRIVILEGE', 'SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
         type: 'item',
         url: '/dashboard/analytics'
       },
@@ -78,7 +78,7 @@ const NavigationItems = [
     id: 'userTitle',
     title: 'Users',
     type: 'group',
-    permissions:['USER_CREATE_PRIVILEGE','USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
+    permissions: ['USER_CREATE_PRIVILEGE', 'USER_DELETE_PRIVILEGE', 'USER_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'user',
@@ -99,17 +99,17 @@ const NavigationItems = [
             url: '/users/list',
             target: false,
           },
-          {
-            id: 'userOverview',
-            title: 'User Overview',
-            type: 'item',
-            url: '/users/profile/1',
-            target: false,
-          },
+          // {
+          //   id: 'userOverview',
+          //   title: 'User Overview',
+          //   type: 'item',
+          //   url: '/users/profile/1',
+          //   target: false,
+          // },
           {
             id: 'approvalUser',
             title: 'User Approval',
-            permissions:['USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
+            permissions: ['USER_DELETE_PRIVILEGE', 'USER_UPDATE_PRIVILEGE'],
             type: 'item',
             url: '/users/userApproval',
             target: false,
@@ -146,7 +146,7 @@ const NavigationItems = [
           {
             id: 'approvalGroup',
             title: 'Group Approval',
-            permissions:['USER_DELETE_PRIVILEGE','USER_UPDATE_PRIVILEGE'],
+            permissions: ['USER_DELETE_PRIVILEGE', 'USER_UPDATE_PRIVILEGE'],
             type: 'item',
             url: '/users/groupApproval',
             target: false,
@@ -168,7 +168,7 @@ const NavigationItems = [
     id: 'purchaseHead',
     title: 'Purchase',
     type: 'group',
-    permissions:['PURCHASE_CREATE_PRIVILEGE','PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+    permissions: ['PURCHASE_CREATE_PRIVILEGE', 'PURCHASE_DELETE_PRIVILEGE', 'PURCHASE_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'materialRequirement',
@@ -193,14 +193,14 @@ const NavigationItems = [
           //   id: 'mrOverview',
           //   title: 'MR Overview',
           //   type: 'item',
-          //   url: '/purchase/pcOverview', 
+          //   url: '/purchase/pcOverview',
           //   target: false,
           // },
           {
             id: 'mrApproval',
             title: 'MR Approval',
             type: 'item',
-            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+            permissions: ['PURCHASE_DELETE_PRIVILEGE', 'PURCHASE_UPDATE_PRIVILEGE'],
             url: '/purchase/mrApproval',
             target: false,
           },
@@ -292,7 +292,7 @@ const NavigationItems = [
             id: 'pcApproval',
             title: 'PC Approval',
             type: 'item',
-            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+            permissions: ['PURCHASE_DELETE_PRIVILEGE', 'PURCHASE_UPDATE_PRIVILEGE'],
             url: '/purchase/pcApproval',
             target: false,
           },
@@ -349,8 +349,8 @@ const NavigationItems = [
             id: 'lotApproval',
             title: 'LOT Approval',
             type: 'item',
-            url: '/purchase/lotApproval',  
-            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+            url: '/purchase/lotApproval',
+            permissions: ['PURCHASE_DELETE_PRIVILEGE', 'PURCHASE_UPDATE_PRIVILEGE'],
 
             target: false,
           },
@@ -407,7 +407,7 @@ const NavigationItems = [
             title: 'GRN Approval',
             type: 'item',
             url: '/purchase/grnApproval',
-            permissions:['PURCHASE_DELETE_PRIVILEGE','PURCHASE_UPDATE_PRIVILEGE'],
+            permissions: ['PURCHASE_DELETE_PRIVILEGE', 'PURCHASE_UPDATE_PRIVILEGE'],
             target: false,
           },
           // {
@@ -425,7 +425,7 @@ const NavigationItems = [
     id: 'inventoryHeading',
     title: 'Inventory',
     type: 'group',
-    permissions:['INVENTORY_CREATE_PRIVILEGE','INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
+    permissions: ['INVENTORY_CREATE_PRIVILEGE', 'INVENTORY_DELETE_PRIVILEGE', 'INVENTORY_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'inventory',
@@ -458,7 +458,7 @@ const NavigationItems = [
             title: 'Product Approval',
             type: 'item',
             url: '/inventory/productApproval',
-            permissions:['INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
+            permissions: ['INVENTORY_DELETE_PRIVILEGE', 'INVENTORY_UPDATE_PRIVILEGE'],
 
             target: false,
           },
@@ -516,7 +516,7 @@ const NavigationItems = [
             title: 'Processing Approval',
             type: 'item',
             url: '/processing/processingApproval',
-            permissions:['INVENTORY_DELETE_PRIVILEGE','INVENTORY_UPDATE_PRIVILEGE'],
+            permissions: ['INVENTORY_DELETE_PRIVILEGE', 'INVENTORY_UPDATE_PRIVILEGE'],
             target: false,
           },
           // {
@@ -545,10 +545,10 @@ const NavigationItems = [
     ]
   },
   {
-    id: 'salesHeading',
-    title: 'Sales',
+    id: 'marketingHeading',
+    title: 'Marketing',
     type: 'group',
-    permissions:['SALES_CREATE_PRIVILEGE','SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
+    permissions: ['SALES_CREATE_PRIVILEGE', 'SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'salesLead',
@@ -586,174 +586,210 @@ const NavigationItems = [
         ]
       },
       {
+        id: 'salesOfferLot',
+        title: 'Sales Offer LOT',
+        type: 'collapse',
+        children: [
+          {
+            id: 'salesOfferCreate',
+            title: 'Create Sales Offer',
+            type: 'item',
+            url: '/sales/createSo',
+            target: false,
+          },
+          {
+            id: 'searchSalesOffer',
+            title: 'Search View Customer',
+            type: 'item',
+            url: '/sales/searchSo',
+            target: false,
+          },
+          {
+            id: 'approvalSo',
+            title: 'SO Approval',
+            type: 'item',
+            permissions: ['SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
+            url: '/sales/soApproval',
+            target: false,
+          },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'salesHeading',
+    title: 'Sales',
+    type: 'group',
+    permissions: ['SALES_CREATE_PRIVILEGE', 'SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
+    children: [
+      {
         id: 'salesTab',
         title: 'Sales',
         type: 'collapse',
-        
         children: [
-          {
-            id: 'directSales',
-            title: 'Direct Sales',
-            type: 'collapse',
-            children: [
-              {
-                id: 'salesOfferLot',
-                title: 'Sales Offer LOT',
-                type: 'collapse',
-                children: [
-                  {
-                    id: 'salesOfferCreate',
-                    title: 'Create Sales Offer',
-                    type: 'item',
-                    url: '/sales/createSo',
-                    target: false,
-                  },
-                  // {
-                  //   id: 'salesOfferCustomer',
-                  //   title: 'Create SO by Customer',
-                  //   type: 'item',
-                  //   url: '/sales/createSoCustomer',
-                  //   target: false,
-                  // },
-                  {
-                    id: 'searchSalesOffer',
-                    title: 'Search View Customer',
-                    type: 'item',
-                    url: '/sales/searchSo',
-                    target: false,
-                  },
-                  // {
-                  //   id: 'sendSOCustomer',
-                  //   title: 'Send SO to Customers',
-                  //   type: 'item',
-                  //   url: '/sales/sendSO',
-                  //   target: false,
-                  // },
-                  // {
-                  //   id: 'soOverviewTab',
-                  //   title: 'SO Overview',
-                  //   type: 'item',
-                  //   url: '/sales/soOverview',
-                  //   target: false,
-                  // },
-                  {
-                    id: 'approvalSo',
-                    title: 'SO Approval',
-                    type: 'item',
-                    permissions:['SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
-                    url: '/sales/soApproval',
-                    target: false,
-                  },
-                  // {
-                  //   id: 'EditSO',
-                  //   title: 'SO Edit',
-                  //   type: 'item',
-                  //   url: '/sales/soEdit',
-                  //   target: false,
-                  // },
-                ]
-              },
-            ]
-          },
-          {
-            id: 'salesWebsite',
-            title: 'Website Sales',
-            type: 'collapse',
-            children: [
-              {
-                id: 'offerTradeLead',
-                title: 'TradeLead Offer',
-                type: 'collapse',
-                children: [
-                  {
-                    id: 'createTradeLead',
-                    title: 'Create TradeLead',
-                    type: 'item',
-                    url: '/sales/createTradelead',
-                    target: false,
-                  },
-                  {
-                    id: 'searchTradeLead',
-                    title: 'Search & View TradeLead',
-                    type: 'item',
-                    url: '/sales/searchTradlead',
-                    target: false,
-                  },
-                  // {
-                  //   id: 'uploadTradeLead',
-                  //   title: 'Upload TradeLead',
-                  //   type: 'item',
-                  //   url: '/sales/uploadtl',
-                  //   target: false,
-                  // },
-                  // {
-                  //   id: 'overviewTradeLead',
-                  //   title: 'TradeLead Overview',
-                  //   type: 'item',
-                  //   url: '/sales/tlOverview',
-                  //   target: false,
-                  // },
-                  // {
-                  //   id: 'EditTradeLead',
-                  //   title: 'Edit TradeLead',
-                  //   type: 'item',
-                  //   url: '/sales/tlEdit',
-                  //   target: false,
-                  // },
-                ]
-              },
-              {
-                id: 'auctionOffer',
-                title: 'Auction Offer Lot',
-                type: 'collapse',
-                children: [
-                  {
-                    id: 'createAuctionOffer',
-                    title: 'Create Auction LOT',
-                    type: 'item',
-                    // url: '/layout/static',
-                    url: '/sales/createAuction',
-                    target: false,
-                  },
-                  {
-                    id: 'searchAuctionOffer',
-                    title: 'Search Auction LOT',
-                    type: 'item',
-                    // url: '/layout/static',
-                    url: '/sales/searchAuction',
-                    target: false,
-                  },
-                  {
-                    id: 'scheduleAuctionOffer',
-                    title: 'Schedule Auction LOT',
-                    type: 'item',
-                    // url: '/layout/static',
-                    url: '/sales/scheduleAuction',
-                    target: false,
-                  },
-                  {
-                    id: 'sendAuctionOffer',
-                    title: 'Send Auction Notification',
-                    type: 'item',
-                    // url: '/layout/static',
-                    url: '/sales/sendAuctionOffer',
-                    target: false,
-                  },
-                  // {
-                  //   id: 'overviewAuctionOffer',
-                  //   title: 'Auction Overview',
-                  //   type: 'item',
-                  //   // url: '/layout/static',
-                  //   url: '/sales/overviewAuction',
-                  //   target: false,
-                  // }
-                ]
-              },
-            ]
-          },
+          // {
+          //   id: 'directSales',
+          //   title: 'Direct Sales',
+          //   type: 'collapse',
+          //   children: [
+          //     {
+          //       id: 'salesOfferLot',
+          //       title: 'Sales Offer LOT',
+          //       type: 'collapse',
+          //       children: [
+          //         {
+          //           id: 'salesOfferCreate',
+          //           title: 'Create Sales Offer',
+          //           type: 'item',
+          //           url: '/sales/createSo',
+          //           target: false,
+          //         },
+          //         {
+          //           id: 'searchSalesOffer',
+          //           title: 'Search View Customer',
+          //           type: 'item',
+          //           url: '/sales/searchSo',
+          //           target: false,
+          //         },
+          //         {
+          //           id: 'approvalSo',
+          //           title: 'SO Approval',
+          //           type: 'item',
+          //           permissions: ['SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
+          //           url: '/sales/soApproval',
+          //           target: false,
+          //         },
+          //         // {
+          //         //   id: 'salesOfferCustomer',
+          //         //   title: 'Create SO by Customer',
+          //         //   type: 'item',
+          //         //   url: '/sales/createSoCustomer',
+          //         //   target: false,
+          //         // },
+          //         // {
+          //         //   id: 'sendSOCustomer',
+          //         //   title: 'Send SO to Customers',
+          //         //   type: 'item',
+          //         //   url: '/sales/sendSO',
+          //         //   target: false,
+          //         // },
+          //         // {
+          //         //   id: 'soOverviewTab',
+          //         //   title: 'SO Overview',
+          //         //   type: 'item',
+          //         //   url: '/sales/soOverview',
+          //         //   target: false,
+          //         // },
+          //         // {
+          //         //   id: 'EditSO',
+          //         //   title: 'SO Edit',
+          //         //   type: 'item',
+          //         //   url: '/sales/soEdit',
+          //         //   target: false,
+          //         // },
+          //       ]
+          //     },
+          //   ]
+          // },
+          // {
+          //   id: 'salesWebsite',
+          //   title: 'Website Sales',
+          //   type: 'collapse',
+          //   children: [
+          //     {
+          //       id: 'offerTradeLead',
+          //       title: 'TradeLead Offer',
+          //       type: 'collapse',
+          //       children: [
+          //         {
+          //           id: 'createTradeLead',
+          //           title: 'Create TradeLead',
+          //           type: 'item',
+          //           url: '/sales/createTradelead',
+          //           target: false,
+          //         },
+          //         {
+          //           id: 'searchTradeLead',
+          //           title: 'Search & View TradeLead',
+          //           type: 'item',
+          //           url: '/sales/searchTradlead',
+          //           target: false,
+          //         },
+          //         // {
+          //         //   id: 'uploadTradeLead',
+          //         //   title: 'Upload TradeLead',
+          //         //   type: 'item',
+          //         //   url: '/sales/uploadtl',
+          //         //   target: false,
+          //         // },
+          //         // {
+          //         //   id: 'overviewTradeLead',
+          //         //   title: 'TradeLead Overview',
+          //         //   type: 'item',
+          //         //   url: '/sales/tlOverview',
+          //         //   target: false,
+          //         // },
+          //         // {
+          //         //   id: 'EditTradeLead',
+          //         //   title: 'Edit TradeLead',
+          //         //   type: 'item',
+          //         //   url: '/sales/tlEdit',
+          //         //   target: false,
+          //         // },
+          //       ]
+          //     },
+          //     // {
+          //     //   id: 'auctionOffer',
+          //     //   title: 'Auction Offer Lot',
+          //     //   type: 'collapse',
+          //     //   children: [
+          //     //     {
+          //     //       id: 'createAuctionOffer',
+          //     //       title: 'Create Auction LOT',
+          //     //       type: 'item',
+          //     //       // url: '/layout/static',
+          //     //       url: '/sales/createAuction',
+          //     //       target: false,
+          //     //     },
+          //     //     {
+          //     //       id: 'searchAuctionOffer',
+          //     //       title: 'Search Auction LOT',
+          //     //       type: 'item',
+          //     //       // url: '/layout/static',
+          //     //       url: '/sales/searchAuction',
+          //     //       target: false,
+          //     //     },
+          //     //     {
+          //     //       id: 'scheduleAuctionOffer',
+          //     //       title: 'Schedule Auction LOT',
+          //     //       type: 'item',
+          //     //       // url: '/layout/static',
+          //     //       url: '/sales/scheduleAuction',
+          //     //       target: false,
+          //     //     },
+          //     //     {
+          //     //       id: 'sendAuctionOffer',
+          //     //       title: 'Send Auction Notification',
+          //     //       type: 'item',
+          //     //       // url: '/layout/static',
+          //     //       url: '/sales/sendAuctionOffer',
+          //     //       target: false,
+          //     //     },
+          //     //     // {
+          //     //     //   id: 'overviewAuctionOffer',
+          //     //     //   title: 'Auction Overview',
+          //     //     //   type: 'item',
+          //     //     //   // url: '/layout/static',
+          //     //     //   url: '/sales/overviewAuction',
+          //     //     //   target: false,
+          //     //     // }
+          //     //   ]
+          //     // },
+          //   ]
+          // },
           {
             id: 'customerOrder',
-            title: 'Customer Order (CO)',
+            title: 'Customer Order',
             type: 'collapse',
             children: [
               {
@@ -781,7 +817,7 @@ const NavigationItems = [
           },
           {
             id: 'salesConfirmation',
-            title: 'Sales Confirmation (SC)',
+            title: 'Sales Confirmation',
             type: 'collapse',
             children: [
               {
@@ -809,7 +845,7 @@ const NavigationItems = [
                 id: 'approvalSalesConfirmation',
                 title: 'SC Approval',
                 type: 'item',
-                permissions:['SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
+                permissions: ['SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
 
                 url: '/sales/scApproval',
                 target: false,
@@ -823,27 +859,27 @@ const NavigationItems = [
               },
             ]
           },
-          {
-            id: 'customerOrder',
-            title: 'Customer Order',
-            type: 'collapse',
-            children: [
-              {
-                id: 'createCustomerOrder',
-                title: 'Create Customer Order',
-                type: 'item',
-                url: '/sales/createCO',
-                target: false,
-              },
-              // {
-              //   id: 'customerOrderView',
-              //   title: 'Search Customer Order',
-              //   type: 'item',
-              //   url: '/sales/coView',
-              //   target: false,
-              // }
-            ]
-          }
+          // {
+          //   id: 'customerOrder',
+          //   title: 'Customer Order',
+          //   type: 'collapse',
+          //   children: [
+          //     {
+          //       id: 'createCustomerOrder',
+          //       title: 'Create Customer Order',
+          //       type: 'item',
+          //       url: '/sales/createCO',
+          //       target: false,
+          //     },
+          // {
+          //   id: 'customerOrderView',
+          //   title: 'Search Customer Order',
+          //   type: 'item',
+          //   url: '/sales/coView',
+          //   target: false,
+          // }
+          //   ]
+          // }
         ]
       },
       {
@@ -858,13 +894,13 @@ const NavigationItems = [
             url: '/dispatch/loadingSlip',
             target: false,
           },
-          {
-            id: 'loadOverview',
-            title: 'Loading Slip Overview',
-            type: 'item',
-            url: '/dispatch/loadSlipOverview',
-            target: false,
-          },
+          // {
+          //   id: 'loadOverview',
+          //   title: 'Loading Slip Overview',
+          //   type: 'item',
+          //   url: '/dispatch/loadSlipOverview',
+          //   target: false,
+          // },
           {
             id: 'deliveryOrder',
             title: 'Delivery Order',
@@ -891,18 +927,18 @@ const NavigationItems = [
                 url: '/dispatch/searchDo',
                 target: false,
               },
-              {
-                id: 'overviewDeliveryOrder',
-                title: 'DO Overview',
-                type: 'item',
-                url: '/dispatch/doOverview',
-                target: false,
-              },
+              // {
+              //   id: 'overviewDeliveryOrder',
+              //   title: 'DO Overview',
+              //   type: 'item',
+              //   url: '/dispatch/doOverview',
+              //   target: false,
+              // },
               {
                 id: 'approvalDeliveryOrder',
                 title: 'DO Approval',
                 type: 'item',
-                permissions:['SALES_DELETE_PRIVILEGE','SALES_UPDATE_PRIVILEGE'],
+                permissions: ['SALES_DELETE_PRIVILEGE', 'SALES_UPDATE_PRIVILEGE'],
 
                 url: '/dispatch/doApproval',
                 target: false,
@@ -966,7 +1002,7 @@ const NavigationItems = [
     id: 'setup',
     title: 'Setup',
     type: 'group',
-    permissions:['WEBSITE_CREATE_PRIVILEGE','WEBSITE_DELETE_PRIVILEGE','WEBSITE_UPDATE_PRIVILEGE'],
+    permissions: ['WEBSITE_CREATE_PRIVILEGE', 'WEBSITE_DELETE_PRIVILEGE', 'WEBSITE_UPDATE_PRIVILEGE'],
     children: [
       {
         id: 'superAdmin',
