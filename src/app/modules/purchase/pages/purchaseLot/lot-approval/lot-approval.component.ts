@@ -129,18 +129,19 @@ if(status=='PENDING')
          this.request.purchase=this.selectedLotList[i];
         this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
-           this.rejectedList=undefined;
+
+          },
+          error => {}
+        );
+      }
+      this.toastr.success("Selected Lot(s) status changes successfully");
+                 this.rejectedList=undefined;
               this.pendingList=undefined;
               this.approvedList=undefined;
       this.getAllPurchaseByTypeAndStatus("LOT", "PENDING");
     this.getAllPurchaseByTypeAndStatus("LOT", "APPROVED");
     this.getAllPurchaseByTypeAndStatus("LOT", "REJECTED");
     this.selectedLotList = [];
-          },
-          error => {}
-        );
-      }
-      this.toastr.success("Selected Lot(s) status changes successfully")
     }
   }
 

@@ -101,6 +101,17 @@ export class MrApporvalComponent implements OnInit {
         this.purchaseService.updatePurchase(this.request).subscribe(
           data => {
 
+
+          
+          },
+          error => {
+            console.log(error);
+          }
+        );
+        
+      }
+
+      //Code done to remove the paginatioj issue
             this.pendingMrList = undefined;
             this.rejectedMrList = undefined;
             this.approvedMrList = undefined;
@@ -110,14 +121,6 @@ export class MrApporvalComponent implements OnInit {
             this.getAllPurchaseByTypeAndStatus("MATERIAL_REQURIMENT", "REJECTED");
             this.selectedMrList = [];
             this.toastr.success("Record successfully saved");
-          
-          },
-          error => {
-            console.log(error);
-          }
-        );
-        
-      }
       
     }
   }

@@ -3,6 +3,11 @@
     <button class="btn btn-success btn-sm changeBtn" (click)="basicSwal()" style="margin: 45px 0px 10px;float:right;">Choose Another Type </button>
   </div>
 </div>
+<p *ngIf="selectedProductType=='PURCHASE_INVOICE' "> Selected Product Type: Purchase Invoice </p>
+<p *ngIf="selectedProductType=='withoutPurchaseInvoice' "> Selected Product Type: Without Purchase Invoice </p>
+<p *ngIf="selectedProductType=='jobWorkChalan' "> Selected Product Type: Job Work Chalan </p>
+<p *ngIf="selectedProductType=='materialTransfer' "> Selected Product Type: Material Transfer </p>
+
 <app-card cardTitle="Add Product" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
     <wizard-step stepTitle="Select GRN ID" navigationSymbol="1">
@@ -15,6 +20,7 @@
       </div> -->
     </wizard-step>
     <wizard-step stepTitle="Add Product" navigationSymbol="2">
+
     <app-material-classification-specification (productData)="getProductData($event)" [grntype]="selectedProductType"></app-material-classification-specification>
       <div class="m-t-20">
         <app-add-product-cart [productList]="productList"></app-add-product-cart>

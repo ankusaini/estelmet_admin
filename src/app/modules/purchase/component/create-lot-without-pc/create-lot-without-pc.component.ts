@@ -60,6 +60,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
      grossWt: new FormControl("",[Validators.required]),
     netWt: new FormControl("",[Validators.required]),
       supplierId: new FormControl("",[Validators.required]),
+      title:new FormControl('')
   });
 
   constructor(private _staticData: StaticDataService,
@@ -118,10 +119,12 @@ export class CreateLotWithoutPcComponent implements OnInit {
 
   generateLotId()
   {
-    console.log(this.lotWithoutPc);
-     if (this.lotWithoutPc.invalid) {
+
+    if (this.lotWithoutPc.invalid) {
       this.toastr.warning("Please fill all the details")
     } else {
+      let val=this.lotWithoutPc.controls.productCategory.value+'-'+this.lotWithoutPc.controls.productShape.value;
+      this.lotWithoutPc.controls.title.patchValue(val);
       this.purchaseData.emit(this.lotWithoutPc.value);
      
     }
@@ -134,7 +137,6 @@ export class CreateLotWithoutPcComponent implements OnInit {
       return element.id == value
     })
     this.selectedCmp = data[0];
-    console.log("company",this.selectedCmp)
     this.warehouseList = this._staticData.getAllWarehouseByCompanyId(this.selectedCmp.id);
     console.log(this.warehouseList);
     this._cd.detectChanges();

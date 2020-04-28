@@ -3,7 +3,7 @@
             <button type="button" (click)="basicSwal()" class="btn btn-primary btn-sm changeBtn" style="margin: 45px 0px 10px;float:right;">Choose Other LOT Type</button>
     </div>
 </div>
-
+<p> Selected Type : {{this.selectedLotType}} </p>
 
     <app-create-lot-without-pc [selectedLotType]="selectedLotType" (purchaseData)="getPurchaseData($event)"
         *ngIf="selectedLotType=='WITHOUT_PC' || selectedLotType=='JOB_WORK_OTHER'"></app-create-lot-without-pc>

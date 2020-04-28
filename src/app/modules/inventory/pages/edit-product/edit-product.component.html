@@ -14,6 +14,7 @@
           <p class="m-b-5 text-dark f-w-600">Product ID : <span class="text-muted">P-{{productResponse?.productId}},</span> <span
               class="f-w-600 text-success"> {{productResponse?.status}}</span></p>
           <p class="m-b-5 text-dark f-w-600">Product Title : <span class="text-muted">{{productResponse?.title}}</span></p>
+          
         </div>
         <div class="col-md-6 mt-md-4">
           <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
@@ -53,12 +54,12 @@
         <div class="merge-card">
           <app-card [hidHeader]="true" cardClass="mb-0" blockClass="d-flex align-items-center justify-content-between">
             <h5 class="mb-0">Product ID</h5>
-            <button type="button"
+            <!-- <button type="button"
               (click)="this.editProfile1 = !this.editProfile1; this.editProfileIcon = this.editProfile1 ? 'icon-x': 'icon-edit';"
               class="btn btn-primary btn-sm rounded m-0 float-right" data-toggle="collapse" data-target=".pro-det-edit"
               aria-expanded="false" aria-controls="pro-det-edit-1">
               <i class="feather" [ngClass]="editProfileIcon"></i>
-            </button>
+            </button> -->
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
             <div class="form-group row">
@@ -201,10 +202,21 @@
                 </div>
               </div>
             </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label font-weight-bolder">Height</label>
+              <div class="col-sm-3">
+                <div class="row">
+                  <div class="col-md-6">{{productResponse?.heigth}}</div>
+                </div>
+              </div>
+            
+            </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
               <div class="col-sm-3">
-                {{productResponse?.hardnessMax?.productHardness}}
+                {{productResponse?.hardnessMin?.productHardness}}- {{productResponse?.hardnessMax?.productHardness}}
+
               </div>
               <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
               <div class="col-sm-3">
@@ -324,23 +336,50 @@
                     <div class="col-md-6"> <input type="text" class="form-control" formControlName="lengthMax" placeholder="Max"></div>
                   </div>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Temper Range</label>
+                 <label class="col-sm-3 col-form-label font-weight-bolder">Temper Min</label>
                 <div class="col-sm-3">
-                  <div class="row">
-                    <div class="col-md-6"> <input type="text" formControlName="temperMin" class="form-control" placeholder="Min"></div>
-                    <div class="col-md-6"> <input type="text" formControlName="temperMax" class="form-control" placeholder="Max"></div>
-                  </div>
+                  <select class="form-control" formControlName="temperMin" id="exampleFormControlSelect1">
+                    <option 
+                      *ngFor="let temper of productTemperList"
+                      [value]="temper">{{temper}}</option>
+                  </select>
+                </div>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Temper Max</label>
+                <div class="col-sm-3">
+                  <select class="form-control" formControlName="temperMax" id="exampleFormControlSelect1">
+                    <option 
+                      *ngFor="let temper of productTemperList"
+                      [value]="temper">{{temper}}</option>
+                  </select>
+                </div>
+
+                <label class="col-sm-3 col-form-label font-weight-bolder">Height</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" formControlName="heigth" placeholder="Height">
                 </div>
               </div>
+              
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
                 <div class="col-sm-3">
-                  <select class="form-control" formControlName="productHardness" id="exampleFormControlSelect1">
+                  <select class="form-control" formControlName="hardnessMin" id="exampleFormControlSelect1">
                     <option 
                       *ngFor="let hardness of productHardnessList"
                       [value]="hardness">{{hardness}}</option>
                   </select>
                 </div>
+                <div class="col-sm-3">
+                <label class="col-sm-3 col-form-label font-weight-bolder">Hardness</label>
+
+                  <select class="form-control" formControlName="hardnessMax" id="exampleFormControlSelect1">
+                    <option 
+                      *ngFor="let hardness of productHardnessList"
+                      [value]="hardness">{{hardness}}</option>
+                  </select>
+                </div>
+                
+              </div>
+              <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Coating</label>
                 <div class="col-sm-3">
                   <select class="form-control" formControlName="productCoating" id="exampleFormControlSelect1">
@@ -349,6 +388,7 @@
                       [value]="coating">{{coating}}</option>
                   </select>
                 </div>
+               
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Defect</label>

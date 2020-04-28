@@ -84,7 +84,8 @@ export class CreateMRComponent implements OnInit {
   selectedCompany(value: number) {
     const data = this.companyList.filter(x => Number(x.id) === Number(value));
     this.selectedComapny = data[0];
-    this.warehouseList = this.warehouseList.filter(x => Number(x.companyId) === Number(value));
+    this.warehouseList = this.productService.getAllWarehouseByCompanyId(this.selectedComapny.id);
+
   }
 
   getSelectedWarehouse(value: number) {
@@ -94,7 +95,6 @@ export class CreateMRComponent implements OnInit {
 
   saveMrRecord() {
     if (this.productList && this.productList.length === 0) {
-      alert('please save at least one record');
       this.toastr.warning('Please enter at least one product');
     } else if (this.mrPurchase.invalid) {
       this.toastr.warning('Please fill all the details.');

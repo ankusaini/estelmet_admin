@@ -160,14 +160,7 @@ export class UserApprovalComponent implements OnInit {
         this.userService.updateUser(this.selectedUserList[i]).subscribe(
           // this.userService.updateUser(path).subscribe(
           data => {
-            this.toastrService.success('Selected User(s) status changes successfully!');
-            this.pendingUserList = undefined;
-            this.approvedUserList = undefined;
-            this.rejectedUserList = undefined;
-            this.selectedUserList = [];
-            this.getPendingUserList(this.selectedRole);
-            this.getApprovedUserList(this.selectedRole);
-            this.getRejectedUserList(this.selectedRole);
+           
 
             // page refresh here
           },
@@ -176,6 +169,14 @@ export class UserApprovalComponent implements OnInit {
           }
         );
       }
+       this.toastrService.success('Selected User(s) status changes successfully!');
+            this.pendingUserList = undefined;
+            this.approvedUserList = undefined;
+            this.rejectedUserList = undefined;
+            this.selectedUserList = [];
+            this.getPendingUserList(this.selectedRole);
+            this.getApprovedUserList(this.selectedRole);
+            this.getRejectedUserList(this.selectedRole);
     }
   }
 

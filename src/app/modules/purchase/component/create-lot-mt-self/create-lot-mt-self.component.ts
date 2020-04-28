@@ -48,7 +48,7 @@ export class CreateLotMtSelfComponent implements OnInit {
     destinationCompanyId: new FormControl('', [Validators.required]),
     destinationWarehouseId: new FormControl('', [Validators.required]),
     status: new FormControl('PENDING'),
-
+    title:new FormControl(''),
     productCategory: new FormControl('', [Validators.required]),
     productShape: new FormControl('', [Validators.required]),
   });
@@ -179,6 +179,9 @@ export class CreateLotMtSelfComponent implements OnInit {
 
       this.toastr.warning('Please select any product');
     } else {
+      let val=this.lotWithoutPc.controls.productCategory.value+'-'+this.lotWithoutPc.controls.productShape.value;
+
+      this.lotWithoutPc.controls.title.patchValue(val);
       this.request.purchase = this.lotWithoutPc.value;
       this.request.productList = this.selectedProductList;
       this.purchaseDataWithProduct.emit(this.request);

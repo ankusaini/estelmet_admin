@@ -140,7 +140,7 @@
   <div class="col-md-12">
     <app-card [hidHeader]="false" cardTitle="Take action on above Selected MR" [options]="false"
       cardClass="user-profile-list">
-      <div *ngIf="selectedMrList" class="dt-responsive table-responsive" cardClass="card-datatable">
+      <div *ngIf="selectedMrList && selectedMrList.length>0" class="dt-responsive table-responsive" cardClass="card-datatable">
         <table datatable class="table table-striped table-hover">
           <thead>
             <tr>

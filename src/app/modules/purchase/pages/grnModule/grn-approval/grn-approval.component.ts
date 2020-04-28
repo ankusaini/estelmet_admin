@@ -124,18 +124,19 @@ export class GrnApprovalComponent implements OnInit {
          this.request.grn=this.selectedGrnList[i];
         this.purchaseService.createGrn(this.request).subscribe(
           data => {
-            this.selectedGrnList = [];
+           
+          },
+          error => {}
+        );
+      }
+      this.toastr.success("Selected Grn(s) status changes successfully");
+       this.selectedGrnList = [];
             this.rejectedList=undefined;
               this.pendingList=undefined;
               this.approvedList=undefined;
            this.getAllGrnByStatus("PENDING");
              this.getAllGrnByStatus("APPROVED");
              this.getAllGrnByStatus("REJECETED");
-          },
-          error => {}
-        );
-      }
-      this.toastr.success("Selected Grn(s) status changes successfully");
 
     }
   }
