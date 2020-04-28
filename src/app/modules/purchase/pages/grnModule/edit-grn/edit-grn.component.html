@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-md-3 mt-md-4">
             <h3 class="f-24">Edit GRN</h3>
-            <p class="m-b-5 text-dark f-w-600">GRN Id : <span class="text-muted">GRN-{{response?.grn?.grnId}},</span> <span
+            <p class="m-b-5 text-dark f-w-600">GRN ID : <span class="text-muted">GRN-{{response?.grn?.grnId}},</span> <span
                 class="f-w-600 text-success"> {{response?.grn?.status}}</span></p>
             <p class="m-b-5 text-dark f-w-600">GRN Title : <span class="text-muted">{{response?.grn?.grnType}}</span></p>
           </div>
@@ -66,13 +66,13 @@
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
               <!-- <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1"> -->
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">GRN Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">GRN ID</label>
                 <div class="col-sm-3">
                   GRN-{{response?.grn?.grnId}}
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">LOT Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">LOT ID</label>
                 <div class="col-sm-3">
                   LOT-{{response?.grn?.purchaseId}}
                 </div>
@@ -190,11 +190,11 @@
             </app-card>
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Supplier ID</label>
                 <div class="col-sm-3">
                   SU-{{response?.grn?.supplierId}}
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Own Company ID</label>
                 <div class="col-sm-3">
                   COM-{{response?.grn?.sourceCompanyId}}
                 </div>
@@ -204,7 +204,7 @@
                 <div class="col-sm-3">
                   {{response?.grn?.invoiceNo}}
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse ID</label>
                 <div class="col-sm-3">
                   WAR-{{response?.grn?.sourceWarehouseId}}
                 </div>
@@ -233,7 +233,7 @@
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
               <form [formGroup]="InvoiceDetailsForm" (ngSubmit)="submitInvoiceDetails()">
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id<small class="asterik_sign">*</small></label>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Supplier ID<small class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" disabled formControlName="supplierId" placeholder="" value="">
                     <small *ngIf="f1.supplierId.value == '' && (f1.supplierId.dirty || f1.supplierId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -242,7 +242,7 @@
                       <option value="1">SUP-90</option>
                     </select> -->
                   </div>
-                  <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id<small class="asterik_sign">*</small></label>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Own Company ID<small class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" disabled placeholder="" formControlName="sourceCompanyId" value="">
                     <small *ngIf="f1.sourceCompanyId.value == '' && (f1.sourceCompanyId.dirty || f1.sourceCompanyId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -259,7 +259,7 @@
                     <small *ngIf="f1.invoiceNo.value == '' && (f1.invoiceNo.dirty || f1.invoiceNo.touched )" id="passwordHelpBlock" class="form-text text-muted"
                           >This field is required.</small>
                   </div>
-                  <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id<small class="asterik_sign">*</small></label>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse ID<small class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" disabled placeholder="" formControlName="sourceWarehouseId" value="">
                     <small *ngIf="f1.sourceWarehouseId.value == '' && (f1.sourceWarehouseId.dirty || f1.sourceWarehouseId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -331,7 +331,7 @@
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
               <div class="form-group row">
   
-                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID</label>
                 <div class="col-sm-3">
                   TP-{{response?.grn?.transportId}}
                 </div>
@@ -385,7 +385,7 @@
               <form [formGroup]="transportDetailsForm" (ngSubmit)="submitTransportDetails()">
                 <div class="form-group row">
   
-                  <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id<small class="asterik_sign">*</small></label>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID<small class="asterik_sign">*</small></label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" formControlName="transportId" disabled placeholder="" value="">
                     <small *ngIf="f2.transportId.value == '' && (f2.transportId.dirty || f2.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"

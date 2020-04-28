@@ -32,7 +32,7 @@ export class InvoiceDetailsComponent implements OnInit {
     deliveryOrderType: new FormControl('SALES_OFFER_LOT'),
     sourceCompanyId: new FormControl('', [Validators.required]),
     status: new FormControl('APPROVED'),
-    sourceWarehouseId: new FormControl('', [Validators.required]),
+    sourceWarehouseId: new FormControl(''),
     customerId: new FormControl('', [Validators.required]),
     invoiceNetWeight: new FormControl('', [Validators.required]),
     invoiceGrossWeight: new FormControl('', [Validators.required]),

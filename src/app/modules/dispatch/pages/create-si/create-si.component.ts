@@ -63,7 +63,7 @@ export class CreateSiComponent implements OnInit {
 
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.warning('Please Select  Sales Invoice Id');
+      this.toastr.warning('Please Select  Sales Invoice ID');
     }
   }
 
@@ -72,7 +72,7 @@ export class CreateSiComponent implements OnInit {
       this.selectedDoId = this.SelectLsForm.value;
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.error('Please select an Id!');
+      this.toastr.error('Please select an ID!');
     }
   }
 

@@ -1,56 +1,54 @@
 <div class="row">
   <div class="col-md-12">
     <app-card [hidHeader]="false" cardTitle="Product Basket Cart" [options]="false" cardClass="user-profile-list">
-      <div class="row">
+      <div class="row" *ngIf="showSearch">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-         <div class="shadow p-10">
-           <div class="easySearch">
-             <ul>
-               <li>
-                <label class="f-12 m-b-0">Category</label>
-                <select class="form-control">
-                  <option value='' disabled>Select</option>
-                  <option>Cat 1</option>
-                  <option>Cat 2</option>
-                  <option>Cat 3</option>
-                </select>
-               </li>
-               <li>
-                <label class="f-12 m-b-0">Shape</label>
-                <select class="form-control">
-                  <option value='' disabled>Select</option>
-                  <option>Shape 1</option>
-                  <option>Shape 2</option>
-                  <option>Shape 3</option>
-                </select>
-               </li>
-               <li>
-                <label class="f-12 m-b-0 thck">Thickness Range (mm)</label>
-                <input type="text" placeholder="Min" class="form-control">
-               </li>
-               <li>
-                <span>-</span>
+          <div class="shadow p-10">
+            <div class="easySearch">
+              <ul>
+                <li>
+                  <label class="f-12 m-b-0">Category</label>
+                  <select class="form-control" [(ngModel)]="productFilter.productCategory">
+                    <option value='' disabled>Select Category</option>
+                    <option *ngFor="let item of productCategory" [ngValue]="item?.id">{{ item?.productCategory }}
+                    </option>
+                  </select>
                 </li>
-               <li>
-                <input type="text" placeholder="Max" class="form-control">
-               </li>
-               <li>
-                <button type="submit" class="btn btn-success active printBtn btn-sm" style="padding: 7px;"><i
-                  class="feather icon-search f-w-600"></i> Search</button>&nbsp;
-               </li>
-             </ul>
-           </div>
-         </div>
+                <li>
+                  <label class="f-12 m-b-0">Shape</label>
+                  <select class="form-control" [(ngModel)]="productFilter.productShape">
+                    <option value='' disabled>Select Shape</option>
+                    <option *ngFor="let item of productShape" [ngValue]="item?.id">{{ item?.productShape }}</option>
+                  </select>
+                </li>
+                <li>
+                  <label class="f-12 m-b-0 thck">Thickness Range (mm)</label>
+                  <input type="text" placeholder="Min" class="form-control" [(ngModel)]="productFilter.thicknessMin">
+                </li>
+                <li>
+                  <span>-</span>
+                </li>
+                <li>
+                  <input type="text" placeholder="Max" class="form-control" [(ngModel)]="productFilter.thicknessMax">
+                </li>
+                <li>
+                  <button type="submit" class="btn btn-success active printBtn btn-sm" style="padding: 7px;"
+                    (click)="getProduct()"><i class="feather icon-search f-w-600"></i> Search</button>&nbsp;
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="col-md-4">
-       <div class="shadow p-10 p-t-15 text-center m-t-20">
-        <button type="submit" class="btn btn-success active copyBtn btn-sm" data-toggle="modal"><i
-          class="feather icon-search f-w-600"></i> Advance Search</button>&nbsp;&nbsp;&nbsp;
-      <button type="submit" class="btn btn-success active pdfBtn btn-sm" data-toggle="modal"
-        (click)="exampleModalCenter2.show()"><i class="feather icon-search f-w-600"></i> Clubbing
-        Search</button>&nbsp;
-       </div>
+          <div class="shadow p-10 p-t-15 text-center m-t-20">
+            <button type="submit" class="btn btn-success active copyBtn btn-sm" data-toggle="modal"
+              (click)="exampleModalCenter.show()"><i class="feather icon-search f-w-600"></i> Advance
+              Search</button>&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-success active pdfBtn btn-sm" data-toggle="modal"
+              (click)="exampleModalCenter2.show()"><i class="feather icon-search f-w-600"></i> Clubbing
+              Search</button>&nbsp;
+          </div>
         </div>
       </div>
       <div #epltable *ngIf="productList && productList.length>0" class="dt-responsive table-responsive"
@@ -95,12 +93,29 @@
               <td (click)="navigateToEdit(product.productId)">{{product.productCategory?.productCategory}}</td>
               <td (click)="navigateToEdit(product.productId)">{{product.productShape?.productShape}}</td>
               <td (click)="navigateToEdit(product.productId)">{{product.productClass?.productClass}}</td>
-              <td (click)="navigateToEdit(product.productId)">{{product.thicknessMin}}-{{product.thicknessMax}}</td>
-              <td (click)="navigateToEdit(product.productId)">{{product.widthMin}}-{{product.widthMax}}</td>
-              <td (click)="navigateToEdit(product.productId)">{{product.lengthMin}}-{{product.lengthMax}}</td>
-              <td (click)="navigateToEdit(product.productId)">
+              <td (click)="navigateToEdit(product.productId)" *ngIf="product.thicknessMin == product.thicknessMax">
+                {{product.thicknessMin}}</td>
+              <td (click)="navigateToEdit(product.productId)" *ngIf="product.thicknessMin != product.thicknessMax">
+                {{product.thicknessMin}}-{{product.thicknessMax}}</td>
+              <td (click)="navigateToEdit(product.productId)" *ngIf="product.widthMin == product.widthMax">
+                {{product.widthMin}}</td>
+              <td (click)="navigateToEdit(product.productId)" *ngIf="product.widthMin != product.widthMax">
+                {{product.widthMin}}-{{product.widthMax}}</td>
+              <td (click)="navigateToEdit(product.productId)" *ngIf="product.lengthMin == product.lengthMax">
+                {{product.lengthMin}}</td>
+              <td (click)="navigateToEdit(product.productId)" *ngIf="product.lengthMin != product.lengthMax">
+                {{product.lengthMin}}-{{product.lengthMax}}</td>
+              <td (click)="navigateToEdit(product.productId)"
+                *ngIf="product.temperMin?.productTemper == product.temperMax?.productTemper">
+                {{product.temperMin?.productTemper}}</td>
+              <td (click)="navigateToEdit(product.productId)"
+                *ngIf="product.temperMin?.productTemper != product.temperMax?.productTemper">
                 {{product.temperMin?.productTemper}}-{{product.temperMax?.productTemper}}</td>
-              <td (click)="navigateToEdit(product.productId)">
+              <td (click)="navigateToEdit(product.productId)"
+                *ngIf="product.hardnessMin?.productHardness == product.hardnessMax?.productHardness">
+                {{product.hardnessMin?.productHardness}}</td>
+              <td (click)="navigateToEdit(product.productId)"
+                *ngIf="product.hardnessMin?.productHardness != product.hardnessMax?.productHardness">
                 {{product.hardnessMin?.productHardness}}-{{product.hardnessMax?.productHardness}}</td>
               <td (click)="navigateToEdit(product.productId)">{{product.heigth}}</td>
               <!-- <td (click)="navigateToEdit(product.productId)">{{product.productCoating?.productCoating}}</td>
@@ -136,15 +151,15 @@
 
   </div>
 </div>
-<!-- <app-ui-modal #exampleModalCenter dialogClass="modal-dialog-centered" [dialogClass]="'modal-lg'">
+<app-ui-modal #exampleModalCenter dialogClass="modal-dialog-centered" [dialogClass]="'modal-lg'">
   <div class="app-modal-body">
     <h5 class="bg-clr-head1 p-10 f-14">Search Product</h5>
     <div class="row">
       <div class="col-md-3 col-6">
         <div class="form-group">
           <label class="f-12 m-b-0">Type</label>
-          <select class="form-control" [(ngModel)]="productFilter.productCategory">
-            <option value='' disabled>Select Category</option>
+          <select class="form-control" [(ngModel)]="productFilter.productType">
+            <option value='' disabled>Select Type</option>
             <option *ngFor="let item of productType" [ngValue]="item?.id">{{ item?.productType }}</option>
           </select>
         </div>
@@ -180,8 +195,9 @@
         <div class="form-group">
           <label class="f-12 m-b-0 dash2">Thick. Range (mm)</label>
           <div class="row">
-            <div class="col-md-6 col-6"><input type="text" placeholder="Min" class="form-control"
-                [(ngModel)]="productFilter.thicknessMin"></div>
+            <div class="col-md-6 col-6">
+              <input type="text" placeholder="Min" class="form-control" [(ngModel)]="productFilter.thicknessMin">
+            </div>
             <div class="col-md-6 col-6"><input type="text" placeholder="Max" class="form-control"
                 [(ngModel)]="productFilter.thicknessMax"></div>
           </div>
@@ -198,63 +214,68 @@
           </div>
         </div>
       </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="f-12 m-b-0 dash2">Length Range (mm)</label>
-            <div class="row">
-              <div class="col-md-6 col-6"><input type="text" placeholder="Min" class="form-control"
-                  [(ngModel)]="productFilter.lengthMin"></div>
-              <div class="col-md-6 col-6"><input type="text" placeholder="Max" class="form-control"
-                  [(ngModel)]="productFilter.lengthMax"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="form-group">
-            <label class="f-12 m-b-0 dash2">Net Wt.</label>
-            <div class="row">
-              <div class="col-md-6 col-6"><input type="text" placeholder="Net Wt." class="form-control"
-                  [(ngModel)]="productFilter.lessThanNtWt"></div>
-              <div class="col-md-6 col-6"><input type="text" placeholder="Net Wt." class="form-control"
-                  [(ngModel)]="productFilter.greaterThanNtWt"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="form-group">
-            <label class="f-12 m-b-0">Temper</label>
-            <ng-select [ngClass]="'ng-select'" [options]="simpleOption" [multiple]="true" style="margin-top: -20px;"></ng-select>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="form-group">
-            <label class="f-12 m-b-0">Coating</label>
-            <ng-select [ngClass]="'ng-select'" [options]="simpleOption2" [multiple]="true" style="margin-top: -20px;"></ng-select>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="form-group">
-            <label class="f-12 m-b-0">Finish</label>
-            <ng-select [ngClass]="'ng-select'" [options]="simpleOption3" [multiple]="true" style="margin-top: -20px;"></ng-select>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="form-group">
-            <label class="f-12 m-b-0">Warehouse</label>
-            <ng-select [ngClass]="'ng-select'" [options]="simpleOption4" [multiple]="true" style="margin-top: -20px;"></ng-select>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="f-12 m-b-0 dash2">Length Range (mm)</label>
+          <div class="row">
+            <div class="col-md-6 col-6"><input type="text" placeholder="Min" class="form-control"
+                [(ngModel)]="productFilter.lengthMin"></div>
+            <div class="col-md-6 col-6"><input type="text" placeholder="Max" class="form-control"
+                [(ngModel)]="productFilter.lengthMax"></div>
           </div>
         </div>
       </div>
 
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="f-12 m-b-0 dash2">Net Wt.</label>
+          <div class="row">
+            <div class="col-md-6 col-6"><input type="text" placeholder="Net Wt." class="form-control"
+                [(ngModel)]="productFilter.lessThanNtWt"></div>
+            <div class="col-md-6 col-6"><input type="text" placeholder="Net Wt." class="form-control"
+                [(ngModel)]="productFilter.greaterThanNtWt"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Temper</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Coating</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption2" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Finish</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption3" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="form-group">
+          <label class="f-12 m-b-0">Warehouse</label>
+          <ng-select [ngClass]="'ng-select'" [options]="simpleOption4" [multiple]="true" style="margin-top: -20px;">
+          </ng-select>
+        </div>
+      </div>
     </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
-        (click)="exampleModalCenter.hide()">Close</button>&nbsp;
-      <button type="button" class="btn btn-primary excelBtn btn-sm"
-        (click)="getProduct(); exampleModalCenter.hide(); exampleModalCenter1.show()"><i class="feather icon-search f-w-600"></i> Search Product</button>
-    </div>
-</app-ui-modal> -->
+
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
+      (click)="exampleModalCenter.hide()">Close</button>&nbsp;
+    <button type="button" class="btn btn-primary excelBtn btn-sm"
+      (click)="getProduct(); exampleModalCenter.hide(); exampleModalCenter1.show()"><i
+        class="feather icon-search f-w-600"></i> Search Product</button>
+  </div>
+</app-ui-modal>
 
 <app-ui-modal #exampleModalCenter2 dialogClass="modal-dialog-centered" [dialogClass]="'modal-md'">
   <div class="app-modal-body">
@@ -262,31 +283,31 @@
     <div class="row">
       <div class="col-md-4" style="margin-bottom:15px;text-align:left;">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck1">
-          <label class="custom-control-label" for="customCheck1"> Type</label>
+          <input type="checkbox" class="custom-control-input" id="customCheck1" [(ngModel)]="checkProductType">
+          <label class="custom-control-label" for="customCheck1">Type</label>
         </div>
       </div>
       <div class="col-md-4" style="margin-bottom:15px;text-align:left;">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck2">
+          <input type="checkbox" class="custom-control-input" id="customCheck2"  [(ngModel)]="checkProductCategory">
           <label class="custom-control-label" for="customCheck2"> Category</label>
         </div>
       </div>
       <div class="col-md-4" style="margin-bottom:15px;text-align:left;">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck3">
+          <input type="checkbox" class="custom-control-input" id="customCheck3"  [(ngModel)]="checkProductShape">
           <label class="custom-control-label" for="customCheck3"> Shape</label>
         </div>
       </div>
       <div class="col-md-4" style="margin-bottom:15px;text-align:left;">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck4">
+          <input type="checkbox" class="custom-control-input" id="customCheck4"  [(ngModel)]="checkProductClass">
           <label class="custom-control-label" for="customCheck4"> Class</label>
         </div>
       </div>
       <div class="col-md-4" style="margin-bottom:15px;text-align:left;">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck5">
+          <input type="checkbox" class="custom-control-input" id="customCheck5"  [(ngModel)]="checkWarehouse">
           <label class="custom-control-label" for="customCheck5"> Warehouse</label>
         </div>
       </div>
@@ -295,6 +316,6 @@
   <div class="app-modal-footer">
     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"
       (click)="exampleModalCenter2.hide()">Close</button>&nbsp;
-    <button type="button" class="btn btn-secondary excelBtn btn-sm">Apply</button>
+    <button type="button" class="btn btn-secondary excelBtn btn-sm" (click)="getClubbingSearch()">Apply</button>
   </div>
 </app-ui-modal>

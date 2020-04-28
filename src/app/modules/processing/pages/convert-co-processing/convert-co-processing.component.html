@@ -10,10 +10,10 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Customer Order Id <small class="asterik_sign">*</small></label>
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Customer Order ID <small class="asterik_sign">*</small></label>
                 <div class="col-sm-6">
                     <select [(ngModel)]="selectedCo" class="form-control">
-                      <option value="" disabled>Select CO Id</option>
+                      <option value="" disabled>Select CO ID</option>
                         <!-- <option value="" selected>Select CO</option> -->
                         <option *ngFor="let co of customerOrderList" [value]="co.salesId" >CO-{{co.customerOrderId}}</option>
                       </select>

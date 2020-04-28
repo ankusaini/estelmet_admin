@@ -209,7 +209,7 @@ export class CreateGrnComponent implements OnInit {
       // alert(this.lotIdForm.value.lotId);
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.warning('Please select LOT Id!');
+      this.toastr.warning('Please select LOT ID!');
     }
   }
 

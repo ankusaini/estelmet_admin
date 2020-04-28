@@ -1,24 +1,24 @@
 <app-card cardTitle="Create Purchase Confirmation" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-      <wizard-step stepTitle="Select MR Id" navigationSymbol="1">
+      <wizard-step stepTitle="Select MR ID" navigationSymbol="1">
         <app-mr-list [component]="component" (selectedMrData)="getSelectedMr($event)"></app-mr-list>                                                                                                                                                                                                     
       </wizard-step>
-      <wizard-step stepTitle="Generate PC Id" navigationSymbol="2">
-        <h5 class="bg-clr-head1 p-10 f-14">Products Under Above Selected MR Id</h5> 
+      <wizard-step stepTitle="Generate PC ID" navigationSymbol="2">
+        <h5 class="bg-clr-head1 p-10 f-14">Products Under Above Selected MR ID</h5> 
         <hr/>
         <div *ngIf="showData">
         <app-add-product-cart [productList]="productList"></app-add-product-cart>
         </div>
-        <h5 class="bg-clr-head1 p-10 f-14">Generate PC Id</h5> 
+        <h5 class="bg-clr-head1 p-10 f-14">Generate PC ID</h5> 
         <hr/>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group row">
-                    <!-- <label for="inputEmail3" class="col-sm-2 col-form-label mt-2">Material Req. Id</label>
+                    <!-- <label for="inputEmail3" class="col-sm-2 col-form-label mt-2">Material Req. ID</label>
                     <div class="col-sm-4 m-t-10 p-t-5">
                         <input type="text" [(ngModel)]="selectedMrId" class="form-control" id="inputEmail3" placeholder="" disabled>
                     </div> -->
-                    <div class="col-sm-2"><button type="submit"  (click)="generatePcId()" class="btn btn-success primary btn-sm m-t-10">Generate PC Id</button></div>
+                    <div class="col-sm-2"><button type="submit"  (click)="generatePcId()" class="btn btn-success primary btn-sm m-t-10">Generate PC ID</button></div>
                     <div class="col-sm-4 m-t-10 p-t-5 brdr1">#{{generatedPcId}}</div>
                 </div>
             </div>

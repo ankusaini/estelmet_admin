@@ -1,4 +1,4 @@
- <h5 class="bg-clr-head1 p-10 f-14">Select Details To Create Processing Id</h5>
+ <h5 class="bg-clr-head1 p-10 f-14">Select Details To Create Processing ID</h5>
       <hr/>
       <form [formGroup]="selectMrIdForm" (ngSubmit)="submitSelectMrId()" class="editForm" novalidate>
         <div class="row">
@@ -89,7 +89,7 @@
       <div class="row">
           <div class="col-md-5">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-3 m-t-10 p-t-5">
                     <select class="form-control" formControlName="companyId" (change)="setCompanyName($event.target.value)" name="validation-warId">
@@ -112,7 +112,7 @@
             <div class="col-md-1"></div>
         <div class="col-md-5">
           <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
+            <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse ID <small
                 class="asterik_sign">*</small></label>
             <div class="col-sm-3 m-t-10 p-t-5">
                 <select class="form-control" formControlName="warehouseId" (change)="setwarehouseName($event.target.value)"  name="validation-warId">

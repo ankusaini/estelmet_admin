@@ -71,7 +71,7 @@ export class CreateLotWithPcComponent implements OnInit {
                 this.requestp.purchase=this.selectedPurchase
             //  let url='/purchase/updatePurchaseHistory';
              this.purchaseService.updatePurchaseHistory(this.requestp).subscribe(data=>{
-                this.toastr.success("Lot creates with id . Generated Id:"+data.purchase.id)
+                this.toastr.success("Lot creates with id . Generated ID:"+data.purchase.id)
                 this.router.navigateByUrl("/purchase/lotEdit/"+data.purchase.id);
              },error=>{
 

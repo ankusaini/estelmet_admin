@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../../shared/services/authgaurd/user.service';
+import { User } from '../../../shared/Models/user.model';
 import { DualListComponent } from 'angular-dual-listbox';
 
 @Component({
@@ -7,28 +10,41 @@ import { DualListComponent } from 'angular-dual-listbox';
   styleUrls: ['./change-role.component.css']
 })
 export class ChangeRoleComponent implements OnInit {
-  
-  simpleOption = [
-    { vlaue: "INVENTORY_CREATE_PRIVILEGE", label: "INVENTORY_CREATE_PRIVILEGE" },
-    { vlaue: "INVENTORY_DELETE_PRIVILEGE", label: "INVENTORY_DELETE_PRIVILEGE" },
-    { vlaue:  "INVENTORY_UPDATE_PRIVILEGE", label:  "INVENTORY_UPDATE_PRIVILEGE" },
-    { vlaue: "PURCHASE_CREATE_PRIVILEGE", label: "PURCHASE_CREATE_PRIVILEGE" },
-    { vlaue: "PURCHASE_DELETE_PRIVILEGE", label: "PURCHASE_DELETE_PRIVILEGE" },
-    { vlaue: "PURCHASE_UPDATE_PRIVILEGE", label: "PURCHASE_UPDATE_PRIVILEGE" },
-    { vlaue: "SALES_CREATE_PRIVILEGE", label: "SALES_CREATE_PRIVILEGE" },
-    { vlaue: "SALES_DELETE_PRIVILEGE", label: "SALES_DELETE_PRIVILEGE" },
-    { vlaue: "SALES_UPDATE_PRIVILEGE", label: "SALES_UPDATE_PRIVILEGE" },
-    { vlaue: "SUPPLIER_PRIVILEGE", label: "SUPPLIER_PRIVILEGE" },
-    { vlaue: "USER_CREATE_PRIVILEGE", label: "USER_CREATE_PRIVILEGE" },
-    { vlaue: "USER_DELETE_PRIVILEGE", label: "USER_DELETE_PRIVILEGE" },
-    { vlaue: "USER_UPDATE_PRIVILEGE", label: "USER_UPDATE_PRIVILEGE" },
-    { vlaue: "WEBSITE_CREATE_PRIVILEGE", label: "WEBSITE_CREATE_PRIVILEGE" },
-    { vlaue:  "WEBSITE_DELETE_PRIVILEGE", label:  "WEBSITE_DELETE_PRIVILEGE" },
-    { vlaue: "WEBSITE_UPDATE_PRIVILEGE", label: "WEBSITE_UPDATE_PRIVILEGE" },
-  ]
-  constructor() { }
+  keepSorted = true;
+  key = 'key';
+  display = 'value';
+  filter = false;
+  confirmed: Array<any> = [
+    { key: 1, value: 'ROLE_SUPER_ADMIN' },
+    { key: 2, value: 'ROLE_USER_ADMIN' },
+    { key: 6, value: 'ROLE_PURCHASE_APPROVER' },
+    { key: 7, value: 'ROLE_PURCHASE_EXECUTOR' },
+  ];
+  disabled = false;
+  format: any = DualListComponent.DEFAULT_FORMAT;
+  source: Array<any> = [
+    { key: 1, value: 'ROLE_SUPER_ADMIN' },
+    { key: 2, value: 'ROLE_USER_ADMIN' },
+    { key: 3, value: 'ROLE_USER_APPROVER' },
+    { key: 4, value: 'ROLE_USER_EXECUTOR' },
+    { key: 5, value: 'ROLE_PURCHASE_ADMIN' },
+    { key: 6, value: 'ROLE_PURCHASE_APPROVER' },
+    { key: 7, value: 'ROLE_PURCHASE_EXECUTOR' },
+    { key: 8, value: 'ROLE_INVENTORY_ADMIN' },
+    { key: 9, value: 'ROLE_INVENTORY_APPROVER' },
+    { key: 10, value: 'ROLE_INVENTORY_EXECUTOR' },
+    { key: 11, value: 'ROLE_SALES_ADMIN' },
+    { key: 12, value: 'ROLE_SALES_APPROVER' },
+    { key: 13, value: 'ROLE_SALES_EXECUTOR' },
+    { key: 14, value: 'ROLE_WEBSITE_ADMIN' },
+    { key: 15, value: 'ROLE_CUSTOMER' },
+    { key: 16, value: 'ROLE_SUPPLIER' }
+  ];
+  employeeList: User[] = [];
+  constructor(private userService: UserService, private toastrService: ToastrService) { }
 
   ngOnInit() {
+    this.userService.getAllAccount().subscribe(data => this.employeeList = data);
   }
 
 }

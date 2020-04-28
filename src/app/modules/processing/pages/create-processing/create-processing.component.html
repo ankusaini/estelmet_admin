@@ -7,7 +7,7 @@
 </div>
 <app-card cardTitle="Create Processing" [options]="false">
   <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-    <wizard-step stepTitle="Select MR Id" navigationSymbol="1">
+    <wizard-step stepTitle="Select MR ID" navigationSymbol="1">
      <app-select-mr
       [processingType]="processingType"
       (selectMrData)="getSelectMrData($event)">

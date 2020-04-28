@@ -42,7 +42,7 @@ export class CreatePoComponent implements OnInit {
       });
     }
     else {
-      this.toastr.warning('Please select MR Id');
+      this.toastr.warning('Please select MR ID');
     }
   }
 }

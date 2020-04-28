@@ -119,6 +119,7 @@ export class DashCrmComponent implements OnInit {
   }
 
   getWarehouseProduct() {
+    console.log(this.selectedWarehouse);
     const name = this.selectedWarehouse.name;
     this.productService.getWarehouseProductsForDashboard(this.selectedWarehouse).subscribe(data => {
       this.pendingPCRCCount = data.body.PENDING[0][0];
@@ -126,7 +127,9 @@ export class DashCrmComponent implements OnInit {
       this.rejectedPCRCCount = data.body.REJECTED[0][0];
       this.totalPCRCCount = data.body[name][0][0];
       this.totalPCRCCountWt = data.body[name][0][1];
-    });
+    },
+      error => { console.log(error); }
+    );
   }
 
   getProduct(id, status) {

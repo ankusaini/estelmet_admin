@@ -3,9 +3,9 @@
   <div class="row">
     <div class="col-md-2">
       <div class="form-group">
-        <label for="validationCustom02">Transporter Id</label>
+        <label for="validationCustom02">Transporter ID</label>
         <select #transporterID class="form-control" name="validation-companyName" formControlName="transportId">
-          <option value="" disabled>Select Transporter Id</option>
+          <option value="" disabled>Select Transporter ID</option>
           <option *ngFor="let item of transportList; let i=index" [value]="item.userDetialId">TP-{{ item.userDetialId}}
           </option>
           <!-- put here fetch data and passed it to the parent component, -->
@@ -16,9 +16,9 @@
     </div>
     <div class="col-md-2" *ngIf="process == ''">
       <div class="form-group">
-        <label for="validationCustom02">Supplier Id</label>
+        <label for="validationCustom02">Supplier ID</label>
         <select class="form-control" name="validation-companyName" formControlName="supplierId">
-          <option value="" disabled>Select Supplier Id</option>
+          <option value="" disabled>Select Supplier ID</option>
           <option *ngFor="let item of supplierList; let i=index" [value]="item.userDetialId">SU-{{ item.userDetialId}}
           </option>
 

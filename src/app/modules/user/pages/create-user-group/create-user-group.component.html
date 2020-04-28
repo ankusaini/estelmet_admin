@@ -1,6 +1,6 @@
 <app-card cardTitle="Create User Group" [options]="false">
   <wizard  #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-    <wizard-step stepTitle="Create Group Id " navigationSymbol="1">
+    <wizard-step stepTitle="Create Group ID " navigationSymbol="1">
       <app-create-group-id (groupData)="getGroupIdData($event)" ></app-create-group-id>
     </wizard-step>
     <wizard-step  stepTitle="Search User" navigationSymbol="2">

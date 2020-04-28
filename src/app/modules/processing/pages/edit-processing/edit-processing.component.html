@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-md-4 mt-md-4">
           <h3 class="f-24">Edit Processing</h3>
-          <p class="m-b-5 text-dark f-w-600">Processing Id : <span class="text-muted">MSP-{{processingData?.productProcessingId}},</span> <span
+          <p class="m-b-5 text-dark f-w-600">Processing ID : <span class="text-muted">MSP-{{processingData?.productProcessingId}},</span> <span
               class="f-w-600 text-success"> {{processingData?.status}}</span></p>
           <!-- <p class="m-b-5 text-dark f-w-600">Processing Title : <span class="text-muted">CR-MWC??</span></p> -->
         </div>
@@ -62,11 +62,11 @@
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">MSP Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">MSP ID</label>
               <div class="col-sm-3">
                 MSP-{{processingData?.productProcessingId}}
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Contractor Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Contractor ID</label>
               <div class="col-sm-3">
                CNT-{{processingData?.contractorId}}
               </div>
@@ -96,14 +96,14 @@
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
             <form [formGroup]="processingDetails">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">MSP Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">MSP ID</label>
                 <div class="col-sm-3">
                   <!-- <select class="form-control" id="exampleFormControlSelect1" disabled>
                     <option value>MSP-{{processingData?.productProcessingId}}</option>
                   </select> -->
                   <input type="text" class="form-control" disabled formControlName="productProcessingId" >
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Contractor Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Contractor ID</label>
                 <div class="col-sm-3">
                   <select class="form-control" id="exampleFormControlSelect1" formControlName="contractorId" disabled>
                     <option [value]="processingData?.contractorId">CNT-{{processingData?.contractorId}}</option>
@@ -118,7 +118,7 @@
                     <option value="JOB_WORK_OTHER">Job Work Other</option>
                   </select>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder"> Machine Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder"> Machine ID</label>
                 <div class="col-sm-3">
                   <select class="form-control" id="exampleFormControlSelect3" formControlName="machineDetailId">
                     <option *ngFor="let machine of machineDetailIdList" [value]="machine">MT-{{machine}}</option>

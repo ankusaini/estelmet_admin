@@ -110,7 +110,7 @@ export class CreateLotComponent implements OnInit {
     this.purchaseService.createPurchase( this.requestObj).subscribe(
       data => {
         let generateId=data.purchase.id;
-        this.toastr.success("Record saved successfully.Generated Id:"+generateId);
+        this.toastr.success("Record saved successfully.Generated ID:"+generateId);
         this.router.navigateByUrl("/purchase/lotEdit/"+generateId);
       },
       error => {

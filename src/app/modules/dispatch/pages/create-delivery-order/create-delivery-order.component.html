@@ -3,13 +3,13 @@
     <wizard-step stepTitle="Search & Select SC Lot ID" navigationSymbol="1">
       <form [formGroup]="deliverOrderForm" class="editForm" >
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-6">
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Select SC LOT Id<small class="asterik_sign">*</small></label>
-              <div class="col-sm-6">
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2 f-12">Select SC LOT ID<small class="asterik_sign">*</small></label>
+              <div class="col-sm-6 m-t-10 p-t-5">
                   
                   <select formControlName="salesId"  (change)="getLoadingId($event.target.value)"  class="form-control" name="validation-pcId">
-                  <option value="" disabled> Select SC Id</option>
+                  <option value="" disabled> Select SC ID</option>
                   <option  *ngFor="let item of salesLotList" [value]="item.id" >SC-{{ item.id }}</option>
 
                 </select>
@@ -22,12 +22,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-6">
               <div class="form-group row">
-                <label for="inputEmail3"  class="col-sm-4 col-form-label mt-2">Create Loading Slip<small class="asterik_sign">*</small></label>
-                <div class="col-sm-6">
+                <label for="inputEmail3"  class="col-sm-4 col-form-label mt-2 f-12">Create Loading Slip<small class="asterik_sign">*</small></label>
+                <div class="col-sm-6 m-t-10 p-t-5">
                     <select formControlName="deliveryOrderId" class="form-control">
-                        <option value="" disabled>Select Loading Id</option>
+                        <option value="" disabled>Select Loading ID</option>
                         <option *ngFor="let item of deliveryOrderList"  [value]="item.id" >LS-{{ item.deliveryOrderId }}</option>
                       </select>
 
@@ -41,7 +41,7 @@
               </div>
             </div>
         </div>
-           <div class="col-sm-12 centered-content m-t-20">
+           <div class="col-sm-12 centered-content m-t-10">
         <div class="btn-group mt-10">
           
           <button type="button" class="btn btn-primary btn-sm printBtn" (click)="submitSelectScId()">Next <i  class="feather icon-arrow-right f-w-600"></i></button>

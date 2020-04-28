@@ -8,7 +8,7 @@
           <option *ngFor="let item of productTypeList" [value]="item.productType">{{ item?.productType }}</option>
         </select>
         <small *ngIf="f.productType.value == '' && (f.productType.dirty || f.productType.touched )"
-          id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+          id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -20,7 +20,7 @@
           </option>
         </select>
         <small *ngIf="f.productCategory.value == '' && (f.productCategory.dirty || f.productCategory.touched )"
-          id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+          id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -31,7 +31,7 @@
           <option *ngFor="let item of productShapeList" [value]="item?.productShape">{{ item?.productShape }}</option>
         </select>
         <small *ngIf="f.productShape.value == '' && (f.productShape.dirty || f.productShape.touched )"
-          id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+          id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -42,7 +42,7 @@
           <option *ngFor="let item of productClassList" [value]="item?.productClass">{{ item?.productClass }}</option>
         </select>
         <small *ngIf="f.productClass.value == '' && (f.productClass.dirty || f.productClass.touched )"
-          id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+          id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
       </div>
     </div>
   </div>
@@ -53,14 +53,14 @@
         <div class="col-md-6 mb-3">
           <input formControlName="thicknessMin" type="text" class="form-control" placeholder="0.000" required />
           <small *ngIf="f.thicknessMin.value == '' && (f.thicknessMin.dirty || f.thicknessMin.touched )"
-            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
         </div>
         <div class="col-md-6 mb-3">
           <input formControlName="thicknessMax" type="text" class="form-control" placeholder="0.000" />
           <small *ngIf="f.thicknessMax.value == '' && (f.thicknessMax.dirty || f.thicknessMax.touched )"
-            id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+            id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
           <small *ngIf="f.thicknessMax.value !== '' && !f.thicknessMax.valid " id="passwordHelpBlock"
-            class="form-text text-muted">Maximum thickness should be greater than minimum thickness.</small>
+            class="form-text text-danger">Should be Greater.</small>
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@
           <input formControlName="widthMax" type="text" class="form-control" placeholder="Max" />
          
           <small *ngIf="f.widthMax.value !== '' && !f.widthMax.valid " id="passwordHelpBlock"
-            class="form-text text-muted">Maximum width should be greater than minimum width.</small>
+            class="form-text text-danger">Should be Greater.</small>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
           <input formControlName="lengthMax" type="text" class="form-control" placeholder="Max" />
           
           <small *ngIf="f.lengthMax.value !== '' && !f.lengthMax.valid " id="passwordHelpBlock"
-            class="form-text text-muted">Maximum length should be greater than minimum length.</small>
+            class="form-text text-danger">Should be Greater.</small>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
             </option>
           </select>
           <!-- <small *ngIf="f.temperMin.value == '' && (f.temperMin.dirty || f.temperMin.touched )" id="passwordHelpBlock"
-            class="form-text text-muted">This field is required.</small> -->
+            class="form-text text-danger">This field is required.</small> -->
         </div>
         <div class="col-md-6 mb-3">
           <select formControlName="temperMax" class="form-control" id="exampleFormControlSelect1">
@@ -113,9 +113,9 @@
             </option>
           </select>
           <!-- <small *ngIf="f.temperMax.value == '' && (f.temperMax.dirty || f.temperMax.touched )" id="passwordHelpBlock"
-            class="form-text text-muted">This field is required.</small>
+            class="form-text text-danger">This field is required.</small>
           <small *ngIf="f.temperMax.value !== '' && !f.temperMax.valid " id="passwordHelpBlock"
-            class="form-text text-muted">Maximum temper should be greater than minimum temper.</small> -->
+            class="form-text text-danger">Maximum temper should be greater than minimum temper.</small> -->
         </div>
       </div>
     </div>
@@ -123,12 +123,12 @@
       <label for="validationCustom02">Monthly Requirement (Mts.) <small class="asterik_sign">*</small></label>
       <input formControlName="monthlyRequirement" type="text" class="form-control" placeholder="" />
       <small *ngIf="f.monthlyRequirement.value == '' && (f.monthlyRequirement.dirty || f.monthlyRequirement.touched )"
-        id="passwordHelpBlock" class="form-text text-muted">This field is required.</small>
+        id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
     </div>
     <div class="col-md-offset-6 col-md-3 mb-3">
       <div class="mt-4">
-        <button type="button" [disabled]="!tradeDetails.valid" class="btn btn-primary btn-sm" (click)="addMore()">
-          Add More
+        <button type="button" [disabled]="!tradeDetails.valid" class="btn btn-primary btn-sm printBtn" (click)="addMore()">
+          <i  class="feather icon-plus f-w-600"></i> Add More
         </button>
       </div>
     </div>

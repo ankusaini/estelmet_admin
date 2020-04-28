@@ -461,14 +461,7 @@ const NavigationItems = [
             permissions: ['INVENTORY_DELETE_PRIVILEGE', 'INVENTORY_UPDATE_PRIVILEGE'],
 
             target: false,
-          },
-          {
-            id: 'reportInventory',
-            title: 'Inventory Report',
-            type: 'item',
-            url: '/inventory/report',
-            target: false,
-          },
+          }
           // {
           //   id: 'EditProduct',
           //   title: 'Edit Product',
@@ -485,14 +478,14 @@ const NavigationItems = [
         children: [
           {
             id: 'createProcessing',
-            title: 'Create Processing Id',
+            title: 'Create Processing ID',
             type: 'item',
             url: '/processing/createProcessing',
             target: false,
           },
           {
             id: 'updateProcessing',
-            title: 'Update Processing Id',
+            title: 'Update Processing ID',
             type: 'item',
             url: '/processing/updateProcessing',
             target: false,
@@ -587,7 +580,7 @@ const NavigationItems = [
       },
       {
         id: 'salesOfferLot',
-        title: 'Sales Offer LOT',
+        title: 'Sales Offer',
         type: 'collapse',
         children: [
           {
@@ -602,6 +595,13 @@ const NavigationItems = [
             title: 'Search View Customer',
             type: 'item',
             url: '/sales/searchSo',
+            target: false,
+          },
+          {
+            id: 'tradeLead',
+            title: 'Trade Lead',
+            type: 'item',
+            url: '/sales/uploadtl',
             target: false,
           },
           {
@@ -794,7 +794,7 @@ const NavigationItems = [
             children: [
               {
                 id: 'createCustomerOrder',
-                title: 'Create CO LOT Id',
+                title: 'Create CO LOT ID',
                 type: 'item',
                 url: '/sales/createCO',
                 target: false,
@@ -1017,6 +1017,13 @@ const NavigationItems = [
             target: false,
           },
           {
+            id: 'searchPrice',
+            title: 'Search Price',
+            type: 'item',
+            url: '/super/searchprice',
+            target: false,
+          },
+          {
             id: 'addEmployee',
             title: 'Add Employee',
             type: 'item',
@@ -1024,10 +1031,24 @@ const NavigationItems = [
             target: false,
           },
           {
+            id: 'searchEmployee',
+            title: 'Search Employee',
+            type: 'item',
+            url: '/super/searchemployee',
+            target: false,
+          },
+          {
             id: 'changeRole',
-            title: 'Change Role',
+            title: 'Assign Role',
             type: 'item',
             url: '/super/changerole',
+            target: false,
+          },
+          {
+            id: 'assignUser',
+            title: 'Assign User',
+            type: 'item',
+            url: '/super/assignuser',
             target: false,
           },
           {

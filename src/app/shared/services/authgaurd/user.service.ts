@@ -10,6 +10,7 @@ import { ApiService } from '../api.service';
 import { JwtService } from './jwt.service';
 
 // import { UserService } from '../user.service';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +107,20 @@ export class UserService {
     return this.apiService.post(route, credentials).pipe(
       map(data => {
         return data.body;
+      }
+      ));
+  }
+
+  getAllAccount() {
+    const params: HttpParams = new HttpParams()
+    .set('userType', 'EMPLOYEE')
+    .set('enabled', 'true')
+    .set('limit', '20')
+    .set('offset', '1');
+    const route = '/getAllDeactivatedAccount';
+    return this.apiService.get(route, params).pipe(
+      map(data => {
+        return data.data;
       }
       ));
   }
