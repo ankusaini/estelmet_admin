@@ -154,6 +154,8 @@ export class CreateGrnComponent implements OnInit {
       this.selectedRole = LotType.WITH_PC;
     } else if (role == 'jobWorkChalan') {
       this.selectedRole = LotType.JOB_WORK_OTHER;
+    }else if (role == 'materialTransfer') {
+      this.selectedRole = LotType.MATERIAL_TRANSFER;
     } else {
       this.selectedRole = LotType.JOB_WORK_SELF;
     }
@@ -233,6 +235,7 @@ export class CreateGrnComponent implements OnInit {
     this.grnForm.get('containerNumber').patchValue(data.containerNumber);
     this.grnForm.get('grnType').patchValue(this.selectedRole);
     console.log(this.grnForm.value);
+    this.submit();
   }
   
   submit() {

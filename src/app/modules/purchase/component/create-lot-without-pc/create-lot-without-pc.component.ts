@@ -82,7 +82,7 @@ export class CreateLotWithoutPcComponent implements OnInit {
       this.role = LotType.WITHOUT_PC;
     } else {
       this.role = LotType.JOB_WORK_OTHER;
-      this.lotWithoutPc.removeControl('sourceWarehouseId');
+      // this.lotWithoutPc.removeControl('sourceWarehouseId');
     }
     this.lotWithoutPc.get('lotType').patchValue(this.role);
   }
