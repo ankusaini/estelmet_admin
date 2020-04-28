@@ -1,12 +1,12 @@
 <app-add-product-cart 
     [productList]="productList" 
     [component]="'inventory'"
+    [showSearch]="true"
     (selectedProductList)= getSelectedProductList($event)>
 </app-add-product-cart>
 
 <app-add-product-cart 
     [productList]="selectedProductList">
-    
 </app-add-product-cart>
 <button type="submit" class="btn btn-success active excelBtn" (click)="exportToExcel()"><i  class="feather icon-menu"></i> Excel</button>&nbsp;
 <button type="submit" class="btn btn-danger active printBtn" ><i  class="feather icon-printer"></i> Print</button>&nbsp;

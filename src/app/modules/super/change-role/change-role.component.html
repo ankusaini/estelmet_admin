@@ -10,19 +10,17 @@
                 <th>Employee ID</th>
                 <th>Employee Name</th>
                 <th>Mobile</th>
-                <th>E-mail/th>
-                <th>Date of Creation</th>
+                <th>E-mail</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1.</td>
-                <td>#EMP-939</td>
-                <td>Sameer Khan</td>
-                <td>+91-9871898678</td>
-                <td>sameer@gmail.com</td>
-                <td>26/04/20</td>
+              <tr *ngFor="let item of employeeList; index as i">
+                <td>{{ i+ 1 }}</td>
+                <td>#EMP-{{item.userId}}</td>
+                <td>{{ item.firstName + " " + item.lastName}}</td>
+                <td>+91-{{ item.mobile }}</td>
+                <td>{{ item.emailId }}</td>
                 <td>
                   <button type="button" class="btn btn-icon btn-success"><i class="feather icon-plus"></i></button>
 
@@ -34,13 +32,16 @@
       </app-card>
     </div>
   </div>
-  <div class="col-md-6">
-        <div class="m-t-20 brdr1">
-          <div class=" p-15">
-          <h5 class="bg-clr-head1 p-10 f-14">Select Employee Role</h5>
-          <ng-select [ngClass]="'ng-select'" [options]="simpleOption" [multiple]="true"></ng-select>
-        </div>
-        </div>
-    
+  <div class="col-md-12">
+    <div class="m-t-20 brdr1">
+      <div class=" p-15">
+        <!-- <h5 class="bg-clr-head1 p-10 f-14">Select Employee Role</h5> -->
+        <!-- <ng-select [ngClass]="'ng-select'" [options]="roles" [multiple]="true"></ng-select> -->
+        <app-card cardTitle="Assign Role" [options]="false">
+          <dual-list [sort]="keepSorted" [source]="source" [key]="key" [display]="display" [filter]="filter"
+                     [(destination)]="confirmed" height="265px" [format]="format" [disabled]="disabled"></dual-list>
+      </app-card>
+      </div>
+    </div>
   </div>
 </div>

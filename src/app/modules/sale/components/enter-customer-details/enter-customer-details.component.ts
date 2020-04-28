@@ -59,7 +59,7 @@ submitScId() {
   if(this.generatedScId) {
     this.scId.emit(this.generatedScId);
   } else {
-    this.toastr.error("Error! Please Generate SC Id.");
+    this.toastr.error("Error! Please Generate SC ID.");
   }
 }
 

@@ -17,8 +17,9 @@ import { PurchasrListFullDetailsComponent } from './components/purchasr-list-ful
 import { TransportDetailsComponent } from './components/transport-details/transport-details.component';
 import { TransporterDoComponent } from './components/transporter-do/transporter-do.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { NgxPermissionsModule } from "ngx-permissions";
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
+import { SelectModule } from 'ng-select';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FileUploadModule } from '@iplab/ngx-file-upload';
     NgbDatepickerModule,
     DataTablesModule,
     FileUploadModule,
+    SelectModule
   ],
   exports: [
     MaterialClassificationSpecificationComponent,

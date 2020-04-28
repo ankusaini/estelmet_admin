@@ -32,7 +32,7 @@ export class SelectProcessingComponent implements OnInit {
     if(this.selectProcessingIdForm.valid) {
       this.selectedProcessingId.emit(this.selectProcessingIdForm.value);
     } else {
-      this.toastr.error("Please select Id!");
+      this.toastr.error("Please select ID!");
     }
   }
 

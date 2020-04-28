@@ -108,7 +108,7 @@ const selectedPC = this.productCategoryListFull.filter(obj => {
         {
           let firstProductId=this.selectedProductList[0].productId;
           let warehouse=this.selectedProductList[0].warehouse;
-          // console.log("first Id",firstProductId);
+          // console.log("first ID",firstProductId);
        data.productStage=ProductStage.ACTIVE;
        data.warehouse=warehouse;
       data.status=Status.PENDING;

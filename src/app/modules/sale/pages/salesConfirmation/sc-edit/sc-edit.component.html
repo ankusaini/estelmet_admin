@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-md-4 mt-md-4">
             <h3 class="f-24">Edit Sales Confirmation</h3>
-            <p class="m-b-5 text-dark f-w-600">SC Id : <span class="text-muted">SC-{{response?.sales?.id}},</span> <span
+            <p class="m-b-5 text-dark f-w-600">SC ID : <span class="text-muted">SC-{{response?.sales?.id}},</span> <span
                 class="f-w-600 text-success"> {{response?.sales?.status}}</span></p>
             <p class="m-b-5 text-dark f-w-600">SC Title : <span class="text-muted">{{response?.sales?.title }}</span></p>
           </div>
@@ -401,11 +401,11 @@
             </app-card>
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile3">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Customer ID</label>
                 <div class="col-sm-3">
                   CU-{{response?.sales?.customerId}}
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID</label>
                 <div class="col-sm-3">
                   TP-{{response?.sales?.transportId}}
                 </div>
@@ -464,11 +464,11 @@
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile3">
               <form [formGroup]="transportForm" (ngSubmit)="updateTransportData()">
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Customer ID</label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" placeholder="" disabled formControlName="customerId">
                   </div>
-                  <label class="col-sm-3 col-form-label font-weight-bolder">Transport Id</label>
+                  <label class="col-sm-3 col-form-label font-weight-bolder">Transport ID</label>
                   <div class="col-sm-3">
                     <input type="text" class="form-control" placeholder="" disabled formControlName="transportId">
                   </div>

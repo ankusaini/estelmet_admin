@@ -1,42 +1,149 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="dt-responsive table-responsive" cardClass="card-datatable">
       <app-card [hidHeader]="false" cardTitle="Add New Employee" cardClass="user-profile-list">
         <form [formGroup]="employeeForm" (ngSubmit)="employeeOnSubmit()">
-          <div class="m-t-20">
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" placeholder="First name" formControlName="firstName" />
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">Last Name </label>
-                <input type="text" class="form-control" placeholder="Last name" formControlName="lastName"/>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="m-t-20">
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="firstName">First Name <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" placeholder="First name" formControlName="firstName" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="lastName">Last Name <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" placeholder="Last name" formControlName="lastName" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Registered Mobile <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" placeholder="Mobile" formControlName="mobile" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="validationCustom02">Registered E-mail <small class="asterik_sign">*</small></label>
+                    <input type="email" class="form-control" placeholder="Email" formControlName="emailId" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Date of Birth <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" [textMask]="{mask: mask}" placeholder="DD/MM/YYYY" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="validationCustom02">Marital Status <small class="asterik_sign">*</small></label>
+                    <select class="form-control">
+                      <option value="0" disabled>Select</option>
+                      <option>Bachelor</option>
+                      <option>Engaged</option>
+                      <option>Married</option>
+                      <option>Divorced</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Aadhar Number <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" [textMask]="{mask: mask2}" placeholder="0000 0000 0000" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">PAN Number <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" placeholder="AAA AA 9999 A" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Employer Company Name <small class="asterik_sign">*</small></label>
+                    <div class="input-group"> 
+                      <div class="input-group-prepend" >
+                        <select formControlName="" class="form-control">
+                        <option value='' disabled>ID</option>
+                        <option value=''>	1</option>
+                        <option value=''>	2</option>
+                      </select>
+                      </div>
+                      <select formControlName="" class="form-control">
+                        <option value='' disabled>Name</option>
+                        <option value=''>	Name 1</option>
+                        <option value=''>	Name 2</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Designation <small class="asterik_sign">*</small></label>
+                    <select class="form-control">
+                      <option value="0" disabled>Select</option>
+                      <option>Designation 1</option>
+                      <option>Designation 2</option>
+                      <option>Designation 3</option>
+                      <option>Designation 4</option>
+                      <option>Designation 5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Address Line 1 <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control"  placeholder="" />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="f-12" for="mobile">Address Line 1 </label>
+                    <input type="text" class="form-control" placeholder="" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label class="f-12" for="mobile">Country <small class="asterik_sign">*</small></label>
+                    <select class="form-control">
+                      <option value="0" disabled>Select</option>
+                      <option>Country 1</option>
+                      <option>Country 2</option>
+                      <option>Country 3</option>
+                      <option>Country 4</option>
+                      <option>Country 5</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="f-12" for="mobile">State <small class="asterik_sign">*</small></label>
+                    <select class="form-control">
+                      <option value="0" disabled>Select</option>
+                      <option>State 1</option>
+                      <option>State 2</option>
+                      <option>State 3</option>
+                      <option>State 4</option>
+                      <option>State 5</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="f-12" for="mobile">City <small class="asterik_sign">*</small></label>
+                    <select class="form-control">
+                      <option value="0" disabled>Select</option>
+                      <option>City 1</option>
+                      <option>City 2</option>
+                      <option>City 3</option>
+                      <option>City 4</option>
+                      <option>City 5</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <label class="f-12" for="mobile">Pin Code <small class="asterik_sign">*</small></label>
+                    <input type="text" class="form-control" placeholder="" />
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="mobile">Mobile </label>
-                <input type="text" class="form-control" placeholder="Mobile" formControlName="mobile"/>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="validationCustom02">E-mail <small class="asterik_sign">*</small></label>
-                <input type="email" class="form-control" placeholder="Email" formControlName="emailId"/>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="password">Password </label>
-                <input type="password" class="form-control" placeholder="Password" formControlName="password"/>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="password">Confirm Password </label>
-                <input type="password" class="form-control" placeholder="Confirm Password" />
+            <div class="col-md-3">
+              <div class="photo_upload m-t-20">
+                <form>
+                  <label class="f-12" for="photo">Upload Recent Passport Size Photograph <small class="asterik_sign">*</small></label>
+                  <file-upload name="files" fileslimit="1" class="uploadPhoto2"></file-upload>
+                  <small class="p-l-10 f-10 f-w-600 clr-blk">Image size should not be greater than 5Mb</small>
+                </form>
               </div>
             </div>
-            <div class="col-md-6 mb-3">
-              <label for="validationCustom02">E-mail <small class="asterik_sign">*</small></label>
-              <input type="email" class="form-control" placeholder="E-mail" />
+            <div class="col-md-12 text-center">
+              <button type="button" class="btn btn-primary excelBtn">Submit Details</button>
             </div>
           </div>
         </form>

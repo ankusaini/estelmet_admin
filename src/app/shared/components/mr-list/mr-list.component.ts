@@ -42,7 +42,7 @@ export class MrListComponent implements OnInit {
     if (this.selectedMr) {
       this.selectedMrData.emit(this.selectedMr);
     } else {
-      this.toastService.warning('Select Mr Id!');
+      this.toastService.warning('Select Mr ID!');
     }
   }
 
@@ -55,7 +55,7 @@ export class MrListComponent implements OnInit {
         if (this.selectedMr) {
       this.selectedMrData.emit(this.selectedMr);
     } else {
-      this.toastService.warning('Select Mr Id!');
+      this.toastService.warning('Select Mr ID!');
     }
       }
     console.log('selected', mr);

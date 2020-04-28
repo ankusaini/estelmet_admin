@@ -12,11 +12,11 @@
         <div class="col-md-4 mt-md-4">
           <h3 class="f-18">Edit User Group</h3>
           
-          <p *ngIf="selectedRole === 'CUSTOMER'" class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{Ids.SUPPLIER_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
-          <p  *ngIf="selectedRole === 'SUPPLIER'"class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{Ids.CUSTOMER_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
-          <p  *ngIf="selectedRole === 'AGENT'"class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{Ids.AGENT_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>              
-          <p  *ngIf="selectedRole === 'CONTRACTOR'"class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{Ids.CONTRACTOR_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
-          <p  *ngIf="selectedRole === 'TRANSPORTER'"class="m-b-5 text-dark f-w-600">UG Id : <span class="text-muted">{{Ids.TRANSPORTER_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
+          <p *ngIf="selectedRole === 'CUSTOMER'" class="m-b-5 text-dark f-w-600">UG ID : <span class="text-muted">{{Ids.SUPPLIER_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
+          <p  *ngIf="selectedRole === 'SUPPLIER'"class="m-b-5 text-dark f-w-600">UG ID : <span class="text-muted">{{Ids.CUSTOMER_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
+          <p  *ngIf="selectedRole === 'AGENT'"class="m-b-5 text-dark f-w-600">UG ID : <span class="text-muted">{{Ids.AGENT_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>              
+          <p  *ngIf="selectedRole === 'CONTRACTOR'"class="m-b-5 text-dark f-w-600">UG ID : <span class="text-muted">{{Ids.CONTRACTOR_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
+          <p  *ngIf="selectedRole === 'TRANSPORTER'"class="m-b-5 text-dark f-w-600">UG ID : <span class="text-muted">{{Ids.TRANSPORTER_GROUP + '-' +selectedUserGroup?.userGroupId}} &nbsp;&nbsp;</span>
 
             <span class="f-w-600" *ngIf="selectedUserGroup?.status === 'PENDING'"><label class="badge badge-warning">{{selectedUserGroup?.status}}</label></span>
             <span class="f-w-600" *ngIf="selectedUserGroup?.status === 'APPROVED'"> <label class="badge badge-success">{{selectedUserGroup?.status}}</label></span>
@@ -99,7 +99,7 @@
           </app-card>
             <!-- <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">CUG Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">CUG ID</label>
               <div class="col-sm-3">
                 <select class="form-control" id="exampleFormControlSelect1" disabled>
                   <option value>CUG-922</option>

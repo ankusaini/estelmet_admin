@@ -8,13 +8,13 @@
               <h5>Seller Company Detail</h5>
               <hr>
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
                   class="asterik_sign">*</small></label>
               <div class="col-sm-3">
                 <select class="form-control" name="validation-customerId"
                   [ngClass]="{'is-invalid': !customerId.valid && (customerId.dirty || customerId.touched || isSubmit)}"
                   #customerId="ngModel" required [(ngModel)]="formInput.customerId">
-                  <option value>Id</option>
+                  <option value>ID</option>
                   <option value="1">CU-#121</option>
                   <option value="2">CU-#564</option>
                   <option value="3">CU-#754</option>
@@ -41,13 +41,13 @@
               <h5>Buyer ( Billing Address )</h5>
             <hr>
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+              <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
                   class="asterik_sign">*</small></label>
               <div class="col-sm-3">
                 <select class="form-control" name="validation-companyId"
                   [ngClass]="{'is-invalid': !companyId.valid && (companyId.dirty || companyId.touched || isSubmit)}"
                   #companyId="ngModel" required [(ngModel)]="formInput.companyId">
-                  <option value>Id</option>
+                  <option value>ID</option>
                   <option value="1">COMP-1</option>
                   <option value="2">COMP-2</option>
                   <option value="3">COMP-3</option>
@@ -360,9 +360,9 @@
         <div class="row">
           <div class="col-md-2">
             <div class="form-group">
-              <label for="validationCustom02">Transporter Id</label>
+              <label for="validationCustom02">Transporter ID</label>
               <select class="form-control" name="validation-companyName">
-                  <option value>Select Transporter Id</option>
+                  <option value>Select Transporter ID</option>
               </select>
             </div>
           </div>

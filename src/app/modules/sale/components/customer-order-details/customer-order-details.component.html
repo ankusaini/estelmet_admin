@@ -6,7 +6,7 @@
             class="asterik_sign">*</small></label>
         <div class="col-sm-3">
             <select [value]="customerName.value" #customerId class="form-control" name="validation-warId" formControlName="customerId">
-              <option value="" disabled>Select Id</option>
+              <option value="" disabled>Select ID</option>
             <option *ngFor="let customer of customerList" [value]="customer.userDetialId">CU-{{customer.userDetialId}}</option>
           </select>
           <small *ngIf="f.customerId.value == '' && (f.customerId.dirty || f.customerId.touched)"
@@ -37,7 +37,7 @@
               class="asterik_sign">*</small></label>
           <div class="col-sm-3">
               <select [value]="transportName.value" #transportId class="form-control" name="validation-warId" formControlName="transportId">
-              <option value="" disabled>Select Id</option>
+              <option value="" disabled>Select ID</option>
               <option *ngFor="let transport of transportList" [value]="transport.userDetialId">TR-{{transport.userDetialId}}</option>            
             </select>
             <small *ngIf="f.transportId.value == '' && (f.transportId.dirty || f.transportId.touched)"

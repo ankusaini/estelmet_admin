@@ -27,7 +27,7 @@ export class PersonalDetailsComponent implements OnInit {
   otp: number = null;
   enterOTP = false;
   markAsComplete = false;
-
+  public mask = [/\d/, /\d/,  '/', /\d/, /\d/, '/', /\d/, /\d/,/\d/, /\d/,];
   userDTO = new FormGroup({
     id: new FormControl(''),
     firstName: new FormControl('', [

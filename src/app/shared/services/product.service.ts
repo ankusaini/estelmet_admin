@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
@@ -10,10 +11,9 @@ import {
 } from 'src/app/shared/Models/product.model.';
 import { Warehouse } from 'src/app/shared/Models/warehouse';
 import { MachineDetail } from '../Models/machineDetails.model';
-import { Product } from '../Models/product.model.';
+import { Product, ProductStage, Status } from '../Models/product.model.';
 import { WeighingCompany } from '../Models/weighingCompany.model';
 import { ApiService } from './api.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -188,6 +188,20 @@ export class ProductService {
     return new Observable<WeighingCompany[]>(obs => {
       this.apiService.get(url).subscribe(res => {
         obs.next(res);
+      });
+    });
+  }
+
+  getSimilarProduct(search): Observable<Product[]> {
+    const params: HttpParams = new HttpParams()
+      .set('userRole', search)
+      .set('status', Status.APPROVED)
+      .set('productStage', ProductStage.ACTIVE)
+      .set('limit', '10')
+      .set('offset', '1');
+    return new Observable<Product[]>(obs => {
+      this.apiService.get('/inventory/getSimilarProduct', params).subscribe(res => {
+        obs.next(res.body);
       });
     });
   }

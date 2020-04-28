@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-md-4 mt-md-4">
             <h3 class="f-24">Edit Sales Offer</h3>
-            <p class="m-b-5 text-dark f-w-600">SO Id : <span class="text-muted">SO-{{soResponse?.sales?.id}},</span> <span
+            <p class="m-b-5 text-dark f-w-600">SO ID : <span class="text-muted">SO-{{soResponse?.sales?.id}},</span> <span
                 class="f-w-600 text-success"> {{soResponse?.sales?.status}}</span></p>
             <p class="m-b-5 text-dark f-w-600">SO Title : <span class="text-muted">{{soResponse?.sales?.title}}</span></p>
           </div>
@@ -62,7 +62,7 @@
             </app-card>
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">SO Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">SO ID</label>
                 <div class="col-sm-3">
                   SO-{{soResponse?.sales?.id}}
                 </div>
@@ -95,7 +95,7 @@
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile1">
               <form [formGroup]="soDetailsForm" (ngSubmit)="submitSoDetails()">
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label font-weight-bolder">SO Id</label>
+                    <label class="col-sm-3 col-form-label font-weight-bolder">SO ID</label>
                     <div class="col-sm-3">
                       <!-- <select class="form-control" id="exampleFormControlSelect1" formControlName="id" disabled>
                         <option value>SO-922</option>

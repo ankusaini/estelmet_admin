@@ -10,32 +10,35 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ArchwizardModule } from 'ng2-archwizard/dist';
 import { SelectModule } from 'ng-select';
 import { FileUploadModule } from '@iplab/ngx-file-upload'
-import { InventoryRoutingModule } from "src/app/modules/inventory/inventory.routing";
+import { InventoryRoutingModule } from 'src/app/modules/inventory/inventory.routing';
 // import { MaterialClassificationSpecificationComponent } from "src/app/shared/components/material-classification-specification/material-classification-specification.component";
 // import { AddProductCartComponent } from "src/app/shared/components/add-product-cart/add-product-cart.component";
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { ProductApprovalComponent } from './pages/product-approval/product-approval.component';
 import { ProductOverviewComponent } from './pages/product-overview/product-overview.component';
 import { SearchViewProductComponent } from './pages/search-view-product/search-view-product.component';
-import { LightboxModule } from "ngx-lightbox";
+import { LightboxModule } from 'ngx-lightbox';
 import {
   NgbDropdownModule,
   NgbDatepickerModule,
   NgbTabsetModule,
   NgbTooltipModule,
   NgbCarouselModule
-} from "@ng-bootstrap/ng-bootstrap";
-import { ReportComponent } from './pages/report/report.component';
+} from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
-  declarations: [AddProductComponent, SelectGrnComponent,
+  declarations: [AddProductComponent,
+    SelectGrnComponent,
     // MaterialClassificationSpecificationComponent,
     // AddProductCartComponent,
-     EditProductComponent, ProductApprovalComponent, ProductOverviewComponent, SearchViewProductComponent, ReportComponent],
+    EditProductComponent,
+    ProductApprovalComponent,
+    ProductOverviewComponent,
+    SearchViewProductComponent],
   imports: [
-  CommonModule,
+    CommonModule,
     InventoryRoutingModule,
     FormsModule,
     TextMaskModule,

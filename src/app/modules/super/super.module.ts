@@ -13,6 +13,10 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ChangeRoleComponent } from './change-role/change-role.component';
 import { SelectModule } from 'ng-select';
 import {AngularDualListBoxModule} from 'angular-dual-listbox';
+import { SearchPriceComponent } from './search-price/search-price.component';
+import { FileUploadModule } from '@iplab/ngx-file-upload';
+import { SearchEmployeeComponent } from './search-employee/search-employee.component';
+import { AssignUserComponent } from './assign-user/assign-user.component';
 
 @NgModule({
   imports: [
@@ -26,12 +30,16 @@ import {AngularDualListBoxModule} from 'angular-dual-listbox';
     NgbDatepickerModule,
     SelectModule,
     AngularDualListBoxModule,
+    FileUploadModule,
   ],
   declarations: [
     AddPriceComponent,
     CustomerCreditLimitComponent,
     AddEmployeeComponent,
-    ChangeRoleComponent
+    ChangeRoleComponent,
+    SearchPriceComponent,
+    SearchEmployeeComponent,
+    AssignUserComponent
   ]
 })
 export class SuperModule { }

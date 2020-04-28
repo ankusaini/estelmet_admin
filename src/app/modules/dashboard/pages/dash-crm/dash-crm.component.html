@@ -4,6 +4,7 @@
     <!-- <h3 class="mb-3">Inventory Details</h3> -->
     <div class="row">
       <div class="col-sm-3">
+        <label class="f-16 m-b-0">Product Category</label>
         <select class="form-control m-b-10" [(ngModel)]="selectedCategory" (change)="getCategoryProduct()">
           <option value='' disabled>Select Category</option>
           <option *ngFor="let item of productCategory" [ngValue]="item">{{ item?.productCategory }}</option>
@@ -39,9 +40,10 @@
         </app-card>
       </div>
       <div class="col-sm-3">
+        <label class="f-16 m-b-0">Product Shape</label>
         <select class="form-control m-b-10" [(ngModel)]="selectedShape" (change)="getShapeProduct()">
           <option value='' disabled>Select Shape</option>
-          <option *ngFor="let item of productShape" [ngValue]="item?.id">{{ item?.productShape }}</option>
+          <option *ngFor="let item of productShape" [ngValue]="item">{{ item?.productShape }}</option>
         </select>
         <app-card [hidHeader]="false"  [cardTitle]="selectedShape.productShape" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-success text-white">
           <div class="p-10 pb-2 pt-0">
@@ -75,9 +77,10 @@
       </div>
 
       <div class="col-sm-3">
+        <label class="f-16 m-b-0">Product Class</label>
         <select class="form-control m-b-10" [(ngModel)]="selectedClass" (change)="getClassProduct()">
           <option value='' disabled>Select Class</option>
-          <option *ngFor="let item of productClass" [ngValue]="item?.id">{{ item?.productClass }}</option>
+          <option *ngFor="let item of productClass" [ngValue]="item">{{ item?.productClass }}</option>
         </select>
         <app-card [hidHeader]="false"  [cardTitle]="selectedClass.productClass" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-danger text-white">
           <div class="p-10 pb-2 pt-0">
@@ -110,9 +113,10 @@
         </app-card>
       </div>
       <div class="col-sm-3">
+        <label class="f-16 m-b-0">Warehouse</label>
         <select class="form-control m-b-10" [(ngModel)]="selectedWarehouse" (change)="getWarehouseProduct()">
           <option value='' disabled>Select Warehouse</option>
-          <option *ngFor="let item of warehouse" [ngValue]="item?.id">{{ item?.name }}</option>
+          <option *ngFor="let item of warehouse" [ngValue]="item">{{ item?.name }}</option>
         </select>
         <app-card [hidHeader]="false"  [cardTitle]="selectedWarehouse.name" cardClass="support-bar overflow-hidden" blockClass="p-0" [isCardFooter]="true" footerClass="bg-warning text-white">
           <div class="p-10 pb-2 pt-0">

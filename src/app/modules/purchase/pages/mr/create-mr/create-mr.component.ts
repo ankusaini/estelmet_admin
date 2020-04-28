@@ -106,7 +106,7 @@ export class CreateMRComponent implements OnInit {
       this.purchaseService.createPurchase( this.request).subscribe(data => {
          let generatedMrId=data.purchase.id;
          console.log("Genetat",data.purchase.id);
-        this.toastr.success('Record saved successfully, Generated MR Id:'+generatedMrId);
+        this.toastr.success('Record saved successfully, Generated MR ID:'+generatedMrId);
        
         this.router.navigateByUrl('/purchase/mrEdit/'+generatedMrId);
 

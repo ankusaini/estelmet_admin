@@ -68,7 +68,7 @@ export class CreatePcComponent implements OnInit {
     if (this.generatedPcId) {
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.warning("Please generate PC Id!");
+      this.toastr.warning("Please generate PC ID!");
     }
   }
 
@@ -105,7 +105,7 @@ export class CreatePcComponent implements OnInit {
       // alert("saved")
       console.log(data);
       let generateId = data.purchase.id;
-      this.toastr.success("Record saved successfully. Generated Id:" + generateId)
+      this.toastr.success("Record saved successfully. Generated ID:" + generateId)
       this.router.navigateByUrl("/purchase/pcEdit/" + generateId);
     }, error => {
       console.log(error);

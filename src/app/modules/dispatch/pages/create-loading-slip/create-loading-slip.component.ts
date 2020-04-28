@@ -69,7 +69,7 @@ export class CreateLoadingSlipComponent implements OnInit {
       );
       this.wizard.navigation.goToNextStep();
     } else {
-      this.toastr.warning('Please select Id!');
+      this.toastr.warning('Please select ID!');
     }
   }
 

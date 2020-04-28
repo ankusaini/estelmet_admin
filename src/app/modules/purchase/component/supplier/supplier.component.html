@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-md-5">
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Supplier Id <small
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Supplier ID <small
               class="asterik_sign">*</small></label>
           <div class="col-sm-3">
             <select [value]="selectedName.value" #selectedId class="form-control" formControlName="supplierId">
@@ -22,11 +22,11 @@
       <div class="col-md-1"></div>
       <div class="col-md-5">
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company Id <small
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
               class="asterik_sign">*</small></label>
           <div class="col-sm-3">
             <select [value]="companyName.value" #companyId (change)="selectedCompany(companyId.value)" class="form-control" formControlName="sourceCompanyId">
-              <option value>Select Id</option>
+              <option value>Select ID</option>
               <option [value]="item.id" *ngFor="let item of allCompany">{{ item.id }}</option>
             </select>
           </div>
@@ -70,11 +70,11 @@
       <div class="col-md-1"></div>
       <div *ngIf="selected_comapny" class="col-md-5">
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse Id <small
+          <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse ID <small
               class="asterik_sign">*</small></label>
           <div class="col-sm-3">
             <select [value]="selectedWarehouseName.value" #selectedWarehouseId class="form-control" formControlName="sourceWarehouseId">
-              <option value>Id</option>
+              <option value>ID</option>
               <option [value]="item.id" *ngFor="let item of allWarehouse">{{ item.id }}</option>
             </select>
           </div>

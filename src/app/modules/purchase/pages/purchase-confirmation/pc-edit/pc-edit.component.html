@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-md-4 mt-md-4">
           <h3 class="f-18">Edit Purchase Confirmation</h3>
-          <p class="m-b-5 text-dark f-w-600">PC Id : <span class="text-muted">PC-{{pcResponse?.purchase?.id}}</span> <span
+          <p class="m-b-5 text-dark f-w-600">PC ID : <span class="text-muted">PC-{{pcResponse?.purchase?.id}}</span> <span
               class="f-w-600 text-success"> {{pcResponse?.purchase?.status}}</span></p>
           <p class="m-b-5 text-dark f-w-600">PC Title : <span class="text-muted">{{pcResponse?.purchase?.title}}</span></p>
         </div>
@@ -466,11 +466,11 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Supplier ID</label>
               <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 SU-{{pcResponse?.purchase?.supplierId}}
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID</label>
               <div class="col-sm-3 m-t-10 p-t-5 brdr1">
                 TP-{{pcResponse?.purchase?.transportId}}
               </div>
@@ -526,13 +526,13 @@
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile3">
             <form [formGroup]="transportDetails" (ngSubmit)="submitTransportDetails()">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Supplier Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Supplier ID</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" formControlName="supplierId" disabled>
                   <small *ngIf="f2.supplierId.value == '' && (f2.supplierId.dirty || f2.supplierId.touched )" id="passwordHelpBlock" class="form-text text-muted"
                   >This field is required.</small>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID</label>
                 <div class="col-sm-3">
                   <!-- <div class="row"> -->
                     <!-- <div class="col-md-5"> -->

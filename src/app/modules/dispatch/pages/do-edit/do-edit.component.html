@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-md-3 mt-md-4">
           <h3 class="f-24">Edit Delivery Order</h3>
-          <p class="m-b-5 text-dark f-w-600">DO Id : <span class="text-muted">DO-{{response?.deliveryOrder?.deliveryOrderId}},</span> <span
+          <p class="m-b-5 text-dark f-w-600">DO ID : <span class="text-muted">DO-{{response?.deliveryOrder?.deliveryOrderId}},</span> <span
               class="f-w-600 text-success"> {{response?.deliveryOrder?.status}}</span></p>
           <p class="m-b-5 text-dark f-w-600">DO Title : <span class="text-muted">{{response?.deliveryOrder?.deliveryOrderType}}</span></p>
         </div>
@@ -65,13 +65,13 @@
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile1">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">DO Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">DO ID</label>
               <div class="col-sm-3">
                 DO-{{response?.deliveryOrder?.deliveryOrderId}}
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">LOT Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">LOT ID</label>
               <div class="col-sm-3">
                 LOT-{{response?.deliveryOrder?.salesId}}
               </div>
@@ -188,11 +188,11 @@
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile2">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Customer ID</label>
               <div class="col-sm-3">
                 CU-{{response?.deliveryOrder?.customerId}}
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Own Company ID</label>
               <div class="col-sm-3">
                 COM-{{response?.deliveryOrder?.sourceCompanyId}}
               </div>
@@ -202,7 +202,7 @@
               <div class="col-sm-3">
                 {{response?.deliveryOrder?.invoiceNo}}
               </div>
-              <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse ID</label>
               <div class="col-sm-3">
                 WAR-{{response?.deliveryOrder?.sourceWarehouseId}}
               </div>
@@ -231,7 +231,7 @@
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile2">
             <form [formGroup]="invoiceDetailsForm" >
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Customer Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Customer ID</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" disabled formControlName="customerId" value="">
                   <small *ngIf="f.customerId.value == '' && (f.customerId.dirty || f.customerId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -240,7 +240,7 @@
                     <option value="1">CUP-90</option>
                   </select> -->
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Own Company Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Own Company ID</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" disabled formControlName="sourceCompanyId" value="">
                   <small *ngIf="f.sourceCompanyId.value == '' && (f.sourceCompanyId.dirty || f.sourceCompanyId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -257,7 +257,7 @@
                   <small *ngIf="f.invoiceNo.value == '' && (f.invoiceNo.dirty || f.invoiceNo.touched )" id="passwordHelpBlock" class="form-text text-muted"
         >This field is required.</small>
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Own Warehouse ID</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" disabled formControlName="sourceWarehouseId" value="">
                   <small *ngIf="f.sourceWarehouseId.value == '' && (f.sourceWarehouseId.dirty || f.sourceWarehouseId.touched )" id="passwordHelpBlock" class="form-text text-muted"
@@ -327,7 +327,7 @@
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="!editProfile3">
             <div class="form-group row">
 
-              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+              <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID</label>
               <div class="col-sm-3">
                 TP-{{response?.deliveryOrder?.transportId}}
               </div>
@@ -381,7 +381,7 @@
             <form [formGroup]="transportDetailsForm" (ngSubmit)="saveTransportDetails()">
               <div class="form-group row">
 
-                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter Id</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Transpoter ID</label>
                 <div class="col-sm-3">
                   <input type="text" class="form-control" placeholder="" disabled formControlName="transportId" value="">
                   <small *ngIf="f1.transportId.value == '' && (f1.transportId.dirty || f1.transportId.touched )" id="passwordHelpBlock" class="form-text text-muted"

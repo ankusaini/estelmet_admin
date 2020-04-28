@@ -1,6 +1,6 @@
 <!-- <app-card cardTitle="Create Sales Confirmation" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-      <wizard-step stepTitle="Select Customer Order Id" navigationSymbol="1">
+      <wizard-step stepTitle="Select Customer Order ID" navigationSymbol="1">
         <app-select-customer-order-id (outputSelected)="getProductData($event)" ></app-select-customer-order-id>
       </wizard-step>
       <wizard-step stepTitle="Enter Customer Details" navigationSymbol="2">
@@ -17,10 +17,10 @@
 
   <app-card cardTitle="Create Sales Confirmation" [options]="false">
     <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-      <wizard-step stepTitle="Select Customer Order Id" navigationSymbol="1">
+      <wizard-step stepTitle="Select Customer Order ID" navigationSymbol="1">
         <app-select-customer-order-id (outputSelected)="getProductData($event)" ></app-select-customer-order-id>
       </wizard-step>
-      <wizard-step stepTitle="Generate Sales Confirmation Id" navigationSymbol="2">
+      <wizard-step stepTitle="Generate Sales Confirmation ID" navigationSymbol="2">
             <app-enter-customer-details [id]="selectedId" (scId)="getScId($event)"></app-enter-customer-details>
       </wizard-step>
       <wizard-step stepTitle="Transport Delivery Details" navigationSymbol="3">
