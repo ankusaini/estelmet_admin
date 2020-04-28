@@ -152,7 +152,7 @@
         </select>
       </div>
     </div>
-    <div class="col-sm-12 centered-content m-t-20">
+    <div *ngIf="component !== ''" class="col-sm-12 centered-content m-t-20">
       <button type="submit" class="btn btn-success btn-sm">Submit Transport</button>
     </div>
     <div *ngIf="component !== 'sales'" class="col-sm-12 centered-content m-t-20">
