@@ -22,50 +22,7 @@ export class CreateGrnComponent implements OnInit {
   @ViewChild('wizard', { static: false }) wizard: WizardComponent;
   lotIdForm: FormGroup;
 
-  public grnForm = this._fb.group({
-    grnId: new FormControl(''),
-    status: new FormControl('PENDING'),
-    grnType: new FormControl(),
-    transferChalanDate: new FormControl(''),
-    purchaseId: new FormControl(''),
-    materialTransferId: new FormControl(''),
-    name: new FormControl(''),
-    invoiceNo: new FormControl(''),
-    invoiceDate: new FormControl(''),
-    materialDescription: new FormControl(''),
-    invoiceGrossWeight: new FormControl(''),
-    coilsBundles: new FormControl(''),
-    invoiceNetWeight: new FormControl(''),
-    transportRecieptNo: new FormControl(''),
-    containerNumber: new FormControl(''),
-    grossWeight: new FormControl(''),
-    driverName: new FormControl(''),
-    vehicleNo: new FormControl(''),
-    vehicleType: new FormControl(''),
-    netWeight: new FormControl(''),
-    dMobile: new FormControl(''),
-    dLicence: new FormControl(''),
-    createdBy: new FormControl(''),
-    createdDate: new FormControl(''),
-    lastModifiedBy: new FormControl(''),
-    lastModifiedDate: new FormControl(''),
-    weighingSlipNo: new FormControl(''),
-    vehicleLoadedWeight: new FormControl(''),
-    materialNetWeightslip: new FormControl(''),
-    location: new FormControl(''),
-    vehicleTareWeight: new FormControl(''),
-    jobChalan: new FormControl(''),
-    dateJobChalan: new FormControl(''),
-    locationjobChalan: new FormControl(''),
-    sourceCompanyId: new FormControl(''),
-    sourceWarehouseId: new FormControl(''),
-    destinationCompanyId: new FormControl(''),
-    destinationWarehouseId: new FormControl(''),
-    supplierId: new FormControl(''),
-    transportId: new FormControl(''),
-    weighingCompanyId: new FormControl(''),
-    transferChalanNumber: new FormControl('')
-  });
+  public grnForm: FormGroup;
 
   lot_details: any;
   transporterList: User[] = [];
@@ -99,6 +56,7 @@ export class CreateGrnComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.createForm();
     this.lotIdForm = new FormGroup({
       purchaseId: new FormControl('', [Validators.required])
     });
@@ -134,6 +92,7 @@ export class CreateGrnComponent implements OnInit {
       if (val.value) {
         this.selecteValue = val.value;
         this.getSelectedRole(this.selecteValue);
+        this.createForm();
         console.log(val);
         this.getAllPendingLot();
         this.getAllSuppliar();
@@ -147,6 +106,53 @@ export class CreateGrnComponent implements OnInit {
     });
   }
 
+  createForm() {
+   this.grnForm = this._fb.group({
+      grnId: new FormControl(''),
+      status: new FormControl('PENDING'),
+      grnType: new FormControl(),
+      transferChalanDate: new FormControl(''),
+      purchaseId: new FormControl(''),
+      materialTransferId: new FormControl(''),
+      name: new FormControl(''),
+      invoiceNo: new FormControl(''),
+      invoiceDate: new FormControl(''),
+      materialDescription: new FormControl(''),
+      invoiceGrossWeight: new FormControl(''),
+      coilsBundles: new FormControl(''),
+      invoiceNetWeight: new FormControl(''),
+      transportRecieptNo: new FormControl(''),
+      containerNumber: new FormControl(''),
+      grossWeight: new FormControl(''),
+      driverName: new FormControl(''),
+      vehicleNo: new FormControl(''),
+      vehicleType: new FormControl(''),
+      netWeight: new FormControl(''),
+      dMobile: new FormControl(''),
+      dLicence: new FormControl(''),
+      createdBy: new FormControl(''),
+      createdDate: new FormControl(''),
+      lastModifiedBy: new FormControl(''),
+      lastModifiedDate: new FormControl(''),
+      weighingSlipNo: new FormControl(''),
+      vehicleLoadedWeight: new FormControl(''),
+      materialNetWeightslip: new FormControl(''),
+      location: new FormControl(''),
+      vehicleTareWeight: new FormControl(''),
+      jobChalan: new FormControl(''),
+      dateJobChalan: new FormControl(''),
+      locationjobChalan: new FormControl(''),
+      sourceCompanyId: new FormControl(''),
+      sourceWarehouseId: new FormControl(''),
+      destinationCompanyId: new FormControl(''),
+      destinationWarehouseId: new FormControl(''),
+      supplierId: new FormControl(''),
+      transportId: new FormControl(''),
+      weighingCompanyId: new FormControl(''),
+      transferChalanNumber: new FormControl('')
+    });
+  }
+
   getSelectedRole(role) {
     if (role == 'withoutPurchaseInvoice') {
       this.selectedRole = LotType.WITHOUT_PC;
@@ -154,9 +160,7 @@ export class CreateGrnComponent implements OnInit {
       this.selectedRole = LotType.WITH_PC;
     } else if (role == 'jobWorkChalan') {
       this.selectedRole = LotType.JOB_WORK_OTHER;
-    }else if (role == 'materialTransfer') {
-      this.selectedRole = LotType.MATERIAL_TRANSFER;
-    } else {
+    }else {
       this.selectedRole = LotType.JOB_WORK_SELF;
     }
   }
