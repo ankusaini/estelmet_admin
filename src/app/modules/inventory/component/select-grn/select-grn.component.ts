@@ -51,7 +51,7 @@ export class SelectGrnComponent implements OnInit, OnChanges {
       });
     } else if (this.grntype == 'materialTransfer') {
       this.grnList.filter(obj => {
-        if (obj.grnType == LotType.MATERIAL_TRANSFER) {
+        if (obj.grnType == LotType.JOB_WORK_SELF) {
           this.grnIdList.push(obj);
         }
       });
