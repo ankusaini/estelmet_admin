@@ -134,7 +134,7 @@
                       <td *ngIf="product.processingType === 'SHEARING'">{{Ids.MATERIAL_SHEARING + '-' + product?.productProcessingId}}</td>
                       <td *ngIf="product.processingType === 'BLANKING'">{{Ids.MATERIAL_BLANKING + '-' + product?.productProcessingId}}</td>
                       <td *ngIf="product.processingType === 'ASSORTING'">{{Ids.MATERIAL_ASSORTING + '-' + product?.productProcessingId}}</td>
-                      <td>{{product?.jobWorkType}}</td>
+                      <td>{{product?.processingType}}</td>
                       <td>{{product?.productCategory?.productCategory}}</td>
                       <td>COM-{{product?.companyId}}</td>
                       <td>WAR-{{product?.warehouseId}}</td>

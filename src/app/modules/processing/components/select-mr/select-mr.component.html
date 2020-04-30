@@ -88,51 +88,51 @@
       <!--  -->
       <div class="row">
           <div class="col-md-5">
+            <div class="form-group row">
+             <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Company Name <small
+                  class="asterik_sign">*</small></label>
+              <div class="col-sm-3 m-t-10 p-t-5">
+                <select [value]="selectedName2.value" (change)="selectedCompany(selectedId2.value)" #selectedId2
+                  formControlName="companyName" class="form-control" name="validation-category" required>
+                  <option value> ID</option>
+                  <option *ngFor="let item of companyData" [value]="item?.id">{{ item?.id }}</option>
+                </select>
+              </div>
+              <div class="col-sm-5 m-t-10 p-t-5">
+                <select #selectedName2 [value]="selectedId2.value" formControlName="companyName"
+                  (change)="selectedCompany(selectedName2.value)" class="form-control" name="validation-pcId">
+                  <option value> Name</option>
+                  <option *ngFor="let item of companyData" [value]="item?.id">{{ item?.name }}</option>
+
+                </select>
+                <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
+              </div>
+            </div>
+          </div>
+            <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <div *ngIf="selectedCmp">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
+               <label  for="inputEmail3" class="col-sm-4 col-form-label f-12 mt-2">Warehouse ID <small
                     class="asterik_sign">*</small></label>
                 <div class="col-sm-3 m-t-10 p-t-5">
-                    <select class="form-control" formControlName="companyId" (change)="setCompanyName($event.target.value)" name="validation-warId">
-                      <option value='' disabled>Select</option>
-                      <option *ngFor="let id of companyIdList" [value]="id">{{Ids.COMPANY + '-' +id}}</option>
+                  <select formControlName="warehouseId" [value]="selectedWarehouseName.value" #selectedWarehouseId
+                    class="form-control">
+                    <option value>ID</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.id }}</option>
                   </select>
-                  <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
-                  id="validation-warId-error"
-                  class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
                 </div>
                 <div class="col-sm-5 m-t-10 p-t-5">
-                  <select class="form-control" formControlName="companyName" (change)="setCompanyId($event.target.value)"  name="validation-pcId">
-                    <option value='' disabled>Select</option>
-                    <option *ngFor="let name of companyList" [value]="name"> {{name}}</option>
+                  <select #selectedWarehouseName formControlName="warehouseId" [value]="selectedWarehouseId.value"
+                    class="form-control" name="validation-pcId">
+                    <option value> Name</option>
+                    <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.name }}</option>
                   </select>
                   <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
                 </div>
               </div>
             </div>
-            <div class="col-md-1"></div>
-        <div class="col-md-5">
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Warehouse ID <small
-                class="asterik_sign">*</small></label>
-            <div class="col-sm-3 m-t-10 p-t-5">
-                <select class="form-control" formControlName="warehouseId" (change)="setwarehouseName($event.target.value)"  name="validation-warId">
-                  <option value='' disabled>Select</option>
-                  <option *ngFor="let id of warehouseIdList" [value]="id" >{{Ids.WAREHOUSE + '-' +id}}</option>
-              </select>
-              <!-- <label *ngIf="!warId.valid && (warId.dirty || warId.touched || isSubmit)"
-              id="validation-warId-error"
-              class="error jquery-validation-error small form-text invalid-feedback">required.</label> -->
-            </div>
-            <div class="col-sm-5 m-t-10 p-t-5">
-              <select class="form-control" formControlName="warehouseName"  (change)="setwarehouseId($event.target.value)"  name="validation-pcId">
-                <option value='' disabled>Select</option>
-                <option *ngFor="let name of warehouseList" [value]="name">{{name}}</option>
-              </select>
-              <!-- <small class="form-text text-muted text-right">If don't know? <a routerLink="">Click Here!</a></small> -->
-            </div>
-       
           </div>
-        </div>
       </div>
       <!--  -->
       

@@ -28,6 +28,8 @@ export class AddProductCartComponent implements OnInit, OnChanges {
   // @Input() selectedTab : string;
   @Output() selectedProductList: EventEmitter<any> = new EventEmitter<any>();
   @Output() selectedId: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() showHeightOrWidth:any='';
   productType: ProductType[] = [];
   productCategory: ProductCategory[] = [];
   productShape: ProductShape[] = [];

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Company } from 'src/app/shared/Models/company.model.';
 import { MachineDetail } from 'src/app/shared/Models/machineDetails.model';
@@ -13,9 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-select-mr',
   templateUrl: './select-mr.component.html',
-  styleUrls: ['./select-mr.component.scss']
+  styleUrls: ['./select-mr.component.scss'],
+    changeDetection : ChangeDetectionStrategy.OnPush
+
 })
 export class SelectMrComponent implements OnInit, OnChanges {
+  selectedCmp: Company;
   @Input() processingType: string;
   @Input() showDropDown: string="";
   
@@ -51,7 +54,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
     private staticData: StaticDataService,
     private processingService: ProcessingService,
     private toastr: ToastrService,
-    private userService: UserService) {
+    private userService: UserService,private _cd : ChangeDetectorRef) {
       this.Ids = ids;
      }
 
@@ -112,10 +115,8 @@ export class SelectMrComponent implements OnInit, OnChanges {
       contractorFirstName: new FormControl('', [Validators.required]),
       machineDetailId: new FormControl('', [Validators.required]),
       machineName: new FormControl('', [Validators.required]),
-      companyId: new FormControl('', [Validators.required]),
       companyName: new FormControl('', [Validators.required]),
       warehouseId: new FormControl('', [Validators.required]),
-      warehouseName: new FormControl('', [Validators.required]),
       priorityLevel: new FormControl('', [Validators.required]),
       
       // customerCompanyId: new FormControl("")
@@ -153,26 +154,8 @@ export class SelectMrComponent implements OnInit, OnChanges {
 
   }
 
-  setCompanyName(id) {
-    console.log(id);
-    this.companyData.find(company => {
-      if (company.id == id) {
-        this.selectMrIdForm.patchValue({
-          companyName: company.name
-        });
-      }
-    });
-  }
+  
 
-  setwarehouseName(id) {
-    this.warehouseData.find(warehouse => {
-      if (warehouse.id == id) {
-        this.selectMrIdForm.patchValue({
-          warehouseName: warehouse.name
-        });
-      }
-    });
-  }
 
   setContractorId(name) {
     this.contractorData.find(contractor => {
@@ -194,25 +177,25 @@ export class SelectMrComponent implements OnInit, OnChanges {
     });
   }
 
-  setCompanyId(name) {
-    this.companyData.find(company => {
-      if (company.name === name) {
-        this.selectMrIdForm.patchValue({
-          companyId: company.id
-        });
-      }
-    });
+ 
+   selectedCompany(value) {
+    if(value!='')
+      {
+    let data = this.companyData.filter(element=>{
+      return element.id == value
+    })
+    this.selectedCmp = data[0];
+    this.warehouseList = this.staticData.getAllWarehouseByCompanyId(this.selectedCmp.id);
+    console.log(this.warehouseList);
+    this._cd.detectChanges();
+  }
+  else
+    {
+      this.selectedCmp=undefined;
+
+    }
   }
 
-  setwarehouseId(name) {
-    this.warehouseData.find(warehouse => {
-      if (warehouse.name === name) {
-        this.selectMrIdForm.patchValue({
-          warehouseId: warehouse.id
-        });
-      }
-    });
-  }
 
   submitSelectMrId() {
     console.log(this.selectMrIdForm.value);

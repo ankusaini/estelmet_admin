@@ -39,7 +39,10 @@ export class CreateProcessingComponent implements OnInit {
 
     this.basicSwal();
 
-    const url = '/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED';
+        const url = "/inventory/getAllProductByStatus/APPROVED";
+
+    // const url = '/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED';
+
     this.processingService.getAllProductByProductStageAndStatus(url).subscribe(data => {
       this.ProductList = data;
     });
