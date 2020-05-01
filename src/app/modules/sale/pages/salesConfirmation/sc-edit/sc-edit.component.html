@@ -415,10 +415,14 @@
                 <div class="col-sm-3">
                   {{response?.sales?.expectedDate}}
                 </div>
-                <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Type</label>
+                <div class="col-sm-3">
+                 {{response?.sales?.lorryType}}
+                </div>
+                <!-- <label class="col-sm-3 col-form-label font-weight-bolder">Invoice Number</label>
                 <div class="col-sm-3">
                   {{response?.sales?.deliveryOrder?.invoiceNo}}
-                </div>
+                </div> -->
               </div>
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Gross Weight</label>
@@ -441,25 +445,25 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label font-weight-bolder">Container Number</label>
+                <!-- <label class="col-sm-3 col-form-label font-weight-bolder">Container Number</label>
                 <div class="col-sm-3">
                   {{response?.sales?.deliveryOrder?.invoice?.containerNumber}}
-                </div>
+                </div> -->
                 <label class="col-sm-3 col-form-label font-weight-bolder">Vehicle Number</label>
                 <div class="col-sm-3">
-                  {{response?.sales?.deliveryOrder?.vehicleNo}}
+                  {{response?.sales?.lorryNumber}}
                 </div>
               </div>
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                 <label class="col-sm-3 col-form-label font-weight-bolder">Driver Name</label>
                 <div class="col-sm-3">
                  {{response?.sales?.deliveryOrder?.driverName}}
                 </div>
-                <!-- <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
+                <label class="col-sm-3 col-form-label font-weight-bolder">Driver Mobile</label>
                 <div class="col-sm-3">
                   +91-9978262522
-                </div> -->
-              </div>
+                </div>
+              </div> -->
             </app-card>
             <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile3">
               <form [formGroup]="transportForm" (ngSubmit)="updateTransportData()">

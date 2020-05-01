@@ -6,11 +6,11 @@
           Company Name <small class="asterik_sign">*</small>
         </label>
         <select (change)="selectedCompany($event.target.value)" class="form-control" name="validation-companyName"
-          [ngClass]="{'is-invalid': false }" formControlName="companyName" required>
+          [ngClass]="{'is-invalid': false }" formControlName="sourceCompanyId" required>
           <option value="" disabled>Select Company</option>
           <option *ngFor="let company of companyList" [value]="company?.id">{{company?.name}}</option>
         </select>
-        <small *ngIf="!f.companyName.valid && (f.companyName.dirty || f.companyName.touched)"
+        <small *ngIf="!f.sourceCompanyId.valid && (f.sourceCompanyId.dirty || f.sourceCompanyId.touched)"
           id="validation-companyName-error" class="form-text text-muted">
           Company Name should be required.
         </small>
@@ -23,11 +23,11 @@
         </label>
         <!-- [ngClass]="{'is-invalid': false}"    [disabled]="!selected_company" -->
         <select class="form-control" name="validation-warehouse" (change)="getSelectedWarehouse($event)"
-          formControlName="warehouseName" required>
+          formControlName="sourceWarehouseId" required>
           <option value="" disabled>Select Warehouse</option>
           <option *ngFor="let warehouse of warehouseList" [value]="warehouse?.id">{{warehouse?.name}}</option>
         </select>
-        <small *ngIf="!f.warehouseName.valid && (f.warehouseName.dirty || f.warehouseName.touched)"
+        <small *ngIf="!f.sourceWarehouseId.valid && (f.sourceWarehouseId.dirty || f.sourceWarehouseId.touched)"
           id="validation-warehouseName-error" class="form-text text-muted">
           Warehouse Name should be required.
         </small>

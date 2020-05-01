@@ -34,8 +34,8 @@ export class CreateSoIdComponent implements OnInit {
     type: new FormControl('SALES_OFFER_LOT'),
     status: new FormControl('PENDING'),
     title: new FormControl(''),
-    companyName: new FormControl('', [Validators.required]),
-    warehouseName: new FormControl('', [Validators.required]),
+    sourceCompanyId: new FormControl('', [Validators.required]),
+    sourceWarehouseId: new FormControl('', [Validators.required]),
     productCategory: new FormControl('', [Validators.required]),
     productShape: new FormControl('', [Validators.required])
   });

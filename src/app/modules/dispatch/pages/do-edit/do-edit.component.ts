@@ -100,7 +100,6 @@ export class DoEditComponent implements OnInit {
       ]),
       coilsBundle: new FormControl(this.response.deliveryOrder.coilsBundles, [
         Validators.required,
-        CustomValidator.compondValueValidate
       ])
     });
   }

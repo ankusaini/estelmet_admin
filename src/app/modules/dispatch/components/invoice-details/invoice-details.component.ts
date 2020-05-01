@@ -21,6 +21,8 @@ export class InvoiceDetailsComponent implements OnInit {
 
   public customerList: UserMini[];
   public customerIdList: any[] = [];
+  public selectedWarehouse: any;
+  public StaticWarehouseList: any[];
 
   constructor(
     private productService: StaticDataService,
@@ -56,6 +58,11 @@ export class InvoiceDetailsComponent implements OnInit {
     this.productService.getAllCompany().subscribe(data => {
       this.companyList = data;
     });
+    this.productService.getAllwarehouse().subscribe(data => this.StaticWarehouseList = data);
+  }
+
+  getSelectedWarehouse(event) {
+    this.selectedWarehouse = this.invoiceDetails.controls.sourceWarehouseId.value;
   }
 
   getAllCustomer() {
@@ -80,6 +87,8 @@ export class InvoiceDetailsComponent implements OnInit {
       return element.id == value;
     });
     this.selectedCmp = data[0];
+    // this.selected_comapny = data[0];
+    this.warehouseList = this.StaticWarehouseList.filter(x => Number(x.companyId) === Number(value));
     // this._cd.detectChanges();
   }
 

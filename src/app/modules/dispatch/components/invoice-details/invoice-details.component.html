@@ -8,7 +8,7 @@
           <select [value]="selectedName1.value" #selectedId1 formControlName="customerId" class="form-control"
             name="validation-category">
             <option value> ID</option>
-            <option *ngFor="let item of customerList" [value]="item?.id">{{ item?.id }}</option>
+            <option *ngFor="let item of customerList" [value]="item?.userDetialId">{{ item?.userDetialId }}</option>
           </select>
           <small *ngIf="f.customerId.value == '' && (f.customerId.dirty || f.customerId.touched )"
             id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
@@ -17,7 +17,7 @@
           <select #selectedName1 [value]="selectedId1.value" formControlName="customerId" class="form-control"
             name="validation-pcId">
             <option value> Name</option>
-            <option *ngFor="let item of customerList" [value]="item?.id">{{ item?.firstName }}</option>
+            <option *ngFor="let item of customerList" [value]="item?.userDetialId">{{ item?.firstName }}</option>
 
           </select>
           <small *ngIf="f.customerId.value == '' && (f.customerId.dirty || f.customerId.touched )"
@@ -71,19 +71,19 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2 f-12">Warehouse ID <small
             class="asterik_sign">*</small></label>
         <div class="col-sm-3 m-t-10 p-t-5">
-          <select formControlName="sourceWarehouseId" [value]="selectedWarehouseName.value" #selectedWarehouseId
+          <select formControlName="sourceWarehouseId" (change)="getSelectedWarehouse($event)" [value]="selectedWarehouseName.value" #selectedWarehouseId
             class="form-control">
             <option value>ID</option>
-            <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.id }}</option>
+            <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.id }}</option>
           </select>
           <small *ngIf="f.sourceWarehouseId.value == '' && (f.sourceWarehouseId.dirty || f.sourceWarehouseId.touched )"
             id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>
         </div>
         <div class="col-sm-5 m-t-10 p-t-5">
-          <select #selectedWarehouseName formControlName="sourceWarehouseId" [value]="selectedWarehouseId.value"
+          <select #selectedWarehouseName (change)="getSelectedWarehouse($event)" formControlName="sourceWarehouseId" [value]="selectedWarehouseId.value"
             class="form-control" name="validation-pcId">
             <option value> Name</option>
-            <option [value]="item.id" *ngFor="let item of selectedCmp.warehouse">{{ item.name }}</option>
+            <option [value]="item.id" *ngFor="let item of warehouseList">{{ item.name }}</option>
           </select>
           <small *ngIf="f.sourceWarehouseId.value == '' && (f.sourceWarehouseId.dirty || f.sourceWarehouseId.touched )"
             id="passwordHelpBlock" class="form-text text-danger">This field is required.</small>

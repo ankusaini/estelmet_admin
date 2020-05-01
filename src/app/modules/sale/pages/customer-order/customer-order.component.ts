@@ -118,11 +118,11 @@ export class CustomerOrderComponent implements OnInit {
   }
 
   getSelectedOfferId(data: any) {
-    // data.toString();
-    this.wizard.navigation.goToNextStep();
+    console.log(data);
     this.customerOrderForm.patchValue({
       salesId: data
-    })
+    });
+    this.wizard.navigation.goToNextStep();
   }
 
   getOtherDetails(data) {
