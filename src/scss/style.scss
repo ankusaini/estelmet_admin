@@ -244,6 +244,15 @@ ul.nav.nav-pills li:nth-child(2) {
 .lc {
   text-transform: lowercase;
 }
+.uc {
+  text-transform: uppercase;
+}
+.itext {
+  font-style: italic;
+}
+.cc {
+  text-transform: capitalize;
+}
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
   background: none;
 }
@@ -273,7 +282,8 @@ ul.nav.nav-pills li:nth-child(2) {
     left: 6.5em;
   }
   .pop-search {
-    margin-top: 30px;
+    margin-top: 28px;
+    margin-left: 10px;
   }
   .photo_upload {
     width: 100% !important;
@@ -289,6 +299,47 @@ ul.nav.nav-pills li:nth-child(2) {
 .uploadPhoto2 {
   height: 240px;
 }
+.br-5 {
+  border-radius: 5px;
+}
+.easySearch {
+  background: white;
+}
+.easySearch ul {
+  margin: 0;
+  padding: 0;
+}
+.easySearch ul li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 1%;
+}
+.easySearch {
+  margin-left: 15px;
+}
+.easySearch ul li:nth-child(1) {
+width: 24%;
+}
+.easySearch ul li:nth-child(2) {
+  width: 22%;
+  }
+  .easySearch ul li:nth-child(3) {
+      width: 14%;
+      }
+      .easySearch ul li:nth-child(4) {
+          width: 2%;
+          }
+      .easySearch ul li:nth-child(5) {
+          width: 14%;
+          }
+          .easySearch ul li:nth-child(6) {
+              width: 17%;
+              }
+              .thck {
+                  position: absolute;
+                  top: 12px;
+              }
+.overviewBg {background:#EEE48A;}
   @media screen and (max-width: 420px) {   
     .dash:after {
       left: 11.3em;

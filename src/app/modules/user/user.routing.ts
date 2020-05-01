@@ -10,6 +10,7 @@ import { CreateUserComponent } from './pages/create-user/create-user.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { GroupOverviewComponent } from './pages/group-overview/group-overview.component';
 import { NgxPermissionsGuard } from "ngx-permissions";
+import { UserOverviewComponent } from './pages/user-overview/user-overview.component';
 
 const routes: Routes = [
   {
@@ -61,7 +62,10 @@ const routes: Routes = [
     path: 'groupOverview',
     component: GroupOverviewComponent
   },
-
+  {
+    path: 'userOverview',
+    component: UserOverviewComponent
+  },
   // children: [
   //   {
   //     path: 'list',

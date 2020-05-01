@@ -30,6 +30,7 @@ import { UserGroupListComponent } from './pages/user-group-list/user-group-list.
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserRoutingModule } from './user.routing';
 import { GroupOverviewComponent } from './pages/group-overview/group-overview.component';
+import { UserOverviewComponent } from './pages/user-overview/user-overview.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { GroupOverviewComponent } from './pages/group-overview/group-overview.co
     UserBuisnessComponent,
     UserApprovalComponent,
     GroupOverviewComponent,
+    UserOverviewComponent
     
   ],
   imports: [
