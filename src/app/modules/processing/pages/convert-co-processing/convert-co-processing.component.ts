@@ -67,6 +67,7 @@ private staticData: StaticDataService,private router:Router) { }
     }
     else {
       let salesId = this.selectedCo;
+      console.log(salesId);
 
       if(salesId)
         {

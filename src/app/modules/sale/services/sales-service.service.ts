@@ -139,7 +139,8 @@ export class SalesServiceService {
   }
 
   getProductBySalesId(id): Observable<any> {
-    let url = '/inventory/sales/' + id;
+    let url = '/inventory/customerOrder/' + id;
+    // let url = '/inventory/sales/' + id;
     return new Observable<any>( obs => {
       this._apiService.get(url).subscribe(res => {
         obs.next(res);

@@ -90,7 +90,7 @@
             <tr href="kdkd" *ngFor="let product of productList;let i = index">
               <!-- <td>P-{{product.productId}}</td> -->
               <td (click)="navigateToEdit(product.productId)">{{i+1}}</td>
-              <td (click)="navigateToEdit(product.productId)" *ngIf="component=='inventory'">P-{{product.productId}}
+              <td (click)="navigateToEdit(product.productId)" *ngIf="component=='inventory' || component == 'processing' ">P-{{product.productId}}
               </td>
               <td (click)="navigateToEdit(product.productId)">{{product.productType?.productType}}</td>
               <td (click)="navigateToEdit(product.productId)">{{product.productCategory?.productCategory}}</td>
