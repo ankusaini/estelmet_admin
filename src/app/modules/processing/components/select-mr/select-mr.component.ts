@@ -115,7 +115,7 @@ export class SelectMrComponent implements OnInit, OnChanges {
       contractorFirstName: new FormControl('', [Validators.required]),
       machineDetailId: new FormControl('', [Validators.required]),
       machineName: new FormControl('', [Validators.required]),
-      companyName: new FormControl('', [Validators.required]),
+      companyId: new FormControl('', [Validators.required]),
       warehouseId: new FormControl('', [Validators.required]),
       priorityLevel: new FormControl('', [Validators.required]),
       

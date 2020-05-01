@@ -506,6 +506,10 @@
       <label>Length to Cut (mm)<small class="asterik_sign">*</small></label>
       <input type="text" class="form-control" placeholder="enter length to be cut" formControlName="lengthToBeCut">
     </div>
+    <div  *ngIf="widthShow!='' && widthShow!='SHEARING' "class="col-sm-9">
+      <label>Width to Cut (mm)<small class="asterik_sign">*</small></label>
+      <input type="text" class="form-control" placeholder="enter width to be cut" formControlName="widthToBeCut">
+    </div>
   </div>
 <div class="row">
   <div class="col-md-12">

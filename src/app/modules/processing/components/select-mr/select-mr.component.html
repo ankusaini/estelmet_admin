@@ -93,13 +93,13 @@
                   class="asterik_sign">*</small></label>
               <div class="col-sm-3 m-t-10 p-t-5">
                 <select [value]="selectedName2.value" (change)="selectedCompany(selectedId2.value)" #selectedId2
-                  formControlName="companyName" class="form-control" name="validation-category" required>
+                  formControlName="companyId" class="form-control" name="validation-category" required>
                   <option value> ID</option>
                   <option *ngFor="let item of companyData" [value]="item?.id">{{ item?.id }}</option>
                 </select>
               </div>
               <div class="col-sm-5 m-t-10 p-t-5">
-                <select #selectedName2 [value]="selectedId2.value" formControlName="companyName"
+                <select #selectedName2 [value]="selectedId2.value" formControlName="companyId"
                   (change)="selectedCompany(selectedName2.value)" class="form-control" name="validation-pcId">
                   <option value> Name</option>
                   <option *ngFor="let item of companyData" [value]="item?.id">{{ item?.name }}</option>

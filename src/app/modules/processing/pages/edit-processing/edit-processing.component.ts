@@ -16,6 +16,7 @@ import { Processing } from 'src/app/shared/Models/processing.model';
 })
 export class EditProcessingComponent implements OnInit {
   public processingId: any;
+  public processingType:any;
   routerSubscription: any;
   public processingData: Processing;
   public productList: Product[];
@@ -23,6 +24,7 @@ export class EditProcessingComponent implements OnInit {
   productDetails: FormGroup;
   public machineDetailList: MachineDetail[];
   public machineDetailIdList: any[];
+  public widthShow:any='';
 
   // public productCategoryList: any[];
   // public productShapeList: any[];
@@ -95,6 +97,8 @@ export class EditProcessingComponent implements OnInit {
         const url = '/inventory/productProcessing/find/' + this.processingId;
         this.processingService.findProductById(url).subscribe(data => {
           this.processingData = data;
+          this.processingType=this.processingData.processingType;
+         
           console.log(this.processingData);
           this.productList = this.processingData.productList;
 
@@ -244,8 +248,17 @@ export class EditProcessingComponent implements OnInit {
     this.editProfile = false; 
   }
 
+   deleteProduct(mr) {
+    const index: number = this.productList.indexOf(mr);
+
+    if (index !== -1) {
+      this.productList.splice(index, 1);
+    }
+  }
+
   updateProcessing() {
     if(this.processingDetails.valid) {
+      //check to be discuees for productlengthh 0
       console.log(this.processingData);
     this.processingData.jobWorkType = this.processingDetails.value.jobWorkType;
     this.processingData.machineDetailId = this.processingDetails.value.machineDetailId;

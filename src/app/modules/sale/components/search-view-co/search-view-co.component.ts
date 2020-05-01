@@ -5,6 +5,11 @@ import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
 import { ids } from 'src/app/shared/Models/ids.model';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/shared/Models/product.model.';
+import * as xlsx from 'xlsx';
+import * as jsPDF from 'jspdf';
+import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-search-view-co',
   templateUrl: './search-view-co.component.html',
@@ -63,5 +68,62 @@ export class SearchViewCOComponent implements OnInit {
   navigateToEdit(id) {
     this.router.navigateByUrl('/sales/editCo/' + id);
   }
+
+
+  
+    exportToExcel() {
+    const ws: xlsx.WorkSheet =
+    xlsx.utils.table_to_sheet(this.epltable.nativeElement);
+    const wb: xlsx.WorkBook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(wb, ws, 'Sheet1');
+    xlsx.writeFile(wb, 'CO.xlsx');
+    // console.log("fnc")
+   }
+
+
+   exportToPDF()
+   {
+
+     var node = document.getElementById('contentToConvert');
+              var img;
+              var filename;
+              var newImage;
+              domtoimage.toPng(node, { bgcolor: '#fff' })
+
+                .then(function(dataUrl) {
+
+                  img = new Image();
+                  img.src = dataUrl;
+                  newImage = img.src;
+
+                  img.onload = function(){
+
+                  var pdfWidth = img.width;
+                  var pdfHeight = img.height;
+
+                    // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+                    var doc;
+
+                    if(pdfWidth > pdfHeight)
+                    {
+                      doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    else
+                    {
+                      doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+                    }
+                    var width = doc.internal.pageSize.getWidth();
+                    var height = doc.internal.pageSize.getHeight();
+                    doc.addImage(newImage, 'PNG',  10, 10, width, height);
+                    filename = 'CO' + '.pdf';
+                    doc.save(filename);
+                  };
+                })
+                .catch(function(error) {
+
+                });
+
+   }
 
   }

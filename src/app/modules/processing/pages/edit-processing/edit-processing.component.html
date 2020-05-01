@@ -181,8 +181,8 @@
                     <th>Thk. Range (mm)</th>
                     <th>Width Range</th>
                     <th>Length</th>
-                    <th *ngIf="processingData?.processingType=='SHEARING'">Length to Cut</th>
-                    <th *ngIf="processingData?.processingType=='BLANKING'">Width to Cut</th>
+                    <th >Length to Cut</th>
+                    <th *ngIf="processingData?.processingType!='SHEARING'">Width to Cut</th>
                     <th>Temper</th>
                     <th>Hardness</th>
                     <th>Height</th>
@@ -210,8 +210,8 @@
                     <td>{{product?.thicknessMin}} - {{product?.thicknessMax}}</td>
                     <td>{{product?.widthMin}} - {{product?.widthMax}}</td>
                     <td>{{product?.lengthMax}}</td>
-                    <td *ngIf="processingData?.processingType=='SHEARING'" style="background: lightpink;">{{product?.lengthToBeCut}}</td>
-                    <td *ngIf="processingData?.processingType=='BLANKING'" style="background: lightpink;">{{product?.widthToBeCut}}</td>
+                    <td  style="background: lightpink;">{{product?.lengthToBeCut}}</td>
+                    <td *ngIf="processingData?.processingType!='SHEARING'" style="background: lightpink;">{{product?.widthToBeCut}}</td>
                     <td>{{product?.temperMin?.productTemper}} -{{product?.temperMax?.productTemper}}</td>
                     <td>{{product?.hardnessMax?.productHardness}}</td>
                     <td>{{product?.heigth}}</td>
@@ -227,9 +227,9 @@
                     <td>{{product?.nwt}}</td>
                     <td>{{product?.remarks}}</td>
                     <td>
-                      <button type="button" class="btn btn-icon btn-success"><i class="feather icon-check-circle"
-                          (click)="this.editProfile2 = !this.editProfile2; this.editProfileIcon = this.editProfile2 ? 'icon-x': 'icon-edit';"></i></button>
-                      <button type="button" class="btn btn-icon btn-danger"><i
+                      <!-- <button type="button" class="btn btn-icon btn-success"><i class="feather icon-check-circle"
+                          (click)="this.editProfile2 = !this.editProfile2; this.editProfileIcon = this.editProfile2 ? 'icon-x': 'icon-edit';"></i></button> -->
+                      <button type="button" (click)="deleteProduct(product)" class="btn btn-icon btn-danger"><i
                           class="feather icon-trash-2"></i></button>&nbsp;
                     </td>
                   </tr>
@@ -239,7 +239,7 @@
           </app-card>
           <app-card [hidHeader]="true" blockClass="border-top pro-det-edit collapse show" *ngIf="editProfile">
 
-            <app-material-classification-specification [component]="'processing'" (productData)="getProductData($event)">
+            <app-material-classification-specification [widthShow]="processingType" [component]="'processing'" (productData)="getProductData($event)">
 
             </app-material-classification-specification>
 

@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { RequestP } from 'src/app/shared/Models/RequestResponse';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
+import { Product } from "src/app/shared/Models/product.model.";
+import { InventoryService } from "src/app/modules/inventory/service/inventory.service";
 
 @Component({
   selector: 'app-customer-order',
@@ -13,6 +15,11 @@ import { CustomerOrder } from 'src/app/shared/Models/customer-order.model';
   styleUrls: ['./customer-order.component.scss']
 })
 export class CustomerOrderComponent implements OnInit {
+
+
+  productList: Product[];
+  selectedProductList: Product[];
+  
 
   @ViewChild('wizard', {static: false}) wizard: WizardComponent;
   public request: RequestP = {};
@@ -58,11 +65,21 @@ export class CustomerOrderComponent implements OnInit {
 
   constructor(private salesService: SalesServiceService,
     private router: Router,
+    private inventoryService:InventoryService,
     private route: ActivatedRoute,
      private toastr: ToastrService) {
    }
 
   ngOnInit() {
+
+    // const url = '/inventory/getAllProductByProductStageAndStatus/ACTIVE/APPROVED';
+     const url = "/inventory/getAllProductByStatus/APPROVED";
+    
+    this.inventoryService.getAllProductByProductStageAndStatus(url).subscribe(data => {
+      this.productList = data;
+    }, error => {
+      console.log(error);
+    });
 
     this.subscription = this.route.url.subscribe( params => {
       this.coId = this.route.snapshot.params.id;
@@ -71,9 +88,9 @@ export class CustomerOrderComponent implements OnInit {
         this.isEdit = true;
         this.salesService.getCustomerOrder(this.coId).subscribe( res => {
           console.log(res);
-          this.custumerOrderData = res;
+          this.custumerOrderData = res.customerOrder;
+          this.selectedProductList=res.productList;
           // this.customerOrderForm.patchValue(res);
-          console.log(this.custumerOrderData);
         });
         
       } else {
@@ -88,6 +105,10 @@ export class CustomerOrderComponent implements OnInit {
     this.wizard.navigation.goToNextStep();
     this.customerOrderForm.patchValue(data);
     console.log(this.customerOrderForm);
+  }
+
+  getSelectedProductList(selectedProductList) {
+    this.selectedProductList = selectedProductList;
   }
 
   getCoData(data) {
@@ -112,7 +133,12 @@ export class CustomerOrderComponent implements OnInit {
   }
 
   finalSubmit() {
+    if(this.selectedProductList.length>0)
+      {
+        console.log(this.selectedProductList);
     this.request.customerOrder = this.customerOrderForm.value;
+    this.request.productList=this.selectedProductList;
+    console.log(this.request);
     this.salesService.createCustomerOrder(this.request).subscribe( res => {
       console.log(res);
       if(this.isEdit) {
@@ -126,6 +152,24 @@ export class CustomerOrderComponent implements OnInit {
       console.log(error);
     })
   }
+  else
+  {
+    this.toastr.warning("Please select any product");
+  }
+  }
 
+
+  checkNext()
+  {
+
+    if(this.selectedProductList && this.selectedProductList.length>0)
+      {
+        this.wizard.navigation.goToNextStep();
+      }
+      else
+  {
+    this.toastr.warning("Please select at least product");
+  }
+  }
 
 }

@@ -18,12 +18,12 @@
       <h5>Search & Select Product</h5>
       <hr/>
       <app-add-product-cart 
-        [productList]="ProductList"  [showHeightOrWidth]="processingType"
+        [productList]="ProductList"  
         (selectedProductList)= getSelectedProductList($event)
         [component]="'processing'"></app-add-product-cart
       >
       <div class="m-t-20">
-        <app-add-product-cart  [productList]="selectedProductList"></app-add-product-cart>
+        <app-add-product-cart  [showHeightOrWidth]="processingType" [productList]="selectedProductList"></app-add-product-cart>
       </div>
       <div class="col-sm-12 centered-content">  
         <div class="btn-group mt-10">

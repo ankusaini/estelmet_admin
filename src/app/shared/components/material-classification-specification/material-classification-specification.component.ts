@@ -47,6 +47,7 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
   constructor(private staticData: StaticDataService, private toastr: ToastrService) { }
 
   @Input() grntype: any = '';
+   @Input() widthShow: any = '';
   @Input() component = '';
   @Output() productData: EventEmitter<any> = new EventEmitter<any>();
   selectedGrnType: string;
@@ -99,6 +100,10 @@ export class MaterialClassificationSpecificationComponent implements OnInit, OnC
     if (this.component === 'processing') {
       // this.productForm.removeControl("heigth");
       this.productForm.addControl("lengthToBeCut", new FormControl('', [Validators.required]));
+      if(this.widthShow!='' && this.widthShow!='SHEARING')
+        {
+       this.productForm.addControl("widthToBeCut", new FormControl('', [Validators.required]));
+        }
     }
 
   }

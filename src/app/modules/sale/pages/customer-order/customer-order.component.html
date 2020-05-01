@@ -1,30 +1,37 @@
 <app-card cardTitle="Generate Sales Offer ID" [options]="false">
-    <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
-      <wizard-step stepTitle="Select Details To Create Lot ID" navigationSymbol="1">
-      <app-select-details-create-lot [custumerOrderData] = "custumerOrderData"
-      (selectedDetailsId)="getSelectedDetailsId($event)"
-      >
+  <wizard #wizard class="arc-wizard" navBarLayout="large-empty-symbols">
+    <wizard-step stepTitle="Select Details To Create Lot ID" navigationSymbol="1">
+      <app-select-details-create-lot [custumerOrderData]="custumerOrderData" (selectedDetailsId)="getSelectedDetailsId($event)">
       </app-select-details-create-lot>
-      </wizard-step>
-      <wizard-step stepTitle="Customer Order Details" navigationSymbol="2">
-        <app-co-details [custumerOrderData] = "custumerOrderData"
-        (coData)="getCoData($event)"></app-co-details>
-      </wizard-step>
-      <wizard-step stepTitle="Search & View Sales Offer" navigationSymbol="3">
-        <!-- <app-search-view-offer [custumerOrderData] = "custumerOrderData"
+    </wizard-step>
+    <wizard-step stepTitle="Customer Order Details" navigationSymbol="2">
+      <app-co-details [custumerOrderData]="custumerOrderData" (coData)="getCoData($event)"></app-co-details>
+    </wizard-step>
+    <wizard-step stepTitle="Search & Select Product List" navigationSymbol="3">
+      <!-- <app-search-view-offer [custumerOrderData] = "custumerOrderData"
         (outputSelectedId)="getSelectedOfferId($event)"></app-search-view-offer> -->
-        <app-add-product-cart></app-add-product-cart>
-      </wizard-step>
-      <wizard-step stepTitle="Other Details" navigationSymbol="4">
-        <app-other-details [custumerOrderData] = "custumerOrderData"
-        (outputOtherDetails)="getOtherDetails($event)"></app-other-details>
-      </wizard-step>
-    </wizard>
-  </app-card>
+      <app-add-product-cart [productList]="productList" [component]="'inventory'" (selectedProductList)="getSelectedProductList($event)">
+      </app-add-product-cart>
+
+      <app-add-product-cart [productList]="selectedProductList">
+      </app-add-product-cart>
+
+       <div class="col-sm-12 centered-content m-t-20">
+        <div class="btn-group mt-10">
+          <button type="button" class="btn btn-secondary btn-sm" previousStep>Back</button>&nbsp;&nbsp;
+          <button type="button" (click)="checkNext()"class="btn btn-success btn-sm excelBtn">Next</button>
+        </div>
+      </div>
+    </wizard-step>
+    <wizard-step stepTitle="Other Details" navigationSymbol="4">
+      <app-other-details [custumerOrderData]="custumerOrderData" (outputOtherDetails)="getOtherDetails($event)"></app-other-details>
+    </wizard-step>
+  </wizard>
+</app-card>
 
 
 
-  <!-- <form #validationForm="ngForm" class="editForm" novalidate>
+<!-- <form #validationForm="ngForm" class="editForm" novalidate>
     <app-card cardTitle="Terms & Condition Of Sales" [options]="false">
       <div class="row">
         <div class="col-md-3">
@@ -188,4 +195,3 @@
       <button type="button" class="btn btn-success btn-sm">Submit</button>
     </div>
   </div> -->
-  

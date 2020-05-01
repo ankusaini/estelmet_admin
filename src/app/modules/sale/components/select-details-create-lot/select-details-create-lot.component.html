@@ -7,7 +7,7 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
             class="asterik_sign">*</small></label>
         <div class="col-sm-3 m-t-10 p-t-5">
-          <select [value]="selectedName1.value" #selectedId1 class="form-control" name="validation-customerId">
+          <select [value]="selectedName1.value" formControlName="buyerCompanyName" #selectedId1 class="form-control" name="validation-customerId">
             <option value=''>ID</option>
             <option *ngFor="let item of userMini" [value]="item?.userDetialId">{{ item?.userDetialId }}</option>
           </select>
@@ -31,7 +31,7 @@
         <label for="inputEmail3" class="col-sm-4 col-form-label mt-2">Company ID <small
             class="asterik_sign">*</small></label>
         <div class="col-sm-3 m-t-10 p-t-5">
-          <select [value]="selectedName2.value" #selectedId2 class="form-control" name="validation-companyId">
+          <select [value]="selectedName2.value" formControlName="sellerCompanyName" #selectedId2 class="form-control" name="validation-companyId">
             <option value>ID</option>
             <option *ngFor="let item of companyList" [value]="item?.id">{{ item?.id }}</option>
           </select>

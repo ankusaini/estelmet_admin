@@ -30,13 +30,14 @@ export class OtherDetailsComponent implements OnInit, OnChanges {
     }
   }
 
+  // 
   createForm() {
     this.otherDetails = new FormGroup({
       gstInvoice : new FormControl('', [Validators.required]),
-      loadingUnloadingCharges : new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
-      packagingCharges : new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
-      deliveryCharges : new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
-      anyOtherCharges : new FormControl('', [Validators.required, CustomValidator.compondValueValidate]),
+      loadingUnloadingCharges : new FormControl('', [Validators.required]),
+      packagingCharges : new FormControl('', [Validators.required]),
+      deliveryCharges : new FormControl('', [Validators.required]),
+      anyOtherCharges : new FormControl('', [Validators.required]),
       // 
       contactPersonName : new FormControl('', [Validators.required, Validators.minLength(3)]),
       contactPersonNumber : new FormControl('', [Validators.required, CustomValidator.contactNumberValidation]),

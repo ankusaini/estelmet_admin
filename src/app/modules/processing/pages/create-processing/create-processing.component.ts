@@ -112,11 +112,40 @@ export class CreateProcessingComponent implements OnInit {
 
 
   addProcessing() {
+    console.log(this.selectedProductList)
     if (this.selectedProductList.length === 0) {
       this.toastr.warning('Please select any product');
     } else {
+      let lengthError=false;
+      let widthError=false;
+      this.selectedProductList.forEach(data => {
+        if(data.lengthToBeCut=='' || data.lengthToBeCut==null)
+          {
+            lengthError=true;
+          }
+        if(this.processingType!='' && this.processingType!='SHEARING')
+          {
+            if(data.widthToBeCut=='' || data.widthToBeCut==null)
+          {
+            widthError=true;
+          }
+          }
+      });
+
+      if(lengthError)
+          {
+            this.toastr.warning("Please enter length to be cut for each product");
+          }
+      
+        else if(widthError)
+        {
+          this.toastr.warning("Please enter width to be cut for each product");
+        }
+          else
+            {
       this.processing.productList = this.selectedProductList;
       this.processing.processingType = this.processingType;
+
       const url = '/inventory/productProcessing/addProductProcessing';
       this.processingService.addProcessing(url, this.processing).subscribe(data => {
         console.log("Data",data.productProcessingId)
@@ -125,6 +154,7 @@ export class CreateProcessingComponent implements OnInit {
       }, error => {
         this.toastr.warning('something went wrong');
       });
+    }
     }
   }
 }
